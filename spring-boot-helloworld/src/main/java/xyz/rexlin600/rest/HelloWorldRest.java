@@ -7,7 +7,6 @@ import xyz.rexlin600.req.PostReq;
  * HelloWorld rest请求
  *
  * @author: hekunlin
- * @date: 2020/1/2 13:39:30
  */
 @RestController
 @RequestMapping(value = "/hello")

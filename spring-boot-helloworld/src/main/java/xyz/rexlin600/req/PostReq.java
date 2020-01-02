@@ -8,7 +8,6 @@ import java.io.Serializable;
  * Post请求测试类
  *
  * @author: hekunlin
- * @date: 2020/1/2 13:57:29
  */
 @Data
 public class PostReq implements Serializable {
