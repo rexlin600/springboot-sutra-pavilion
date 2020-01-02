@@ -24,5 +24,7 @@ WORKDIR $APP_PATH
 # 注意，一定要提前构建好jar包执行此命令才会成功！
 ADD $APP_NAME/ $APP_PATH
 
+EXPOSE 10002
+
 # 启动项目
 CMD java -jar $JAVA_ARGUMENTS $APP_NAME

@@ -1,0 +1,25 @@
+### 测试HTTP请求 GET
+GET http://localhost:10002/docker/get
+Accept: application/json
+
+
+### 测试HTTP请求 POST
+POST http://localhost:10002/docker/post
+Content-Type: application/json
+
+{
+  "name": "rexlin600",
+  "age": 23
+}
+
+
+### 测试HTTP请求 PUT
+PUT http://localhost:10002/docker/put/1
+Content-Type: application/json
+
+
+### 测试HTTP请求 DELETE
+DELETE http://localhost:10002/docker/delete/2
+Content-Type: application/json
+
+###

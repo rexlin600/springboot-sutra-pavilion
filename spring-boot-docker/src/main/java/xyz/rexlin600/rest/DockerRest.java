@@ -10,7 +10,7 @@ import xyz.rexlin600.req.PostReq;
  */
 @RestController
 @RequestMapping(value = "/docker")
-public class HelloWorldRest {
+public class DockerRest {
 
     private static String HELLO_WORLD = "hello world";
 
