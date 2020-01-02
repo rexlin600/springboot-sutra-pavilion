@@ -24,7 +24,7 @@
     </properties>
 
     <modules>
-        <module>helloworld</module>
+        <module>spring-boot-helloworld</module>
     </modules>
 
 

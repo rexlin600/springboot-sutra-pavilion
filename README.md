@@ -13,7 +13,7 @@
 
 **示例代码**
 
-- [helloworld](https://github.com/rexlin600/SpringBoot2-Example/master/helloworld)
+- [spring-boot-helloworld](https://github.com/rexlin600/SpringBoot2-Example/master/spring-boot-helloworld)
 
 
 ## 参考
