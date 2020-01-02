@@ -1,0 +1,2 @@
+spring.application.name=github
+server.port=10004
