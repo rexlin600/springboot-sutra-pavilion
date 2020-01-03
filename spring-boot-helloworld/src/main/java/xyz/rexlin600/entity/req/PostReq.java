@@ -1,4 +1,4 @@
-package xyz.rexlin600.req;
+package xyz.rexlin600.entity.req;
 
 import lombok.Data;
 

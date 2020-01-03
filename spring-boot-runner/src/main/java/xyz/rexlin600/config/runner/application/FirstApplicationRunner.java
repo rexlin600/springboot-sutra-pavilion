@@ -1,4 +1,4 @@
-package xyz.rexlin600.runner.application;
+package xyz.rexlin600.config.runner.application;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Slf4j
-@Order(2)
-public class SecondApplicationRunner implements ApplicationRunner {
+@Order(1)
+public class FirstApplicationRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {

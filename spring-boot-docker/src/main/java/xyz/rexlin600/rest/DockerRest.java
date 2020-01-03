@@ -1,7 +1,7 @@
 package xyz.rexlin600.rest;
 
 import org.springframework.web.bind.annotation.*;
-import xyz.rexlin600.req.PostReq;
+import xyz.rexlin600.entity.req.PostReq;
 
 /**
  * Docker HelloWorld rest请求
