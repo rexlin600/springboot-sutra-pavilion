@@ -1,4 +1,25 @@
-### get user
-GET http://localhost:10004/github/user
+### get user by default
+GET http://localhost:10004/user/info
+Accept: application/json
+
+### get user by username
+GET http://localhost:10004/user/info?username=spring2go
+Accept: application/json
+
+
+
+### add email
+POST http://localhost:10004/user/email?email=953649835@qq.com
+Content-Type: application/json
+
+### del email
+DELETE http://localhost:10004/user/email?email=953649835@qq.com
+Content-Type: application/json
+
+### get followers by default
+GET http://localhost:10004/user/followers
+
+### get follwers by username
+GET http://localhost:10004/user/followers?username=rexlin600
 
 ###

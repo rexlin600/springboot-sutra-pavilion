@@ -18,8 +18,8 @@ import xyz.rexlin600.common.apiparam.ResponseGenerator;
 import xyz.rexlin600.config.runner.GRunner;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 /**
@@ -38,6 +38,11 @@ public class UserRest {
     @GetMapping("/info")
     public Response info(@RequestParam(value = "username", required = false) String username) {
         User user = null;
+        // resolve space
+        if (!StringUtils.isEmpty(username)) {
+            username = username.trim();
+        }
+
         if (StringUtils.isEmpty(username)) {
             user = GRunner.userService.getUser();
         } else {
@@ -56,6 +61,11 @@ public class UserRest {
     @SneakyThrows
     @PostMapping("/email")
     public Response addEmail(@RequestParam(value = "email") String email) {
+        // resolve space
+        if (!StringUtils.isEmpty(email)) {
+            email = email.trim();
+        }
+
         GRunner.userService.addEmail(email);
         return ResponseGenerator.success();
     }
@@ -70,6 +80,11 @@ public class UserRest {
     @SneakyThrows
     @DeleteMapping("/email")
     public Response removeEmail(@RequestParam(value = "email") String email) {
+        // resolve space
+        if (!StringUtils.isEmpty(email)) {
+            email = email.trim();
+        }
+
         GRunner.userService.removeEmail(email);
         return ResponseGenerator.success();
     }
@@ -85,6 +100,11 @@ public class UserRest {
     @GetMapping("/followers")
     public Response followers(@RequestParam(value = "username", required = false) String username) {
         List<User> list = null;
+        // resolve space
+        if (!StringUtils.isEmpty(username)) {
+            username = username.trim();
+        }
+
         if (StringUtils.isEmpty(username)) {
             list = GRunner.userService.getFollowers(); // 查询自己的 followers
         } else {
@@ -107,18 +127,23 @@ public class UserRest {
     public Response pageFollowers(@RequestParam(value = "username", required = false) String username,
                                   @RequestParam(value = "start", defaultValue = "1") Integer start,
                                   @RequestParam(value = "end", defaultValue = "10") Integer end) {
-        List<User> list = null;
+        List<User> list = Collections.emptyList();
+        // resolve space
+        if (!StringUtils.isEmpty(username)) {
+            username = username.trim();
+        }
+
         if (StringUtils.isEmpty(username)) {
             PageIterator<User> p1 = GRunner.userService.pageFollowers(start, end);  // 查询自己的 followers
             while (p1.hasNext()) {
                 Collection<User> userCollection = p1.next();
-                list = userCollection.parallelStream().collect(Collectors.toList());
+                list.addAll(userCollection);
             }
         } else {
             PageIterator<User> p2 = GRunner.userService.pageFollowers(username, start, end); // 查询指定用户的 followers
             while (p2.hasNext()) {
                 Collection<User> userCollection = p2.next();
-                list = userCollection.parallelStream().collect(Collectors.toList());
+                list.addAll(userCollection);
             }
         }
         return ResponseGenerator.success(list);
@@ -134,7 +159,12 @@ public class UserRest {
     @SneakyThrows
     @GetMapping("/following")
     public Response pageFollowers(@RequestParam(value = "username", required = false) String username) {
-        List<User> list = null;
+        List<User> list = Collections.emptyList();
+        // resolve space
+        if (!StringUtils.isEmpty(username)) {
+            username = username.trim();
+        }
+
         if (StringUtils.isEmpty(username)) {
             list = GRunner.userService.getFollowing();
         } else {
@@ -157,18 +187,23 @@ public class UserRest {
     public Response pageFollowing(@RequestParam(value = "username", required = false) String username,
                                   @RequestParam(value = "start", defaultValue = "1") Integer start,
                                   @RequestParam(value = "end", defaultValue = "10") Integer end) {
-        List<User> list = null;
+        List<User> list = Collections.emptyList();
+        // resolve space
+        if (!StringUtils.isEmpty(username)) {
+            username = username.trim();
+        }
+
         if (StringUtils.isEmpty(username)) {
             PageIterator<User> p1 = GRunner.userService.pageFollowing(start, end);  // 查询自己的 following
             while (p1.hasNext()) {
                 Collection<User> userCollection = p1.next();
-                list = userCollection.parallelStream().collect(Collectors.toList());
+                list.addAll(userCollection);
             }
         } else {
             PageIterator<User> p2 = GRunner.userService.pageFollowing(username, start, end); // 查询指定用户的 following
             while (p2.hasNext()) {
                 Collection<User> userCollection = p2.next();
-                list = userCollection.parallelStream().collect(Collectors.toList());
+                list.addAll(userCollection);
             }
         }
         return ResponseGenerator.success(list);
@@ -184,6 +219,11 @@ public class UserRest {
     @SneakyThrows
     @PutMapping("/follow")
     public Response follow(@RequestParam(value = "username") String username) {
+        // resolve space
+        if (!StringUtils.isEmpty(username)) {
+            username = username.trim();
+        }
+
         GRunner.userService.follow(username);
         return ResponseGenerator.success();
     }
@@ -198,6 +238,11 @@ public class UserRest {
     @SneakyThrows
     @PutMapping("/unfollow")
     public Response unfollow(@RequestParam(value = "username") String username) {
+        // resolve space
+        if (!StringUtils.isEmpty(username)) {
+            username = username.trim();
+        }
+
         GRunner.userService.unfollow(username);
         return ResponseGenerator.success();
     }
@@ -212,6 +257,11 @@ public class UserRest {
     @SneakyThrows
     @GetMapping("/isFollow")
     public Response isFollow(@RequestParam(value = "username") String username) {
+        // resolve space
+        if (!StringUtils.isEmpty(username)) {
+            username = username.trim();
+        }
+
         boolean following = GRunner.userService.isFollowing(username);
         return ResponseGenerator.success(following);
     }
