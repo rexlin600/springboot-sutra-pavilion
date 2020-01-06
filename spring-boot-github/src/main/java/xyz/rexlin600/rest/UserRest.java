@@ -17,8 +17,8 @@ import xyz.rexlin600.common.apiparam.Response;
 import xyz.rexlin600.common.apiparam.ResponseGenerator;
 import xyz.rexlin600.config.runner.GRunner;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -127,7 +127,7 @@ public class UserRest {
     public Response pageFollowers(@RequestParam(value = "username", required = false) String username,
                                   @RequestParam(value = "start", defaultValue = "1") Integer start,
                                   @RequestParam(value = "end", defaultValue = "10") Integer end) {
-        List<User> list = Collections.emptyList();
+        List<User> list = new ArrayList();
         // resolve space
         if (!StringUtils.isEmpty(username)) {
             username = username.trim();
@@ -138,12 +138,14 @@ public class UserRest {
             while (p1.hasNext()) {
                 Collection<User> userCollection = p1.next();
                 list.addAll(userCollection);
+                break;  // 只遍历前面部分
             }
         } else {
             PageIterator<User> p2 = GRunner.userService.pageFollowers(username, start, end); // 查询指定用户的 followers
             while (p2.hasNext()) {
                 Collection<User> userCollection = p2.next();
                 list.addAll(userCollection);
+                break;  // 只遍历前面部分
             }
         }
         return ResponseGenerator.success(list);
@@ -159,7 +161,7 @@ public class UserRest {
     @SneakyThrows
     @GetMapping("/following")
     public Response pageFollowers(@RequestParam(value = "username", required = false) String username) {
-        List<User> list = Collections.emptyList();
+        List<User> list = new ArrayList();
         // resolve space
         if (!StringUtils.isEmpty(username)) {
             username = username.trim();
@@ -187,7 +189,7 @@ public class UserRest {
     public Response pageFollowing(@RequestParam(value = "username", required = false) String username,
                                   @RequestParam(value = "start", defaultValue = "1") Integer start,
                                   @RequestParam(value = "end", defaultValue = "10") Integer end) {
-        List<User> list = Collections.emptyList();
+        List<User> list = new ArrayList();
         // resolve space
         if (!StringUtils.isEmpty(username)) {
             username = username.trim();
@@ -198,12 +200,14 @@ public class UserRest {
             while (p1.hasNext()) {
                 Collection<User> userCollection = p1.next();
                 list.addAll(userCollection);
+                break;  // 只遍历前面部分
             }
         } else {
             PageIterator<User> p2 = GRunner.userService.pageFollowing(username, start, end); // 查询指定用户的 following
             while (p2.hasNext()) {
                 Collection<User> userCollection = p2.next();
                 list.addAll(userCollection);
+                break;  // 只遍历前面部分
             }
         }
         return ResponseGenerator.success(list);
@@ -305,17 +309,5 @@ public class UserRest {
         return ResponseGenerator.success();
     }
 
-    /**
-     * 14. 【更新ssh-key】
-     *
-     * @param key
-     * @return
-     */
-    @SneakyThrows
-    @PutMapping("/key")
-    public Response key(@RequestBody Key key) {
-        GRunner.userService.editKey(key);
-        return ResponseGenerator.success();
-    }
 
 }

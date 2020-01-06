@@ -1,0 +1,613 @@
+GET http://localhost:10004/repository/page/repositories?start=1&end=2
+Accept: application/json
+
+<> 2020-01-06T011012.200.json
+
+###
+
+GET http://localhost:10004/repository/page/repositories?start=1&end=2
+Accept: application/json
+
+<> 2020-01-06T010149.200.json
+
+###
+
+POST http://localhost:10004/download/page/downloads?start=1&size=1
+Content-Type: application/json
+
+{
+  "name": "algorithm",
+  "owner": {
+    "login": "rexlin600"
+  }
+}
+
+<> 2020-01-06T115516.200.json
+
+###
+
+POST http://localhost:10004/download/page/downloads?start=1&size=1
+Content-Type: application/json
+
+{
+  "id": 162084238,
+  "name": "algorithm",
+  "owner": {
+    "login": "rexlin600"
+  }
+}
+
+<> 2020-01-06T115457.200.json
+
+###
+
+GET http://localhost:10004/repository/page/repositories?start=1&end=2
+Accept: application/json
+
+<> 2020-01-06T115427.200.json
+
+###
+
+POST http://localhost:10004/download/page/downloads?start=1&size=1
+Content-Type: application/json
+
+{
+  "id": 162084238,
+  "owner": {
+    "login": "rexlin600"
+  }
+}
+
+<> 2020-01-06T115328.500.json
+
+###
+
+POST http://localhost:10004/download/page/downloads?start=1&size=1
+Content-Type: application/json
+
+{
+  "id": 162084238,
+  "owner": {
+    "login": "rexlin600"
+  }
+}
+
+<> 2020-01-06T115220.500.json
+
+###
+
+POST http://localhost:10004/download/page/downloads?start=1&size=1
+Content-Type: application/json
+
+{
+  "id": 162084238,
+  "owner": {
+    "login": "rexlin600"
+  }
+}
+
+<> 2020-01-06T115157.500.json
+
+###
+
+GET http://localhost:10004/repository/page/repositories?start=1&end=2
+Accept: application/json
+
+<> 2020-01-06T115114.200.json
+
+###
+
+POST http://localhost:10004/download/page/downloads?start=1&size=1
+Content-Type: application/json
+
+{
+  "owner": {
+    "login": "rexlin600"
+  }
+}
+
+<> 2020-01-06T114837.500.json
+
+###
+
+POST http://localhost:10004/download/page/downloads?start=1&size=1
+Content-Type: application/json
+
+{
+  "owner": {
+    "login": "rexlin600"
+  }
+}
+
+<> 2020-01-06T114828.500.json
+
+###
+
+POST http://localhost:10004/download/page/downloads?start=1&end=1
+Content-Type: application/json
+
+{
+  "owner": {
+    "login": "rexlin600"
+  }
+}
+
+<> 2020-01-06T114817.500.json
+
+###
+
+POST http://localhost:10004/download/page/downloads?start=1&end=1
+Content-Type: application/json
+
+{
+  "owner": {
+    "login": "rexlin600"
+  }
+}
+
+<> 2020-01-06T114754.500.json
+
+###
+
+POST http://localhost:10004/download/page/downloads?start=1&end=1
+Content-Type: application/json
+
+{
+  "owner": {
+    "login": "rexlin600"
+  }
+}
+
+<> 2020-01-06T114732.500.json
+
+###
+
+POST http://localhost:10004/download/page/downloads?start=1&end=1
+Content-Type: application/json
+
+{
+  "owner": {
+    "login": "rexlin600"
+  }
+}
+
+<> 2020-01-06T114710.500.json
+
+###
+
+POST http://localhost:10004/repository/forkRepository
+Content-Type: application/json
+
+{
+  "owner": "cookieY",
+  "name": "Yearning"
+}
+
+<> 2020-01-06T113319.200.json
+
+###
+
+GET http://localhost:10004/repository/page/repositories?start=1&end=2
+Accept: application/json
+
+<> 2020-01-06T112958.200.json
+
+###
+
+POST http://localhost:10004/repository/create
+Content-Type: application/json
+
+{
+  "isPrivate": false,
+  "user": {
+    "login": "rexlin600"
+  },
+  "name": "test-githubapi",
+  "description": "test github api repo"
+}
+
+<> 2020-01-06T112825.200.json
+
+###
+
+POST http://localhost:10004/repository/create
+Content-Type: application/json
+
+{
+  "isPrivate": false,
+  "owner": "rexlin600",
+  "name": "test-githubapi",
+  "description": "test github api repo"
+}
+
+<> 2020-01-06T112719.400.json
+
+###
+
+POST http://localhost:10004/repository/create
+Content-Type: application/json
+
+{
+  "isPrivate": false,
+  "owner": "rexlin600",
+  "name": "test-githubapi",
+  "description": "test github api repo"
+}
+
+<> 2020-01-06T112701.404.json
+
+###
+
+GET http://localhost:10004/repository/simple/searchRepository?query=博客&startPage=2
+Accept: application/json
+
+<> 2020-01-06T112209.200.json
+
+###
+
+POST http://localhost:10004/repository/simple/searchRepository?query=博客&startPage=2
+Accept: application/json
+
+<> 2020-01-06T112149.200.json
+
+###
+
+POST http://localhost:10004/repository/forks
+Content-Type: application/json
+
+{
+  "owner": "YunaiV",
+  "name": "onemall"
+}
+
+<> 2020-01-06T111905.200.json
+
+###
+
+POST http://localhost:10004/repository/contributors?flag=true
+Content-Type: application/json
+
+{
+  "owner": "YunaiV",
+  "name": "onemall"
+}
+
+<> 2020-01-06T111747.200.json
+
+###
+
+POST http://localhost:10004/repository/contributors?flag=true
+Content-Type: application/json
+
+{
+  "owner": "YunaiV",
+  "name": "SpringBoot-Labs"
+}
+
+<> 2020-01-06T111651.200.json
+
+###
+
+POST http://localhost:10004/repository/contributors?flag=false
+Content-Type: application/json
+
+{
+  "owner": "YunaiV",
+  "name": "SpringBoot-Labs"
+}
+
+<> 2020-01-06T111637.200.json
+
+###
+
+POST http://localhost:10004/repository/contributors?flag=false
+Content-Type: application/json
+
+{
+  "owner": "YunaiV",
+  "name": "SpringBoot-Labs"
+}
+
+<> 2020-01-06T111419.400.json
+
+###
+
+POST http://localhost:10004/repository/contributors?flag=false
+Content-Type: application/json
+
+{
+  "owner": "YunaiV",
+  "name": "SpringBoot-Labs"
+}
+
+<> 2020-01-06T111341.400.json
+
+###
+
+POST http://localhost:10004/repository/contributors?flag=false
+Content-Type: application/json
+
+{
+  "searchRepository": {
+    "owner": "YunaiV",
+    "name": "SpringBoot-Labs"
+  }
+}
+
+<> 2020-01-06T111323.400.json
+
+###
+
+POST http://localhost:10004/repository/contributors?flag=false
+Content-Type: application/json
+
+{
+  "searchRepository": {
+    "owner": "YunaiV",
+    "name": "SpringBoot-Labs"
+  }
+}
+
+<> 2020-01-06T111305.400.json
+
+###
+
+POST http://localhost:10004/repository/contributors
+Content-Type: application/json
+
+{
+  "searchRepository": {
+    "owner": "YunaiV",
+    "name": "SpringBoot-Labs"
+  },
+  "flag": false
+}
+
+<> 2020-01-06T111214.400.json
+
+###
+
+POST http://localhost:10004/repository/contributors
+Content-Type: application/json
+
+{
+  "owner": "YunaiV",
+  "name": "SpringBoot-Labs",
+  "flag": false
+}
+
+<> 2020-01-06T111121.400.json
+
+###
+
+POST http://localhost:10004/repository/contributors
+Content-Type: application/json
+
+{
+  "owner": "YunaiV",
+  "name": "SpringBoot-Labs",
+  "flag": false
+}
+
+<> 2020-01-06T111116.400.json
+
+###
+
+POST http://localhost:10004/repository/contributors
+Content-Type: application/json
+
+{
+  "searchRepository": {
+    "owner": "YunaiV",
+    "name": "SpringBoot-Labs"
+  },
+  "flag": false
+}
+
+<> 2020-01-06T110941.400.json
+
+###
+
+POST http://localhost:10004/repository/contributors
+Content-Type: application/json
+
+{
+  "searchRepository": {
+    "owner": "YunaiV",
+    "name": "SpringBoot-Labs"
+  },
+  "flag": false
+}
+
+<> 2020-01-06T110924.400.json
+
+###
+
+POST http://localhost:10004/repository/languages
+Content-Type: application/json
+
+{
+  "owner": "YunaiV",
+  "name": "SpringBoot-Labs"
+}
+
+<> 2020-01-06T110844.200.json
+
+###
+
+POST http://localhost:10004/repository/languages
+Content-Type: application/json
+
+{
+  "searchRepository": {
+    "owner": "YunaiV",
+    "name": "SpringBoot-Labs"
+  },
+  "flag": false
+}
+
+<> 2020-01-06T110826.500.json
+
+###
+
+POST http://localhost:10004/repository/languages
+Content-Type: application/json
+
+{
+  "searchRepository": {
+    "owner": "YunaiV",
+    "name": "SpringBoot-Labs"
+  },
+  "flag": false
+}
+
+<> 2020-01-06T110809.500.json
+
+###
+
+POST http://localhost:10004/repository/languages
+Content-Type: application/json
+
+{
+  "owner": "YunaiV",
+  "name": "SpringBoot-Labs"
+}
+
+<> 2020-01-06T110707.200.json
+
+###
+
+POST http://localhost:10004/repository/tags
+Content-Type: application/json
+
+{
+  "owner": "YunaiV",
+  "name": "SpringBoot-Labs"
+}
+
+<> 2020-01-06T110555.200.json
+
+###
+
+POST http://localhost:10004/repository/branches
+Content-Type: application/json
+
+{
+  "owner": "YunaiV",
+  "name": "SpringBoot-Labs"
+}
+
+<> 2020-01-06T110029.500.json
+
+###
+
+POST http://localhost:10004/repository/branches
+Content-Type: application/json
+
+{
+  "owner": "rexlin600",
+  "isPrivate": "false",
+  "name": "springboot2-example"
+}
+
+<> 2020-01-06T105631.500.json
+
+###
+
+POST http://localhost:10004/repository/branches
+Content-Type: application/json
+
+{
+  "owner": "rexlin600",
+  "isPrivate": "false",
+  "name": "springboot2-example"
+}
+
+<> 2020-01-06T105605.500.json
+
+###
+
+POST http://localhost:10004/repository/branches
+Content-Type: application/json
+
+{
+  "owner": "rexlin600",
+  "name": "springboot2-example"
+}
+
+<> 2020-01-06T105311.500.json
+
+###
+
+POST http://localhost:10004/repository/branches
+Content-Type: application/json
+
+{
+  "owner": "rexlin600",
+  "name": "springboot2-example"
+}
+
+<> 2020-01-06T105250.500.json
+
+###
+
+POST http://localhost:10004/repository/branches
+Content-Type: application/json
+
+{
+  "owner": "rexlin600",
+  "name": "springboot2-example"
+}
+
+<> 2020-01-06T105141.500.json
+
+###
+
+POST http://localhost:10004/repository/filter/repositories
+Accept: application/vnd.github.nebula-preview+json
+Content-Type: application/json
+
+{
+  "name": "sprinboot2"
+}
+
+<> 2020-01-06T104801.200.json
+
+###
+
+POST http://localhost:10004/repository/filter/repositories
+Accept: application/vnd.github.nebula-preview+json
+Content-Type: application/json
+
+{
+  "username": "imroc"
+}
+
+<> 2020-01-06T104727.200.json
+
+###
+
+POST http://localhost:10004/repository/filter/repositories
+Accept: application/vnd.github.nebula-preview+json
+Content-Type: application/json
+
+{
+  "username": "imroc"
+}
+
+<> 2020-01-06T104715.500.json
+
+###
+
+POST http://localhost:10004/repository/filter/repositories
+Accept: application/vnd.github.nebula-preview+json
+Content-Type: application/json
+
+{
+  "owner": "imroc"
+}
+
+<> 2020-01-06T104044.200.json
+
+###
+

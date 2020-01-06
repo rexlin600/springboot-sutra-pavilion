@@ -28,31 +28,31 @@ public class GRunner implements CommandLineRunner {
     /**
      * Github Client
      */
-    public static GitHubClient client;
+    public GitHubClient client;
 
     /**
      * service
      */
-    public static CollaboratorService collaboratorService;
-    public static CommitService commitService;
-    public static ContentsService contentsService;
-    public static DataService dataService;
-    public static DeployKeyService deployKeyService;
-    public static DownloadService downloadService;
-    public static EventService eventService;
-    public static GistService gistService;
-    public static IssueService issueService;
-    public static LabelService labelService;
-    public static MarkdownService markdownService;
-    public static MilestoneService milestoneService;
-    public static OAuthService oAuthService;
-    public static OrganizationService organizationService;
-    public static PullRequestService pullRequestService;
-    public static RepositoryService repositoryService;
-    public static TeamService teamService;
-    public static UserService userService;
-    public static WatcherService watcherService;
+    //public static CollaboratorService collaboratorService;
+    //public static CommitService commitService;
+    //public static ContentsService contentsService;
+    //public static DataService dataService;
+    //public static DeployKeyService deployKeyService;
+    //public static DownloadService downloadService;
+    //public static EventService eventService;
+    //public static GistService gistService;
+    //public static IssueService issueService;
+    //public static LabelService labelService;
+    //public static MarkdownService markdownService;
+    //public static MilestoneService milestoneService;
+    //public static OAuthService oAuthService;
+    //public static OrganizationService organizationService;
+    //public static PullRequestService pullRequestService;
+    //public static TeamService teamService;
+    //public static WatcherService watcherService;
 
+    public static RepositoryService repositoryService;
+    public static UserService userService;
 
     /**
      * 程序启动之后处理的事情
@@ -72,25 +72,26 @@ public class GRunner implements CommandLineRunner {
         client.setCredentials(username, password);
 
         // init service
-        collaboratorService = new CollaboratorService(client);
-        commitService = new CommitService(client);
-        contentsService = new ContentsService(client);
-        dataService = new DataService(client);
-        deployKeyService = new DeployKeyService(client);
-        downloadService = new DownloadService(client);
-        eventService = new EventService(client);
-        gistService = new GistService(client);
-        issueService = new IssueService(client);
-        labelService = new LabelService(client);
-        markdownService = new MarkdownService(client);
-        milestoneService = new MilestoneService(client);
-        oAuthService = new OAuthService(client);
-        organizationService = new OrganizationService(client);
-        pullRequestService = new PullRequestService(client);
-        repositoryService = new RepositoryService(client);
-        teamService = new TeamService(client);
+        //collaboratorService = new CollaboratorService(client);
+        //commitService = new CommitService(client);
+        //contentsService = new ContentsService(client);
+        //dataService = new DataService(client);
+        //deployKeyService = new DeployKeyService(client);
+        //downloadService = new DownloadService(client);
+        //eventService = new EventService(client);
+        //gistService = new GistService(client);
+        //issueService = new IssueService(client);
+        //labelService = new LabelService(client);
+        //markdownService = new MarkdownService(client);
+        //milestoneService = new MilestoneService(client);
+        //oAuthService = new OAuthService(client);
+        //organizationService = new OrganizationService(client);
+        //pullRequestService = new PullRequestService(client);
+        //teamService = new TeamService(client);
+        //watcherService = new WatcherService(client);
+
         userService = new UserService(client);
-        watcherService = new WatcherService(client);
+        repositoryService = new RepositoryService(client);
 
         log.info("==>  Oauth success ...");
     }

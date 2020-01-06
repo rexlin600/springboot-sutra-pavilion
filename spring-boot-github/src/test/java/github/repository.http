@@ -1,0 +1,89 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+### get repository by page
+GET http://localhost:10004/repository/page/repositories?start=1&end=2
+Accept: application/json
+
+### get repository by page and assign username
+GET http://localhost:10004/repository/page/repositories?start=1&end=1&username=rexlin600
+Accept: application/json
+
+### get user's repository, return list
+GET http://localhost:10004/repository/repositories?username=rexlin600
+Accept: application/json
+
+### get repository branch
+POST http://localhost:10004/repository/branches
+Content-Type: application/json
+
+{
+  "owner": "YunaiV",
+  "name": "SpringBoot-Labs"
+}
+
+### get tags
+POST http://localhost:10004/repository/tags
+Content-Type: application/json
+
+{
+  "owner": "YunaiV",
+  "name": "SpringBoot-Labs"
+}
+
+### get language
+POST http://localhost:10004/repository/languages
+Content-Type: application/json
+
+{
+  "owner": "YunaiV",
+  "name": "SpringBoot-Labs"
+}
+
+### get contributors
+POST http://localhost:10004/repository/contributors?flag=true
+Content-Type: application/json
+
+{
+  "owner": "YunaiV",
+  "name": "onemall"
+}
+
+### fork list
+POST http://localhost:10004/repository/forks
+Content-Type: application/json
+
+{
+  "owner": "YunaiV",
+  "name": "onemall"
+}
+
+### get repo by condition
+GET http://localhost:10004/repository/simple/searchRepository?query=博客&startPage=2
+Accept: application/json
+
+### create repo
+POST http://localhost:10004/repository/create
+Content-Type: application/json
+
+{
+  "isPrivate": false,
+  "user": {
+    "login": "rexlin600"
+  },
+  "name": "test-githubapi",
+  "description": "test github api repo"
+}
+
+### fork repo
+POST http://localhost:10004/repository/forkRepository
+Content-Type: application/json
+
+{
+  "owner": "cookieY",
+  "name": "Yearning"
+}

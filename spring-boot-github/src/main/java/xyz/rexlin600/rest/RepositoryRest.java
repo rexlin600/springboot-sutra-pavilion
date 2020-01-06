@@ -30,12 +30,11 @@ public class RepositoryRest {
      * @return
      */
     @SneakyThrows
-    @GetMapping("/page/repositories")
-    public Response pageRepositories(@RequestParam(value = "username", required = false) String username,
-                                     @RequestParam(value = "start", defaultValue = "1") Integer start,
-                                     @RequestParam(value = "end", defaultValue = "10") Integer end) {
-        int size = end - start + 1;
-        List<Repository> list = new ArrayList<>(size);
+    @GetMapping("/page")
+    public Response page(@RequestParam(value = "username", required = false) String username,
+                         @RequestParam(value = "start", defaultValue = "1") Integer start,
+                         @RequestParam(value = "end", defaultValue = "10") Integer end) {
+        List<Repository> list = new ArrayList<>();
         // resolve space
         if (!StringUtils.isEmpty(username)) {
             username = username.trim();
@@ -46,12 +45,14 @@ public class RepositoryRest {
             while (p1.hasNext()) {
                 Collection<Repository> repositories = p1.next();
                 list.addAll(repositories);
+                break;
             }
         } else {    // 查询指定用户的仓库
             PageIterator<Repository> p2 = GRunner.repositoryService.pageRepositories(username, start, end);
             while (p2.hasNext()) {
                 Collection<Repository> repositories = p2.next();
                 list.addAll(repositories);
+                break;
             }
         }
         return ResponseGenerator.success(list);
@@ -65,9 +66,9 @@ public class RepositoryRest {
      * @return
      */
     @SneakyThrows
-    @GetMapping("/repositories")
-    public Response repositories(@RequestParam(value = "username") String username) {
-        List<Repository> repositories = Collections.emptyList();
+    @GetMapping("/list")
+    public Response list(@RequestParam(value = "username") String username) {
+        List<Repository> repositories = new ArrayList();
         // resolve space
         if (!StringUtils.isEmpty(username)) {
             username = username.trim();
@@ -83,73 +84,59 @@ public class RepositoryRest {
 
 
     /**
-     * 3. 【Map-仓库列表】
+     * 3. 【仓库branches-RepositoryId】
      *
-     * @param filterData
-     * @return
-     */
-    @SneakyThrows
-    @PostMapping("/filter/repositories")
-    public Response filterRepositories(@RequestBody Map<String, String> filterData) {
-        List<Repository> list = GRunner.repositoryService.getRepositories(filterData);
-        return ResponseGenerator.success(list);
-    }
-
-
-    /**
-     * 4. 【仓库branches】
-     *
-     * @param repository
+     * @param searchRepository
      * @return
      */
     @SneakyThrows
     @PostMapping("/branches")
-    public Response branches(@RequestBody IRepositoryIdProvider repository) {
+    public Response branches(@RequestBody SearchRepository searchRepository) {
         List<RepositoryBranch> branches =
-                GRunner.repositoryService.getBranches(repository);
+                GRunner.repositoryService.getBranches(searchRepository);
         return ResponseGenerator.success(branches);
     }
 
 
     /**
-     * 5. 【仓库tags】
+     * 4. 【仓库tags】
      *
-     * @param repository
+     * @param searchRepository
      * @return
      */
     @SneakyThrows
     @PostMapping("/tags")
-    public Response tags(@RequestBody IRepositoryIdProvider repository) {
-        List<RepositoryTag> tags = GRunner.repositoryService.getTags(repository);
+    public Response tags(@RequestBody SearchRepository searchRepository) {
+        List<RepositoryTag> tags = GRunner.repositoryService.getTags(searchRepository);
         return ResponseGenerator.success(tags);
     }
 
 
     /**
-     * 6. 【仓库语言】
+     * 5. 【仓库语言】
      *
-     * @param repository
+     * @param searchRepository
      * @return
      */
     @SneakyThrows
     @PostMapping("/languages")
-    public Response languages(@RequestBody IRepositoryIdProvider repository) {
-        Map<String, Long> languages = GRunner.repositoryService.getLanguages(repository);
+    public Response languages(@RequestBody SearchRepository searchRepository) {
+        Map<String, Long> languages = GRunner.repositoryService.getLanguages(searchRepository);
         return ResponseGenerator.success(languages);
     }
 
 
     /**
-     * 6. 【仓库共享者】
+     * 6. 【仓库贡献者】
      *
-     * @param repository
+     * @param searchRepository
      * @return
      */
     @SneakyThrows
     @PostMapping("/contributors")
-    public Response contributors(@RequestBody IRepositoryIdProvider repository,
-                                 @RequestParam(value = "是否显示匿名用户") boolean flag) {
-        List<Contributor> contributors = GRunner.repositoryService.getContributors(repository, flag);
+    public Response contributors(@RequestParam(value = "flag") boolean flag,
+                                 @RequestBody SearchRepository searchRepository) {
+        List<Contributor> contributors = GRunner.repositoryService.getContributors(searchRepository, flag);
         return ResponseGenerator.success(contributors);
     }
 
@@ -157,67 +144,19 @@ public class RepositoryRest {
     /**
      * 7. 【fork列表】
      *
-     * @param repository
+     * @param searchRepository
      * @return
      */
     @SneakyThrows
     @PostMapping("/forks")
-    public Response forks(@RequestBody IRepositoryIdProvider repository) {
-        List<Repository> forks = GRunner.repositoryService.getForks(repository);
+    public Response forks(@RequestBody SearchRepository searchRepository) {
+        List<Repository> forks = GRunner.repositoryService.getForks(searchRepository);
         return ResponseGenerator.success(forks);
     }
 
 
     /**
-     * 8. 【hook值/列表】
-     *
-     * @param repository
-     * @param hookId
-     * @return
-     */
-    @SneakyThrows
-    @PostMapping("/hooks")
-    public Response hooks(@RequestBody IRepositoryIdProvider repository,
-                          @RequestParam(value = "hookId", required = false) Integer hookId) {
-        List<RepositoryHook> hooks = Collections.emptyList();
-        if (ObjectUtils.isEmpty(hookId)) {
-            hooks = GRunner.repositoryService.getHooks(repository);
-        } else {
-            RepositoryHook hook = GRunner.repositoryService.getHook(repository, hookId);
-            return ResponseGenerator.success(hook);
-        }
-        return ResponseGenerator.success(hooks);
-    }
-
-
-    /**
-     * 9. 【某组织的仓库】
-     *
-     * @param organization
-     * @param filterData
-     * @return
-     */
-    @SneakyThrows
-    @PostMapping("/orgRepositories")
-    public Response orgRepositories(@RequestParam(value = "organization", required = false) String organization,
-                                    @RequestBody Map<String, String> filterData) {
-        List<Repository> list = Collections.emptyList();
-        // resolve space
-        if (!StringUtils.isEmpty(organization)) {
-            organization = organization.trim();
-        }
-
-        if (CollectionUtils.isEmpty(filterData)) {
-            list = GRunner.repositoryService.getOrgRepositories(organization);
-        } else {
-            list = GRunner.repositoryService.getOrgRepositories(organization, filterData);
-        }
-        return ResponseGenerator.success(list);
-    }
-
-
-    /**
-     * 10. 【简单-根据条件筛选仓库】
+     * 8. 【简单-根据条件筛选仓库】
      *
      * @param query
      * @param language
@@ -225,11 +164,11 @@ public class RepositoryRest {
      * @return
      */
     @SneakyThrows
-    @PostMapping("/simple/searchRepository")
-    public Response searchRepository(@RequestParam(value = "query") String query,
-                                     @RequestParam(value = "language", required = false) String language,
-                                     @RequestParam(value = "startPage", required = false) Integer startPage) {
-        List<SearchRepository> list = Collections.emptyList();
+    @GetMapping("/simple/search")
+    public Response search(@RequestParam(value = "query") String query,
+                           @RequestParam(value = "language", required = false) String language,
+                           @RequestParam(value = "startPage", required = false) Integer startPage) {
+        List<SearchRepository> list = new ArrayList();
 
         // resolve space
         if (!StringUtils.isEmpty(query)) {
@@ -269,39 +208,16 @@ public class RepositoryRest {
 
 
     /**
-     * 11. 【自由-根据条件筛选仓库】
-     *
-     * @param queryParams
-     * @param startPage
-     * @return
-     */
-    @SneakyThrows
-    @PostMapping("/free/searchRepository")
-    public Response searchRepository(@RequestBody Map<String, String> queryParams,
-                                     @RequestParam(value = "startPage", required = false) Integer startPage) {
-        List<SearchRepository> list = Collections.emptyList();
-
-        if (ObjectUtils.isEmpty(startPage)) {
-            list = GRunner.repositoryService.searchRepositories(queryParams);
-        } else {
-            list = GRunner.repositoryService.searchRepositories(queryParams, startPage);
-        }
-
-        return ResponseGenerator.success(list);
-    }
-
-
-    /**
-     * 12. 【创建仓库】
+     * 9. 【创建仓库】
      *
      * @param repository
      * @param organization
      * @return
      */
     @SneakyThrows
-    @PostMapping("/createRepository")
-    public Response createRepository(@RequestBody Repository repository,
-                                     @RequestParam(value = "organization", required = false) String organization) {
+    @PostMapping("/create")
+    public Response create(@RequestBody Repository repository,
+                           @RequestParam(value = "organization", required = false) String organization) {
         Repository result = null;
 
         // resolve space
@@ -320,96 +236,16 @@ public class RepositoryRest {
 
 
     /**
-     * 13. 【创建Hook】
-     *
-     * @param repository
-     * @param hook
-     * @return
-     */
-    @SneakyThrows
-    @PostMapping("/createHook")
-    public Response createHook(@RequestBody IRepositoryIdProvider repository,
-                               @RequestBody RepositoryHook hook) {
-        RepositoryHook repositoryHook = GRunner.repositoryService.createHook(repository, hook);
-        return ResponseGenerator.success(repositoryHook);
-    }
-
-
-    /**
-     * 14. 【删除Hook】
-     *
-     * @param repository
-     * @param hookId
-     * @return
-     */
-    @SneakyThrows
-    @PostMapping("/deleteHook")
-    public Response deleteHook(@RequestBody IRepositoryIdProvider repository,
-                               @RequestParam(value = "hookId") Integer hookId) {
-        GRunner.repositoryService.deleteHook(repository, hookId);
-        return ResponseGenerator.success();
-    }
-
-
-    /**
-     * 15. 【编辑hook】
-     *
-     * @param repository
-     * @param hook
-     * @return
-     */
-    @SneakyThrows
-    @PostMapping("/editHook")
-    public Response editHook(@RequestBody IRepositoryIdProvider repository,
-                             @RequestBody RepositoryHook hook) {
-        RepositoryHook repositoryHook = GRunner.repositoryService.editHook(repository, hook);
-        return ResponseGenerator.success(repositoryHook);
-    }
-
-
-    /**
-     * 16. 【获取hook】
-     *
-     * @param repository
-     * @param hookId
-     * @return
-     */
-    @SneakyThrows
-    @PostMapping("/getHook")
-    public Response getHook(@RequestBody IRepositoryIdProvider repository,
-                            @RequestParam(value = "hookId") Integer hookId) {
-        RepositoryHook repositoryHook = GRunner.repositoryService.getHook(repository, hookId);
-        return ResponseGenerator.success(repositoryHook);
-    }
-
-
-    /**
-     * 17. 【测试hook】
-     *
-     * @param repository
-     * @param hookId
-     * @return
-     */
-    @SneakyThrows
-    @PostMapping("/testHook")
-    public Response testHook(@RequestBody IRepositoryIdProvider repository,
-                             @RequestParam(value = "hookId") Integer hookId) {
-        GRunner.repositoryService.testHook(repository, hookId);
-        return ResponseGenerator.success();
-    }
-
-
-    /**
-     * 18. 【fork仓库】
+     * 10. 【fork仓库】
      *
      * @param organization
-     * @param repository
+     * @param searchRepository
      * @return
      */
     @SneakyThrows
-    @PostMapping("/forkRepository")
-    public Response forkRepository(@RequestParam(value = "organization") String organization,
-                                   @RequestBody IRepositoryIdProvider repository) {
+    @PostMapping("/fork")
+    public Response fork(@RequestParam(value = "organization", required = false) String organization,
+                         @RequestBody SearchRepository searchRepository) {
         Repository forkRepository = null;
 
         // resolve space
@@ -418,13 +254,189 @@ public class RepositoryRest {
         }
 
         if (StringUtils.isEmpty(organization)) {
-            forkRepository = GRunner.repositoryService.forkRepository(repository);
+            forkRepository = GRunner.repositoryService.forkRepository(searchRepository);
         } else {
-            forkRepository = GRunner.repositoryService.forkRepository(repository, organization);
+            forkRepository = GRunner.repositoryService.forkRepository(searchRepository, organization);
         }
 
         return ResponseGenerator.success(forkRepository);
     }
+
+
+    // -----------------------------------------------------------------------------------------------
+    // DEPRECATED METHOD
+    // -----------------------------------------------------------------------------------------------
+
+    ///**
+    // * 11. 【自由-根据条件筛选仓库】
+    // *
+    // * @param queryParams
+    // * @param startPage
+    // * @return
+    // */
+    //@Deprecated
+    //@SneakyThrows
+    //@PostMapping("/free/search")
+    //public Response search(@RequestBody Map<String, String> queryParams,
+    //                                 @RequestParam(value = "startPage", required = false) Integer startPage) {
+    //    List<SearchRepository> list = new ArrayList();
+    //
+    //    if (ObjectUtils.isEmpty(startPage)) {
+    //        list = GRunner.repositoryService.searchRepositories(queryParams);
+    //    } else {
+    //        list = GRunner.repositoryService.searchRepositories(queryParams, startPage);
+    //    }
+    //
+    //    return ResponseGenerator.success(list);
+    //}
+    //
+    //
+    ///**
+    // * 12. 【hook值/列表】
+    // *
+    // * @param searchRepository
+    // * @param hookId
+    // * @return
+    // */
+    //@Deprecated
+    //@SneakyThrows
+    //@PostMapping("/hooks")
+    //public Response hooks(@RequestBody SearchRepository searchRepository,
+    //                      @RequestParam(value = "hookId", required = false) Integer hookId) {
+    //    List<RepositoryHook> hooks = new ArrayList();
+    //    if (ObjectUtils.isEmpty(hookId)) {
+    //        hooks = GRunner.repositoryService.getHooks(searchRepository);
+    //    } else {
+    //        RepositoryHook hook = GRunner.repositoryService.getHook(searchRepository, hookId);
+    //        return ResponseGenerator.success(hook);
+    //    }
+    //    return ResponseGenerator.success(hooks);
+    //}
+    //
+    //
+    ///**
+    // * 13. 【某组织的仓库】
+    // *
+    // * @param organization
+    // * @param filterData
+    // * @return
+    // */
+    //@Deprecated
+    //@SneakyThrows
+    //@PostMapping("/org")
+    //public Response org(@RequestParam(value = "organization", required = false) String organization,
+    //                                @RequestBody Map<String, String> filterData) {
+    //    List<Repository> list = new ArrayList();
+    //    // resolve space
+    //    if (!StringUtils.isEmpty(organization)) {
+    //        organization = organization.trim();
+    //    }
+    //
+    //    if (CollectionUtils.isEmpty(filterData)) {
+    //        list = GRunner.repositoryService.getOrgRepositories(organization);
+    //    } else {
+    //        list = GRunner.repositoryService.getOrgRepositories(organization, filterData);
+    //    }
+    //    return ResponseGenerator.success(list);
+    //}
+    //
+    ///**
+    // * 14. 【Map-仓库列表】
+    // *
+    // * @param filterData
+    // * @return
+    // */
+    //@Deprecated
+    //@SneakyThrows
+    //@PostMapping("/filter")
+    //public Response filter(@RequestBody Map<String, String> filterData) {
+    //    List<Repository> list = GRunner.repositoryService.getRepositories(filterData);
+    //    return ResponseGenerator.success(list);
+    //}
+    //
+    ///**
+    // * 15. 【创建Hook】
+    // *
+    // * @param searchRepository
+    // * @param hook
+    // * @return
+    // */
+    //@Deprecated
+    //@SneakyThrows
+    //@PostMapping("/createHook")
+    //public Response createHook(@RequestBody SearchRepository searchRepository,
+    //                           @RequestBody RepositoryHook hook) {
+    //    RepositoryHook repositoryHook = GRunner.repositoryService.createHook(searchRepository, hook);
+    //    return ResponseGenerator.success(repositoryHook);
+    //}
+    //
+    //
+    ///**
+    // * 16. 【删除Hook】
+    // *
+    // * @param searchRepository
+    // * @param hookId
+    // * @return
+    // */
+    //@Deprecated
+    //@SneakyThrows
+    //@PostMapping("/deleteHook")
+    //public Response deleteHook(@RequestBody SearchRepository searchRepository,
+    //                           @RequestParam(value = "hookId") Integer hookId) {
+    //    GRunner.repositoryService.deleteHook(searchRepository, hookId);
+    //    return ResponseGenerator.success();
+    //}
+    //
+    //
+    ///**
+    // * 17. 【编辑hook】
+    // *
+    // * @param searchRepository
+    // * @param hook
+    // * @return
+    // */
+    //@Deprecated
+    //@SneakyThrows
+    //@PostMapping("/editHook")
+    //public Response editHook(@RequestBody SearchRepository searchRepository,
+    //                         @RequestBody RepositoryHook hook) {
+    //    RepositoryHook repositoryHook = GRunner.repositoryService.editHook(searchRepository, hook);
+    //    return ResponseGenerator.success(repositoryHook);
+    //}
+    //
+    //
+    ///**
+    // * 18. 【获取hook】
+    // *
+    // * @param searchRepository
+    // * @param hookId
+    // * @return
+    // */
+    //@Deprecated
+    //@SneakyThrows
+    //@PostMapping("/getHook")
+    //public Response getHook(@RequestBody SearchRepository searchRepository,
+    //                        @RequestParam(value = "hookId") Integer hookId) {
+    //    RepositoryHook repositoryHook = GRunner.repositoryService.getHook(searchRepository, hookId);
+    //    return ResponseGenerator.success(repositoryHook);
+    //}
+    //
+    //
+    ///**
+    // * 19. 【测试hook】
+    // *
+    // * @param searchRepository
+    // * @param hookId
+    // * @return
+    // */
+    //@Deprecated
+    //@SneakyThrows
+    //@PostMapping("/testHook")
+    //public Response testHook(@RequestBody SearchRepository searchRepository,
+    //                         @RequestParam(value = "hookId") Integer hookId) {
+    //    GRunner.repositoryService.testHook(searchRepository, hookId);
+    //    return ResponseGenerator.success();
+    //}
 
 
 }

@@ -1,0 +1,91 @@
+### get user by default
+GET http://localhost:10004/user/info
+Accept: application/json
+
+### get user by username
+GET http://localhost:10004/user/info?username=spring2go
+Accept: application/json
+
+
+
+
+### add email
+POST http://localhost:10004/user/email?email=953649835@qq.com
+Content-Type: application/json
+
+### del email
+DELETE http://localhost:10004/user/email?email=953649835@qq.com
+Content-Type: application/json
+
+
+
+
+### get followers by default
+GET http://localhost:10004/user/followers
+Accept: application/json
+
+### get follwers by username
+GET http://localhost:10004/user/followers?username=rexlin600
+Accept: application/json
+
+### get follwers by page
+GET http://localhost:10004/user/page/followers?start=1&end=10
+Accept: application/json
+
+### get follwers by page and assign username
+GET http://localhost:10004/user/page/followers?start=1&end=2&username=rexlin600
+Accept: application/json
+
+
+
+### get following by default
+GET http://localhost:10004/user/following
+Accept: application/json
+
+### get following by username
+GET http://localhost:10004/user/following?username=rexlin600
+Accept: application/json
+
+### get following by page
+GET http://localhost:10004/user/page/following?start=1&end=2
+Accept: application/json
+
+### get follwers by page and assign username
+GET http://localhost:10004/user/page/following?start=1&end=2&username=imroc
+Accept: application/json
+
+
+
+
+### follow user
+PUT http://localhost:10004/user/follow?username=poormonkey
+Content-Type: application/json
+
+### unfollow user
+PUT http://localhost:10004/user/unfollow?username=poormonkey
+Content-Type: application/json
+
+### judge followed user
+GET http://localhost:10004/user/isFollow?username=poormonkey
+Accept: application/json
+
+
+
+### get all keys
+GET http://localhost:10004/user/keys
+Accept: application/json
+
+### new ssh key
+POST http://localhost:10004/user/key
+Content-Type: application/json
+
+{
+  "key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDnxhrn0/lPMmyIwQkbMmVAMsNr3CivoWQGukTODZTWVynWhQmg9VwRzDG+6Lce288uvBpPziasT/W2tq8UQo1ytFXnX4NU8pXWSH61C4Y9xNSvtzBNakQjz5NWOV35mje5I3AcY0mVdMIglzBOCLr5LwPyNkaVZklvCa2ixu21qtjGm3mNNX43NNUAFf4iXcDVfA8CgFDD9Mv1YAv0XHir0f9KqIdH9aO98HlvIFha3wMQicJLvhRQVxI2DrzZwVQvJa/kpfv0On0y/EXiAevVpSgj48gpAu/4AGNzdIFLA93ix+R5yvPY2qAyRPRyDWJR0cCYNtVOP506+C2QvMIN",
+  "title": "MacOS 13 Key"
+}
+
+### del ssh key
+DELETE http://localhost:10004/user/key/40046570
+Content-Type: application/json
+
+
