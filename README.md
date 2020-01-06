@@ -18,8 +18,10 @@
 - [spring-boot-runner](https://github.com/rexlin600/SpringBoot2-Example/tree/master/spring-boot-runner)
 - [spring-boot-github](https://github.com/rexlin600/SpringBoot2-Example/tree/master/spring-boot-github)
 - [spring-boot-redis](https://github.com/rexlin600/SpringBoot2-Example/tree/master/spring-boot-redis)
+- [spring-boot-elasticsearch](https://github.com/rexlin600/SpringBoot2-Example/tree/master/spring-boot-elasticsearch)
 
 
 ## 参考
 
 - [Spring Boot 2.0 最全使用教程](https://github.com/ityouknow/spring-boot-leaning)
+- [ElasticSearch常用查询语法](https://blog.csdn.net/qwqw3333333/article/details/78255996)
