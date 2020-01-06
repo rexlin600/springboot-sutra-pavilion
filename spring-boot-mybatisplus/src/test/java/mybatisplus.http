@@ -5,12 +5,42 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
+### page
+GET http://localhost:10008/user/page?page=1&size=10
+Accept: application/json
 
 
+### get one
+GET http://localhost:10008/user/6
+Accept: application/json
 
 
+### add one
+POST http://localhost:10008/user
+Content-Type: application/json
+
+{
+  "id": 6,
+  "name": "rexlin600",
+  "age": 30,
+  "email": "rexlin600@gmail.com"
+}
 
 
+### del one
+DELETE http://localhost:10008/user/6
+Content-Type: application/json
 
 
+### update one
+PUT http://localhost:10008/user
+Content-Type: application/json
 
+{
+  "id": 2,
+  "name": "keep-upd",
+  "age": 35,
+  "email": "smile@ityouknow.com"
+}
+
+###

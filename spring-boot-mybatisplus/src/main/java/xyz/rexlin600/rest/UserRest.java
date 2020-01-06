@@ -1,14 +1,16 @@
 package xyz.rexlin600.rest;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.sun.org.apache.xerces.internal.impl.dv.xs.IDDV;
+import lombok.experimental.Delegate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.bind.annotation.*;
 import xyz.rexlin600.biz.UserBiz;
 import xyz.rexlin600.common.apiparam.PageResult;
+import xyz.rexlin600.common.apiparam.Response;
+import xyz.rexlin600.common.apiparam.ResponseGenerator;
 import xyz.rexlin600.model.User;
 
 /**
@@ -52,10 +54,56 @@ public class UserRest {
         return objectPageResult;
     }
 
-    // TODO 根据ID查询
-    // TODO 根据条件查询
-    // TODO 新增
-    // TODO 删除
-    // TODO 修改
+
+    /**
+     * 2. 【根据ID查询】
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    public Response user(@PathVariable(value = "id") Long id) {
+        return ResponseGenerator.success(userBiz.getById(id));
+    }
+
+
+    /**
+     * 3. 【新增用户】
+     *
+     * @param user
+     * @return
+     */
+    @PostMapping
+    public Response add(@RequestBody User user) {
+        userBiz.save(user);
+        return ResponseGenerator.success();
+    }
+
+
+    /**
+     * 4. 【删除用户】
+     *
+     * @param id
+     * @return
+     */
+    @DeleteMapping("/{id}")
+    public Response del(@PathVariable(value = "id") Long id) {
+        userBiz.removeById(id);
+        return ResponseGenerator.success();
+    }
+
+
+    /**
+     * 5. 【更新用户】
+     *
+     * @param user
+     * @return
+     */
+    @PutMapping
+    public Response upd(@RequestBody User user) {
+        userBiz.updateById(user);
+        return ResponseGenerator.success();
+    }
+
 
 }
