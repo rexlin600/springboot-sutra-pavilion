@@ -16,6 +16,8 @@
 - [spring-boot-helloworld](https://github.com/rexlin600/SpringBoot2-Example/tree/master/spring-boot-helloworld)
 - [spring-boot-docker](https://github.com/rexlin600/SpringBoot2-Example/tree/master/spring-boot-docker)
 - [spring-boot-runner](https://github.com/rexlin600/SpringBoot2-Example/tree/master/spring-boot-runner)
+- [spring-boot-github](https://github.com/rexlin600/SpringBoot2-Example/tree/master/spring-boot-github)
+- [spring-boot-redis](https://github.com/rexlin600/SpringBoot2-Example/tree/master/spring-boot-redis)
 
 
 ## 参考

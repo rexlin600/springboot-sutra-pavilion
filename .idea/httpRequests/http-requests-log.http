@@ -1,613 +1,364 @@
-GET http://localhost:10004/repository/page/repositories?start=1&end=2
+DELETE http://localhost:10005/redis/key/user-key::com.neo.web.UserControllergetUser
+Content-Type: application/json
+
+<> 2020-01-06T041055.200.json
+
+###
+
+GET http://localhost:8080/getUser
+
+<> 2020-01-06T041040.200.json
+
+###
+
+GET http://localhost:8080/getUser
+
+<> 2020-01-06T041025.200.json
+
+###
+
+GET http://localhost:10005/redis/annotation/2
 Accept: application/json
 
-<> 2020-01-06T011012.200.json
+<> 2020-01-06T040830.200.json
 
 ###
 
-GET http://localhost:10004/repository/page/repositories?start=1&end=2
+GET http://localhost:10005/redis/annotation/1
 Accept: application/json
 
-<> 2020-01-06T010149.200.json
+<> 2020-01-06T040825.200.json
 
 ###
 
-POST http://localhost:10004/download/page/downloads?start=1&size=1
+DELETE http://localhost:10005/redis/key/BLOG_LIST::2
 Content-Type: application/json
 
-{
-  "name": "algorithm",
-  "owner": {
-    "login": "rexlin600"
-  }
-}
-
-<> 2020-01-06T115516.200.json
+<> 2020-01-06T040811.200.json
 
 ###
 
-POST http://localhost:10004/download/page/downloads?start=1&size=1
+DELETE http://localhost:10005/redis/key/BLOG_LIST::1
 Content-Type: application/json
 
-{
-  "id": 162084238,
-  "name": "algorithm",
-  "owner": {
-    "login": "rexlin600"
-  }
-}
-
-<> 2020-01-06T115457.200.json
+<> 2020-01-06T040807.200.json
 
 ###
 
-GET http://localhost:10004/repository/page/repositories?start=1&end=2
+GET http://localhost:10005/redis/annotation/1
 Accept: application/json
 
-<> 2020-01-06T115427.200.json
+<> 2020-01-06T040730.200.json
 
 ###
 
-POST http://localhost:10004/download/page/downloads?start=1&size=1
-Content-Type: application/json
-
-{
-  "id": 162084238,
-  "owner": {
-    "login": "rexlin600"
-  }
-}
-
-<> 2020-01-06T115328.500.json
-
-###
-
-POST http://localhost:10004/download/page/downloads?start=1&size=1
-Content-Type: application/json
-
-{
-  "id": 162084238,
-  "owner": {
-    "login": "rexlin600"
-  }
-}
-
-<> 2020-01-06T115220.500.json
-
-###
-
-POST http://localhost:10004/download/page/downloads?start=1&size=1
-Content-Type: application/json
-
-{
-  "id": 162084238,
-  "owner": {
-    "login": "rexlin600"
-  }
-}
-
-<> 2020-01-06T115157.500.json
-
-###
-
-GET http://localhost:10004/repository/page/repositories?start=1&end=2
+GET http://localhost:10005/redis/annotation/2
 Accept: application/json
 
-<> 2020-01-06T115114.200.json
+<> 2020-01-06T040725.200.json
 
 ###
 
-POST http://localhost:10004/download/page/downloads?start=1&size=1
-Content-Type: application/json
-
-{
-  "owner": {
-    "login": "rexlin600"
-  }
-}
-
-<> 2020-01-06T114837.500.json
-
-###
-
-POST http://localhost:10004/download/page/downloads?start=1&size=1
-Content-Type: application/json
-
-{
-  "owner": {
-    "login": "rexlin600"
-  }
-}
-
-<> 2020-01-06T114828.500.json
-
-###
-
-POST http://localhost:10004/download/page/downloads?start=1&end=1
-Content-Type: application/json
-
-{
-  "owner": {
-    "login": "rexlin600"
-  }
-}
-
-<> 2020-01-06T114817.500.json
-
-###
-
-POST http://localhost:10004/download/page/downloads?start=1&end=1
-Content-Type: application/json
-
-{
-  "owner": {
-    "login": "rexlin600"
-  }
-}
-
-<> 2020-01-06T114754.500.json
-
-###
-
-POST http://localhost:10004/download/page/downloads?start=1&end=1
-Content-Type: application/json
-
-{
-  "owner": {
-    "login": "rexlin600"
-  }
-}
-
-<> 2020-01-06T114732.500.json
-
-###
-
-POST http://localhost:10004/download/page/downloads?start=1&end=1
-Content-Type: application/json
-
-{
-  "owner": {
-    "login": "rexlin600"
-  }
-}
-
-<> 2020-01-06T114710.500.json
-
-###
-
-POST http://localhost:10004/repository/forkRepository
-Content-Type: application/json
-
-{
-  "owner": "cookieY",
-  "name": "Yearning"
-}
-
-<> 2020-01-06T113319.200.json
-
-###
-
-GET http://localhost:10004/repository/page/repositories?start=1&end=2
+GET http://localhost:10005/redis/annotation/2
 Accept: application/json
 
-<> 2020-01-06T112958.200.json
+<> 2020-01-06T040650.500.json
 
 ###
 
-POST http://localhost:10004/repository/create
-Content-Type: application/json
-
-{
-  "isPrivate": false,
-  "user": {
-    "login": "rexlin600"
-  },
-  "name": "test-githubapi",
-  "description": "test github api repo"
-}
-
-<> 2020-01-06T112825.200.json
-
-###
-
-POST http://localhost:10004/repository/create
-Content-Type: application/json
-
-{
-  "isPrivate": false,
-  "owner": "rexlin600",
-  "name": "test-githubapi",
-  "description": "test github api repo"
-}
-
-<> 2020-01-06T112719.400.json
-
-###
-
-POST http://localhost:10004/repository/create
-Content-Type: application/json
-
-{
-  "isPrivate": false,
-  "owner": "rexlin600",
-  "name": "test-githubapi",
-  "description": "test github api repo"
-}
-
-<> 2020-01-06T112701.404.json
-
-###
-
-GET http://localhost:10004/repository/simple/searchRepository?query=博客&startPage=2
+GET http://localhost:10005/redis/annotation/2
 Accept: application/json
 
-<> 2020-01-06T112209.200.json
+<> 2020-01-06T040518.200.json
 
 ###
 
-POST http://localhost:10004/repository/simple/searchRepository?query=博客&startPage=2
+GET http://localhost:10005/redis/annotation/1
 Accept: application/json
 
-<> 2020-01-06T112149.200.json
+<> 2020-01-06T040509.200.json
 
 ###
 
-POST http://localhost:10004/repository/forks
+DELETE http://localhost:10005/redis/key/BLOG_LIST::xyz.rexlin600.rest.RedisRestgetByAnnotation1
 Content-Type: application/json
 
-{
-  "owner": "YunaiV",
-  "name": "onemall"
-}
-
-<> 2020-01-06T111905.200.json
+<> 2020-01-06T040500.200.json
 
 ###
 
-POST http://localhost:10004/repository/contributors?flag=true
-Content-Type: application/json
+GET http://localhost:10005/redis/annotation/1
+Accept: application/json
 
-{
-  "owner": "YunaiV",
-  "name": "onemall"
-}
-
-<> 2020-01-06T111747.200.json
+<> 2020-01-06T040201.500.json
 
 ###
 
-POST http://localhost:10004/repository/contributors?flag=true
-Content-Type: application/json
+GET http://localhost:10005/redis/annotation/1
+Accept: application/json
 
-{
-  "owner": "YunaiV",
-  "name": "SpringBoot-Labs"
-}
-
-<> 2020-01-06T111651.200.json
+<> 2020-01-06T040046.200.json
 
 ###
 
-POST http://localhost:10004/repository/contributors?flag=false
-Content-Type: application/json
+GET http://localhost:10005/redis/annotation/1
+Accept: application/json
 
-{
-  "owner": "YunaiV",
-  "name": "SpringBoot-Labs"
-}
-
-<> 2020-01-06T111637.200.json
+<> 2020-01-06T040045.200.json
 
 ###
 
-POST http://localhost:10004/repository/contributors?flag=false
-Content-Type: application/json
+GET http://localhost:10005/redis/annotation/1
+Accept: application/json
 
-{
-  "owner": "YunaiV",
-  "name": "SpringBoot-Labs"
-}
-
-<> 2020-01-06T111419.400.json
+<> 2020-01-06T040016.200.json
 
 ###
 
-POST http://localhost:10004/repository/contributors?flag=false
+DELETE http://localhost:10005/redis/key/BLOG_LIST::xyz.rexlin600.rest.RedisRestgetByAnnotation1
 Content-Type: application/json
 
-{
-  "owner": "YunaiV",
-  "name": "SpringBoot-Labs"
-}
-
-<> 2020-01-06T111341.400.json
+<> 2020-01-06T035737.200.json
 
 ###
 
-POST http://localhost:10004/repository/contributors?flag=false
-Content-Type: application/json
+GET http://localhost:10005/redis/annotation/1
+Accept: application/json
 
-{
-  "searchRepository": {
-    "owner": "YunaiV",
-    "name": "SpringBoot-Labs"
-  }
-}
-
-<> 2020-01-06T111323.400.json
+<> 2020-01-06T035731.200.json
 
 ###
 
-POST http://localhost:10004/repository/contributors?flag=false
+DELETE http://localhost:10005/redis/key/BLOG_LIST::xyz.rexlin600.rest.RedisRestgetByAnnotation1
 Content-Type: application/json
 
-{
-  "searchRepository": {
-    "owner": "YunaiV",
-    "name": "SpringBoot-Labs"
-  }
-}
-
-<> 2020-01-06T111305.400.json
+<> 2020-01-06T035719.200.json
 
 ###
 
-POST http://localhost:10004/repository/contributors
-Content-Type: application/json
+GET http://localhost:10005/redis/annotation/1
+Accept: application/json
 
-{
-  "searchRepository": {
-    "owner": "YunaiV",
-    "name": "SpringBoot-Labs"
-  },
-  "flag": false
-}
-
-<> 2020-01-06T111214.400.json
+<> 2020-01-06T035414.200.json
 
 ###
 
-POST http://localhost:10004/repository/contributors
-Content-Type: application/json
+GET http://localhost:10005/redis/annotation/1
+Accept: application/json
 
-{
-  "owner": "YunaiV",
-  "name": "SpringBoot-Labs",
-  "flag": false
-}
-
-<> 2020-01-06T111121.400.json
+<> 2020-01-06T035309.200.json
 
 ###
 
-POST http://localhost:10004/repository/contributors
-Content-Type: application/json
+GET http://localhost:10005/redis/annotation/1
+Accept: application/json
 
-{
-  "owner": "YunaiV",
-  "name": "SpringBoot-Labs",
-  "flag": false
-}
-
-<> 2020-01-06T111116.400.json
+<> 2020-01-06T035303.200.json
 
 ###
 
-POST http://localhost:10004/repository/contributors
-Content-Type: application/json
+GET http://localhost:10005/redis/annotation/1
+Accept: application/json
 
-{
-  "searchRepository": {
-    "owner": "YunaiV",
-    "name": "SpringBoot-Labs"
-  },
-  "flag": false
-}
-
-<> 2020-01-06T110941.400.json
+<> 2020-01-06T035159.200.json
 
 ###
 
-POST http://localhost:10004/repository/contributors
-Content-Type: application/json
+GET http://localhost:10005/redis/annotation/1
+Accept: application/json
 
-{
-  "searchRepository": {
-    "owner": "YunaiV",
-    "name": "SpringBoot-Labs"
-  },
-  "flag": false
-}
-
-<> 2020-01-06T110924.400.json
+<> 2020-01-06T035135.200.json
 
 ###
 
-POST http://localhost:10004/repository/languages
-Content-Type: application/json
+GET http://localhost:10005/redis/annotation/1
+Accept: application/json
 
-{
-  "owner": "YunaiV",
-  "name": "SpringBoot-Labs"
-}
-
-<> 2020-01-06T110844.200.json
+<> 2020-01-06T035028.200.json
 
 ###
 
-POST http://localhost:10004/repository/languages
-Content-Type: application/json
+GET http://localhost:10005/redis/annotation/1
+Accept: application/json
 
-{
-  "searchRepository": {
-    "owner": "YunaiV",
-    "name": "SpringBoot-Labs"
-  },
-  "flag": false
-}
-
-<> 2020-01-06T110826.500.json
+<> 2020-01-06T035015.200.json
 
 ###
 
-POST http://localhost:10004/repository/languages
-Content-Type: application/json
+GET http://localhost:10005/redis/annotation/1
+Accept: application/json
 
-{
-  "searchRepository": {
-    "owner": "YunaiV",
-    "name": "SpringBoot-Labs"
-  },
-  "flag": false
-}
-
-<> 2020-01-06T110809.500.json
+<> 2020-01-06T034716.200.json
 
 ###
 
-POST http://localhost:10004/repository/languages
-Content-Type: application/json
+GET http://localhost:10005/redis/2
+Accept: application/json
 
-{
-  "owner": "YunaiV",
-  "name": "SpringBoot-Labs"
-}
-
-<> 2020-01-06T110707.200.json
+<> 2020-01-06T034655.200.json
 
 ###
 
-POST http://localhost:10004/repository/tags
-Content-Type: application/json
+GET http://localhost:10005/redis/1
+Accept: application/json
 
-{
-  "owner": "YunaiV",
-  "name": "SpringBoot-Labs"
-}
-
-<> 2020-01-06T110555.200.json
+<> 2020-01-06T034646.200.json
 
 ###
 
-POST http://localhost:10004/repository/branches
-Content-Type: application/json
+GET http://localhost:10005/redis/1
+Accept: application/json
 
-{
-  "owner": "YunaiV",
-  "name": "SpringBoot-Labs"
-}
-
-<> 2020-01-06T110029.500.json
+<> 2020-01-06T034636.200.json
 
 ###
 
-POST http://localhost:10004/repository/branches
-Content-Type: application/json
+GET http://localhost:10005/redis/1
+Accept: application/json
 
-{
-  "owner": "rexlin600",
-  "isPrivate": "false",
-  "name": "springboot2-example"
-}
-
-<> 2020-01-06T105631.500.json
+<> 2020-01-06T034158.200.json
 
 ###
 
-POST http://localhost:10004/repository/branches
-Content-Type: application/json
+GET http://localhost:10005/redis/1
+Accept: application/json
 
-{
-  "owner": "rexlin600",
-  "isPrivate": "false",
-  "name": "springboot2-example"
-}
-
-<> 2020-01-06T105605.500.json
+<> 2020-01-06T034102.200.json
 
 ###
 
-POST http://localhost:10004/repository/branches
+POST http://localhost:10005/redis
 Content-Type: application/json
 
 {
-  "owner": "rexlin600",
-  "name": "springboot2-example"
+  "id": 1,
+  "title": "测试blog1",
+  "content": "测试内容1",
+  "popular": true,
+  "createDate": "2020-01-06 14:33:40"
 }
 
-<> 2020-01-06T105311.500.json
+<> 2020-01-06T034058.200.json
 
 ###
 
-POST http://localhost:10004/repository/branches
-Content-Type: application/json
+GET http://localhost:10005/redis/1
+Accept: application/json
 
-{
-  "owner": "rexlin600",
-  "name": "springboot2-example"
-}
-
-<> 2020-01-06T105250.500.json
+<> 2020-01-06T034049.200.json
 
 ###
 
-POST http://localhost:10004/repository/branches
-Content-Type: application/json
+GET http://localhost:10005/redis/1
+Accept: application/json
 
-{
-  "owner": "rexlin600",
-  "name": "springboot2-example"
-}
-
-<> 2020-01-06T105141.500.json
+<> 2020-01-06T032036.200.json
 
 ###
 
-POST http://localhost:10004/repository/filter/repositories
-Accept: application/vnd.github.nebula-preview+json
-Content-Type: application/json
+GET http://localhost:10005/redis/info/2
+Accept: application/json
 
-{
-  "name": "sprinboot2"
-}
-
-<> 2020-01-06T104801.200.json
+<> 2020-01-06T032030.404.json
 
 ###
 
-POST http://localhost:10004/repository/filter/repositories
-Accept: application/vnd.github.nebula-preview+json
+DELETE http://localhost:10005/redis/1
 Content-Type: application/json
 
-{
-  "username": "imroc"
-}
-
-<> 2020-01-06T104727.200.json
+<> 2020-01-06T032014.200.json
 
 ###
 
-POST http://localhost:10004/repository/filter/repositories
-Accept: application/vnd.github.nebula-preview+json
-Content-Type: application/json
+GET http://localhost:10005/redis/session
+Accept: application/json
 
-{
-  "username": "imroc"
-}
-
-<> 2020-01-06T104715.500.json
+<> 2020-01-06T031542.200.json
 
 ###
 
-POST http://localhost:10004/repository/filter/repositories
-Accept: application/vnd.github.nebula-preview+json
+GET http://localhost:10005/redis/session/123
+Accept: application/json
+
+<> 2020-01-06T031508.404.json
+
+###
+
+GET http://localhost:10005/redis/info/2
+Accept: application/json
+
+<> 2020-01-06T031451.404.json
+
+###
+
+DELETE http://localhost:10005/redis/2
+Content-Type: application/json
+
+<> 2020-01-06T031443.200.json
+
+###
+
+DELETE http://localhost:10005/redis/2
+Content-Type: application/json
+
+<> 2020-01-06T031406.404.json
+
+###
+
+DELETE http://localhost:10005/redis/2
+Content-Type: application/json
+
+<> 2020-01-06T031258.405.json
+
+###
+
+DELETE http://localhost:10005/redis/2
+Content-Type: application/json
+
+<> 2020-01-06T031232.405.json
+
+###
+
+DELETE http://localhost:10005/redis/2
+Content-Type: application/json
+
+<> 2020-01-06T031210.405.json
+
+###
+
+GET http://localhost:10005/redis/2
+Accept: application/json
+
+<> 2020-01-06T031138.200.json
+
+###
+
+GET http://localhost:10005/redis/2
+Accept: application/json
+
+<> 2020-01-06T031049.200.json
+
+###
+
+GET http://localhost:10005/redis/list
+Accept: application/json
+
+<> 2020-01-06T030605.200.json
+
+###
+
+POST http://localhost:10005/redis
 Content-Type: application/json
 
 {
-  "owner": "imroc"
+  "id": 1,
+  "title": "测试blog1",
+  "content": "测试内容1",
+  "popular": true,
+  "createDate": "2020-01-06 14:33:40"
 }
 
-<> 2020-01-06T104044.200.json
+<> 2020-01-06T030602.200.json
 
 ###
 

@@ -28,6 +28,7 @@
         <module>spring-boot-docker</module>
         <module>spring-boot-runner</module>
         <module>spring-boot-github</module>
+        <module>spring-boot-redis</module>
     </modules>
 
 
@@ -102,6 +103,8 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
         </plugins>

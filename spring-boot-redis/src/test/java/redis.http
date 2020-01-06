@@ -1,0 +1,61 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+### redis set
+POST http://localhost:10005/redis
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "测试blog1",
+  "content": "测试内容1",
+  "popular": true,
+  "createDate": "2020-01-06 14:33:40"
+}
+
+
+### delete blog
+DELETE http://localhost:10005/redis/1
+Content-Type: application/json
+
+
+### update blog
+PUT http://localhost:10005/redis
+Content-Type: application/json
+
+{
+  "id": 2,
+  "title": "测试blog2-upd",
+  "content": "测试内容2-upd",
+  "popular": false,
+  "createDate": "2020-01-06 16:33:40"
+}
+
+
+### get blog by hashKey
+GET http://localhost:10005/redis/1
+Accept: application/json
+
+### get blog list
+GET http://localhost:10005/redis/list
+Accept: application/json
+
+### get session id
+GET http://localhost:10005/redis/session
+Accept: application/json
+
+### get blog cacheable
+GET http://localhost:10005/redis/annotation/2
+Accept: application/json
+
+### delete assign key
+DELETE http://localhost:10005/redis/key/user-key::com.neo.web.UserControllergetUser
+Content-Type: application/json
+
+
+
+

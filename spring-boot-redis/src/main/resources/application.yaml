@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: redis
+  # redis连接哨兵/集群模式参考文章 https://blog.csdn.net/qq_39669058/article/details/89158145
+  redis:
+    sentinel:
+      nodes[1]: 10.197.236.169:26379
+      nodes[0]: 10.197.236.154:26379
+      nodes[2]: 10.197.236.184:26379
+      master: mymaster
+    password: 123456
+    database: 10
+    jedis:
+      pool:
+        max-idle: 100
+        min-idle: 8
+        test-on-borrow: true
+        max-redirects: 3
+        max-active: 200
+        max-wait: 5000ms
+        test-on-return: false
+        block-when-exhausted: true
+    timeout: 5000ms
+
+server:
+  port: 10005
