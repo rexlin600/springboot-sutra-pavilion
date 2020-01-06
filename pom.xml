@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>xyz.rexlin600</groupId>
-    <artifactId>SpringBoot2-Example</artifactId>
+    <artifactId>springBoot2-example</artifactId>
     <packaging>pom</packaging>
     <version>2.0.0</version>
 
