@@ -13,12 +13,16 @@
 
 **示例代码**
 
+> 服务端口个从 10001开始、递增
+
 - [spring-boot-helloworld](https://github.com/rexlin600/SpringBoot2-Example/tree/master/spring-boot-helloworld)
 - [spring-boot-docker](https://github.com/rexlin600/SpringBoot2-Example/tree/master/spring-boot-docker)
 - [spring-boot-runner](https://github.com/rexlin600/SpringBoot2-Example/tree/master/spring-boot-runner)
 - [spring-boot-github](https://github.com/rexlin600/SpringBoot2-Example/tree/master/spring-boot-github)
 - [spring-boot-redis](https://github.com/rexlin600/SpringBoot2-Example/tree/master/spring-boot-redis)
 - [spring-boot-elasticsearch](https://github.com/rexlin600/SpringBoot2-Example/tree/master/spring-boot-elasticsearch)
+- [spring-boot-swagger2](https://github.com/rexlin600/SpringBoot2-Example/tree/master/spring-boot-swagger2)
+- [spring-boot-mybatisplus](https://github.com/rexlin600/SpringBoot2-Example/tree/master/spring-boot-mybatisplus)
 
 
 ## 参考
