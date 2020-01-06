@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: elasticsearch
+  data:
+    elasticsearch:
+      cluster-name: hik-es
+      cluster-nodes: 10.197.236.172:9300
+server:
+  port: 10006

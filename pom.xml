@@ -29,6 +29,7 @@
         <module>spring-boot-runner</module>
         <module>spring-boot-github</module>
         <module>spring-boot-redis</module>
+        <module>spring-boot-elasticsearch</module>
     </modules>
 
 
