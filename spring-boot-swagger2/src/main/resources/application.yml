@@ -2,7 +2,7 @@ spring:
   application:
     name: swagger2
 server:
-  port: 10006
+  port: 10007
 logging:
   level:
     io.swagger.models.parameters.AbstractSerializableParameter: error
