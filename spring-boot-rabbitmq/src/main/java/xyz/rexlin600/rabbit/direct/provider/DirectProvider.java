@@ -9,7 +9,7 @@ import xyz.rexlin600.rabbit.direct.config.DirectConfig;
 import java.time.Instant;
 
 /**
- * HelloWorld 生产者类
+ * Direct 生产者类
  *
  * @author: hekunlin
  * @date: 2020/1/7

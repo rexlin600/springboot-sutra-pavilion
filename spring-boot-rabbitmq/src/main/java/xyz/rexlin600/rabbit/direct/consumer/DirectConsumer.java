@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import xyz.rexlin600.rabbit.direct.config.DirectConfig;
 
 /**
- * HelloWorld 消费者类
+ * Direct 消费者类
  *
  * @author: hekunlin
  * @date: 2020/1/7
