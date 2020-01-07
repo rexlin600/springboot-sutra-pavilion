@@ -37,6 +37,7 @@ public class AmqpRest {
     /**
      * 1. 【调用指定生产者的指定方法】
      *
+     * @param type   {@link InvokeTypeEnum}
      * @param method
      * @return
      */

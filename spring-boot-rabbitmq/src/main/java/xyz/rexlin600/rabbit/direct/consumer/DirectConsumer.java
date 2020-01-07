@@ -15,6 +15,7 @@ import xyz.rexlin600.rabbit.direct.config.DirectConfig;
  * @author: hekunlin
  * @date: 2020/1/7
  */
+@Slf4j
 @Component
 @RabbitListener(queues = DirectConfig.DIRECT_QUEUE)
 public class DirectConsumer {
@@ -27,7 +28,7 @@ public class DirectConsumer {
     @SneakyThrows
     @RabbitHandler
     public void handlerOne(String content, Channel channel, Message message) {
-        System.out.println("==>  HellowWorldConsumer consume message： " + message + " content: " + content);
+        log.info("==>  HellowWorldConsumer consume message=[{}] and content=[{}]", message, content);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);   // true表示一次确认所有小于tag的消息
     }
 

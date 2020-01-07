@@ -1,6 +1,7 @@
 package xyz.rexlin600.rabbit.direct.provider;
 
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,7 @@ import java.time.Instant;
  * @author: hekunlin
  * @date: 2020/1/7
  */
+@Slf4j
 @Component
 public class DirectProvider {
 
@@ -27,7 +29,7 @@ public class DirectProvider {
     public void product() {
         long milli = Instant.now().toEpochMilli();
         String content = "HelloWorld AMQP-RabbitMQ " + milli;
-        System.out.println("==>  producer product a message to queue=" + DirectConfig.DIRECT_QUEUE + " at=" + milli);
+        log.info("==>  producer product a message to queue=[{}] and at [{}]", DirectConfig.DIRECT_QUEUE, milli);
         amqpTemplate.convertAndSend(DirectConfig.DIRECT_QUEUE, content);
     }
 
