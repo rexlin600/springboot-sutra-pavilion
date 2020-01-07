@@ -7,6 +7,7 @@
 ![license](https://img.shields.io/github/license/rexlin600/springboot2-example)
 ![star](https://img.shields.io/github/stars/rexlin600/springboot2-example?style=social)
 ![build](https://img.shields.io/travis/rexlin600/springboot2-example/master)
+[![codecov](https://codecov.io/gh/rexlin600/springboot2-example/branch/master/graph/badge.svg)](https://codecov.io/gh/rexlin600/springboot2-example)
 
 基于 SpringBoot2.x 的Demo示例，SpringBoot 中的各种示例，以简单、快捷、使用为目标。帮助大家快速掌握 Spring Boot 各组件的使用。
 
