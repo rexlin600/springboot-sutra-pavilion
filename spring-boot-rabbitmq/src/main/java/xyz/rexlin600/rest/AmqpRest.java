@@ -3,22 +3,20 @@ package xyz.rexlin600.rest;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import xyz.rexlin600.common.apiparam.Response;
 import xyz.rexlin600.common.apiparam.ResponseGenerator;
 import xyz.rexlin600.common.enums.InvokeTypeEnum;
 import xyz.rexlin600.entity.AmqpInvoke;
-import xyz.rexlin600.rabbit.direct.provider.DirectProvider;
-import xyz.rexlin600.rabbit.dl.provider.DeadLetterProvider;
-import xyz.rexlin600.rabbit.fanout.provider.FanoutProvider;
-import xyz.rexlin600.rabbit.simple.provider.SimpleProvider;
-import xyz.rexlin600.rabbit.topic.provider.TopicProvider;
-import xyz.rexlin600.rabbit.work.provider.WorkProvider;
+import xyz.rexlin600.pattern.direct.provider.DirectProvider;
+import xyz.rexlin600.pattern.deadletter.provider.DeadLetterProvider;
+import xyz.rexlin600.pattern.fanout.provider.FanoutProvider;
+import xyz.rexlin600.pattern.simple.provider.SimpleProvider;
+import xyz.rexlin600.pattern.topic.provider.TopicProvider;
+import xyz.rexlin600.pattern.work.provider.WorkProvider;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Optional;
 
 /**
