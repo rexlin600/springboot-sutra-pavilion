@@ -16,7 +16,7 @@
 | 序号 | 模块 | 端口 | 描述 | 
 | --- | --- | --- | --- |
 | 1 | [spring-boot-helloworld](https://github.com/rexlin600/springboot2-examplespringboot2-example/tree/master/spring-boot-helloworld) | 10001 | 国际惯例，`HelloWorld` |
-| 2 | [spring-boot-docker](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-docker) | 10002 | 集成 `docker` 插件；</br> 绑定 `maven` 生命周期相关的命令到 `docker` 命令 |
+| 2 | [spring-boot-docker](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-docker) | 10002 | 集成 `docker` 插件；绑定 `maven` 生命周期相关的命令到 `docker` 命令 |
 | 3 | [spring-boot-runner](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-runner) | 10003 | 使用 `CommandLineRunner` 以及 `ApplicationRunner` 的演示 |
 | 4 | [spring-boot-github](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-github) | 10004 | 使用 `github api v3` 简易示例；推荐个 `iPhone` 的客户端(付费)：`PPHub`  |
 | 5 | [spring-boot-redis](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-redis) | 10005 | 集成 `redis` 集群/哨兵；`redisTemplate` 的常用 `API` |
