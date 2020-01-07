@@ -28,4 +28,4 @@
 
 ## 参考
 
-- [参考文档](../docs/reference.md)
+- [参考文档](https://github.com/rexlin600/springboot2-example/blob/master/docs/reference.md)
