@@ -14,13 +14,13 @@ import java.time.Instant;
 /**
  * DeadLetter 消费者类
  * <p>
- * 如果要测试过期、拒绝、超载等请注释此类
+ * 如果要测试过期、拒绝、超载等请注释 @Component ，默认注释掉
  *
  * @author: hekunlin
  * @date: 2020/1/7
  */
 @Slf4j
-@Component
+//@Component
 @RabbitListener(queues = DeadLetterConfig.DEAD_LETTER_QUEUE)
 public class DeadLetterConsumer {
 
