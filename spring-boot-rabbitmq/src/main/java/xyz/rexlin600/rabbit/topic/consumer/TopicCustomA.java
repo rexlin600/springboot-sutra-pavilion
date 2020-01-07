@@ -27,7 +27,7 @@ public class TopicCustomA {
      */
     @SneakyThrows
     @RabbitHandler
-    public void handlerOne(String content, Channel channel, Message message) {
+    public void handlerTopicOne(String content, Channel channel, Message message) {
         log.info("==>  Topic A consume message=[{}] and content=[{}]", message, content);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);   // true表示一次确认所有小于tag的消息
     }

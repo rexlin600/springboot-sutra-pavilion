@@ -27,7 +27,7 @@ public class FanoutCustomC {
      */
     @SneakyThrows
     @RabbitHandler
-    public void handlerOne(String content, Channel channel, Message message) {
+    public void handlerFanOutStrC(String content, Channel channel, Message message) {
         log.info("==>  Fanout C consume message=[{}] and content=[{}]", message, content);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);   // true表示一次确认所有小于tag的消息
     }

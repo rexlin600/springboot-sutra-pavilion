@@ -1,0 +1,91 @@
+POST http://localhost:10009/amqp/work/invoke/workProductStr
+Content-Type: application/json
+
+<> 2020-01-07T035923.200.json
+
+###
+
+POST http://localhost:10009/amqp/work/invoke/workProductStr
+Content-Type: application/json
+
+<> 2020-01-07T035922.200.json
+
+###
+
+POST http://localhost:10009/amqp/work/invoke/workProductStr
+Content-Type: application/json
+
+<> 2020-01-07T035921.200.json
+
+###
+
+POST http://localhost:10009/amqp/work/invoke/workProductStr
+Content-Type: application/json
+
+<> 2020-01-07T035914.200.json
+
+###
+
+POST http://localhost:10009/amqp/work/invoke/workProductStr
+Content-Type: application/json
+
+<> 2020-01-07T035703.200.json
+
+###
+
+POST http://localhost:10009/amqp/work/invoke/workProductStr
+Content-Type: application/json
+
+<> 2020-01-07T035656.200.json
+
+###
+
+POST http://localhost:10009/amqp/work/invoke/workProductStr
+Content-Type: application/json
+
+<> 2020-01-07T035635.200.json
+
+###
+
+POST http://localhost:10009/amqp/work/invoke/workProductStr
+Content-Type: application/json
+
+<> 2020-01-07T035545.200.json
+
+###
+
+POST http://localhost:10009/amqp/work/invoke/workProductStr
+Content-Type: application/json
+
+<> 2020-01-07T035213.200.json
+
+###
+
+POST http://localhost:10009/amqp/work/invoke/workProductStr
+Content-Type: application/json
+
+<> 2020-01-07T034657.200.json
+
+###
+
+POST http://localhost:10009/amqp/simple/invoke/simpleProductStr
+Content-Type: application/json
+
+<> 2020-01-07T034651.200.json
+
+###
+
+POST http://localhost:10009/amqp/topic/invoke/topicProductStr3
+Content-Type: application/json
+
+<> 2020-01-07T030517.200.json
+
+###
+
+POST http://localhost:10009/amqp/topic/invoke/topicProductStr3
+Content-Type: application/json
+
+<> 2020-01-07T030431.200.json
+
+###
+

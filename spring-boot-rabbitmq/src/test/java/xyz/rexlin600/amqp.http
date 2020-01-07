@@ -26,6 +26,15 @@ Content-Type: application/json
 POST http://localhost:10009/amqp/topic/invoke/topicProductStr3
 Content-Type: application/json
 
+### invoke simple method
+POST http://localhost:10009/amqp/simple/invoke/simpleProductStr
+Content-Type: application/json
+
+### invoke work method
+### 按照预期：消息会被均匀的消费
+POST http://localhost:10009/amqp/work/invoke/workProductStr
+Content-Type: application/json
+
 ###
 
 

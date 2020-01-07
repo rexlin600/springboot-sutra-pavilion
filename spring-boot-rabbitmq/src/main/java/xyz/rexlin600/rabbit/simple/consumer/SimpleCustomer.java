@@ -28,7 +28,7 @@ public class SimpleCustomer {
      */
     @SneakyThrows
     @RabbitHandler
-    public void handlerOne(String content, Channel channel, Message message) {
+    public void handlerSimple(String content, Channel channel, Message message) {
         log.info("==>  Simple consume message=[{}] and content=[{}]", message, content);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);   // true表示一次确认所有小于tag的消息
     }

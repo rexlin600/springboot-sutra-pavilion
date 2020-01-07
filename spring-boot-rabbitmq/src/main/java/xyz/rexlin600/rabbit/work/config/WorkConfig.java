@@ -25,7 +25,7 @@ public class WorkConfig {
      * @return
      */
     @Bean
-    public Queue simpleQueue() {
+    public Queue workQueue() {
         return new Queue(WORK_QUEUE);
     }
 
