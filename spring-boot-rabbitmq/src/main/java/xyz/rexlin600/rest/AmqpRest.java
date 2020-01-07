@@ -10,6 +10,7 @@ import xyz.rexlin600.common.apiparam.ResponseGenerator;
 import xyz.rexlin600.common.enums.InvokeTypeEnum;
 import xyz.rexlin600.entity.AmqpInvoke;
 import xyz.rexlin600.rabbit.direct.provider.DirectProvider;
+import xyz.rexlin600.rabbit.dl.provider.DeadLetterProvider;
 import xyz.rexlin600.rabbit.fanout.provider.FanoutProvider;
 import xyz.rexlin600.rabbit.simple.provider.SimpleProvider;
 import xyz.rexlin600.rabbit.topic.provider.TopicProvider;
@@ -36,18 +37,22 @@ public class AmqpRest {
     private DirectProvider directProvider;
     private FanoutProvider fanoutProvider;
     private TopicProvider topicProvider;
+    private DeadLetterProvider deadLetterProvider;
+
 
     @Autowired
     public AmqpRest(SimpleProvider simpleProvider,
                     WorkProvider workProvider,
                     DirectProvider directProvider,
                     FanoutProvider fanoutProvider,
-                    TopicProvider topicProvider) {
+                    TopicProvider topicProvider,
+                    DeadLetterProvider deadLetterProvider) {
         this.simpleProvider = simpleProvider;
         this.workProvider = workProvider;
         this.directProvider = directProvider;
         this.fanoutProvider = fanoutProvider;
         this.topicProvider = topicProvider;
+        this.deadLetterProvider = deadLetterProvider;
     }
 
     /**
@@ -131,7 +136,10 @@ public class AmqpRest {
             case 6: // work
                 amqpInvoke = new AmqpInvoke(workProvider.getClass().getDeclaredMethods(), workProvider);
                 break;
-            case 7: // custom
+            case 7: // dl
+                amqpInvoke = new AmqpInvoke(deadLetterProvider.getClass().getDeclaredMethods(), deadLetterProvider);
+                break;
+            case 8: // custom
                 break;
             default:
                 break;

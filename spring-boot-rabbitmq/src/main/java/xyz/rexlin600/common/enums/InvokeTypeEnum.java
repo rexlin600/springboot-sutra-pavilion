@@ -23,7 +23,8 @@ public enum InvokeTypeEnum {
     TOPIC("config", 4),
     SIMPLE("simple", 5),
     WORK("work", 6),
-    CUSTOM("custom", 7);
+    DL("dl", 7),
+    CUSTOM("custom", 8);
 
 
     private String type;

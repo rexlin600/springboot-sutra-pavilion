@@ -13,7 +13,7 @@
 
 **示例代码**
 
-> 服务端口个从 10001开始、依次递增
+> 服务端口号从 10001开始、依次递增
 
 - [spring-boot-helloworld](https://github.com/rexlin600/springboot2-examplespringboot2-example/tree/master/spring-boot-helloworld)
 - [spring-boot-docker](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-docker)
@@ -43,3 +43,6 @@
 - [深入了解RabbitMQ工作原理及简单使用](https://www.cnblogs.com/vipstone/p/9275256.html)
 - [RabbitMQ六种模式与SpringBoot整合](https://www.cnblogs.com/itplay/p/10647335.html)
 - [Spring Boot + RabbitMQ 配置参数解释](https://www.cnblogs.com/qts-hope/p/11242559.html)
+- [springboot rabbitmq 之死信队列（延迟消费消息）](https://my.oschina.net/10000000000/blog/1626278)
+- [Spring Boot系列——死信队列](https://www.jianshu.com/p/9362d12032e7)
+- [rabbitmq死信队列详解与使用](https://blog.csdn.net/zhangcongyi420/article/details/100126666)

@@ -1,3 +1,108 @@
+POST http://localhost:10009/amqp/dl/invoke/productDLExpireStr
+Content-Type: application/json
+
+<> 2020-01-07T054803.200.json
+
+###
+
+POST http://localhost:10009/amqp/dl/invoke/productDLExpireStr
+Content-Type: application/json
+
+<> 2020-01-07T054640.200.json
+
+###
+
+POST http://localhost:10009/amqp/dl/invoke/productDLExpireStr
+Content-Type: application/json
+
+<> 2020-01-07T054354.200.json
+
+###
+
+POST http://localhost:10009/amqp/dl/invoke/productDLExpireStr
+Content-Type: application/json
+
+<> 2020-01-07T054148.200.json
+
+###
+
+POST http://localhost:10009/amqp/dl/invoke/productDLExpireStr
+Content-Type: application/json
+
+<> 2020-01-07T053858-1.200.json
+
+###
+
+POST http://localhost:10009/amqp/dl/invoke/productDLExpireStr
+Content-Type: application/json
+
+<> 2020-01-07T053858.200.json
+
+###
+
+POST http://localhost:10009/amqp/dl/invoke/productDLExpireStr
+Content-Type: application/json
+
+<> 2020-01-07T053857-1.200.json
+
+###
+
+POST http://localhost:10009/amqp/dl/invoke/productDLExpireStr
+Content-Type: application/json
+
+<> 2020-01-07T053857.200.json
+
+###
+
+POST http://localhost:10009/amqp/dl/invoke/productDLExpireStr
+Content-Type: application/json
+
+<> 2020-01-07T053856.200.json
+
+###
+
+POST http://localhost:10009/amqp/dl/invoke/productDLExpireStr
+Content-Type: application/json
+
+<> 2020-01-07T053854.200.json
+
+###
+
+POST http://localhost:10009/amqp/dl/invoke/productDLExpireStr
+Content-Type: application/json
+
+<> 2020-01-07T053811.200.json
+
+###
+
+POST http://localhost:10009/amqp/dl/invoke/productDLExpireStr
+Content-Type: application/json
+
+<> 2020-01-07T053713.200.json
+
+###
+
+POST http://localhost:10009/amqp/dl/invoke/productDLExpireStr
+Content-Type: application/json
+
+<> 2020-01-07T053118.200.json
+
+###
+
+POST http://localhost:10009/amqp/dl/invoke/productDLExpireStr
+Content-Type: application/json
+
+<> 2020-01-07T052644.200.json
+
+###
+
+POST http://localhost:10009/amqp/dl/invoke/productDLExpireStr
+Content-Type: application/json
+
+<> 2020-01-07T052614.200.json
+
+###
+
 POST http://localhost:10009/amqp/work/invoke/workProductStr
 Content-Type: application/json
 

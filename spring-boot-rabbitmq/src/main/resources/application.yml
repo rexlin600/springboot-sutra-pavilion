@@ -6,6 +6,8 @@ spring:
     addresses: localhost:5672
     username: admin
     password: admin
+    # 必须配置这个才会确认回调
+    publisher-confirm-type: correlated
     # 是否启用发布者确认
     publisher-confirms: true
     # 开启发送失败退回
@@ -16,6 +18,15 @@ spring:
         acknowledge-mode: manual
       simple:
         acknowledge-mode: manual
+        retry:
+          # 允许消息消费失败的重试
+          enabled: true
+          # 消息最多消费次数3次
+          max-attempts: 3
+          # 消息多次消费的间隔1秒
+          initial-interval: 1000
+        # 设置为false，会丢弃消息或者重新发布到死信队列
+        default-requeue-rejected: false
 server:
   port: 10009
 logging:
