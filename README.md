@@ -13,7 +13,7 @@
 
 **示例代码**
 
-> 服务端口个从 10001开始、递增
+> 服务端口个从 10001开始、依次递增
 
 - [spring-boot-helloworld](https://github.com/rexlin600/springboot2-examplespringboot2-example/tree/master/spring-boot-helloworld)
 - [spring-boot-docker](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-docker)
@@ -28,9 +28,18 @@
 
 ## 参考
 
+**SpringBoot 2.x**
+
 - [Spring Boot 2.0 最全使用教程](https://github.com/ityouknow/spring-boot-leaning)
+
+**ElasticSearch**
+
 - [ElasticSearch常用查询语法](https://blog.csdn.net/qwqw3333333/article/details/78255996)
+
+**RabbitMQ**
+
 - [走进RabbitMq](https://www.jianshu.com/p/a5f7fce67803)
 - [Spring Boot RabbitMQ 默认配置大全](https://www.cnblogs.com/1x11/p/10919687.html)
 - [深入了解RabbitMQ工作原理及简单使用](https://www.cnblogs.com/vipstone/p/9275256.html)
 - [RabbitMQ六种模式与SpringBoot整合](https://www.cnblogs.com/itplay/p/10647335.html)
+- [Spring Boot + RabbitMQ 配置参数解释](https://www.cnblogs.com/qts-hope/p/11242559.html)
