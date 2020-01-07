@@ -25,10 +25,6 @@
 | 8 | [spring-boot-mybatisplus](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-mybatisplus) | 10008 | 集成 `mybatisPlus`；使用其提供的增强 `CRUD`；代码生成器；SQL注入器；性能分析插件；动态数据源；多租户SQL解析器；动态表名SQL解析器 |
 | 9 | [spring-boot-rabbitmq](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-rabbitmq) | 10009 | 集成集群 `RabbitMQ`，发送字符串、对象等；常见六种模式：HelloWorld（Simple）、Work（竞争）、FanOut（发布-订阅）、路由模式（完整的匹配，可参考Direct）、Topic（主题模式）、RPC模式（不常用）；死信队列（DLX） |
 | 10 | _ | 10010 |
-| 11 | _ | 10011 |
-| 12 | _ | 10012 |
-| 13 | _ | 10013 |
-| 14 | _ | 10014 |
 
 
 ## Plan
