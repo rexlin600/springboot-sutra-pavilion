@@ -52,5 +52,9 @@ public class DeadLetterProvider {
         amqpTemplate.convertAndSend(DeadLetterConfig.DL_EXCHANGE, DeadLetterConfig.DEAD_LETTER_ROUTING_KEY, content, messagePostProcessor);
     }
 
+    // TODO 拒绝
+
+    // TODO 超载
+
 
 }
