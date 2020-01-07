@@ -20,8 +20,10 @@ public enum InvokeTypeEnum {
     DIRECT("direct", 1),
     FANOUT("fanout", 2),
     HEADER("header", 3),
-    TOPIC("topic", 4),
-    CUSTOM("custom", 5);
+    TOPIC("config", 4),
+    SIMPLE("simple", 5),
+    WORK("work", 6),
+    CUSTOM("custom", 7);
 
 
     private String type;

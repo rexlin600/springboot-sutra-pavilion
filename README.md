@@ -33,3 +33,4 @@
 - [走进RabbitMq](https://www.jianshu.com/p/a5f7fce67803)
 - [Spring Boot RabbitMQ 默认配置大全](https://www.cnblogs.com/1x11/p/10919687.html)
 - [深入了解RabbitMQ工作原理及简单使用](https://www.cnblogs.com/vipstone/p/9275256.html)
+- [RabbitMQ六种模式与SpringBoot整合](https://www.cnblogs.com/itplay/p/10647335.html)

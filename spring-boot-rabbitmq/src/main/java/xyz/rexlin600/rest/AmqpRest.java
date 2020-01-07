@@ -11,7 +11,9 @@ import xyz.rexlin600.common.enums.InvokeTypeEnum;
 import xyz.rexlin600.entity.AmqpInvoke;
 import xyz.rexlin600.rabbit.direct.provider.DirectProvider;
 import xyz.rexlin600.rabbit.fanout.provider.FanoutProvider;
+import xyz.rexlin600.rabbit.simple.provider.SimpleProvider;
 import xyz.rexlin600.rabbit.topic.provider.TopicProvider;
+import xyz.rexlin600.rabbit.work.provider.WorkProvider;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -29,14 +31,20 @@ import java.util.Optional;
 @RequestMapping("/amqp")
 public class AmqpRest {
 
+    private SimpleProvider simpleProvider;
+    private WorkProvider workProvider;
     private DirectProvider directProvider;
     private FanoutProvider fanoutProvider;
     private TopicProvider topicProvider;
 
     @Autowired
-    public AmqpRest(DirectProvider directProvider,
+    public AmqpRest(SimpleProvider simpleProvider,
+                    WorkProvider workProvider,
+                    DirectProvider directProvider,
                     FanoutProvider fanoutProvider,
                     TopicProvider topicProvider) {
+        this.simpleProvider = simpleProvider;
+        this.workProvider = workProvider;
         this.directProvider = directProvider;
         this.fanoutProvider = fanoutProvider;
         this.topicProvider = topicProvider;
@@ -65,6 +73,10 @@ public class AmqpRest {
 
         // get AmqpInvoke class
         AmqpInvoke amqpInvoke = codeConvertAmqpInvoke(code);
+        if (amqpInvoke == null) {
+            log.error("==>  Don't match this type=[{}]", type);
+            return ResponseGenerator.fail("not have type");
+        }
 
         // methods check
         Method[] methods = amqpInvoke.getMethods();
@@ -101,7 +113,6 @@ public class AmqpRest {
         AmqpInvoke amqpInvoke = null;
         switch (code) {
             case 0: // default
-                amqpInvoke = new AmqpInvoke(directProvider.getClass().getDeclaredMethods(), directProvider);
                 break;
             case 1: // direct
                 amqpInvoke = new AmqpInvoke(directProvider.getClass().getDeclaredMethods(), directProvider);
@@ -110,13 +121,17 @@ public class AmqpRest {
                 amqpInvoke = new AmqpInvoke(fanoutProvider.getClass().getDeclaredMethods(), fanoutProvider);
                 break;
             case 3: // header
-                amqpInvoke = new AmqpInvoke(directProvider.getClass().getDeclaredMethods(), directProvider);
                 break;
             case 4: // topic
                 amqpInvoke = new AmqpInvoke(topicProvider.getClass().getDeclaredMethods(), topicProvider);
                 break;
-            case 5: // custom
-                amqpInvoke = new AmqpInvoke(directProvider.getClass().getDeclaredMethods(), directProvider);
+            case 5: // simple
+                amqpInvoke = new AmqpInvoke(simpleProvider.getClass().getDeclaredMethods(), simpleProvider);
+                break;
+            case 6: // work
+                amqpInvoke = new AmqpInvoke(workProvider.getClass().getDeclaredMethods(), workProvider);
+                break;
+            case 7: // custom
                 break;
             default:
                 break;

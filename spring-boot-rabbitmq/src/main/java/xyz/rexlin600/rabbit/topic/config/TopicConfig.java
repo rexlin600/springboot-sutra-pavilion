@@ -16,11 +16,11 @@ public class TopicConfig {
     /**
      * TOPIC模式：queue、routingKey、exchange
      */
-    public static final String TOPIC_QUEUE_A = "queue.rexlin600.topic.a";
-    public static final String TOPIC_QUEUE_ALL = "queue.rexlin600.topic.all";
-    public static final String TOPIC_ROUTINGKEY_A = "routingKey.rexlin600.topic.a";
-    public static final String TOPIC_ROUTINGKEY_ALL = "routingKey.rexlin600.topic.#";
-    public static final String TOPIC_EXCHANGE = "exchange.rexlin600.topic";
+    public static final String TOPIC_QUEUE_A = "queue.rexlin600.config.a";
+    public static final String TOPIC_QUEUE_ALL = "queue.rexlin600.config.all";
+    public static final String TOPIC_ROUTINGKEY_A = "routingKey.rexlin600.config.a";
+    public static final String TOPIC_ROUTINGKEY_ALL = "routingKey.rexlin600.config.#";
+    public static final String TOPIC_EXCHANGE = "exchange.rexlin600.config";
 
 
     /**
