@@ -10,6 +10,7 @@ import xyz.rexlin600.common.apiparam.ResponseGenerator;
 import xyz.rexlin600.common.enums.InvokeTypeEnum;
 import xyz.rexlin600.entity.AmqpInvoke;
 import xyz.rexlin600.rabbit.direct.provider.DirectProvider;
+import xyz.rexlin600.rabbit.fanout.provider.FanoutProvider;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -28,10 +29,13 @@ import java.util.Optional;
 public class AmqpRest {
 
     private DirectProvider directProvider;
+    private FanoutProvider fanoutProvider;
 
     @Autowired
-    public AmqpRest(DirectProvider directProvider) {
+    public AmqpRest(DirectProvider directProvider,
+                    FanoutProvider fanoutProvider) {
         this.directProvider = directProvider;
+        this.fanoutProvider = fanoutProvider;
     }
 
     /**
@@ -99,12 +103,12 @@ public class AmqpRest {
                 amqpInvoke = new AmqpInvoke(directProvider.getClass().getDeclaredMethods(), directProvider);
                 break;
             case 2: // fanout
-                amqpInvoke = new AmqpInvoke(directProvider.getClass().getDeclaredMethods(), directProvider);
+                amqpInvoke = new AmqpInvoke(fanoutProvider.getClass().getDeclaredMethods(), fanoutProvider);
                 break;
             case 3: // header
                 amqpInvoke = new AmqpInvoke(directProvider.getClass().getDeclaredMethods(), directProvider);
                 break;
-            case 4: // topic
+            case 4: // config
                 amqpInvoke = new AmqpInvoke(directProvider.getClass().getDeclaredMethods(), directProvider);
                 break;
             case 5: // custom

@@ -1,23 +1,24 @@
-package xyz.rexlin600.rabbit.direct.provider;
+package xyz.rexlin600.rabbit.fanout.provider;
 
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import xyz.rexlin600.rabbit.direct.config.DirectConfig;
+import xyz.rexlin600.rabbit.fanout.config.FanoutConfig;
 
 import java.time.Instant;
 
 /**
- * Direct 生产者类
+ * Fanout 生产者类
  *
  * @author: hekunlin
  * @date: 2020/1/7
  */
+@SuppressWarnings("Duplicates")
 @Slf4j
 @Component
-public class DirectProvider {
+public class FanoutProvider {
 
     @Autowired
     private AmqpTemplate amqpTemplate;
@@ -25,13 +26,12 @@ public class DirectProvider {
     /**
      * 生产简单字符串消息
      */
-    @SneakyThrows
-    public void directProductStr() {
+    public void fanoutProductStr() {
         long milli = Instant.now().toEpochMilli();
-        String content = "Direct product AMQP-RabbitMQ " + milli;
-        log.info("==> Direct product a message to queue=[{}] and at [{}]", DirectConfig.DIRECT_QUEUE, milli);
-        amqpTemplate.convertAndSend(DirectConfig.DIRECT_QUEUE, content);
+        String content = "Fanout AMQP-RabbitMQ " + milli;
+        log.info("==>  Fanout product a message to queues and at [{}]", milli);
+        // 广播
+        amqpTemplate.convertAndSend(FanoutConfig.FANOUT_EXCHANGE, "", content);
     }
-
 
 }

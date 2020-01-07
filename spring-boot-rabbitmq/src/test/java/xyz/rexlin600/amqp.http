@@ -5,7 +5,10 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
-### invoke direct product method
-POST http://localhost:10009/amqp/direct/invoke/product
+### invoke direct method
+POST http://localhost:10009/amqp/direct/invoke/directProductStr
+
+### invoke fanout method
+POST http://localhost:10009/amqp/fanout/invoke/fanoutProductStr
 
 ###

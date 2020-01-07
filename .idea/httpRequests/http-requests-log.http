@@ -1,0 +1,30 @@
+POST http://localhost:10009/amqp/fanout/invoke/fanoutProductStr
+
+<> 2020-01-07T021147.200.json
+
+###
+
+POST http://localhost:10009/amqp/direct/invoke/fanoutProductStr
+
+<> 2020-01-07T021134.200.json
+
+###
+
+POST http://localhost:10009/amqp/direct/invoke/directProductStr
+
+<> 2020-01-07T021123.200.json
+
+###
+
+POST http://localhost:10009/amqp/direct/invoke/product
+
+<> 2020-01-07T014856.200.json
+
+###
+
+POST http://localhost:10009/amqp/direct/invoke/product
+
+<> 2020-01-07T014833.500.json
+
+###
+

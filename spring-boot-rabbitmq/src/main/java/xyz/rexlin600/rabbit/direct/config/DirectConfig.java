@@ -52,7 +52,7 @@ public class DirectConfig {
      * @return
      */
     @Bean
-    Binding bindingDirectExchangeMessage(Queue directQueue, DirectExchange directExchange) {
+    Binding bindingDirectExchange(Queue directQueue, DirectExchange directExchange) {
         return BindingBuilder.bind(directQueue)
                 .to(directExchange)
                 .with(DIRECT_ROUTINGKEY);
