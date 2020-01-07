@@ -20,7 +20,7 @@ public enum InvokeTypeEnum {
     DIRECT("direct", 1),
     FANOUT("fanout", 2),
     HEADER("header", 3),
-    TOPIC("config", 4),
+    TOPIC("topic", 4),
     CUSTOM("custom", 5);
 
 

@@ -19,7 +19,6 @@ public class FanoutConfig {
     public static final String FANOUT_QUEUE_A = "queue.rexlin600.fanout.a";
     public static final String FANOUT_QUEUE_B = "queue.rexlin600.fanout.b";
     public static final String FANOUT_QUEUE_C = "queue.rexlin600.fanout.c";
-    public static final String FANOUT_ROUTINGKEY = "routingKey.rexlin600.fanout";
     public static final String FANOUT_EXCHANGE = "exchange.rexlin600.fanout";
 
     /**

@@ -7,8 +7,25 @@
 
 ### invoke direct method
 POST http://localhost:10009/amqp/direct/invoke/directProductStr
+Content-Type: application/json
 
 ### invoke fanout method
 POST http://localhost:10009/amqp/fanout/invoke/fanoutProductStr
+Content-Type: application/json
+
+### invoke topic method
+### 按照预期：queue.rexlin600.topic.a 和 queue.rexlin600.topic.all 队列会收到消息
+POST http://localhost:10009/amqp/topic/invoke/topicProductStr1
+Content-Type: application/json
+
+### 按照预期：queue.rexlin600.topic.all 队列会收到消息
+POST http://localhost:10009/amqp/topic/invoke/topicProductStr2
+Content-Type: application/json
+
+### 按照预期：queue.rexlin600.topic.all 队列会收到消息
+POST http://localhost:10009/amqp/topic/invoke/topicProductStr3
+Content-Type: application/json
 
 ###
+
+

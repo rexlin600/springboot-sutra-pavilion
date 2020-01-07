@@ -16,7 +16,7 @@ bin/
 
 ### IntelliJ IDEA ###
 .idea
-.idea/httpRequests
+.idea/httpRequests/*
 *.iws
 *.iml
 *.ipr
