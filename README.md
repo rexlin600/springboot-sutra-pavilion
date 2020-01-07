@@ -28,21 +28,4 @@
 
 ## 参考
 
-**SpringBoot 2.x**
-
-- [Spring Boot 2.0 最全使用教程](https://github.com/ityouknow/spring-boot-leaning)
-
-**ElasticSearch**
-
-- [ElasticSearch常用查询语法](https://blog.csdn.net/qwqw3333333/article/details/78255996)
-
-**RabbitMQ**
-
-- [走进RabbitMq](https://www.jianshu.com/p/a5f7fce67803)
-- [Spring Boot RabbitMQ 默认配置大全](https://www.cnblogs.com/1x11/p/10919687.html)
-- [深入了解RabbitMQ工作原理及简单使用](https://www.cnblogs.com/vipstone/p/9275256.html)
-- [RabbitMQ六种模式与SpringBoot整合](https://www.cnblogs.com/itplay/p/10647335.html)
-- [Spring Boot + RabbitMQ 配置参数解释](https://www.cnblogs.com/qts-hope/p/11242559.html)
-- [springboot rabbitmq 之死信队列（延迟消费消息）](https://my.oschina.net/10000000000/blog/1626278)
-- [Spring Boot系列——死信队列](https://www.jianshu.com/p/9362d12032e7)
-- [rabbitmq死信队列详解与使用](https://blog.csdn.net/zhangcongyi420/article/details/100126666)
+- [参考文档](../docs/reference.md)
