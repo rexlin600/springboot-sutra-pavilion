@@ -9,6 +9,8 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 import xyz.rexlin600.rabbit.fanout.config.FanoutConfig;
 
+import java.time.Instant;
+
 /**
  * Fanout 消费者类B
  *
@@ -28,7 +30,8 @@ public class FanoutCustomB {
     @SneakyThrows
     @RabbitHandler
     public void handlerFanOutStrB(String content, Channel channel, Message message) {
-        log.info("==>  Fanout B consume message=[{}] and content=[{}]", message, content);
+        long milli = Instant.now().toEpochMilli();
+        log.info("==>  Fanout B consume content=[{}] at [{}]", content, milli);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);   // true表示一次确认所有小于tag的消息
     }
 

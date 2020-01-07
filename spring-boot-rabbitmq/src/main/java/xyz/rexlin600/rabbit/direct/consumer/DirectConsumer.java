@@ -9,6 +9,8 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 import xyz.rexlin600.rabbit.direct.config.DirectConfig;
 
+import java.time.Instant;
+
 /**
  * Direct 消费者类
  *
@@ -28,7 +30,8 @@ public class DirectConsumer {
     @SneakyThrows
     @RabbitHandler
     public void handlerDirectStr(String content, Channel channel, Message message) {
-        log.info("==>  Direct consume message=[{}] and content=[{}]", message, content);
+        long milli = Instant.now().toEpochMilli();
+        log.info("==>  Direct consume content=[{}] at [{}]", content, milli);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);   // true表示一次确认所有小于tag的消息
     }
 

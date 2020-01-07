@@ -30,8 +30,8 @@ public class WorkProvider {
     @SneakyThrows
     public void workProductStr() {
         long milli = Instant.now().toEpochMilli();
-        String content = "Work product AMQP-RabbitMQ " + milli;
-        log.info("==> Work product a message to queue=[{}] and at [{}]", WorkConfig.WORK_QUEUE, milli);
+        String content = "Work product message at " + milli;
+        log.info("==>  " + content + " to queue=[{}] and at [{}]", WorkConfig.WORK_QUEUE, milli);
         amqpTemplate.convertAndSend(WorkConfig.WORK_QUEUE, content);
     }
 

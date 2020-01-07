@@ -9,6 +9,8 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 import xyz.rexlin600.rabbit.simple.config.SimpleConfig;
 
+import java.time.Instant;
+
 /**
  * Simple 消费者
  * 简单模式
@@ -29,7 +31,8 @@ public class SimpleCustomer {
     @SneakyThrows
     @RabbitHandler
     public void handlerSimple(String content, Channel channel, Message message) {
-        log.info("==>  Simple consume message=[{}] and content=[{}]", message, content);
+        long milli = Instant.now().toEpochMilli();
+        log.info("==>  Simple consume content=[{}] at [{}]", content, milli);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);   // true表示一次确认所有小于tag的消息
     }
 

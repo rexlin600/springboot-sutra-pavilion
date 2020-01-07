@@ -28,8 +28,8 @@ public class FanoutProvider {
      */
     public void fanoutProductStr() {
         long milli = Instant.now().toEpochMilli();
-        String content = "Fanout AMQP-RabbitMQ " + milli;
-        log.info("==>  Fanout product a message to queues and at [{}]", milli);
+        String content = "Fanout message at " + milli;
+        log.info("==>  " + content + " to queues and at [{}]", milli);
         // 广播
         amqpTemplate.convertAndSend(FanoutConfig.FANOUT_EXCHANGE, "", content);
     }

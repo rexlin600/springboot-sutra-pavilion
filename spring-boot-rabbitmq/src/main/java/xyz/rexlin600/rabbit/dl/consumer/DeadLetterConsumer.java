@@ -33,7 +33,7 @@ public class DeadLetterConsumer {
     @RabbitHandler
     public void handlerDLStr(String content, Channel channel, Message message) {
         long milli = Instant.now().toEpochMilli();
-        log.info("==>  DeadLetter consume message=[{}] and content=[{}] at [{}]", message, content, milli);
+        log.info("==>  DeadLetter consume content=[{}] at [{}]", content, milli);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);   // true表示一次确认所有小于tag的消息
     }
 

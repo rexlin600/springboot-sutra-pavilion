@@ -37,9 +37,9 @@ public class DeadLetterProvider {
     @SneakyThrows
     public void productDLExpireStr() {
         long milli = Instant.now().toEpochMilli();
-        String content = "DeadLetter product AMQP-RabbitMQ " + milli;
+        String content = "DeadLetter product message at " + milli;
 
-        log.info("==> DeadLetter product a message to queue=[{}] and at [{}]", DeadLetterConfig.DEAD_LETTER_QUEUE, milli);
+        log.info("==>  " + content + " to queue=[{}]", DeadLetterConfig.DEAD_LETTER_QUEUE);
 
         MessagePostProcessor messagePostProcessor = message -> {
             MessageProperties messageProperties = message.getMessageProperties();

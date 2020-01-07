@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 import xyz.rexlin600.rabbit.simple.config.SimpleConfig;
 import xyz.rexlin600.rabbit.work.config.WorkConfig;
 
+import java.time.Instant;
+
 /**
  * Work 消费者
  * Work模式
@@ -33,7 +35,8 @@ public class WorkCustomer {
     @SneakyThrows
     @RabbitHandler
     public void handlerWorkOne(String content, Channel channel, Message message) {
-        log.info("==>  Work one consume message=[{}] and content=[{}]", message, content);
+        long milli = Instant.now().toEpochMilli();
+        log.info("==>  Work one consume content=[{}] at [{}]", content, milli);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);   // true表示一次确认所有小于tag的消息
     }
 
@@ -48,7 +51,8 @@ public class WorkCustomer {
     @SneakyThrows
     @RabbitHandler
     public void handlerWorkTwo(String content, Channel channel, Message message) {
-        log.info("==>  Work two consume message=[{}] and content=[{}]", message, content);
+        long milli = Instant.now().toEpochMilli();
+        log.info("==>  Work two consume content=[{}] at [{}]", content, milli);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);   // true表示一次确认所有小于tag的消息
     }
 

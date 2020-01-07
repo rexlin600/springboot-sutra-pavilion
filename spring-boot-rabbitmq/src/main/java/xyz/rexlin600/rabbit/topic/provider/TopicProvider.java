@@ -31,7 +31,7 @@ public class TopicProvider {
     public void topicProductStr1() {
         long milli = Instant.now().toEpochMilli();
         String content = "Topic product at " + TopicConfig.TOPIC_QUEUE_A + " config " + milli;
-        log.info("==> Topic product a message to queue=[{}] and at [{}]", TopicConfig.TOPIC_QUEUE_A, milli);
+        log.info("==> " + content + " to queue=[{}] and at [{}]", TopicConfig.TOPIC_QUEUE_A, milli);
         amqpTemplate.convertAndSend(TopicConfig.TOPIC_EXCHANGE, TopicConfig.TOPIC_ROUTINGKEY_A, content);
     }
 
@@ -43,7 +43,7 @@ public class TopicProvider {
     public void topicProductStr2() {
         long milli = Instant.now().toEpochMilli();
         String content = "Topic product at " + TopicConfig.TOPIC_QUEUE_ALL + " config " + milli;
-        log.info("==> Topic product a message to queue=[{}] and at [{}]", TopicConfig.TOPIC_QUEUE_ALL, milli);
+        log.info("==> " + content + " to queue=[{}] and at [{}]", TopicConfig.TOPIC_QUEUE_ALL, milli);
         amqpTemplate.convertAndSend(TopicConfig.TOPIC_EXCHANGE, TopicConfig.TOPIC_ROUTINGKEY_ALL, content);
     }
 
@@ -55,7 +55,7 @@ public class TopicProvider {
     public void topicProductStr3() {
         long milli = Instant.now().toEpochMilli();
         String content = "Topic product at " + TopicConfig.TOPIC_QUEUE_ALL + " config " + milli;
-        log.info("==> Topic product a message to queue=[{}] and at [{}]", TopicConfig.TOPIC_QUEUE_ALL, milli);
+        log.info("==> " + content + " to queue=[{}] and at [{}]", TopicConfig.TOPIC_QUEUE_ALL, milli);
         amqpTemplate.convertAndSend(TopicConfig.TOPIC_EXCHANGE, "routingKey.rexlin600.config.1", content);
     }
 

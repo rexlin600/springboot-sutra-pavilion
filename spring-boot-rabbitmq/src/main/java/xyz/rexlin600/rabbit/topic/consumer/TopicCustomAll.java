@@ -9,6 +9,8 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 import xyz.rexlin600.rabbit.topic.config.TopicConfig;
 
+import java.time.Instant;
+
 /**
  * Topic 消费者类ALL
  *
@@ -28,7 +30,8 @@ public class TopicCustomAll {
     @SneakyThrows
     @RabbitHandler
     public void handlerTopicAll(String content, Channel channel, Message message) {
-        log.info("==>  Topic ALL consume message=[{}] and content=[{}]", message, content);
+        long milli = Instant.now().toEpochMilli();
+        log.info("==>  Topic ALL consume content=[{}] at [{}]", content, milli);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);   // true表示一次确认所有小于tag的消息
     }
 

@@ -28,8 +28,8 @@ public class DirectProvider {
     @SneakyThrows
     public void directProductStr() {
         long milli = Instant.now().toEpochMilli();
-        String content = "Direct product AMQP-RabbitMQ " + milli;
-        log.info("==> Direct product a message to queue=[{}] and at [{}]", DirectConfig.DIRECT_QUEUE, milli);
+        String content = "Direct product message at " + milli;
+        log.info("==> " + content + " to queue=[{}] and at [{}]", DirectConfig.DIRECT_QUEUE, milli);
         amqpTemplate.convertAndSend(DirectConfig.DIRECT_QUEUE, content);
     }
 

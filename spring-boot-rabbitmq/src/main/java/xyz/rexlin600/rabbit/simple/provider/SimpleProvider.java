@@ -29,8 +29,8 @@ public class SimpleProvider {
     @SneakyThrows
     public void simpleProductStr() {
         long milli = Instant.now().toEpochMilli();
-        String content = "Simple product AMQP-RabbitMQ " + milli;
-        log.info("==> Simple product a message to queue=[{}] and at [{}]", SimpleConfig.SIMPLE_QUEUE, milli);
+        String content = "Simple product message at " + milli;
+        log.info("==>  " + content + " to queue=[{}] and at [{}]", SimpleConfig.SIMPLE_QUEUE, milli);
         amqpTemplate.convertAndSend(SimpleConfig.SIMPLE_QUEUE, content);
     }
 
