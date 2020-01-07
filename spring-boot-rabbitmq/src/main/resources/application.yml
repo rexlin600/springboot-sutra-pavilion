@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: rabbitmq
+  rabbitmq:
+    # 集群模式地址、用户名、密码；下面可以配置多个host:port
+    addresses: localhost:5672
+    username: admin
+    password: admin
+    # 是否启用发布者确认
+    publisher-confirms: true
+    # 开启发送失败退回
+    publisher-returns: true
+    listener:
+      # 开启ACK
+      direct:
+        acknowledge-mode: manual
+      simple:
+        acknowledge-mode: manual
+server:
+  port: 10009
+logging:
+  level:
+    xyz.rexlin600: info
