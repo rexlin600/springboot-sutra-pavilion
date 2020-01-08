@@ -35,6 +35,7 @@
         <module>spring-boot-rabbitmq</module>
         <module>spring-boot-jpa</module>
         <module>spring-boot-actuator</module>
+        <module>spring-boot-admin</module>
     </modules>
 
 

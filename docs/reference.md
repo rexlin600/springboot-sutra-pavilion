@@ -43,6 +43,10 @@
 
 - [JPA之指定id保存](https://www.cnblogs.com/yihuihui/p/11901024.html)
 
+**SpringBoot Admin**
+
+- [2.1.4 版本（切换版本请修改URL最后的值，最新为 current）](https://codecentric.github.io/spring-boot-admin/2.1.4)
+- [存在的BUG-见文末](https://blog.csdn.net/lv4961382/article/details/85129144)
 
 
 - [spring mvc 和webflux 区别](https://blog.csdn.net/John_desheng/article/details/103008565)

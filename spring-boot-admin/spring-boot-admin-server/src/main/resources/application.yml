@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: admin-server
+  # endpoint & admin security config
+  security:
+    user:
+      roles: admin
+      name: admin
+      password: admin
+  boot:
+    admin:
+      ui:
+        title: spring-boot-admin-server
+      notify:
+        mail:
+          enabled: false
+      monitor:
+        read-timeout: 10000
+# server port config
+server:
+  port: 10012
+# ednpoint config
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+

@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: admin-client
+  security:
+    user:
+      name: admin
+      password: admin
+      roles: admin
+  boot:
+    admin:
+      client:
+        url: http://localhost:10012
+        instance:
+          metadata:
+            user.name: ${spring.security.user.name}
+            user.password: ${spring.security.user.password}
+        username: ${spring.security.user.name}
+        password: ${spring.security.user.password}
+# port
+server:
+  port: 10013
+# management endpoint
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+  endpoint:
+    health:
+      show-details: always
