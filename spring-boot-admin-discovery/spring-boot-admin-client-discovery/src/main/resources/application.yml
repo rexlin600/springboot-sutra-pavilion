@@ -1,3 +1,4 @@
+# 【采坑】注意 yml 的配置使用注释最好不要在键的上方，尤其是多行配置（单行配置一般不会有问题 ）！因为这样在 IDEA 中启动时应用可能无法正常读取配置
 spring:
   application:
     name: admin-client-discovery
@@ -12,9 +13,9 @@ spring:
         url: http://localhost:10015
         instance:
           metadata:
-            user.name: ${spring.security.user.name}
+            user.name: ${spring.security.user.name} # Submitting the credentials using SBA Client，详情参考 spring-boot-admin 官方文档 5.2 节；保护客户端执行器端点；如果不加下面这个则 SpringBootAdmin 无法读取到相关监控信息，SpringBootAdmin 界面中实例会变为 Down 状态
             user.password: ${spring.security.user.password}
-        username: ${spring.security.user.name}
+        username: ${spring.security.user.name} # In case you use the Spring Boot Admin Client, it needs the credentials for accessing the server，详情参考 spring-boot-admin 官方文档 5.1 节；如果您使用Spring Boot Admin Client，则它需要访问服务器的凭据；即去掉下面的配置无法在 SpringBootAdmin 中访问到应用，提示：Failed to register application as Application...
         password: ${spring.security.user.password}
 # port
 server:
@@ -36,7 +37,7 @@ eureka:
   instance:
     health-check-url-path: /actuator/health
     metadata-map:
-      user.name: ${spring.security.user.name}
+      user.name: ${spring.security.user.name} # Submitting the credentials using Eureka，详情参考 spring-boot-admin 官方文档 5.2 节；使用 Eureka 需要做额外配置如下，否者无法在 SpringBootAdmin 上看到其他应用注册上来
       user.password: ${spring.security.user.password}
       startup: ${random.int}    #needed to trigger info and endpoint update after restart
     prefer-ip-address: true
@@ -45,6 +46,5 @@ eureka:
     serviceUrl:
       defaultZone: http://admin:admin@localhost:10014/eureka/
     registry-fetch-interval-seconds: 5
-    # 【采坑】下面配置必须配置为如下模式，否者报错：Cannot execute request on any known server，但是对程序无影响，可以正常运行
-    register-with-eureka: true
+    register-with-eureka: true # 【采坑】下面配置必须配置为如下模式，否者报错：Cannot execute request on any known server，但是对程序无影响，可以正常运行
     fetch-registry: false
