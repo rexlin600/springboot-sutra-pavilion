@@ -33,6 +33,7 @@
         <module>spring-boot-swagger2</module>
         <module>spring-boot-mybatisplus</module>
         <module>spring-boot-rabbitmq</module>
+        <module>spring-boot-jpa</module>
     </modules>
 
 

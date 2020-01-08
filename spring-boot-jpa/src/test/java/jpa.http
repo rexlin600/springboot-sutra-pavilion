@@ -1,0 +1,46 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+### page query
+GET http://localhost:10010/jpa?page=0&size=10
+Accept: application/json
+
+### add
+POST http://localhost:10010/jpa
+Content-Type: application/json
+
+{
+  "id": 6,
+  "name": "rexlin600",
+  "age": 30,
+  "email": "rexlin600@gmail.com"
+}
+
+### update
+PUT http://localhost:10010/jpa
+Content-Type: application/json
+
+{
+  "id": 6,
+  "name": "rexlin6479",
+  "age": 20,
+  "email": "rexlin6479@gmail.com"
+}
+
+
+### get
+GET http://localhost:10010/jpa/6
+Accept: application/json
+
+### delete
+DELETE http://localhost:10010/jpa/6
+Content-Type: application/json
+
+###
+
+
+

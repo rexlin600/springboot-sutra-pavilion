@@ -38,6 +38,12 @@
 - [rabbitmq死信队列详解与使用](https://blog.csdn.net/zhangcongyi420/article/details/100126666)
 
 
+**JPA**
+
+- [JPA之指定id保存](https://www.cnblogs.com/yihuihui/p/11901024.html)
+
+
+
 - [spring mvc 和webflux 区别](https://blog.csdn.net/John_desheng/article/details/103008565)
 
 
