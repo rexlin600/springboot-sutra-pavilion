@@ -12,8 +12,12 @@ spring:
         url: http://localhost:10012
         instance:
           metadata:
+            # Submitting the credentials using SBA Client，详情参考 spring-boot-admin 官方文档 5.2 节
+            # 保护客户端执行器端点；如果不加下面这个则 SpringBootAdmin 无法读取到相关监控信息，SpringBootAdmin 界面中实例会变为 Down 状态
             user.name: ${spring.security.user.name}
             user.password: ${spring.security.user.password}
+        # In case you use the Spring Boot Admin Client, it needs the credentials for accessing the server，详情参考 spring-boot-admin 官方文档 5.1 节
+        # 如果您使用Spring Boot Admin Client，则它需要访问服务器的凭据；即去掉下面的配置无法在 SpringBootAdmin 中访问到应用，提示：Failed to register application as Application...
         username: ${spring.security.user.name}
         password: ${spring.security.user.password}
 # port
