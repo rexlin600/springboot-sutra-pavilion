@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: java8
+server:
+  port: 10017

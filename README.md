@@ -1,4 +1,4 @@
-# springboot2-example
+# SpringBoot2.x Example
 
 ![Spring Boot 2.0](https://img.shields.io/badge/Spring%20Boot-2.0-brightgreen.svg)
 ![Mysql 5.7 +](https://img.shields.io/badge/Mysql-5.7+-blue.svg)
@@ -14,7 +14,7 @@
 最终的目的是帮助大家快速掌握 `Spring Boot 2.x` 的使用以及与其集成的各类中间件的集成使用。
 
 
-## SpringBoot 2.x
+## 介绍
 
 **本项目提供的示例概览：**
 
@@ -57,7 +57,7 @@
   * spring-boot-zuul-upload
 * spring-boot-fastDFS
 * spring-boot-validation(jsr303 and hibernate-validation)
-* spring-boot-java8
+* spring-boot-java8（进行中）
 * spring-boot-flyway
 * spring-boot-ldap
 * spring-boot-transaction
@@ -98,6 +98,7 @@
 2. 完善 `spring-boot-rabbitmq`
 3. 完善 `spring-boot-elasticsearch`
 4. 完善 `spring-boot-redis`
+5. 完善 `spring-boot-admin`（mail）
 
 
 ## 参考
