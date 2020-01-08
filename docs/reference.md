@@ -1,6 +1,7 @@
 **SpringBoot 2.x**
 
 - [Spring Boot 2.0 最全使用教程](https://github.com/ityouknow/spring-boot-leaning)
+- [Spring中WebApplicationInitializer的理解](https://blog.csdn.net/zq17865815296/article/details/79464403)
 
 **Docker**
 

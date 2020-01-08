@@ -1,0 +1,113 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+### index：所有监控的端点都可以从这儿找到
+GET http://localhost:10011/actuator
+Authorization: Basic admin admin
+Accept: application/json
+
+### 显示任意 application 信息
+GET http://localhost:10011/actuator/info
+Authorization: Basic admin admin
+Accept: application/json
+
+### 公开当前 application 的 audit events 信息
+GET http://localhost:10011/actuator/auditevents
+Authorization: Basic admin admin
+Accept: application/json
+
+### 显示 application 中所有 Spring beans 的完整列表
+GET http://localhost:10011/actuator/beans
+Authorization: Basic admin admin
+Accept: application/json
+
+### 暴露可用的缓存
+GET http://localhost:10011/actuator/caches
+Authorization: Basic admin admin
+Accept: application/json
+
+### 显示在 configuration 和 auto-configuration classes 上评估的条件以及它们执行或不执行 match 的原因
+GET http://localhost:10011/actuator/conditions
+Authorization: Basic admin admin
+Accept: application/json
+
+### 显示所有 @ConfigurationProperties 的整理列表
+GET http://localhost:10011/actuator/configprops
+Authorization: Basic admin admin
+Accept: application/json
+
+### 从 Spring 的ConfigurableEnvironment公开 properties
+GET http://localhost:10011/actuator/env
+Authorization: Basic admin admin
+Accept: application/json
+
+### 显示 application 健康信息
+GET http://localhost:10011/actuator/health
+Authorization: Basic admin admin
+Accept: application/json
+
+### 显示 HTTP 跟踪信息(默认情况下，最后 100 个 HTTP request-response 交换)
+GET http://localhost:10011/actuator/httptrace
+Authorization: Basic admin admin
+Accept: application/json
+
+### 显示并修改 application 中 loggers 的 configuration
+GET http://localhost:10011/actuator/loggers
+Authorization: Basic admin admin
+Accept: application/json
+
+### 显示当前 application 的 'metrics' 信息
+GET http://localhost:10011/actuator/metrics
+Authorization: Basic admin admin
+Accept: application/json
+
+### 显示所有 @RequestMapping paths 的整理列表
+GET http://localhost:10011/actuator/mappings
+Authorization: Basic admin admin
+Accept: application/json
+
+### 显示 application 中的计划任务
+GET http://localhost:10011/actuator/scheduledtasks
+Authorization: Basic admin admin
+Accept: application/json
+
+### 执行线程转储
+GET http://localhost:10011/actuator/threaddump
+Authorization: Basic admin admin
+Accept: application/json
+
+### 406 返回hprof堆转储文件
+GET http://localhost:10011/actuator/heapdump
+Authorization: Basic admin admin
+Accept: application/json
+
+### 406 通过 HTTP 公开 JMX beans(当 Jolokia 在 classpath 上时，不适用于 WebFlux)
+GET http://localhost:10011/actuator/jolokia
+Authorization: Basic admin admin
+Accept: application/json
+
+### 404 返回日志文件的内容(如果已设置logging.file或logging.path properties)。支持使用 HTTP Range标头来检索 log 文件内容的一部分
+GET http://localhost:10011/actuator/logfile
+Authorization: Basic admin admin
+Accept: application/json
+
+### 404 以 Prometheus 服务器可以抓取的格式公开 metrics
+GET http://localhost:10011/actuator/prometheus
+Authorization: Basic admin admin
+Accept: application/json
+
+
+### 【警告】：让 application 正常关闭
+POST http://localhost:10011/actuator/shutdown
+Authorization: Basic admin admin
+Accept: application/json
+
+### 获取自定义 endpoint 信息（可能会耗时1-3分钟）
+POST http://localhost:10011/actuator/myEndpoint
+Authorization: Basic admin admin
+Accept: application/json
+

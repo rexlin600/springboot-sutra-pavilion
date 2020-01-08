@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: actuator
+  security:
+    user:
+      name: admin
+      password: admin
+      # 和 ActuatorSecurity 的角色对应
+      roles: admin
+server:
+  port: 10011
+# 应用基本信息
+info:
+  app:
+    author: rexlin600
+    email: rexlin600@gmail.com
+    name: spring-boot-actuator
+    version: 2.1.4.RELEASE
+    test: actuator-test
+management:
+  # 管理端点端口
+  server:
+    port: ${server.port}
+  endpoints:
+    web:
+      # ymal中必须加引号
+      exposure:
+        include: "*"
+      # 跨域设置
+      cors:
+        allowed-methods: "*"
+        allowed-origins: "*"
+      # 修改访问路径  2.0之前默认是/   2.0默认是 /actuator  可以通过这个属性值修改，必须填写一个值！
+      base-path: "/actuator"
+    # 【注意】是否启用默认的 endpoint；如果为了安全性，建议设置为 false
+    enabled-by-default: true
+  endpoint:
+    # 启用info endpoint
+    info:
+      enabled: true
+    # 健康信息查看权限
+    health:
+      show-details: when_authorized
+    # 启用 shutdown 端点,优雅关机，默认情况下不启用；实测web项目无效 403
+    shutdown:
+      enabled: true

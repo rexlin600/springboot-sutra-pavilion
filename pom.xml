@@ -34,6 +34,7 @@
         <module>spring-boot-mybatisplus</module>
         <module>spring-boot-rabbitmq</module>
         <module>spring-boot-jpa</module>
+        <module>spring-boot-actuator</module>
     </modules>
 
 
