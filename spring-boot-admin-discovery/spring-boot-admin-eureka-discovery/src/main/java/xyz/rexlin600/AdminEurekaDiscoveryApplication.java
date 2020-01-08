@@ -15,10 +15,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 @EnableEurekaServer
 @SpringBootApplication
-public class SpringAdminEurekaApplication {
+public class AdminEurekaDiscoveryApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringAdminEurekaApplication.class, args);
+        SpringApplication.run(AdminEurekaDiscoveryApplication.class, args);
     }
 
     @EnableWebSecurity
