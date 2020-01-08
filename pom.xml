@@ -36,6 +36,7 @@
         <module>spring-boot-jpa</module>
         <module>spring-boot-actuator</module>
         <module>spring-boot-admin</module>
+        <module>spring-boot-admin-discovery</module>
     </modules>
 
 

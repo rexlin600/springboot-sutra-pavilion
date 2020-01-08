@@ -28,8 +28,8 @@
 | 9 | [spring-boot-rabbitmq](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-rabbitmq) | 10009 | 集成集群 `RabbitMQ`，发送字符串、对象等；常见六种模式：HelloWorld（Simple）、Work（竞争）、FanOut（发布-订阅）、路由模式（完整的匹配，可参考Direct）、Topic（主题模式）、RPC模式（不常用）；死信队列（DLX） |
 | 10 | [spring-boot-jpa](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-jpa) | 10010 | 集成 `JPA`；基础 `CURD` 示例；自定义主键策略 |
 | 11 | [spring-boot-actuator](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-actuator) | 10011 | 集成 `Actuator`；自定义Endpoint；访问端点鉴权；端点跨域配置；常见断点的作用、见`actuator.http` |
-| 12 | [spring-boot-admin](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-admin)  | 10012、10013 | 集成 `Admin`；这里要占用两个端口（client、server各一个） |
-| 14 | _ | 10014 |
+| 12 | [spring-boot-admin](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-admin)  | 10012、10013 | 集成 `Admin`；这里要占用两个端口（client、server各一个）；这个版本没有涉及 `Discovery` 的内容；访问服务端点授权；服务各指标监控（details、metrics、env、beans、configuration properties、task、logger、jvm、web、caches等） |
+| 14 | [spring-boot-admin-discovery](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-admin-discovery) | 10014、10015、10016 | 集成 `Admin`，功能同上，切换为通过 `注册中心` 去拉取服务实例信息 |
 
 
 ## Plan

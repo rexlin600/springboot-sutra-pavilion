@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: admin-eureka
+  security:
+    user:
+      name: admin
+      password: admin
+# server config
+server:
+  port: 10014
+# eureka config
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 3
+    prefer-ip-address: true
+    hostname: localhost
+  client:
+    serviceUrl:
+      # 这里的 defaultZone 不能写成 default-zone
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+    registry-fetch-interval-seconds: 5
+    fetch-registry: true
+    register-with-eureka: false

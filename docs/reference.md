@@ -48,6 +48,11 @@
 - [2.1.4 版本（切换版本请修改URL最后的值，最新为 current）](https://codecentric.github.io/spring-boot-admin/2.1.4)
 - [存在的BUG-见文末](https://blog.csdn.net/lv4961382/article/details/85129144)
 
+**SpringBoot Admin Discovery**
+
+- [解决springcloud启动报错The bean 'eurekaRegistration', defined in class path resource](https://blog.csdn.net/yjt520557/article/details/91408635)
+- [Eureka+SpringBoot2.X结合Security注册中心安全验证](https://www.cnblogs.com/arebirth/p/eurekaservicegistrysafesercurity.html)
+
 
 - [spring mvc 和webflux 区别](https://blog.csdn.net/John_desheng/article/details/103008565)
 

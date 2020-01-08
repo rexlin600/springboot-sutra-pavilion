@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: admin-server-discovery
+  # endpoint & admin security config
+  security:
+    user:
+      roles: admin
+      name: admin
+      password: admin
+  boot:
+    admin:
+      ui:
+        title: spring-boot-admin-server-discovery
+      notify:
+        mail:
+          enabled: false
+      monitor:
+        read-timeout: 10000
+# server port config
+server:
+  port: 10015
+# ednpoint config
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+# eureka config
+eureka:
+  instance:
+    health-check-url-path: /actuator/health
+    metadata-map:
+      startup: ${random.int}    #needed to trigger info and endpoint update after restart
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+  client:
+    serviceUrl:
+      defaultZone: http://admin:admin@localhost:10014/eureka/
+    registry-fetch-interval-seconds: 5
+    # 【采坑】下面配置必须配置为如下模式，否者报错：Cannot execute request on any known server，但是对程序无影响，可以正常运行
+    register-with-eureka: true
+    fetch-registry: false

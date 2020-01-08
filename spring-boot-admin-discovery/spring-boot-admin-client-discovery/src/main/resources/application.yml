@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: admin-client-discovery
+  security:
+    user:
+      name: admin
+      password: admin
+      roles: admin
+  boot:
+    admin:
+      client:
+        url: http://localhost:10015
+        instance:
+          metadata:
+            user.name: ${spring.security.user.name}
+            user.password: ${spring.security.user.password}
+        username: ${spring.security.user.name}
+        password: ${spring.security.user.password}
+# port
+server:
+  port: 10016
+# management endpoint
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+  endpoint:
+    health:
+      show-details: always
+# eureka config
+eureka:
+  instance:
+    health-check-url-path: /actuator/health
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+      startup: ${random.int}    #needed to trigger info and endpoint update after restart
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+  client:
+    serviceUrl:
+      defaultZone: http://admin:admin@localhost:10014/eureka/
+    registry-fetch-interval-seconds: 5
+    # 【采坑】下面配置必须配置为如下模式，否者报错：Cannot execute request on any known server，但是对程序无影响，可以正常运行
+    register-with-eureka: true
+    fetch-registry: false
