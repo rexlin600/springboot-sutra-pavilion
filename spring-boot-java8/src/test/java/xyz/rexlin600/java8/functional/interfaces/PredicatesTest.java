@@ -2,7 +2,9 @@ package xyz.rexlin600.java8.functional.interfaces;
 
 import org.junit.Before;
 import org.junit.Test;
-import xyz.rexlin600.java8.functional.interfaces.Predicates;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.*;
 
@@ -11,6 +13,8 @@ import static org.junit.Assert.*;
  * @auther hekunlin
  * @create 2020-01-09 10:44
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class PredicatesTest {
 
     Predicates predicates;

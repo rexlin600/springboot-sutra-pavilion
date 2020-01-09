@@ -2,6 +2,9 @@ package xyz.rexlin600.java8.functional.interfaces;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.function.Consumer;
 
@@ -12,6 +15,8 @@ import static org.junit.Assert.*;
  * @auther hekunlin
  * @create 2020-01-09 15:29
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class ConsumersTest {
 
     Consumers consumers;

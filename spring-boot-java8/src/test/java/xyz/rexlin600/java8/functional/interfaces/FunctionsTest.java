@@ -2,9 +2,11 @@ package xyz.rexlin600.java8.functional.interfaces;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import xyz.rexlin600.model.Goods;
 
-import java.util.List;
 import java.util.function.Function;
 
 import static org.junit.Assert.*;
@@ -14,6 +16,8 @@ import static org.junit.Assert.*;
  * @auther hekunlin
  * @create 2020-01-09 14:53
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class FunctionsTest {
 
     Functions functions;

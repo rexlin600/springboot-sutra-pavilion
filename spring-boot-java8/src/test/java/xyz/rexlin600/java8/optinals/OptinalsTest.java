@@ -2,13 +2,14 @@ package xyz.rexlin600.java8.optinals;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.ObjectUtils;
 import xyz.rexlin600.model.Goods;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 
 import static org.junit.Assert.*;
 
@@ -17,6 +18,8 @@ import static org.junit.Assert.*;
  * @auther hekunlin
  * @create 2020-01-09 17:02
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class OptinalsTest {
 
     Optinals optinals;

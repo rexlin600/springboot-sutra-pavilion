@@ -2,6 +2,9 @@ package xyz.rexlin600.java8.stream;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Comparator;
 import java.util.List;
@@ -12,6 +15,8 @@ import java.util.function.Consumer;
  * @auther hekunlin
  * @create 2020-01-09 13:53
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class SortedTest {
 
     Sorted sorted;

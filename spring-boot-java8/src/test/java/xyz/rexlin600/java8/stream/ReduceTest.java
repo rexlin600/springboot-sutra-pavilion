@@ -2,6 +2,9 @@ package xyz.rexlin600.java8.stream;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import xyz.rexlin600.model.Goods;
 
 import static org.junit.Assert.*;
@@ -11,6 +14,8 @@ import static org.junit.Assert.*;
  * @auther hekunlin
  * @create 2020-01-09 14:15
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class ReduceTest {
 
     private static final String PATTERN = "yyyy-MM-dd HH:mm:ss";
