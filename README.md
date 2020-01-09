@@ -37,6 +37,7 @@
 | [actuator](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-actuator) | 集成 `Actuator`；自定义Endpoint；访问端点鉴权；端点跨域配置；常见断点的作用、见`actuator.http` |
 | [admin](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-admin) | 集成 `Admin`；`yml` 中会说么为什么关于 `用户名/密码` 要那样配置，很多人到了 `2.X` 就被这个搞昏了 ；这个版本没有涉及 `Discovery` 的内容；访问服务端点授权；服务各指标监控（details、metrics、env、beans、configuration properties、task、logger、jvm、web、caches等） |
 | [admin-discovery](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-admin-discovery) | 集成 `Admin`，功能同上，切换为通过 `注册中心` 去拉取服务实例信息 |
+| [java-8](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-admin-discovery) | 精炼版 `Java 8` 指南：`Default Method`、`Lambda`、`Functional Interfaces(Predicates、Functions、Suppliers、Consumers、Comparators)`、`Optinals`、`Stream(Filter、Sorted、Map、Match、Count、Reduce)`、`DateAPI`、`Parallel Streams`、`Maps` 等等 |
 | _ | _ |
 
 
