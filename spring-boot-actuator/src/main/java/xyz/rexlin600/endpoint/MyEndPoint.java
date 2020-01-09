@@ -216,7 +216,7 @@ public class MyEndPoint {
             if (timeRemaining < -1d) {
                 sb.append("Charging");
             } else if (timeRemaining < 0d) {
-                sb.append("Calculating time remaining");
+                sb.append("Calculating date remaining");
             } else {
                 sb.append(String.format("%d:%02d remaining", (int) (timeRemaining / 3600),
                         (int) (timeRemaining / 60) % 60));

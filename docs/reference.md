@@ -3,6 +3,12 @@
 - [Spring Boot 2.0 最全使用教程](https://github.com/ityouknow/spring-boot-leaning)
 - [Spring中WebApplicationInitializer的理解](https://blog.csdn.net/zq17865815296/article/details/79464403)
 
+**SpringMVC**
+
+- [SpringMVC与Struts2区别与比较总结](https://blog.csdn.net/jishuizhipan/article/details/79385190)
+- [(Struts)Filter、Servlet和Interceptor的执行顺序](https://blog.csdn.net/tanga842428/article/details/52175683)
+- [Servlet Filter和Spring mvc Interceptor](https://www.jianshu.com/p/685c65ed6944)
+
 **HelloWordl**
 
 - [SpringBoot打成war包，部署到Tomcat服务器](https://www.jianshu.com/p/e4a9ac255be3)
@@ -57,6 +63,11 @@
 - [解决springcloud启动报错The bean 'eurekaRegistration', defined in class path resource](https://blog.csdn.net/yjt520557/article/details/91408635)
 - [Eureka+SpringBoot2.X结合Security注册中心安全验证](https://www.cnblogs.com/arebirth/p/eurekaservicegistrysafesercurity.html)
 
+**Java8**
+
+- [<? extends T>和<? super T>的理解](https://www.cnblogs.com/lixuwu/p/8482353.html#_label1)
+- [parallelStream遇到的坑](https://www.jianshu.com/p/1437f9199b99)
+- [记一次ArrayList报错：UnsupportedOperationException异常](https://blog.csdn.net/A_Runner/article/details/89702774)
 
 **Servlet 与 React**
 

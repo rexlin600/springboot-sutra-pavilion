@@ -32,10 +32,10 @@
 | [elasticsearch](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-elasticsearch) | 集成 `elasticsearch` 的示例；`es` 的 `rest API` |
 | [swagger2](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-swagger2) | 集成 `swagger2` 及常用 `swagger` 注解 |
 | [mybatisplus](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-mybatisplus) | 集成 `mybatisPlus`；使用其提供的增强 `CRUD`；代码生成器；SQL注入器；性能分析插件；动态数据源；多租户SQL解析器；动态表名SQL解析器 |
-| [rabbitmq](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-rabbitmq) | 集成集群 `RabbitMQ`，发送字符串、对象等；常见六种模式：HelloWorld（Simple）、Work（竞争）、FanOut（发布-订阅）、<br> 路由模式（完整的匹配，可参考Direct）、Topic（主题模式）、RPC模式（不常用）；死信队列（DLX） |
+| [rabbitmq](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-rabbitmq) | 集成集群 `RabbitMQ`，发送字符串、对象等；常见六种模式：HelloWorld（Simple）、Work（竞争）、FanOut（发布-订阅）、路由模式（完整的匹配，可参考Direct）、Topic（主题模式）、RPC模式（不常用）；死信队列（DLX） |
 | [jpa](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-jpa) | 集成 `JPA`；基础 `CURD` 示例；自定义主键策略 |
 | [actuator](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-actuator) | 集成 `Actuator`；自定义Endpoint；访问端点鉴权；端点跨域配置；常见断点的作用、见`actuator.http` |
-| [admin](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-admin) | 集成 `Admin`；`yml` 中会说么为什么关于 `用户名/密码` 要那样配置，很多人到了 `2.X` 就被这个搞昏了 ；这个版本没有涉及 `Discovery` 的内容；<br> 访问服务端点授权；服务各指标监控（details、metrics、env、beans、configuration properties、task、logger、jvm、web、caches等） |
+| [admin](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-admin) | 集成 `Admin`；`yml` 中会说么为什么关于 `用户名/密码` 要那样配置，很多人到了 `2.X` 就被这个搞昏了 ；这个版本没有涉及 `Discovery` 的内容；访问服务端点授权；服务各指标监控（details、metrics、env、beans、configuration properties、task、logger、jvm、web、caches等） |
 | [admin-discovery](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-admin-discovery) | 集成 `Admin`，功能同上，切换为通过 `注册中心` 去拉取服务实例信息 |
 | _ | _ |
 

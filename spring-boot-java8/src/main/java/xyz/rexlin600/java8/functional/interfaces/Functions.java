@@ -1,28 +1,23 @@
-package xyz.rexlin600.java8.lambda;
+package xyz.rexlin600.java8.functional.interfaces;
 
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 import xyz.rexlin600.model.Goods;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Lambda 测试类
+ * Functions 类
  *
- * @author: rexlin600
- * @date: 2020-01-09 01:15:24
+ * @author: hekunlin
+ * @date: 2020/1/9
  */
-@Slf4j
-@Service
-public class LambdaBiz {
+public class Functions {
 
     /**
      * init data
@@ -43,73 +38,42 @@ public class LambdaBiz {
         goodsList.add(new Goods(10L, "Ynez", 0, "产品经理", 74.24, "深卡其布色", LocalDateTime.parse("2015-06-20 03:31:47", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
     }
 
-
     /**
-     * 构建 Stream 的各种方法
+     * 增加 100 的 Function Interfaces
+     *
+     * @return
      */
-    public void buildStream() {
-        // empty stream
-        Stream<Object> empty = Stream.empty();
-        log.info("empty stream = [{}]", empty);
-
-        // stream of one goodsList
-        Stream<List<Goods>> oneListStream = Stream.of(goodsList);
-        log.info("one list stream = [{}]", oneListStream);
-
-        // stream of two goodsList
-        Stream<List<Goods>> twoListStream = Stream.of(goodsList, goodsList);
-        log.info("two list stream = [{}]", twoListStream);
-
-        // build stream
-        Stream<Object> buildStream = Stream.builder().add(goodsList).build();
-        log.info("build stream = [{}]", buildStream);
-
-        // concat stream
-        Stream<List<Goods>> concatStream = Stream.concat(oneListStream, twoListStream);
-        log.info("concat two stream = [{}]", concatStream);
-
-        // -----------------------------------------------------------------------------------------------
-        // 无限长度的 Stream ：可以无限对这个流操作下去，无情鞭尸！
-        // -----------------------------------------------------------------------------------------------
-        // generate random number stream
-        Stream<Double> generateRandomStream = Stream.generate(() -> Math.random());
-        log.info("generate random number stream = [{}]", generateRandomStream);
-
-        // generate list stream
-        // this method can simplify by lambda
-        Stream<List<Goods>> generateSimplifyListStream = Stream.generate(() -> goodsList);
-        Stream<List<Goods>> generateListStream = Stream.generate(new Supplier<List<Goods>>() {
+    public Long plusOneHundredFunction() {
+        Function<Long, Long> plusFunc = new Function<Long, Long>() {
             @Override
-            public List<Goods> get() {
-                return goodsList;
+            public Long apply(Long value) {
+                return value + 100;
+            }
+        };
+
+        goodsList.stream().peek(new Consumer<Goods>() {
+            @Override
+            public void accept(Goods goods) {
+
             }
         });
-        log.info("generate list stream by simplify lamdba = [{}]", generateSimplifyListStream);
-        log.info("generate list stream = [{}]", generateListStream);
 
-        // iterate
-        Stream<Goods> iterateStream = Stream.iterate(goodsList.get(0), new UnaryOperator<Goods>() {
-            @Override
-            public Goods apply(Goods goods) {
-                String goodsName = "Cool " + goods.getName();
-                goods.setName(goodsName);
-                // FIXME not print log
-                log.info("==> Stream iterate goods name = [{}]", goodsName);
-                return goods;
-            }
-        });
-        log.info("iterate goods stream = [{}]", iterateStream);
-
-        // iterate println
-        Stream.iterate(Math.random(), m -> m + 1)
-                .limit(5)
-                .forEach(new Consumer<Double>() {
-                    @Override
-                    public void accept(Double num) {
-                        log.info("==> Stream iterate number = [{}]", num);
-                    }
-                });
+        Long result = plusFunc.apply(10L);
+        return result;
     }
 
+    /**
+     * 行为参数化：此例传入的 Function 是将每一个 goods 转为名称的 String
+     * <p>
+     * #behavioralParameterization 方法遍历打印
+     *
+     * @param function
+     * @return
+     */
+    public void behavioralParameterization(Function function) {
+        goodsList.stream()
+                .map(function)
+                .forEach((Consumer<String>) o -> System.out.println(o));
+    }
 
 }
