@@ -3,6 +3,10 @@
 - [Spring Boot 2.0 最全使用教程](https://github.com/ityouknow/spring-boot-leaning)
 - [Spring中WebApplicationInitializer的理解](https://blog.csdn.net/zq17865815296/article/details/79464403)
 
+**HelloWordl**
+
+- [SpringBoot打成war包，部署到Tomcat服务器](https://www.jianshu.com/p/e4a9ac255be3)
+
 **Docker**
 
 - [Docker 问答录](https://blog.lab99.org/post/docker-2016-07-14-faq.html)
