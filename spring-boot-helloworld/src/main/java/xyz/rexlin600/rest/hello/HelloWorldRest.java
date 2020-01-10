@@ -1,4 +1,4 @@
-package xyz.rexlin600.rest;
+package xyz.rexlin600.rest.hello;
 
 import org.springframework.web.bind.annotation.*;
 import xyz.rexlin600.entity.req.PostReq;
