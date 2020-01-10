@@ -22,6 +22,12 @@ public class SchedulerTask2 {
 
     /**
      * 下面两种方式，程序启动时会执行一次，二者区别见参考文档的文章说明
+     * <p>
+     * fixedRate 说明
+     *
+     * @Scheduled(fixedRate = 6000) ：上一次开始执行时间点之后6秒再执行
+     * @Scheduled(fixedDelay = 6000) ：上一次执行完毕时间点之后6秒再执行
+     * @Scheduled(initialDelay=1000, fixedRate=6000) ：第一次延迟1秒后执行，之后按 fixedRate 的规则每6秒执行一次
      */
 
     @Scheduled(fixedRate = 6000)
