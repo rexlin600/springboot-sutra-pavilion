@@ -3,11 +3,3 @@ sudo: false
 script: mvn clean verify
 jdk:
   - openjdk8
-
-after_success:
-  - mvn clean test jacoco:report coveralls:report -DrepoToken=dJE7vRZlNZ0p6xA7iZMgPUJ1LRtdgAkJl
-  - codecov
-
-branches:
-  only:
-    - master
