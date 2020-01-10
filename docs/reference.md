@@ -70,6 +70,11 @@
 - [记一次ArrayList报错：UnsupportedOperationException异常](https://blog.csdn.net/A_Runner/article/details/89702774)
 - [Java8 新的 Stream](https://www.rexlin600.com/2018/01/02/003%20Java/001%20JAVA%E5%9F%BA%E7%A1%80/002%20Java8%E6%96%B0Stream/)
 
+**Scheduler**
+
+- [quartz/Cron/Crontab表达式在线生成工具](http://www.bejson.com/othertools/cron/)
+- [理解Spring定时任务@Scheduled的两个属性fixedRate和fixedDelay](https://blog.csdn.net/czx2018/article/details/83501945)
+
 **Servlet 与 React**
 
 - [spring mvc 和webflux 区别](https://blog.csdn.net/John_desheng/article/details/103008565)

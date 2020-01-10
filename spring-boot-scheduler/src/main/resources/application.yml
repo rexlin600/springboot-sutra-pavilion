@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: scheduler
+server:
+  port: 10018

@@ -39,6 +39,7 @@
         <module>spring-boot-admin</module>
         <module>spring-boot-admin-discovery</module>
         <module>spring-boot-java8</module>
+        <module>spring-boot-scheduler</module>
     </modules>
 
 
