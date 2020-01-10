@@ -80,4 +80,6 @@
 
 - [spring mvc 和webflux 区别](https://blog.csdn.net/John_desheng/article/details/103008565)
 
+**Spring MVC**
 
+- [消息转换器：Spring Boot中如何扩展XML请求和响应的支持](http://blog.didispace.com/spring-boot-xml-httpmessageconverter/)

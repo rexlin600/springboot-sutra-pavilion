@@ -39,6 +39,7 @@
 | [java8](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-java8) | 精炼版 `Java 8` 指南：`Default Method`、`Lambda`、`Functional Interfaces(Predicates、Functions、Suppliers、Consumers、Comparators)`、`Optinals`、`Stream(Filter、Sorted、Map、Match、Count、Reduce)`、`DateAPI`、`Parallel Streams`、`Maps` 等等 |
 | [scheduler](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-scheduler) | 集成 `SpringBoot` 定时任务，基于 `anntation` 的入门版本 |
 | [mail](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-mail) | 集成 `mail` 邮件服务，提供：文本、HTML、附件、内嵌资源、模板邮件的发送与测试 |
+| [jdbc](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-jdbc) | 集成 `jdbcTemplate` |
 | _ | _ |
 
 
@@ -46,7 +47,6 @@
 
 **新计划**
 
-* spring-boot-xml（扩展支持发送xml参数的请求，进行中）
 * spring-boot-sharding-jdbc
 * spring-boot-sharding-jdbc-masterslave
 * spring-boot-mongodb

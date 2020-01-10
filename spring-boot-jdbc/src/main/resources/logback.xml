@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <!-- logger name="org.springframework" level="DEBUG"/-->
+    <!--显示日志-->
+    <logger name="org.springframework.jdbc.core" additivity="false" level="DEBUG">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+</configuration>

@@ -41,6 +41,7 @@
         <module>spring-boot-java8</module>
         <module>spring-boot-scheduler</module>
         <module>spring-boot-mail</module>
+        <module>spring-boot-jdbc</module>
     </modules>
 
 
