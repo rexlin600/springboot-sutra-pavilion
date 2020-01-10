@@ -68,6 +68,7 @@
 - [<? extends T>和<? super T>的理解](https://www.cnblogs.com/lixuwu/p/8482353.html#_label1)
 - [parallelStream遇到的坑](https://www.jianshu.com/p/1437f9199b99)
 - [记一次ArrayList报错：UnsupportedOperationException异常](https://blog.csdn.net/A_Runner/article/details/89702774)
+- [Java8 新的 Stream](https://www.rexlin600.com/2018/01/02/003%20Java/001%20JAVA%E5%9F%BA%E7%A1%80/002%20Java8%E6%96%B0Stream/)
 
 **Servlet 与 React**
 
