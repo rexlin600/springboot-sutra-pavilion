@@ -1,0 +1,33 @@
+# spring application
+spring:
+  application:
+    name: HelloWord
+# server，war 包部署时这个配置将失效
+server:
+  port: 10001
+
+# 各种配置读取
+rexlin600:
+  simple:
+    properties:
+      name: "rexlin600"
+      web-url: "http://www.rexlin600.com"
+      random-str: ${random.value}
+      random-int: ${random.int}
+      random-long: ${random.long}
+      random-int-limit: ${random.int[1,9]}
+      random-long-limit: ${random.int[10000,999999]}
+  list:
+    list[0]: Hello
+    list[1]: World
+    integer-list: ${random.int},${random.int}
+    double-list:
+      - 20.11
+      - 100.22
+  kv:
+    map:
+      name: rexlin600
+      gender: man
+      goods: cool
+      key1: javaer
+      '[user.likes]': beautiful world # 如果Map类型的key包含非字母数字和-的字符，需要用[]括起来

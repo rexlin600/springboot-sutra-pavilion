@@ -12,6 +12,7 @@
 **HelloWordl**
 
 - [SpringBoot打成war包，部署到Tomcat服务器](https://www.jianshu.com/p/e4a9ac255be3)
+- [配置绑定 2.0 全解析](http://blog.didispace.com/Spring-Boot-2-0-feature-1-relaxed-binding-2/)
 
 **Docker**
 

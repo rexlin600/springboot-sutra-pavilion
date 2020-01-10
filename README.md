@@ -24,7 +24,7 @@
 
 | 模块名称 | 模块功能描述 | 
 | --- | --- |
-| [helloworld](https://github.com/rexlin600/springboot2-examplespringboot2-example/tree/master/spring-boot-helloworld) | 国际惯例，`HelloWorld`；使用容器部署：构建war包 |
+| [helloworld](https://github.com/rexlin600/springboot2-examplespringboot2-example/tree/master/spring-boot-helloworld) | 国际惯例，`HelloWorld`；使用容器部署：构建war包；自定义属性、随机数、配置绑定等 |
 | [docker](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-docker) | 集成 `docker` 插件；绑定 `maven` 生命周期相关的命令到 `docker` 命令 |
 | [runner](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-runner) | 使用 `CommandLineRunner` 以及 `ApplicationRunner` 的演示 |
 | [github](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-github) | 使用 `github api v3` 简易示例；推荐个 `iPhone` 的客户端(付费)：`PPHub`  |
@@ -38,7 +38,8 @@
 | [admin](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-admin) | 集成 `Admin`；`yml` 中会说么为什么关于 `用户名/密码` 要那样配置，很多人到了 `2.X` 就被这个搞昏了 ；这个版本没有涉及 `Discovery` 的内容；访问服务端点授权；服务各指标监控（details、metrics、env、beans、configuration properties、task、logger、jvm、web、caches等） |
 | [admin-discovery](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-admin-discovery) | 集成 `Admin`，功能同上，切换为通过 `注册中心` 去拉取服务实例信息 |
 | [java8](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-java8) | 精炼版 `Java 8` 指南：`Default Method`、`Lambda`、`Functional Interfaces(Predicates、Functions、Suppliers、Consumers、Comparators)`、`Optinals`、`Stream(Filter、Sorted、Map、Match、Count、Reduce)`、`DateAPI`、`Parallel Streams`、`Maps` 等等 |
-| [scheduler](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-scheduler) | 集成 `SpringBoot` 定时任务 |
+| [scheduler](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-scheduler) | 集成 `SpringBoot` 定时任务，基于 `anntation` 的入门版本 |
+| [xxx](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-xxx) | _ |
 | _ | _ |
 
 
@@ -49,7 +50,6 @@
 * spring-boot-sharding-jdbc
 * spring-boot-sharding-jdbc-masterslave
 * spring-boot-task
-* spring-boot-scheduler（进行中）
 * spring-boot-mail
 * spring-boot-mongodb
 * spring-boot-shiro
