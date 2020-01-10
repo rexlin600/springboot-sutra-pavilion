@@ -5,9 +5,9 @@ jdk:
   - openjdk8
 
 after_success:
-  - mvn clean test
-  ## 生成测试报告
-  - mvn cobertura:cobertura
-  - mvn jacoco:report
-  ## 获取travis解密的token ,并调用coveralls-plugin上传报告
-  - mvn coveralls:report -DrepoToken=dJE7vRZlNZ0p6xA7iZMgPUJ1LRtdgAkJl
+  - mvn clean test jacoco:report coveralls:report -DrepoToken=dJE7vRZlNZ0p6xA7iZMgPUJ1LRtdgAkJl
+  - codecov
+
+branches:
+  only:
+    - master
