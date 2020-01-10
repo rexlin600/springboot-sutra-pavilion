@@ -47,10 +47,9 @@
 
 **新计划**
 
+* spring-boot-xml（扩展支持发送xml参数的请求，进行中）
 * spring-boot-sharding-jdbc
 * spring-boot-sharding-jdbc-masterslave
-* spring-boot-task
-* spring-boot-mail
 * spring-boot-mongodb
 * spring-boot-shiro
 * spring-boot-upload
