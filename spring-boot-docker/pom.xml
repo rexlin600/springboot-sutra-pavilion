@@ -32,7 +32,7 @@
 
     <build>
         <!-- finalName -->
-        <finalName>${artifactId}</finalName>
+        <finalName>${project.artifactId}</finalName>
         <!-- 表示打包时，将resources目录下的配置文件一并打入 -->
         <!-- 使用@@站位符，输出Dockerfile至docker文件夹 -->
         <resources>

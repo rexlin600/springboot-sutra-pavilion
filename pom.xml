@@ -21,6 +21,7 @@
         <spring-boot.version>2.1.4.RELEASE</spring-boot.version>
         <lombok.version>1.18.6</lombok.version>
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <modules>
@@ -139,6 +140,10 @@
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
                 <version>4.3.0</version>
+                <configuration>
+                    <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+                    <repoToken>dJE7vRZlNZ0p6xA7iZMgPUJ1LRtdgAkJl</repoToken>
+                </configuration>
             </plugin>
         </plugins>
     </build>
