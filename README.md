@@ -7,6 +7,7 @@
 ![license](https://img.shields.io/github/license/rexlin600/springboot2-example)
 ![star](https://img.shields.io/github/stars/rexlin600/springboot2-example?style=social)
 ![build](https://img.shields.io/travis/rexlin600/springboot2-example/master)
+[![codecov](https://codecov.io/gh/rexlin600/springboot2-example/branch/master/graph/badge.svg)](https://codecov.io/gh/rexlin600/springboot2-example)
 [![Coverage Status](https://coveralls.io/repos/github/rexlin600/springboot2-example/badge.svg)](https://coveralls.io/github/rexlin600/springboot2-example)
 
 `springboot2-example` 是一个基于 `Spring Boot 2.x` 的综合性 `仓库`。`Spring Boot 2.x` 中的各种示例，以简单、快捷、精炼为目标，虽然定义为 `example`，但是其具体实现上尽可能的能够帮助大家在实际使用中能够只需要进行少量的修改即可投入使用。
