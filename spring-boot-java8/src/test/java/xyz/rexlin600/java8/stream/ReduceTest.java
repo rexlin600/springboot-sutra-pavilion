@@ -31,7 +31,7 @@ public class ReduceTest {
     public void reduce() {
         Goods goods = reduce.reduce();
 
-        assertEquals("Annnora", goods.getName());
+        assertEquals("Juan", goods.getName());
     }
 
     @Test
