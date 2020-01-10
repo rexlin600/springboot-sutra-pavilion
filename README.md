@@ -39,7 +39,7 @@
 | [admin-discovery](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-admin-discovery) | 集成 `Admin`，功能同上，切换为通过 `注册中心` 去拉取服务实例信息 |
 | [java8](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-java8) | 精炼版 `Java 8` 指南：`Default Method`、`Lambda`、`Functional Interfaces(Predicates、Functions、Suppliers、Consumers、Comparators)`、`Optinals`、`Stream(Filter、Sorted、Map、Match、Count、Reduce)`、`DateAPI`、`Parallel Streams`、`Maps` 等等 |
 | [scheduler](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-scheduler) | 集成 `SpringBoot` 定时任务，基于 `anntation` 的入门版本 |
-| [xxx](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-xxx) | _ |
+| [mail](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-mail) | 集成 `mail`，邮件服务 |
 | _ | _ |
 
 

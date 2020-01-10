@@ -40,6 +40,7 @@
         <module>spring-boot-admin-discovery</module>
         <module>spring-boot-java8</module>
         <module>spring-boot-scheduler</module>
+        <module>spring-boot-mail</module>
     </modules>
 
 
