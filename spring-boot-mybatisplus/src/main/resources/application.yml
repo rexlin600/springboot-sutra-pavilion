@@ -20,7 +20,7 @@ spring:
       # 此属性控制池允许达到的最大大小，包括空闲和正在使用的连接。默认值10
       maximum-pool-size: 100
 mybatis-plus:
-  type-aliases-package: xyz.rexlin600.model
+  type-aliases-package: xyz.rexlin600.java8.model
   mapper-locations: classpath*:/mapper/**/*.xml
 server:
   port: 10008

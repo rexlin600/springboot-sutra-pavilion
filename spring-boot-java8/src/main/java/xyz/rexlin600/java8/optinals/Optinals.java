@@ -1,6 +1,6 @@
 package xyz.rexlin600.java8.optinals;
 
-import xyz.rexlin600.model.Goods;
+import xyz.rexlin600.java8.model.Goods;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

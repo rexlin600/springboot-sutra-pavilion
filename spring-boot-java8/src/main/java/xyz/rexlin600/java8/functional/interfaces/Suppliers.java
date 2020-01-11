@@ -1,9 +1,5 @@
 package xyz.rexlin600.java8.functional.interfaces;
 
-import xyz.rexlin600.model.Goods;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.function.Supplier;
 
 /**
