@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: async
+server:
+  port: 10024

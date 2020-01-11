@@ -45,6 +45,7 @@
         <module>spring-boot-mongodb</module>
         <module>spring-boot-flyway</module>
         <module>spring-boot-transaction</module>
+        <module>spring-boot-async</module>
     </modules>
 
 

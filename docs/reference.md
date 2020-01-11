@@ -101,6 +101,11 @@
 - [javax.transaction.Transactional与org.springframework.transaction.annotation.Transactional](http://osask.cn/front/ask/view/56445)
 - [事务无效问题：方法传递调用](https://www.jianshu.com/p/00758c77bf60)
 
+**Async**
+
+- [Springboot 多线程@Async](https://www.jianshu.com/p/736acdcdfa9b)
+- [@Async优雅的异步调用](https://www.cnblogs.com/huanzi-qch/p/11231041.html)
+
 **Spring MVC**
 
 - [消息转换器：Spring Boot中如何扩展XML请求和响应的支持](http://blog.didispace.com/spring-boot-xml-httpmessageconverter/)

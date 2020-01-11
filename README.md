@@ -43,6 +43,7 @@
 | [mongodb](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-mongodb) | 集成 `MongoDB`、提供 `mongodb` 使用 `MongoRepository` 操作 `mongodb` 的示例、集成 `mongodbplus` 提供更多的配置项 |
 | [flyway](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-flyway) | 集成 `Flyway`、提供 `flyway` 的示例 |
 | [transaction](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-transaction) | 集成事务管理（jdbc/jpa，使用 `@Transactional` 即可进行日常开发 |
+| [async](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-async) | 通过 `Async` ，通过 `线程池` 实现异步调用、实现优雅关闭、通过 `Future` 获取异步执行结果；如何定义定义超时等 |
 | _ | _ |
 
 
@@ -59,8 +60,7 @@
   * spring-boot-zuul-upload
 * spring-boot-fastDFS
 * spring-boot-validation(jsr303 and hibernate-validation)
-* spring-boot-transaction（进行中）
-* spring-boot-async
+* spring-boot-async（进行中）
 * spring-boot-logging
 * spring-boot-security
 * spring-boot-security-cas
