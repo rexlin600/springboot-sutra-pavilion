@@ -1,4 +1,4 @@
-package xyz.rexlin600.helloworld.config;
+package xyz.rexlin600.client.discovery.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;

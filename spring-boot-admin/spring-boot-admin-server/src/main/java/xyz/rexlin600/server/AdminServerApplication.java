@@ -25,6 +25,7 @@ public class AdminServerApplication {
         SpringApplication.run(AdminServerApplication.class, args);
     }
 
+    @SuppressWarnings("Duplicates")
     @Configuration
     public static class SecuritySecureConfig extends WebSecurityConfigurerAdapter {
         private final String adminContextPath;
