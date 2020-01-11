@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>xyz.rexlin600</groupId>
-    <artifactId>springboot2-example</artifactId>
+    <artifactId>springboot-sutra-pavilion</artifactId>
     <packaging>pom</packaging>
     <version>2.0.0</version>
 
