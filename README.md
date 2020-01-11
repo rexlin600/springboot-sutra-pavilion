@@ -39,7 +39,8 @@
 | [java8](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-java8) | 精炼版 `Java 8` 指南：`Default Method`、`Lambda`、`Functional Interfaces(Predicates、Functions、Suppliers、Consumers、Comparators)`、`Optinals`、`Stream(Filter、Sorted、Map、Match、Count、Reduce)`、`DateAPI`、`Parallel Streams`、`Maps` 等等 |
 | [scheduler](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-scheduler) | 集成 `SpringBoot` 定时任务，基于 `anntation` 的入门版本 |
 | [mail](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-mail) | 集成 `mail` 邮件服务，提供：文本、HTML、附件、内嵌资源、模板邮件的发送与测试 |
-| [jdbc](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-jdbc) | 集成 `jdbcTemplate` |
+| [jdbc](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-jdbc) | 集成 `jdbcTemplate`、提供简单示例；集成多数据源见参考文章 |
+| [mongodb](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-mongodb) | 集成 `MongoDB`、提供简单示例 |
 | _ | _ |
 
 
@@ -49,7 +50,7 @@
 
 * spring-boot-sharding-jdbc
 * spring-boot-sharding-jdbc-masterslave
-* spring-boot-mongodb
+* spring-boot-mongodb（进行中）
 * spring-boot-shiro
 * spring-boot-upload
   * spring-boot-upload
@@ -98,6 +99,8 @@
 3. 完善 `spring-boot-elasticsearch`
 4. 完善 `spring-boot-redis`
 5. 完善 `spring-boot-admin`（mail）
+6. 完善 `java8`(maps)
+7. 完善 `spring-boot-jdbc`
 
 
 ## 参考

@@ -42,6 +42,7 @@
         <module>spring-boot-scheduler</module>
         <module>spring-boot-mail</module>
         <module>spring-boot-jdbc</module>
+        <module>spring-boot-mongodb</module>
     </modules>
 
 

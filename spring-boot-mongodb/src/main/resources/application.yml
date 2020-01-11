@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: mongodb
+  data:
+    mongodb:
+      # 2.x 可以使用 host、name 方式；3.x 不再支持
+      host: localhost
+      port: 27017
+      database: springboot2-example
+      # 也可以使用如下方式连接，注意不同版本连接方式有些不同
+      uri: mongodb://localhost/${spring.data.mongodb.database}
+server:
+  port: 10021

@@ -76,6 +76,16 @@
 - [quartz/Cron/Crontab表达式在线生成工具](http://www.bejson.com/othertools/cron/)
 - [理解Spring定时任务@Scheduled的两个属性fixedRate和fixedDelay](https://blog.csdn.net/czx2018/article/details/83501945)
 
+**JDBC Template**
+
+- [Spring JdbcTemplate详解](https://www.cnblogs.com/caoyc/p/5630622.html)
+- [多数据源（jdbcTemplate & JPA）](http://blog.didispace.com/springbootmultidatasource/)
+
+**MongoDB**
+
+- [Docker MongoDB 部署](https://www.jianshu.com/p/6fdb2bcb4b43)
+
+
 **Servlet 与 React**
 
 - [spring mvc 和webflux 区别](https://blog.csdn.net/John_desheng/article/details/103008565)

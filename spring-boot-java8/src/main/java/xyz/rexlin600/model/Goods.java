@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * Goods 实体类
  *
  * @author: rexlin600
- * @date: 2020-01-09 00:44:39
+ * @date: 2020-01-09
  */
 @Data
 @NoArgsConstructor
