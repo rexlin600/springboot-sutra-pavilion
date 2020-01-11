@@ -1,16 +1,12 @@
 package xyz.rexlin600.service.impl;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.*;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
 import xyz.rexlin600.entity.User;
 import xyz.rexlin600.service.UserService;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.stream.Stream;
 
 /**
  * UserService 实现类

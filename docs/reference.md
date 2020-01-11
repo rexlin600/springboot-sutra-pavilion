@@ -36,6 +36,7 @@
 
 **MybatisPlus**
 
+- [docker-mysql-使用docker运行mysql8](https://www.cnblogs.com/wenbronk/p/9235436.html)
 - [MybatisPlus Guide](https://mp.baomidou.com/guide/)
 
 **RabbitMQ**
@@ -85,6 +86,10 @@
 
 - [Docker MongoDB 部署](https://www.jianshu.com/p/6fdb2bcb4b43)
 
+**flyway**
+
+- [集成flyway进行数据库版本管理](https://blog.csdn.net/cowbin2012/article/details/90764495)
+- [Spring Boot中使用Flyway来管理数据库版本](http://blog.didispace.com/spring-boot-flyway-db-version/)
 
 **Servlet 与 React**
 
