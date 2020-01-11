@@ -3,11 +3,26 @@ spring:
     name: mongodb
   data:
     mongodb:
-      # 2.x 可以使用 host、name 方式；3.x 不再支持
-      host: localhost
-      port: 27017
       database: springboot2-example
-      # 也可以使用如下方式连接，注意不同版本连接方式有些不同
-      uri: mongodb://localhost/${spring.data.mongodb.database}
+      uri: mongodb://localhost/${spring.data.mongodb.database} # 也可以使用如下方式连接，注意不同版本连接方式有些不同
+      option:
+        always-use-m-beans: false
+        connect-timeout: 10000
+        heartbeat-connect-timeout: 20000
+        heartbeat-frequency: 10000
+        heartbeat-socket-timeout: 20000
+        local-threshold: 15
+        max-connection-idle-time: 0
+        max-connection-life-time: 0
+        max-connection-per-host: 100
+        max-wait-time: 120000
+        min-connection-per-host: 0
+        min-heartbeat-frequency: 500
+        server-selection-timeout: 30000
+        socket-keep-alive: false
+        socket-timeout: 0
+        ssl-enabled: false
+        ssl-invalid-host-name-allowed: false
+        threads-allowed-to-block-for-connection-multiplier: 5
 server:
   port: 10021

@@ -41,6 +41,7 @@
 | [mail](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-mail) | 集成 `mail` 邮件服务，提供：文本、HTML、附件、内嵌资源、模板邮件的发送与测试 |
 | [jdbc](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-jdbc) | 集成 `jdbcTemplate`、提供简单示例；集成多数据源见参考文章 |
 | [mongodb](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-mongodb) | 集成 `MongoDB`、提供 `mongodb` 使用 `MongoRepository` 操作 `mongodb` 的示例 |
+| [flyway](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-flyway) | 集成 `Flyway`、提供 `flyway` 的示例 |
 | _ | _ |
 
 
