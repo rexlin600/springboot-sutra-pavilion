@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.CollectionUtils;
-import xyz.rexlin600.model.Goods;
+import xyz.rexlin600.swagger.model.Goods;
 
 import java.util.List;
 import java.util.Optional;

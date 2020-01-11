@@ -163,8 +163,8 @@
             <!-- docker plugin -->
             <!-- 当你本机开启并配置好本机以及上面的 docker 相关参数后就可以打开下面这个插件了 -->
             <!--<plugin>-->
-                <!--<groupId>com.spotify</groupId>-->
-                <!--<artifactId>docker-maven-plugin</artifactId>-->
+            <!--<groupId>com.spotify</groupId>-->
+            <!--<artifactId>docker-maven-plugin</artifactId>-->
             <!--</plugin>-->
 
         </plugins>

@@ -2,7 +2,7 @@ package xyz.rexlin600.java8.stream;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import xyz.rexlin600.model.Goods;
+import xyz.rexlin600.swagger.model.Goods;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

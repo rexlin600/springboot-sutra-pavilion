@@ -1,6 +1,6 @@
 package xyz.rexlin600.java8.stream;
 
-import xyz.rexlin600.model.Goods;
+import xyz.rexlin600.swagger.model.Goods;
 
 import java.net.Inet4Address;
 import java.time.LocalDateTime;
