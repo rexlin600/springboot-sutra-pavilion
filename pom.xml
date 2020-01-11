@@ -44,6 +44,7 @@
         <module>spring-boot-jdbc</module>
         <module>spring-boot-mongodb</module>
         <module>spring-boot-flyway</module>
+        <module>spring-boot-transaction</module>
     </modules>
 
 

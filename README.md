@@ -40,8 +40,9 @@
 | [scheduler](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-scheduler) | 集成 `SpringBoot` 定时任务，基于 `anntation` 的入门版本 |
 | [mail](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-mail) | 集成 `mail` 邮件服务，提供：文本、HTML、附件、内嵌资源、模板邮件的发送与测试 |
 | [jdbc](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-jdbc) | 集成 `jdbcTemplate`、提供简单示例；集成多数据源见参考文章 |
-| [mongodb](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-mongodb) | 集成 `MongoDB`、提供 `mongodb` 使用 `MongoRepository` 操作 `mongodb` 的示例 |
+| [mongodb](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-mongodb) | 集成 `MongoDB`、提供 `mongodb` 使用 `MongoRepository` 操作 `mongodb` 的示例、集成 `mongodbplus` 提供更多的配置项 |
 | [flyway](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-flyway) | 集成 `Flyway`、提供 `flyway` 的示例 |
+| [transaction](https://github.com/rexlin600/springboot2-example/tree/master/spring-boot-transaction) | 集成事务管理（jdbc/jpa，使用 `@Transactional` 即可进行日常开发 |
 | _ | _ |
 
 
@@ -58,9 +59,7 @@
   * spring-boot-zuul-upload
 * spring-boot-fastDFS
 * spring-boot-validation(jsr303 and hibernate-validation)
-* spring-boot-flyway（进行中）
-* spring-boot-ldap
-* spring-boot-transaction
+* spring-boot-transaction（进行中）
 * spring-boot-async
 * spring-boot-logging
 * spring-boot-security

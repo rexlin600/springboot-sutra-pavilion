@@ -95,6 +95,12 @@
 
 - [spring mvc 和webflux 区别](https://blog.csdn.net/John_desheng/article/details/103008565)
 
+**Transaction**
+
+- [Spring Boot中的事务管理](http://blog.didispace.com/springboottransactional/)
+- [javax.transaction.Transactional与org.springframework.transaction.annotation.Transactional](http://osask.cn/front/ask/view/56445)
+- [事务无效问题：方法传递调用](https://www.jianshu.com/p/00758c77bf60)
+
 **Spring MVC**
 
 - [消息转换器：Spring Boot中如何扩展XML请求和响应的支持](http://blog.didispace.com/spring-boot-xml-httpmessageconverter/)
