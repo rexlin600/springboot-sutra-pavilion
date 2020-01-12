@@ -139,18 +139,16 @@ public class UserRest {
         if (StringUtils.isEmpty(username)) {
             // 查询自己的 followers
             PageIterator<User> p1 = GithubRunner.userService.pageFollowers(start, end);
-            while (p1.hasNext()) {
+            if (p1.hasNext()) {
                 Collection<User> userCollection = p1.next();
                 list.addAll(userCollection);
-                break;  // 只遍历前面部分
             }
         } else {
             // 查询指定用户的 followers
             PageIterator<User> p2 = GithubRunner.userService.pageFollowers(username, start, end);
-            while (p2.hasNext()) {
+            if (p2.hasNext()) {
                 Collection<User> userCollection = p2.next();
                 list.addAll(userCollection);
-                break;  // 只遍历前面部分
             }
         }
         return ResponseGenerator.success(list);
@@ -204,19 +202,16 @@ public class UserRest {
         if (StringUtils.isEmpty(username)) {
             // 查询自己的 following
             PageIterator<User> p1 = GithubRunner.userService.pageFollowing(start, end);
-            while (p1.hasNext()) {
+            if (p1.hasNext()) {
                 Collection<User> userCollection = p1.next();
                 list.addAll(userCollection);
-                // 只遍历前面部分
-                break;
             }
         } else {
             // 查询指定用户的 following
             PageIterator<User> p2 = GithubRunner.userService.pageFollowing(username, start, end);
-            while (p2.hasNext()) {
+            if (p2.hasNext()) {
                 Collection<User> userCollection = p2.next();
                 list.addAll(userCollection);
-                break;  // 只遍历前面部分
             }
         }
         return ResponseGenerator.success(list);
