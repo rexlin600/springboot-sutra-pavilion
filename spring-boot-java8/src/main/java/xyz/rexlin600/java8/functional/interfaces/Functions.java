@@ -53,7 +53,7 @@ public class Functions {
         goodsList.stream().peek(new Consumer<Goods>() {
             @Override
             public void accept(Goods goods) {
-
+                System.out.println("stream peek method");
             }
         });
 
