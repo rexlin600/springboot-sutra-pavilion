@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class ParallelStreamTest {
 
-    ParallelStream parallelStream;
+    private ParallelStream parallelStream;
 
     @Before
     public void setUp() throws Exception {

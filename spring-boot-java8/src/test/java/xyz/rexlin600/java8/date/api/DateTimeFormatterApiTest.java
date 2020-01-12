@@ -10,7 +10,7 @@ import org.junit.Test;
  */
 public class DateTimeFormatterApiTest {
 
-    DateTimeFormatterApi dateTimeFormatterApi;
+    private DateTimeFormatterApi dateTimeFormatterApi;
 
     @Before
     public void setUp() throws Exception {

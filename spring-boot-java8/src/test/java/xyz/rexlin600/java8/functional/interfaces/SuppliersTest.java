@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class SuppliersTest {
 
-    Suppliers suppliers;
+    private Suppliers suppliers;
 
     @Before
     public void setUp() throws Exception {

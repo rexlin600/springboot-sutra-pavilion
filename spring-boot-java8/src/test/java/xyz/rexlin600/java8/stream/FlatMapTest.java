@@ -23,8 +23,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class FlatMapTest {
 
-
-    FlatMap flatMap;
+    private FlatMap flatMap;
 
     @Before
     public void setUp() throws Exception {

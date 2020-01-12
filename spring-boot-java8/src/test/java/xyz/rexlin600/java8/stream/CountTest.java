@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class CountTest {
 
-    Count count;
+    private Count count;
 
     @Before
     public void setUp() throws Exception {

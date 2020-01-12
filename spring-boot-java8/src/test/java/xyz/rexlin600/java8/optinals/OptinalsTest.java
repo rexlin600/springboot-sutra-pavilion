@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class OptinalsTest {
 
-    Optinals optinals;
+    private Optinals optinals;
 
     @Before
     public void setUp() throws Exception {

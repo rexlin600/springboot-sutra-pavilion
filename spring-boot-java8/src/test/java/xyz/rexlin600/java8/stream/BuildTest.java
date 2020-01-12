@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class BuildTest {
 
-    Build build;
+    private Build build;
 
     @Before
     public void setUp() throws Exception {

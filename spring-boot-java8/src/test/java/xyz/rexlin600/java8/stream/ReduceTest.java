@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class ReduceTest {
 
-    Reduce reduce;
+    private Reduce reduce;
 
     @Before
     public void setUp() throws Exception {

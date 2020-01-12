@@ -40,7 +40,7 @@ public class ComparatorsTest {
         goodsList.add(new Goods(10L, "Ynez", 0, "产品经理", 74.24, "深卡其布色", LocalDateTime.parse("2015-06-20 03:31:47", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
     }
 
-    Comparators comparators;
+    private Comparators comparators;
 
     @Before
     public void setUp() throws Exception {

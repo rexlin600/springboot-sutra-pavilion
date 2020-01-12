@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class MatchTest {
 
-    Match match;
+    private Match match;
 
     @Before
     public void setUp() throws Exception {

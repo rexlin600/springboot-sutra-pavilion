@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class MapTest {
 
-    Map map;
+    private Map map;
 
     @Before
     public void setUp() throws Exception {

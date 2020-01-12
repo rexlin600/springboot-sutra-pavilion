@@ -19,7 +19,7 @@ import java.util.function.Consumer;
 @SpringBootTest
 public class SortedTest {
 
-    Sorted sorted;
+    private Sorted sorted;
 
     @Before
     public void setUp() throws Exception {

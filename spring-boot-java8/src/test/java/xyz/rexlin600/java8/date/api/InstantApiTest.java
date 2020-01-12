@@ -10,7 +10,7 @@ import org.junit.Test;
  */
 public class InstantApiTest {
 
-    InstantApi instantApi;
+    private InstantApi instantApi;
 
     @Before
     public void setUp() throws Exception {

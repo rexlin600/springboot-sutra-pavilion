@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @auther hekunlin
  * @create 2020-01-10 15:20
  */
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MailApplicationTest {

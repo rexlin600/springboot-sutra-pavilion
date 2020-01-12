@@ -14,7 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityPermitConfig extends WebSecurityConfigurerAdapter {
 
     @Value("${spring.security.user.roles}")
-    String roles;
+    private String roles;
 
     /**
      * configure

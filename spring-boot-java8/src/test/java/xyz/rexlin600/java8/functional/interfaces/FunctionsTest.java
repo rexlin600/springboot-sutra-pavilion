@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class FunctionsTest {
 
-    Functions functions;
+    private Functions functions;
 
     @Before
     public void setUp() throws Exception {

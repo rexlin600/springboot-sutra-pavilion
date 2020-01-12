@@ -7,6 +7,7 @@ import xyz.rexlin600.redis.common.statuscode.StatusCode;
 /**
  * @author rexlin600
  */
+@SuppressWarnings("Duplicates")
 public class ResponseGenerator {
 
     public static <T> Response<T> success() {

@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class PredicatesTest {
 
-    Predicates predicates;
+    private Predicates predicates;
 
     @Before
     public void setUp() throws Exception {

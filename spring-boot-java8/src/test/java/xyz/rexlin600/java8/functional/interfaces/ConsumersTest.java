@@ -17,7 +17,7 @@ import java.util.function.Consumer;
 @SpringBootTest
 public class ConsumersTest {
 
-    Consumers consumers;
+    private Consumers consumers;
 
     @Before
     public void setUp() throws Exception {

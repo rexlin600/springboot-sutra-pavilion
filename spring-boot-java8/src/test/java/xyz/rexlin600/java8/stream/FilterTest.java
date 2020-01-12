@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class FilterTest {
 
-    Filter filter;
+    private Filter filter;
 
     @Before
     public void setUp() throws Exception {

@@ -10,7 +10,7 @@ import org.junit.Test;
  */
 public class LocalDateTimeApiTest {
 
-    LocalDateTimeApi localDateTimeApi;
+    private LocalDateTimeApi localDateTimeApi;
 
     @Before
     public void setUp() throws Exception {
