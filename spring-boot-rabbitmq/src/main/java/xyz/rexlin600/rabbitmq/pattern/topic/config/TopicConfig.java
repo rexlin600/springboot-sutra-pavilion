@@ -56,14 +56,14 @@ public class TopicConfig {
      * @return
      */
     @Bean
-    Binding bindingDirectExchangeA(Queue topicQueueA, TopicExchange topicExchange) {
+    public Binding bindingDirectExchangeA(Queue topicQueueA, TopicExchange topicExchange) {
         return BindingBuilder.bind(topicQueueA)
                 .to(topicExchange)
                 .with(TOPIC_ROUTINGKEY_A);
     }
 
     @Bean
-    Binding bindingDirectExchangeAll(Queue topicQueueAll, TopicExchange topicExchange) {
+    public Binding bindingDirectExchangeAll(Queue topicQueueAll, TopicExchange topicExchange) {
         return BindingBuilder.bind(topicQueueAll)
                 .to(topicExchange)
                 .with(TOPIC_ROUTINGKEY_ALL);

@@ -67,7 +67,7 @@ public class RedisConfig extends CachingConfigurerSupport {
      * @return
      */
     @Bean("cacheManager")
-    CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
+    public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
         log.info("初始化 -> [{}]", "CacheManager RedisCacheManager Start");
 
         // 生成一个默认配置，通过config对象即可对缓存进行自定义配置

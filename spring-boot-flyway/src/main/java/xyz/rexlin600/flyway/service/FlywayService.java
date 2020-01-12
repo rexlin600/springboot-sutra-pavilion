@@ -3,8 +3,6 @@ package xyz.rexlin600.flyway.service;
 
 import xyz.rexlin600.flyway.entity.TbFlyway;
 
-import java.util.List;
-
 /**
  * FlywayService 接口
  *

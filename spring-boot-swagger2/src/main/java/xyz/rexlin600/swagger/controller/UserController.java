@@ -20,7 +20,7 @@ import java.util.*;
 @RequestMapping(value = "/user")
 public class UserController {
 
-    static Map<Long, User> users = Collections.synchronizedMap(new HashMap<>());
+    private static Map<Long, User> users = Collections.synchronizedMap(new HashMap<>());
 
     @ApiOperation(value = "获取用户列表", notes = "查询用户列表")
     @RequestMapping(value = {""}, method = RequestMethod.GET)

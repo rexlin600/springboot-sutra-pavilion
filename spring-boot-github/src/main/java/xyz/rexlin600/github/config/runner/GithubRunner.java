@@ -20,10 +20,10 @@ import org.springframework.util.StringUtils;
 public class GithubRunner implements CommandLineRunner {
 
     @Value("${github.oauth.username}")
-    String username;
+    private String username;
 
     @Value("${github.oauth.password}")
-    String password;
+    private String password;
 
     /**
      * Github Client
