@@ -47,7 +47,7 @@ public class MailServiceImplTest {
         mailService.sendSimpleMail(
                 "3072054267@qq.com",
                 "Html-Mail",
-                "This is a Html Mail, Just for Test");
+                content);
     }
 
     @Test

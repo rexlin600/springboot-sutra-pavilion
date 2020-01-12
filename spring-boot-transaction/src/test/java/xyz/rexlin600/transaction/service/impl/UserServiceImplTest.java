@@ -84,6 +84,7 @@ public class UserServiceImplTest {
             userService.addUser(user);
             // 笔者在这里遇到一个小问题，就是 jpa 的配置写为了 create，结果生成的数据库表为 MyIsam 的引擎！
             int r = 1 / 0;
+            log.info("==>  r is [{}]", r);
         } catch (Exception e) {
             // catch ex, rollback
             log.error("==>  this test is failed, catched ex=[{}]", e.getMessage());
@@ -105,7 +106,9 @@ public class UserServiceImplTest {
 
         try {
             userService.addUser(user2); // success
-            int i = 1 / 0;  // catch ex, but won't rollback
+            // catch ex, but won't rollback
+            int r = 1 / 0;
+            log.info("==>  r is [{}]", r);
         } catch (Exception e) {
             log.error("==>  this test is failed, catched ex=[{}]", e.getMessage());
         }
