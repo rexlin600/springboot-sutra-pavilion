@@ -3,7 +3,6 @@ package xyz.rexlin600.rabbitmq.common.enums;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * 调用mq类型 enum
