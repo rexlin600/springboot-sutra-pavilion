@@ -60,17 +60,17 @@ public class FanoutConfig {
      * @return
      */
     @Bean
-    Binding bindingFanoutExchangeA(Queue fanOutA, FanoutExchange fanoutExchange) {
+    public Binding bindingFanoutExchangeA(Queue fanOutA, FanoutExchange fanoutExchange) {
         return BindingBuilder.bind(fanOutA).to(fanoutExchange);
     }
 
     @Bean
-    Binding bindingFanoutExchangeB(Queue fanOutB, FanoutExchange fanoutExchange) {
+    public Binding bindingFanoutExchangeB(Queue fanOutB, FanoutExchange fanoutExchange) {
         return BindingBuilder.bind(fanOutB).to(fanoutExchange);
     }
 
     @Bean
-    Binding bindingFanoutExchangeC(Queue fanOutC, FanoutExchange fanoutExchange) {
+    public Binding bindingFanoutExchangeC(Queue fanOutC, FanoutExchange fanoutExchange) {
         return BindingBuilder.bind(fanOutC).to(fanoutExchange);
     }
 
