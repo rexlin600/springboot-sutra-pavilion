@@ -12,7 +12,6 @@
 <p align="center">
     <a href="https://www.codacy.com/manual/rexlin600/springboot-sutra-pavilion?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rexlin600/springboot-sutra-pavilion&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/aadfd5654d204443ac773aa619ce8222"/></a>
     <a href="https://travis-ci.org/rexlin600/springboot-sutra-pavilion.svg?branch=master"><img src="https://travis-ci.org/rexlin600/springboot-sutra-pavilion.svg?branch=master"/></a>
-    <a href="https://img.shields.io/github/commit-activity/m/rexlin600/springboot-sutra-pavilion"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/rexlin600/springboot-sutra-pavilion"></a>
 </p>
 
 <p align="center">

@@ -29,7 +29,7 @@ public class PageResult<T> {
      * @param page       第几页
      * @param size       每页几条记录
      */
-    public PageResult(@NonNull Integer totalCount, @NonNull Integer page, @NonNull Integer size, List<T> list) {
+    public PageResult(@NonNull Integer totalCount, @NonNull Integer page, @NonNull Integer size, List<T> list) throws RuntimeException {
         if (size == 0) {
             throw new RuntimeException("size不能为0");
         }
