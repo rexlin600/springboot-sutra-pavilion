@@ -22,7 +22,7 @@ RUN mkdir -p $APP_PATH \
 # 导向到工作目录
 WORKDIR $APP_PATH
 # 注意，一定要提前构建好jar包执行此命令才会成功！
-ADD $APP_NAME/ $APP_PATH
+COPY $APP_NAME/ $APP_PATH
 
 EXPOSE 10002
 
