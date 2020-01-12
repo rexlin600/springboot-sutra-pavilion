@@ -26,7 +26,7 @@ public class UserMongoBiz {
      * @param user
      */
     public void saveUser(User user) {
-        User save = userMongoRepository.save(user);
+        userMongoRepository.save(user);
     }
 
     /**

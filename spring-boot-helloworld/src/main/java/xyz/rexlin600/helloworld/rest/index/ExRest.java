@@ -26,7 +26,7 @@ public class ExRest {
 
     @RequestMapping("/default")
     public String defaultEx() throws Exception {
-        throw new Exception("默认全局异常");
+        throw new RuntimeException("默认全局异常");
     }
 
     @RequestMapping("/base")

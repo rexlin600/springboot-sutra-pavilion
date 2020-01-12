@@ -31,7 +31,7 @@ public class PageResult<T> {
      */
     public PageResult(@NonNull Integer totalCount, @NonNull Integer page, @NonNull Integer size, List<T> list) {
         if (size == 0) {
-            throw new NullPointerException("size不能为0");
+            throw new RuntimeException("size不能为0");
         }
         this.totalCount = totalCount;
         this.page = page;

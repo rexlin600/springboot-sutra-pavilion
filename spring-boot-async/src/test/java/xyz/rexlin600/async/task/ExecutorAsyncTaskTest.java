@@ -43,7 +43,7 @@ public class ExecutorAsyncTaskTest {
 
     @Test
     public void taskOne() throws InterruptedException, ExecutionException {
-        Future<Long> future = executorAsyncTask.taskOne();
+        executorAsyncTask.taskOne();
     }
 
     @Test

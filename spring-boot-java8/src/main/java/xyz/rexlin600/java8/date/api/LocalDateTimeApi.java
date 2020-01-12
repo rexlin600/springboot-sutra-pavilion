@@ -1,5 +1,8 @@
 package xyz.rexlin600.java8.date.api;
 
+import lombok.extern.slf4j.Slf4j;
+import sun.rmi.runtime.Log;
+
 import java.time.*;
 import java.time.chrono.Chronology;
 import java.util.Date;
@@ -10,6 +13,8 @@ import java.util.Date;
  * @author: hekunlin
  * @date: 2020/1/10
  */
+
+@Slf4j
 public class LocalDateTimeApi {
 
     /**
@@ -73,7 +78,9 @@ public class LocalDateTimeApi {
         DayOfWeek dayOfWeek = LocalDateTime.now().getDayOfWeek();
         // 一周中的第几天
         dayOfWeek.getValue();
-
+        log.info("dayOfYear [{}]", dayOfYear);
+        log.info("dayOfMonth [{}]", dayOfMonth);
+        log.info("dayOfWeek [{}]", dayOfWeek);
 
         int year = LocalDateTime.now().getYear();
         Month month = LocalDateTime.now().getMonth();
@@ -84,6 +91,15 @@ public class LocalDateTimeApi {
         int minute = LocalDateTime.now().getMinute();
         int second = LocalDateTime.now().getSecond();
         int nano = LocalDateTime.now().getNano();
+
+        log.info("year [{}]", year);
+        log.info("month [{}]", month);
+        log.info("monthValue [{}]", monthValue);
+        log.info("chronology [{}]", chronology);
+        log.info("hour [{}]", hour);
+        log.info("minute [{}]", minute);
+        log.info("second [{}]", second);
+        log.info("nano [{}]", nano);
     }
 
     /**
