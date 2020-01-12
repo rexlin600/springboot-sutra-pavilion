@@ -2,6 +2,7 @@ package xyz.rexlin600.async;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * AsyncApplication 启动类
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author: rexlin600
  * @date: 2020-01-11
  */
+@EnableAsync
 @SpringBootApplication
 public class AsyncApplication {
 
