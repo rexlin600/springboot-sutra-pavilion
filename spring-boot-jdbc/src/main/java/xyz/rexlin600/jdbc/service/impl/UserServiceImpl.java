@@ -1,12 +1,12 @@
-package xyz.rexlin600.elasticsearch.service.impl;
+package xyz.rexlin600.jdbc.service.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Service;
-import xyz.rexlin600.docker.entity.User;
-import xyz.rexlin600.elasticsearch.service.UserService;
+import xyz.rexlin600.jdbc.entity.User;
+import xyz.rexlin600.jdbc.service.UserService;
 
 /**
  * UserService 实现类

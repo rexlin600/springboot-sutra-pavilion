@@ -1,4 +1,4 @@
-package xyz.rexlin600.elasticsearch.service.impl;
+package xyz.rexlin600.jdbc.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -6,8 +6,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import xyz.rexlin600.docker.entity.User;
-import xyz.rexlin600.elasticsearch.service.UserService;
+import xyz.rexlin600.jdbc.entity.User;
+import xyz.rexlin600.jdbc.service.UserService;
 
 import static org.junit.Assert.*;
 

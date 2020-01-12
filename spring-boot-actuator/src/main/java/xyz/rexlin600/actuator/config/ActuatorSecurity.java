@@ -1,4 +1,4 @@
-package xyz.rexlin600.helloworld.config;
+package xyz.rexlin600.actuator.config;
 
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Configuration;

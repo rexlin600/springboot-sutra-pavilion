@@ -1,6 +1,7 @@
-package xyz.rexlin600.elasticsearch.service;
+package xyz.rexlin600.jdbc.service;
 
-import xyz.rexlin600.docker.entity.User;
+
+import xyz.rexlin600.jdbc.entity.User;
 
 /**
  * UserService 类
@@ -14,6 +15,7 @@ public interface UserService {
      * 根据id查找用户
      *
      * @param id
+     * @return
      */
     User selectById(Long id);
 
@@ -21,11 +23,14 @@ public interface UserService {
      * 根据id删除一个用户
      *
      * @param id
+     * @return
      */
     void deleteById(Long id);
 
     /**
      * 获取用户总数
+     *
+     * @return
      */
     Long getAllUsers();
 

@@ -15,11 +15,11 @@ import java.time.Instant;
  * <p>
  * 如果要测试过期、拒绝、超载等请注释 @Component ，默认注释掉
  *
- * @author: hekunlin
+ * @author rexlin600
+ * @author rexlin600
  * @date: 2020/1/7
  */
 @Slf4j
-//@Component
 @RabbitListener(queues = DeadLetterConfig.DEAD_LETTER_QUEUE)
 public class DeadLetterConsumer {
 
@@ -30,10 +30,11 @@ public class DeadLetterConsumer {
      */
     @SneakyThrows
     @RabbitHandler
-    public void handlerDLStr(String content, Channel channel, Message message) {
+    public void handlerDlStr(String content, Channel channel, Message message) {
         long milli = Instant.now().toEpochMilli();
         log.info("==>  DeadLetter consume content=[{}] at [{}]", content, milli);
-        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);   // true表示一次确认所有小于tag的消息
+        // true表示一次确认所有小于tag的消息
+        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
     }
 
 }

@@ -1,6 +1,7 @@
-package xyz.rexlin600.elasticsearch.service;
+package xyz.rexlin600.flyway.service;
 
-import xyz.rexlin600.docker.entity.TbFlyway;
+
+import xyz.rexlin600.flyway.entity.TbFlyway;
 
 import java.util.List;
 
@@ -12,10 +13,26 @@ import java.util.List;
  */
 public interface FlywayService {
 
+    /**
+     * 保存
+     *
+     * @param tbFlyway
+     */
     void save(TbFlyway tbFlyway);
 
+    /**
+     * 根据ID查找
+     *
+     * @param id
+     * @return
+     */
     TbFlyway findOne(Long id);
 
+    /**
+     * 统计总数
+     *
+     * @return
+     */
     Long findCount();
 
 }

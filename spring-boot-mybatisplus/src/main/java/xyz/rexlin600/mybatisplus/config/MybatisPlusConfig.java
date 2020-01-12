@@ -1,10 +1,13 @@
-package xyz.rexlin600.helloworld.config;
+package xyz.rexlin600.mybatisplus.config;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author rexlin600
+ */
 @Configuration
 @MapperScan("xyz.rexlin600.mybatisplus.mapper")
 public class MybatisPlusConfig {

@@ -9,6 +9,11 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * 消息操作接口 实现类
+ *
+ * @author rexlin600
+ */
 @Service("messageRepository")
 public class InMemoryMessageRepository implements MessageRepository {
 

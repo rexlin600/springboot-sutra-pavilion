@@ -1,4 +1,4 @@
-//package xyz.rexlin600.helloworld.config.filter;
+//package xyz.rexlin600.github.config.filter;
 //
 //import org.springframework.util.StringUtils;
 //import xyz.rexlin600.github.common.constant.HeaderConstant;

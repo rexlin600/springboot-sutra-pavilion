@@ -34,7 +34,7 @@ public class TopicConfig {
     }
 
     @Bean
-    public Queue topicQueueALL() {
+    public Queue topicQueueAll() {
         return new Queue(TOPIC_QUEUE_ALL);
     }
 
@@ -63,8 +63,8 @@ public class TopicConfig {
     }
 
     @Bean
-    Binding bindingDirectExchangeAll(Queue topicQueueALL, TopicExchange topicExchange) {
-        return BindingBuilder.bind(topicQueueALL)
+    Binding bindingDirectExchangeAll(Queue topicQueueAll, TopicExchange topicExchange) {
+        return BindingBuilder.bind(topicQueueAll)
                 .to(topicExchange)
                 .with(TOPIC_ROUTINGKEY_ALL);
     }

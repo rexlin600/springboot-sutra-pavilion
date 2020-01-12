@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import xyz.rexlin600.swagger.model.Goods;
+import xyz.rexlin600.java8.model.Goods;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;

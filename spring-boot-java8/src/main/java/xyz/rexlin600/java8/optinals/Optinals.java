@@ -1,6 +1,6 @@
 package xyz.rexlin600.java8.optinals;
 
-import xyz.rexlin600.swagger.model.Goods;
+import xyz.rexlin600.java8.model.Goods;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -84,18 +84,13 @@ public class Optinals {
 
     /**
      * Optional ofNullable goods
+     * 必须保证在使用 Optional 的包裹方法时，内部的表达式不会报错，所以需要注意！
      *
      * @return
      */
     public Optional<Goods> optionalOfNullGoods() {
-        // 【重点】下面这种写法会报错，因为 Optional 只会包裹处理后的值，在处理过程中报错 Optional 是不会管的！
-        // return value == null ? empty() : of(value);
-        //Optional<Goods> optional = Optional.ofNullable(goodsList.get(100));
-
-        // 【重点】必须保证Optional.of() 或者 Optional.ofNullable() 在 () 的内容不会报错
         Optional<Goods> optional = Optional.ofNullable(goodsList.get(2));
         return optional;
     }
-
-
+    
 }

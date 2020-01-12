@@ -1,4 +1,4 @@
-package xyz.rexlin600.github.common.req;
+package xyz.rexlin600.mail.common.req;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -3,6 +3,9 @@ package xyz.rexlin600.mybatisplus;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author rexlin600
+ */
 @SpringBootApplication
 public class MyBatisPlusApplication {
 

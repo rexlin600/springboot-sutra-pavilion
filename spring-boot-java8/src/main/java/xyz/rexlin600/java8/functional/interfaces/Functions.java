@@ -1,6 +1,7 @@
 package xyz.rexlin600.java8.functional.interfaces;
 
-import xyz.rexlin600.swagger.model.Goods;
+
+import xyz.rexlin600.java8.model.Goods;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -8,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Functions 类

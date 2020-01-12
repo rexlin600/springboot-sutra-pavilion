@@ -1,7 +1,7 @@
 package xyz.rexlin600.java8.stream;
 
 import org.springframework.util.ObjectUtils;
-import xyz.rexlin600.swagger.model.Goods;
+import xyz.rexlin600.java8.model.Goods;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

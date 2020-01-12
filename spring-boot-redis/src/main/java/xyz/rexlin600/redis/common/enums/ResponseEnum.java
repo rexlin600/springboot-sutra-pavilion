@@ -1,10 +1,15 @@
-package xyz.rexlin600.github.common.enums;
+package xyz.rexlin600.redis.common.enums;
 
 /**
  * 返回报文Enum
+ *
+ * @author rexlin600
  */
 public enum ResponseEnum {
 
+    /**
+     * 系统异常
+     */
     EXECUTE_EXCEPTION(500, "系统异常");
 
 

@@ -4,12 +4,15 @@ package xyz.rexlin600.swagger.controller;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import xyz.rexlin600.helloworld.config.BaseResult;
+import xyz.rexlin600.swagger.config.BaseResult;
 import xyz.rexlin600.swagger.model.Message;
 import xyz.rexlin600.swagger.repository.MessageRepository;
 
 import java.util.List;
 
+/**
+ * @author rexlin600
+ */
 @Api(value = "消息", description = "消息操作 API", position = 100, protocols = "http")
 @RestController
 @RequestMapping("/")

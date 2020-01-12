@@ -36,7 +36,8 @@ public class WorkCustomer {
     public void handlerWorkOne(String content, Channel channel, Message message) {
         long milli = Instant.now().toEpochMilli();
         log.info("==>  Work one consume content=[{}] at [{}]", content, milli);
-        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);   // true表示一次确认所有小于tag的消息
+        // true表示一次确认所有小于tag的消息
+        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
     }
 
     /**
@@ -52,7 +53,8 @@ public class WorkCustomer {
     public void handlerWorkTwo(String content, Channel channel, Message message) {
         long milli = Instant.now().toEpochMilli();
         log.info("==>  Work two consume content=[{}] at [{}]", content, milli);
-        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);   // true表示一次确认所有小于tag的消息
+        // true表示一次确认所有小于tag的消息
+        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
     }
 
 }

@@ -1,4 +1,4 @@
-package xyz.rexlin600.docker.entity;
+package xyz.rexlin600.rabbitmq.entity;
 
 import lombok.*;
 

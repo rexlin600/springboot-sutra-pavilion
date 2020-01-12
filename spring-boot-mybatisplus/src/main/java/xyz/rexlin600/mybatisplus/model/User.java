@@ -1,7 +1,10 @@
-package xyz.rexlin600.swagger.model;
+package xyz.rexlin600.mybatisplus.model;
 
 import lombok.Data;
 
+/**
+ * @author rexlin600
+ */
 @Data
 public class User {
     private Long id;

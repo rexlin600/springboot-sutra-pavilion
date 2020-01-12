@@ -1,11 +1,11 @@
-package xyz.rexlin600.elasticsearch.service.impl;
+package xyz.rexlin600.flyway.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Service;
-import xyz.rexlin600.docker.entity.TbFlyway;
-import xyz.rexlin600.elasticsearch.service.FlywayService;
+import xyz.rexlin600.flyway.entity.TbFlyway;
+import xyz.rexlin600.flyway.service.FlywayService;
 
 /**
  * FlywayServiceImpl 实现类

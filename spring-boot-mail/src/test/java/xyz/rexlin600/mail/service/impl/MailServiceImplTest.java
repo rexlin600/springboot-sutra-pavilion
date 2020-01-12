@@ -1,4 +1,4 @@
-package xyz.rexlin600.elasticsearch.service.impl;
+package xyz.rexlin600.mail.service.impl;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
-import xyz.rexlin600.elasticsearch.service.MailService;
+import xyz.rexlin600.mail.service.MailService;
 
 import java.util.UUID;
 

@@ -32,9 +32,12 @@ public class InstantApi {
      * 秒、毫秒、纳秒转换
      */
     public void mill() {
-        long epochMilli = Instant.now().toEpochMilli(); // 将此瞬间转换为从1970-01-01T00：00：00Z的纪元*开始的毫秒数
-        long epochSecond = Instant.now().getEpochSecond();  // 从1970-01-01T00：00：00Z的Java纪元获取秒数
-        int nano = Instant.now().getNano(); // 从秒的开始，沿时间轴获取纳秒数
+        // 将此瞬间转换为从1970-01-01T00：00：00Z的纪元*开始的毫秒数
+        long epochMilli = Instant.now().toEpochMilli();
+        // 从1970-01-01T00：00：00Z的Java纪元获取秒数
+        long epochSecond = Instant.now().getEpochSecond();
+        // 从秒的开始，沿时间轴获取纳秒数
+        int nano = Instant.now().getNano();
 
         log.info("==>  epochMilli is [{}]", epochMilli);
         log.info("==>  epochSecond is [{}]", epochSecond);
@@ -62,8 +65,8 @@ public class InstantApi {
      */
     public void compare() {
         long epochMilli = Instant.now().toEpochMilli();
-        long suf = epochMilli + 100l;
-        long pre = epochMilli - 100l;
+        long suf = epochMilli + 100L;
+        long pre = epochMilli - 100L;
 
         boolean before = Instant.now().isBefore(Instant.ofEpochMilli(pre));
         boolean after = Instant.now().isAfter(Instant.ofEpochMilli(suf));

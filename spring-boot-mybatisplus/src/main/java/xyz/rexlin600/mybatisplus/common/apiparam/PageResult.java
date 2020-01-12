@@ -1,4 +1,4 @@
-package xyz.rexlin600.github.common.apiparam;
+package xyz.rexlin600.mybatisplus.common.apiparam;
 
 import com.github.pagehelper.PageInfo;
 import lombok.Data;

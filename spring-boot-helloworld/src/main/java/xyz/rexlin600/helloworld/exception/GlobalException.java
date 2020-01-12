@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author: hekunlin
  * @date: 2020/1/10
  */
-@ControllerAdvice(basePackages = {"xyz.rexlin600"}) // basePackages 可用于指定哪些目录发生异常需要被处理
+@ControllerAdvice(basePackages = {"xyz.rexlin600"})
 public class GlobalException {
 
     /**

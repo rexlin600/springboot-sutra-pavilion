@@ -1,8 +1,8 @@
-package xyz.rexlin600.github.common.apiparam;
+package xyz.rexlin600.rabbitmq.common.apiparam;
 
 import lombok.Data;
-import xyz.rexlin600.github.common.statuscode.StatusCode;
-import xyz.rexlin600.github.exception.BusinessException;
+import xyz.rexlin600.rabbitmq.common.statuscode.StatusCode;
+import xyz.rexlin600.rabbitmq.exception.BusinessException;
 
 import java.io.Serializable;
 
@@ -14,6 +14,7 @@ import java.io.Serializable;
  * data作为泛型参数类型，在不同接口可以定义不同的类型
  *
  * @param <T> 数据泛型类型
+ * @author rexlin600
  */
 @Data
 public class Response<T> implements Serializable {

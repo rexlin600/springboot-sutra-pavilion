@@ -1,4 +1,4 @@
-package xyz.rexlin600.elasticsearch.runner.command;
+package xyz.rexlin600.runner.command;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;

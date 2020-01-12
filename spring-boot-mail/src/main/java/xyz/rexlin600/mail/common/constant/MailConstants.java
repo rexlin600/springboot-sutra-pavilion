@@ -1,4 +1,4 @@
-package xyz.rexlin600.github.common.constant;
+package xyz.rexlin600.mail.common.constant;
 
 /**
  * MailConstants 常量类

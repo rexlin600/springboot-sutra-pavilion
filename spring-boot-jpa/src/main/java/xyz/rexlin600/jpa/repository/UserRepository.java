@@ -1,7 +1,7 @@
-package xyz.rexlin600.swagger.repository;
+package xyz.rexlin600.jpa.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import xyz.rexlin600.docker.entity.User;
+import xyz.rexlin600.jpa.entity.User;
 
 /**
  * User JPA API

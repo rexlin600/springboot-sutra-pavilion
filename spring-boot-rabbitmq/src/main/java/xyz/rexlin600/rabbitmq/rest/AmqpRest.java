@@ -1,13 +1,13 @@
-package xyz.rexlin600.docker.rest;
+package xyz.rexlin600.rabbitmq.rest;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import xyz.rexlin600.github.common.apiparam.Response;
-import xyz.rexlin600.github.common.apiparam.ResponseGenerator;
-import xyz.rexlin600.github.common.enums.InvokeTypeEnum;
-import xyz.rexlin600.docker.entity.AmqpInvoke;
+import xyz.rexlin600.rabbitmq.common.apiparam.Response;
+import xyz.rexlin600.rabbitmq.common.apiparam.ResponseGenerator;
+import xyz.rexlin600.rabbitmq.common.enums.InvokeTypeEnum;
+import xyz.rexlin600.rabbitmq.entity.AmqpInvoke;
 import xyz.rexlin600.rabbitmq.pattern.direct.provider.DirectProvider;
 import xyz.rexlin600.rabbitmq.pattern.deadletter.provider.DeadLetterProvider;
 import xyz.rexlin600.rabbitmq.pattern.fanout.provider.FanoutProvider;
@@ -115,29 +115,38 @@ public class AmqpRest {
     public AmqpInvoke codeConvertAmqpInvoke(Integer code) {
         AmqpInvoke amqpInvoke = null;
         switch (code) {
-            case 0: // default
+            // default
+            case 0:
                 break;
-            case 1: // direct
+            // direct
+            case 1:
                 amqpInvoke = new AmqpInvoke(directProvider.getClass().getDeclaredMethods(), directProvider);
                 break;
-            case 2: // fanout
+            // fanout
+            case 2:
                 amqpInvoke = new AmqpInvoke(fanoutProvider.getClass().getDeclaredMethods(), fanoutProvider);
                 break;
-            case 3: // header
+            // header
+            case 3:
                 break;
-            case 4: // topic
+            // topic
+            case 4:
                 amqpInvoke = new AmqpInvoke(topicProvider.getClass().getDeclaredMethods(), topicProvider);
                 break;
-            case 5: // simple
+            // simple
+            case 5:
                 amqpInvoke = new AmqpInvoke(simpleProvider.getClass().getDeclaredMethods(), simpleProvider);
                 break;
-            case 6: // work
+            // work
+            case 6:
                 amqpInvoke = new AmqpInvoke(workProvider.getClass().getDeclaredMethods(), workProvider);
                 break;
-            case 7: // dl
+            // dl
+            case 7:
                 amqpInvoke = new AmqpInvoke(deadLetterProvider.getClass().getDeclaredMethods(), deadLetterProvider);
                 break;
-            case 8: // custom
+            // custom
+            case 8:
                 break;
             default:
                 break;

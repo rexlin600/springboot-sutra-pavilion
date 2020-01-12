@@ -1,6 +1,4 @@
-package xyz.rexlin600.elasticsearch.service;
-
-import lombok.extern.slf4j.Slf4j;
+package xyz.rexlin600.mail.service;
 
 /**
  * MailMessageBiz 服务类

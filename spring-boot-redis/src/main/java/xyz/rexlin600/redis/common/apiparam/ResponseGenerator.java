@@ -1,9 +1,12 @@
-package xyz.rexlin600.github.common.apiparam;
+package xyz.rexlin600.redis.common.apiparam;
 
 
-import xyz.rexlin600.github.common.statuscode.IStatusCode;
-import xyz.rexlin600.github.common.statuscode.StatusCode;
+import xyz.rexlin600.redis.common.statuscode.IStatusCode;
+import xyz.rexlin600.redis.common.statuscode.StatusCode;
 
+/**
+ * @author rexlin600
+ */
 public class ResponseGenerator {
 
     public static <T> Response<T> success() {

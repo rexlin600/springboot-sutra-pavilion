@@ -6,12 +6,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import xyz.rexlin600.helloworld.exception.BaseException;
 
 /**
+ * 这里不能使用 @RestController
+ */
+
+/**
  * ExRest rest请求
  *
  * @author: hekunlin
  * @date: 2020/1/10
  */
-@Controller // 这里不能使用 @RestController
+@Controller
 public class ExRest {
 
     @RequestMapping("/")

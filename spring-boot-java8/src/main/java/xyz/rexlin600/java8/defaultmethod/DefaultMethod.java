@@ -8,13 +8,22 @@ package xyz.rexlin600.java8.defaultmethod;
  */
 public class DefaultMethod {
 
-    interface interfaceA {
+    /**
+     * 测试接口
+     */
+    interface InterfaceA {
+        /**
+         * hello 方法
+         */
         default void hello() {
             System.out.println("Hello, I'm default method");
         }
     }
 
-    static class InnerDefaultMethod implements interfaceA {
+    /**
+     * 内部类
+     */
+    static class InnerDefaultMethod implements InterfaceA {
 
     }
 

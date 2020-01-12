@@ -1,4 +1,4 @@
-package xyz.rexlin600.docker.rest;
+package xyz.rexlin600.github.rest;
 
 /**
  * Github接口
@@ -15,7 +15,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import xyz.rexlin600.github.common.apiparam.Response;
 import xyz.rexlin600.github.common.apiparam.ResponseGenerator;
-import xyz.rexlin600.helloworld.config.runner.GRunner;
+import xyz.rexlin600.github.config.runner.GithubRunner;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,6 +23,7 @@ import java.util.List;
 
 
 /**
+ * @author rexlin600
  * @menu Github用户API
  */
 @RestController
@@ -44,9 +45,9 @@ public class UserRest {
         }
 
         if (StringUtils.isEmpty(username)) {
-            user = GRunner.userService.getUser();
+            user = GithubRunner.userService.getUser();
         } else {
-            user = GRunner.userService.getUser(username);
+            user = GithubRunner.userService.getUser(username);
         }
         return ResponseGenerator.success(user);
     }
@@ -66,7 +67,7 @@ public class UserRest {
             email = email.trim();
         }
 
-        GRunner.userService.addEmail(email);
+        GithubRunner.userService.addEmail(email);
         return ResponseGenerator.success();
     }
 
@@ -85,7 +86,7 @@ public class UserRest {
             email = email.trim();
         }
 
-        GRunner.userService.removeEmail(email);
+        GithubRunner.userService.removeEmail(email);
         return ResponseGenerator.success();
     }
 
@@ -106,9 +107,11 @@ public class UserRest {
         }
 
         if (StringUtils.isEmpty(username)) {
-            list = GRunner.userService.getFollowers(); // 查询自己的 followers
+            // 查询自己的 followers
+            list = GithubRunner.userService.getFollowers();
         } else {
-            list = GRunner.userService.getFollowers(username); // 查询指定用户的 followers
+            // 查询指定用户的 followers
+            list = GithubRunner.userService.getFollowers(username);
         }
         return ResponseGenerator.success(list);
     }
@@ -134,14 +137,16 @@ public class UserRest {
         }
 
         if (StringUtils.isEmpty(username)) {
-            PageIterator<User> p1 = GRunner.userService.pageFollowers(start, end);  // 查询自己的 followers
+            // 查询自己的 followers
+            PageIterator<User> p1 = GithubRunner.userService.pageFollowers(start, end);
             while (p1.hasNext()) {
                 Collection<User> userCollection = p1.next();
                 list.addAll(userCollection);
                 break;  // 只遍历前面部分
             }
         } else {
-            PageIterator<User> p2 = GRunner.userService.pageFollowers(username, start, end); // 查询指定用户的 followers
+            // 查询指定用户的 followers
+            PageIterator<User> p2 = GithubRunner.userService.pageFollowers(username, start, end);
             while (p2.hasNext()) {
                 Collection<User> userCollection = p2.next();
                 list.addAll(userCollection);
@@ -168,9 +173,10 @@ public class UserRest {
         }
 
         if (StringUtils.isEmpty(username)) {
-            list = GRunner.userService.getFollowing();
+            list = GithubRunner.userService.getFollowing();
         } else {
-            list = GRunner.userService.getFollowing(username); // 查询指定用户的 following
+            // 查询指定用户的 following
+            list = GithubRunner.userService.getFollowing(username);
         }
         return ResponseGenerator.success(list);
     }
@@ -196,14 +202,17 @@ public class UserRest {
         }
 
         if (StringUtils.isEmpty(username)) {
-            PageIterator<User> p1 = GRunner.userService.pageFollowing(start, end);  // 查询自己的 following
+            // 查询自己的 following
+            PageIterator<User> p1 = GithubRunner.userService.pageFollowing(start, end);
             while (p1.hasNext()) {
                 Collection<User> userCollection = p1.next();
                 list.addAll(userCollection);
-                break;  // 只遍历前面部分
+                // 只遍历前面部分
+                break;
             }
         } else {
-            PageIterator<User> p2 = GRunner.userService.pageFollowing(username, start, end); // 查询指定用户的 following
+            // 查询指定用户的 following
+            PageIterator<User> p2 = GithubRunner.userService.pageFollowing(username, start, end);
             while (p2.hasNext()) {
                 Collection<User> userCollection = p2.next();
                 list.addAll(userCollection);
@@ -228,7 +237,7 @@ public class UserRest {
             username = username.trim();
         }
 
-        GRunner.userService.follow(username);
+        GithubRunner.userService.follow(username);
         return ResponseGenerator.success();
     }
 
@@ -247,7 +256,7 @@ public class UserRest {
             username = username.trim();
         }
 
-        GRunner.userService.unfollow(username);
+        GithubRunner.userService.unfollow(username);
         return ResponseGenerator.success();
     }
 
@@ -266,7 +275,7 @@ public class UserRest {
             username = username.trim();
         }
 
-        boolean following = GRunner.userService.isFollowing(username);
+        boolean following = GithubRunner.userService.isFollowing(username);
         return ResponseGenerator.success(following);
     }
 
@@ -279,7 +288,7 @@ public class UserRest {
     @SneakyThrows
     @GetMapping("/keys")
     public Response keys() {
-        List<Key> keys = GRunner.userService.getKeys();
+        List<Key> keys = GithubRunner.userService.getKeys();
         return ResponseGenerator.success(keys);
     }
 
@@ -292,7 +301,7 @@ public class UserRest {
     @SneakyThrows
     @PostMapping("/key")
     public Response createKey(@RequestBody Key key) {
-        Key key1 = GRunner.userService.createKey(key);
+        Key key1 = GithubRunner.userService.createKey(key);
         return ResponseGenerator.success(key1);
     }
 
@@ -305,7 +314,7 @@ public class UserRest {
     @SneakyThrows
     @DeleteMapping("/key/{id}")
     public Response keys(@PathVariable(value = "id") Integer id) {
-        GRunner.userService.deleteKey(id);
+        GithubRunner.userService.deleteKey(id);
         return ResponseGenerator.success();
     }
 

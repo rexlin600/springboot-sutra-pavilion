@@ -1,4 +1,4 @@
-package xyz.rexlin600.helloworld.config;
+package xyz.rexlin600.github.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;

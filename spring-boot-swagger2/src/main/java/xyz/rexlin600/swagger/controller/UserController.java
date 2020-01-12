@@ -6,17 +6,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
-import xyz.rexlin600.helloworld.config.BaseResult;
+import xyz.rexlin600.swagger.config.BaseResult;
 import xyz.rexlin600.swagger.model.User;
 
 import java.util.*;
 
 
+/**
+ * @author rexlin600
+ */
 @Api(value = "用户管理", description = "用户管理API", position = 100, protocols = "http")
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {
-    
+
     static Map<Long, User> users = Collections.synchronizedMap(new HashMap<>());
 
     @ApiOperation(value = "获取用户列表", notes = "查询用户列表")

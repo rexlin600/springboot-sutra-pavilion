@@ -1,9 +1,14 @@
-package xyz.rexlin600.github.common.apiparam;
+package xyz.rexlin600.rabbitmq.common.apiparam;
 
 
-import xyz.rexlin600.github.common.statuscode.IStatusCode;
-import xyz.rexlin600.github.common.statuscode.StatusCode;
+import xyz.rexlin600.rabbitmq.common.statuscode.IStatusCode;
+import xyz.rexlin600.rabbitmq.common.statuscode.StatusCode;
 
+/**
+ * ResponseGenerator 构造器类
+ *
+ * @author rexlin600
+ */
 public class ResponseGenerator {
 
     public static <T> Response<T> success() {

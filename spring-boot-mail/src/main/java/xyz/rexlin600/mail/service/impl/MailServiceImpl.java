@@ -1,4 +1,4 @@
-package xyz.rexlin600.elasticsearch.service.impl;
+package xyz.rexlin600.mail.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +8,10 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import xyz.rexlin600.github.common.enums.MailFuncEnum;
-import xyz.rexlin600.github.common.enums.MailSvcEnum;
-import xyz.rexlin600.github.common.enums.MailTypeEnum;
-import xyz.rexlin600.elasticsearch.service.MailService;
+import xyz.rexlin600.mail.common.enums.MailFuncEnum;
+import xyz.rexlin600.mail.common.enums.MailSvcEnum;
+import xyz.rexlin600.mail.common.enums.MailTypeEnum;
+import xyz.rexlin600.mail.service.MailService;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -37,7 +37,9 @@ public class MailServiceImpl implements MailService {
         this.mailSender = mailSender;
     }
 
-    // 发件人，默认配置的邮件用户
+    /**
+     * 发件人，默认配置的邮件用户
+     */
     @Value("${spring.mail.username}")
     private String from;
 
@@ -142,7 +144,6 @@ public class MailServiceImpl implements MailService {
             FileSystemResource file = new FileSystemResource(new File(filePath));
             String fileName = filePath.substring(filePath.lastIndexOf(File.separator));
             helper.addAttachment(fileName, file);
-            //helper.addAttachment("test"+fileName, file);
 
             mailSender.send(message);
 

@@ -12,6 +12,7 @@ import xyz.rexlin600.github.exception.BusinessException;
  * data作为泛型参数类型，在不同接口可以定义不同的类型
  *
  * @param <T> 数据泛型类型
+ * @author rexlin600
  */
 @Data
 public class Response<T> {

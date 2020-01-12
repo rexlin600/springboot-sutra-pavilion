@@ -1,14 +1,14 @@
-package xyz.rexlin600.docker.rest;
+package xyz.rexlin600.mybatisplus.rest;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import xyz.rexlin600.mybatisplus.biz.UserBiz;
-import xyz.rexlin600.github.common.apiparam.PageResult;
-import xyz.rexlin600.github.common.apiparam.Response;
-import xyz.rexlin600.github.common.apiparam.ResponseGenerator;
-import xyz.rexlin600.swagger.model.User;
+import xyz.rexlin600.mybatisplus.common.apiparam.PageResult;
+import xyz.rexlin600.mybatisplus.common.apiparam.Response;
+import xyz.rexlin600.mybatisplus.common.apiparam.ResponseGenerator;
+import xyz.rexlin600.mybatisplus.model.User;
 
 /**
  * @menu MybatisPlus_用户API

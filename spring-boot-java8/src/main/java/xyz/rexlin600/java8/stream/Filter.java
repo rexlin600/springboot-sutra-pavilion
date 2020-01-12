@@ -1,6 +1,7 @@
 package xyz.rexlin600.java8.stream;
 
-import xyz.rexlin600.swagger.model.Goods;
+
+import xyz.rexlin600.java8.model.Goods;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -15,6 +16,9 @@ import java.util.function.Predicate;
  * @date: 2020/1/9
  */
 public class Filter {
+
+    private static final String SKY_BLUE = "天蓝色";
+    private static final String RD_ENGINEER = "研发工程师";
 
     /**
      * init data
@@ -43,7 +47,7 @@ public class Filter {
      */
     public Long filerColor() {
         long count = goodsList.stream()
-                .filter(goods -> goods.getColor().equals("天蓝色"))
+                .filter(goods -> SKY_BLUE.equals(goods.getColor()))
                 .count();
         return count;
     }
@@ -55,7 +59,7 @@ public class Filter {
      */
     public Long filerPosition() {
         long count = goodsList.stream()
-                .filter(goods -> goods.getPosition().equals("研发工程师"))
+                .filter(goods -> RD_ENGINEER.equals(goods.getPosition()))
                 .count();
         return count;
     }
@@ -68,8 +72,8 @@ public class Filter {
      */
     public Long filerBoth() {
         long count = goodsList.stream()
-                .filter(goods -> goods.getPosition().equals("研发工程师"))
-                .filter(goods -> goods.getColor().equals("天蓝色"))
+                .filter(goods -> RD_ENGINEER.equals(goods.getPosition()))
+                .filter(goods -> SKY_BLUE.equals(goods.getColor()))
                 .count();
         return count;
     }

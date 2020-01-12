@@ -3,8 +3,6 @@ package xyz.rexlin600.java8.date.api;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * @description
  * @auther hekunlin

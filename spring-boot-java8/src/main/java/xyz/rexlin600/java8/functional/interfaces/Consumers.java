@@ -1,7 +1,6 @@
 package xyz.rexlin600.java8.functional.interfaces;
 
 import java.util.function.Consumer;
-import java.util.stream.Stream;
 
 /**
  * Consumers 类

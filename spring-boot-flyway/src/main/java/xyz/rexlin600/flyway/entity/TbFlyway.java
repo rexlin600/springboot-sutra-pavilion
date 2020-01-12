@@ -1,4 +1,4 @@
-package xyz.rexlin600.docker.entity;
+package xyz.rexlin600.flyway.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

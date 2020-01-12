@@ -1,13 +1,16 @@
 package xyz.rexlin600.java8.stream;
 
-import xyz.rexlin600.swagger.model.Goods;
+
+import xyz.rexlin600.java8.model.Goods;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.*;
-import java.util.stream.*;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Map 类
@@ -17,6 +20,8 @@ import java.util.stream.*;
  */
 @SuppressWarnings("Duplicates")
 public class FlatMap {
+
+    private static final String SKY_BLUE = "天蓝色";
 
     /**
      * init data
@@ -48,13 +53,14 @@ public class FlatMap {
                 .flatMap(new Function<Goods, Stream<Long>>() {
                     @Override
                     public Stream<Long> apply(Goods goods) {
-                        if (goods.getColor().equals("天蓝色")) {
+                        if (goods.getColor().equals(SKY_BLUE)) {
                             return Stream.of(goods.getId());
                         }
                         return null;
                     }
                 })
-                .filter(new Predicate<Long>() { // 去掉 null 值
+                .filter(new Predicate<Long>() {
+                    // 去掉 null 值
                     @Override
                     public boolean test(Long value) {
                         return value != null;

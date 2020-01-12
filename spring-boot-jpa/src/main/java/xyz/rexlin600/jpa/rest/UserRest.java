@@ -1,14 +1,14 @@
-package xyz.rexlin600.docker.rest;
+package xyz.rexlin600.jpa.rest;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
-import xyz.rexlin600.github.common.apiparam.PageResult;
-import xyz.rexlin600.github.common.apiparam.Response;
-import xyz.rexlin600.github.common.apiparam.ResponseGenerator;
-import xyz.rexlin600.docker.entity.User;
-import xyz.rexlin600.swagger.repository.UserRepository;
+import xyz.rexlin600.jpa.common.apiparam.PageResult;
+import xyz.rexlin600.jpa.common.apiparam.Response;
+import xyz.rexlin600.jpa.common.apiparam.ResponseGenerator;
+import xyz.rexlin600.jpa.entity.User;
+import xyz.rexlin600.jpa.repository.UserRepository;
 
 import javax.annotation.Resource;
 import java.util.Optional;
@@ -83,7 +83,7 @@ public class UserRest {
     @GetMapping("/{id}")
     public Response add(@PathVariable(value = "id") Long id) {
         Optional<User> optional = userRepository.findById(id);
-        if (optional.isPresent()){
+        if (optional.isPresent()) {
             return ResponseGenerator.success(optional.get());
         }
         return ResponseGenerator.fail("not exist this user");

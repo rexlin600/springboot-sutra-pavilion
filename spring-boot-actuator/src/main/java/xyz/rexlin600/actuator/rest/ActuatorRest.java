@@ -1,4 +1,4 @@
-package xyz.rexlin600.docker.rest;
+package xyz.rexlin600.actuator.rest;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

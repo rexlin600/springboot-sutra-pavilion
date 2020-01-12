@@ -1,4 +1,4 @@
-package xyz.rexlin600.docker.entity;
+package xyz.rexlin600.transaction.entity;
 
 import lombok.Data;
 
@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * @author rexlin600
+ */
 @Entity
 @Data
 public class User {

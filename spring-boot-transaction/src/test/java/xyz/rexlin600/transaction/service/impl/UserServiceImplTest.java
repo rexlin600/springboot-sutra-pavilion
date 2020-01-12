@@ -1,4 +1,4 @@
-package xyz.rexlin600.elasticsearch.service.impl;
+package xyz.rexlin600.transaction.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -9,10 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
-import xyz.rexlin600.docker.entity.User;
-import xyz.rexlin600.swagger.repository.UserRepository;
-import xyz.rexlin600.elasticsearch.service.UserService;
+import xyz.rexlin600.transaction.entity.User;
+import xyz.rexlin600.transaction.repository.UserRepository;
+import xyz.rexlin600.transaction.service.UserService;
 
 import java.util.Optional;
 

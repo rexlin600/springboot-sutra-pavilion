@@ -1,4 +1,4 @@
-package xyz.rexlin600.docker.rest;
+package xyz.rexlin600.github.rest;
 
 import lombok.SneakyThrows;
 import org.eclipse.egit.github.core.*;
@@ -8,7 +8,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import xyz.rexlin600.github.common.apiparam.Response;
 import xyz.rexlin600.github.common.apiparam.ResponseGenerator;
-import xyz.rexlin600.helloworld.config.runner.GRunner;
+import xyz.rexlin600.github.config.runner.GithubRunner;
 
 import java.util.*;
 
@@ -39,15 +39,16 @@ public class RepositoryRest {
             username = username.trim();
         }
 
-        if (StringUtils.isEmpty(username)) {    // 查询自己的仓库
-            PageIterator<Repository> p1 = GRunner.repositoryService.pageRepositories(start, end);
+        // 查询自己的仓库
+        if (StringUtils.isEmpty(username)) {
+            PageIterator<Repository> p1 = GithubRunner.repositoryService.pageRepositories(start, end);
             while (p1.hasNext()) {
                 Collection<Repository> repositories = p1.next();
                 list.addAll(repositories);
                 break;
             }
         } else {    // 查询指定用户的仓库
-            PageIterator<Repository> p2 = GRunner.repositoryService.pageRepositories(username, start, end);
+            PageIterator<Repository> p2 = GithubRunner.repositoryService.pageRepositories(username, start, end);
             while (p2.hasNext()) {
                 Collection<Repository> repositories = p2.next();
                 list.addAll(repositories);
@@ -74,9 +75,9 @@ public class RepositoryRest {
         }
 
         if (StringUtils.isEmpty(username)) {
-            repositories = GRunner.repositoryService.getRepositories();
+            repositories = GithubRunner.repositoryService.getRepositories();
         } else {
-            repositories = GRunner.repositoryService.getRepositories(username);
+            repositories = GithubRunner.repositoryService.getRepositories(username);
         }
         return ResponseGenerator.success(repositories);
     }
@@ -92,7 +93,7 @@ public class RepositoryRest {
     @PostMapping("/branches")
     public Response branches(@RequestBody SearchRepository searchRepository) {
         List<RepositoryBranch> branches =
-                GRunner.repositoryService.getBranches(searchRepository);
+                GithubRunner.repositoryService.getBranches(searchRepository);
         return ResponseGenerator.success(branches);
     }
 
@@ -106,7 +107,7 @@ public class RepositoryRest {
     @SneakyThrows
     @PostMapping("/tags")
     public Response tags(@RequestBody SearchRepository searchRepository) {
-        List<RepositoryTag> tags = GRunner.repositoryService.getTags(searchRepository);
+        List<RepositoryTag> tags = GithubRunner.repositoryService.getTags(searchRepository);
         return ResponseGenerator.success(tags);
     }
 
@@ -120,7 +121,7 @@ public class RepositoryRest {
     @SneakyThrows
     @PostMapping("/languages")
     public Response languages(@RequestBody SearchRepository searchRepository) {
-        Map<String, Long> languages = GRunner.repositoryService.getLanguages(searchRepository);
+        Map<String, Long> languages = GithubRunner.repositoryService.getLanguages(searchRepository);
         return ResponseGenerator.success(languages);
     }
 
@@ -135,7 +136,7 @@ public class RepositoryRest {
     @PostMapping("/contributors")
     public Response contributors(@RequestParam(value = "flag") boolean flag,
                                  @RequestBody SearchRepository searchRepository) {
-        List<Contributor> contributors = GRunner.repositoryService.getContributors(searchRepository, flag);
+        List<Contributor> contributors = GithubRunner.repositoryService.getContributors(searchRepository, flag);
         return ResponseGenerator.success(contributors);
     }
 
@@ -149,7 +150,7 @@ public class RepositoryRest {
     @SneakyThrows
     @PostMapping("/forks")
     public Response forks(@RequestBody SearchRepository searchRepository) {
-        List<Repository> forks = GRunner.repositoryService.getForks(searchRepository);
+        List<Repository> forks = GithubRunner.repositoryService.getForks(searchRepository);
         return ResponseGenerator.success(forks);
     }
 
@@ -184,22 +185,22 @@ public class RepositoryRest {
 
         // language and startPage is empty
         if (StringUtils.isEmpty(language) && ObjectUtils.isEmpty(startPage)) {
-            list = GRunner.repositoryService.searchRepositories(query);
+            list = GithubRunner.repositoryService.searchRepositories(query);
         }
 
         // language is not empty and startpage is empty
         if (!StringUtils.isEmpty(language) && ObjectUtils.isEmpty(startPage)) {
-            list = GRunner.repositoryService.searchRepositories(query, language);
+            list = GithubRunner.repositoryService.searchRepositories(query, language);
         }
 
         // language is eempty and startPage is not eempty
         if (StringUtils.isEmpty(language) && !ObjectUtils.isEmpty(startPage)) {
-            list = GRunner.repositoryService.searchRepositories(query, startPage);
+            list = GithubRunner.repositoryService.searchRepositories(query, startPage);
         }
 
         // language is not empty and startPage is not empty
         if (StringUtils.isEmpty(language) && ObjectUtils.isEmpty(startPage)) {
-            list = GRunner.repositoryService.searchRepositories(query, language, startPage);
+            list = GithubRunner.repositoryService.searchRepositories(query, language, startPage);
         }
 
         return ResponseGenerator.success(list);
@@ -225,9 +226,9 @@ public class RepositoryRest {
         }
 
         if (StringUtils.isEmpty(organization)) {
-            result = GRunner.repositoryService.createRepository(repository);
+            result = GithubRunner.repositoryService.createRepository(repository);
         } else {
-            result = GRunner.repositoryService.createRepository(organization, repository);
+            result = GithubRunner.repositoryService.createRepository(organization, repository);
         }
 
         return ResponseGenerator.success(result);
@@ -253,9 +254,9 @@ public class RepositoryRest {
         }
 
         if (StringUtils.isEmpty(organization)) {
-            forkRepository = GRunner.repositoryService.forkRepository(searchRepository);
+            forkRepository = GithubRunner.repositoryService.forkRepository(searchRepository);
         } else {
-            forkRepository = GRunner.repositoryService.forkRepository(searchRepository, organization);
+            forkRepository = GithubRunner.repositoryService.forkRepository(searchRepository, organization);
         }
 
         return ResponseGenerator.success(forkRepository);

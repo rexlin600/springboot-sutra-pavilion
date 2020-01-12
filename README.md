@@ -1,19 +1,39 @@
 # springboot-sutra-pavilion(ssp)
 
-![Spring Boot 2.0](https://img.shields.io/badge/Spring%20Boot-2.0-brightgreen.svg)
-![Mysql 5.7 +](https://img.shields.io/badge/Mysql-5.7+-blue.svg)
-![JDK 1.8](https://img.shields.io/badge/JDK-1.8-brightgreen.svg)
-![Maven](https://img.shields.io/badge/Maven-3.5.0-yellowgreen.svg)
-![license](https://img.shields.io/github/license/rexlin600/springboot2-example)
-![star](https://img.shields.io/github/stars/rexlin600/springboot2-example?style=social)
-[![Build Status](https://travis-ci.org/rexlin600/springboot-sutra-pavilion.svg?branch=master)](https://travis-ci.org/rexlin600/springboot-sutra-pavilion)
+<p align="center">
+    <a href="https://docs.spring.io/spring-boot/docs/2.1.4.RELEASE/reference/html"><img src="https://img.shields.io/badge/Spring%20Boot-2.1.4.Release-brightgreen.svg"></a>
+    <a href="MySQL 5.7.+"><img src="https://img.shields.io/badge/Mysql-5.7+-blue.svg"></a>
+    <a href="JDK 1.8"><img src="https://img.shields.io/badge/JDK-1.8-brightgreen.svg"></a>
+    <a href="Maven"><img src="https://img.shields.io/badge/Maven-3.5.0-yellowgreen.svg"></a>
+    <a href="license"><img src="https://img.shields.io/github/license/rexlin600/springboot2-example"></a>
+    <a href="https://img.shields.io/github/repo-size/rexlin600/springboot-sutra-pavilion"><img src="https://img.shields.io/github/repo-size/rexlin600/springboot-sutra-pavilion"/></a>
+</p>
+
+<p align="center">
+    <a href="https://www.codacy.com/manual/rexlin600/springboot-sutra-pavilion?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rexlin600/springboot-sutra-pavilion&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/aadfd5654d204443ac773aa619ce8222"/></a>
+    <a href="https://travis-ci.org/rexlin600/springboot-sutra-pavilion.svg?branch=master"><img src="https://travis-ci.org/rexlin600/springboot-sutra-pavilion.svg?branch=master"/></a>
+    <a href="https://img.shields.io/github/commit-activity/m/rexlin600/springboot-sutra-pavilion"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/rexlin600/springboot-sutra-pavilion"></a>
+</p>
+
+<p align="center">
+    <a href="https://img.shields.io/github/stars/rexlin600/springboot-sutra-pavilion?style=social"><img src="https://img.shields.io/github/stars/rexlin600/springboot-sutra-pavilion?style=social"></a> 
+    <a href="https://img.shields.io/github/forks/rexlin600/springboot-sutra-pavilion?style=social"><img alt="GitHub forks" src="https://img.shields.io/github/forks/rexlin600/springboot-sutra-pavilion?style=social"></a>
+    <a href="https://img.shields.io/github/watchers/rexlin600/springboot-sutra-pavilion?style=social"><img alt="GitHub watchers" src="https://img.shields.io/github/watchers/rexlin600/springboot-sutra-pavilion?style=social"></a>
+</p>
+
+<p align="center">
+  <span>中文 | <a href="./README.en.md">English</a></span>
+</p>
+
+
+## 项目简介
 
 `springboot-sutra-pavilion` 是一个基于 `Spring Boot 2.x` 的综合性 `仓库`。`Spring Boot 2.x` 中的各种示例，以简单、快捷、精炼为目标，虽然定义为 `example`，但是其具体实现上尽可能的能够帮助大家在实际使用中能够只需要进行少量的修改即可投入使用。
 
 最终的目的是帮助大家快速掌握 `Spring Boot 2.x` 的使用以及与其集成的各类中间件的集成使用。
 
 
-## 介绍
+## 功能介绍
 
 **本项目提供的示例概览：**
 
@@ -47,49 +67,9 @@
 | _ | _ |
 
 
-## Plan
+## TODO
 
-**新计划**
-
-* spring-boot-sharding-jdbc
-* spring-boot-sharding-jdbc-masterslave
-* spring-boot-shiro
-* spring-boot-upload
-  * spring-boot-upload
-  * spring-boot-feign-upload
-  * spring-boot-zuul-upload
-* spring-boot-fastDFS
-* spring-boot-validation(jsr303 and hibernate-validation)
-* spring-boot-async（进行中）
-* spring-boot-logging
-* spring-boot-security
-* spring-boot-security-cas
-* spring-boot-oauth2
-* spring-boot-starter
-* spring-boot-image
-* spring-boot-configuration
-* spring-boot-aspect
-* spring-boot-retry
-* spring-boot-disconf
-* spring-boot-kafka
-* spring-boot-rocketmq
-* spring-boot-mockito
-* spring-boot-ignite
-* spring-boot-elastic-job
-* spring-boot-influxdb
-* spring-boot-websocket
-* spring-boot-prometheus-grafana
-* spring-boot-elk-filebeat
-* spring-boot-apm
-  * spring-boot-skywalking
-  * spring-boot-zipkin
-  * spring-boot-pinpoint
-* spring-boot-mvc
-* spring-boot-dubbo
-* spring-boot-benchmark(container、api-gatway、mvcAndWbflux)
-* spring-boot-ratelimit
-* spring-boot-xxx
- 
+查看 <span><a href="./TODO.md">TODO</a></span> 文件
 
 **后期完善**
 

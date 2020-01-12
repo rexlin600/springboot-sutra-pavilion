@@ -1,17 +1,15 @@
-package xyz.rexlin600.elasticsearch.runner.command;
+package xyz.rexlin600.runner.command;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
  * @author: hekunlin
  */
 @Component
-@Order(2)
 @Slf4j
-public class SecondCommandLineRunner implements CommandLineRunner {
+public class DefaultCommandLineRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {

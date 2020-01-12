@@ -13,6 +13,12 @@ package xyz.rexlin600.java8.functional.interfaces;
 @FunctionalInterface
 interface MyFunctionalInterface<T, R> {
 
+    /**
+     * 接受一个呃呃 T 类型的参数的函数式接口
+     *
+     * @param t
+     * @return
+     */
     R apply(T t);
 
 }

@@ -12,10 +12,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @EnableMongoPlus
 @SpringBootApplication
-public class MongoDBApplication {
+public class MongoDbApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MongoDBApplication.class, args);
+        SpringApplication.run(MongoDbApplication.class, args);
     }
 
 }

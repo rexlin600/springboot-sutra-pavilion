@@ -1,8 +1,8 @@
 package xyz.rexlin600.java8.stream;
 
-import xyz.rexlin600.swagger.model.Goods;
 
-import java.net.Inet4Address;
+import xyz.rexlin600.java8.model.Goods;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -46,7 +46,8 @@ public class Map {
         // maps 操作
         List<Long> collect = goodsList.stream()
                 .map(function)
-                .filter(new Predicate<Long>() { // 去掉 null 值
+                .filter(new Predicate<Long>() {
+                    // 去掉 null 值
                     @Override
                     public boolean test(Long value) {
                         return value != null;

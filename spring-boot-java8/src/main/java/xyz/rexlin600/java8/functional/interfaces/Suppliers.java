@@ -1,9 +1,5 @@
 package xyz.rexlin600.java8.functional.interfaces;
 
-import xyz.rexlin600.swagger.model.Goods;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.function.Supplier;
 
 /**
@@ -15,6 +11,7 @@ import java.util.function.Supplier;
 public class Suppliers {
 
     private static final String PATTERN = "yyyy-MM-dd HH:mm:ss";
+    private static final Long NUM = 100000L;
 
     /**
      * Supplier 和 Functions 类似，只不过不接受参数
@@ -42,7 +39,7 @@ public class Suppliers {
         Supplier<Double> supplier = () -> {
             Double tmp = number;
             // 模拟耗时操作
-            for (int i = 0; i < 100000; i++) {
+            for (int i = 0; i < NUM; i++) {
                 tmp += Math.random();
             }
             return tmp;

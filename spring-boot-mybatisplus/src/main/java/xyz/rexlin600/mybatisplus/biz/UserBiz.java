@@ -3,7 +3,7 @@ package xyz.rexlin600.mybatisplus.biz;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import xyz.rexlin600.mybatisplus.mapper.UserMapper;
-import xyz.rexlin600.swagger.model.User;
+import xyz.rexlin600.mybatisplus.model.User;
 
 /**
  * User biz 类

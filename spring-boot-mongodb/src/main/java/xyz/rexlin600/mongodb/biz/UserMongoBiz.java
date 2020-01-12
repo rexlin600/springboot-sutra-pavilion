@@ -1,8 +1,8 @@
-package xyz.rexlin600.mybatisplus.biz;
+package xyz.rexlin600.mongodb.biz;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import xyz.rexlin600.docker.entity.User;
+import xyz.rexlin600.mongodb.entity.User;
 import xyz.rexlin600.mongodb.mongo.UserMongoRepository;
 
 import java.util.List;

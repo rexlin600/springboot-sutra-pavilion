@@ -1,4 +1,4 @@
-package xyz.rexlin600.helloworld.config.runner;
+package xyz.rexlin600.github.config.runner;
 
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.egit.github.core.client.GitHubClient;
@@ -17,7 +17,7 @@ import org.springframework.util.StringUtils;
  */
 @Slf4j
 @Component
-public class GRunner implements CommandLineRunner {
+public class GithubRunner implements CommandLineRunner {
 
     @Value("${github.oauth.username}")
     String username;

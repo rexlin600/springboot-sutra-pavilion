@@ -11,12 +11,16 @@ import java.util.List;
 import java.util.Optional;
 
 
+/**
+ * @author rexlin600
+ */
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserEsRepository userEsRepository;
 
+    @Override
     public User create(User user) {
         if (null == user) {
             return null;
@@ -25,6 +29,7 @@ public class UserServiceImpl implements UserService {
         return userEsRepository.save(user);
     }
 
+    @Override
     public User findById(Long id) {
         if (null == id) {
             return null;
@@ -36,6 +41,7 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    @Override
     public List<User> findAll() {
         final List<User> users = new ArrayList<User>();
         userEsRepository.findAll().forEach(item -> {

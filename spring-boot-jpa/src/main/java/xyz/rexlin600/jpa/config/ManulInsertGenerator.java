@@ -1,4 +1,4 @@
-package xyz.rexlin600.helloworld.config;
+package xyz.rexlin600.jpa.config;
 
 
 import org.hibernate.HibernateException;

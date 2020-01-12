@@ -27,8 +27,10 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class MyEndPoint {
 
-    public static final Map<String, Object> map = new LinkedHashMap<>();
-    public static final Map<String, Object> tmp = new ConcurrentHashMap<>();
+    private static final Double CONSTANT_0D = 0d;
+    private static final Double CONSTANT_1D = 1d;
+
+    public static final Map<String, Object> MAP = new LinkedHashMap<>();
 
     /**
      * 读取系统信息
@@ -58,7 +60,7 @@ public class MyEndPoint {
         map.put("USB设备-false", injectUsbDevices(hardware.getUsbDevices(false)));
 
         // 计算比较耗时，建议单独写一个 endpoint
-        map.put("线程详情", injectProcesses(operatingSystem, hardware.getMemory(), 10, OperatingSystem.ProcessSort.MEMORY));
+        MAP.put("线程详情", injectProcesses(operatingSystem, hardware.getMemory(), 10, OperatingSystem.ProcessSort.MEMORY));
 
         return map;
     }
@@ -213,9 +215,9 @@ public class MyEndPoint {
             sb.append("Unknown");
         } else {
             double timeRemaining = powerSources[0].getTimeRemaining();
-            if (timeRemaining < -1d) {
+            if (timeRemaining < CONSTANT_1D) {
                 sb.append("Charging");
-            } else if (timeRemaining < 0d) {
+            } else if (timeRemaining < CONSTANT_0D) {
                 sb.append("Calculating date remaining");
             } else {
                 sb.append(String.format("%d:%02d remaining", (int) (timeRemaining / 3600),
@@ -305,11 +307,11 @@ public class MyEndPoint {
     /**
      * 网络接口信息
      *
-     * @param networkIFs
+     * @param networkIfs
      */
-    public static JSONObject injectNetworkInterfaces(NetworkIF[] networkIFs) {
+    public static JSONObject injectNetworkInterfaces(NetworkIF[] networkIfs) {
         JSONObject jsonObject = new JSONObject();
-        for (NetworkIF net : networkIFs) {
+        for (NetworkIF net : networkIfs) {
             jsonObject.put("Name: %s (%s)", net.getName() + " / " + net.getDisplayName());
             jsonObject.put("MAC Address: %s", net.getMacaddr());
             jsonObject.put("MTU: %s, Speed: %s", net.getMTU() + " / " + FormatUtil.formatValue(net.getSpeed(), "bps"));

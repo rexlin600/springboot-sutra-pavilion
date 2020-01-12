@@ -1,4 +1,4 @@
-package xyz.rexlin600.docker.entity;
+package xyz.rexlin600.jdbc.entity;
 
 import lombok.Builder;
 import lombok.Data;

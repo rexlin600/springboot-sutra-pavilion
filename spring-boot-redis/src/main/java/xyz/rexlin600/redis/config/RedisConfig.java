@@ -1,8 +1,5 @@
-package xyz.rexlin600.helloworld.config;
+package xyz.rexlin600.redis.config;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
@@ -18,11 +15,8 @@ import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
-import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
@@ -49,6 +43,7 @@ public class RedisConfig extends CachingConfigurerSupport {
      *
      * @return
      */
+    @Override
     @Bean
     public KeyGenerator keyGenerator() {
         return new KeyGenerator() {
@@ -65,7 +60,7 @@ public class RedisConfig extends CachingConfigurerSupport {
         };
     }
 
-    
+
     /**
      * cacheManager
      *
@@ -106,10 +101,14 @@ public class RedisConfig extends CachingConfigurerSupport {
 
         RedisSerializer stringSerializer = new StringRedisSerializer();
         GenericJackson2JsonRedisSerializer genericJackson2JsonRedisSerializer = new GenericJackson2JsonRedisSerializer();
-        redisTemplate.setKeySerializer(stringSerializer); // key序列化
-        redisTemplate.setValueSerializer(genericJackson2JsonRedisSerializer); // value序列化
-        redisTemplate.setHashKeySerializer(stringSerializer); // Hash key序列化
-        redisTemplate.setHashValueSerializer(genericJackson2JsonRedisSerializer); // Hash value序列化
+        // key序列化
+        redisTemplate.setKeySerializer(stringSerializer);
+        // value序列化
+        redisTemplate.setValueSerializer(genericJackson2JsonRedisSerializer);
+        // Hash key序列化
+        redisTemplate.setHashKeySerializer(stringSerializer);
+        // Hash value序列化
+        redisTemplate.setHashValueSerializer(genericJackson2JsonRedisSerializer);
 
         redisTemplate.setConnectionFactory(jedisConnectionFactory);
 

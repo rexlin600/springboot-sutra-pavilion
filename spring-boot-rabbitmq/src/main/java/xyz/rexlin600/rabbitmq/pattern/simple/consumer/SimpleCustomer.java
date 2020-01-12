@@ -33,7 +33,8 @@ public class SimpleCustomer {
     public void handlerSimple(String content, Channel channel, Message message) {
         long milli = Instant.now().toEpochMilli();
         log.info("==>  Simple consume content=[{}] at [{}]", content, milli);
-        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);   // true表示一次确认所有小于tag的消息
+        // true表示一次确认所有小于tag的消息
+        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
     }
 
 }

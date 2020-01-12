@@ -1,7 +1,8 @@
 package xyz.rexlin600.mongodb.mongo;
 
+
 import org.springframework.data.mongodb.repository.MongoRepository;
-import xyz.rexlin600.docker.entity.User;
+import xyz.rexlin600.mongodb.entity.User;
 
 import java.util.List;
 
@@ -19,8 +20,20 @@ public interface UserMongoRepository extends MongoRepository<User, Long> {
      * 可以参考 images/mongo 的截图
      */
 
+    /**
+     * 根据ID删除
+     *
+     * @param id
+     */
+    @Override
     void deleteById(Long id);
 
+    /**
+     * 根据名称查找
+     *
+     * @param name
+     * @return
+     */
     List<User> findByName(String name);
 
 }

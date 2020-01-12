@@ -1,4 +1,4 @@
-package xyz.rexlin600.helloworld.config.filter;
+package xyz.rexlin600.github.config.filter;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -20,6 +20,9 @@ import java.io.IOException;
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter {
+
+    private static final String OPTIONS = "OPTIONS";
+
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) res;
@@ -29,7 +32,7 @@ public class CorsFilter implements Filter {
         response.setHeader("Access-Control-Allow-Headers", "token,Content-Type,X-Requested-With,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers");
         response.setHeader("Access-Control-Max-Age", "3600");
 
-        if (!"OPTIONS".equals(request.getMethod())) {
+        if (!OPTIONS.equals(request.getMethod())) {
             chain.doFilter(req, res);
         }
     }

@@ -1,4 +1,4 @@
-package xyz.rexlin600.docker.entity;
+package xyz.rexlin600.jpa.entity;
 
 import lombok.Data;
 import org.hibernate.annotations.DynamicInsert;
@@ -7,6 +7,9 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
+/**
+ * @author rexlin600
+ */
 @Data
 @DynamicUpdate
 @DynamicInsert

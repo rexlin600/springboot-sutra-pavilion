@@ -1,17 +1,32 @@
-package xyz.rexlin600.github.exception;
+package xyz.rexlin600.jpa.exception;
 
 import lombok.Getter;
 import lombok.Setter;
-import xyz.rexlin600.github.common.enums.ResponseEnum;
+import xyz.rexlin600.jpa.common.enums.ResponseEnum;
 
+/**
+ * @author rexlin600
+ */
 @Getter
 @Setter
 public class BusinessException extends RuntimeException {
 
-    private int code; // 状态码
-    private String msg; // 消息
-    private String errorMsg; // 错误消息
-    private Object param; // 附加参数
+    /**
+     * 状态码
+     */
+    private int code;
+    /**
+     * 消息
+     */
+    private String msg;
+    /**
+     * 错误消息
+     */
+    private String errorMsg;
+    /**
+     * 附加参数
+     */
+    private Object param;
 
 
     public BusinessException(ResponseEnum re) {

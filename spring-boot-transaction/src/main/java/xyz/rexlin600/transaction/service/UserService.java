@@ -1,9 +1,6 @@
-package xyz.rexlin600.elasticsearch.service;
+package xyz.rexlin600.transaction.service;
 
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-import xyz.rexlin600.docker.entity.User;
+import xyz.rexlin600.transaction.entity.User;
 
 /**
  * UserService 类
@@ -13,9 +10,21 @@ import xyz.rexlin600.docker.entity.User;
  */
 public interface UserService {
 
+    /**
+     * 根据ID查找
+     *
+     * @param id
+     * @return
+     */
     User findById(Long id);
 
-    //@Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED)
+    /**
+     * 新增
+     * <p>
+     * // @Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED)
+     *
+     * @param user
+     */
     void addUser(User user);
 
 }

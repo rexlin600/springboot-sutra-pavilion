@@ -1,10 +1,12 @@
-package xyz.rexlin600.helloworld.config;
+package xyz.rexlin600.swagger.config;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * 通用响应对象
+ *
+ * @author rexlin600
  */
 @ApiModel(description = "响应对象")
 public class BaseResult<T> {
@@ -77,7 +79,6 @@ public class BaseResult<T> {
     public void setData(T data) {
         this.data = data;
     }
-
 
 
     public static class ResponseParam {

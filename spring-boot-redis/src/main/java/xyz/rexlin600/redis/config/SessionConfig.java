@@ -1,12 +1,19 @@
-package xyz.rexlin600.helloworld.config;
+package xyz.rexlin600.redis.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.session.data.redis.config.ConfigureRedisAction;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
+/**
+ * SessionConfig 配置
+ * <p>
+ * // 默认 30 天   86400 * 30
+ *
+ * @author rexlin600
+ */
 @Configuration
-@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 86400 * 30)  // 默认 30 天
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 86400 * 30)
 public class SessionConfig {
 
     /**

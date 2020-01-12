@@ -1,4 +1,4 @@
-package xyz.rexlin600.mybatisplus.biz;
+package xyz.rexlin600.mongodb.biz;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -8,12 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.ObjectUtils;
-import xyz.rexlin600.docker.entity.User;
+import xyz.rexlin600.mongodb.entity.User;
 
 import java.util.List;
 
 import static org.junit.Assert.*;
 
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest

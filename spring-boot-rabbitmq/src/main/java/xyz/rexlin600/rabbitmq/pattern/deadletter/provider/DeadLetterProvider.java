@@ -32,7 +32,7 @@ public class DeadLetterProvider {
      * 10S 过期 DeadLetter
      */
     @SneakyThrows
-    public void productDLExpireStr() {
+    public void productDlExpireStr() {
         long milli = Instant.now().toEpochMilli();
         String content = "DeadLetter product message at " + milli;
 

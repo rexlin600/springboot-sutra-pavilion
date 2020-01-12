@@ -1,6 +1,7 @@
 package xyz.rexlin600.java8.stream;
 
-import xyz.rexlin600.swagger.model.Goods;
+
+import xyz.rexlin600.java8.model.Goods;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -16,6 +17,8 @@ import java.util.stream.Stream;
  * @date: 2020/1/9
  */
 public class Count {
+
+    private static final String SKY_BLUE = "天蓝色";
 
     /**
      * init data
@@ -56,7 +59,7 @@ public class Count {
                 .filter(new Predicate<Goods>() {
                     @Override
                     public boolean test(Goods goods) {
-                        return goods.getColor().equals("天蓝色");
+                        return SKY_BLUE.equals(goods.getColor());
                     }
                 })
                 .count();

@@ -1,7 +1,5 @@
 package xyz.rexlin600.java8.date.api;
 
-import org.apache.tomcat.jni.Local;
-
 import java.time.*;
 import java.time.chrono.Chronology;
 import java.util.Date;
@@ -20,9 +18,14 @@ public class LocalDateTimeApi {
     public void now() {
         LocalDateTime.now();
 
-        LocalDateTime.now(ZoneId.systemDefault());  // 系统默认时区
-        LocalDateTime.now(ZoneId.of("Asia/Shanghai"));  // 获取东八区时间
-        LocalDateTime.now(ZoneId.ofOffset("GMT", ZoneOffset.of("+08:00")));  // 时区偏移量
+        // 系统默认时区
+        LocalDateTime.now(ZoneId.systemDefault());
+
+        // 获取东八区时间
+        LocalDateTime.now(ZoneId.of("Asia/Shanghai"));
+
+        // 时区偏移量
+        LocalDateTime.now(ZoneId.ofOffset("GMT", ZoneOffset.of("+08:00")));
 
         LocalDateTime.now(Clock.systemDefaultZone());
         LocalDateTime.now(Clock.system(ZoneId.systemDefault()));
@@ -32,18 +35,25 @@ public class LocalDateTimeApi {
      * 时间转换
      */
     public void transfer() {
-        LocalDateTime.now().toLocalDate();  // transfer LocalDate
+        // transfer LocalDate
+        LocalDateTime.now().toLocalDate();
 
-        LocalDateTime.now().toLocalTime();  // transfer LocalTime
+        // transfer LocalTime
+        LocalDateTime.now().toLocalTime();
 
-        LocalDateTime.now().toInstant(ZoneOffset.ofHours(8));   // transfer Instant
-        LocalDateTime.now().toInstant(ZoneOffset.of("+08:00"));  // transfer Instant
+        // transfer Instant
+        LocalDateTime.now().toInstant(ZoneOffset.ofHours(8));
+        // transfer Instant
+        LocalDateTime.now().toInstant(ZoneOffset.of("+08:00"));
 
-        LocalDateTime.now().toEpochSecond(ZoneOffset.ofHours(8));   // transfer EpochSecond：将此日期时间转换为从1970-01-01T00：00：00Z的纪元*开始的秒数
+        // transfer EpochSecond：将此日期时间转换为从1970-01-01T00：00：00Z的纪元*开始的秒数
+        LocalDateTime.now().toEpochSecond(ZoneOffset.ofHours(8));
 
-        LocalDateTime.now().toString(); // transfer String
+        // transfer String
+        LocalDateTime.now().toString();
 
-        LocalDateTime.now().atOffset(ZoneOffset.ofHours(8));    // transfer OffsetDateTime
+        // transfer OffsetDateTime
+        LocalDateTime.now().atOffset(ZoneOffset.ofHours(8));
 
         // LocalDateTime transfer Date
         // Instant transfer Date
@@ -55,16 +65,21 @@ public class LocalDateTimeApi {
      * 获取具体时间
      */
     public void actual() {
-        int dayOfYear = LocalDateTime.now().getDayOfYear();// 一年中的第几天
-        int dayOfMonth = LocalDateTime.now().getDayOfMonth();// 一月中的第几天
-        DayOfWeek dayOfWeek = LocalDateTime.now().getDayOfWeek();// 一周中的第几天
-        dayOfWeek.getValue();   // 一周中的第几天
+        // 一年中的第几天
+        int dayOfYear = LocalDateTime.now().getDayOfYear();
+        // 一月中的第几天
+        int dayOfMonth = LocalDateTime.now().getDayOfMonth();
+        // 一周中的第几天
+        DayOfWeek dayOfWeek = LocalDateTime.now().getDayOfWeek();
+        // 一周中的第几天
+        dayOfWeek.getValue();
 
 
         int year = LocalDateTime.now().getYear();
         Month month = LocalDateTime.now().getMonth();
         int monthValue = LocalDateTime.now().getMonthValue();
-        Chronology chronology = LocalDateTime.now().getChronology();    // 获取此日期时间的时间顺序
+        // 获取此日期时间的时间顺序
+        Chronology chronology = LocalDateTime.now().getChronology();
         int hour = LocalDateTime.now().getHour();
         int minute = LocalDateTime.now().getMinute();
         int second = LocalDateTime.now().getSecond();
