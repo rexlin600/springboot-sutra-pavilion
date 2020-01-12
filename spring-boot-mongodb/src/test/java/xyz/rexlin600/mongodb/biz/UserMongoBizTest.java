@@ -12,8 +12,6 @@ import xyz.rexlin600.mongodb.entity.User;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Slf4j
 @RunWith(SpringRunner.class)

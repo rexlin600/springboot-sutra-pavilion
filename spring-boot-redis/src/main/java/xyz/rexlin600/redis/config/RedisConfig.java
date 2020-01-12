@@ -66,7 +66,7 @@ public class RedisConfig extends CachingConfigurerSupport {
      *
      * @return
      */
-    @Bean
+    @Bean("cacheManager")
     CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
         log.info("初始化 -> [{}]", "CacheManager RedisCacheManager Start");
 

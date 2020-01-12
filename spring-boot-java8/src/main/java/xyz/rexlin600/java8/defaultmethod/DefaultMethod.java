@@ -11,7 +11,7 @@ public class DefaultMethod {
     /**
      * 测试接口
      */
-    interface InterfaceA {
+    public interface InterfaceA {
         /**
          * hello 方法
          */
@@ -23,7 +23,7 @@ public class DefaultMethod {
     /**
      * 内部类
      */
-    static class InnerDefaultMethod implements InterfaceA {
+    public static class InnerDefaultMethod implements InterfaceA {
 
     }
 

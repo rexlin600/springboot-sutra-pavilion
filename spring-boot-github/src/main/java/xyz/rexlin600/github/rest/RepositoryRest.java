@@ -211,24 +211,24 @@ public class RepositoryRest {
      * 9. 【创建仓库】
      *
      * @param repository
-     * @param organization
+     * @param org
      * @return
      */
     @SneakyThrows
     @PostMapping("/create")
     public Response create(@RequestBody Repository repository,
-                           @RequestParam(value = "organization", required = false) String organization) {
+                           @RequestParam(value = "org", required = false) String org) {
         Repository result = null;
 
         // resolve space
-        if (!StringUtils.isEmpty(organization)) {
-            organization = organization.trim();
+        if (!StringUtils.isEmpty(org)) {
+            org = org.trim();
         }
 
-        if (StringUtils.isEmpty(organization)) {
+        if (StringUtils.isEmpty(org)) {
             result = GithubRunner.repositoryService.createRepository(repository);
         } else {
-            result = GithubRunner.repositoryService.createRepository(organization, repository);
+            result = GithubRunner.repositoryService.createRepository(org, repository);
         }
 
         return ResponseGenerator.success(result);
@@ -238,205 +238,29 @@ public class RepositoryRest {
     /**
      * 10. 【fork仓库】
      *
-     * @param organization
+     * @param org
      * @param searchRepository
      * @return
      */
     @SneakyThrows
     @PostMapping("/fork")
-    public Response fork(@RequestParam(value = "organization", required = false) String organization,
+    public Response fork(@RequestParam(value = "org", required = false) String org,
                          @RequestBody SearchRepository searchRepository) {
         Repository forkRepository = null;
 
         // resolve space
-        if (!StringUtils.isEmpty(organization)) {
-            organization = organization.trim();
+        if (!StringUtils.isEmpty(org)) {
+            org = org.trim();
         }
 
-        if (StringUtils.isEmpty(organization)) {
+        if (StringUtils.isEmpty(org)) {
             forkRepository = GithubRunner.repositoryService.forkRepository(searchRepository);
         } else {
-            forkRepository = GithubRunner.repositoryService.forkRepository(searchRepository, organization);
+            forkRepository = GithubRunner.repositoryService.forkRepository(searchRepository, org);
         }
 
         return ResponseGenerator.success(forkRepository);
     }
-
-
-    // -----------------------------------------------------------------------------------------------
-    // DEPRECATED METHOD
-    // -----------------------------------------------------------------------------------------------
-
-    ///**
-    // * 11. 【自由-根据条件筛选仓库】
-    // *
-    // * @param queryParams
-    // * @param startPage
-    // * @return
-    // */
-    //@Deprecated
-    //@SneakyThrows
-    //@PostMapping("/free/search")
-    //public Response search(@RequestBody Map<String, String> queryParams,
-    //                                 @RequestParam(value = "startPage", required = false) Integer startPage) {
-    //    List<SearchRepository> list = new ArrayList();
-    //
-    //    if (ObjectUtils.isEmpty(startPage)) {
-    //        list = GRunner.repositoryService.searchRepositories(queryParams);
-    //    } else {
-    //        list = GRunner.repositoryService.searchRepositories(queryParams, startPage);
-    //    }
-    //
-    //    return ResponseGenerator.success(list);
-    //}
-    //
-    //
-    ///**
-    // * 12. 【hook值/列表】
-    // *
-    // * @param searchRepository
-    // * @param hookId
-    // * @return
-    // */
-    //@Deprecated
-    //@SneakyThrows
-    //@PostMapping("/hooks")
-    //public Response hooks(@RequestBody SearchRepository searchRepository,
-    //                      @RequestParam(value = "hookId", required = false) Integer hookId) {
-    //    List<RepositoryHook> hooks = new ArrayList();
-    //    if (ObjectUtils.isEmpty(hookId)) {
-    //        hooks = GRunner.repositoryService.getHooks(searchRepository);
-    //    } else {
-    //        RepositoryHook hook = GRunner.repositoryService.getHook(searchRepository, hookId);
-    //        return ResponseGenerator.success(hook);
-    //    }
-    //    return ResponseGenerator.success(hooks);
-    //}
-    //
-    //
-    ///**
-    // * 13. 【某组织的仓库】
-    // *
-    // * @param organization
-    // * @param filterData
-    // * @return
-    // */
-    //@Deprecated
-    //@SneakyThrows
-    //@PostMapping("/org")
-    //public Response org(@RequestParam(value = "organization", required = false) String organization,
-    //                                @RequestBody Map<String, String> filterData) {
-    //    List<Repository> list = new ArrayList();
-    //    // resolve space
-    //    if (!StringUtils.isEmpty(organization)) {
-    //        organization = organization.trim();
-    //    }
-    //
-    //    if (CollectionUtils.isEmpty(filterData)) {
-    //        list = GRunner.repositoryService.getOrgRepositories(organization);
-    //    } else {
-    //        list = GRunner.repositoryService.getOrgRepositories(organization, filterData);
-    //    }
-    //    return ResponseGenerator.success(list);
-    //}
-    //
-    ///**
-    // * 14. 【Map-仓库列表】
-    // *
-    // * @param filterData
-    // * @return
-    // */
-    //@Deprecated
-    //@SneakyThrows
-    //@PostMapping("/filter")
-    //public Response filter(@RequestBody Map<String, String> filterData) {
-    //    List<Repository> list = GRunner.repositoryService.getRepositories(filterData);
-    //    return ResponseGenerator.success(list);
-    //}
-    //
-    ///**
-    // * 15. 【创建Hook】
-    // *
-    // * @param searchRepository
-    // * @param hook
-    // * @return
-    // */
-    //@Deprecated
-    //@SneakyThrows
-    //@PostMapping("/createHook")
-    //public Response createHook(@RequestBody SearchRepository searchRepository,
-    //                           @RequestBody RepositoryHook hook) {
-    //    RepositoryHook repositoryHook = GRunner.repositoryService.createHook(searchRepository, hook);
-    //    return ResponseGenerator.success(repositoryHook);
-    //}
-    //
-    //
-    ///**
-    // * 16. 【删除Hook】
-    // *
-    // * @param searchRepository
-    // * @param hookId
-    // * @return
-    // */
-    //@Deprecated
-    //@SneakyThrows
-    //@PostMapping("/deleteHook")
-    //public Response deleteHook(@RequestBody SearchRepository searchRepository,
-    //                           @RequestParam(value = "hookId") Integer hookId) {
-    //    GRunner.repositoryService.deleteHook(searchRepository, hookId);
-    //    return ResponseGenerator.success();
-    //}
-    //
-    //
-    ///**
-    // * 17. 【编辑hook】
-    // *
-    // * @param searchRepository
-    // * @param hook
-    // * @return
-    // */
-    //@Deprecated
-    //@SneakyThrows
-    //@PostMapping("/editHook")
-    //public Response editHook(@RequestBody SearchRepository searchRepository,
-    //                         @RequestBody RepositoryHook hook) {
-    //    RepositoryHook repositoryHook = GRunner.repositoryService.editHook(searchRepository, hook);
-    //    return ResponseGenerator.success(repositoryHook);
-    //}
-    //
-    //
-    ///**
-    // * 18. 【获取hook】
-    // *
-    // * @param searchRepository
-    // * @param hookId
-    // * @return
-    // */
-    //@Deprecated
-    //@SneakyThrows
-    //@PostMapping("/getHook")
-    //public Response getHook(@RequestBody SearchRepository searchRepository,
-    //                        @RequestParam(value = "hookId") Integer hookId) {
-    //    RepositoryHook repositoryHook = GRunner.repositoryService.getHook(searchRepository, hookId);
-    //    return ResponseGenerator.success(repositoryHook);
-    //}
-    //
-    //
-    ///**
-    // * 19. 【测试hook】
-    // *
-    // * @param searchRepository
-    // * @param hookId
-    // * @return
-    // */
-    //@Deprecated
-    //@SneakyThrows
-    //@PostMapping("/testHook")
-    //public Response testHook(@RequestBody SearchRepository searchRepository,
-    //                         @RequestParam(value = "hookId") Integer hookId) {
-    //    GRunner.repositoryService.testHook(searchRepository, hookId);
-    //    return ResponseGenerator.success();
-    //}
 
 
 }

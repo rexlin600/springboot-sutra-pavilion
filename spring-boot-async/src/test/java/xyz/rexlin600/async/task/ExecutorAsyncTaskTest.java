@@ -10,8 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import static org.junit.Assert.*;
-
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
