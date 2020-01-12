@@ -10,7 +10,6 @@ import java.util.function.Supplier;
  */
 public class Suppliers {
 
-    private static final String PATTERN = "yyyy-MM-dd HH:mm:ss";
     private static final Long NUM = 100000L;
 
     /**

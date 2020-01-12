@@ -33,7 +33,7 @@ public class OptinalsTest {
     public void optionalEmpty() {
         Optional<Goods> optional = optinals.optionalEmpty();
 
-        assertTrue(!optional.isPresent());
+        assertFalse(optional.isPresent());
     }
 
     @Test

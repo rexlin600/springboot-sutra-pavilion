@@ -18,8 +18,6 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class ReduceTest {
 
-    private static final String PATTERN = "yyyy-MM-dd HH:mm:ss";
-
     Reduce reduce;
 
     @Before

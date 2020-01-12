@@ -42,7 +42,7 @@ public class SortedTest {
         Comparator<Double> doubleComparator = new Comparator<Double>() {
             @Override
             public int compare(Double o1, Double o2) {
-                int min2Max = o1.compareTo(o2); // 从小到大排列
+                //int min2Max = o1.compareTo(o2); // 从小到大排列
                 int max2Min = o2.compareTo(o1); // 从大到小排列
                 return max2Min;
             }

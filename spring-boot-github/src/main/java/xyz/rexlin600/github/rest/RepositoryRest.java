@@ -42,17 +42,15 @@ public class RepositoryRest {
         // 查询自己的仓库
         if (StringUtils.isEmpty(username)) {
             PageIterator<Repository> p1 = GithubRunner.repositoryService.pageRepositories(start, end);
-            while (p1.hasNext()) {
+            if (p1.hasNext()) {
                 Collection<Repository> repositories = p1.next();
                 list.addAll(repositories);
-                break;
             }
         } else {    // 查询指定用户的仓库
             PageIterator<Repository> p2 = GithubRunner.repositoryService.pageRepositories(username, start, end);
-            while (p2.hasNext()) {
+            if (p2.hasNext()) {
                 Collection<Repository> repositories = p2.next();
                 list.addAll(repositories);
-                break;
             }
         }
         return ResponseGenerator.success(list);
