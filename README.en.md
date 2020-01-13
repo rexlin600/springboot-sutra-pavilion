@@ -44,7 +44,7 @@ The ultimate goal is to help everyone quickly grasp the use of Spring Boot 2.x a
 
 | moduleName | FunctionDescription | 
 | --- | --- |
-| [helloworld](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-helloworld) | 国际惯例，`HelloWorld`；使用容器部署：构建war包；自定义属性、随机数、配置绑定等；全局异常处理 |
+| [helloworld](https://github.com/rexlin600/springboot-sutra-pavilion/blob/master/spring-boot-helloworld/README.md) | 国际惯例，`HelloWorld`；使用容器部署：构建war包；自定义属性、随机数、配置绑定等；全局异常处理 |
 | [docker](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-docker) | 集成 `docker` 插件；绑定 `maven` 生命周期相关的命令到 `docker` 命令 |
 | [runner](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-runner) | 使用 `CommandLineRunner` 以及 `ApplicationRunner` 的演示 |
 | [github](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-github) | 使用 `github api v3` 简易示例；推荐个 `iPhone` 的客户端(付费)：`PPHub`  |
