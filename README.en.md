@@ -20,10 +20,12 @@
     <a href="https://img.shields.io/github/watchers/rexlin600/springboot-sutra-pavilion?style=social"><img alt="GitHub watchers" src="https://img.shields.io/github/watchers/rexlin600/springboot-sutra-pavilion?style=social"></a>
 </p>
 
-<p align="center">
+
+## Document
+
+<p align="left">
   <span>English | <a href="./README.md">中文</a></span>
 </p>
-
 
 
 ## Introduction

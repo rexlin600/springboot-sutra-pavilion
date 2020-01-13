@@ -10,7 +10,7 @@ server:
 rexlin600:
   simple:
     properties:
-      name: "rexlin600"
+      name: "rexlin600-refresh"
       web-url: "http://www.rexlin600.com"
       random-str: ${random.value}
       random-int: ${random.int}
