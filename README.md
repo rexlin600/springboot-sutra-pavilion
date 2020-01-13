@@ -67,7 +67,7 @@
 
 ## TODO
 
-查看 <span><a href="./TODO.md">TODO</a></span> 文件
+最新动态请查看 <span><a href="./TODO.md">TODO</a></span> 文件
 
 **后期完善**
 

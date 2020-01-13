@@ -84,7 +84,7 @@ public class User {
 
 * 自定义主键生成策略（看自己需要）
 
-> 因为笔者在测试中（新增数据）需要自定义主键策略所以才有了这个东东，打击根据自己情况来决定是否需要
+> 因为笔者在测试中（新增数据）需要自定义主键策略所以才有了这个东东，大家根据自己情况来决定是否需要
 
 ```java
 public class ManulInsertGenerator extends IdentityGenerator {

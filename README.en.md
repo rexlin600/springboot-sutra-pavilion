@@ -70,7 +70,7 @@ The ultimate goal is to help everyone quickly grasp the use of Spring Boot 2.x a
 
 ## TODO
 
-View the  <span><a href="./TODO.md">TODO</a></span> file
+For the latest news, please see the <span><a href="./TODO.md">TODO</a></span>  file
 
 **LateImprovement**
 

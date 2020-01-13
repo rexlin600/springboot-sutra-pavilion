@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: shiro
+server:
+  port: 10025
+  # shiro config
+shiro:
+  enabled: true
+  loginUrl: /
+  successUrl: /index
+  unauthorizedUrl: /403
+  sessionManager:
+    sessionIdCookieEnabled: true
+    sessionIdUrlRewritingEnabled: true
+  web:
+    enabled: true
