@@ -44,14 +44,14 @@ The ultimate goal is to help everyone quickly grasp the use of Spring Boot 2.x a
 
 | moduleName | FunctionDescription | 
 | --- | --- |
-| [helloworld](https://github.com/rexlin600/springboot-sutra-pavilion/blob/master/spring-boot-helloworld/README.md) | 国际惯例，`HelloWorld`；使用容器部署：构建war包；自定义属性、随机数、配置绑定等；全局异常处理 |
+| [helloworld](https://github.com/rexlin600/springboot-sutra-pavilion/blob/master/spring-boot-helloworld/README.md) | 内嵌容器、构建war包；`Properties`属性绑定、配置自定刷新、全局异常处理 |
 | [docker](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-docker/README.md) |集成 `docker` 插件；绑定 `maven` 生命周期相关的命令到 `docker` 命令 |
 | [runner](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-runner/README.md) |使用 `CommandLineRunner` 以及 `ApplicationRunner` 的演示 |
-| [github](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-github/README.md) |使用 `github api v3` 简易示例；推荐个 `iPhone` 的客户端(付费)：`PPHub`  |
+| [github](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-github/README.md) |使用 `github api v3` 简易示例；推荐个 `iPhone` 的客户端(付费)`PPHub` ；安卓推荐(免费) `OpenHub` |
 | [redis](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-redis/README.md) |集成 `redis` 集群/哨兵；`redisTemplate` 的常用 `API` |
 | [elasticsearch](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-elasticsearch/README.md) |集成 `elasticsearch` 的示例；`es` 的 `rest API` |
 | [swagger2](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-swagger2/README.md) |集成 `swagger2` 及常用 `swagger` 注解 |
-| [mybatisplus](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-mybatisplus/README.md) |集成 `mybatisPlus`；使用其提供的增强 `CRUD`；代码生成器；SQL注入器；性能分析插件；动态数据源；多租户SQL解析器；动态表名SQL解析器 |
+| [mybatisplus](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-mybatisplus/README.md) |集成 `mybatisPlus`；使用其提供的增强 `CRUD`（包括常用的批量插入、删除、统计、聚合查询、模糊查询等）；代码生成器；SQL注入器；性能分析插件；动态数据源；多租户SQL解析器；动态表名SQL解析器 |
 | [rabbitmq](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-rabbitmq/README.md) |集成集群 `RabbitMQ`，发送字符串、对象等；常见六种模式：HelloWorld（Simple）、Work（竞争）、FanOut（发布-订阅）、路由模式（完整的匹配，可参考Direct）、Topic（主题模式）、RPC模式（不常用）；死信队列（DLX） |
 | [jpa](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-jpa/README.md) |集成 `JPA`；基础 `CURD` 示例；自定义主键策略 |
 | [actuator](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-actuator/README.md) |集成 `Actuator`；自定义Endpoint；访问端点鉴权；端点跨域配置；常见断点的作用、见`actuator.http` |
