@@ -38,7 +38,7 @@ public enum MailSvcEnum {
     /**
      * 权限不足
      */
-    InsufficientPermissions("InsufficientPermissions", 400, "权限不足", "insufficient permissions");
+    InsufficientPermissions("InsufficientPermissions", 400, "权限不足", "insufficient resources");
 
     private String msg;
     private Integer code;

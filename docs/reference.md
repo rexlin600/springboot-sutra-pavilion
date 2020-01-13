@@ -108,6 +108,11 @@
 - [Springboot 多线程@Async](https://www.jianshu.com/p/736acdcdfa9b)
 - [@Async优雅的异步调用](https://www.cnblogs.com/huanzi-qch/p/11231041.html)
 
+**shiro**
+
+-[Get Started with Apache Shiro](https://shiro.apache.org/get-started.html)
+-[springboot整合shiro（完整版）](https://www.jianshu.com/p/7f724bec3dc3)
+
 **Spring MVC**
 
 - [消息转换器：Spring Boot中如何扩展XML请求和响应的支持](http://blog.didispace.com/spring-boot-xml-httpmessageconverter/)
