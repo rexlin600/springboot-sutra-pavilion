@@ -64,7 +64,7 @@ The ultimate goal is to help everyone quickly grasp the use of Spring Boot 2.x a
 | [mongodb](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-mongodb/README.md) |集成 `MongoDB`、提供 `mongodb` 使用 `MongoRepository` 操作 `mongodb` 的示例、集成 `mongodbplus` 提供更多的配置项 |
 | [flyway](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-flyway/README.md) |集成 `Flyway`、提供 `flyway` 的示例，实现数据库版本的管理 |
 | [transaction](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-transaction/README.md) |集成事务管理（jdbc/jpa，使用 `@Transactional` 即可进行日常开发 |
-| [async](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-async/README.md) |通过 `Async` ，通过 `线程池` 实现异步调用、实现优雅关闭、通过 `Future` 获取异步执行结果；如何定义定义超时等 |
+| [async](https://github.com/rexlin600/springboot-sutra-paviliontree/master/spring-boot-async/README.md) |通过 `Async` ，通过 `线程池` 实现异步调用、实现优雅关闭、通过 `Future` 获取异步执行结果；如何定义超时等 |
 | _ | _ |
 
 
