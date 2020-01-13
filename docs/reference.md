@@ -55,6 +55,7 @@
 **JPA**
 
 - [JPA之指定id保存](https://www.cnblogs.com/yihuihui/p/11901024.html)
+- [SpringDataJPA接口总结](https://www.jianshu.com/p/292d3dfafcd2)
 
 **SpringBoot Admin**
 

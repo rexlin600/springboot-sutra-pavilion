@@ -2,7 +2,7 @@
 
 集成 `ES`，并提过继承 `ElasticsearchRepository` 来实现对 `index` 的操作，从而提供 `rest` API
 
-## 准备
+## 准备发车
 
 * 依赖
 

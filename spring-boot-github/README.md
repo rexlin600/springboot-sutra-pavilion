@@ -3,7 +3,7 @@
 这个服务是针对 [Github API V3](https://developer.github.com/v3/) 的一个简易教程，帮助大家理解 `Github API` 的一些使用。本服务采用了 `org.eclipse.egit.github.core` 这一个
 第三方库来辅助实现对 `User`、`Repository` 的 `API` 调用
 
-## 准备
+## 准备发车
 
 * 引入依赖
 
