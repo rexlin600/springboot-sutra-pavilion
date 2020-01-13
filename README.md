@@ -41,7 +41,7 @@
 
 | 模块名称 | 模块功能描述 | 
 | --- | --- |
-| [helloworld](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-helloworld) | 内嵌容器、构建war包；`Properties`属性绑定、配置自定刷新、全局异常处理 |
+| [helloworld](https://github.com/rexlin600/springboot-sutra-pavilion/blob/master/spring-boot-helloworld/README.md) | 内嵌容器、构建war包；`Properties`属性绑定、配置自定刷新、全局异常处理 |
 | [docker](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-docker) | 集成 `docker` 插件；绑定 `maven` 生命周期相关的命令到 `docker` 命令 |
 | [runner](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-runner) | 使用 `CommandLineRunner` 以及 `ApplicationRunner` 的演示 |
 | [github](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-github) | 使用 `github api v3` 简易示例；推荐个 `iPhone` 的客户端(付费)：`PPHub`  |
