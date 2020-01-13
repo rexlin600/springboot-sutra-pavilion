@@ -6,7 +6,7 @@
 这里提供了在 `SpringBoot 2.x` 集成 `Actuator`（默认在 `/actuator` 节点了）；并提供一个自定义 `endpoint` 的示例。
 
 
-## 准备发车
+## 开始发车
 
 * 引入依赖
 
