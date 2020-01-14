@@ -89,7 +89,9 @@ mybatis-plus:
 
 > 数据库增加 `datasource` 记录；修改测试用例中的数据。然后运行测试用例中的测试即可
 
-本地启动服务，参考 `postman` 包下的 `代码生成器.postman_collection.json` 进行测试即可
+本地启动服务，参考 `postman` 包下的 `代码生成器.postman_collection.json` 进行测试即可，如下：
+
+![codegen-mybatisplus](../../images/mybatisplus/codegen-postman.jpg)
 
 
 ## SQL注入器
