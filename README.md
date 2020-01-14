@@ -48,7 +48,7 @@
 | [redis](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-redis/README.md) |集成 `redis` 集群/哨兵；`redisTemplate` 的常用 `API` |
 | [elasticsearch](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-elasticsearch/README.md) |集成 `elasticsearch` 的示例；`es` 的 `rest API` |
 | [swagger2](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-swagger2/README.md) |集成 `swagger2` 及常用 `swagger` 注解 |
-| [mybatisplus](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-mybatisplus/README.md) |集成 `mybatisPlus`；使用其提供的增强 `CRUD`（包括常用的批量插入、删除、统计、聚合查询、模糊查询等）；代码生成器；SQL注入器；性能分析插件；动态数据源；多租户SQL解析器；动态表名SQL解析器 |
+| [mybatisplus](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-mybatisplus/README.md) |集成 `mybatisPlus`；使用其提供的增强 `CRUD`（包括常用的批量插入、删除、统计、聚合查询、模糊查询等）；高级代码生成器 beta版（可自由添加数据库连接配置、选择连接后查询其所有表、最后选择要生成的表）；SQL注入器；性能分析插件；动态数据源；多租户SQL解析器；动态表名SQL解析器 |
 | [rabbitmq](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-rabbitmq/README.md) |集成集群 `RabbitMQ`，发送字符串、对象等；常见六种模式：HelloWorld（Simple）、Work（竞争）、FanOut（发布-订阅）、路由模式（完整的匹配，可参考Direct）、Topic（主题模式）、RPC模式（不常用）；死信队列（DLX） |
 | [jpa](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-jpa/README.md) |集成 `JPA`；基础 `CURD` 示例；自定义主键策略 |
 | [actuator](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-actuator/README.md) |集成 `Actuator`；自定义Endpoint；访问端点鉴权；端点跨域配置；常见断点的作用、见`actuator.http` |
@@ -62,6 +62,7 @@
 | [flyway](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-flyway/README.md) |集成 `Flyway`、提供 `flyway` 的示例，实现数据库版本的管理 |
 | [transaction](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-transaction/README.md) |集成事务管理（jdbc/jpa，使用 `@Transactional` 即可进行日常开发 |
 | [async](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-async/README.md) |通过 `Async` ，通过 `线程池` 实现异步调用、实现优雅关闭、通过 `Future` 获取异步执行结果；如何定义超时等 |
+| [shiro](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-shiro/README.md) | `RBAC` 版权限管理（beta） |
 | _ | _ |
 
 
