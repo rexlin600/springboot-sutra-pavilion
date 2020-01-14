@@ -23,6 +23,11 @@ public class CodeGenConstant {
     public static final String LIMIT = "limit ";
 
     /**
+     * AES 规定密钥长度为16位
+     */
+    public static final String CONTENT = "springboot-sutra";
+
+    /**
      * vm 模板
      */
     public static final String VELOCITY = "/templates/mapper.xml.vm";

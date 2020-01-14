@@ -53,11 +53,14 @@ public class CodeServiceImpl implements CodeService {
     /**
      * 分页查询表
      *
-     * @param id 数据源ID
+     * @param page      分页参数
+     * @param size      分页参数
+     * @param tableName 表名称
+     * @param id        数据源ID
      * @return
      */
     @Override
-    public R<Page<TableMetaData>> page(Page page, String tableName, Long id) {
+    public R<Page<TableMetaData>> page(Integer page, Integer size, String tableName, Long id) {
         // check DataSource
         DataSource dataSource = dataSourceService.getOne(new LambdaQueryWrapper<DataSource>().eq(true, DataSource::getId, id));
         if (ObjectUtils.isEmpty(dataSource)) {
@@ -82,12 +85,9 @@ public class CodeServiceImpl implements CodeService {
         ResultSet countRs = null;
         Long total = 0L;
 
-
-        long start = (page.getCurrent() - 1) > 0 ? (page.getCurrent() - 1) : 0;
-        long size = page.getSize();
+        long start = (page - 1) > 0 ? (page - 1) : 0;
         String querySql = CodeGenConstant.BASE_QUERY_TABLE_SQL + CodeGenConstant.LIMIT + start + "," + size;
         String countSql = CodeGenConstant.COUNT_QUERY_TABLE_SQL;
-
 
         try {
             // 统计总数
@@ -120,6 +120,7 @@ public class CodeServiceImpl implements CodeService {
             try {
                 countRs.close();
                 queryRs.close();
+                ds.close();
                 connection.close();
             } catch (SQLException e) {
                 log.error("==>  关闭连接池异常 [{}]", e.getMessage());
@@ -128,8 +129,8 @@ public class CodeServiceImpl implements CodeService {
         }
 
         Page iPage = new Page<>();
-        iPage.setCurrent(page.getCurrent());
-        iPage.setSize(page.getSize());
+        iPage.setCurrent(page);
+        iPage.setSize(size);
         iPage.setTotal(total);
         iPage.setRecords(list);
 
@@ -185,7 +186,7 @@ public class CodeServiceImpl implements CodeService {
             List<String> list = codeGenReq.getList();
             strategy = CodeGenUtils.getStrategyConfig(prefix, version, logic, list);
         } catch (Exception e) {
-            log.error("==>  配置异常 [{}]", e.getMessage());
+            log.error("==>  配置异常 {}", e.getMessage());
             return R.failed("生成代码失败");
         }
 

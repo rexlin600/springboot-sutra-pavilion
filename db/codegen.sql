@@ -21,7 +21,7 @@ USE `codegen`;
 DROP TABLE IF EXISTS `data_source`;
 
 CREATE TABLE `data_source` (
-  `id` bigint(20) NOT NULL COMMENT '主键',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `host` varchar(500) NOT NULL COMMENT '数据库地址',
   `port` varchar(20) NOT NULL COMMENT '数据库端口',
   `username` varchar(500) NOT NULL COMMENT '用户名',
@@ -30,7 +30,7 @@ CREATE TABLE `data_source` (
   `create_time` datetime NOT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `data_source` */
 

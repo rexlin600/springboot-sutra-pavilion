@@ -114,5 +114,5 @@ public class UserServiceImpl implements UserService {
 
 * 测试
 
-启动服务后，运行 `xyz.rexlin600.jdbc.service.impl.UserServiceImplTest` 的示例即可
+运行 `xyz.rexlin600.jdbc.service.impl.UserServiceImplTest` 的示例即可
 

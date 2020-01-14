@@ -1,4 +1,4 @@
-package xyz.rexlin600.mybatisplus.codegen.service.impl;
+package xyz.rexlin600.mybatisplus.codegen.rest;
 
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -16,31 +16,24 @@ import xyz.rexlin600.mybatisplus.codegen.service.CodeService;
 import java.util.Arrays;
 import java.util.List;
 
-
 /**
  * @description
  * @auther hekunlin
- * @create 2020-01-14 15:04
+ * @create 2020-01-14 19:11
  */
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CodeServiceImplTest {
+public class CodeGenerateRestTest {
 
     @Autowired
     private CodeService codeService;
 
     @Test
-    public void page() {
-        R<Page<TableMetaData>> page = codeService.page(1, 10, null, 2L);
-        Page<TableMetaData> rs = page.getData();
-        log.info("==>  search assign database's table page {}", rs.getCurrent());
-        log.info("==>  search assign database's table size {}", rs.getSize());
-        log.info("==>  search assign database's table total {}", rs.getTotal());
-
-        List<TableMetaData> records = rs.getRecords();
+    public void getPage() {
+        R<Page<TableMetaData>> page = codeService.page(1, 10, null, 1L);
+        List<TableMetaData> records = page.getData().getRecords();
         if (!CollectionUtils.isEmpty(records)) {
-            log.info("==>  search assign database's table records: ");
             records.stream().forEach(m -> {
                 log.info(m.toString());
             });
@@ -49,14 +42,13 @@ public class CodeServiceImplTest {
 
     @Test
     public void generate() {
-        CodeGenReq codeGenReq = CodeGenReq.builder()
-                .id(2L)
-                .author("hekunlin")
-                .packageName("com.hikcreate.bcp")
-                .list(Arrays.asList("brand_account"))
+        CodeGenReq build = CodeGenReq.builder()
+                .id(1L)
+                .packageName("xyz.rexlin600.test")
+                .author("rexlin600")
+                .tablePrefix("tb_")
+                .list(Arrays.asList("tb_flyway"))
                 .build();
-
-        R r = codeService.generate(codeGenReq);
-        log.info("==>  生成代码结果 {}", r.getMsg());
+        codeService.generate(build);
     }
 }

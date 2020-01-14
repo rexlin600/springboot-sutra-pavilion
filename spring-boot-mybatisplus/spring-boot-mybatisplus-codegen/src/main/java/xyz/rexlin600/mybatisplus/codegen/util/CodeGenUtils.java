@@ -150,7 +150,8 @@ public class CodeGenUtils {
         }
 
         // 生成的表
-        String[] objects = (String[]) list.toArray();
+        list.stream().toArray();
+        String[] objects = list.toArray(new String[list.size()]);
         strategy.setInclude(objects);
 
         return strategy;
@@ -206,8 +207,8 @@ public class CodeGenUtils {
                 + "/" + dataSource.getDbName() + "" +
                 "?serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&characterEncoding=utf8");
         dsc.setDriverName(CodeGenConstant.JDBC_DRIVER_CLASS_NAME);
-        dsc.setUsername(dataSource.getUsername());
-        dsc.setPassword(dataSource.getPassword());
+        dsc.setUsername(AesUtils.decrypt(dataSource.getUsername()));
+        dsc.setPassword(AesUtils.decrypt(dataSource.getPassword()));
         return dsc;
     }
 
@@ -222,15 +223,15 @@ public class CodeGenUtils {
 
         config.setJdbcUrl("jdbc:mysql://" + dataSource.getHost().trim() + ":" + dataSource.getPort().trim() + "/"
                 + dataSource.getDbName().trim() + "?characterEncoding=utf8&serverTimezone=GMT%2B8");
-        config.setUsername(dataSource.getUsername());
-        config.setPassword(dataSource.getPassword());
+        config.setUsername(AesUtils.decrypt(dataSource.getUsername()));
+        config.setPassword(AesUtils.decrypt(dataSource.getPassword()));
 
         config.setAutoCommit(true);
         config.setConnectionTimeout(30000);
         config.setIdleTimeout(600000);
         config.setMaxLifetime(1800000);
-        config.setMinimumIdle(100);
-        config.setMaximumPoolSize(100);
+        config.setMinimumIdle(2);
+        config.setMaximumPoolSize(5);
 
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");

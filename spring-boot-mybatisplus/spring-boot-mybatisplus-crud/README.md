@@ -10,19 +10,9 @@
 - 多租户SQL解析器
 - 动态表名SQL解析器
 
-## 变动
+## 注意
 
-> 特别注意：**`spring-boot-mybatisplus` 下的所有服务均占用 `10008` 端口！！！**
-
-之前 `spring-boot-mybatisplus` 为一个单 `module` 项目，考虑到上面的功能并不是每个用户都需要的，所以这里将 `spring-boot-mybatisplus` 做
-一下模块拆分，以满足上面的不同功能点：
-
-| 模块 | 功能 |
-| --- | --- |
-| `spring-boot-mybatisplus-crud` | 基础集成；增强 `CRUD`（包括常用的批量插入、删除、统计、聚合查询、模糊查询等） | 
-| `spring-boot-mybatisplus-codegen` | `mybatis-plus` 提供的代码生成器，可使用 `freemarker`、`velocity` 作为模板 | 
-
-
+特别注意：**`spring-boot-mybatisplus` 下的所有服务均占用 `10008` 端口！！！**
 
 
 ## 开始发车
@@ -102,28 +92,3 @@ public class MybatisPlusConfig {
 
 实际上到这里，`SpringBoot` 集成 `MybatisPlus` 就已经结束了，接下来就是常规的 `MVC` 模式的开发了。下面将着重讲解 `MybatisPlus` 提供的一些
 额外的功能的集成及使用。
-
-
-## 代码生成器
-
-TODO
-
-## SQL注入器
-
-TODO   
-      
-## 性能分析插件
-
-TODO
-
-## 动态数据源
-
-TODO
-
-## 多租户SQL解析器
-
-TODO
-
-## 动态表名SQL解析器
-
-TODO

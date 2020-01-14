@@ -9,8 +9,6 @@ import xyz.rexlin600.mybatisplus.codegen.common.req.CodeGenReq;
 import xyz.rexlin600.mybatisplus.codegen.entity.TableMetaData;
 import xyz.rexlin600.mybatisplus.codegen.service.CodeService;
 
-import java.util.List;
-
 /**
  * 代码生成 API接口
  *
@@ -19,12 +17,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/code")
 @Validated
-public class CodeRest {
+public class CodeGenerateRest {
 
     private final CodeService codeService;
 
     @Autowired
-    public CodeRest(CodeService codeService) {
+    public CodeGenerateRest(CodeService codeService) {
         this.codeService = codeService;
     }
 
@@ -37,8 +35,11 @@ public class CodeRest {
      * @return
      */
     @GetMapping("/page")
-    public R<Page<TableMetaData>> getPage(Page page, String tableName, Long id) {
-        return codeService.page(page, tableName, id);
+    public R<Page<TableMetaData>> getPage(@RequestParam(value = "page") Integer page,
+                                          @RequestParam(value = "size") Integer size,
+                                          @RequestParam(value = "tableName", required = false) String tableName,
+                                          @RequestParam(value = "id") Long id) {
+        return codeService.page(page, size, tableName, id);
     }
 
 

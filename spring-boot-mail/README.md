@@ -240,5 +240,5 @@ public class MailServiceImpl implements MailService {
 
 * 测试
 
-启动服务后，运行 `xyz.rexlin600.mail.service.impl.MailServiceImplTest` 即可
+运行 `xyz.rexlin600.mail.service.impl.MailServiceImplTest` 即可
 

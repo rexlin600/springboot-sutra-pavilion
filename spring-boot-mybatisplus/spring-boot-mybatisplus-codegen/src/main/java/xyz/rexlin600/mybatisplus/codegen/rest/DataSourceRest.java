@@ -2,15 +2,19 @@ package xyz.rexlin600.mybatisplus.codegen.rest;
 
 import cn.hutool.core.bean.copier.BeanCopier;
 import cn.hutool.core.bean.copier.CopyOptions;
+import cn.hutool.crypto.asymmetric.RSA;
+import cn.hutool.crypto.digest.DigestUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 import xyz.rexlin600.mybatisplus.codegen.common.constant.CodeGenConstant;
 import xyz.rexlin600.mybatisplus.codegen.common.req.DataSourceReq;
 import xyz.rexlin600.mybatisplus.codegen.entity.DataSource;
 import xyz.rexlin600.mybatisplus.codegen.service.DataSourceService;
+import xyz.rexlin600.mybatisplus.codegen.util.AesUtils;
 
 import java.util.Date;
 
@@ -32,6 +36,7 @@ public class DataSourceRest {
         this.dataSourceService = dataSourceService;
     }
 
+
     /**
      * 新增数据源
      *
@@ -43,6 +48,9 @@ public class DataSourceRest {
         DataSource source = new DataSource();
         source = BeanCopier.create(dataSourceReq, source, new CopyOptions().setIgnoreNullValue(true)).copy();
         source.setCreateTime(new Date());
+        // AES加密
+        source.setUsername(AesUtils.encrypt(dataSourceReq.getUsername()));
+        source.setPassword(AesUtils.encrypt(dataSourceReq.getPassword()));
         dataSourceService.save(source);
 
         return R.ok(CodeGenConstant.SUCCESS);
@@ -69,6 +77,10 @@ public class DataSourceRest {
     @PutMapping
     public R updateDataSource(@RequestBody DataSourceReq dataSourceReq) {
         DataSource source = new DataSource();
+        // AES加密
+        dataSourceReq.setUsername(AesUtils.encrypt(dataSourceReq.getUsername()));
+        dataSourceReq.setPassword(AesUtils.encrypt(dataSourceReq.getPassword()));
+
         source = BeanCopier.create(dataSourceReq, source, new CopyOptions().setIgnoreNullValue(true)).copy();
         source.setUpdateTime(new Date());
         dataSourceService.updateById(source);
@@ -85,7 +97,7 @@ public class DataSourceRest {
      */
     @GetMapping("/page")
     public R pageDataSource(@RequestParam(value = "page") Integer page,
-                              @RequestParam(value = "size") Integer size) {
+                            @RequestParam(value = "size") Integer size) {
         Page<DataSource> sourcePage = dataSourceService.page(new Page<DataSource>(page, size));
 
         return R.ok(sourcePage);
