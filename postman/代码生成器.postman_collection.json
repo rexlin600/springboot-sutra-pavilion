@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "dcad361e-eff5-4074-b54b-06c76738c35b",
+		"name": "代码生成器",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "【代码生成器】1. 数据源列表查询",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:10008/ds/page?page=1&size=10",
+					"host": [
+						"localhost"
+					],
+					"port": "10008",
+					"path": [
+						"ds",
+						"page"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "【代码生成器】2. 新增数据源",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"host\": \"localhost\",\n    \"port\": \"3306\",\n    \"dbName\": \"tb_flyway\",\n    \"username\": \"root\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:10008/ds"
+			},
+			"response": []
+		},
+		{
+			"name": "【代码生成器】3. 删除数据源",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "localhost:10008/ds/5"
+			},
+			"response": []
+		},
+		{
+			"name": "【代码生成器】4. 修改数据源",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n                \"id\": \"8\",\r\n                \"host\": \"127.0.0.1\",\r\n                \"port\": \"3306\",\r\n                \"username\": \"root\",\r\n                \"password\": \"123456\",\r\n                \"dbName\": \"tb_flyway\"\r\n            }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:10008/ds"
+			},
+			"response": []
+		},
+		{
+			"name": "【代码生成器】5. 获取数据源",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:10008/ds/7"
+			},
+			"response": []
+		},
+		{
+			"name": "【代码生成器】6. 查询数据源的表",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:10008/code/page?page=1&size=10&id=7",
+					"host": [
+						"localhost"
+					],
+					"port": "10008",
+					"path": [
+						"code",
+						"page"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						},
+						{
+							"key": "tableName",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "id",
+							"value": "7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "【代码生成器】7. 生成代码",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"7\",\n    \"author\": \"rexlin600\",\n    \"packageName\": \"xyz.rexlin600.fuck\",\n    \"tablePrefix\": \"tb_\",\n    \"list\": [\n        \"tb_flyway\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:10008/code/generate"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

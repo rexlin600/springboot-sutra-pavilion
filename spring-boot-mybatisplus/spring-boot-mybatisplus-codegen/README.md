@@ -89,10 +89,7 @@ mybatis-plus:
 
 > 数据库增加 `datasource` 记录；修改测试用例中的数据。然后运行测试用例中的测试即可
 
-启动服务，调用 `rest` 接口，参考 `test` 包下的 `datasource.http` 和 `codeGenerate.http`
-
-
-
+本地启动服务，参考 `postman` 包下的 `代码生成器.postman_collection.json` 进行测试即可
 
 
 ## SQL注入器
