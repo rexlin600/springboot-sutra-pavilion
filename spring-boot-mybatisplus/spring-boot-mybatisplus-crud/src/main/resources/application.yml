@@ -1,6 +1,6 @@
 spring:
   application:
-    name: jdbc
+    name: mybatisplus
   datasource:
     url: jdbc:mysql://localhost:3306/spring-boot-mybatisplus?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
     username: root
@@ -19,8 +19,8 @@ spring:
       minimum-idle: 100
       # 此属性控制池允许达到的最大大小，包括空闲和正在使用的连接。默认值10
       maximum-pool-size: 100
+mybatis-plus:
+  type-aliases-package: xyz.rexlin600.swagger.model
+  mapper-locations: classpath*:/mapper/**/*.xml
 server:
-  port: 10020
-logging:
-  level:
-    java.sql: debug
+  port: 10008

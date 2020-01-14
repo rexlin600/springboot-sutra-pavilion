@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: codegen
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/codegen?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    max-idle: 10
+    max-active: 15
+    max-lifetime: 86430000
+    log-abandoned: true
+    remove-abandoned: true
+    remove-abandoned-time: 60
+    sqlScriptEncoding: UTF-8
+server:
+  port: 10008
+# mybatis-plus config
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml

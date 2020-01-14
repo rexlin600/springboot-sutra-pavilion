@@ -10,6 +10,21 @@
 - 多租户SQL解析器
 - 动态表名SQL解析器
 
+## 变动
+
+> 特别注意：**`spring-boot-mybatisplus` 下的所有服务均占用 `10008` 端口！！！**
+
+之前 `spring-boot-mybatisplus` 为一个单 `module` 项目，考虑到上面的功能并不是每个用户都需要的，所以这里将 `spring-boot-mybatisplus` 做
+一下模块拆分，以满足上面的不同功能点：
+
+| 模块 | 功能 |
+| --- | --- |
+| `spring-boot-mybatisplus-crud` | 基础集成；增强 `CRUD`（包括常用的批量插入、删除、统计、聚合查询、模糊查询等） | 
+| `spring-boot-mybatisplus-codegen` | `mybatis-plus` 提供的代码生成器，可使用 `freemarker`、`velocity` 作为模板 | 
+
+
+
+
 ## 开始发车
 
 * 引入依赖
@@ -45,7 +60,7 @@
 ```yaml
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/spring-boot-mybatisplus?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/spring-boot-mybatisplus?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
