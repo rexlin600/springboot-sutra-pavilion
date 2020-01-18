@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author rexlin600
  */
 @SpringBootApplication
-public class MyBatisPlusApplication {
+public class MyBatisPlusCrudApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MyBatisPlusApplication.class, args);
+        SpringApplication.run(MyBatisPlusCrudApplication.class, args);
     }
 }

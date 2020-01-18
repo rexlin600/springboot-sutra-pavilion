@@ -2,6 +2,7 @@ package xyz.rexlin600.mybatisplus.codegen.rest;
 
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +30,7 @@ public class CodeGenerateRestTest {
     @Autowired
     private CodeService codeService;
 
+    @SneakyThrows
     @Test
     public void getPage() {
         R<Page<TableMetaData>> page = codeService.page(1, 10, null, 1L);

@@ -1,31 +1,28 @@
 package xyz.rexlin600.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 /**
- * Resource 实体类
+ * <p>
+ * 资源表
+ * </p>
  *
- * @author: rexlin600
- * @date: 2020-01-13
+ * @author rexlin600
+ * @since 2020-01-18
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-public class Resource implements Serializable {
+@TableName("resource")
+public class Resource extends Model {
+
+    private static final long serialVersionUID = 1L;
 
     /**
-     * 资源ID
+     * 主键ID
      */
     private Long id;
 
     /**
-     * 父资源ID
+     * 父ID
      */
     private Long parentId;
 
@@ -35,25 +32,17 @@ public class Resource implements Serializable {
     private String resourceName;
 
     /**
-     * 资源类型
-     * <p>
-     * 1 菜单 Menu
-     * 2 页面 Page
-     * 3 按钮 Button
+     * 资源类型 1-菜单 2-页面 3-按钮
      */
     private Integer type;
 
     /**
      * 资源类型名称
-     * <p>
-     * 1 菜单 Menu
-     * 2 页面 Page
-     * 3 按钮 Button
      */
     private String typeName;
 
     /**
-     * 资源序号
+     * 序号
      */
     private Integer sort;
 
@@ -62,18 +51,101 @@ public class Resource implements Serializable {
      */
     private String icon;
 
-    // -----------------------------------------------------------------------------------------------
-    // 如果是按钮资源还有如应当具有如下 filed
-    // -----------------------------------------------------------------------------------------------
     /**
-     * http 请求方法
+     * HTTP请求方法
      */
     private String httpMethod;
 
     /**
-     * 请求地址
+     * HTTP请求路径
      */
     private String httpUrl;
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getResourceName() {
+        return resourceName;
+    }
+
+    public void setResourceName(String resourceName) {
+        this.resourceName = resourceName;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getHttpMethod() {
+        return httpMethod;
+    }
+
+    public void setHttpMethod(String httpMethod) {
+        this.httpMethod = httpMethod;
+    }
+
+    public String getHttpUrl() {
+        return httpUrl;
+    }
+
+    public void setHttpUrl(String httpUrl) {
+        this.httpUrl = httpUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "Resource{" +
+        "id=" + id +
+        ", parentId=" + parentId +
+        ", resourceName=" + resourceName +
+        ", type=" + type +
+        ", typeName=" + typeName +
+        ", sort=" + sort +
+        ", icon=" + icon +
+        ", httpMethod=" + httpMethod +
+        ", httpUrl=" + httpUrl +
+        "}";
+    }
 }

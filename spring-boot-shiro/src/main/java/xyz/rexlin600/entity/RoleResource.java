@@ -1,21 +1,20 @@
 package xyz.rexlin600.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 /**
- * RoleResource 实体类
+ * <p>
+ * 角色资源表
+ * </p>
  *
- * @author: rexlin600
- * @date: 2020-01-13
+ * @author rexlin600
+ * @since 2020-01-18
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class RoleResource implements Serializable {
+@TableName("role_resource")
+public class RoleResource extends Model {
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * 角色ID
@@ -27,4 +26,28 @@ public class RoleResource implements Serializable {
      */
     private Long resourceId;
 
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
+
+    public Long getResourceId() {
+        return resourceId;
+    }
+
+    public void setResourceId(Long resourceId) {
+        this.resourceId = resourceId;
+    }
+
+    @Override
+    public String toString() {
+        return "RoleResource{" +
+        "roleId=" + roleId +
+        ", resourceId=" + resourceId +
+        "}";
+    }
 }
