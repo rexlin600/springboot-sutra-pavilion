@@ -48,7 +48,7 @@ public class RedisRest {
      * @param id
      * @return
      */
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}")
     public Response delete(@PathVariable(value = "id") Long id) {
         redisTemplate.opsForHash().delete(HASH_KEY, String.valueOf(id));
         return ResponseGenerator.success();
@@ -78,7 +78,7 @@ public class RedisRest {
      * @param id
      * @return
      */
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}")
     public Response get(@PathVariable(value = "id") Long id) {
         Blog blog = (Blog) redisTemplate.opsForHash().get(HASH_KEY, String.valueOf(id));
         log.info("==>  redis get val = [{}]", blog);
@@ -91,7 +91,7 @@ public class RedisRest {
      *
      * @return
      */
-    @GetMapping("/list")
+    @GetMapping(value = "/list")
     public Response list() {
         Map<Object, Object> entries = redisTemplate.opsForHash().entries(HASH_KEY);
         return ResponseGenerator.success(entries);
@@ -104,7 +104,7 @@ public class RedisRest {
      * @param session
      * @return
      */
-    @GetMapping("/session")
+    @GetMapping(value = "/session")
     String uid(HttpSession session) {
         UUID uid = (UUID) session.getAttribute("id");
         if (uid == null) {
@@ -122,7 +122,7 @@ public class RedisRest {
      * @return
      */
     @Cacheable(value = "blog-list", key = "#id")
-    @GetMapping("/annotation/{id}")
+    @GetMapping(value = "/annotation/{id}")
     public Response getByAnnotation(@PathVariable(value = "id") Long id) {
 
         // 模拟查询数据库
@@ -145,7 +145,7 @@ public class RedisRest {
      * @param key
      * @return
      */
-    @DeleteMapping("/key/{key}")
+    @DeleteMapping(value = "/key/{key}")
     public Response delete(@PathVariable(value = "key") String key) {
         redisTemplate.delete(key);
         return ResponseGenerator.success();
