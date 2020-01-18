@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import xyz.rexlin600.mybatisplus.codegen.common.req.CodeGenReq;
 import xyz.rexlin600.mybatisplus.codegen.entity.TableMetaData;
 
+import java.sql.SQLException;
+
 /**
  * @author hekunlin
  */
@@ -18,8 +20,9 @@ public interface CodeService {
      * @param tableName 数据库表名
      * @param id        数据源ID
      * @return
+     * @throws SQLException
      */
-    R<Page<TableMetaData>> page(Integer page, Integer size, String tableName, Long id);
+    R<Page<TableMetaData>> page(Integer page, Integer size, String tableName, Long id) throws SQLException;
 
     /**
      * 生成代码

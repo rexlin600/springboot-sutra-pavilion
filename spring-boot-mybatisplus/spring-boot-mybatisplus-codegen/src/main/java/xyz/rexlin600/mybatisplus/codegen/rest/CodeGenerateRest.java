@@ -9,6 +9,8 @@ import xyz.rexlin600.mybatisplus.codegen.common.req.CodeGenReq;
 import xyz.rexlin600.mybatisplus.codegen.entity.TableMetaData;
 import xyz.rexlin600.mybatisplus.codegen.service.CodeService;
 
+import java.sql.SQLException;
+
 /**
  * 代码生成 API接口
  *
@@ -39,7 +41,11 @@ public class CodeGenerateRest {
                                           @RequestParam(value = "size") Integer size,
                                           @RequestParam(value = "tableName", required = false) String tableName,
                                           @RequestParam(value = "id") Long id) {
-        return codeService.page(page, size, tableName, id);
+        try {
+            return codeService.page(page, size, tableName, id);
+        } catch (SQLException e) {
+            return R.failed(e.getMessage());
+        }
     }
 
 

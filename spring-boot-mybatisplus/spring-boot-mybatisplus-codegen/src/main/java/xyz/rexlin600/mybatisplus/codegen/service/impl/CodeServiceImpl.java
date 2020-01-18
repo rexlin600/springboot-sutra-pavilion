@@ -60,7 +60,7 @@ public class CodeServiceImpl implements CodeService {
      * @return
      */
     @Override
-    public R<Page<TableMetaData>> page(Integer page, Integer size, String tableName, Long id) {
+    public R<Page<TableMetaData>> page(Integer page, Integer size, String tableName, Long id) throws SQLException {
         // check DataSource
         DataSource dataSource = dataSourceService.getOne(new LambdaQueryWrapper<DataSource>().eq(true, DataSource::getId, id));
         if (ObjectUtils.isEmpty(dataSource)) {
@@ -124,7 +124,7 @@ public class CodeServiceImpl implements CodeService {
                 connection.close();
             } catch (SQLException e) {
                 log.error("==>  关闭连接池异常 [{}]", e.getMessage());
-                return R.failed("查询失败");
+                throw new SQLException("关闭连接池异常");
             }
         }
 
