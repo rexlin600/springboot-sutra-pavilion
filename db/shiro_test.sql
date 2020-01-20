@@ -68,6 +68,7 @@ CREATE TABLE `user` (
   `username` varchar(50) DEFAULT NULL COMMENT '用户名',
   `password` varchar(500) DEFAULT NULL COMMENT '密码',
   `salt` varchar(50) DEFAULT NULL COMMENT '盐值',
+  `active` int(11) DEFAULT '0' COMMENT '用户是否激活 0-未激活 1-已激活',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
 

@@ -2,6 +2,12 @@ package xyz.rexlin600.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+import java.util.Set;
 
 /**
  * <p>
@@ -11,6 +17,9 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
  * @author rexlin600
  * @since 2020-01-18
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName("user")
 public class User extends Model {
 
@@ -36,46 +45,29 @@ public class User extends Model {
      */
     private String salt;
 
+    /**
+     * 用户是否激活 0-未激活 1-已激活
+     */
+    private Integer active;
 
-    public Long getId() {
-        return id;
-    }
+    /**
+     * 用户角色列表
+     */
+    private Set<String> roleList;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
+    /**
+     * 用户资源列表
+     */
+    private Set<String> resourceList;
 
     @Override
     public String toString() {
         return "User{" +
-        "id=" + id +
-        ", username=" + username +
-        ", password=" + password +
-        ", salt=" + salt +
-        "}";
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
+                ", active=" + active +
+                '}';
     }
 }

@@ -28,11 +28,19 @@ public enum ResponseEnum {
     /**
      * 密码错误
      */
-    PASSWORD_INCORRECT(1005, "密码错误"),
+    PASSWORD_INCORRECT(1014, "密码错误"),
+    /**
+     * 用户未激活
+     */
+    UN_ACTIVED(1015, "用户未激活"),
+    /**
+     * 认证失败
+     */
+    UN_AUTHENTICATION(1024, "认证失败"),
     /**
      * 权限不足
      */
-    UNAUTHORIZED(1006, "权限不足");
+    UN_AUTHORIZED(1034, "权限不足");
 
     /**
      * 返回状态码

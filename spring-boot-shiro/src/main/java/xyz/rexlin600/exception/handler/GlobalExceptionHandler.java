@@ -1,4 +1,4 @@
-package xyz.rexlin600.exception;
+package xyz.rexlin600.exception.handler;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
