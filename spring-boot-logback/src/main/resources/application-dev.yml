@@ -1,0 +1,4 @@
+spring:
+  profiles: dev
+logging:
+  path: spring-boot-logback/logs

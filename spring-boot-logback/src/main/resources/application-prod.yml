@@ -1,0 +1,4 @@
+spring:
+  profiles: prod
+logging:
+  path: /home/spring-boot-logback/logs

@@ -1,0 +1,4 @@
+spring:
+  profiles: test
+logging:
+  path: /home/spring-boot-logback/logs

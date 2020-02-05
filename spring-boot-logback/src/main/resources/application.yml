@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: logback
+  profiles:
+    active: dev
+server:
+  port: 10025
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    xyz.rexlin600: info
+    org.hibernate: debug
+    org.springframework.web: debug
+    org.springframework.scheduling: debug
