@@ -1,6 +1,6 @@
 # 脚本
 
-> 这里给出需要某些中间件的参考 `docker` 指令，方便大家测做试
+> 这里给出需要某些中间件的参考 `docker` 指令，方便大家做测试！
 
 ## MySQL
 
@@ -49,8 +49,21 @@ $ docker run \
 
 ## Redis
 
-```
+> 不指定配置文件
 
+```
+# 创建文件夹
+$ mkdir /docker/data/redis
+
+# 分配权限
+chmod -R 777 /docker
+
+# 启动 Redis
+$ docker run \
+-p 6379:6379 \
+-v /docker/data/redis:/data \
+--name redis \
+-d redis
 ```
 
 ## Elasticsearch

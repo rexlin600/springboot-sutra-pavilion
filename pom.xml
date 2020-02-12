@@ -47,6 +47,7 @@
         <module>spring-boot-transaction</module>
         <module>spring-boot-async</module>
         <module>spring-boot-logback</module>
+        <module>spring-boot-redisson</module>
     </modules>
 
     <dependencies>

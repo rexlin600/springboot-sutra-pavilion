@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: reddison
+  redis:
+    database: 0
+    host: 192.168.199.196
+    port: 6379
+    lettuce:
+      pool:
+        min-idle: 0
+        max-active: 8
+        max-idle: 8
+        max-wait: -1
+    ssl: false
+    redisson:
+      config: classpath:redisson.yml
+server:
+  port: 10026

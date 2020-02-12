@@ -2,7 +2,6 @@
 
 * spring-boot-sharding-jdbc
 * spring-boot-sharding-jdbc-masterslave
-* spring-boot-shiro（进行中）
 * spring-boot-upload
   * spring-boot-upload
   * spring-boot-feign-upload

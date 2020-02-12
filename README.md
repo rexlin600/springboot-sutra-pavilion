@@ -62,6 +62,8 @@
 | [flyway](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-flyway/README.md) |集成 `Flyway`、提供 `flyway` 的示例，实现数据库版本的管理 |
 | [transaction](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-transaction/README.md) |集成事务管理（jdbc/jpa，使用 `@Transactional` 即可进行日常开发 |
 | [async](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-async/README.md) |通过 `Async` ，通过 `线程池` 实现异步调用、实现优雅关闭、通过 `Future` 获取异步执行结果；如何定义超时等 |
+| [logback](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-logback/README.md) | `logback` 使用示例 |
+| [redisson](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-redisson/README.md) | `redis` 官方指定 `Java` 版分布式锁 `redisson` |
 | _ | _ |
 
 
