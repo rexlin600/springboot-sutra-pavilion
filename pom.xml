@@ -48,6 +48,7 @@
         <module>spring-boot-async</module>
         <module>spring-boot-logback</module>
         <module>spring-boot-redisson</module>
+        <module>spring-boot-aop</module>
     </modules>
 
     <dependencies>
