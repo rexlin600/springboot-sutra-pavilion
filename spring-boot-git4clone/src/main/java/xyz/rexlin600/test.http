@@ -1,0 +1,9 @@
+POST localhost:10027/gitlab/clone
+Content-Type: application/json
+
+{
+  "projectName": "edl-pub",
+  "outDir": "/Users/rexlin600/workspace/test"
+}
+
+###

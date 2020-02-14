@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: git4clone
+server:
+  port: 10027
+gitlab:
+  host: http://git.hikcreate.com
+  token: XJzuUiaJFh3sbymKzJrs
+  username: hekunlin
+  password: hekunlin
+  max-wait-time: 15

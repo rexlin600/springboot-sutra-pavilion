@@ -20,11 +20,10 @@ chmod -R 777 /docker
 
 # 启动 mysql
 $ docker run \
- --name mysql_5.7.27 \
+ --name mysql_5.7.26 \
  -p 3306:3306 \
  -v /docker/data/mysql_5.7.26:/var/lib/mysql \
  -v /docker/logs/mysql_5.7.26:/var/log/mysql \
- -v /docker/database/config/my.cnf:/etc/mysql/my.cnf:rw \
  -e MYSQL_ROOT_PASSWORD=123456 \
  --restart=always \
  -d mysql:5.7.26

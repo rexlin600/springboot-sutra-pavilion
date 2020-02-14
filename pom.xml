@@ -49,6 +49,7 @@
         <module>spring-boot-logback</module>
         <module>spring-boot-redisson</module>
         <module>spring-boot-aop</module>
+        <module>spring-boot-git4clone</module>
     </modules>
 
     <dependencies>
