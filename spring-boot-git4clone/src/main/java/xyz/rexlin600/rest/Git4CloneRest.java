@@ -1,5 +1,6 @@
 package xyz.rexlin600.rest;
 
+import ch.qos.logback.core.encoder.EchoEncoder;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
@@ -13,6 +14,7 @@ import xyz.rexlin600.config.GitLabConfigBean;
 import xyz.rexlin600.req.GitlabCloneReq;
 import xyz.rexlin600.util.GitlabUtil;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -51,15 +53,12 @@ public class Git4CloneRest {
 
     @PostMapping("/clone")
     public Response gitlab4Clone(@RequestBody GitlabCloneReq req) {
-        AtomicLong atomicLong = new AtomicLong(0L);
+        long start = Instant.now().toEpochMilli();
 
-        // 建立 GitLab 连接
+        // 建立 GitLab 连接、获取所有项目
         GitlabAPI gitlabAPI = GitlabAPI.connect(gitLabConfigBean.getHost(), gitLabConfigBean.getToken());
-        log.info("==>  建立 GitLab【{}】连接成功", gitLabConfigBean.getHost());
-
-        // 获取所有项目
         List<GitlabProject> allProjects = gitlabAPI.getAllProjects();
-        log.info("==>  获取所有的项目成功，共计【{}】个项目", allProjects.size());
+        log.info("==>  建立 GitLab【{}】连接，并获取所有的项目成功，共计【{}】个项目", gitLabConfigBean.getHost(), allProjects.size());
 
         // 筛选匹配的项目
         List<GitlabProject> matchList = allProjects.stream()
@@ -69,10 +68,7 @@ public class Git4CloneRest {
         CountDownLatch countDownLatch = new CountDownLatch(matchList.size());
 
         // 打印筛选出的项目名称
-        log.info("==>  筛选条件=【 {} 】，共计筛选出【{}】个项目", req.toString(), matchList.size());
-        matchList.stream().forEach(m -> {
-            log.info("==>  项目名称=【 {} 】", m.getName());
-        });
+        log.info("==>  筛选条件=【 {} 】，共计筛选出【{}】个项目", req.toString(), matchList.toString());
 
         // 组装 git 地址
         final UsernamePasswordCredentialsProvider provider = new UsernamePasswordCredentialsProvider(
@@ -85,11 +81,13 @@ public class Git4CloneRest {
                 @Override
                 public void run() {
                     try {
+                        log.info("********** clone 项目=【{}】到本地目录=【{}】】 **********", m.getName(), req.getOutDir());
                         GitlabUtil.clone(req, provider, m);
-                        // 计数器 -1
-                        countDownLatch.countDown();
                     } catch (GitAPIException e) {
-                        log.error("==>  克隆项目=【{}】出错=【{}】", m.getName(), e.getMessage());
+                        log.error("==>  clone 项目=【{}】出错=【{}】", m.getName(), e.getMessage());
+                    } finally {
+                        // 确保计数器 -1
+                        countDownLatch.countDown();
                     }
                 }
             });
@@ -102,8 +100,9 @@ public class Git4CloneRest {
             log.info("==>  克隆项目已经等待=【{}】分钟，请自己查看克隆是否完成", gitLabConfigBean.getMaxWaitTime());
             return ResponseGenerator.success("克隆超时，请自行检查是否克隆成功");
         }
+        long end = Instant.now().toEpochMilli();
 
-        log.info("==>  项目已全部克隆结束!!!");
+        log.info("==>  项目已全部克隆结束，共计耗时=【{}】ms", (end - start));
         return ResponseGenerator.success("克隆成功");
     }
 
