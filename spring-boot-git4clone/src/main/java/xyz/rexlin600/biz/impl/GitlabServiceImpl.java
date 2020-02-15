@@ -43,8 +43,6 @@ public class GitlabServiceImpl implements GitlabService {
             TimeUnit.SECONDS,
             new LinkedBlockingDeque<>());
 
-    private static final String ALL_PROJECT = "ALL";
-
     /**
      * GitLab 配置
      */
