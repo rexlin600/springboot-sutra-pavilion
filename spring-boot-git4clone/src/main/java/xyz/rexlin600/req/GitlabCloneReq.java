@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
@@ -20,11 +21,11 @@ public class GitlabCloneReq implements Serializable {
     /**
      * 项目名称
      */
-    private String projectName;
+    private String name;
 
     /**
      * 筛选的项目 -> 输出地址
      */
-    private String outDir;
+    private String dir;
 
 }
