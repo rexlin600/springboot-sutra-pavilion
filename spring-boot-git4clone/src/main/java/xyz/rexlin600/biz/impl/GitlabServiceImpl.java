@@ -121,9 +121,9 @@ public class GitlabServiceImpl implements GitlabService {
 
         // 等待线程执行结束再返回
         try {
-            countDownLatch.await(gitLabConfigBean.getMaxWaitTime(), TimeUnit.MINUTES);
+            countDownLatch.await(gitLabConfigBean.getMaxWaitTime(), TimeUnit.SECONDS);
         } catch (Exception e) {
-            log.info("<==  克隆项目已经等待=【{}】分钟，请自己查看克隆是否完成", gitLabConfigBean.getMaxWaitTime());
+            log.info("<==  克隆项目已经等待=【{}】秒，请自己查看克隆是否完成", gitLabConfigBean.getMaxWaitTime());
             return ResponseGenerator.success("克隆超时，请自行检查是否克隆成功");
         }
 

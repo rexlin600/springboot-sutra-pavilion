@@ -67,8 +67,9 @@ The ultimate goal is to help everyone quickly grasp the use of Spring Boot 2.x a
 | [async](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-async/README.md) |通过 `Async` ，通过 `线程池` 实现异步调用、实现优雅关闭、通过 `Future` 获取异步执行结果；如何定义超时等 |
 | [logback](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-logback/README.md) | `logback` 使用示例 |
 | [redisson](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-redisson/README.md) | `redis` 官方指定 `Java` 版分布式锁 `redisson` |
+| [git4clone](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-git4clone/README.md) | 这个应用利用 `多线程技术` 帮助用户实现快速批量下载 `gitlab` 上的项目，用户只需要进行如下修改即可使用 |
+| [aop](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-aop/README.md) | `aop` |
 | _ | _ |
-
 
 ## TODO
 
