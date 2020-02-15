@@ -65,8 +65,9 @@ public class GitlabUtil {
                     .setCredentialsProvider(provider)
                     .call();
         } catch (Exception ex) {
-            // 克隆失败则打印错误日志即可
+            // 克隆失败则打印错误日志、计数器-1
             log.error("<==  克隆项目=【{}】失败，原因=【{}】", project.getName(), ex.getMessage());
+            countDownLatch.countDown();
         }
     }
 
