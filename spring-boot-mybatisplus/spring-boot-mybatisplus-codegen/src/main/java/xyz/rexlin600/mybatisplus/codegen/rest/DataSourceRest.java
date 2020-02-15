@@ -20,8 +20,7 @@ import java.util.Date;
 
 
 /**
- * DataSourceRest API接口
- *
+ * @menu 代码生成-数据源CURD
  * @author: hekunlin
  * @date: 2020/1/14
  */

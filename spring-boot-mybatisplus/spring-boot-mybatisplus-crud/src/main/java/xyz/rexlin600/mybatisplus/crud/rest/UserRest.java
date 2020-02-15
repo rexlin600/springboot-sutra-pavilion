@@ -11,7 +11,7 @@ import xyz.rexlin600.mybatisplus.crud.common.apiparam.ResponseGenerator;
 import xyz.rexlin600.mybatisplus.crud.model.User;
 
 /**
- * @menu MybatisPlus_用户API
+ * @menu MybatisPlus-CRUD
  * @author: hekunlin
  * @date: 2020/1/6
  */

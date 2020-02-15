@@ -5,8 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Actuator API
- *
+ * @menu Actuator监控
  * @author: hekunlin
  * @date: 2020/1/8
  */
@@ -14,7 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/actuator")
 public class ActuatorRest {
 
-
+    /**
+     * 1. 【返回index】
+     *
+     * @return
+     */
     @GetMapping("/index")
     public String index() {
         return "Hello World! Actuator";

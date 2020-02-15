@@ -12,9 +12,8 @@ import xyz.rexlin600.mybatisplus.codegen.service.CodeService;
 import java.sql.SQLException;
 
 /**
- * 代码生成 API接口
- *
  * @author rexlin600
+ * @menu 代码生成-分页与生成
  */
 @RestController
 @RequestMapping("/code")

@@ -8,8 +8,7 @@ import xyz.rexlin600.common.apiparam.Response;
 import xyz.rexlin600.req.GitlabCloneReq;
 
 /**
- * Gitlab批量下载工具类
- *
+ * @menu Gitlab克隆小助手
  * @author: rexlin600
  * @date: 2020-02-14
  */
@@ -27,7 +26,7 @@ public class Git4CloneRest {
     }
 
     /**
-     * 查询所有项目
+     * 1. 【查询所有项目】
      *
      * @return
      */
@@ -37,7 +36,7 @@ public class Git4CloneRest {
     }
 
     /**
-     * 克隆项目
+     * 2. 【克隆项目】
      *
      * @param req
      * @return

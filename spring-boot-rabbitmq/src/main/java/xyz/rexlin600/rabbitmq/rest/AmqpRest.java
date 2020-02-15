@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 /**
- * @menu AMQP_测试API
+ * @menu RabbitMQ相关API
  * @author: hekunlin
  * @date: 2020/1/7
  */

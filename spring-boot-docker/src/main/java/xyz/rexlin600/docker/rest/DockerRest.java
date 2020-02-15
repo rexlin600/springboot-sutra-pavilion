@@ -4,8 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import xyz.rexlin600.docker.entity.PostReq;
 
 /**
- * Docker HelloWorld rest请求
- *
+ * @menu Docker
  * @author: hekunlin
  */
 @RestController
@@ -15,7 +14,7 @@ public class DockerRest {
     private static String HELLO_WORLD = "hello world";
 
     /**
-     * GET请求
+     * 1. 【GET请求】
      *
      * @return
      */
@@ -25,7 +24,7 @@ public class DockerRest {
     }
 
     /**
-     * POST请求
+     * 2. 【POST请求】
      *
      * @return
      */
@@ -35,7 +34,7 @@ public class DockerRest {
     }
 
     /**
-     * PUT请求
+     * 3. 【PUT请求】
      *
      * @return
      */
@@ -45,7 +44,7 @@ public class DockerRest {
     }
 
     /**
-     * DELETE请求
+     * 4. 【DELETE请求】
      *
      * @return
      */
