@@ -71,8 +71,6 @@ public class GitlabServiceImpl implements GitlabService {
      */
     @Override
     public Response clone(GitlabCloneReq req) {
-        long start = Instant.now().toEpochMilli();
-
         // 建立 GitLab 连接、获取所有项目
         GitlabAPI gitlabAPI = GitlabAPI.connect(gitLabConfigBean.getHost(), gitLabConfigBean.getToken());
         List<GitlabProject> allProjects = gitlabAPI.getAllProjects();
@@ -98,6 +96,8 @@ public class GitlabServiceImpl implements GitlabService {
         final UsernamePasswordCredentialsProvider provider = new UsernamePasswordCredentialsProvider(
                 gitLabConfigBean.getUsername(), gitLabConfigBean.getPassword());
         final List<GitlabProject> finalMatchList = matchList;
+        long start = Instant.now().toEpochMilli();
+
         for (int i = 0; i < finalMatchList.size(); i++) {
             int finalI = i;
             threadPoolExecutor.execute(new Runnable() {
@@ -106,7 +106,7 @@ public class GitlabServiceImpl implements GitlabService {
                 @Override
                 public void run() {
                     try {
-                        log.info("==>  clone 项目=【{}】到本地目录=【{}】】", m.getName(), req.getDir());
+                        log.info("==>  clone 第【{}】个项目=【{}】到本地目录=【{}】】", finalI, m.getName(), req.getDir());
                         GitlabUtil.clone(req, provider, m);
                     } finally {
                         // 确保计数器 -1
