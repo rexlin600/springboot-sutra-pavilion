@@ -8,4 +8,4 @@ gitlab:
   token: XJzuUiaJFh3sbymKzJrs
   username: hekunlin
   password: hekunlin
-  max-wait-time: 15
+  max-wait-time: 30

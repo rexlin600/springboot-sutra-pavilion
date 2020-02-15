@@ -27,4 +27,14 @@ public class GitlabCloneReq implements Serializable {
      */
     private String dir;
 
+    /**
+     * 项目所属人
+     */
+    private String owner;
+
+    /**
+     * 命名空间用户名称
+     */
+    private String namespaceName;
+
 }

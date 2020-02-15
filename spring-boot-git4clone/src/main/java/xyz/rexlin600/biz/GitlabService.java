@@ -12,6 +12,13 @@ import xyz.rexlin600.req.GitlabCloneReq;
 public interface GitlabService {
 
     /**
+     * 查询所有项目
+     *
+     * @return
+     */
+    Response list(GitlabCloneReq req);
+
+    /**
      * 克隆项目
      *
      * @param req

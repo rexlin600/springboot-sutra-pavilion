@@ -1,9 +1,24 @@
+### list
+POST http://localhost:10027/gitlab/list
+Content-Type: application/json
+
+{
+  "name": "",
+  "dir": "/Users/rexlin600/workspace/Hik_Workspace",
+  "owner": "",
+  "namespaceName": "java"
+}
+
+
+### clone
 POST localhost:10027/gitlab/clone
 Content-Type: application/json
 
 {
-  "name": "edl-pub-service-common",
-  "dir": "/Users/rexlin600/workspace/Hik_Workspace"
+  "name": "",
+  "dir": "/Users/rexlin600/workspace/Hik_Workspace",
+  "owner": "",
+  "namespaceName": "java"
 }
 
 ###

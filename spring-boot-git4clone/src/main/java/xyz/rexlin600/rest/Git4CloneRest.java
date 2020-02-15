@@ -27,6 +27,16 @@ public class Git4CloneRest {
     }
 
     /**
+     * 查询所有项目
+     *
+     * @return
+     */
+    @PostMapping("/list")
+    public Response list(@RequestBody GitlabCloneReq req) {
+        return gitlabService.list(req);
+    }
+
+    /**
      * 克隆项目
      *
      * @param req
