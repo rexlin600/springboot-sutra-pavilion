@@ -1,10 +1,6 @@
 package xyz.rexlin600.swagger.controller;
 
-import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 import xyz.rexlin600.swagger.config.BaseResult;
 import xyz.rexlin600.swagger.model.User;
@@ -27,7 +23,7 @@ public class UserController {
      *
      * @return
      */
-    @RequestMapping(value = {""}, method = RequestMethod.GET)
+    @GetMapping
     public List<User> getUserList() {
         return new ArrayList<>(users.values());
     }
@@ -38,8 +34,7 @@ public class UserController {
      * @param user
      * @return
      */
-    @ApiOperation(value = "2. 【用户-创建用户】", notes = "根据User对象创建用户")
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @PostMapping
     public BaseResult<User> postUser(@ApiIgnore User user) {
         users.put(user.getId(), user);
         return BaseResult.successWithData(user);
@@ -51,7 +46,7 @@ public class UserController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     public User getUser(@PathVariable Long id) {
         return users.get(id);
     }
@@ -63,7 +58,7 @@ public class UserController {
      * @param user
      * @return
      */
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/{id}")
     public BaseResult<User> putUser(@PathVariable Long id, @ApiIgnore User user) {
         User u = users.get(id);
         u.setName(user.getName());
@@ -78,7 +73,7 @@ public class UserController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/{id}")
     public String deleteUser(@PathVariable Long id) {
         users.remove(id);
         return "success";
@@ -90,7 +85,7 @@ public class UserController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/ignoreMe/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/ignoreMe/{id}")
     public String ignoreMe(@PathVariable Long id) {
         users.remove(id);
         return "success";
