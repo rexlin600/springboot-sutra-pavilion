@@ -45,6 +45,6 @@ public class GitLabConfigBean {
     /**
      * 克隆项目最大等待时间
      */
-    private Long maxWaitTime;
+    private Long maxTime;
 
 }

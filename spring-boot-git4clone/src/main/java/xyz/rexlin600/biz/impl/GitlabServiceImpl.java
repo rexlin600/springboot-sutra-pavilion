@@ -17,10 +17,7 @@ import xyz.rexlin600.util.GitlabUtil;
 
 import java.time.Instant;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.stream.Collectors;
 
 /**
@@ -37,8 +34,8 @@ public class GitlabServiceImpl implements GitlabService {
      * 线程池
      */
     private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
-            100,
-            120,
+            150,
+            200,
             15,
             TimeUnit.SECONDS,
             new LinkedBlockingDeque<>());
@@ -71,6 +68,8 @@ public class GitlabServiceImpl implements GitlabService {
      */
     @Override
     public Response clone(GitlabCloneReq req) {
+        long start = Instant.now().toEpochMilli();
+
         // 建立 GitLab 连接、获取所有项目
         GitlabAPI gitlabAPI = GitlabAPI.connect(gitLabConfigBean.getHost(), gitLabConfigBean.getToken());
         List<GitlabProject> allProjects = gitlabAPI.getAllProjects();
@@ -96,7 +95,6 @@ public class GitlabServiceImpl implements GitlabService {
         final UsernamePasswordCredentialsProvider provider = new UsernamePasswordCredentialsProvider(
                 gitLabConfigBean.getUsername(), gitLabConfigBean.getPassword());
         final List<GitlabProject> finalMatchList = matchList;
-        long start = Instant.now().toEpochMilli();
 
         for (int i = 0; i < finalMatchList.size(); i++) {
             int finalI = i;
@@ -105,28 +103,27 @@ public class GitlabServiceImpl implements GitlabService {
 
                 @Override
                 public void run() {
-                    try {
-                        log.info("==>  clone 第【{}】个项目=【{}】到本地目录=【{}】】", finalI, m.getName(), req.getDir());
-                        GitlabUtil.clone(req, provider, m);
-                    } finally {
-                        // 确保计数器 -1
-                        countDownLatch.countDown();
-                    }
+                    log.info("==>  clone 第【{}】个项目=【{}】到本地目录=【{}】】", (finalI + 1), m.getName(), req.getDir());
+                    GitlabUtil.clone(req, provider, m, countDownLatch);
                 }
             });
         }
 
         // 等待线程执行结束再返回
         try {
-            countDownLatch.await(gitLabConfigBean.getMaxWaitTime(), TimeUnit.SECONDS);
+            boolean await = countDownLatch.await(Long.valueOf(gitLabConfigBean.getMaxTime().longValue()), TimeUnit.SECONDS);
+            if (!await) {
+                log.info("<==  克隆项目已经等待=【{}】秒，请自己核查克隆是否完成", gitLabConfigBean.getMaxTime());
+                return ResponseGenerator.success("克隆超时，后续克隆将继续进行");
+            }
         } catch (Exception e) {
-            log.info("<==  克隆项目已经等待=【{}】秒，请自己查看克隆是否完成", gitLabConfigBean.getMaxWaitTime());
-            return ResponseGenerator.success("克隆超时，请自行检查是否克隆成功");
+            log.error("==>  克隆等待出现异常=【{}】", e.getMessage());
+            return ResponseGenerator.fail("克隆失败");
         }
 
         long end = Instant.now().toEpochMilli();
 
-        log.info("<==  克隆结束，共计耗时=【{}】ms", (end - start));
+        log.info("<==  克隆结束，全流程共计耗时=【{}】ms", (end - start));
         return ResponseGenerator.success("克隆结束");
     }
 
