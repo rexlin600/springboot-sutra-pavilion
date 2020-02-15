@@ -17,7 +17,6 @@ import xyz.rexlin600.util.GitlabUtil;
 
 import java.time.Instant;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -38,9 +37,9 @@ public class GitlabServiceImpl implements GitlabService {
      * 线程池
      */
     private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
-            50,
-            60,
-            10,
+            100,
+            120,
+            15,
             TimeUnit.SECONDS,
             new LinkedBlockingDeque<>());
 
