@@ -37,7 +37,7 @@ public class DataSourceRest {
 
 
     /**
-     * 新增数据源
+     * 1. 【新增数据源】
      *
      * @param dataSourceReq
      * @return
@@ -56,7 +56,7 @@ public class DataSourceRest {
     }
 
     /**
-     * 删除数据源
+     * 2. 【删除数据源】
      *
      * @param id
      * @return
@@ -68,7 +68,7 @@ public class DataSourceRest {
     }
 
     /**
-     * 修改数据源
+     * 3. 【修改数据源】
      *
      * @param dataSourceReq
      * @return
@@ -88,7 +88,7 @@ public class DataSourceRest {
     }
 
     /**
-     * 分页查询
+     * 4. 【分页查询】
      *
      * @param page
      * @param size
@@ -103,7 +103,7 @@ public class DataSourceRest {
     }
 
     /**
-     * 根据ID查询数据源
+     * 5. 【根据ID查询数据源】
      *
      * @param id
      * @return

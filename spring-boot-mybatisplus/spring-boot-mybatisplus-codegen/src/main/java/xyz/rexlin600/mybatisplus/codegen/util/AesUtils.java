@@ -43,4 +43,16 @@ public class AesUtils {
         return aes.decryptStr(str, CharsetUtil.CHARSET_UTF_8);
     }
 
+    /**
+     * 测试类
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        String password = "123456";
+        String encrypt = encrypt(password);
+        System.out.println(encrypt);
+        System.out.println(decrypt(encrypt));
+    }
+
 }

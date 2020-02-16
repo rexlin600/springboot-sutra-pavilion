@@ -32,12 +32,6 @@ CREATE TABLE `data_source` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `data_source` */
-
-insert  into `data_source`(`id`,`host`,`port`,`username`,`password`,`db_name`,`create_time`,`update_time`) values 
-(1,'localhost','3306','root','123456','tb_flyway','2020-01-14 15:03:59',NULL),
-(2,'10.197.236.152','3306','root','123456','edl_public','2020-01-14 15:50:51',NULL);
-
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

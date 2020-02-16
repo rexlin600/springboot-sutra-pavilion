@@ -28,7 +28,7 @@ public class CodeGenerateRest {
     }
 
     /**
-     * 查询指定数据源的表 列表
+     * 1. 【分页查询】
      *
      * @param page
      * @param tableName
@@ -49,7 +49,7 @@ public class CodeGenerateRest {
 
 
     /**
-     * 生成代码
+     * 2.【生成代码】
      *
      * @param codeGenReq
      * @return

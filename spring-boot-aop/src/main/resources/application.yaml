@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: aop
+  security:
+    user:
+      name: admin
+      password: admin
+  datasource:
+    url: jdbc:mysql://localhost:3306/springboot_aop?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      # 自动提交 默认值true
+      auto-commit: true
+      # 此属性控制客户端（即您）将等待来自池的连接的最大毫秒数。 默认值30000（30秒）
+      connection-timeout: 30000
+      # 此属性控制允许连接在池中闲置的最长时间。 默认值600000(10分钟)，此设置仅适用于minimumIdle定义为小于maximumPoolSize。
+      idle-timeout: 600000
+      # 此属性控制池中连接的最大生存期。 1800000(30分钟)
+      max-lifetime: 1800000
+      # 该属性控制HikariCP尝试在池中维护的最小空闲连接数。不推荐使用这个，默认是和maximum-pool-size相等
+      minimum-idle: 100
+      # 此属性控制池允许达到的最大大小，包括空闲和正在使用的连接。默认值10
+      maximum-pool-size: 100
+server:
+  port: 10028

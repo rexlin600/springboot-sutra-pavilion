@@ -13,7 +13,7 @@ import xyz.rexlin600.common.apiparam.Response;
 import xyz.rexlin600.common.apiparam.ResponseGenerator;
 import xyz.rexlin600.config.GitLabConfigBean;
 import xyz.rexlin600.req.GitlabCloneReq;
-import xyz.rexlin600.util.GitlabUtil;
+import xyz.rexlin600.aop.util.GitlabUtil;
 
 import java.time.Instant;
 import java.util.List;
