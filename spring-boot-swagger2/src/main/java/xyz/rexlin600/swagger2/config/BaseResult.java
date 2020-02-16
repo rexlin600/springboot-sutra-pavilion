@@ -1,4 +1,4 @@
-package xyz.rexlin600.swagger.config;
+package xyz.rexlin600.swagger2.config;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

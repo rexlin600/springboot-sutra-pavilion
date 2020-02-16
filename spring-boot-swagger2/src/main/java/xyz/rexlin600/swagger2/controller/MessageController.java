@@ -1,12 +1,12 @@
 
-package xyz.rexlin600.swagger.controller;
+package xyz.rexlin600.swagger2.controller;
 
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import xyz.rexlin600.swagger.config.BaseResult;
-import xyz.rexlin600.swagger.model.Message;
-import xyz.rexlin600.swagger.repository.MessageRepository;
+import xyz.rexlin600.swagger2.config.BaseResult;
+import xyz.rexlin600.swagger2.model.Message;
+import xyz.rexlin600.swagger2.repository.MessageRepository;
 
 import java.util.List;
 

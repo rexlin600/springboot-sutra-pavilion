@@ -1,4 +1,4 @@
-package xyz.rexlin600.runner;
+package xyz.rexlin600.elasticsearch.runner;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

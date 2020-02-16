@@ -1,4 +1,4 @@
-package xyz.rexlin600.swagger.config;
+package xyz.rexlin600.swagger2.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

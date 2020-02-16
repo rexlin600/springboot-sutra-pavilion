@@ -1,9 +1,9 @@
-package xyz.rexlin600.swagger.controller;
+package xyz.rexlin600.swagger2.controller;
 
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
-import xyz.rexlin600.swagger.config.BaseResult;
-import xyz.rexlin600.swagger.model.User;
+import xyz.rexlin600.swagger2.config.BaseResult;
+import xyz.rexlin600.swagger2.model.User;
 
 import java.util.*;
 

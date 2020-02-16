@@ -1,4 +1,4 @@
-package xyz.rexlin600.swagger.model;
+package xyz.rexlin600.swagger2.model;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;

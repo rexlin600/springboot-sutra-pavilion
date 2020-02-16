@@ -1,4 +1,4 @@
-package xyz.rexlin600.swagger.model;
+package xyz.rexlin600.swagger2.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,7 @@
 
-package xyz.rexlin600.swagger.repository;
+package xyz.rexlin600.swagger2.repository;
 
-import xyz.rexlin600.swagger.model.Message;
+import xyz.rexlin600.swagger2.model.Message;
 
 import java.util.List;
 
