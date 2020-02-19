@@ -20,9 +20,17 @@ public class MapPropertiesTest {
     @Autowired
     private MapProperties mapProperties;
 
+    @Autowired
+    private WechatProperties wechatProperties;
+
     @Test
     public void contextLoads() {
         log.info("==>  read map properteis: [{}]", mapProperties.toString());
+        String appId = "wxd31b505cb863efb1";
+        boolean hasAppId = wechatProperties.getMap().containsKey(appId);
+        if (hasAppId) {
+            log.info("==>  read map properteis: [{}]", wechatProperties.getMap().get(appId));
+        }
     }
 
 

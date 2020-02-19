@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+import xyz.rexlin600.helloworld.entity.AliApp;
 
 import java.util.List;
 
@@ -24,5 +25,7 @@ public class ListProperties {
     private List<Integer> integerList;
 
     private List<Double> doubleList;
+
+    private List<AliApp> aliAppList;
 
 }

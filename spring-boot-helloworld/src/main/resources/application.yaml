@@ -24,6 +24,11 @@ rexlin600:
     double-list:
       - 20.11
       - 100.22
+    aliAppList:
+      - appId: 2021001124610028
+        privateKey: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCZAtkIZ7cu0xmp8nyh4Z2rHh5pkXK14cYt0X7eQHCqJPpbk2wNhEtPMuA
+        aliPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo7QUXuOeE8QB/dkTwalRFqvzO5KN4MHxBU+YnxzLeUICaTAw7CiVST+wgJ5N8HLu6Z4YOr+CAQR1pnt+Xc8lfx8qP6ylvTPdp5rc38HnjjDceExefuH1UUYXxB7E33A+i8CaOPrdxOn+g4ygu0BDMn02MjCOd2SkBAPMKFS4iJ7F4HZzDbH0gjkMXqAhIgOK1+Ww+e+wepvTFAyVYZY+LaXWhwD1mS8YOfFBJdtzIXf143rWzL70LBvCdUhKF/hfUQTwyYOX93jmD3yZBWRFYHW/ZV2RniTly4qQpDISxLCQdvjCB5En/fTaIWUZ3kp9SdHdBMd0HAIeaAsMnrvwcQIDAQAB
+        aesKey: LtSKK6WNLSV9mx2VJy/LnA==
   kv:
     map:
       name: rexlin600
@@ -31,3 +36,7 @@ rexlin600:
       goods: cool
       key1: javaer
       '[user.likes]': beautiful world # 如果Map类型的key包含非字母数字和-的字符，需要用[]括起来
+  wechat:
+    map:
+      wxd31b505cb863efb1: 0265d71947d754d1df05280a1cecdcfc
+      wxd31b505cb863efb2: 0265d71947d754d1df05280a1cecdcfd

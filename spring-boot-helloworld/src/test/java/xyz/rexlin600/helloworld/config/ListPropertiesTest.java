@@ -6,6 +6,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import xyz.rexlin600.helloworld.entity.AliApp;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @description
@@ -23,6 +28,15 @@ public class ListPropertiesTest {
     @Test
     public void contextLoads() {
         log.info("==>  read list properteis: [{}]", listProperties.toString());
+        List<AliApp> aliAppList = listProperties.getAliAppList();
+        List<AliApp> collect = aliAppList.stream().filter(m -> m.getAppId().equals("2021001124610028")).collect(Collectors.toList());
+        if (collect.size() == 1) {
+            AliApp aliApp = collect.get(0);
+            System.out.println(aliApp.getAppId());
+            System.out.println(aliApp.getPrivateKey());
+            System.out.println(aliApp.getAliPublicKey());
+            System.out.println(aliApp.getAesKey());
+        }
     }
 
 }
