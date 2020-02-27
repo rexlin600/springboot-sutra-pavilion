@@ -1,4 +1,4 @@
-package xyz.rexlin600.aop.aspect.two.listener;
+package xyz.rexlin600.aop.aspect.annotation.listener;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,7 +6,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.core.annotation.Order;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
-import xyz.rexlin600.aop.aspect.two.feign.RemoteSysLogService;
+import xyz.rexlin600.aop.aspect.annotation.feign.RemoteSysLogService;
 import xyz.rexlin600.aop.entity.SysLog;
 
 import java.time.Instant;

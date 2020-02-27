@@ -1,4 +1,4 @@
-package xyz.rexlin600.aop.aspect.two.aspect;
+package xyz.rexlin600.aop.aspect.annotation.aspect;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -7,8 +7,8 @@ import org.aspectj.lang.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
-import xyz.rexlin600.aop.aspect.two.annotation.SysAopLog;
-import xyz.rexlin600.aop.aspect.two.listener.SysLogEvent;
+import xyz.rexlin600.aop.aspect.annotation.annotation.SysAopLog;
+import xyz.rexlin600.aop.aspect.annotation.listener.SysLogEvent;
 import xyz.rexlin600.aop.entity.SysLog;
 import xyz.rexlin600.aop.util.SysLogUtils;
 

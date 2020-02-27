@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.baomidou.mybatisplus.extension.api.ApiController;
-import xyz.rexlin600.aop.aspect.two.annotation.SysAopLog;
+import xyz.rexlin600.aop.aspect.annotation.annotation.SysAopLog;
 import xyz.rexlin600.aop.entity.User;
 import xyz.rexlin600.aop.service.UserService;
 

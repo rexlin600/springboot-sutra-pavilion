@@ -1,4 +1,4 @@
-package xyz.rexlin600.aop.aspect.two.listener;
+package xyz.rexlin600.aop.aspect.annotation.listener;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

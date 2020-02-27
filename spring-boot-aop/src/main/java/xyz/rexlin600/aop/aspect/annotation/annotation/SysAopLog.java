@@ -1,4 +1,4 @@
-package xyz.rexlin600.aop.aspect.two.annotation;
+package xyz.rexlin600.aop.aspect.annotation.annotation;
 
 import java.lang.annotation.*;
 

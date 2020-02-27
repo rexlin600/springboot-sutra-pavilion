@@ -1,4 +1,4 @@
-package xyz.rexlin600.aop.aspect.two.feign;
+package xyz.rexlin600.aop.aspect.annotation.feign;
 
 import com.baomidou.mybatisplus.extension.api.R;
 import org.springframework.cloud.openfeign.FeignClient;
