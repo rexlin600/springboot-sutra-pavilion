@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.baomidou.mybatisplus.extension.api.ApiController;
+import xyz.rexlin600.aop.aspect.two.annotation.SysAopLog;
 import xyz.rexlin600.aop.entity.User;
 import xyz.rexlin600.aop.service.UserService;
 
@@ -66,6 +67,7 @@ public class UserController extends ApiController {
      * @param id
      * @return
      */
+    @SysAopLog(value = "查询用户")
     @GetMapping("/{id}")
     public R get(@PathVariable(value = "id") Long id) {
         return R.ok(userService.getById(id));

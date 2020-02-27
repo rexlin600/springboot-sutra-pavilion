@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Slf4j
 @Aspect
-@Component
+//@Component
 public class SysLogAspect {
 
     @Autowired
@@ -46,7 +46,6 @@ public class SysLogAspect {
      */
     @Before("appLogPointCut()")
     public void doBefore(JoinPoint joinPoint) {
-        log.info("====================before拦截开启====================");
         String url = this.request.getRequestURI();
         String requestMethod = this.request.getMethod();
         Signature signature = joinPoint.getSignature();
@@ -55,10 +54,7 @@ public class SysLogAspect {
         String uuid = IdUtil.simpleUUID();
         REQUEST_UUID.set(uuid);
         REQUEST_START_TIME.set(System.currentTimeMillis());
-        log.info("=====================uuid:{},请求路径:{}========================", uuid, url);
-        log.info("=====================uuid:{},请求方法:{}========================", uuid, requestMethod);
-        log.info("=====================uuid:{},请求类全路径:{}========================", uuid, clazzMethod);
-        log.info("=====================uuid:{},请求参数:{}========================", uuid, params);
+        log.info("==>       经典方式-前置通知：uuid:{},请求路径:{}，请求方法:{}，请求类全路径:{}，请求参数:{}", uuid, url, requestMethod, clazzMethod, params);
     }
 
     /**
@@ -70,10 +66,8 @@ public class SysLogAspect {
      */
     @Around("appLogPointCut()")
     public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
-        log.info("====================around拦截开启====================");
-        log.info("====================around前置做某些事====================");
         Object result = joinPoint.proceed();
-        log.info("====================around后置做某些事====================");
+        log.info("==>       经典方式-后置通知：around后置做某些事");
         return result;
     }
 
@@ -84,11 +78,10 @@ public class SysLogAspect {
      */
     @AfterReturning(returning = "ret", pointcut = "appLogPointCut()")
     public void doAfterReturning(Object ret) {
-        log.info("====================afterReturning拦截开启====================");
         //String result = JSONObject.toJSONString(ret);
         String uuid = REQUEST_UUID.get();
         long costTime = System.currentTimeMillis() - REQUEST_START_TIME.get();
-        log.info("=====================uuid:{},耗时:{}ms,返回结果:{}========================", uuid, costTime, ret.toString());
+        log.info("==>       经典方式-环绕通知：uuid:{},耗时:{}ms,返回结果:{}", uuid, costTime, ret.toString());
     }
 
 

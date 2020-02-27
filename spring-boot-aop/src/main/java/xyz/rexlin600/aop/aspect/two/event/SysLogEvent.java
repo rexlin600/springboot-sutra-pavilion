@@ -1,7 +1,6 @@
 package xyz.rexlin600.aop.aspect.two.event;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import org.springframework.context.ApplicationEvent;
 import xyz.rexlin600.aop.entity.SysLog;
 
 /**
@@ -9,8 +8,16 @@ import xyz.rexlin600.aop.entity.SysLog;
  *
  * @author rexlin600
  */
-@Getter
-@AllArgsConstructor
-public class SysLogEvent {
-    private final SysLog sysLog;
+public class SysLogEvent extends ApplicationEvent {
+
+    private SysLog sysLog;
+
+    public SysLogEvent(Object source) {
+        super(source);
+    }
+
+    public SysLogEvent(Object source, SysLog sysLog) {
+        super(source);
+        this.sysLog = sysLog;
+    }
 }

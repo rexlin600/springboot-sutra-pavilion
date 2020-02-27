@@ -42,12 +42,12 @@ public class SysLogController extends ApiController {
     /**
      * 2. 【新增系统日志】
      *
-     * @param SysLog
+     * @param sysLog
      * @return
      */
     @PostMapping
-    public R add(@RequestBody SysLog SysLog) {
-        return R.ok(sysLogService.save(SysLog));
+    public R add(@RequestBody SysLog sysLog) {
+        return R.ok(sysLogService.save(sysLog));
     }
 
     /**
@@ -75,12 +75,12 @@ public class SysLogController extends ApiController {
     /**
      * 5. 【修改系统日志】
      *
-     * @param SysLog
+     * @param sysLog
      * @return
      */
     @PutMapping
-    public R update(@RequestBody SysLog SysLog) {
-        return R.ok(sysLogService.updateById(SysLog));
+    public R update(@RequestBody SysLog sysLog) {
+        return R.ok(sysLogService.updateById(sysLog));
     }
 
 }

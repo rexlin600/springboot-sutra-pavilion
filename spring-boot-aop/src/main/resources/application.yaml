@@ -1,10 +1,10 @@
 spring:
   application:
     name: aop
-  security:
-    user:
-      name: admin
-      password: admin
+  #  security:
+  #    user:
+  #      name: admin
+  #      password: admin
   datasource:
     url: jdbc:mysql://localhost:3306/springboot_aop?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
     username: root
@@ -25,3 +25,6 @@ spring:
       maximum-pool-size: 100
 server:
   port: 10028
+feign:
+  biz:
+    local: "http://localhost:10028/sysLog"
