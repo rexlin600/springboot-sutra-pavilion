@@ -16,6 +16,7 @@ import xyz.rexlin600.aop.aspect.two.feign.RemoteSysLogService;
  * @author: rexlin600
  * @date: 2020-02-12
  */
+@EnableAsync
 @EnableFeignClients
 @SpringBootApplication
 @MapperScan(value = "xyz.rexlin600.aop.mapper")
