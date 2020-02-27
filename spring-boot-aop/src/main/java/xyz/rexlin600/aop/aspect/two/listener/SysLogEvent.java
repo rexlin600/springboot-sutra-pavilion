@@ -1,4 +1,4 @@
-package xyz.rexlin600.aop.aspect.two.event;
+package xyz.rexlin600.aop.aspect.two.listener;
 
 import org.springframework.context.ApplicationEvent;
 import xyz.rexlin600.aop.entity.SysLog;

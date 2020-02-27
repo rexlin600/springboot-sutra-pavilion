@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
-import xyz.rexlin600.aop.aspect.two.event.SysLogEvent;
 import xyz.rexlin600.aop.aspect.two.feign.RemoteSysLogService;
 import xyz.rexlin600.aop.entity.SysLog;
 

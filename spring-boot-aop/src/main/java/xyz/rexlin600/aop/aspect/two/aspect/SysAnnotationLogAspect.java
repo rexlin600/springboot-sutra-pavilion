@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 import xyz.rexlin600.aop.aspect.two.annotation.SysAopLog;
-import xyz.rexlin600.aop.aspect.two.event.SysLogEvent;
+import xyz.rexlin600.aop.aspect.two.listener.SysLogEvent;
 import xyz.rexlin600.aop.entity.SysLog;
 import xyz.rexlin600.aop.util.SysLogUtils;
 
