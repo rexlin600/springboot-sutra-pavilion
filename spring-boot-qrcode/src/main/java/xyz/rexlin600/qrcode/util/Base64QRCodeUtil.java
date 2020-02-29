@@ -229,8 +229,10 @@ public class Base64QRCodeUtil {
         //获取顶部字体的宽和高
         int topFontWidth = metrics1.stringWidth(topFont);
         int topFontHeight = metrics1.getHeight();
+
         //将image生成二维码图片对象
         bufferedImage = createQRCode(content, bufferedImage, topFontWidth, topFontHeight, centerFontWidth, centerFontHeight, bottomFontWidth, bottomFontHeight);
+
         //获取二维码图片的宽和高
         int imageW = bufferedImage.getWidth();
         int imageH = bufferedImage.getHeight();

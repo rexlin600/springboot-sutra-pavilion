@@ -1,14 +1,18 @@
 package xyz.rexlin600.qrcode.util;
 
 import com.google.zxing.*;
+import com.google.zxing.aztec.encoder.HighLevelEncoder;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.client.j2se.MatrixToImageConfig;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
+import sun.font.FontDesignMetrics;
+import xyz.rexlin600.qrcode.enums.TextPosEnum;
 
 import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageInputStream;
@@ -16,11 +20,13 @@ import javax.imageio.stream.ImageOutputStream;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
+import java.awt.image.Raster;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -35,13 +41,15 @@ import java.util.Objects;
 public class QrCodeUtil {
 
     /**
-     * 默认参数：二维码长度、二维码宽度、编码格式、纠错等级、二维码边框
+     * 默认参数：二维码长度、二维码宽度、编码格式、纠错等级、二维码边框、前景色-黑、背景色-白
      */
     private final static Integer QR_CODE_HEIGHT = 400;
     private final static Integer QR_CODE_WIDTH = 400;
     private final static String FORMAT = "UTF-8";
     private final static ErrorCorrectionLevel ERR_LEVEL = ErrorCorrectionLevel.M;
     private final static Integer MARGIN = 1;
+    private static final int FRONT_COLOR = 0x000000;
+    private static final int BACKGROUND_COLOR = 0xFFFFFF;
 
     // -----------------------------------------------------------------------------------------------
     // SIMPLE QR CODE
@@ -115,7 +123,7 @@ public class QrCodeUtil {
         // 获取二维码位图矩阵
         BitMatrix bitMatrix = null;
         try {
-            bitMatrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, height, width, map);
+            bitMatrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, width, height, map);
         } catch (WriterException e) {
             log.error("获取二维码位图矩阵失败=【{}】", e.getMessage());
             throw new RuntimeException("获取二维码位图矩阵失败");
@@ -237,9 +245,73 @@ public class QrCodeUtil {
     }
 
     // -----------------------------------------------------------------------------------------------
-    // TODO 生成带文字的二维码
+    // 生成带文字的二维码
     // -----------------------------------------------------------------------------------------------
 
+    public static BufferedImage createQrCodeWithText(String content, int width, int height,
+                                                     TextPosEnum posEnum, String text) {
+        // 图片绘制对象
+        Font font = new Font("宋体", Font.PLAIN, 32);
+        BasicStroke stroke = new BasicStroke(5, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
+
+        // 获取字体的宽、高、计算坐标
+        text = new String(text.trim().getBytes(), Charset.forName("UTF-8"));
+        FontMetrics metrics = FontDesignMetrics.getMetrics(font);
+        int fontWidth = metrics.stringWidth(text);
+        int fontHeight = metrics.getHeight();
+
+        // 根据计算的二维码、文字的大小重新绘制图像
+        BufferedImage bufferedImage = simpleQrCode(content, width + fontWidth, height + fontHeight);
+        // 获取二维码的宽高
+        int imageWidth = bufferedImage.getWidth();
+        int imageHeight = bufferedImage.getHeight();
+        Graphics graphics = bufferedImage.createGraphics();
+
+        // 位置判断
+        int startX = 0;
+        int startY = 0;
+        Integer posEnumCode = posEnum.getCode();
+        if (TextPosEnum.TOP_TEXT_POSITION.getCode().equals(posEnumCode)) {
+            startX = (imageWidth - fontWidth) / 2;
+            startY = fontHeight;
+        }
+        if (TextPosEnum.CENTER_TEXT_POSITION.getCode().equals(posEnumCode)) {
+            startX = (imageWidth - fontWidth) / 2 + 10;
+            startY = imageHeight / 2 + fontHeight / 2 - (fontHeight / 4) + 10;
+            int endX = startX + fontWidth + 10;
+            int endY = startY + 10;
+            // 填充文字区域背景
+            for (int x = 0; x < imageWidth; x++) {
+                for (int y = 0; y < imageHeight; y++) {
+                    // 中心文字填充区域背景设置为空白
+                    if (x > (startX - 10) && x < endX && y > (startY - fontHeight) && y < endY) {
+                        bufferedImage.setRGB(x, y, FRONT_COLOR);
+                    }
+                }
+            }
+        }
+        if (TextPosEnum.BOTTOM_TEXT_POSITION.getCode().equals(posEnumCode)) {
+            startX = (imageWidth - fontWidth) / 2;
+            startY = (imageHeight - fontHeight) + 2;
+        }
+
+        graphics.setFont(font);
+        graphics.setColor(Color.RED);
+        graphics.drawString(text, startX, startY);
+        graphics.dispose();
+
+        return bufferedImage;
+    }
+
+    // test
+    @SneakyThrows
+    public static void main(String[] args) {
+        BufferedImage bufferedImage = simpleQrCode("nice day");
+        write2File(bufferedImage, "png", "/Users/rexlin600/Desktop/1.png");
+
+        bufferedImage = createQrCodeWithText("nice day", QR_CODE_WIDTH, QR_CODE_HEIGHT, TextPosEnum.CENTER_TEXT_POSITION, "TOP");
+        write2File(bufferedImage, "png", "/Users/rexlin600/Desktop/2.png");
+    }
 
     // -----------------------------------------------------------------------------------------------
     // TODO 批量打包
