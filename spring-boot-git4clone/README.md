@@ -6,9 +6,9 @@
 # 修改为自己的相关配置即可
 # max-wait-time 表示最多等待多久时间返回下载结果（单位：秒~~~~）
 gitlab:
-  host: http://git.hikcreate.com
-  token: XJzuUiaJFh3sbymKzJrs
-  username: hekunlin
-  password: hekunlin
+  host: http://git.xxx.com
+  token: xxx
+  username: xxx
+  password: xxx
   max-wait-time: 60
 ```
