@@ -40,13 +40,13 @@ import java.util.Objects;
 public class QrCodeUtil {
 
     /**
-     * 默认参数：二维码长度、二维码宽度、编码格式、纠错等级、二维码边框、前景色-黑、背景色-白
+     * 默认参数：二维码长度、二维码宽度、编码格式、纠错等级、固定二维码边框（重要）、前景色-黑、背景色-白
      */
     private final static Integer QR_CODE_HEIGHT = 400;
     private final static Integer QR_CODE_WIDTH = 400;
     private final static String FORMAT = "UTF-8";
     private final static ErrorCorrectionLevel ERR_LEVEL = ErrorCorrectionLevel.M;
-    private final static Integer MARGIN = 2;
+    private final static Integer MARGIN = 3;
     private static final int FRONT_COLOR = 0x000000;
     private static final int BACKGROUND_COLOR = 0xFFFFFF;
 
@@ -61,7 +61,7 @@ public class QrCodeUtil {
      * @return {@link BufferedImage}
      */
     public static BufferedImage simpleQrCode(String content) {
-        return simpleQrCode(content, QR_CODE_HEIGHT, QR_CODE_WIDTH, FORMAT, ERR_LEVEL, MARGIN);
+        return simpleQrCode(content, QR_CODE_HEIGHT, QR_CODE_WIDTH, FORMAT, ERR_LEVEL);
     }
 
     /**
@@ -73,20 +73,7 @@ public class QrCodeUtil {
      * @return {@link BufferedImage}
      */
     public static BufferedImage simpleQrCode(String content, int height, int width) {
-        return simpleQrCode(content, height, width, FORMAT, ERR_LEVEL, MARGIN);
-    }
-
-    /**
-     * 获取简单二维码缓冲图像
-     *
-     * @param content 二维码内容
-     * @param height  二维码长度
-     * @param width   二维码宽度
-     * @param width   二维码边框
-     * @return {@link BufferedImage}
-     */
-    public static BufferedImage simpleQrCode(String content, int height, int width, int margin) {
-        return simpleQrCode(content, height, width, FORMAT, ERR_LEVEL, margin);
+        return simpleQrCode(content, height, width, FORMAT, ERR_LEVEL);
     }
 
     /**
@@ -97,13 +84,12 @@ public class QrCodeUtil {
      * @param width   二维码宽度
      * @param format  二维码格式化
      * @param level   二维码纠错等级
-     * @param margin  二维码边框
      * @return {@link BufferedImage}
      */
     public static BufferedImage simpleQrCode(String content, int height, int width,
-                                             String format, ErrorCorrectionLevel level, int margin) {
+                                             String format, ErrorCorrectionLevel level) {
         // 内容检查
-        check(content);
+        checkParam(content);
 
         // 检查二维码长宽
         checkHeightAndWidth(height, width);
@@ -111,13 +97,12 @@ public class QrCodeUtil {
         // 参数格式化
         format = StringUtils.isEmpty(format) ? "UTF-8" : format;
         level = Objects.isNull(level) ? ErrorCorrectionLevel.M : level;
-        margin = margin <= 0 ? 2 : margin;
 
         // 编码提示类型配置
         Map<EncodeHintType, Object> map = new HashMap<>();
         map.put(EncodeHintType.CHARACTER_SET, format);
         map.put(EncodeHintType.ERROR_CORRECTION, level);
-        map.put(EncodeHintType.MARGIN, margin);
+        map.put(EncodeHintType.MARGIN, MARGIN);
 
         // 获取二维码位图矩阵
         BitMatrix bitMatrix = null;
@@ -149,9 +134,9 @@ public class QrCodeUtil {
      * @return
      * @throws IOException
      */
-    public static BufferedImage fillLogo2QrCode(BufferedImage qrCodeMatrixImage, File logoFile) throws IOException {
+    public static BufferedImage logoQrCode(BufferedImage qrCodeMatrixImage, File logoFile) throws IOException {
         BufferedImage logoMatrixImage = ImageIO.read(logoFile);
-        BufferedImage bufferedImage = fillLogo2QrCode(qrCodeMatrixImage, logoMatrixImage);
+        BufferedImage bufferedImage = logoQrCode(qrCodeMatrixImage, logoMatrixImage);
         return bufferedImage;
     }
 
@@ -163,9 +148,9 @@ public class QrCodeUtil {
      * @return
      * @throws IOException
      */
-    public static BufferedImage fillLogo2QrCode(BufferedImage qrCodeMatrixImage, InputStream inputStream) throws IOException {
+    public static BufferedImage logoQrCode(BufferedImage qrCodeMatrixImage, InputStream inputStream) throws IOException {
         BufferedImage logoMatrixImage = ImageIO.read(inputStream);
-        BufferedImage bufferedImage = fillLogo2QrCode(qrCodeMatrixImage, logoMatrixImage);
+        BufferedImage bufferedImage = logoQrCode(qrCodeMatrixImage, logoMatrixImage);
         return bufferedImage;
     }
 
@@ -177,9 +162,9 @@ public class QrCodeUtil {
      * @return
      * @throws IOException
      */
-    public static BufferedImage fillLogo2QrCode(BufferedImage qrCodeMatrixImage, ImageInputStream imageInputStream) throws IOException {
+    public static BufferedImage logoQrCode(BufferedImage qrCodeMatrixImage, ImageInputStream imageInputStream) throws IOException {
         BufferedImage logoMatrixImage = ImageIO.read(imageInputStream);
-        BufferedImage bufferedImage = fillLogo2QrCode(qrCodeMatrixImage, logoMatrixImage);
+        BufferedImage bufferedImage = logoQrCode(qrCodeMatrixImage, logoMatrixImage);
         return bufferedImage;
     }
 
@@ -191,9 +176,9 @@ public class QrCodeUtil {
      * @return
      * @throws IOException
      */
-    public static BufferedImage fillLogo2QrCode(BufferedImage qrCodeMatrixImage, URL url) throws IOException {
+    public static BufferedImage logoQrCode(BufferedImage qrCodeMatrixImage, URL url) throws IOException {
         BufferedImage logoMatrixImage = ImageIO.read(url);
-        BufferedImage bufferedImage = fillLogo2QrCode(qrCodeMatrixImage, logoMatrixImage);
+        BufferedImage bufferedImage = logoQrCode(qrCodeMatrixImage, logoMatrixImage);
         return bufferedImage;
     }
 
@@ -205,7 +190,7 @@ public class QrCodeUtil {
      * @return
      * @throws IOException
      */
-    public static BufferedImage fillLogo2QrCode(BufferedImage qrCodeMatrixImage, BufferedImage logoMatrixImage) throws IOException {
+    public static BufferedImage logoQrCode(BufferedImage qrCodeMatrixImage, BufferedImage logoMatrixImage) throws IOException {
         int height = qrCodeMatrixImage.getHeight();
         int width = qrCodeMatrixImage.getWidth();
 
@@ -225,9 +210,9 @@ public class QrCodeUtil {
             imageGraphics.draw(round);
 
             // 设置logo 有一道灰色边框
-            BasicStroke stroke2 = new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
+            BasicStroke stroke = new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
             // 设置笔画对象
-            imageGraphics.setStroke(stroke2);
+            imageGraphics.setStroke(stroke);
             // 指定弧度的圆角矩形
             RoundRectangle2D.Float round2 = new RoundRectangle2D.Float(width / 5 * 2 + 2, height / 5 * 2 + 2, width / 5 - 4, height / 5 - 4, 20, 20);
             imageGraphics.setColor(new Color(128, 128, 128));
@@ -236,7 +221,9 @@ public class QrCodeUtil {
             imageGraphics.draw(round2);
         } finally {
             // 释放资源Ω
-            imageGraphics.dispose();
+            if (!Objects.isNull(imageGraphics)) {
+                imageGraphics.dispose();
+            }
             qrCodeMatrixImage.flush();
         }
 
@@ -247,84 +234,39 @@ public class QrCodeUtil {
     // 生成带文字的二维码
     // -----------------------------------------------------------------------------------------------
 
-
     /**
      * 生成带文字的二维码
      *
      * @param bufferedImage 二维码缓冲图像
      * @param font          字体
-     * @param posEnum       文字位置
-     * @param text          文字
+     * @param topText       顶部文字
+     * @param centerText    中部文字
+     * @param bottomText    底部文字
      * @return
      */
-    public static BufferedImage createQrCodeWithText(BufferedImage bufferedImage, Font font, TextPosEnum posEnum, String text) {
-        // 图片绘制对象
-        BasicStroke stroke = new BasicStroke(5, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
-
-        // 获取字体的宽、高、计算坐标
-        text = new String(text.trim().getBytes(), Charset.forName("UTF-8"));
-        FontMetrics metrics = FontDesignMetrics.getMetrics(font);
-        int fontWidth = metrics.stringWidth(text);
-        int fontHeight = metrics.getHeight();
-
+    public static BufferedImage textQrCode(BufferedImage bufferedImage, Font font,
+                                           String topText, String centerText, String bottomText) {
         // 获取二维码的宽高
         int imageWidth = bufferedImage.getWidth();
         int imageHeight = bufferedImage.getHeight();
-        Graphics graphics = bufferedImage.createGraphics();
 
-        // 位置判断
-        int startX = 0;
-        int startY = 0;
-        Integer posEnumCode = posEnum.getCode();
-        if (TextPosEnum.TOP.getCode().equals(posEnumCode)) {
-            startX = (imageWidth - fontWidth) / 2;
-            startY = fontHeight;
-        }
-        if (TextPosEnum.CENTER.getCode().equals(posEnumCode)) {
-            startX = (imageWidth - fontWidth) / 2 + 10;
-            startY = imageHeight / 2 + fontHeight / 2 - (fontHeight / 4) + 10;
-            int endX = startX + fontWidth + 10;
-            int endY = startY + 10;
-            // 填充文字区域背景
-            for (int x = 0; x < imageWidth; x++) {
-                for (int y = 0; y < imageHeight; y++) {
-                    // 中心文字填充区域背景设置为空白
-                    if (x > (startX - 10) && x < endX && y > (startY - fontHeight) && y < endY) {
-                        bufferedImage.setRGB(x, y, BACKGROUND_COLOR);
-                    }
-                }
+        Graphics graphics = null;
+        try {
+            graphics = bufferedImage.createGraphics();
+            graphics.setFont(font);
+            graphics.setColor(Color.RED);
+
+            // 获取顶部字体的宽、高
+            drawText(bufferedImage, font, topText, imageWidth, imageHeight, graphics, TextPosEnum.TOP);
+            drawText(bufferedImage, font, centerText, imageWidth, imageHeight, graphics, TextPosEnum.CENTER);
+            drawText(bufferedImage, font, bottomText, imageWidth, imageHeight, graphics, TextPosEnum.BOTTOM);
+        } finally {
+            if (!Objects.isNull(graphics)) {
+                graphics.dispose();
             }
         }
-        if (TextPosEnum.BOTTOM.getCode().equals(posEnumCode)) {
-            startX = (imageWidth - fontWidth) / 2;
-            startY = (imageHeight - fontHeight) + 2;
-        }
-
-        graphics.setFont(font);
-        graphics.setColor(Color.RED);
-        // 填充文字
-        if (TextPosEnum.TOP.getCode().equals(posEnumCode)) {
-            graphics.drawString(text, startX, startY - fontHeight / 8);
-        }
-        if (TextPosEnum.CENTER.getCode().equals(posEnumCode)) {
-            graphics.drawString(text, startX, startY);
-        }
-        if (TextPosEnum.BOTTOM.getCode().equals(posEnumCode)) {
-            graphics.drawString(text, startX, startY + fontHeight / 2 + 5);
-        }
-        graphics.dispose();
 
         return bufferedImage;
-    }
-
-    // test
-    @SneakyThrows
-    public static void main(String[] args) {
-        BufferedImage bufferedImage = simpleQrCode("nice");
-        write2File(bufferedImage, "png", "/Users/rexlin600/Desktop/1.png");
-
-        BufferedImage bufferedImage2 = createQrCodeWithText(bufferedImage, new Font("宋体", Font.ITALIC, 40), TextPosEnum.CENTER, "TOP");
-        write2File(bufferedImage2, "png", "/Users/rexlin600/Desktop/3.png");
     }
 
     // -----------------------------------------------------------------------------------------------
@@ -470,7 +412,7 @@ public class QrCodeUtil {
      *
      * @param obj
      */
-    public static void check(Object obj) throws RuntimeException {
+    public static void checkParam(Object obj) throws RuntimeException {
         if ((obj instanceof String) && (StringUtils.isEmpty(obj))) {
             throw new RuntimeException("param can not be null or empty");
         }
@@ -491,5 +433,97 @@ public class QrCodeUtil {
             throw new RuntimeException("param must > 0");
         }
     }
+
+    /**
+     * 根据不同位置绘制图像
+     *
+     * @param bufferedImage
+     * @param font
+     * @param text
+     * @param imageWidth
+     * @param imageHeight
+     * @param graphics
+     * @param top
+     */
+    private static void drawText(BufferedImage bufferedImage, Font font, String text, int imageWidth, int imageHeight, Graphics graphics, TextPosEnum posEnum) {
+        if (!StringUtils.isEmpty(text)) {
+            text = new String(text.trim().getBytes(), Charset.forName("UTF-8"));
+            FontMetrics metrics = FontDesignMetrics.getMetrics(font);
+            int fontWidth = metrics.stringWidth(text);
+            int fontHeight = metrics.getHeight();
+
+            // 绘制图像
+            fillText(bufferedImage, text, fontWidth, fontHeight, imageWidth, imageHeight, graphics, posEnum);
+        }
+    }
+
+    /**
+     * 填充文字
+     *
+     * @param bufferedImage 图片缓冲流
+     * @param text          填充文字内容
+     * @param fontWidth     文字宽度
+     * @param fontHeight    文字长度
+     * @param imageWidth    图片宽度
+     * @param imageHeight   图片长度
+     * @param graphics      绘图对象
+     * @param textPosEnum   位置
+     */
+    private static void fillText(BufferedImage bufferedImage, String text,
+                                 int fontWidth, int fontHeight,
+                                 int imageWidth, int imageHeight,
+                                 Graphics graphics, TextPosEnum posEnum) {
+        int startX;
+        int startY;
+        Integer posEnumCode = posEnum.getCode();
+        if (TextPosEnum.TOP.getCode().equals(posEnumCode)) {
+            startX = (imageWidth - fontWidth) / 2 < 0 ? 0 : (imageWidth - fontWidth) / 2;
+            startY = fontHeight;
+            log.info("绘制顶部文字...");
+            graphics.drawString(text, startX, startY);
+        }
+        if (TextPosEnum.CENTER.getCode().equals(posEnumCode)) {
+            startX = (imageWidth - fontWidth) / 2 + 10;
+            startY = imageHeight / 2 + fontHeight / 2 - (fontHeight / 4) + 10;
+            int endX = startX + fontWidth + 10;
+            int endY = startY + 10;
+            // 填充文字区域背景
+            for (int x = 0; x < imageWidth; x++) {
+                for (int y = 0; y < imageHeight; y++) {
+                    // 中心文字填充区域背景设置为空白
+                    if (x > (startX - 10) && x < endX && y > (startY - fontHeight) && y < endY) {
+                        bufferedImage.setRGB(x, y, BACKGROUND_COLOR);
+                    }
+                }
+            }
+            log.info("绘制中心文字...");
+            graphics.drawString(text, startX, startY);
+        }
+        if (TextPosEnum.BOTTOM.getCode().equals(posEnumCode)) {
+            startX = (imageWidth - fontWidth) / 2 < 0 ? 0 : (imageWidth - fontWidth) / 2;
+            startY = imageHeight - fontHeight / 2;
+            log.info("绘制底部文字...");
+            graphics.drawString(text, startX, startY);
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------
+    // TEST
+    // -----------------------------------------------------------------------------------------------
+
+    @SneakyThrows
+    public static void main(String[] args) {
+        BufferedImage bufferedImage = simpleQrCode("去他妈的加班！！！");
+        write2File(bufferedImage, "png", "/Users/rexlin600/Desktop/1.png");
+
+        // text
+        BufferedImage bufferedImage2 = textQrCode(bufferedImage, new Font("宋体", Font.ITALIC, 24), "fuck PM", "", "fuck PM");
+
+        // logo
+        BufferedImage bufferedImage3 = logoQrCode(bufferedImage2, new File("/Users/rexlin600/Pictures/微信公众号-图片/SpringFramework.png"));
+
+        write2File(bufferedImage3, "png", "/Users/rexlin600/Desktop/3.png");
+    }
+
 
 }
