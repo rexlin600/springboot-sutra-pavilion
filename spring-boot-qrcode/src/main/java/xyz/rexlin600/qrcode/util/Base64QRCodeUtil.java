@@ -17,12 +17,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Zxing 二维码工具类
+ * 生成 Base64 的二维码工具类
  *
  * @author: rexlin600
  * @date: 2020-02-28
  */
-public class ZxingQRCodeUtil {
+public class Base64QRCodeUtil {
 
     /**
      * 默认配置

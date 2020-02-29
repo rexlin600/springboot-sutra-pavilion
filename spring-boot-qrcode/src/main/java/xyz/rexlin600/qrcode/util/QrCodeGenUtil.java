@@ -26,7 +26,7 @@ public class QrCodeGenUtil {
      * @param border  要添加的边界模块的数量，必须为而非负数
      * @return
      */
-    public static BufferedImage genSimpleQRCode(String content, QrCode.Ecc ecc, int scale, int border) throws Exception {
+    public static BufferedImage simpleQrCode(String content, QrCode.Ecc ecc, int scale, int border) throws Exception {
         checkBorder(border);
         QrCode qr0 = QrCode.encodeText(content, ecc);
         BufferedImage bufferedImage = qr0.toImage(scale, border);
@@ -56,7 +56,7 @@ public class QrCodeGenUtil {
      * @param filepath   文件路径
      * @throws IOException
      */
-    private static void writePic(BufferedImage img, String formatName, String filepath) throws IOException {
+    private static void write2File(BufferedImage img, String formatName, String filepath) throws IOException {
         ImageIO.write(img, formatName, new File(filepath));
     }
 
