@@ -15,9 +15,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public enum TextPosEnum {
 
-    TOP_TEXT_POSITION(1, "TOP"),
-    CENTER_TEXT_POSITION(2, "CENTER"),
-    BOTTOM_TEXT_POSITION(3, "BOTTOM");
+    TOP(1, "TOP"),
+    CENTER(2, "CENTER"),
+    BOTTOM(3, "BOTTOM"),
+    ALL(3, "BOTTOM");
 
     private Integer code;
     private String position;
