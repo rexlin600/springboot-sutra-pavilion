@@ -17,8 +17,7 @@ public enum TextPosEnum {
 
     TOP(1, "TOP"),
     CENTER(2, "CENTER"),
-    BOTTOM(3, "BOTTOM"),
-    ALL(3, "BOTTOM");
+    BOTTOM(3, "BOTTOM");
 
     private Integer code;
     private String position;

@@ -11,6 +11,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 import sun.font.FontDesignMetrics;
+import xyz.rexlin600.qrcode.entity.QrCodeContent;
 import xyz.rexlin600.qrcode.enums.TextPosEnum;
 
 import javax.imageio.ImageIO;
@@ -25,9 +26,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.*;
 
 /**
  * 二维码工具类
@@ -42,13 +47,16 @@ public class QrCodeUtil {
     /**
      * 默认参数：二维码长度、二维码宽度、编码格式、纠错等级、固定二维码边框（重要）、前景色-黑、背景色-白
      */
-    private final static Integer QR_CODE_HEIGHT = 400;
-    private final static Integer QR_CODE_WIDTH = 400;
-    private final static String FORMAT = "UTF-8";
-    private final static ErrorCorrectionLevel ERR_LEVEL = ErrorCorrectionLevel.M;
-    private final static Integer MARGIN = 3;
-    private static final int FRONT_COLOR = 0x000000;
-    private static final int BACKGROUND_COLOR = 0xFFFFFF;
+    public final static Integer QR_CODE_HEIGHT = 400;
+    public final static Integer QR_CODE_WIDTH = 400;
+    public final static String FORMAT = "UTF-8";
+    public final static ErrorCorrectionLevel ERR_LEVEL = ErrorCorrectionLevel.M;
+    public final static Integer MARGIN = 3;
+    public static final int FRONT_COLOR = 0x000000;
+    public static final int BACKGROUND_COLOR = 0xFFFFFF;
+
+    // 线程池
+    private static final ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(50, 150, 10, TimeUnit.SECONDS, new SynchronousQueue<>());
 
     // -----------------------------------------------------------------------------------------------
     // SIMPLE QR CODE
@@ -270,9 +278,46 @@ public class QrCodeUtil {
     }
 
     // -----------------------------------------------------------------------------------------------
-    // TODO 批量打包
+    // TODO 批量生成二维码
     // -----------------------------------------------------------------------------------------------
 
+    /**
+     * 批量生成二维码
+     *
+     * @param arrays 要批量生成的二维码列表
+     * @return
+     */
+    @SneakyThrows
+    public static List<BufferedImage> batchQrCode(List<QrCodeContent> arrays) {
+        int size = arrays.size();
+        List<BufferedImage> list = new ArrayList<>(size);
+        Font font = new Font("宋体", Font.ITALIC, 24);
+
+        CountDownLatch countDownLatch = new CountDownLatch(size);
+
+        long start = Instant.now().toEpochMilli();
+        arrays.parallelStream().forEach(m -> {
+            threadPoolExecutor.execute(() -> {
+                // gen qr code
+                BufferedImage bufferedImage = simpleQrCode(m.getContent());
+
+                // fill text
+                bufferedImage = textQrCode(bufferedImage, font, m.getTopText(), m.getCenterText(), m.getBottomText());
+
+                // add List
+                list.add(bufferedImage);
+
+                countDownLatch.countDown();
+            });
+        });
+
+        countDownLatch.await();
+        long end = Instant.now().toEpochMilli();
+
+        log.info("生成二维码共计耗时 {} ms", end - start);
+
+        return list;
+    }
 
     // -----------------------------------------------------------------------------------------------
     // WRITE BufferedImage TO File/OutputStream/ImageOutputStream
@@ -286,7 +331,7 @@ public class QrCodeUtil {
      * @param filepath 文件路径
      * @throws IOException
      */
-    private static void write2File(BufferedImage img, String fileType, String filepath) throws IOException {
+    public static void write2File(BufferedImage img, String fileType, String filepath) throws IOException {
         ImageIO.write(img, fileType, new File(filepath));
     }
 
@@ -298,7 +343,7 @@ public class QrCodeUtil {
      * @param outputStream 输出流
      * @throws IOException
      */
-    private static void write2Stream(BufferedImage img, String fileType, OutputStream outputStream) throws IOException {
+    public static void write2Stream(BufferedImage img, String fileType, OutputStream outputStream) throws IOException {
         ImageIO.write(img, fileType, outputStream);
     }
 
@@ -310,7 +355,7 @@ public class QrCodeUtil {
      * @param imageOutputStream 图片输出流
      * @throws IOException
      */
-    private static void write2Stream(BufferedImage img, String fileType, ImageOutputStream imageOutputStream) throws IOException {
+    public static void write2Stream(BufferedImage img, String fileType, ImageOutputStream imageOutputStream) throws IOException {
         ImageIO.write(img, fileType, imageOutputStream);
     }
 
@@ -445,7 +490,7 @@ public class QrCodeUtil {
      * @param graphics
      * @param top
      */
-    private static void drawText(BufferedImage bufferedImage, Font font, String text, int imageWidth, int imageHeight, Graphics graphics, TextPosEnum posEnum) {
+    public static void drawText(BufferedImage bufferedImage, Font font, String text, int imageWidth, int imageHeight, Graphics graphics, TextPosEnum posEnum) {
         if (!StringUtils.isEmpty(text)) {
             text = new String(text.trim().getBytes(), Charset.forName("UTF-8"));
             FontMetrics metrics = FontDesignMetrics.getMetrics(font);
@@ -469,10 +514,10 @@ public class QrCodeUtil {
      * @param graphics      绘图对象
      * @param textPosEnum   位置
      */
-    private static void fillText(BufferedImage bufferedImage, String text,
-                                 int fontWidth, int fontHeight,
-                                 int imageWidth, int imageHeight,
-                                 Graphics graphics, TextPosEnum posEnum) {
+    public static void fillText(BufferedImage bufferedImage, String text,
+                                int fontWidth, int fontHeight,
+                                int imageWidth, int imageHeight,
+                                Graphics graphics, TextPosEnum posEnum) {
         int startX;
         int startY;
         Integer posEnumCode = posEnum.getCode();
@@ -513,16 +558,61 @@ public class QrCodeUtil {
 
     @SneakyThrows
     public static void main(String[] args) {
-        BufferedImage bufferedImage = simpleQrCode("去他妈的加班！！！");
-        write2File(bufferedImage, "png", "/Users/rexlin600/Desktop/1.png");
+        //BufferedImage bufferedImage = simpleQrCode("去他妈的加班！！！");
+        //write2File(bufferedImage, "png", "/Users/rexlin600/Desktop/1.png");
+        //// text
+        //BufferedImage bufferedImage2 = textQrCode(bufferedImage, new Font("宋体", Font.ITALIC, 24), "天王盖地虎", "", "加班不辛苦");
+        //// logo
+        //BufferedImage bufferedImage3 = logoQrCode(bufferedImage2, new File("/Users/rexlin600/Pictures/微信公众号-图片/SpringFramework.png"));
+        //write2File(bufferedImage3, "png", "/Users/rexlin600/Desktop/3.png");
 
-        // text
-        BufferedImage bufferedImage2 = textQrCode(bufferedImage, new Font("宋体", Font.ITALIC, 24), "fuck PM", "", "fuck PM");
+        List<QrCodeContent> list = new ArrayList<>();
+        list.add(new QrCodeContent("FUCK-1", "fuck-1", "", ""));
+        list.add(new QrCodeContent("FUCK-2", "", "fuck-2", ""));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCodeContent("FUCK-4", "fuck-4", "fuck-4", "fuck-4"));
 
-        // logo
-        BufferedImage bufferedImage3 = logoQrCode(bufferedImage2, new File("/Users/rexlin600/Pictures/微信公众号-图片/SpringFramework.png"));
+        // batch gen qr code
+        List<BufferedImage> imageList = batchQrCode(list);
 
-        write2File(bufferedImage3, "png", "/Users/rexlin600/Desktop/3.png");
+        // batch save
+        for (int i = 0; i < imageList.size(); i++) {
+            write2File(imageList.get(i), "png", "/Users/rexlin600/Desktop/qrcode/" + (i + 1) + ".png");
+        }
     }
 
 
