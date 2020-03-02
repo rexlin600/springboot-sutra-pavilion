@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
  * 系统日志切面
  * <p>
  * 使用 @Aspect 定义一个切面
+ * <p>
+ * 注意：如需使用这种方式，请在 {@link SysLogAspect} 前增加 @Component 注解
  *
  * @author hekunlin
  * @date: 2020-02-16
@@ -22,7 +24,6 @@ import javax.servlet.http.HttpServletRequest;
 @SuppressWarnings("ALL")
 @Slf4j
 @Aspect
-//@Component
 public class SysLogAspect {
 
     @Autowired
@@ -77,7 +78,6 @@ public class SysLogAspect {
      */
     @AfterReturning(returning = "ret", pointcut = "appLogPointCut()")
     public void doAfterReturning(Object ret) {
-        // String result = JSONObject.toJSONString(ret);
         String uuid = REQUEST_UUID.get();
         long costTime = System.currentTimeMillis() - REQUEST_START_TIME.get();
         log.info("==>       经典方式-环绕通知：uuid:{},耗时:{}ms,返回结果:{}", uuid, costTime, ret.toString());
