@@ -291,16 +291,22 @@ public class QrCodeUtil {
 
     /**
      * 生成带文字的二维码
+     * <p>
+     * 注意：在生成中间的文字时需要注意其覆盖区域不能太大，需要调整文字长度、字体大小防止扫码无法识别！
      *
      * @param bufferedImage 二维码缓冲图像
      * @param font          字体
+     * @param color         字体颜色
      * @param topText       顶部文字
      * @param centerText    中部文字
      * @param bottomText    底部文字
      * @return
      */
-    public static BufferedImage textQrCode(BufferedImage bufferedImage, Font font,
+    public static BufferedImage textQrCode(BufferedImage bufferedImage, Font font, Color color,
                                            String topText, String centerText, String bottomText) {
+        // check text
+        font = checkText(topText, centerText, bottomText, font);
+
         // 获取二维码的宽高
         int imageWidth = bufferedImage.getWidth();
         int imageHeight = bufferedImage.getHeight();
@@ -309,7 +315,7 @@ public class QrCodeUtil {
         try {
             graphics = bufferedImage.createGraphics();
             graphics.setFont(font);
-            graphics.setColor(Color.RED);
+            graphics.setColor(color);
 
             // 获取顶部字体的宽、高
             drawText(bufferedImage, font, topText, imageWidth, imageHeight, graphics, TextPosEnum.TOP);
@@ -349,7 +355,7 @@ public class QrCodeUtil {
                 BufferedImage bufferedImage = simpleQrCode(m.getContent());
 
                 // fill text
-                bufferedImage = textQrCode(bufferedImage, font, m.getTopText(), m.getCenterText(), m.getBottomText());
+                bufferedImage = textQrCode(bufferedImage, font, Color.BLACK, m.getTopText(), m.getCenterText(), m.getBottomText());
 
                 // add List
                 list.add(bufferedImage);
@@ -404,7 +410,7 @@ public class QrCodeUtil {
                 }
 
                 // fill text
-                bufferedImage = textQrCode(bufferedImage, font, m.getTopText(), m.getCenterText(), m.getBottomText());
+                bufferedImage = textQrCode(bufferedImage, font, Color.BLACK, m.getTopText(), m.getCenterText(), m.getBottomText());
 
                 // add List
                 list.add(bufferedImage);
@@ -459,7 +465,7 @@ public class QrCodeUtil {
                 }
 
                 // fill text
-                bufferedImage = textQrCode(bufferedImage, font, m.getTopText(), m.getCenterText(), m.getBottomText());
+                bufferedImage = textQrCode(bufferedImage, font, Color.BLACK, m.getTopText(), m.getCenterText(), m.getBottomText());
 
                 // add List
                 list.add(bufferedImage);
@@ -519,7 +525,7 @@ public class QrCodeUtil {
                 }
 
                 // fill text
-                bufferedImage = textQrCode(bufferedImage, font, m.getTopText(), m.getCenterText(), m.getBottomText());
+                bufferedImage = textQrCode(bufferedImage, font, Color.BLACK, m.getTopText(), m.getCenterText(), m.getBottomText());
 
                 // add List
                 list.add(bufferedImage);
@@ -775,14 +781,14 @@ public class QrCodeUtil {
         Integer posEnumCode = posEnum.getCode();
         if (TextPosEnum.TOP.getCode().equals(posEnumCode)) {
             startX = (imageWidth - fontWidth) / 2 < 0 ? 0 : (imageWidth - fontWidth) / 2;
-            startY = fontHeight;
+            startY = fontHeight * 3 / 2;
             graphics.drawString(text, startX, startY);
         }
         if (TextPosEnum.CENTER.getCode().equals(posEnumCode)) {
-            startX = (imageWidth - fontWidth) / 2 + 10;
-            startY = imageHeight / 2 + fontHeight / 2 - (fontHeight / 4) + 10;
-            int endX = startX + fontWidth + 10;
-            int endY = startY + 10;
+            startX = (imageWidth - fontWidth) / 2 + 5;
+            startY = imageHeight / 2 + fontHeight / 2 - (fontHeight / 4) + 5;
+            int endX = startX + fontWidth + 5;
+            int endY = startY + 5;
             // 填充文字区域背景
             for (int x = 0; x < imageWidth; x++) {
                 for (int y = 0; y < imageHeight; y++) {
@@ -796,7 +802,7 @@ public class QrCodeUtil {
         }
         if (TextPosEnum.BOTTOM.getCode().equals(posEnumCode)) {
             startX = (imageWidth - fontWidth) / 2 < 0 ? 0 : (imageWidth - fontWidth) / 2;
-            startY = imageHeight - fontHeight / 2;
+            startY = imageHeight - fontHeight;
             graphics.drawString(text, startX, startY);
         }
     }
@@ -816,6 +822,35 @@ public class QrCodeUtil {
             baos.write(buffer, 0, len);
         }
         return baos;
+    }
+
+    /**
+     * 检查文字二维码
+     *
+     * @param topText
+     * @param centerText
+     * @param bottomText
+     * @param font
+     */
+    private static Font checkText(String topText, String centerText, String bottomText, Font font) {
+        int fontSize = font.getSize();
+
+        // 不做处理
+        if (topText.length() < 8 && centerText.length() < 8 && bottomText.length() < 8 && fontSize < 24) {
+            return font;
+        }
+
+        // 如果字体过大
+        if (fontSize > 20) {
+            font = new Font(font.getName(), font.getStyle(), 20);
+        }
+
+        // 如果文本过长
+        if (topText.length() > 15 || centerText.length() > 15 || bottomText.length() > 15) {
+            font = new Font(font.getName(), font.getStyle(), 16);
+        }
+
+        return font;
     }
 
     // -----------------------------------------------------------------------------------------------
