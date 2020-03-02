@@ -52,6 +52,7 @@
         <module>spring-boot-aop</module>
         <module>spring-boot-git4clone</module>
         <module>spring-boot-qrcode</module>
+        <module>spring-boot-jaxb</module>
     </modules>
 
     <dependencies>
