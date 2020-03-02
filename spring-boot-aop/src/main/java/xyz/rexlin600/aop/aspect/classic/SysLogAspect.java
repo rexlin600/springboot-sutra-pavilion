@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServletRequest;
  * <p>
  * 使用 @Aspect 定义一个切面
  *
- * @author: rexlin600
+ * @author hekunlin
  * @date: 2020-02-16
  */
-@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+@SuppressWarnings("ALL")
 @Slf4j
 @Aspect
 //@Component
@@ -77,10 +77,12 @@ public class SysLogAspect {
      */
     @AfterReturning(returning = "ret", pointcut = "appLogPointCut()")
     public void doAfterReturning(Object ret) {
-        //String result = JSONObject.toJSONString(ret);
+        // String result = JSONObject.toJSONString(ret);
         String uuid = REQUEST_UUID.get();
         long costTime = System.currentTimeMillis() - REQUEST_START_TIME.get();
         log.info("==>       经典方式-环绕通知：uuid:{},耗时:{}ms,返回结果:{}", uuid, costTime, ret.toString());
+        REQUEST_UUID.remove();
+        REQUEST_START_TIME.remove();
     }
 
 

@@ -14,7 +14,6 @@
     <properties>
         <mybatis.plus.version>3.3.0</mybatis.plus.version>
         <velocity.version>2.1</velocity.version>
-        <hutool.version>5.0.6</hutool.version>
     </properties>
 
     <dependencies>
@@ -54,7 +53,6 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>${hutool.version}</version>
         </dependency>
     </dependencies>
 

@@ -22,7 +22,7 @@ import java.util.Map;
  * @author: rexlin600
  * @date: 2020-02-28
  */
-public class Base64QRCodeUtil {
+public class Base64QrCodeUtil {
 
     /**
      * 默认配置
@@ -116,7 +116,7 @@ public class Base64QRCodeUtil {
      * @return
      * @throws WriterException
      */
-    public static BufferedImage createQRCode(String content,
+    public static BufferedImage createQrCode(String content,
                                              BufferedImage bufferedImage,
                                              int topFontWidth, int topFontHeight,
                                              int centerFontWidth, int centerFontHeight,
@@ -131,10 +131,14 @@ public class Base64QRCodeUtil {
         height = startBottomY + bottomFontHeight;
 
         //计算中文文字空白区域
-        int centerFontStartX = (width - centerFontWidth) / 2 + 5;   // x轴起始坐标
-        int centerFontEndX = centerFontStartX + centerFontWidth + 5;    // x轴终点坐标
-        int centerFontStartY = (height - centerFontHeight) / 2 + 5; // y轴起始坐标
-        int centerFontEndY = centerFontStartY + centerFontHeight + 5;   // y轴终点坐标
+        // x轴起始坐标
+        int centerFontStartX = (width - centerFontWidth) / 2 + 5;
+        // x轴终点坐标
+        int centerFontEndX = centerFontStartX + centerFontWidth + 5;
+        // y轴起始坐标
+        int centerFontStartY = (height - centerFontHeight) / 2 + 5;
+        // y轴终点坐标
+        int centerFontEndY = centerFontStartY + centerFontHeight + 5;
 
         /**
          * com.google.zxing.EncodeHintType：编码提示类型,枚举类型
@@ -144,7 +148,7 @@ public class Base64QRCodeUtil {
          * 不设置时，默认为 L 等级，等级不一样，生成的图案不同，但扫描的结果是一样的
          * EncodeHintType.MARGIN：设置二维码边距，单位像素，值越小，二维码距离四周越近
          * */
-        Map<EncodeHintType, Object> hints = new HashMap();
+        Map<EncodeHintType, Object> hints = new HashMap(3);
         hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
         hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M);
         hints.put(EncodeHintType.MARGIN, 1);
@@ -231,19 +235,22 @@ public class Base64QRCodeUtil {
         int topFontHeight = metrics1.getHeight();
 
         //将image生成二维码图片对象
-        bufferedImage = createQRCode(content, bufferedImage, topFontWidth, topFontHeight, centerFontWidth, centerFontHeight, bottomFontWidth, bottomFontHeight);
+        bufferedImage = createQrCode(content, bufferedImage, topFontWidth, topFontHeight, centerFontWidth, centerFontHeight, bottomFontWidth, bottomFontHeight);
 
         //获取二维码图片的宽和高
         int imageW = bufferedImage.getWidth();
         int imageH = bufferedImage.getHeight();
         //计算顶部文字填充位置
-        int topStartX = (imageW - topFontWidth) / 2; //居中显示
+        //居中显示
+        int topStartX = (imageW - topFontWidth) / 2;
         int topStartY = topFontHeight;
         //计算中心文字填充位置
-        int centerStartX = (imageW - centerFontWidth) / 2 + 10;  //居中显示
+        //居中显示
+        int centerStartX = (imageW - centerFontWidth) / 2 + 10;
         int centerStartY = imageH / 2 + centerFontHeight / 2 - (centerFontHeight / 4) + 10;
         //计算底部文字填充位置
-        int bottomStartX = (imageW - bottomFontWidth) / 2; //居中显示
+        //居中显示
+        int bottomStartX = (imageW - bottomFontWidth) / 2;
         int bottomStartY = (imageH - bottomFontHeight) + 2;
 
         //文字图片对象
@@ -277,7 +284,7 @@ public class Base64QRCodeUtil {
     public static void main(String[] args) throws Exception {
         Long startTime = System.currentTimeMillis();
         String content = "good";
-        createBase64ImgStr(content, "XXX亲启", "从前车马慢", "");
+        createBase64ImgStr(content, "XXXXX", "XXXXX", "XXXXX");
         Long endTime = System.currentTimeMillis();
         System.out.println();
         System.out.println((endTime - startTime) + " |" + (endTime - startTime) / 1000);

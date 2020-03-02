@@ -13,7 +13,7 @@ public interface GitlabService {
 
     /**
      * 查询所有项目
-     *
+     * @param req
      * @return
      */
     Response list(GitlabCloneReq req);

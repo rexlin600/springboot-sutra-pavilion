@@ -1,6 +1,7 @@
 package xyz.rexlin600.qrcode.util;
 
 import ch.qos.logback.core.util.FileUtil;
+import cn.hutool.core.thread.ThreadFactoryBuilder;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.client.j2se.MatrixToImageConfig;
@@ -57,7 +58,15 @@ public class QrCodeUtil {
     private static final int BACKGROUND_COLOR = 0xFFFFFF;
 
     // 线程池
-    private static final ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(50, 150, 10, TimeUnit.SECONDS, new SynchronousQueue<>());
+    private final static ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().setNamePrefix("qrcode-pool-%d").build();
+    private final static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
+            50,
+            150,
+            10,
+            TimeUnit.SECONDS,
+            new LinkedBlockingDeque<>(),
+            namedThreadFactory,
+            new ThreadPoolExecutor.AbortPolicy());
 
     // -----------------------------------------------------------------------------------------------
     // SIMPLE QR CODE

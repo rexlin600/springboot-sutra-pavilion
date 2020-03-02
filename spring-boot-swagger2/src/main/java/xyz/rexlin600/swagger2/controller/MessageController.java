@@ -14,7 +14,7 @@ import java.util.List;
  * @author rexlin600
  * @menu Swagger2-消息
  */
-@Api(value = "消息", description = "消息操作 API", position = 100, protocols = "http")
+@Api(value = "消息", protocols = "http")
 @RestController
 @RequestMapping("/message")
 public class MessageController {

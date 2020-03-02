@@ -8,6 +8,11 @@ package xyz.rexlin600.redisson.service;
  */
 public interface OrderService {
 
+    /**
+     * 预定
+     *
+     * @return
+     */
     boolean book();
 
 }

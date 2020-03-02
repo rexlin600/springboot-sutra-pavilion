@@ -1,5 +1,6 @@
 package xyz.rexlin600.gitlab.biz.impl;
 
+import cn.hutool.core.thread.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.gitlab.api.GitlabAPI;
@@ -33,12 +34,15 @@ public class GitlabServiceImpl implements GitlabService {
     /**
      * 线程池
      */
-    private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
+    private ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().setNamePrefix("gitlab4clone-pool-%d").build();
+    private ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
             150,
             200,
             15,
             TimeUnit.SECONDS,
-            new LinkedBlockingDeque<>());
+            new LinkedBlockingDeque<>(),
+            namedThreadFactory,
+            new ThreadPoolExecutor.AbortPolicy());
 
     /**
      * GitLab 配置
@@ -54,8 +58,8 @@ public class GitlabServiceImpl implements GitlabService {
      */
     @Override
     public Response list(GitlabCloneReq req) {
-        GitlabAPI gitlabAPI = GitlabAPI.connect(gitLabConfigBean.getHost(), gitLabConfigBean.getToken());
-        List<GitlabProject> allProjects = gitlabAPI.getAllProjects();
+        GitlabAPI gitlabApi = GitlabAPI.connect(gitLabConfigBean.getHost(), gitLabConfigBean.getToken());
+        List<GitlabProject> allProjects = gitlabApi.getAllProjects();
         List<GitlabProject> matchList = getMatchGitlabProjects(req, allProjects);
         return ResponseGenerator.success(matchList);
     }
@@ -71,8 +75,8 @@ public class GitlabServiceImpl implements GitlabService {
         long start = Instant.now().toEpochMilli();
 
         // 建立 GitLab 连接、获取所有项目
-        GitlabAPI gitlabAPI = GitlabAPI.connect(gitLabConfigBean.getHost(), gitLabConfigBean.getToken());
-        List<GitlabProject> allProjects = gitlabAPI.getAllProjects();
+        GitlabAPI gitlabApi = GitlabAPI.connect(gitLabConfigBean.getHost(), gitLabConfigBean.getToken());
+        List<GitlabProject> allProjects = gitlabApi.getAllProjects();
         log.info("==>  建立 GitLab【{}】连接，并获取所有的项目成功，共计【{}】个项目", gitLabConfigBean.getHost(), allProjects.size());
 
         // 筛选匹配名称的项目

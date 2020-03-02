@@ -15,6 +15,8 @@ import java.util.Objects;
 
 /**
  * 系统日志工具类
+ *
+ * @author hekunlin
  */
 @UtilityClass
 public class SysLogUtils {
@@ -25,14 +27,14 @@ public class SysLogUtils {
         HttpServletRequest request = ((ServletRequestAttributes) Objects
                 .requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
         SysLog sysLog = new SysLog();
-        //sysLog.setCreateBy("");
+        // sysLog.setCreateBy("");
         sysLog.setType(STATUS_NORMAL);
         sysLog.setRemoteAddr(ServletUtil.getClientIP(request));
         sysLog.setRequestUri(URLUtil.getPath(request.getRequestURI()));
         sysLog.setMethod(request.getMethod());
         sysLog.setUserAgent(request.getHeader("user-agent"));
         sysLog.setParams(HttpUtil.toParams(request.getParameterMap()));
-        //sysLog.setServiceId("");
+        // sysLog.setServiceId("");
         return sysLog;
     }
 
