@@ -1,5 +1,6 @@
 package xyz.rexlin600.qrcode.util;
 
+import ch.qos.logback.core.util.FileUtil;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.client.j2se.MatrixToImageConfig;
@@ -9,21 +10,21 @@ import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import sun.font.FontDesignMetrics;
 import xyz.rexlin600.qrcode.entity.QrCodeContent;
 import xyz.rexlin600.qrcode.enums.TextPosEnum;
 
 import javax.imageio.ImageIO;
+import javax.imageio.stream.FileImageInputStream;
 import javax.imageio.stream.ImageInputStream;
 import javax.imageio.stream.ImageOutputStream;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.time.Instant;
@@ -47,13 +48,13 @@ public class QrCodeUtil {
     /**
      * 默认参数：二维码长度、二维码宽度、编码格式、纠错等级、固定二维码边框（重要）、前景色-黑、背景色-白
      */
-    public final static Integer QR_CODE_HEIGHT = 400;
-    public final static Integer QR_CODE_WIDTH = 400;
-    public final static String FORMAT = "UTF-8";
-    public final static ErrorCorrectionLevel ERR_LEVEL = ErrorCorrectionLevel.M;
-    public final static Integer MARGIN = 3;
-    public static final int FRONT_COLOR = 0x000000;
-    public static final int BACKGROUND_COLOR = 0xFFFFFF;
+    private final static Integer QR_CODE_HEIGHT = 400;
+    private final static Integer QR_CODE_WIDTH = 400;
+    private final static String FORMAT = "UTF-8";
+    private final static ErrorCorrectionLevel ERR_LEVEL = ErrorCorrectionLevel.M;
+    private final static Integer MARGIN = 3;
+    private static final int FRONT_COLOR = 0x000000;
+    private static final int BACKGROUND_COLOR = 0xFFFFFF;
 
     // 线程池
     private static final ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(50, 150, 10, TimeUnit.SECONDS, new SynchronousQueue<>());
@@ -156,8 +157,38 @@ public class QrCodeUtil {
      * @return
      * @throws IOException
      */
+    public static BufferedImage logoQrCode(BufferedImage qrCodeMatrixImage, ByteArrayOutputStream byteArrayOutputStream) throws IOException {
+        InputStream inputStream = null;
+        BufferedImage logoMatrixImage = null;
+        try {
+            inputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
+            logoMatrixImage = ImageIO.read(inputStream);
+        } finally {
+            if (inputStream != null) {
+                inputStream.close();
+            }
+        }
+        BufferedImage bufferedImage = logoQrCode(qrCodeMatrixImage, logoMatrixImage);
+        return bufferedImage;
+    }
+
+    /**
+     * 填充 logo 到二维码图片中：只能读取一次
+     *
+     * @param qrCodeMatrixImage 原二维码图片矩阵
+     * @param inputStream       logo输入流
+     * @return
+     * @throws IOException
+     */
     public static BufferedImage logoQrCode(BufferedImage qrCodeMatrixImage, InputStream inputStream) throws IOException {
-        BufferedImage logoMatrixImage = ImageIO.read(inputStream);
+        BufferedImage logoMatrixImage = null;
+        try {
+            logoMatrixImage = ImageIO.read(inputStream);
+        } finally {
+            if (inputStream != null) {
+                inputStream.close();
+            }
+        }
         BufferedImage bufferedImage = logoQrCode(qrCodeMatrixImage, logoMatrixImage);
         return bufferedImage;
     }
@@ -171,7 +202,14 @@ public class QrCodeUtil {
      * @throws IOException
      */
     public static BufferedImage logoQrCode(BufferedImage qrCodeMatrixImage, ImageInputStream imageInputStream) throws IOException {
-        BufferedImage logoMatrixImage = ImageIO.read(imageInputStream);
+        BufferedImage logoMatrixImage = null;
+        try {
+            logoMatrixImage = ImageIO.read(imageInputStream);
+        } finally {
+            if (imageInputStream != null) {
+                imageInputStream.close();
+            }
+        }
         BufferedImage bufferedImage = logoQrCode(qrCodeMatrixImage, logoMatrixImage);
         return bufferedImage;
     }
@@ -198,7 +236,7 @@ public class QrCodeUtil {
      * @return
      * @throws IOException
      */
-    public static BufferedImage logoQrCode(BufferedImage qrCodeMatrixImage, BufferedImage logoMatrixImage) throws IOException {
+    public static BufferedImage logoQrCode(BufferedImage qrCodeMatrixImage, BufferedImage logoMatrixImage) {
         int height = qrCodeMatrixImage.getHeight();
         int width = qrCodeMatrixImage.getWidth();
 
@@ -269,7 +307,7 @@ public class QrCodeUtil {
             drawText(bufferedImage, font, centerText, imageWidth, imageHeight, graphics, TextPosEnum.CENTER);
             drawText(bufferedImage, font, bottomText, imageWidth, imageHeight, graphics, TextPosEnum.BOTTOM);
         } finally {
-            if (!Objects.isNull(graphics)) {
+            if (graphics != null) {
                 graphics.dispose();
             }
         }
@@ -278,17 +316,17 @@ public class QrCodeUtil {
     }
 
     // -----------------------------------------------------------------------------------------------
-    // TODO 批量生成二维码
+    // 批量生成二维码
     // -----------------------------------------------------------------------------------------------
 
     /**
-     * 批量生成二维码
+     * 批量生成二维码：纯文字填充
      *
-     * @param arrays 要批量生成的二维码列表
+     * @param arrays 二维码列表对象
      * @return
+     * @throws Exception
      */
-    @SneakyThrows
-    public static List<BufferedImage> batchQrCode(List<QrCodeContent> arrays) {
+    public static List<BufferedImage> batchTextQrCode(List<QrCodeContent> arrays) throws Exception {
         int size = arrays.size();
         List<BufferedImage> list = new ArrayList<>(size);
         Font font = new Font("宋体", Font.ITALIC, 24);
@@ -300,6 +338,176 @@ public class QrCodeUtil {
             threadPoolExecutor.execute(() -> {
                 // gen qr code
                 BufferedImage bufferedImage = simpleQrCode(m.getContent());
+
+                // fill text
+                bufferedImage = textQrCode(bufferedImage, font, m.getTopText(), m.getCenterText(), m.getBottomText());
+
+                // add List
+                list.add(bufferedImage);
+
+                countDownLatch.countDown();
+            });
+        });
+
+        countDownLatch.await();
+        long end = Instant.now().toEpochMilli();
+
+        log.info("生成二维码共计耗时 {} ms", end - start);
+
+        return list;
+    }
+
+
+    /**
+     * 批量生成二维码
+     *
+     * @param arrays                二维码列表对象
+     * @param byteArrayOutputStream 字节数组流、这里不能使用 InputStream，因为只能被读取一次
+     * @return
+     * @throws Exception
+     */
+    public static List<BufferedImage> batchLogoQrCode(List<QrCodeContent> arrays, ByteArrayOutputStream byteArrayOutputStream) throws Exception {
+        // check byteArrayOutputStream
+        if (byteArrayOutputStream == null) {
+            throw new FileNotFoundException("ByteArrayOutputStream can not be null");
+        }
+
+        int size = arrays.size();
+        List<BufferedImage> list = new ArrayList<>(size);
+        Font font = new Font("宋体", Font.ITALIC, 24);
+
+        CountDownLatch countDownLatch = new CountDownLatch(size);
+
+        long start = Instant.now().toEpochMilli();
+        arrays.parallelStream().forEach(m -> {
+            threadPoolExecutor.execute(() -> {
+                // gen qr code
+                BufferedImage bufferedImage = simpleQrCode(m.getContent());
+
+                // file picture
+                try {
+                    bufferedImage = logoQrCode(bufferedImage, byteArrayOutputStream);
+                    // 默认处理：如果存在 logo 填充则不需要再增加中心文字
+                    m.setCenterText("");
+                } catch (IOException e) {
+                    log.error("填充内容为 =【{}】 的 logo 发生错误=【{}】，提前终止！", m.getContent(), e.getMessage());
+                    return;
+                }
+
+                // fill text
+                bufferedImage = textQrCode(bufferedImage, font, m.getTopText(), m.getCenterText(), m.getBottomText());
+
+                // add List
+                list.add(bufferedImage);
+
+                countDownLatch.countDown();
+            });
+        });
+
+        countDownLatch.await();
+        long end = Instant.now().toEpochMilli();
+
+        log.info("生成二维码共计耗时 {} ms", end - start);
+
+        return list;
+    }
+
+
+    /**
+     * 批量生成二维码
+     *
+     * @param arrays   二维码列表对象
+     * @param logoFile 二维码文件
+     * @return
+     * @throws Exception
+     */
+    public static List<BufferedImage> batchLogoQrCode(List<QrCodeContent> arrays, File logoFile) throws Exception {
+        // check file
+        if (ObjectUtils.isEmpty(logoFile) || !logoFile.exists()) {
+            throw new FileNotFoundException("Not fount this File");
+        }
+
+        int size = arrays.size();
+        List<BufferedImage> list = new ArrayList<>(size);
+        Font font = new Font("宋体", Font.ITALIC, 24);
+
+        CountDownLatch countDownLatch = new CountDownLatch(size);
+
+        long start = Instant.now().toEpochMilli();
+        arrays.parallelStream().forEach(m -> {
+            threadPoolExecutor.execute(() -> {
+                // gen qr code
+                BufferedImage bufferedImage = simpleQrCode(m.getContent());
+
+                // file picture
+                try {
+                    bufferedImage = logoQrCode(bufferedImage, logoFile);
+                    // 默认处理：如果存在 logo 填充则不需要再增加中心文字
+                    m.setCenterText("");
+                } catch (IOException e) {
+                    log.error("填充内容为 =【{}】 的 logo 发生错误=【{}】，提前终止！", m.getContent(), e.getMessage());
+                    return;
+                }
+
+                // fill text
+                bufferedImage = textQrCode(bufferedImage, font, m.getTopText(), m.getCenterText(), m.getBottomText());
+
+                // add List
+                list.add(bufferedImage);
+
+                countDownLatch.countDown();
+            });
+        });
+
+        countDownLatch.await();
+        long end = Instant.now().toEpochMilli();
+
+        log.info("生成二维码共计耗时 {} ms", end - start);
+
+        return list;
+    }
+
+    /**
+     * 批量生成二维码
+     *
+     * @param arrays  二维码列表对象
+     * @param logoURL 二维码URL
+     * @return
+     * @throws Exception
+     */
+    public static List<BufferedImage> batchLogoQrCode(List<QrCodeContent> arrays, URL url) throws Exception {
+        // check URL
+        try {
+            url.openStream();
+        } catch (MalformedURLException e) {
+            throw new MalformedURLException("URL 格式错误");
+        } catch (IOException e) {
+            throw new IOException("无法读取 URL 链接");
+        }
+
+        int size = arrays.size();
+        List<BufferedImage> list = new ArrayList<>(size);
+        Font font = new Font("宋体", Font.ITALIC, 24);
+
+        CountDownLatch countDownLatch = new CountDownLatch(size);
+
+        long start = Instant.now().toEpochMilli();
+
+        final URL finalUrl = url;
+        arrays.parallelStream().forEach(m -> {
+            threadPoolExecutor.execute(() -> {
+                // gen qr code
+                BufferedImage bufferedImage = simpleQrCode(m.getContent());
+
+                // file text and picture
+                try {
+                    bufferedImage = logoQrCode(bufferedImage, finalUrl);
+                    // 默认处理：如果存在 logo 填充则不需要再增加中心文字
+                    m.setCenterText("");
+                } catch (IOException e) {
+                    log.error("填充内容为 =【{}】 的 logo 发生错误=【{}】，提前终止！", m.getContent(), e.getMessage());
+                    return;
+                }
 
                 // fill text
                 bufferedImage = textQrCode(bufferedImage, font, m.getTopText(), m.getCenterText(), m.getBottomText());
@@ -332,7 +540,14 @@ public class QrCodeUtil {
      * @throws IOException
      */
     public static void write2File(BufferedImage img, String fileType, String filepath) throws IOException {
-        ImageIO.write(img, fileType, new File(filepath));
+        try {
+            ImageIO.write(img, fileType, new File(filepath));
+        } finally {
+            // 释放资源
+            if (img != null) {
+                img.flush();
+            }
+        }
     }
 
     /**
@@ -344,7 +559,14 @@ public class QrCodeUtil {
      * @throws IOException
      */
     public static void write2Stream(BufferedImage img, String fileType, OutputStream outputStream) throws IOException {
-        ImageIO.write(img, fileType, outputStream);
+        try {
+            ImageIO.write(img, fileType, outputStream);
+        } finally {
+            // 释放资源
+            if (img != null) {
+                img.flush();
+            }
+        }
     }
 
     /**
@@ -356,7 +578,14 @@ public class QrCodeUtil {
      * @throws IOException
      */
     public static void write2Stream(BufferedImage img, String fileType, ImageOutputStream imageOutputStream) throws IOException {
-        ImageIO.write(img, fileType, imageOutputStream);
+        try {
+            ImageIO.write(img, fileType, imageOutputStream);
+        } finally {
+            // 释放资源
+            if (img != null) {
+                img.flush();
+            }
+        }
     }
 
     // -----------------------------------------------------------------------------------------------
@@ -400,7 +629,14 @@ public class QrCodeUtil {
      * @throws NotFoundException
      */
     public static Result identifyQrCode(InputStream inputStream) throws IOException, NotFoundException {
-        BufferedImage bufferedImage = ImageIO.read(inputStream);
+        BufferedImage bufferedImage = null;
+        try {
+            bufferedImage = ImageIO.read(inputStream);
+        } finally {
+            if (inputStream != null) {
+                inputStream.close();
+            }
+        }
         Result result = identifyQrCode(bufferedImage);
         return result;
     }
@@ -414,7 +650,14 @@ public class QrCodeUtil {
      * @throws NotFoundException
      */
     public static Result identifyQrCode(ImageInputStream imageInputStream) throws IOException, NotFoundException {
-        BufferedImage bufferedImage = ImageIO.read(imageInputStream);
+        BufferedImage bufferedImage = null;
+        try {
+            bufferedImage = ImageIO.read(imageInputStream);
+        } finally {
+            if (imageInputStream != null) {
+                imageInputStream.close();
+            }
+        }
         Result result = identifyQrCode(bufferedImage);
         return result;
     }
@@ -457,7 +700,7 @@ public class QrCodeUtil {
      *
      * @param obj
      */
-    public static void checkParam(Object obj) throws RuntimeException {
+    private static void checkParam(Object obj) throws RuntimeException {
         if ((obj instanceof String) && (StringUtils.isEmpty(obj))) {
             throw new RuntimeException("param can not be null or empty");
         }
@@ -473,7 +716,7 @@ public class QrCodeUtil {
      * @param width
      * @throws RuntimeException
      */
-    public static void checkHeightAndWidth(int height, int width) throws RuntimeException {
+    private static void checkHeightAndWidth(int height, int width) throws RuntimeException {
         if (height < 0 || width < 0) {
             throw new RuntimeException("param must > 0");
         }
@@ -490,7 +733,7 @@ public class QrCodeUtil {
      * @param graphics
      * @param top
      */
-    public static void drawText(BufferedImage bufferedImage, Font font, String text, int imageWidth, int imageHeight, Graphics graphics, TextPosEnum posEnum) {
+    private static void drawText(BufferedImage bufferedImage, Font font, String text, int imageWidth, int imageHeight, Graphics graphics, TextPosEnum posEnum) {
         if (!StringUtils.isEmpty(text)) {
             text = new String(text.trim().getBytes(), Charset.forName("UTF-8"));
             FontMetrics metrics = FontDesignMetrics.getMetrics(font);
@@ -514,17 +757,16 @@ public class QrCodeUtil {
      * @param graphics      绘图对象
      * @param textPosEnum   位置
      */
-    public static void fillText(BufferedImage bufferedImage, String text,
-                                int fontWidth, int fontHeight,
-                                int imageWidth, int imageHeight,
-                                Graphics graphics, TextPosEnum posEnum) {
+    private static void fillText(BufferedImage bufferedImage, String text,
+                                 int fontWidth, int fontHeight,
+                                 int imageWidth, int imageHeight,
+                                 Graphics graphics, TextPosEnum posEnum) {
         int startX;
         int startY;
         Integer posEnumCode = posEnum.getCode();
         if (TextPosEnum.TOP.getCode().equals(posEnumCode)) {
             startX = (imageWidth - fontWidth) / 2 < 0 ? 0 : (imageWidth - fontWidth) / 2;
             startY = fontHeight;
-            log.info("绘制顶部文字...");
             graphics.drawString(text, startX, startY);
         }
         if (TextPosEnum.CENTER.getCode().equals(posEnumCode)) {
@@ -541,15 +783,30 @@ public class QrCodeUtil {
                     }
                 }
             }
-            log.info("绘制中心文字...");
             graphics.drawString(text, startX, startY);
         }
         if (TextPosEnum.BOTTOM.getCode().equals(posEnumCode)) {
             startX = (imageWidth - fontWidth) / 2 < 0 ? 0 : (imageWidth - fontWidth) / 2;
             startY = imageHeight - fontHeight / 2;
-            log.info("绘制底部文字...");
             graphics.drawString(text, startX, startY);
         }
+    }
+
+    /**
+     * InputStream 转 ByteArrayOutputStream
+     *
+     * @param inputStream
+     * @return
+     * @throws IOException
+     */
+    private static ByteArrayOutputStream inputStream2ByteStream(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024];
+        int len;
+        while ((len = inputStream.read(buffer)) > -1) {
+            baos.write(buffer, 0, len);
+        }
+        return baos;
     }
 
     // -----------------------------------------------------------------------------------------------
@@ -570,48 +827,35 @@ public class QrCodeUtil {
         list.add(new QrCodeContent("FUCK-1", "fuck-1", "", ""));
         list.add(new QrCodeContent("FUCK-2", "", "fuck-2", ""));
         list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
         list.add(new QrCodeContent("FUCK-4", "fuck-4", "fuck-4", "fuck-4"));
 
         // batch gen qr code
-        List<BufferedImage> imageList = batchQrCode(list);
+        //File file = new File("C:\\Users\\hekunlin\\Pictures\\golang.jpg");
+        //List<BufferedImage> imageList = batchLogoQrCode(list, file);
+
+        //URL url = new URL("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1583127516250&di=3cf42d0daf3c7df9154f277119e6cc8c&imgtype=0&src=http%3A%2F%2Fa0.att.hudong.com%2F78%2F52%2F01200000123847134434529793168.jpg");
+        //List<BufferedImage> imageList = batchLogoQrCode(list, url);
+
+        List<BufferedImage> imageList = null;
+        ByteArrayOutputStream byteArrayOutputStream = null;
+        InputStream inputStream = null;
+        try {
+            File file = new File("C:\\Users\\hekunlin\\Pictures\\golang.jpg");
+            inputStream = new FileInputStream(file);
+            byteArrayOutputStream = inputStream2ByteStream(inputStream);
+            imageList = batchLogoQrCode(list, byteArrayOutputStream);
+            //imageList = batchTextQrCode(list);
+        } finally {
+            // 释放资源
+            log.info("close stream");
+            byteArrayOutputStream.flush();
+            inputStream.close();
+        }
 
         // batch save
         for (int i = 0; i < imageList.size(); i++) {
-            write2File(imageList.get(i), "png", "/Users/rexlin600/Desktop/qrcode/" + (i + 1) + ".png");
+            log.info("generate no.{} qrcode", (i + 1));
+            write2File(imageList.get(i), "png", "C:\\Users\\hekunlin\\Pictures\\QRCode\\" + (i + 1) + ".png");
         }
     }
 
