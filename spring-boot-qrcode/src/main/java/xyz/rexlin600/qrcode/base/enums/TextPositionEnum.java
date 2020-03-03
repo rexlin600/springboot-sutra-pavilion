@@ -1,4 +1,4 @@
-package xyz.rexlin600.qrcode.enums;
+package xyz.rexlin600.qrcode.base.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public enum TextPosEnum {
+public enum TextPositionEnum {
 
     /**
      * 顶部

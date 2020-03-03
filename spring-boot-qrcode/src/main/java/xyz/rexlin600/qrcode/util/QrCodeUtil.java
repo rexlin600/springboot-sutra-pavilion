@@ -14,8 +14,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import sun.font.FontDesignMetrics;
-import xyz.rexlin600.qrcode.entity.QrCodeContent;
-import xyz.rexlin600.qrcode.enums.TextPosEnum;
+import xyz.rexlin600.qrcode.base.constants.QrCodeConstant;
+import xyz.rexlin600.qrcode.base.enums.TextPositionEnum;
+import xyz.rexlin600.qrcode.entity.QrCode;
 
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageInputStream;
@@ -47,25 +48,15 @@ import java.util.concurrent.*;
 public class QrCodeUtil {
 
     /**
-     * 默认参数：二维码长度、二维码宽度、编码格式、纠错等级、固定二维码边框（重要）、前景色-黑、背景色-白
+     * 线程池
      */
-    private final static Integer QR_CODE_HEIGHT = 400;
-    private final static Integer QR_CODE_WIDTH = 400;
-    private final static String FORMAT = "UTF-8";
-    private final static ErrorCorrectionLevel ERR_LEVEL = ErrorCorrectionLevel.M;
-    private final static Integer MARGIN = 3;
-    private static final int FRONT_COLOR = 0x000000;
-    private static final int BACKGROUND_COLOR = 0xFFFFFF;
-
-    // 线程池
-    private final static ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().setNamePrefix("qrcode-pool-%d").build();
     private final static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
             50,
             150,
             10,
             TimeUnit.SECONDS,
             new LinkedBlockingDeque<>(),
-            namedThreadFactory,
+            new ThreadFactoryBuilder().setNamePrefix("qrcode-pool-%d").build(),
             new ThreadPoolExecutor.AbortPolicy());
 
     // -----------------------------------------------------------------------------------------------
@@ -79,7 +70,7 @@ public class QrCodeUtil {
      * @return {@link BufferedImage}
      */
     public static BufferedImage simpleQrCode(String content) {
-        return simpleQrCode(content, QR_CODE_HEIGHT, QR_CODE_WIDTH, FORMAT, ERR_LEVEL);
+        return simpleQrCode(content, QrCodeConstant.QR_CODE_HEIGHT, QrCodeConstant.QR_CODE_WIDTH, QrCodeConstant.ERR_LEVEL);
     }
 
     /**
@@ -91,7 +82,7 @@ public class QrCodeUtil {
      * @return {@link BufferedImage}
      */
     public static BufferedImage simpleQrCode(String content, int height, int width) {
-        return simpleQrCode(content, height, width, FORMAT, ERR_LEVEL);
+        return simpleQrCode(content, height, width, QrCodeConstant.ERR_LEVEL);
     }
 
     /**
@@ -104,8 +95,7 @@ public class QrCodeUtil {
      * @param level   二维码纠错等级
      * @return {@link BufferedImage}
      */
-    public static BufferedImage simpleQrCode(String content, int height, int width,
-                                             String format, ErrorCorrectionLevel level) {
+    public static BufferedImage simpleQrCode(String content, int height, int width, ErrorCorrectionLevel level) {
         // 内容检查
         checkParam(content);
 
@@ -113,14 +103,13 @@ public class QrCodeUtil {
         checkHeightAndWidth(height, width);
 
         // 参数格式化
-        format = StringUtils.isEmpty(format) ? "UTF-8" : format;
         level = Objects.isNull(level) ? ErrorCorrectionLevel.M : level;
 
         // 编码提示类型配置
         Map<EncodeHintType, Object> map = new HashMap<>();
-        map.put(EncodeHintType.CHARACTER_SET, format);
+        map.put(EncodeHintType.CHARACTER_SET, QrCodeConstant.FORMAT);
         map.put(EncodeHintType.ERROR_CORRECTION, level);
-        map.put(EncodeHintType.MARGIN, MARGIN);
+        map.put(EncodeHintType.MARGIN, QrCodeConstant.MARGIN);
 
         // 获取二维码位图矩阵
         BitMatrix bitMatrix = null;
@@ -318,9 +307,9 @@ public class QrCodeUtil {
             graphics.setColor(color);
 
             // 获取顶部字体的宽、高
-            drawText(bufferedImage, font, topText, imageWidth, imageHeight, graphics, TextPosEnum.TOP);
-            drawText(bufferedImage, font, centerText, imageWidth, imageHeight, graphics, TextPosEnum.CENTER);
-            drawText(bufferedImage, font, bottomText, imageWidth, imageHeight, graphics, TextPosEnum.BOTTOM);
+            drawText(bufferedImage, font, topText, imageWidth, imageHeight, graphics, TextPositionEnum.TOP);
+            drawText(bufferedImage, font, centerText, imageWidth, imageHeight, graphics, TextPositionEnum.CENTER);
+            drawText(bufferedImage, font, bottomText, imageWidth, imageHeight, graphics, TextPositionEnum.BOTTOM);
         } finally {
             if (graphics != null) {
                 graphics.dispose();
@@ -341,7 +330,7 @@ public class QrCodeUtil {
      * @return
      * @throws Exception
      */
-    public static List<BufferedImage> batchTextQrCode(List<QrCodeContent> arrays) throws Exception {
+    public static List<BufferedImage> batchTextQrCode(List<QrCode> arrays) throws Exception {
         int size = arrays.size();
         List<BufferedImage> list = new ArrayList<>(size);
         Font font = new Font("宋体", Font.ITALIC, 24);
@@ -381,7 +370,7 @@ public class QrCodeUtil {
      * @return
      * @throws Exception
      */
-    public static List<BufferedImage> batchLogoQrCode(List<QrCodeContent> arrays, ByteArrayOutputStream byteArrayOutputStream) throws Exception {
+    public static List<BufferedImage> batchLogoQrCode(List<QrCode> arrays, ByteArrayOutputStream byteArrayOutputStream) throws Exception {
         // check byteArrayOutputStream
         if (byteArrayOutputStream == null) {
             throw new FileNotFoundException("ByteArrayOutputStream can not be null");
@@ -436,7 +425,7 @@ public class QrCodeUtil {
      * @return
      * @throws Exception
      */
-    public static List<BufferedImage> batchLogoQrCode(List<QrCodeContent> arrays, File logoFile) throws Exception {
+    public static List<BufferedImage> batchLogoQrCode(List<QrCode> arrays, File logoFile) throws Exception {
         // check file
         if (ObjectUtils.isEmpty(logoFile) || !logoFile.exists()) {
             throw new FileNotFoundException("Not fount this File");
@@ -490,7 +479,7 @@ public class QrCodeUtil {
      * @return
      * @throws Exception
      */
-    public static List<BufferedImage> batchLogoQrCode(List<QrCodeContent> arrays, URL url) throws Exception {
+    public static List<BufferedImage> batchLogoQrCode(List<QrCode> arrays, URL url) throws Exception {
         // check URL
         try {
             url.openStream();
@@ -748,7 +737,7 @@ public class QrCodeUtil {
      * @param graphics
      * @param top
      */
-    private static void drawText(BufferedImage bufferedImage, Font font, String text, int imageWidth, int imageHeight, Graphics graphics, TextPosEnum posEnum) {
+    private static void drawText(BufferedImage bufferedImage, Font font, String text, int imageWidth, int imageHeight, Graphics graphics, TextPositionEnum posEnum) {
         if (!StringUtils.isEmpty(text)) {
             text = new String(text.trim().getBytes(), Charset.forName("UTF-8"));
             FontMetrics metrics = FontDesignMetrics.getMetrics(font);
@@ -775,16 +764,16 @@ public class QrCodeUtil {
     private static void fillText(BufferedImage bufferedImage, String text,
                                  int fontWidth, int fontHeight,
                                  int imageWidth, int imageHeight,
-                                 Graphics graphics, TextPosEnum posEnum) {
+                                 Graphics graphics, TextPositionEnum posEnum) {
         int startX;
         int startY;
         Integer posEnumCode = posEnum.getCode();
-        if (TextPosEnum.TOP.getCode().equals(posEnumCode)) {
+        if (TextPositionEnum.TOP.getCode().equals(posEnumCode)) {
             startX = (imageWidth - fontWidth) / 2 < 0 ? 0 : (imageWidth - fontWidth) / 2;
             startY = fontHeight * 3 / 2;
             graphics.drawString(text, startX, startY);
         }
-        if (TextPosEnum.CENTER.getCode().equals(posEnumCode)) {
+        if (TextPositionEnum.CENTER.getCode().equals(posEnumCode)) {
             startX = (imageWidth - fontWidth) / 2 + 5;
             startY = imageHeight / 2 + fontHeight / 2 - (fontHeight / 4) + 5;
             int endX = startX + fontWidth + 5;
@@ -794,13 +783,13 @@ public class QrCodeUtil {
                 for (int y = 0; y < imageHeight; y++) {
                     // 中心文字填充区域背景设置为空白
                     if (x > (startX - 10) && x < endX && y > (startY - fontHeight) && y < endY) {
-                        bufferedImage.setRGB(x, y, BACKGROUND_COLOR);
+                        bufferedImage.setRGB(x, y, QrCodeConstant.BACKGROUND_COLOR);
                     }
                 }
             }
             graphics.drawString(text, startX, startY);
         }
-        if (TextPosEnum.BOTTOM.getCode().equals(posEnumCode)) {
+        if (TextPositionEnum.BOTTOM.getCode().equals(posEnumCode)) {
             startX = (imageWidth - fontWidth) / 2 < 0 ? 0 : (imageWidth - fontWidth) / 2;
             startY = imageHeight - fontHeight;
             graphics.drawString(text, startX, startY);
@@ -867,11 +856,11 @@ public class QrCodeUtil {
         //BufferedImage bufferedImage3 = logoQrCode(bufferedImage2, new File("/Users/rexlin600/Pictures/微信公众号-图片/SpringFramework.png"));
         //write2File(bufferedImage3, "png", "/Users/rexlin600/Desktop/3.png");
 
-        List<QrCodeContent> list = new ArrayList<>();
-        list.add(new QrCodeContent("FUCK-1", "fuck-1", "", ""));
-        list.add(new QrCodeContent("FUCK-2", "", "fuck-2", ""));
-        list.add(new QrCodeContent("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCodeContent("FUCK-4", "fuck-4", "fuck-4", "fuck-4"));
+        List<QrCode> list = new ArrayList<>();
+        list.add(new QrCode("FUCK-1", "fuck-1", "", ""));
+        list.add(new QrCode("FUCK-2", "", "fuck-2", ""));
+        list.add(new QrCode("FUCK-3", "", "", "fuck-3"));
+        list.add(new QrCode("FUCK-4", "fuck-4", "fuck-4", "fuck-4"));
 
         // batch gen qr code
         //File file = new File("C:\\Users\\hekunlin\\Pictures\\golang.jpg");

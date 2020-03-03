@@ -1,6 +1,7 @@
 package xyz.rexlin600.qrcode.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,10 +13,11 @@ import java.io.Serializable;
  * @author: rexlin600
  * @date: 2020-03-01
  */
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class QrCodeContent implements Serializable {
+public class QrCode implements Serializable {
 
     /**
      * 二维码内容
