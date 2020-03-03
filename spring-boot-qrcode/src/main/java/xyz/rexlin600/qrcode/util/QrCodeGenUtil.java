@@ -1,6 +1,5 @@
 package xyz.rexlin600.qrcode.util;
 
-import ch.qos.logback.core.util.FileUtil;
 import cn.hutool.core.thread.ThreadFactoryBuilder;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
@@ -11,15 +10,15 @@ import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import sun.font.FontDesignMetrics;
 import xyz.rexlin600.qrcode.base.constants.QrCodeConstant;
 import xyz.rexlin600.qrcode.base.enums.TextPositionEnum;
-import xyz.rexlin600.qrcode.entity.QrCode;
+import xyz.rexlin600.qrcode.base.entity.QrCode;
 
 import javax.imageio.ImageIO;
-import javax.imageio.stream.FileImageInputStream;
 import javax.imageio.stream.ImageInputStream;
 import javax.imageio.stream.ImageOutputStream;
 import java.awt.*;
@@ -45,7 +44,7 @@ import java.util.concurrent.*;
  */
 @SuppressWarnings("DuplicatedCode")
 @Slf4j
-public class QrCodeUtil {
+public class QrCodeGenUtil {
 
     /**
      * 线程池
@@ -99,10 +98,9 @@ public class QrCodeUtil {
         // 内容检查
         checkParam(content);
 
-        // 检查二维码长宽
-        checkHeightAndWidth(height, width);
-
         // 参数格式化
+        height = height <= 0 ? QrCodeConstant.QR_CODE_HEIGHT : height;
+        width = width <= 0 ? QrCodeConstant.QR_CODE_WIDTH : width;
         level = Objects.isNull(level) ? ErrorCorrectionLevel.M : level;
 
         // 编码提示类型配置
@@ -127,6 +125,40 @@ public class QrCodeUtil {
         BufferedImage bufferedImage = MatrixToImageWriter.toBufferedImage(bitMatrix, matrixToImageConfig);
 
         return bufferedImage;
+    }
+
+    // -----------------------------------------------------------------------------------------------
+    // BASE64 CODE
+    // -----------------------------------------------------------------------------------------------
+
+    /**
+     * @param bufferedImage
+     * @return
+     * @throws IOException
+     */
+    public static String base64QrCode(BufferedImage bufferedImage) throws IOException {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        String res = "";
+
+        try {
+            // 写入流中
+            ImageIO.write(bufferedImage, "jpg", outputStream);
+            // 转换成字节
+            byte[] bytes = outputStream.toByteArray();
+            // 对字节数组Base64编码  -- 转换成base64串
+            String base64Img = new Base64().encodeToString(bytes);
+
+            base64Img = base64Img.replaceAll("\n", "").replaceAll("\r", "");
+            // 前面加 data:image/jpg;base64,
+            res = "data:image/jpg;base64," + base64Img.toString();
+        } finally {
+            // 关闭流
+            if (outputStream != null) {
+                outputStream.close();
+            }
+        }
+
+        return res;
     }
 
     // -----------------------------------------------------------------------------------------------
@@ -714,19 +746,6 @@ public class QrCodeUtil {
     }
 
     /**
-     * 二维码长宽检查
-     *
-     * @param height
-     * @param width
-     * @throws RuntimeException
-     */
-    private static void checkHeightAndWidth(int height, int width) throws RuntimeException {
-        if (height < 0 || width < 0) {
-            throw new RuntimeException("param must > 0");
-        }
-    }
-
-    /**
      * 根据不同位置绘制图像
      *
      * @param bufferedImage
@@ -840,56 +859,6 @@ public class QrCodeUtil {
         }
 
         return font;
-    }
-
-    // -----------------------------------------------------------------------------------------------
-    // TEST
-    // -----------------------------------------------------------------------------------------------
-
-    @SneakyThrows
-    public static void main(String[] args) {
-        //BufferedImage bufferedImage = simpleQrCode("去他妈的加班！！！");
-        //write2File(bufferedImage, "png", "/Users/rexlin600/Desktop/1.png");
-        //// text
-        //BufferedImage bufferedImage2 = textQrCode(bufferedImage, new Font("宋体", Font.ITALIC, 24), "天王盖地虎", "", "加班不辛苦");
-        //// logo
-        //BufferedImage bufferedImage3 = logoQrCode(bufferedImage2, new File("/Users/rexlin600/Pictures/微信公众号-图片/SpringFramework.png"));
-        //write2File(bufferedImage3, "png", "/Users/rexlin600/Desktop/3.png");
-
-        List<QrCode> list = new ArrayList<>();
-        list.add(new QrCode("FUCK-1", "fuck-1", "", ""));
-        list.add(new QrCode("FUCK-2", "", "fuck-2", ""));
-        list.add(new QrCode("FUCK-3", "", "", "fuck-3"));
-        list.add(new QrCode("FUCK-4", "fuck-4", "fuck-4", "fuck-4"));
-
-        // batch gen qr code
-        //File file = new File("C:\\Users\\hekunlin\\Pictures\\golang.jpg");
-        //List<BufferedImage> imageList = batchLogoQrCode(list, file);
-
-        //URL url = new URL("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1583127516250&di=3cf42d0daf3c7df9154f277119e6cc8c&imgtype=0&src=http%3A%2F%2Fa0.att.hudong.com%2F78%2F52%2F01200000123847134434529793168.jpg");
-        //List<BufferedImage> imageList = batchLogoQrCode(list, url);
-
-        List<BufferedImage> imageList = null;
-        ByteArrayOutputStream byteArrayOutputStream = null;
-        InputStream inputStream = null;
-        try {
-            File file = new File("C:\\Users\\hekunlin\\Pictures\\golang.jpg");
-            inputStream = new FileInputStream(file);
-            byteArrayOutputStream = inputStream2ByteStream(inputStream);
-            imageList = batchLogoQrCode(list, byteArrayOutputStream);
-            //imageList = batchTextQrCode(list);
-        } finally {
-            // 释放资源
-            log.info("close stream");
-            byteArrayOutputStream.flush();
-            inputStream.close();
-        }
-
-        // batch save
-        for (int i = 0; i < imageList.size(); i++) {
-            log.info("generate no.{} qrcode", (i + 1));
-            write2File(imageList.get(i), "png", "C:\\Users\\hekunlin\\Pictures\\QRCode\\" + (i + 1) + ".png");
-        }
     }
 
 

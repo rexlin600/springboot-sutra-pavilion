@@ -31,4 +31,10 @@ public final class QrCodeConstant {
     /** 背景色-白 */
     public static final int BACKGROUND_COLOR = 0xFFFFFF;
 
+    /** JPG */
+    public static final String JPG = "jpg";
+
+    /** PNG */
+    public static final String PNG = "png";
+
 }

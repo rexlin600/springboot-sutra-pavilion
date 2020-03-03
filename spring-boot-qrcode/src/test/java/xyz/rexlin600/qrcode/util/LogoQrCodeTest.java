@@ -8,8 +8,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
 
-import static org.junit.Assert.*;
-
 /**
  * @description
  * @auther hekunlin
@@ -26,7 +24,7 @@ public class LogoQrCodeTest {
      */
     @Before
     public void getQrCode() {
-        bufferedImage = QrCodeUtil.simpleQrCode("this is a logo QRCode");
+        bufferedImage = QrCodeGenUtil.simpleQrCode("this is a logo QRCode");
     }
 
     /**
@@ -35,8 +33,8 @@ public class LogoQrCodeTest {
     @SneakyThrows
     @Test
     public void logoQrCode() {
-        BufferedImage bufferedImage = QrCodeUtil.logoQrCode(LogoQrCodeTest.bufferedImage, LOGO_FILE);
-        QrCodeUtil.write2File(bufferedImage, "png", LOCAL_FILE_PATH);
+        BufferedImage bufferedImage = QrCodeGenUtil.logoQrCode(LogoQrCodeTest.bufferedImage, LOGO_FILE);
+        QrCodeGenUtil.write2File(bufferedImage, "png", LOCAL_FILE_PATH);
     }
 
     /**
@@ -46,8 +44,8 @@ public class LogoQrCodeTest {
     @Test
     public void testLogoQrCode() {
         URL url = new URL("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1583127516250&di=3cf42d0daf3c7df9154f277119e6cc8c&imgtype=0&src=http%3A%2F%2Fa0.att.hudong.com%2F78%2F52%2F01200000123847134434529793168.jpg");
-        BufferedImage bufferedImage = QrCodeUtil.logoQrCode(LogoQrCodeTest.bufferedImage, url);
-        QrCodeUtil.write2File(bufferedImage, "png", LOCAL_FILE_PATH);
+        BufferedImage bufferedImage = QrCodeGenUtil.logoQrCode(LogoQrCodeTest.bufferedImage, url);
+        QrCodeGenUtil.write2File(bufferedImage, "png", LOCAL_FILE_PATH);
     }
 
     /**

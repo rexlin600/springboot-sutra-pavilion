@@ -6,8 +6,6 @@ import org.junit.Test;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static org.junit.Assert.*;
-
 /**
  * @description
  * @auther hekunlin
@@ -24,8 +22,8 @@ public class TextQrCodeTest {
     @SneakyThrows
     @Test
     public void textQrCode() {
-        BufferedImage bufferedImage = QrCodeUtil.simpleQrCode("this is a text code");
-        bufferedImage = QrCodeUtil.textQrCode(bufferedImage, font, Color.BLACK, "131232dfwqf", "HikCreate Company LTD.", "231311312fqewrt14");
-        QrCodeUtil.write2File(bufferedImage, "png", LOCAL_FILE_PATH);
+        BufferedImage bufferedImage = QrCodeGenUtil.simpleQrCode("this is a text code");
+        bufferedImage = QrCodeGenUtil.textQrCode(bufferedImage, font, Color.BLACK, "131232dfwqf", "HikCreate Company LTD.", "231311312fqewrt14");
+        QrCodeGenUtil.write2File(bufferedImage, "png", LOCAL_FILE_PATH);
     }
 }

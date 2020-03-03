@@ -1,4 +1,4 @@
-package xyz.rexlin600.qrcode.entity;
+package xyz.rexlin600.qrcode.base.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

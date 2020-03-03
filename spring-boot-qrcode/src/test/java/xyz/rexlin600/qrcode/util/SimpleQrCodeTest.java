@@ -5,9 +5,6 @@ import lombok.SneakyThrows;
 import org.junit.Test;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
-
-import static org.junit.Assert.*;
 
 /**
  * @description
@@ -24,8 +21,8 @@ public class SimpleQrCodeTest {
     @SneakyThrows
     @Test
     public void simpleQrCode() {
-        BufferedImage bufferedImage = QrCodeUtil.simpleQrCode("This is a simple QRCode");
-        QrCodeUtil.write2File(bufferedImage, "png", LOCAL_FILE);
+        BufferedImage bufferedImage = QrCodeGenUtil.simpleQrCode("This is a simple QRCode");
+        QrCodeGenUtil.write2File(bufferedImage, "png", LOCAL_FILE);
     }
 
     /**
@@ -34,8 +31,8 @@ public class SimpleQrCodeTest {
     @SneakyThrows
     @Test
     public void testSimpleQrCode() {
-        BufferedImage bufferedImage = QrCodeUtil.simpleQrCode("This is a simple QRCode", 200, 200);
-        QrCodeUtil.write2File(bufferedImage, "png", LOCAL_FILE);
+        BufferedImage bufferedImage = QrCodeGenUtil.simpleQrCode("This is a simple QRCode", 200, 200);
+        QrCodeGenUtil.write2File(bufferedImage, "png", LOCAL_FILE);
     }
 
     /**
@@ -44,8 +41,8 @@ public class SimpleQrCodeTest {
     @SneakyThrows
     @Test
     public void testSimpleQrCode1() {
-        BufferedImage bufferedImage = QrCodeUtil.simpleQrCode("This is a simple QRCode", 400, 400, "UTF-8", ErrorCorrectionLevel.H);
-        QrCodeUtil.write2File(bufferedImage, "png", LOCAL_FILE);
+        BufferedImage bufferedImage = QrCodeGenUtil.simpleQrCode("This is a simple QRCode", 400, 400, ErrorCorrectionLevel.H);
+        QrCodeGenUtil.write2File(bufferedImage, "png", LOCAL_FILE);
     }
 
 }

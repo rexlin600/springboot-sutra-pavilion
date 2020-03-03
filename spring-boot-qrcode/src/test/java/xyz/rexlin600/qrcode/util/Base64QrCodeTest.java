@@ -6,8 +6,6 @@ import org.junit.Test;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-import static org.junit.Assert.*;
-
 /**
  * @description
  * @auther hekunlin
@@ -23,8 +21,8 @@ public class Base64QrCodeTest {
     @SneakyThrows
     @Test
     public void base64QrCode() {
-        BufferedImage bufferedImage = QrCodeUtil.simpleQrCode("test");
-        String base64QrCode = QrCodeUtil.base64QrCode(bufferedImage);
+        BufferedImage bufferedImage = QrCodeGenUtil.simpleQrCode("test");
+        String base64QrCode = QrCodeGenUtil.base64QrCode(bufferedImage);
         System.out.println(base64QrCode);
     }
 
@@ -34,9 +32,9 @@ public class Base64QrCodeTest {
     @SneakyThrows
     @Test
     public void base64QrCode1() {
-        BufferedImage bufferedImage = QrCodeUtil.simpleQrCode("test");
-        bufferedImage = QrCodeUtil.logoQrCode(bufferedImage, LOGO_FILE);
-        String base64QrCode = QrCodeUtil.base64QrCode(bufferedImage);
+        BufferedImage bufferedImage = QrCodeGenUtil.simpleQrCode("test");
+        bufferedImage = QrCodeGenUtil.logoQrCode(bufferedImage, LOGO_FILE);
+        String base64QrCode = QrCodeGenUtil.base64QrCode(bufferedImage);
         System.out.println(base64QrCode);
     }
 
