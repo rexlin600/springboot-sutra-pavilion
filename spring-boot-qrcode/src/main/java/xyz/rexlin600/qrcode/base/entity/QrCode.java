@@ -20,6 +20,11 @@ import java.io.Serializable;
 public class QrCode implements Serializable {
 
     /**
+     * 二维码名称
+     */
+    private String name;
+
+    /**
      * 二维码内容
      */
     private String content;

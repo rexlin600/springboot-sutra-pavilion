@@ -15,6 +15,7 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import sun.font.FontDesignMetrics;
 import xyz.rexlin600.qrcode.base.constants.QrCodeConstant;
+import xyz.rexlin600.qrcode.base.entity.BatchQrCode;
 import xyz.rexlin600.qrcode.base.enums.TextPositionEnum;
 import xyz.rexlin600.qrcode.base.entity.QrCode;
 
@@ -323,10 +324,11 @@ public class QrCodeGenUtil {
      * @param bottomText    底部文字
      * @return
      */
-    public static BufferedImage textQrCode(BufferedImage bufferedImage, Font font, Color color,
-                                           String topText, String centerText, String bottomText) {
-        // check text
-        font = checkText(topText, centerText, bottomText, font);
+    public static BufferedImage textQrCode(QrCode qrCode, Font font, Color color) {
+        // handle font
+        font = handleFont(qrCode.getTopText(), qrCode.getCenterText(), qrCode.getBottomText(), font);
+
+        BufferedImage bufferedImage = simpleQrCode(qrCode.getContent());
 
         // 获取二维码的宽高
         int imageWidth = bufferedImage.getWidth();
@@ -339,9 +341,9 @@ public class QrCodeGenUtil {
             graphics.setColor(color);
 
             // 获取顶部字体的宽、高
-            drawText(bufferedImage, font, topText, imageWidth, imageHeight, graphics, TextPositionEnum.TOP);
-            drawText(bufferedImage, font, centerText, imageWidth, imageHeight, graphics, TextPositionEnum.CENTER);
-            drawText(bufferedImage, font, bottomText, imageWidth, imageHeight, graphics, TextPositionEnum.BOTTOM);
+            drawText(bufferedImage, font, qrCode.getTopText(), imageWidth, imageHeight, graphics, TextPositionEnum.TOP);
+            drawText(bufferedImage, font, qrCode.getCenterText(), imageWidth, imageHeight, graphics, TextPositionEnum.CENTER);
+            drawText(bufferedImage, font, qrCode.getBottomText(), imageWidth, imageHeight, graphics, TextPositionEnum.BOTTOM);
         } finally {
             if (graphics != null) {
                 graphics.dispose();
@@ -362,9 +364,9 @@ public class QrCodeGenUtil {
      * @return
      * @throws Exception
      */
-    public static List<BufferedImage> batchTextQrCode(List<QrCode> arrays) throws Exception {
+    public static List<BatchQrCode> batchTextQrCode(List<QrCode> arrays) throws Exception {
         int size = arrays.size();
-        List<BufferedImage> list = new ArrayList<>(size);
+        List<BatchQrCode> list = new ArrayList<>(size);
         Font font = new Font("宋体", Font.ITALIC, 24);
 
         CountDownLatch countDownLatch = new CountDownLatch(size);
@@ -376,10 +378,10 @@ public class QrCodeGenUtil {
                 BufferedImage bufferedImage = simpleQrCode(m.getContent());
 
                 // fill text
-                bufferedImage = textQrCode(bufferedImage, font, Color.BLACK, m.getTopText(), m.getCenterText(), m.getBottomText());
+                bufferedImage = textQrCode(m, font, Color.BLACK);
 
                 // add List
-                list.add(bufferedImage);
+                list.add(new BatchQrCode(bufferedImage, m));
 
                 countDownLatch.countDown();
             });
@@ -402,14 +404,14 @@ public class QrCodeGenUtil {
      * @return
      * @throws Exception
      */
-    public static List<BufferedImage> batchLogoQrCode(List<QrCode> arrays, ByteArrayOutputStream byteArrayOutputStream) throws Exception {
+    public static List<BatchQrCode> batchLogoQrCode(List<QrCode> arrays, ByteArrayOutputStream byteArrayOutputStream) throws Exception {
         // check byteArrayOutputStream
         if (byteArrayOutputStream == null) {
             throw new FileNotFoundException("ByteArrayOutputStream can not be null");
         }
 
         int size = arrays.size();
-        List<BufferedImage> list = new ArrayList<>(size);
+        List<BatchQrCode> list = new ArrayList<>(size);
         Font font = new Font("宋体", Font.ITALIC, 24);
 
         CountDownLatch countDownLatch = new CountDownLatch(size);
@@ -431,10 +433,10 @@ public class QrCodeGenUtil {
                 }
 
                 // fill text
-                bufferedImage = textQrCode(bufferedImage, font, Color.BLACK, m.getTopText(), m.getCenterText(), m.getBottomText());
+                bufferedImage = textQrCode(m, font, Color.BLACK);
 
                 // add List
-                list.add(bufferedImage);
+                list.add(new BatchQrCode(bufferedImage, m));
 
                 countDownLatch.countDown();
             });
@@ -457,14 +459,14 @@ public class QrCodeGenUtil {
      * @return
      * @throws Exception
      */
-    public static List<BufferedImage> batchLogoQrCode(List<QrCode> arrays, File logoFile) throws Exception {
+    public static List<BatchQrCode> batchLogoQrCode(List<QrCode> arrays, File logoFile) throws Exception {
         // check file
         if (ObjectUtils.isEmpty(logoFile) || !logoFile.exists()) {
             throw new FileNotFoundException("Not fount this File");
         }
 
         int size = arrays.size();
-        List<BufferedImage> list = new ArrayList<>(size);
+        List<BatchQrCode> list = new ArrayList<>(size);
         Font font = new Font("宋体", Font.ITALIC, 24);
 
         CountDownLatch countDownLatch = new CountDownLatch(size);
@@ -486,10 +488,10 @@ public class QrCodeGenUtil {
                 }
 
                 // fill text
-                bufferedImage = textQrCode(bufferedImage, font, Color.BLACK, m.getTopText(), m.getCenterText(), m.getBottomText());
+                bufferedImage = textQrCode(m, font, Color.BLACK);
 
                 // add List
-                list.add(bufferedImage);
+                list.add(new BatchQrCode(bufferedImage, m));
 
                 countDownLatch.countDown();
             });
@@ -511,7 +513,7 @@ public class QrCodeGenUtil {
      * @return
      * @throws Exception
      */
-    public static List<BufferedImage> batchLogoQrCode(List<QrCode> arrays, URL url) throws Exception {
+    public static List<BatchQrCode> batchLogoQrCode(List<QrCode> arrays, URL url) throws Exception {
         // check URL
         try {
             url.openStream();
@@ -522,7 +524,7 @@ public class QrCodeGenUtil {
         }
 
         int size = arrays.size();
-        List<BufferedImage> list = new ArrayList<>(size);
+        List<BatchQrCode> list = new ArrayList<>(size);
         Font font = new Font("宋体", Font.ITALIC, 24);
 
         CountDownLatch countDownLatch = new CountDownLatch(size);
@@ -546,10 +548,10 @@ public class QrCodeGenUtil {
                 }
 
                 // fill text
-                bufferedImage = textQrCode(bufferedImage, font, Color.BLACK, m.getTopText(), m.getCenterText(), m.getBottomText());
+                bufferedImage = textQrCode(m, font, Color.BLACK);
 
                 // add List
-                list.add(bufferedImage);
+                list.add(new BatchQrCode(bufferedImage, m));
 
                 countDownLatch.countDown();
             });
@@ -577,6 +579,14 @@ public class QrCodeGenUtil {
      */
     public static void write2File(BufferedImage img, String fileType, String filepath) throws IOException {
         try {
+            // 目录新建
+            File file = new File(filepath);
+            if (!file.isDirectory()) {
+                throw new IOException(filepath + " is not a directory");
+            }
+
+
+
             ImageIO.write(img, fileType, new File(filepath));
         } finally {
             // 释放资源
@@ -840,7 +850,7 @@ public class QrCodeGenUtil {
      * @param bottomText
      * @param font
      */
-    private static Font checkText(String topText, String centerText, String bottomText, Font font) {
+    private static Font handleFont(String topText, String centerText, String bottomText, Font font) {
         int fontSize = font.getSize();
 
         // 不做处理

@@ -5,6 +5,7 @@ import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.core.util.ZipUtil;
 import org.junit.Test;
 import xyz.rexlin600.qrcode.base.constants.QrCodeConstant;
+import xyz.rexlin600.qrcode.base.entity.BatchQrCode;
 import xyz.rexlin600.qrcode.base.entity.QrCode;
 
 import java.awt.image.BufferedImage;
@@ -29,15 +30,15 @@ public class BatchQrCodeTest {
     @Test
     public void batchLogoQrCode() throws Exception {
         List<QrCode> list = new ArrayList<>();
-        list.add(new QrCode("content-1", "top", "", ""));
-        list.add(new QrCode("content-2", "", "center", ""));
-        list.add(new QrCode("content-3", "", "", "bottom"));
-        list.add(new QrCode("content-4", "top", "center", "bottom"));
-        list.add(new QrCode("content-5", "top", "", "bottom"));
-        list.add(new QrCode("content-6", "top", "center", ""));
-        list.add(new QrCode("content-6", "", "center", "bottom"));
+        list.add(new QrCode("top", "content-1", "top", "", ""));
+        list.add(new QrCode("center", "content-2", "", "center", ""));
+        list.add(new QrCode("bottom", "content-3", "", "", "bottom"));
+        list.add(new QrCode("all", "content-4", "top", "center", "bottom"));
+        list.add(new QrCode("top-bottom", "content-5", "top", "", "bottom"));
+        list.add(new QrCode("top-center", "content-6", "top", "center", ""));
+        list.add(new QrCode("enter-bottom", "content-6", "", "center", "bottom"));
 
-        List<BufferedImage> bufferedImageList = QrCodeGenUtil.batchTextQrCode(list);
+        List<BatchQrCode> bufferedImageList = QrCodeGenUtil.batchTextQrCode(list);
         AtomicInteger atomicInteger = new AtomicInteger(1);
 
         // 批量生成，不能使用并行流、无法保证 atomicInteger 的原子更新
@@ -55,8 +56,8 @@ public class BatchQrCodeTest {
         // 写入临时目录
         bufferedImageList.stream().forEach(m -> {
             try {
-                String file = path + File.separator + atomicInteger + "." + QrCodeConstant.PNG;
-                QrCodeGenUtil.write2File(m, QrCodeConstant.PNG, file);
+                String file = path + File.separator + m.getQrCode().getName() + "." + QrCodeConstant.PNG;
+                QrCodeGenUtil.write2File(m.getBufferedImage(), QrCodeConstant.PNG, file);
             } catch (IOException e) {
                 e.printStackTrace();
             }
