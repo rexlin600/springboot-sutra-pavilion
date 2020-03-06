@@ -50,3 +50,8 @@ public class FirstApplicationRunner implements ApplicationRunner {
 }
 ```
 
+## 番外
+
+> PostConstruct 的生命周期
+
+![](../images/runner/postconstruct.jpg)
