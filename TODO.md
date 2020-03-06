@@ -11,9 +11,8 @@
 * spring-boot-security
 * spring-boot-security-cas
 * spring-boot-oauth2
-* spring-boot-starter
+* _spring-boot-starter_
 * spring-boot-image
-* spring-boot-configuration
 * spring-boot-aspect
 * spring-boot-retry
 * spring-boot-disconf

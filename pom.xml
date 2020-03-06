@@ -54,6 +54,7 @@
         <module>spring-boot-qrcode</module>
         <module>spring-boot-jaxb</module>
         <module>spring-boot-log4j</module>
+        <module>spring-boot-custom-starter</module>
     </modules>
 
     <dependencies>

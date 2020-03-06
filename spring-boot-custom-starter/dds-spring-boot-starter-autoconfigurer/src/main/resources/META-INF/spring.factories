@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    xyz.rexlin600.starter.dds.DynamicDataSourceAutoConfiguration
