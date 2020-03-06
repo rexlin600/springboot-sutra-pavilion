@@ -67,6 +67,7 @@
 | [git4clone](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-git4clone/README.md) | 这个应用利用 `多线程技术` 帮助用户实现快速批量下载 `gitlab` 上的项目，用户只需要进行如下修改即可使用 |
 | [aop](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-aop/README.md) | `aop`，提供了传统使用切面注解的写法；提供了使用注解的写法，并通过异步事件驱动的方式(使用 `feign` 模拟远程服务请求)将日志消息入库 |
 | [qrcode](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-qrcode/README.md) | 集成 `zxing`，提供了快速生成二维码、带文字的二维码、带logo的二维码、批量生产二维码等 |
+| [jaxb](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-jaxb/README.md) | 集成 `jaxb`，提供对象转XML、XML转对象的功能 |
 | _ | _ |
 
 
