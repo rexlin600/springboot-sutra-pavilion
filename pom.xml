@@ -53,6 +53,7 @@
         <module>spring-boot-git4clone</module>
         <module>spring-boot-qrcode</module>
         <module>spring-boot-jaxb</module>
+        <module>spring-boot-log4j</module>
     </modules>
 
     <dependencies>

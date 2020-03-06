@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: log4j
+server:
+  port: 10030
+# log4j config

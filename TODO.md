@@ -8,7 +8,6 @@
   * spring-boot-zuul-upload
 * spring-boot-fastDFS
 * spring-boot-validation(jsr303 and hibernate-validation)
-* spring-boot-logging
 * spring-boot-security
 * spring-boot-security-cas
 * spring-boot-oauth2
