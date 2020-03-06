@@ -46,7 +46,7 @@ The ultimate goal is to help everyone quickly grasp the use of Spring Boot 2.x a
 | --- | --- |
 | [helloworld](https://github.com/rexlin600/springboot-sutra-pavilion/blob/master/spring-boot-helloworld/README.md) | 内嵌容器、构建war包；`Properties`属性绑定、配置自定刷新、全局异常处理 |
 | [docker](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-docker/README.md) | 集成 `docker` 插件；绑定 `maven` 生命周期相关的命令到 `docker` 命令 |
-| [runner](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-runner/README.md) |使用 `CommandLineRunner` 以及 `ApplicationRunner` 的演示 |
+| [runner](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-runner/README.md) | 使用 `CommandLineRunner` 以及 `ApplicationRunner`；增加PostConstruct注解的使用  |
 | [github](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-github/README.md) |使用 `github api v3` 简易示例；推荐个 `iPhone` 的客户端(付费)`PPHub` ；安卓推荐(免费) `OpenHub` |
 | [redis](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-redis/README.md) |集成 `redis` 集群/哨兵；`redisTemplate` 的常用 `API` |
 | [elasticsearch](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-elasticsearch/README.md) |集成 `elasticsearch` 的示例；`es` 的 `rest API` |
