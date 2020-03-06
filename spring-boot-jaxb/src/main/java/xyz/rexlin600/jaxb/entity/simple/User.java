@@ -1,4 +1,4 @@
-package xyz.rexlin600.jaxb.entity;
+package xyz.rexlin600.jaxb.entity.simple;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

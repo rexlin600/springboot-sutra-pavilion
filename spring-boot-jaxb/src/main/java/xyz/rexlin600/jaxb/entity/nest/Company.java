@@ -1,4 +1,4 @@
-package xyz.rexlin600.jaxb.entity;
+package xyz.rexlin600.jaxb.entity.nest;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

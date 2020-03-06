@@ -2,11 +2,7 @@ package xyz.rexlin600.jaxb.util;
 
 import lombok.SneakyThrows;
 import org.junit.Test;
-import xyz.rexlin600.jaxb.entity.User;
-
-import java.util.Date;
-
-import static org.junit.Assert.*;
+import xyz.rexlin600.jaxb.entity.simple.User;
 
 /**
  * @description

@@ -35,11 +35,11 @@ com.sun.xml.internal.bind.v2.runtime.IllegalAnnotationsException: 1 counts of Il
 
 类的两个属性具有相同名称 "id"
 	this problem is related to the following location:
-		at public java.lang.Long xyz.rexlin600.jaxb.entity.User.getId()
-		at xyz.rexlin600.jaxb.entity.User
+		at public java.lang.Long xyz.rexlin600.jaxb.entity.simple.User.getId()
+		at xyz.rexlin600.jaxb.entity.simple.User
 	this problem is related to the following location:
-		at private java.lang.Long xyz.rexlin600.jaxb.entity.User.id
-		at xyz.rexlin600.jaxb.entity.User
+		at private java.lang.Long xyz.rexlin600.jaxb.entity.simple.User.id
+		at xyz.rexlin600.jaxb.entity.simple.User
 
 	at com.sun.xml.internal.bind.v2.runtime.IllegalAnnotationsException$Builder.check(IllegalAnnotationsException.java:91)
 	at com.sun.xml.internal.bind.v2.runtime.JAXBContextImpl.getTypeInfoSet(JAXBContextImpl.java:445)
@@ -64,3 +64,4 @@ com.sun.xml.internal.bind.v2.runtime.IllegalAnnotationsException: 1 counts of Il
 ## 参考
 
 - [JAXB Users Guide](https://javaee.github.io/jaxb-v2/doc/user-guide/ch03.html)
+- [JABX 教程](https://www.w3cschool.cn/jaxb2/)

@@ -1,7 +1,6 @@
-package xyz.rexlin600.jaxb.entity;
+package xyz.rexlin600.jaxb.entity.nest;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 

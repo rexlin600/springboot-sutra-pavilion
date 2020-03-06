@@ -1,26 +1,25 @@
-package xyz.rexlin600.jaxb.entity;
+package xyz.rexlin600.jaxb.entity.dynamic.simple;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
- * 计算机类
+ * 产品类
  *
  * @author: hekunlin
  * @date: 2020/3/6
  */
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@XmlRootElement(name = "COMPUTER")
-public class Computer implements Serializable {
+@ToString
+@XmlRootElement(name = "PRODUCT")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Order implements Serializable {
 
     /**
      * ID
@@ -35,10 +34,11 @@ public class Computer implements Serializable {
     private String name;
 
     /**
-     * CPU
+     * 列表
      */
-    @XmlElement(name = "CPU")
-    private Cpu cpu;
+    @XmlElementWrapper(name = "PRODUCT")
+    @XmlAnyElement
+    private List<Object> list;
 
     @XmlTransient
     public Long getId() {
@@ -59,11 +59,11 @@ public class Computer implements Serializable {
     }
 
     @XmlTransient
-    public Cpu getCpu() {
-        return cpu;
+    public List<Object> getList() {
+        return list;
     }
 
-    public void setCpu(Cpu cpu) {
-        this.cpu = cpu;
+    public void setList(List<Object> list) {
+        this.list = list;
     }
 }

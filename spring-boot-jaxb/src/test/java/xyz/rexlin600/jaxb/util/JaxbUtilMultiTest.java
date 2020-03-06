@@ -1,11 +1,9 @@
 package xyz.rexlin600.jaxb.util;
 
 import org.junit.Test;
-import xyz.rexlin600.jaxb.entity.Company;
-import xyz.rexlin600.jaxb.entity.Computer;
-import xyz.rexlin600.jaxb.entity.Cpu;
-
-import static org.junit.Assert.*;
+import xyz.rexlin600.jaxb.entity.nest.Company;
+import xyz.rexlin600.jaxb.entity.nest.Computer;
+import xyz.rexlin600.jaxb.entity.nest.Cpu;
 
 /**
  * @description
