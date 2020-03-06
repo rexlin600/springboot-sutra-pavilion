@@ -54,6 +54,11 @@ public class CodeGenReq implements Serializable {
     private String versionColumn;
 
     /**
+     * 是否开启 lombok
+     */
+    private boolean lombok;
+
+    /**
      * 逻辑删除字段
      */
     private String logicColumn;

@@ -182,10 +182,11 @@ public class CodeServiceImpl implements CodeService {
 
             // 策略配置
             String prefix = codeGenReq.getTablePrefix();
+            boolean lombok = codeGenReq.isLombok();
             String version = codeGenReq.getVersionColumn();
             String logic = codeGenReq.getLogicColumn();
             List<String> list = codeGenReq.getList();
-            strategy = CodeGenUtils.getStrategyConfig(prefix, version, logic, list);
+            strategy = CodeGenUtils.getStrategyConfig(prefix, lombok, version, logic, list);
         } catch (Exception e) {
             log.error("==>  配置异常 {}", e.getMessage());
             return R.failed("生成代码失败");

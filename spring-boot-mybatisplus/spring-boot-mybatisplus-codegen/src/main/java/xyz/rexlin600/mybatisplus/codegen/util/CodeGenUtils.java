@@ -108,12 +108,13 @@ public class CodeGenUtils {
      * 策略配置
      *
      * @param tablePrefix   表前缀
+     * @param lombok        是否开启lombok
      * @param versionColumn 乐观锁
      * @param logicColumn   逻辑删除
      * @param list          要生成的表
      * @return
      */
-    public static StrategyConfig getStrategyConfig(String tablePrefix, String versionColumn, String logicColumn, List<String> list) {
+    public static StrategyConfig getStrategyConfig(String tablePrefix, boolean lombok, String versionColumn, String logicColumn, List<String> list) {
         StrategyConfig strategy = new StrategyConfig();
 
         // 下划线转换驼峰
@@ -142,7 +143,7 @@ public class CodeGenUtils {
         strategy.setSuperServiceImplClass("com.baomidou.mybatisplus.extension.service.impl.ServiceImpl");
         strategy.setSuperMapperClass("com.baomidou.mybatisplus.core.mapper.BaseMapper");
 
-        strategy.setEntityLombokModel(false);
+        strategy.setEntityLombokModel(lombok);
 
         // 表前缀
         if (!StringUtils.isEmpty(tablePrefix)) {
