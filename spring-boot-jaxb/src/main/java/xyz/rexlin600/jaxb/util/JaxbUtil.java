@@ -1,12 +1,10 @@
 package xyz.rexlin600.jaxb.util;
 
-import com.sun.xml.internal.bind.v2.runtime.JAXBContextImpl;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.util.StringUtils;
 
-import javax.servlet.http.HttpServlet;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
