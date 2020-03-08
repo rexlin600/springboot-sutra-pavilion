@@ -56,6 +56,7 @@
         <module>spring-boot-jaxb</module>
         <module>spring-boot-log4j</module>
         <module>spring-boot-custom-starter</module>
+        <module>spring-boot-excel</module>
     </modules>
 
     <dependencies>
