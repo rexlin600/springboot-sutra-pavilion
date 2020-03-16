@@ -13,14 +13,13 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 import xyz.rexlin600.starter.dds.util.AesUtils;
+import xyz.rexlin600.starter.dds.util.CodeGenConstant;
 import xyz.rexlin600.starter.dds.util.DataSourceConstants;
 
 import javax.annotation.PostConstruct;
 import java.sql.Driver;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author: rexlin600
@@ -75,16 +74,16 @@ public class DynamicDataSourceConfig implements TransactionManagementConfigurer 
 
         // 查询所有数据源
         List<Map<String, Object>> dbList = new JdbcTemplate(driverManagerDataSource).queryForList(DataSourceConstants.QUERY_DS_SQL);
-        log.info("开始 -> 初始化动态数据源");
+        log.info("==>  开始：初始化动态数据源");
         Optional.of(dbList).ifPresent(list -> list.forEach(db -> {
-            log.info("数据源:{}", db.get(DataSourceConstants.DS_NAME));
+            log.info("==>  加载到数据源:{}", db.get(DataSourceConstants.DS_NAME));
 
             // HikariConfig、HikariDataSource
             HikariConfig config = new HikariConfig();
             String url = "jdbc:mysql://" + db.get("host").toString().trim() + ":" + db.get("port").toString().trim() + "/"
                     + db.get("db_name").toString().trim() + "?characterEncoding=utf8&serverTimezone=GMT%2B8";
             config.setJdbcUrl(url);
-            config.setDriverClassName(Driver.class.getName());
+            config.setDriverClassName(CodeGenConstant.JDBC_DRIVER_CJ_CLASS_NAME);
             config.setUsername(AesUtils.decrypt(db.get("username").toString().trim()));
             config.setPassword(AesUtils.decrypt(db.get("password").toString().trim()));
             injectHikariConfig(config);
@@ -93,7 +92,7 @@ public class DynamicDataSourceConfig implements TransactionManagementConfigurer 
             dataSourceMap.put(db.get(DataSourceConstants.DS_ROUTE_KEY), hikariDataSource);
         }));
 
-        log.info("完毕 -> 初始化动态数据源,共计 {} 条", dataSourceMap.size());
+        log.info("==>  数据源加载完毕 -> 初始化动态数据源,共计 {} 条额外数据源", dataSourceMap.size());
     }
 
     /**

@@ -1,0 +1,28 @@
+######################### 默认数据源 #########################
+# 数据源ID范围：[1,2]
+# custom_test_starter 数据库、数据ID范围：[1,2]
+######################### 指定数据源 #########################
+# 无数据源表
+# spring-boot-mybatisplus 数据库、数据ID范围：[1,100000]
+
+######################### 查询默认数据源数据 #########################
+### 查询默认数据源数据（存在的数据）
+GET http://localhost:9527/goods/1?ds=1
+Accept: application/json
+
+### 查询默认数据源数据（不存在的数据）
+GET http://localhost:9527/goods/3?ds=1
+Accept: application/json
+
+######################### 查询指定数据源数据 #########################
+### 查询指定数据源数据（存在的数据）
+GET http://localhost:9527/goods/1?ds=2
+Accept: application/json
+
+### 查询指定数据源数据（存在的数据）
+GET http://localhost:9527/goods/3?ds=2
+Accept: application/json
+
+###
+
+

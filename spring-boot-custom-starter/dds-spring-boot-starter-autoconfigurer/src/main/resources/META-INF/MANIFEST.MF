@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Implementation-Version: 2.0.0
+Build-Timestamp: 2020-03-07
+Built-By: rexlin600
+Build-OS: Mac OS
+Built-Maven: 3.3.6
+Build-Jdk: 1.8.0_171
+

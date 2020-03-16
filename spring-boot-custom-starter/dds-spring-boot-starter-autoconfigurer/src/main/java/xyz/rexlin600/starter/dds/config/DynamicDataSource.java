@@ -1,5 +1,6 @@
 package xyz.rexlin600.starter.dds.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 import xyz.rexlin600.starter.dds.util.DynamicDataSourceContextHolder;
 
@@ -9,6 +10,7 @@ import xyz.rexlin600.starter.dds.util.DynamicDataSourceContextHolder;
  * @author: rexlin600
  * @date: 2020-03-07
  */
+@Slf4j
 public class DynamicDataSource extends AbstractRoutingDataSource {
 
     /**
@@ -18,7 +20,9 @@ public class DynamicDataSource extends AbstractRoutingDataSource {
      */
     @Override
     protected Object determineCurrentLookupKey() {
-        return DynamicDataSourceContextHolder.getDataSourceType();
+        Long ds = DynamicDataSourceContextHolder.get();
+        log.info("==>  当前数据源ID:{}", ds);
+        return ds;
     }
 
 }

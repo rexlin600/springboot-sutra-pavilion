@@ -1,4 +1,4 @@
-package xyz.rexlin600.starter.dds.config;
+package xyz.rexlin600.starter.dds.interceptor;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 动态数据源拦截器
+ *
+ * @author rexlin600
  */
 @Slf4j
 @Component
@@ -28,14 +30,14 @@ public class DynamicDatasourceInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        DynamicDataSourceContextHolder.setDataSourceType(1);
+        DynamicDataSourceContextHolder.push(1L);
         return true;
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
                                 @Nullable Exception ex) {
-        DynamicDataSourceContextHolder.clearDataSourceType();
+        DynamicDataSourceContextHolder.remove();
     }
 
 }

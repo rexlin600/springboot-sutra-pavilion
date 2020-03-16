@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.rexlin600.custom.test.mapper.GoodsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="xyz.rexlin600.custom.test.entity.Goods">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="sort" property="sort"/>
+        <result column="position" property="position"/>
+        <result column="weight" property="weight"/>
+        <result column="color" property="color"/>
+        <result column="create_date" property="createDate"/>
+        <result column="update_date" property="updateDate"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+            id, name, sort, position, weight, color, create_date, update_date
+    </sql>
+
+</mapper>

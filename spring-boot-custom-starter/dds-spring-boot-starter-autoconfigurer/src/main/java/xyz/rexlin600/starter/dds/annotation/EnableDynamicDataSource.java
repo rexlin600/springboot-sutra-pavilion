@@ -6,10 +6,9 @@ import xyz.rexlin600.starter.dds.config.DynamicDataSourceConfig;
 import java.lang.annotation.*;
 
 /**
- * @author Lucky
- * @date 2019-05-18
- * <p>
  * 开启动态数据源
+ *
+ * @author rexlin600
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

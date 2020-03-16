@@ -20,7 +20,7 @@ public interface DataSourceConstants {
     /**
      * 数据源名称
      */
-    String DS_NAME = "dbName";
+    String DS_NAME = "db_name";
 
     /**
      * jdbcurl

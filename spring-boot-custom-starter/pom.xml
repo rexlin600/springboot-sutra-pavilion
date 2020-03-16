@@ -14,6 +14,7 @@
 
     <modules>
         <module>dds-spring-boot-starter-autoconfigurer</module>
+        <module>dds-test-starter</module>
     </modules>
 
 
