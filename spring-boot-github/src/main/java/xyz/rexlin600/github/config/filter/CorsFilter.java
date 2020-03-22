@@ -17,7 +17,7 @@ import java.io.IOException;
  */
 
 @SuppressWarnings("Duplicates")
-@Component
+//@Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter {
 

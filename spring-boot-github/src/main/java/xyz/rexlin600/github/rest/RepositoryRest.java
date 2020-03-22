@@ -1,14 +1,23 @@
 package xyz.rexlin600.github.rest;
 
+import cn.hutool.http.HttpResponse;
+import cn.hutool.http.HttpStatus;
+import cn.hutool.http.HttpUtil;
+import com.google.gson.*;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.eclipse.egit.github.core.*;
+import org.eclipse.egit.github.core.client.GsonUtils;
 import org.eclipse.egit.github.core.client.PageIterator;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import xyz.rexlin600.github.common.apiparam.Response;
 import xyz.rexlin600.github.common.apiparam.ResponseGenerator;
+import xyz.rexlin600.github.common.constant.GithubConstant;
+import xyz.rexlin600.github.common.util.StarredUtil;
 import xyz.rexlin600.github.config.runner.GithubRunner;
+import xyz.rexlin600.github.entity.StarredResp;
 
 import java.util.*;
 
@@ -17,6 +26,7 @@ import java.util.*;
  * @author: hekunlin
  * @date: 2020/1/3
  */
+@Slf4j
 @RestController
 @RequestMapping(value = "/repository")
 public class RepositoryRest {
@@ -258,6 +268,45 @@ public class RepositoryRest {
         }
 
         return ResponseGenerator.success(forkRepository);
+    }
+
+    /**
+     * 获取某个用户的 Starred 列表
+     *
+     * @param page     第几页
+     * @param pageSize 每页记录数
+     * @param user     用户
+     * @return
+     */
+    @SneakyThrows
+    @GetMapping("/star/list")
+    public Response<List<StarredResp>> starList(@RequestParam Integer page,
+                                                @RequestParam Integer pageSize,
+                                                @RequestParam String user) {
+        // default pageSize is 100
+        if (pageSize <= 0 || pageSize > 100) {
+            pageSize = 100;
+        }
+
+        // concat req URL
+        String starredUrl = new StringBuffer().append(GithubConstant.GITHUB_API_URL)
+                .append(GithubConstant.GITHUB_USERS).append("/").append(user)
+                .append(GithubConstant.GITHUB_STARRED)
+                .append("?page=").append(page).append("&per_page=").append(pageSize)
+                .toString();
+
+        // merge list
+        HttpResponse httpResponse = HttpUtil.createGet(starredUrl).execute();
+        if (HttpStatus.HTTP_OK != httpResponse.getStatus()) {
+            throw new RuntimeException("获取 Star 列表失败");
+        }
+        Gson gson = GsonUtils.createGson(true);
+        JsonArray jsonArray = gson.fromJson(httpResponse.body(), JsonArray.class);
+
+        List<StarredResp> list = StarredUtil.convert(jsonArray);
+        log.info("获取 Star 列表成功，数量：{}", list.size());
+
+        return ResponseGenerator.success(list);
     }
 
 

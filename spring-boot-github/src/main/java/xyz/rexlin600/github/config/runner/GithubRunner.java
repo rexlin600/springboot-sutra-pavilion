@@ -19,11 +19,8 @@ import org.springframework.util.StringUtils;
 @Component
 public class GithubRunner implements CommandLineRunner {
 
-    @Value("${github.oauth.username}")
-    private String username;
-
-    @Value("${github.oauth.password}")
-    private String password;
+    @Value("${github.oauth.token}")
+    private String token;
 
     /**
      * Github Client
@@ -38,7 +35,7 @@ public class GithubRunner implements CommandLineRunner {
     //public static ContentsService contentsService;
     //public static DataService dataService;
     //public static DeployKeyService deployKeyService;
-    //public static DownloadService downloadService;
+    public static DownloadService downloadService;
     //public static EventService eventService;
     //public static GistService gistService;
     //public static IssueService issueService;
@@ -62,14 +59,12 @@ public class GithubRunner implements CommandLineRunner {
      */
     @Override
     public void run(String... args) throws Exception {
-        if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
-            log.error("==>  Oauth failed, Please check your username and password...");
+        if (StringUtils.isEmpty(token)) {
+            log.error("==>  Oauth failed, Please check your token ...");
         }
 
-        log.info("==>  Oauth user is : [{}]", username);
-
         client = new GitHubClient();
-        client.setCredentials(username, password);
+        client.setOAuth2Token(token);
 
         // init service
         //collaboratorService = new CollaboratorService(client);
@@ -77,7 +72,7 @@ public class GithubRunner implements CommandLineRunner {
         //contentsService = new ContentsService(client);
         //dataService = new DataService(client);
         //deployKeyService = new DeployKeyService(client);
-        //downloadService = new DownloadService(client);
+        downloadService = new DownloadService(client);
         //eventService = new EventService(client);
         //gistService = new GistService(client);
         //issueService = new IssueService(client);

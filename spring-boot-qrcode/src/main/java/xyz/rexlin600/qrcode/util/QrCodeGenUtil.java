@@ -51,8 +51,8 @@ public class QrCodeGenUtil {
      * 线程池
      */
     private final static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
-            50,
-            150,
+            5,
+            10,
             10,
             TimeUnit.SECONDS,
             new LinkedBlockingDeque<>(),

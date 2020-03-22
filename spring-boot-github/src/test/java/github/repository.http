@@ -6,7 +6,7 @@
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
 ### get repository by page
-GET http://localhost:10004/repository/page/repositories?start=1&end=2
+GET http://localhost:10004/repository/page?start=1&end=2
 Accept: application/json
 
 ### get repository by page and assign username
@@ -87,3 +87,9 @@ Content-Type: application/json
   "owner": "cookieY",
   "name": "Yearning"
 }
+
+### get star list
+GET http://localhost:10004/repository/star/list?page=1&pageSize=10&user=rexlin600
+Content-Type: application/json
+
+###

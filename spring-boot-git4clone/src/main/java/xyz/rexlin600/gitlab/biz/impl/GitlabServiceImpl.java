@@ -36,9 +36,9 @@ public class GitlabServiceImpl implements GitlabService {
      */
     private ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().setNamePrefix("gitlab4clone-pool-%d").build();
     private ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
-            150,
-            200,
-            15,
+            5,
+            10,
+            10,
             TimeUnit.SECONDS,
             new LinkedBlockingDeque<>(),
             namedThreadFactory,
