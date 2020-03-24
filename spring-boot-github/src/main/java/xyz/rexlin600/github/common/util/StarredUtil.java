@@ -7,6 +7,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import xyz.rexlin600.github.common.constant.GithubConstant;
 import xyz.rexlin600.github.entity.StarredResp;
 
 import java.time.LocalDateTime;
@@ -34,6 +35,22 @@ public class StarredUtil {
             new LinkedBlockingDeque<>(),
             namedThreadFactory,
             new ThreadPoolExecutor.AbortPolicy());
+
+    /**
+     * 拼接获取Star列表URL
+     *
+     * @param page
+     * @param user
+     * @return
+     */
+    public static String getGithuStarsbUrl(Integer page, String user) {
+        String starredUrl = new StringBuffer().append(GithubConstant.GITHUB_API_URL)
+                .append(GithubConstant.GITHUB_USERS).append("/").append(user)
+                .append(GithubConstant.GITHUB_STARRED)
+                .append("?page=").append(page)
+                .toString();
+        return starredUrl;
+    }
 
     /**
      * json 转 StarredResp

@@ -1,5 +1,6 @@
 package xyz.rexlin600.github.rest;
 
+import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
 import cn.hutool.http.HttpUtil;
@@ -26,6 +27,7 @@ import java.util.*;
  * @author: hekunlin
  * @date: 2020/1/3
  */
+@SuppressWarnings("ALL")
 @Slf4j
 @RestController
 @RequestMapping(value = "/repository")
@@ -271,36 +273,35 @@ public class RepositoryRest {
     }
 
     /**
-     * 获取某个用户的 Starred 列表
+     * 11. 【获取某个用户的 Star，分页查询】
      *
-     * @param page     第几页
-     * @param pageSize 每页记录数
-     * @param user     用户
+     * @param page 第几页
+     * @param user 用户
      * @return
      */
     @SneakyThrows
-    @GetMapping("/star/list")
-    public Response<List<StarredResp>> starList(@RequestParam Integer page,
-                                                @RequestParam Integer pageSize,
-                                                @RequestParam String user) {
-        // default pageSize is 100
-        if (pageSize <= 0 || pageSize > 100) {
-            pageSize = 100;
-        }
+    @GetMapping("/star/page")
+    public Response<List<StarredResp>> starList(@RequestParam Integer page, @RequestParam String user) {
+        Gson gson = GsonUtils.createGson(true);
 
         // concat req URL
-        String starredUrl = new StringBuffer().append(GithubConstant.GITHUB_API_URL)
-                .append(GithubConstant.GITHUB_USERS).append("/").append(user)
-                .append(GithubConstant.GITHUB_STARRED)
-                .append("?page=").append(page).append("&per_page=").append(pageSize)
-                .toString();
+        String starredUrl = StarredUtil.getGithuStarsbUrl(page, user);
 
         // merge list
         HttpResponse httpResponse = HttpUtil.createGet(starredUrl).execute();
         if (HttpStatus.HTTP_OK != httpResponse.getStatus()) {
             throw new RuntimeException("获取 Star 列表失败");
         }
-        Gson gson = GsonUtils.createGson(true);
+
+        // TODO 获取头信息
+        Integer count = 0;
+        Map<String, List<String>> headers = httpResponse.headers();
+        if (headers.containsKey("Link")) {
+            List<String> link = headers.get("Link");
+            log.info("link is: {}", link);
+        }
+
+
         JsonArray jsonArray = gson.fromJson(httpResponse.body(), JsonArray.class);
 
         List<StarredResp> list = StarredUtil.convert(jsonArray);
