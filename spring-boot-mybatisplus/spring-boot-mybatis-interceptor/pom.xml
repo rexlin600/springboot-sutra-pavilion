@@ -9,14 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spring-boot-mybatisplus</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>spring-boot-mybatis-interceptor</artifactId>
 
-    <modules>
-        <module>spring-boot-mybatisplus-crud</module>
-        <module>spring-boot-mybatisplus-codegen</module>
-        <module>spring-boot-mybatis-interceptor</module>
-    </modules>
+    <properties>
+        <mybatis.plus.version>3.3.0</mybatis.plus.version>
+        <pagehelper.version>5.1.10</pagehelper.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -28,12 +26,23 @@
             <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis.plus.version}</version>
         </dependency>
         <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>${pagehelper.version}</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
@@ -46,6 +55,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>
