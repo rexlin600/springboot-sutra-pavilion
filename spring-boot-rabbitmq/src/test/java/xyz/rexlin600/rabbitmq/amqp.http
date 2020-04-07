@@ -37,7 +37,7 @@ Content-Type: application/json
 
 ### invoke dl method
 ### 按照预期：如果 DeadLetterConsumer 能够正常处理，则不会产生死信；反正注释 DeadLetterConsumer 则会产生死信，在消息发送10s后监听队列收到消息
-POST http://localhost:10009/amqp/dl/invoke/productDLExpireStr
+POST http://localhost:10009/amqp/dl/invoke/productDlExpireStr
 Content-Type: application/json
 
 ###
