@@ -18,6 +18,11 @@
 
 ![](http://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/2020-05-03-050753.png)
 
+## 某云高速下载
+
+链接: https://pan.baidu.com/s/1XuZH16l9hV5K8yea6mzA9g  密码: 8i4f
+
+
 ## 参考
 
  - [skywalking 下载地址](http://skywalking.apache.org/downloads/)
