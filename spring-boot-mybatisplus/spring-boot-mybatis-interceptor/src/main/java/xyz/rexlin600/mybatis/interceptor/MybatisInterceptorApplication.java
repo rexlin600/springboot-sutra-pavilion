@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author: hekunlin
  * @date: 2020/3/24
  */
-@MapperScan("xyz.rexlin600.")
+@MapperScan("xyz.rexlin600.mybatis.interceptor")
 @SpringBootApplication
 public class MybatisInterceptorApplication {
 
