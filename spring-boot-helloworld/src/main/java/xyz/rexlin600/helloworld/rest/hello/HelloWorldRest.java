@@ -5,7 +5,6 @@ import xyz.rexlin600.helloworld.entity.req.PostReq;
 
 /**
  * @menu HelloWorld
- *
  * @author: hekunlin
  */
 @RestController

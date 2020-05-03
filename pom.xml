@@ -57,6 +57,7 @@
         <module>spring-boot-log4j</module>
         <module>spring-boot-custom-starter</module>
         <module>spring-boot-excel</module>
+        <module>spring-boot-skywalking</module>
     </modules>
 
     <dependencies>
