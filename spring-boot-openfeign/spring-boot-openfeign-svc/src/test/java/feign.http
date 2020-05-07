@@ -1,0 +1,23 @@
+### 获取历史上的今天数据
+GET http://localhost:10033/open/feign/historyToady?key=951e007714f394840e0f7f03e743eb76&v=1.0&month=5&day=7
+Authorization: Basic admin admin
+Content-Type: application/json
+
+### 本地文件上传
+POST  http://localhost:10033/open/feign/upload
+Authorization: Basic admin admin
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"
+Content-Type: text/plain
+
+Name
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="application.yml"
+Content-Type: application/json
+
+< application.yml
+--WebAppBoundary--
+
+###

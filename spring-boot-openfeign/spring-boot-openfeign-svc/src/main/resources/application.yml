@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: openfeign
+  servlet: # 设置文件上传大小限制
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+# server config
+server:
+  port: 10033
+# management endpoint
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+  endpoint:
+    health:
+      show-details: always
+# eureka config
+eureka:
+  instance:
+    health-check-url-path: /actuator/health
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10032/eureka/
+    registry-fetch-interval-seconds: 5
+    register-with-eureka: true # 【采坑】下面配置必须配置为如下模式，否者报错：Cannot execute request on any known server，但是对程序无影响，可以正常运行
+    fetch-registry: false
+# logging
+logging:
+  level:
+    xyz.rexlin600: debug
+# feign
+feign:
+  okhttp:
+    enabled: false
+  httpclient:
+    enabled: true # 此版本默认启用
+    max-connections: 200
+    max-connections-per-route: 50
+    time-to-live: 60
+    connection-timeout: 2000
