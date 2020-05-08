@@ -18,7 +18,6 @@
 * spring-boot-ignite
 * spring-boot-elastic-job
 * spring-boot-influxdb
-* spring-boot-websocket
 * spring-boot-prometheus-grafana
 * spring-boot-elk-filebeat
 * spring-boot-mvc

@@ -61,6 +61,7 @@
         <module>spring-boot-openfeign</module>
         <module>spring-boot-openfeign/spring-boot-openfeign-svc</module>
         <module>spring-boot-fastdfs</module>
+        <module>spring-boot-websocket</module>
     </modules>
 
     <dependencies>

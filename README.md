@@ -72,6 +72,7 @@
 | [skywalking](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-skywalking/README.md) | 集成 `skywalking`，实现链路监控 |
 | [openfeign](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-openfeign/README.md) | 集成 `openfeign`，实现文件上传、打印feign日志、调用远程URL提供的服务 |
 | [fastdfs](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-fastdfs/README.md) | 集成 `fastdfs`，实现文件上传、下载 |
+| [websocket](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-websocket/README.md) | 集成 `websocket`，实现简单`聊天室功能` |
 | _ | _ |
 
 
