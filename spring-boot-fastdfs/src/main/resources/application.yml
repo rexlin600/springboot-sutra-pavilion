@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: fastdfs
+server:
+  port: 10034
+# fastDFS config
+biz:
+  fastdfs:
+    httpUrl: http://10.197.236.171/
+fdfs:
+  connect-timeout: 600
+  pool:
+    max-total: 153
+    max-wait-millis: 102
+  so-timeout: 1500
+  thumb-image:
+    height: 150
+    width: 150
+  tracker-list:
+    - 10.197.236.172:22122
+    - 10.197.236.188:22122
+logging:
+  level:
+    xyz.rexlin600: debug
