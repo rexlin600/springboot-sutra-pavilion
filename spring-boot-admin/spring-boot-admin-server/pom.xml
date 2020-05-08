@@ -33,14 +33,14 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
-            <url>http://repo.spring.io/milestone</url>
+            <url>https://repo.spring.io/milestone</url>
         </repository>
         <repository>
             <id>spring-snapshot</id>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-            <url>http://repo.spring.io/snapshot</url>
+            <url>https://repo.spring.io/snapshot</url>
         </repository>
         <repository>
             <id>sonatype-nexus-snapshots</id>
