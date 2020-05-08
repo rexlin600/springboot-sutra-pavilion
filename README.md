@@ -71,6 +71,7 @@
 | [log4j](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-log4j/README.md) | 集成 `log4j` |
 | [skywalking](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-skywalking/README.md) | 集成 `skywalking`，实现链路监控 |
 | [openfeign](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-openfeign/README.md) | 集成 `openfeign`，实现文件上传、打印feign日志、调用远程URL提供的服务 |
+| [fastdfs](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-fastdfs/README.md) | 集成 `fastdfs`，实现文件上传、下载 |
 | _ | _ |
 
 
