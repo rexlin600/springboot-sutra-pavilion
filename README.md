@@ -17,13 +17,6 @@
     <a href="https://img.shields.io/github/watchers/rexlin600/springboot-sutra-pavilion?style=social"><img alt="GitHub watchers" src="https://img.shields.io/github/watchers/rexlin600/springboot-sutra-pavilion?style=social"></a>
 </p>
 
-
-## 文档
-
-<p align="left">
-  <span>中文 | <a href="./README.en.md">English</a></span>
-</p>
-
 ## 项目简介
 
 `springboot-sutra-pavilion` 是一个基于 `Spring Boot 2.x` 的综合性 `仓库`。`Spring Boot 2.x` 中的各种示例，以简单、快捷、精炼为目标，虽然定义为 `example`，但是其具体实现上尽可能的能够帮助大家在实际使用中能够只需要进行少量的修改即可投入使用。
