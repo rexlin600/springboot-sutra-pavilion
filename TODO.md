@@ -2,10 +2,7 @@
 
 * spring-boot-sharding-jdbc
 * spring-boot-sharding-jdbc-masterslave
-* spring-boot-upload
-  * spring-boot-upload
-  * spring-boot-feign-upload
-  * spring-boot-zuul-upload
+* spring-boot-zuul-upload
 * spring-boot-fastDFS
 * spring-boot-validation(jsr303 and hibernate-validation)
 * spring-boot-security
@@ -24,10 +21,6 @@
 * spring-boot-websocket
 * spring-boot-prometheus-grafana
 * spring-boot-elk-filebeat
-* spring-boot-apm
-  * spring-boot-skywalking
-  * spring-boot-zipkin
-  * spring-boot-pinpoint
 * spring-boot-mvc
 * spring-boot-dubbo
 * spring-boot-benchmark(container、api-gatway、mvcAndWbflux)

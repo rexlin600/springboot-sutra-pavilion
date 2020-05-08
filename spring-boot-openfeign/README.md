@@ -208,6 +208,48 @@ feign:
 
 至此，即实现了启用 `Apache` 的 `httpclient`而非默认的内嵌 `httpclient`
 
+## SpringBoot 单文件上传于多文件上传
+
+这个比较简单，参考代码如下：
+
+```java
+    /**
+     * SpringBoot 单个文件上传
+     *
+     * @param file
+     * @return
+     */
+    @SneakyThrows
+    @PostMapping("/upload")
+    public String upload(@RequestParam(value = "file") MultipartFile file) {
+        String filename = file.getOriginalFilename();
+        long fileSize = file.getSize();
+        InputStream inputStream = file.getInputStream();
+
+        // 省略文件上传后续操作 ...
+
+        return "SUCCESS";
+    }
+
+    /**
+     * SpringBoot 批量文件上传
+     *
+     * @param files
+     * @return
+     */
+    @SneakyThrows
+    @PostMapping("/batch/upload")
+    public String upload(@RequestParam(value = "files") MultipartFile[] files) {
+        for (MultipartFile file : files) {
+            this.upload(file);
+        }
+
+        // 省略文件上传后续操作 ...
+
+        return "SUCCESS";
+    }
+```
+
 ## 使用 Feign 实现文件上传
 
 > 注意，本示例相当于同时演示了如何和微服务集成实现服务间的调用

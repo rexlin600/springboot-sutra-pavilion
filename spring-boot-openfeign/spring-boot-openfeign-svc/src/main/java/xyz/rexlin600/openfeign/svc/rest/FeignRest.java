@@ -50,7 +50,7 @@ public class FeignRest {
     }
 
     /**
-     * Feign 文件上传
+     * SpringBoot 单个文件上传
      *
      * @param file
      * @return
@@ -61,6 +61,24 @@ public class FeignRest {
         String filename = file.getOriginalFilename();
         long fileSize = file.getSize();
         InputStream inputStream = file.getInputStream();
+
+        // 省略文件上传后续操作 ...
+
+        return "SUCCESS";
+    }
+
+    /**
+     * SpringBoot 批量文件上传
+     *
+     * @param files
+     * @return
+     */
+    @SneakyThrows
+    @PostMapping("/batch/upload")
+    public String upload(@RequestParam(value = "files") MultipartFile[] files) {
+        for (MultipartFile file : files) {
+            this.upload(file);
+        }
 
         // 省略文件上传后续操作 ...
 
