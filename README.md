@@ -69,7 +69,8 @@
 | [qrcode](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-qrcode/README.md) | 集成 `zxing`，提供了快速生成二维码、带文字的二维码、带logo的二维码、批量生产二维码等 |
 | [jaxb](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-jaxb/README.md) | 集成 `jaxb`，提供对象转XML、XML转对象的功能（包含简单对象、List对象、Map对象、动态XML等） |
 | [log4j](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-log4j/README.md) | 集成 `log4j` |
-| [skywalking](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-log4j/README.md) | 集成 `skywalking` |
+| [skywalking](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-skywalking/README.md) | 集成 `skywalking`，实现链路监控 |
+| [openfeign](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-openfeign/README.md) | 集成 `openfeign`，实现文件上传、打印feign日志、调用远程URL提供的服务 |
 | _ | _ |
 
 
