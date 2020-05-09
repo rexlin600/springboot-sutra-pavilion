@@ -1,0 +1,9 @@
+### Search Goods
+GET http://localhost:10008/goods/page?page=1&size=10
+Content-Type: application/json
+
+### Search Goods
+GET http://localhost:10008/goods/1
+Content-Type: application/json
+
+###

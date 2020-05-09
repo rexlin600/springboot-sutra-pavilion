@@ -29,3 +29,8 @@ spring:
     show-sql: true
 server:
   port: 10010
+pagehelper:
+  helper-dialect: mysql
+  params: count=countSql
+  reasonable: true
+  support-methods-arguments: true

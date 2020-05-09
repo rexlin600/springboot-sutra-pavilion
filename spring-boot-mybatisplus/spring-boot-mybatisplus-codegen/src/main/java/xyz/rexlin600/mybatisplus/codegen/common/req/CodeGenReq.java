@@ -35,6 +35,7 @@ public class CodeGenReq implements Serializable {
     /**
      * 是否开启 Swagger2
      */
+    @NotNull(message = "是否开启Swagger2不能为空")
     private Boolean openApiDoc;
 
     /**
@@ -56,6 +57,7 @@ public class CodeGenReq implements Serializable {
     /**
      * 是否开启 lombok
      */
+    @NotNull(message = "是否开启lombok不能为空")
     private boolean lombok;
 
     /**

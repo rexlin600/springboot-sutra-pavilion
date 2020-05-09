@@ -183,14 +183,39 @@ Executor executor = this.configuration.newExecutor(tx, execType);
 
 这也就解释了我们前面的图片说默认 `Executor` 是 `SimpleExecutor`。
 
+## SpringBoot 中自定义 Interceptor（集成 PageHelper 分页插件）
 
+对于业务中需要用到 `Mybatis` 进行拦截处理的，常用业务包括：
 
+* 大 `SQL` 拦截
+* `SQL` 操作日志采集
+* 分页
+* 拦截 `SQL` 用于权限验证、处理等
+* 其他 `SQL` 预处理
 
+在 `Mybatis` 中主要提供下面 `4` 个接口支持拦截：
 
+| 拦截 | 方法 | CH |
+| --- | --- | --- |
+| `Executor` | update, query, flushStatements, commit, rollback, getTransaction, close, isClosed | 最先被执行，查询、更新操作，如果要指定哪种操作拦截，使用这个方法 |
+| `ParameterHandler` | getParameterObject, setParameters | SQL参数处理用这个方法、包括mapper配置信息也可以获取到 |
+| `StatementHandler` | prepare, parameterize, batch, update, query | JDBC和数据库交互，连接信息存在 |
+| `ResultSetHandler` | handleResultSets, handleOutputParameters | 结果集处理 |
+
+如果集成了 `PageHelper` 做分页，那么实现 `Mybatis` 拦截器需要拦截 `Executor` ，即使用 `QueryInterceptor`。同时需要注意的时这个拦截器要满足一定的规范，具体参考文末的两篇参考文章：`重要：Executor 拦截器高级教程 - QueryInterceptor 规范`、`重要：SpringBoot 通过自定义 Mybatis 拦截器，实现 SQL 的改写`
+
+**具体操作：**
+
+1. 定义拦截器 `MybatisExecutorInterceptor` 并完成相应的各种处理
+2. 编写配置类 `MybatisInterceptorConfig`
+3. 编写 `META-INF` 下的 `spring.factories`
 
 ## 参考
 
 - [Mybatis深入浅出系列](https://www.cnblogs.com/dongying/tag/Mybatis%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E7%B3%BB%E5%88%97/)
+- [MyBatis自定义拦截器插件](https://blog.csdn.net/x763795151/article/details/87886492)
+- [重要：Executor 拦截器高级教程 - QueryInterceptor 规范](https://github.com/pagehelper/Mybatis-PageHelper/blob/master/wikis/zh/Interceptor.md)
+- [重要：SpringBoot 通过自定义 Mybatis 拦截器，实现 SQL 的改写](https://www.cnblogs.com/d0usr/p/12448639.html)
+- [重要：mybatis - 基于拦截器修改执行中的SQL语句](https://www.cnblogs.com/cjunn/p/12168421.html#/cnblog/works/article/12168421)
 
-
-[]: https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/sqlSession.jpg
+![](https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/sqlSession.jpg)

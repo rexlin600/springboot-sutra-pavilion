@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.github.pagehelper.autoconfigure.PageHelperAutoConfiguration,\
+  xyz.rexlin600.mybatis.interceptor.config.MybatisInterceptorConfig

@@ -1,7 +1,11 @@
 package xyz.rexlin600.mybatis.interceptor.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
+import xyz.rexlin600.mybatis.interceptor.annotation.InjectSql;
 import xyz.rexlin600.mybatis.interceptor.entity.Goods;
+
+import java.util.List;
 
 /**
  * <p>
@@ -9,9 +13,18 @@ import xyz.rexlin600.mybatis.interceptor.entity.Goods;
  * </p>
  *
  * @author rexlin600
- * @since 2020-03-16
+ * @since 2020-05-09
  */
 public interface GoodsService extends IService<Goods> {
+
+    /**
+     * 分页查询
+     *
+     * @param page
+     * @param size
+     * @return
+     */
+    PageInfo selectList(Integer page, Integer size);
 
     /**
      * 根据ID查询
@@ -19,6 +32,6 @@ public interface GoodsService extends IService<Goods> {
      * @param id
      * @return
      */
-    Goods selectById(Long id, Long ds);
+    Goods selectById(Long id);
 
 }

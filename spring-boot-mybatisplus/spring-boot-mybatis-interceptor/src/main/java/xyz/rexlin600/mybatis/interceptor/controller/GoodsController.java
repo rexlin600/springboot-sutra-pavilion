@@ -1,11 +1,14 @@
 package xyz.rexlin600.mybatis.interceptor.controller;
 
-import com.baomidou.mybatisplus.extension.api.ApiController;
+
 import com.baomidou.mybatisplus.extension.api.R;
-import lombok.AllArgsConstructor;
+import com.github.pagehelper.PageInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import xyz.rexlin600.mybatis.interceptor.entity.Goods;
+
 import xyz.rexlin600.mybatis.interceptor.service.GoodsService;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * <p>
@@ -13,27 +16,29 @@ import xyz.rexlin600.mybatis.interceptor.service.GoodsService;
  * </p>
  *
  * @author rexlin600
- * @since 2020-03-16
+ * @since 2020-05-09
  */
 @RestController
 @RequestMapping("/goods")
-@AllArgsConstructor
-public class GoodsController extends ApiController {
+public class GoodsController {
 
     private final GoodsService goodsService;
 
-    /**
-     * 根据ID查询测试数据
-     *
-     * @param id
-     * @param ds
-     * @return
-     */
-    @GetMapping("{id}")
-    public R get(@PathVariable("id") Long id,
-                 @RequestParam(value = "ds", required = false) Long ds) {
-        Goods goods = goodsService.selectById(id, ds);
-        return R.ok(goods);
+    @Autowired
+    public GoodsController(GoodsService goodsService) {
+        this.goodsService = goodsService;
+    }
+
+    @GetMapping("/page")
+    public R goods(@RequestParam(value = "page") @NotNull(message = "分页参数，页码不可为空") Integer page,
+                   @RequestParam(value = "size") @NotNull(message = "分页参数，每页条数不可为空") Integer size) {
+        PageInfo pageInfo = goodsService.selectList(page, size);
+        return R.ok(pageInfo);
+    }
+
+    @GetMapping("/{id}")
+    public R get(@PathVariable(value = "id") Long id) {
+        return R.ok(this.goodsService.selectById(id));
     }
 
 }

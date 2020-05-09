@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="xyz.rexlin600.custom.test.mapper.GoodsMapper">
+<!--suppress ALL -->
+<mapper namespace="xyz.rexlin600.mybatis.interceptor.mapper.GoodsMapper">
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="xyz.rexlin600.mybatis.interceptor.entity.Goods">
@@ -18,5 +19,13 @@
     <sql id="Base_Column_List">
         id, name, sort, position, weight, color, create_date, update_date
     </sql>
+
+    <select id="selectByGoodsId" resultType="xyz.rexlin600.mybatis.interceptor.entity.Goods">
+        select * from goods where id = #{id}
+    </select>
+
+    <select id="selectByGoodsId" resultType="xyz.rexlin600.mybatis.interceptor.entity.Goods">
+        select * from goods where name = #{name}
+    </select>
 
 </mapper>

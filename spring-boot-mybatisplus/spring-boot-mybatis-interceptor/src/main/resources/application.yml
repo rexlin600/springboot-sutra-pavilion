@@ -1,6 +1,6 @@
 spring:
   application:
-    name: mybatis
+    name: mybatis-interceptor
   datasource:
     url: jdbc:mysql://localhost:3306/spring-boot-mybatisplus?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
     username: root
@@ -20,7 +20,15 @@ spring:
       # 此属性控制池允许达到的最大大小，包括空闲和正在使用的连接。默认值10
       maximum-pool-size: 100
 mybatis-plus:
-  type-aliases-package: xyz.rexlin600.mybatisplus.crud.model
+  type-aliases-package: xyz.rexlin600.mybatis.interceptor.entity
   mapper-locations: classpath*:/mapper/**/*.xml
 server:
   port: 10008
+pagehelper: # 分页pageHelper
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+logging:
+  level:
+    xyz.rexlin600: debug
