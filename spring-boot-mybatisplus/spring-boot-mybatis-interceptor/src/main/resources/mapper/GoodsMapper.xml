@@ -24,8 +24,4 @@
         select * from goods where id = #{id}
     </select>
 
-    <select id="selectByGoodsId" resultType="xyz.rexlin600.mybatis.interceptor.entity.Goods">
-        select * from goods where name = #{name}
-    </select>
-
 </mapper>

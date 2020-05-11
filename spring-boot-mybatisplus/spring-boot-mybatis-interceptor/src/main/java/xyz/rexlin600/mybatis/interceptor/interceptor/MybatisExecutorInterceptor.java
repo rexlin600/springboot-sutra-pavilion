@@ -3,19 +3,14 @@ package xyz.rexlin600.mybatis.interceptor.interceptor;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.BooleanUtil;
-import cn.hutool.core.util.ReferenceUtil;
-import cn.hutool.core.util.ReflectUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.executor.Executor;
-import org.apache.ibatis.executor.statement.RoutingStatementHandler;
-import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.*;
 import org.apache.ibatis.plugin.*;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
 import xyz.rexlin600.mybatis.interceptor.annotation.InjectSql;
 
@@ -27,7 +22,11 @@ import java.util.Optional;
 import java.util.Properties;
 
 /**
- * Mybatis 自定义拦截器
+ * Mybatis 自定义拦截器一
+ * <p>
+ * 这里这个拦截器只用于演示在集成了 PageHelper 分页插件的情况下如何使用 Mybatis 拦截器进行SQL 的修改
+ * 因为这里涉及一个知识点：Mybatis 拦截器执行链顺序的问题
+ * 请勿在生产中直接这样使用！！！
  *
  * @author: hekunlin
  * @date: 2020/3/24
@@ -79,14 +78,15 @@ public class MybatisExecutorInterceptor implements Interceptor {
 
         // FIXME 判断是否存在SQL注入注解：如果存在方法名称相同的则可能出现判断错误，这里只是为了演示在使用 pageHelper 分页的情况下的拦截器的使用
         String id = ms.getId();
-        String mName = id.substring(id.lastIndexOf(".") + 1, id.length());
+        String methodName = id.substring(id.lastIndexOf(".") + 1);
+
         Class<?> aClass = Class.forName(id.substring(0, id.lastIndexOf(".")));
         Method[] methods = aClass.getDeclaredMethods();
         if (CollectionUtil.isEmpty(Arrays.asList(methods))) {
             return executor.query(ms, parameter, rowBounds, resultHandler, cacheKey, boundSql);
         }
 
-        Optional<Method> optional = Arrays.stream(methods).filter(m -> m.isAnnotationPresent(InjectSql.class) && m.getName().equals(mName)).findFirst();
+        Optional<Method> optional = Arrays.stream(methods).filter(m -> m.isAnnotationPresent(InjectSql.class) && m.getName().equals(methodName)).findFirst();
         if (BooleanUtil.isFalse(optional.isPresent())) {
             return executor.query(ms, parameter, rowBounds, resultHandler, cacheKey, boundSql);
         }

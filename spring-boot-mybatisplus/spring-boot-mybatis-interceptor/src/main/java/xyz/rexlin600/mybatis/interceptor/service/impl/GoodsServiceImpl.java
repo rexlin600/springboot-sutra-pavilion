@@ -3,6 +3,7 @@ package xyz.rexlin600.mybatis.interceptor.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import xyz.rexlin600.mybatis.interceptor.annotation.InjectSql;
 import xyz.rexlin600.mybatis.interceptor.entity.Goods;
 import xyz.rexlin600.mybatis.interceptor.mapper.GoodsMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

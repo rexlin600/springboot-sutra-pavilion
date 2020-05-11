@@ -20,7 +20,4 @@ public interface GoodsMapper extends BaseMapper<Goods> {
     @InjectSql(flag = true)
     Goods selectByGoodsId(Long id);
 
-    @InjectSql(flag = true)
-    List<Goods> selectByGoodsId(String name);
-
 }
