@@ -20,13 +20,17 @@ import java.util.UUID;
  */
 @Slf4j
 @RestController
-@RequestMapping("/redis")
-public class RedisRest {
+@RequestMapping("/redis/crud")
+public class RedisCrudRest {
 
-    @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+    private final RedisTemplate<String, Object> redisTemplate;
 
     private static final String HASH_KEY = "BLOG_LIST";
+
+    @Autowired
+    public RedisCrudRest(RedisTemplate<String, Object> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
 
     /**
      * 1. 【新增blog】
@@ -66,11 +70,6 @@ public class RedisRest {
         redisTemplate.opsForHash().putIfAbsent(HASH_KEY, String.valueOf(blog.getId()), blog);
         return ResponseGenerator.success();
     }
-
-
-    // -----------------------------------------------------------------------------------------------
-    // cacheable
-    // -----------------------------------------------------------------------------------------------
 
     /**
      * 4. 【获取blog】
@@ -140,7 +139,7 @@ public class RedisRest {
 
 
     /**
-     * 8. 【删除指定的key】
+     * 7. 【删除指定的key】
      *
      * @param key
      * @return

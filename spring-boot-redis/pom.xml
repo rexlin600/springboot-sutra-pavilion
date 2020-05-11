@@ -11,15 +11,13 @@
 
     <artifactId>spring-boot-redis</artifactId>
 
-    <properties>
-        <spring-session.version>2.1.1.RELEASE</spring-session.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <!-- spring + redis -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -45,6 +43,16 @@
             <artifactId>spring-session-data-redis</artifactId>
             <version>${spring-session.version}</version>
         </dependency>
+
+        <!-- 自定义 fastjson 序列化 需要引入这个包 -->
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.68</version>
+        </dependency>
+
+        <!-- mybatis + pagehelper -->
         <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -74,6 +82,10 @@
             </exclusions>
         </dependency>
     </dependencies>
+
+    <properties>
+        <spring-session.version>2.1.1.RELEASE</spring-session.version>
+    </properties>
 
     <build>
         <finalName>${project.artifactId}</finalName>

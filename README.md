@@ -75,7 +75,6 @@
 
 **后期完善**
 
-2. 完善 `spring-boot-rabbitmq`
 3. 完善 `spring-boot-elasticsearch`
 4. 完善 `spring-boot-redis`
 

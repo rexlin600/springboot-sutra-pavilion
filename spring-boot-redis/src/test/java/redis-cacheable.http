@@ -1,0 +1,13 @@
+### cacheable
+GET http://localhost:10005/redis/cacheable/cacheable/999
+Accept: application/json
+
+### cachePut
+GET http://localhost:10005/redis/cacheable/cachePut/999
+Accept: application/json
+
+### cacheEvict
+GET http://localhost:10005/redis/cacheable/cacheEvict/999
+Accept: application/json
+
+###

@@ -7,7 +7,7 @@
 ### 极简
 
 ### redis set
-POST http://localhost:10005/redis
+POST http://localhost:10005/redis/crud
 Content-Type: application/json
 
 {
@@ -20,12 +20,12 @@ Content-Type: application/json
 
 
 ### delete blog
-DELETE http://localhost:10005/redis/1
+DELETE http://localhost:10005/redis/crud/1
 Content-Type: application/json
 
 
 ### update blog
-PUT http://localhost:10005/redis
+PUT http://localhost:10005/redis/crud
 Content-Type: application/json
 
 {
@@ -38,24 +38,26 @@ Content-Type: application/json
 
 
 ### get blog by hashKey
-GET http://localhost:10005/redis/1
+GET http://localhost:10005/redis/crud/1
 Accept: application/json
 
 ### get blog list
-GET http://localhost:10005/redis/list
+GET http://localhost:10005/redis/crud/list
 Accept: application/json
 
 ### get session id
-GET http://localhost:10005/redis/session
+GET http://localhost:10005/redis/crud/session
 Accept: application/json
 
 ### get blog cacheable
-GET http://localhost:10005/redis/annotation/2
+GET http://localhost:10005/redis/crud/annotation/2
 Accept: application/json
 
 ### delete assign key
-DELETE http://localhost:10005/redis/key/user-key::com.neo.web.UserControllergetUser
+DELETE http://localhost:10005/redis/crud/key/user-key::com.neo.web.UserControllergetUser
 Content-Type: application/json
+
+###
 
 
 
