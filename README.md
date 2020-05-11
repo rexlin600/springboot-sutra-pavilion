@@ -75,9 +75,8 @@
 
 **后期完善**
 
-3. 完善 `spring-boot-elasticsearch`
-4. 完善 `spring-boot-redis`
-
+1. 完善 `spring-boot-elasticsearch`
+2. 晚上 `spring-boot-redis` 各类数据的使用
 
 ## 参考
 
