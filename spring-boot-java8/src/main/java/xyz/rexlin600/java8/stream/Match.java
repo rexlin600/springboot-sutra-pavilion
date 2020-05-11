@@ -42,7 +42,7 @@ public class Match {
      * @param predicate
      * @return
      */
-    public Boolean anyMatch(Predicate predicate) {
+    public static Boolean anyMatch(Predicate predicate) {
         boolean match = goodsList.stream()
                 .anyMatch(predicate);
         return match;
@@ -54,7 +54,7 @@ public class Match {
      * @param predicate
      * @return
      */
-    public Boolean noneMatch(Predicate predicate) {
+    public static Boolean noneMatch(Predicate predicate) {
         boolean match = goodsList.stream()
                 .noneMatch(predicate);
         return match;
@@ -67,7 +67,7 @@ public class Match {
      * @param predicate
      * @return
      */
-    public Boolean allMatch(Predicate predicate) {
+    public static Boolean allMatch(Predicate predicate) {
         boolean match = goodsList.stream()
                 .allMatch(predicate);
         return match;

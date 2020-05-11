@@ -47,7 +47,7 @@ public class FlatMap {
      *
      * @return
      */
-    public List<Long> flatMapFunction(Function<Goods, Stream<Long>> function) {
+    public static List<Long> flatMapFunction(Function<Goods, Stream<Long>> function) {
         // maps 操作
         List<Long> collect = goodsList.stream()
                 .flatMap(new Function<Goods, Stream<Long>>() {
@@ -72,5 +72,23 @@ public class FlatMap {
     }
 
     // 其他 flatMap 的 ToInt、ToDobule、ToLong 也类似，这里就不一一写了
+
+    /**
+     * 测试
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        Function<Goods, Stream<Long>> function = new Function<Goods, Stream<Long>>() {
+            @Override
+            public Stream<Long> apply(Goods goods) {
+                if (goods.getColor().equals("天蓝色")) {
+                    return Stream.of(goods.getId());
+                }
+                return null;
+            }
+        };
+        List<Long> list = flatMapFunction(function);
+    }
 
 }

@@ -42,7 +42,7 @@ public class Build {
     /**
      * 构建 Stream 的各种方法
      */
-    public void buildStream() {
+    public static void buildStream() {
         // empty stream
         Stream<Object> empty = Stream.empty();
         log.info("empty stream = [{}]", empty);
@@ -95,5 +95,13 @@ public class Build {
 
     }
 
+    /**
+     * 测试
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        buildStream();
+    }
 
 }

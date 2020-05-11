@@ -40,7 +40,7 @@ public class Optinals {
      *
      * @return
      */
-    public Optional<Goods> optionalEmpty() {
+    public static Optional<Goods> optionalEmpty() {
         // return value == null ? empty() : of(value);
         Optional<Goods> optional = Optional.empty();
         return optional;
@@ -51,7 +51,7 @@ public class Optinals {
      *
      * @return
      */
-    public Optional<List<Goods>> optionalOfList() {
+    public static Optional<List<Goods>> optionalOfList() {
         Optional<List<Goods>> optional = Optional.of(goodsList.stream()
                 .filter(m -> m.getId().equals(2))
                 .collect(Collectors.toList()));
@@ -63,7 +63,7 @@ public class Optinals {
      *
      * @return
      */
-    public Optional<List<Goods>> optionalOfNullList() {
+    public static Optional<List<Goods>> optionalOfNullList() {
         // 【重点】Optional里包裹的内容如果是集合需要特殊判断，不能直接 Optional.isPresent()
         Optional<List<Goods>> optional = Optional.ofNullable(goodsList.stream()
                 .filter(m -> m.getId().equals(100))
@@ -76,7 +76,7 @@ public class Optinals {
      *
      * @return
      */
-    public Optional<Goods> optionalOfGoods() {
+    public static Optional<Goods> optionalOfGoods() {
         // return new Optional<>(value);
         Optional<Goods> optional = Optional.of(goodsList.get(2));
         return optional;
@@ -88,9 +88,21 @@ public class Optinals {
      *
      * @return
      */
-    public Optional<Goods> optionalOfNullGoods() {
+    public static Optional<Goods> optionalOfNullGoods() {
         Optional<Goods> optional = Optional.ofNullable(goodsList.get(2));
         return optional;
     }
-    
+
+    public static void main(String[] args) {
+        optionalEmpty();
+        System.out.println("---------------------------");
+        optionalOfGoods();
+        System.out.println("---------------------------");
+        optionalOfList();
+        System.out.println("---------------------------");
+        optionalOfNullGoods();
+        System.out.println("---------------------------");
+        optionalOfNullList();
+    }
+
 }

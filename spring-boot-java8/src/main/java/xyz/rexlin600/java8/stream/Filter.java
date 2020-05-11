@@ -45,7 +45,7 @@ public class Filter {
      *
      * @return
      */
-    public Long filerColor() {
+    public static Long filerColor() {
         long count = goodsList.stream()
                 .filter(goods -> SKY_BLUE.equals(goods.getColor()))
                 .count();
@@ -57,7 +57,7 @@ public class Filter {
      *
      * @return
      */
-    public Long filerPosition() {
+    public static Long filerPosition() {
         long count = goodsList.stream()
                 .filter(goods -> RD_ENGINEER.equals(goods.getPosition()))
                 .count();
@@ -70,7 +70,7 @@ public class Filter {
      *
      * @return
      */
-    public Long filerBoth() {
+    public static Long filerBoth() {
         long count = goodsList.stream()
                 .filter(goods -> RD_ENGINEER.equals(goods.getPosition()))
                 .filter(goods -> SKY_BLUE.equals(goods.getColor()))
@@ -84,11 +84,24 @@ public class Filter {
      * @param predicate
      * @return
      */
-    public Long filer(Predicate predicate) {
+    public static Long filer(Predicate predicate) {
         long count = goodsList.stream()
                 .filter(predicate)
                 .count();
         return count;
+    }
+
+    /**
+     * 测试
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        filerColor();
+        System.out.println("---------------------------");
+        filerBoth();
+        System.out.println("---------------------------");
+        filerPosition();
     }
 
 

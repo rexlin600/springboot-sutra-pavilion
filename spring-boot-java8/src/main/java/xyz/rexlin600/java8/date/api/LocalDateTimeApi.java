@@ -19,7 +19,7 @@ public class LocalDateTimeApi {
     /**
      * 当前时间
      */
-    public void now() {
+    public static void now() {
         LocalDateTime.now();
 
         // 系统默认时区
@@ -38,7 +38,7 @@ public class LocalDateTimeApi {
     /**
      * 时间转换
      */
-    public void transfer() {
+    public static void transfer() {
         // transfer LocalDate
         LocalDateTime.now().toLocalDate();
 
@@ -68,7 +68,7 @@ public class LocalDateTimeApi {
     /**
      * 获取具体时间
      */
-    public void actual() {
+    public static void actual() {
         // 一年中的第几天
         int dayOfYear = LocalDateTime.now().getDayOfYear();
         // 一月中的第几天
@@ -104,7 +104,7 @@ public class LocalDateTimeApi {
     /**
      * 构建时间
      */
-    public void build() {
+    public static void build() {
         LocalDateTime.of(2020, 1, 1, 12, 0);
         LocalDateTime.of(2020, 1, 1, 12, 0, 0);
         LocalDateTime.of(2020, 1, 1, 12, 0, 0, 0);
@@ -120,12 +120,24 @@ public class LocalDateTimeApi {
     /**
      * 时间比较
      */
-    public void compare() {
+    public static void compare() {
         LocalDateTime pre = LocalDateTime.of(2020, 1, 1, 12, 0);
         LocalDateTime suf = LocalDateTime.of(2099, 1, 1, 12, 0);
 
         LocalDateTime.now(ZoneId.systemDefault()).isAfter(pre);
         LocalDateTime.now(ZoneId.systemDefault()).isBefore(suf);
+    }
+
+    public static void main(String[] args) {
+        now();
+        System.out.println("---------------------------");
+        transfer();
+        System.out.println("---------------------------");
+        actual();
+        System.out.println("---------------------------");
+        build();
+        System.out.println("---------------------------");
+        compare();
     }
 
 

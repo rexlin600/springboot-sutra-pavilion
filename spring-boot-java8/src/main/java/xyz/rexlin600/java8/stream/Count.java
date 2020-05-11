@@ -6,12 +6,14 @@ import xyz.rexlin600.java8.model.Goods;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Stream Count 测试类
+ * Stream Count 测试
  *
  * @author: hekunlin
  * @date: 2020/1/9
@@ -40,21 +42,21 @@ public class Count {
     }
 
     /**
-     * goodsList 对象流，返回 List 里对象的总的记录数：10
+     * 统计总数
      *
      * @return
      */
-    public Long listItemCount() {
+    public static Long listItemCount() {
         long count = goodsList.stream().count();
         return count;
     }
 
     /**
-     * goodsList 对象流，进行 `流式 filter` 操作后，返回 List 里对象的总的记录数：3
+     * 过滤后返回统计总数
      *
      * @return
      */
-    public Long listItemDetailCount() {
+    public static Long listItemDetailCount() {
         long count = goodsList.stream()
                 .filter(new Predicate<Goods>() {
                     @Override
@@ -71,9 +73,54 @@ public class Count {
      *
      * @return
      */
-    public Long streamOfCount() {
+    public static Long streamOfCount() {
         Stream<List<Goods>> listStream = Stream.of(Count.goodsList);
         return listStream.count();
+    }
+
+    /**
+     * 总和、最大值、最小值、平均值
+     */
+    public static void calculate() {
+        double sum = goodsList.stream().mapToDouble(Goods::getWeight).sum();
+        System.out.println(sum);
+
+        double max = goodsList.stream().mapToDouble(Goods::getWeight).max().getAsDouble();
+        System.out.println(max);
+
+        double min = goodsList.stream().mapToDouble(Goods::getWeight).min().getAsDouble();
+        System.out.println(min);
+
+        double average = goodsList.stream().mapToDouble(Goods::getWeight).average().getAsDouble();
+        System.out.println(average);
+
+        System.out.println("---------------------------");
+
+        DoubleSummaryStatistics doubleSummaryStatistics = goodsList.stream().collect(Collectors.summarizingDouble(Goods::getWeight));
+        System.out.println(doubleSummaryStatistics.getCount());
+        System.out.println(doubleSummaryStatistics.getMax());
+        System.out.println(doubleSummaryStatistics.getMin());
+        System.out.println(doubleSummaryStatistics.getAverage());
+        System.out.println(doubleSummaryStatistics.getSum());
+    }
+
+    // -----------------------------------------------------------------------------------------------
+    // 测试
+    // -----------------------------------------------------------------------------------------------
+
+    /**
+     * 测试
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        listItemCount();
+        System.out.println("---------------------------");
+        listItemDetailCount();
+        System.out.println("---------------------------");
+        streamOfCount();
+        System.out.println("---------------------------");
+        calculate();
     }
 
 }

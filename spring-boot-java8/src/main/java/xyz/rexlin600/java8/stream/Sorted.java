@@ -43,7 +43,7 @@ public class Sorted {
      *
      * @return
      */
-    public List<String> sorted() {
+    public static List<String> sorted() {
         List<String> collect = goodsList.stream()
                 .map(Goods::getName)
                 .sorted()
@@ -56,7 +56,7 @@ public class Sorted {
      *
      * @return
      */
-    public List<Object> sorted(Comparator comparator) {
+    public static List<Object> sorted(Comparator comparator) {
         List<Object> list = (List<Object>) goodsList.stream()
                 .map(Goods::getWeight)
                 .sorted(comparator)
@@ -64,5 +64,13 @@ public class Sorted {
         return list;
     }
 
+    /**
+     * 测试
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        sorted();
+    }
 
 }

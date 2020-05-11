@@ -18,7 +18,7 @@ public class InstantApi {
     /**
      * 当前时间戳
      */
-    public void now() {
+    public static void now() {
         Instant now0 = Instant.now();
         Instant now1 = Instant.now(Clock.systemDefaultZone());
         Instant now2 = Instant.now(Clock.system(ZoneId.systemDefault()));
@@ -31,7 +31,7 @@ public class InstantApi {
     /**
      * 秒、毫秒、纳秒转换
      */
-    public void mill() {
+    public static void mill() {
         // 将此瞬间转换为从1970-01-01T00：00：00Z的纪元*开始的毫秒数
         long epochMilli = Instant.now().toEpochMilli();
         // 从1970-01-01T00：00：00Z的Java纪元获取秒数
@@ -47,7 +47,7 @@ public class InstantApi {
     /**
      * 构建时间戳 Instant
      */
-    public void build() {
+    public static void build() {
         long epochMilli = Instant.now().toEpochMilli();
         long epochSecond = Instant.now().getEpochSecond();
 
@@ -63,7 +63,7 @@ public class InstantApi {
     /**
      * 时间戳比较
      */
-    public void compare() {
+    public static void compare() {
         long epochMilli = Instant.now().toEpochMilli();
         long suf = epochMilli + 100L;
         long pre = epochMilli - 100L;
@@ -73,6 +73,21 @@ public class InstantApi {
 
         log.info("==>  compare result before is [{}]", before);
         log.info("==>  compare result after is [{}]", after);
+    }
+
+    /**
+     * 测试
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        now();
+        System.out.println("---------------------------");
+        mill();
+        System.out.println("---------------------------");
+        build();
+        System.out.println("---------------------------");
+        compare();
     }
 
 }

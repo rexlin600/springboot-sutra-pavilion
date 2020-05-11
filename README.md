@@ -75,13 +75,9 @@
 
 **后期完善**
 
-1. 完善 `spring-boot-mybatisplus`
 2. 完善 `spring-boot-rabbitmq`
 3. 完善 `spring-boot-elasticsearch`
 4. 完善 `spring-boot-redis`
-5. 完善 `spring-boot-admin`（mail）
-6. 完善 `java8`(maps)
-7. 完善 `spring-boot-jdbc`
 
 
 ## 参考

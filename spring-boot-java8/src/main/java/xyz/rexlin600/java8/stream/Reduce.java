@@ -43,7 +43,7 @@ public class Reduce {
      *
      * @return
      */
-    public Goods reduceByIdentity() {
+    public static Goods reduceByIdentity() {
         Goods identity = new Goods(10L, "Ynez", 1, "产品经理", 74.24, "深卡其布色", LocalDateTime.parse("2015-06-20 03:31:47", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN)));
         Goods goods = goodsList.stream()
                 .reduce(identity, new BinaryOperator<Goods>() {
@@ -77,7 +77,7 @@ public class Reduce {
      *
      * @return
      */
-    public Goods reduce() {
+    public static Goods reduce() {
         Optional<Goods> optional = goodsList.stream()
                 .reduce(new BinaryOperator<Goods>() {
                     @Override
@@ -93,6 +93,17 @@ public class Reduce {
         }
 
         return optional.get();
+    }
+
+    /**
+     * 测试
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        reduceByIdentity();
+        System.out.println("---------------------------");
+        reduce();
     }
 
 }

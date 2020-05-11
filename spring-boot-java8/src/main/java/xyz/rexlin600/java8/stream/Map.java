@@ -42,7 +42,7 @@ public class Map {
      *
      * @return
      */
-    public List<Long> mapFunction(Function<Goods, Long> function) {
+    public static List<Long> mapFunction(Function<Goods, Long> function) {
         // maps 操作
         List<Long> collect = goodsList.stream()
                 .map(function)
@@ -63,7 +63,7 @@ public class Map {
      *
      * @return
      */
-    public List<Integer> mapToInt() {
+    public static List<Integer> mapToInt() {
         // 转换为数值流
         IntStream intStream = goodsList.stream()
                 .mapToInt(new ToIntFunction<Goods>() {
@@ -85,7 +85,7 @@ public class Map {
      *
      * @return
      */
-    public List<Double> mapToDouble() {
+    public static List<Double> mapToDouble() {
         // 转换为浮点数 Dobule 流
         DoubleStream doubleStream = goodsList.stream()
                 .mapToDouble(new ToDoubleFunction<Goods>() {
@@ -107,7 +107,7 @@ public class Map {
      *
      * @return
      */
-    public List<Long> mapToLong() {
+    public static List<Long> mapToLong() {
         // 转换为数值流
         LongStream longStream = goodsList.stream()
                 .mapToLong(new ToLongFunction<Goods>() {
@@ -122,6 +122,19 @@ public class Map {
 
         List<Long> collect = boxed.collect(Collectors.toList());
         return collect;
+    }
+
+    /**
+     * 测试
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        mapToInt();
+        System.out.println("---------------------------");
+        mapToDouble();
+        System.out.println("---------------------------");
+        mapToLong();
     }
 
 }

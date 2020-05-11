@@ -16,7 +16,7 @@ import java.util.Locale;
 @Slf4j
 public class DateTimeFormatterApi {
 
-    public void format() {
+    public static void format() {
         String format0 = LocalDateTime.now().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
         String format1 = LocalDateTime.now().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
         String format2 = LocalDateTime.now().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG));
@@ -55,5 +55,13 @@ public class DateTimeFormatterApi {
 
     }
 
+    /**
+     * 测试
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        format();
+    }
 
 }
