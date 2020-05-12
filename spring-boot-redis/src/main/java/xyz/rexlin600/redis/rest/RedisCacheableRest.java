@@ -1,17 +1,13 @@
 package xyz.rexlin600.redis.rest;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import xyz.rexlin600.redis.common.apiparam.Response;
-import xyz.rexlin600.redis.common.apiparam.ResponseGenerator;
 import xyz.rexlin600.redis.entity.Blog;
 
 /**
@@ -38,7 +34,7 @@ public class RedisCacheableRest {
      */
     @Cacheable(cacheNames = "blog-list", key = "#id", unless = "#result == null", condition = "#id > 1L")
     @GetMapping(value = "/cacheable/{id}")
-    public Response cacheable(@PathVariable(value = "id") Long id) {
+    public void cacheable(@PathVariable(value = "id") Long id) {
 
         // 模拟查询数据库
         Blog blog = Blog.builder()
@@ -48,8 +44,6 @@ public class RedisCacheableRest {
                 .popular(true)
                 .createDate("2020-1-6 15:46:03")
                 .build();
-
-        return ResponseGenerator.success(blog);
     }
 
     /**
@@ -60,7 +54,7 @@ public class RedisCacheableRest {
      */
     @CachePut(cacheNames = "blog-list", key = "#id")
     @GetMapping(value = "/cachePut/{id}")
-    public Response cachePut(@PathVariable(value = "id") Long id) {
+    public void cachePut(@PathVariable(value = "id") Long id) {
 
         // 模拟查询数据库
         Blog blog = Blog.builder()
@@ -70,8 +64,6 @@ public class RedisCacheableRest {
                 .popular(true)
                 .createDate("2020-1-6 15:46:03")
                 .build();
-
-        return ResponseGenerator.success(blog);
     }
 
     /**
@@ -82,7 +74,7 @@ public class RedisCacheableRest {
      */
     @CacheEvict(cacheNames = "blog-list", key = "#id")
     @GetMapping(value = "/cacheEvict/{id}")
-    public Response cacheEvict(@PathVariable(value = "id") Long id) {
+    public void cacheEvict(@PathVariable(value = "id") Long id) {
 
         // 模拟查询数据库
         Blog blog = Blog.builder()
@@ -92,8 +84,6 @@ public class RedisCacheableRest {
                 .popular(true)
                 .createDate("2020-1-6 15:46:03")
                 .build();
-
-        return ResponseGenerator.success(blog);
     }
 
 

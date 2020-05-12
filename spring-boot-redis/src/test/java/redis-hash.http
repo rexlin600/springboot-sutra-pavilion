@@ -1,0 +1,33 @@
+### put
+POST http://localhost:10005/redis/hash
+Content-Type: application/json
+
+### delete
+DELETE http://localhost:10005/redis/hash
+Content-Type: application/json
+
+### entries
+GET http://localhost:10005/redis/hash/entries
+Content-Type: application/json
+
+### get
+GET http://localhost:10005/redis/hash
+Content-Type: application/json
+
+### hasKey
+GET http://localhost:10005/redis/hash/hasKey
+Content-Type: application/json
+
+### incr
+POST http://localhost:10005/redis/hash/incr
+Content-Type: application/json
+
+### keys
+GET http://localhost:10005/redis/hash/keys
+Content-Type: application/json
+
+### keys
+GET http://localhost:10005/redis/hash/multiGet
+Content-Type: application/json
+
+###

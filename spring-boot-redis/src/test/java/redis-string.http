@@ -1,0 +1,9 @@
+### add
+POST http://localhost:10005/redis/str
+Content-Type: application/json
+
+### del
+DELETE  http://localhost:10005/redis/str
+Content-Type: application/json
+
+###

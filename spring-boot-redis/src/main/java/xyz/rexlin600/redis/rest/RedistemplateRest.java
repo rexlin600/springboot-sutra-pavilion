@@ -21,14 +21,14 @@ import java.util.UUID;
 @Slf4j
 @RestController
 @RequestMapping("/redis/crud")
-public class RedisCrudRest {
+public class RedistemplateRest {
 
     private final RedisTemplate<String, Object> redisTemplate;
 
     private static final String HASH_KEY = "BLOG_LIST";
 
     @Autowired
-    public RedisCrudRest(RedisTemplate<String, Object> redisTemplate) {
+    public RedistemplateRest(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 
