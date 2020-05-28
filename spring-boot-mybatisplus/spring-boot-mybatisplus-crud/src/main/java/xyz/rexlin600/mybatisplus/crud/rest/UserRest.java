@@ -60,7 +60,8 @@ public class UserRest {
      */
     @GetMapping("/{id}")
     public Response user(@PathVariable(value = "id") Long id) {
-        return ResponseGenerator.success(userBiz.getById(id));
+        User user = userBiz.getById(id);
+        return ResponseGenerator.success(user);
     }
 
 
