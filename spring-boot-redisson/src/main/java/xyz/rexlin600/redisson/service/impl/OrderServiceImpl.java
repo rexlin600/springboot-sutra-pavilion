@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
  * @author: rexlin600
  * @date: 2020-02-05
  */
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Slf4j
 @Service
 public class OrderServiceImpl implements OrderService {

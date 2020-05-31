@@ -10,7 +10,7 @@ singleServerConfig:
   password: null
   subscriptionsPerConnection: 5
   clientName: null
-  address: "redis://192.168.199.196:6379"
+  address: "redis://127.0.0.1:6379"
   subscriptionConnectionMinimumIdleSize: 1
   subscriptionConnectionPoolSize: 50
   connectionMinimumIdleSize: 32
@@ -20,5 +20,5 @@ singleServerConfig:
 threads: 0
 nettyThreads: 0
 codec:
-  class: "org.redisson.codec.JsonJacksonCodec"
+  class: "org.redisson.codec.JsonJacksonCsodec"
 transportMode: "NIO"

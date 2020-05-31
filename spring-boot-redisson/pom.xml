@@ -24,10 +24,20 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
+        <!-- 使 bootstrap.yml 文件生效，参考：https://blog.csdn.net/qq_16504067/article/details/88526552 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-context</artifactId>
+        </dependency>
+
+        <!-- redis -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+
+        <!-- 引入 redisson starter 及 redisson-spring-data-21 集成 -->
         <dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson-spring-boot-starter</artifactId>
@@ -38,6 +48,7 @@
             <artifactId>redisson-spring-data-21</artifactId>
             <version>3.11.0</version>
         </dependency>
+
     </dependencies>
 
 </project>
