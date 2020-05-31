@@ -1,7 +1,7 @@
 spring:
   redis:
     redisson:
+      config: classpath:redisson/redisson-single.yaml
 #      config: classpath:redisson/redisson-cluster.yml
 #      config: classpath:redisson/redisson-master.yml
 #      config: classpath:redisson/redisson-sentinel.yml
-      config: classpath:redisson/redisson-single.yml

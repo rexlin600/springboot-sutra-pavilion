@@ -12,6 +12,6 @@ spring:
         max-idle: 8
         max-wait: -1
   profiles:
-    active: single  # redisson外部配置文件
+    active: redisson  # redisson外部配置文件
 server:
   port: 10026

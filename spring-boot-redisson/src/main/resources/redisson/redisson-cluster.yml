@@ -25,6 +25,5 @@ clusterServersConfig:
   scanInterval: 1000
 threads: 0
 nettyThreads: 0
-codec:
-  class: "org.redisson.codec.JsonJacksonCsodec"
+codec: !<org.redisson.codec.JsonJacksonCodec> {}
 transportMode: "NIO"

@@ -77,7 +77,7 @@ spring.redis.sentinel.nodes=
 # Redisson 配置
 # Redisson settings
 
-#path to config - redisson.yaml
+#path to config - redisson-single.yaml
 spring.redis.redisson.config=classpath:redisson.yaml
 ```
 
@@ -156,6 +156,13 @@ spring.redis.redisson.config=classpath:redisson.yaml
   server:
     port: 10026
   ```
+
+## 额外：为什么我不写 `spring.redis.redisson.config` 也能集成哨兵模式？
+
+深入 starter 源码，我们可以看到这里有一个这样的判断，这就是为什么你不写 `spring.redis.redisson.config` 这个配置也能集成哨兵模式的原因，
+因为它会自动先判断是否存在相应配置，如果没有则会判断你当前的 `redis` 配置是否为哨兵模式，如果是则会为其配置上相应的信息，这样的化也意味着你写的 `redisson.yml` 没有起作用！！！
+
+![](http://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/2020-05-31-130521.png)
 
 
 ## 参考
