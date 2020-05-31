@@ -6,6 +6,7 @@ import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import xyz.rexlin600.redisson.lock.DistributedLocker;
 import xyz.rexlin600.redisson.service.OrderService;
 
 import java.util.concurrent.TimeUnit;
@@ -21,21 +22,26 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    private final RedissonClient redissonClient;
+    private final DistributedLocker distributedLocker;
     private final StringRedisTemplate stringRedisTemplate;
 
     @Autowired
-    public OrderServiceImpl(RedissonClient redissonClient, StringRedisTemplate stringRedisTemplate) {
-        this.redissonClient = redissonClient;
+    public OrderServiceImpl(DistributedLocker distributedLocker, StringRedisTemplate stringRedisTemplate) {
+        this.distributedLocker = distributedLocker;
         this.stringRedisTemplate = stringRedisTemplate;
     }
 
     @Override
     public boolean book() {
+        String key = "lock";
+
         // get lock
-        RLock lock = this.redissonClient.getLock("lock");
+        boolean lock = distributedLocker.tryLock(key, TimeUnit.MILLISECONDS, 300L, 500L);
+        if (!lock) {
+            throw new RuntimeException("系统繁忙，请稍后再试");
+        }
+
         try {
-            lock.lock(10, TimeUnit.SECONDS);
             String value = this.stringRedisTemplate.opsForValue().get("count");
             Long count = Long.valueOf(value);
             if (count <= 0) {
@@ -51,7 +57,7 @@ public class OrderServiceImpl implements OrderService {
             log.error(e.getMessage());
             return false;
         } finally {
-            lock.unlock();
+            distributedLocker.unlock(key);
         }
     }
 
