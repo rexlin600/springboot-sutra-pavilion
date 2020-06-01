@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddGoodsInnerReq implements Serializable {
+public class NullInnerReq implements Serializable {
 
     /**
      * 产地
