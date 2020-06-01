@@ -56,7 +56,7 @@
 | [transaction](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-transaction/README.md) |集成事务管理（jdbc/jpa，使用 `@Transactional` 即可进行日常开发 |
 | [async](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-async/README.md) |通过 `Async` ，通过 `线程池` 实现异步调用、实现优雅关闭、通过 `Future` 获取异步执行结果；如何定义超时等 |
 | [logback](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-logback/README.md) | `logback` 使用示例 |
-| [redisson](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-redisson/README.md) | `redis` 官方指定 `Java` 版分布式锁 `redisson` |
+| [redisson](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-redisson/README.md) | `redis` 官方指定 `Java` 版分布式锁 `redisson`，与 `SpringBoot` 集成的八种方式 |
 | [git4clone](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-git4clone/README.md) | 利用 `多线程技术` 帮助用户实现快速批量下载 `gitlab` 上的项目，只需要进行简单的配置修改即可使用 |
 | [aop](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-aop/README.md) | `aop`，提供了传统使用切面注解的写法；提供了使用注解的写法，并通过异步事件驱动的方式(使用 `feign` 模拟远程服务请求)将日志消息入库 |
 | [qrcode](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-qrcode/README.md) | 集成 `zxing`，提供了快速生成二维码、带文字的二维码、带logo的二维码、批量生产二维码等 |

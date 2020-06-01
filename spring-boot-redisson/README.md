@@ -1,6 +1,6 @@
 # 简介
 
-·Redisson· 是一个在Redis的基础上实现的Java驻内存数据网格（In-Memory Data Grid）。它不仅提供了一系列的分布式的Java常用对象，
+`Redisson` 是一个在Redis的基础上实现的Java驻内存数据网格（In-Memory Data Grid）。它不仅提供了一系列的分布式的Java常用对象，
 还提供了许多分布式服务。其中包括(`BitSet, Set, Multimap, SortedSet, Map, List, Queue, BlockingQueue, Deque, BlockingDeque,
  Semaphore, Lock, AtomicLong, CountDownLatch, Publish / Subscribe, Bloom filter, Remote service, Spring cache,
   Executor service, Live Object service, Scheduler service`) `Redisson` 提供了使用Redis的最简单和最便捷的方法。
@@ -30,6 +30,8 @@
 
 ## 与 SpringBoot 集成
 
+这里演示的为 `SpringBoot 2.X` 与 `Redisson` 的集成：
+
 **引入依赖：**
 
 ```xml
@@ -48,14 +50,14 @@
 
 如果你在集成过程中发现缺少某些类，请尝试降级 `redisson-spring-data` ，这个包的模块支持如下：
 
-｜ redisson-spring-data module name	｜ Spring Boot version ｜
-｜ --- ｜ --- 
-｜ redisson-spring-data-16  ｜ 1.3.x ｜
-｜ redisson-spring-data-17	｜ 1.4.x ｜
-｜ redisson-spring-data-18	｜ 1.5.x ｜
-｜ redisson-spring-data-20	｜ 2.0.x ｜
-｜ redisson-spring-data-21	｜ 2.1.x ｜
-｜ redisson-spring-data-22	｜ 2.2.x ｜
+| redisson-spring-data module name	| Spring Boot version |
+| ---- | ---- |
+| redisson-spring-data-16  | 1.3.x |
+| redisson-spring-data-17	| 1.4.x |
+| redisson-spring-data-18	| 1.5.x |
+| redisson-spring-data-20	| 2.0.x |
+| redisson-spring-data-21	| 2.1.x |
+| redisson-spring-data-22	| 2.2.x |
 
 
 **配置：**
