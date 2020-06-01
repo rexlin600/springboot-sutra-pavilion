@@ -9,6 +9,7 @@ import xyz.rexlin600.validation.common.apiparam.ResponseGenerator;
 import xyz.rexlin600.validation.param.*;
 import xyz.rexlin600.validation.param.group.*;
 
+import javax.validation.groups.Default;
 import java.util.Base64;
 
 /**
@@ -133,13 +134,15 @@ public class BeanValidationRest {
     // -----------------------------------------------------------------------------------------------
 
     /**
-     * 分组校验-Group1
+     * 分组校验
+     * <p>
+     * 校验姓名（因为 Group 继承了 Default，所以除此之外还会校验年龄、集合）
      *
      * @param req
      * @return
      */
-    @PostMapping("/checkGroupOneReq")
-    public Response<Void> CheckGroupOneReq(@RequestBody @Validated(Name.class) GroupReq req) {
+    @PostMapping("/group1")
+    public Response<Void> group1(@RequestBody @Validated(Name.class) GroupReq req) {
 
         // 后续逻辑 ...
 
@@ -147,13 +150,15 @@ public class BeanValidationRest {
     }
 
     /**
-     * 分组校验-Group2
+     * 分组校验
+     * <p>
+     * 校验班级
      *
      * @param req
      * @return
      */
-    @PostMapping("/checkGroupTwoReq")
-    public Response<Void> CheckGroupTwoReq(@RequestBody @Validated(Classes.class) GroupReq req) {
+    @PostMapping("/group2")
+    public Response<Void> group2(@RequestBody @Validated(Classes.class) GroupReq req) {
 
         // 后续逻辑 ...
 
@@ -161,13 +166,31 @@ public class BeanValidationRest {
     }
 
     /**
-     * 分组校验-默认
+     * 分组校验
+     * <p>
+     * 默认(只会校验年龄字段)
      *
      * @param req
      * @return
      */
-    @PostMapping("/checkGroupThreeReq")
-    public Response<Void> CheckGroupThreeReq(@RequestBody @Validated({Name.class, Classes.class}) GroupReq req) {
+    @PostMapping("/group3")
+    public Response<Void> group3(@RequestBody @Validated({Default.class}) GroupReq req) {
+
+        // 后续逻辑 ...
+
+        return ResponseGenerator.success();
+    }
+
+    /**
+     * 分组校验
+     * <p>
+     * 校验姓名+班级+其他
+     *
+     * @param req
+     * @return
+     */
+    @PostMapping("/group4")
+    public Response<Void> group4(@RequestBody @Validated({Name.class, Classes.class}) GroupReq req) {
 
         // 后续逻辑 ...
 

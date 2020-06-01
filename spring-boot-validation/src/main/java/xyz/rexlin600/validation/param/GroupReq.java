@@ -6,8 +6,10 @@ import lombok.NoArgsConstructor;
 import xyz.rexlin600.validation.param.group.*;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 分组校验
@@ -37,5 +39,11 @@ public class GroupReq implements Serializable {
      */
     @NotNull(message = "参数错误：年龄不可为空")
     private Integer age;
+
+    /**
+     * 集合
+     */
+    @NotEmpty(message = "参数错误：集合不可为空")
+    private List<String> list;
 
 }

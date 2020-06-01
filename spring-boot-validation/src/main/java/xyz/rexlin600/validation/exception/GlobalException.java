@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * GlobalException 类
@@ -91,11 +92,10 @@ public class GlobalException {
         String errorMessage = this.buildErrorMessage(bindingResult);
         log.warn(errorMessage);
         List<FieldError> fieldErrors = bindingResult.getFieldErrors();
-        String message = "参数错误";
+        String message = "";
         if (null != fieldErrors && fieldErrors.size() > 0) {
-            FieldError fieldError = (FieldError) fieldErrors.get(0);
-            if (null != fieldError) {
-                message = fieldError.getDefaultMessage();
+            for (int i = 0; i < fieldErrors.size(); i++) {
+                message = message + " " + Optional.ofNullable(fieldErrors.get(i)).map(m -> m.getDefaultMessage()).orElse("");
             }
         }
 

@@ -36,3 +36,4 @@
 
 - [JSR 303: Bean Validation](https://jcp.org/en/jsr/detail?id=303)
 - [JSR 303 - Bean Validation 介绍及最佳实践](https://www.ibm.com/developerworks/cn/java/j-lo-jsr303/index.html)
+- [Groups验证遇到的坑](https://blog.csdn.net/keyliwen/article/details/80702633?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)
