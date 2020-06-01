@@ -3,7 +3,6 @@
 * spring-boot-sharding-jdbc
 * spring-boot-sharding-jdbc-masterslave
 * spring-boot-zuul-upload
-* spring-boot-fastDFS
 * spring-boot-validation(jsr303 and hibernate-validation)
 * spring-boot-security
 * spring-boot-security-cas
