@@ -3,10 +3,13 @@ package xyz.rexlin600.validation.controller;
 
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import sun.management.Agent;
 import xyz.rexlin600.validation.common.apiparam.Response;
 import xyz.rexlin600.validation.common.apiparam.ResponseGenerator;
 import xyz.rexlin600.validation.param.*;
+import xyz.rexlin600.validation.param.group.*;
 
+import java.util.Base64;
 
 /**
  * <p>
@@ -119,6 +122,52 @@ public class BeanValidationRest {
      */
     @PostMapping("/checkCustomReq")
     public Response<Void> CheckCustomReq(@RequestBody @Validated CustomReq req) {
+
+        // 后续逻辑 ...
+
+        return ResponseGenerator.success();
+    }
+
+    // -----------------------------------------------------------------------------------------------
+    // 分组校验
+    // -----------------------------------------------------------------------------------------------
+
+    /**
+     * 分组校验-Group1
+     *
+     * @param req
+     * @return
+     */
+    @PostMapping("/checkGroupOneReq")
+    public Response<Void> CheckGroupOneReq(@RequestBody @Validated(Name.class) GroupReq req) {
+
+        // 后续逻辑 ...
+
+        return ResponseGenerator.success();
+    }
+
+    /**
+     * 分组校验-Group2
+     *
+     * @param req
+     * @return
+     */
+    @PostMapping("/checkGroupTwoReq")
+    public Response<Void> CheckGroupTwoReq(@RequestBody @Validated(Classes.class) GroupReq req) {
+
+        // 后续逻辑 ...
+
+        return ResponseGenerator.success();
+    }
+
+    /**
+     * 分组校验-默认
+     *
+     * @param req
+     * @return
+     */
+    @PostMapping("/checkGroupThreeReq")
+    public Response<Void> CheckGroupThreeReq(@RequestBody @Validated({Name.class, Classes.class}) GroupReq req) {
 
         // 后续逻辑 ...
 
