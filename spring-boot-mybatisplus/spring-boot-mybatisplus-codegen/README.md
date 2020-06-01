@@ -91,7 +91,7 @@ mybatis-plus:
 
 本地启动服务，参考 `postman` 包下的 `代码生成器.postman_collection.json` 进行测试即可，如下：
 
-![codegen-mybatisplus](../../images/mybatisplus/codegen-postman.jpg)
+![codegen-mybatisplus](https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/codegen-postman.jpg)
 
 
 ## SQL注入器

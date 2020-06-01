@@ -6,7 +6,7 @@ rabbitmq 使用指南入门
 
 > 如下图：
 
-![](../images/rabbitmq/rabbitmq-model.png)
+![](https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/rabbitmq-model.png)
 
 1. 基本消息模型：生产者–>队列–>一个消费者
 2. work消息模型：生产者–>队列–>多个消费者共同消费

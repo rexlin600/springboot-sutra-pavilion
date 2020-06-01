@@ -92,7 +92,7 @@ public class ActuatorSecurity extends WebSecurityConfigurerAdapter {
 
 如下，访问 `http://localhost:10011/actuator` 会要求登录：
 
-![actuator-login](../images/actuator/actuator-login.jpg)
+![actuator-login](https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/actuator-login.jpg)
 
 我们输入配置的用户名、密码之后即可访问到端点信息：
 

@@ -172,4 +172,4 @@ public class MessageController {
 
 启动服务，访问： `http://localhost:10007/swagger-ui.html` 即可，如下：
 
-![swagger2-ui](../images/swagger2/swagger2-ui.jpg)
+![swagger2-ui](https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/swagger2-ui.jpg)

@@ -7,7 +7,7 @@
 
 **缺省的数据类型绑定**
 
-![](../images/jaxb/binding.jpg)
+![](https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/binding.jpg)
 
 一般地，我们将 `Java` 对象转换为 `XML` 的过程称之为 `Marshal`，将 `XML` 转换为 `Java` 对象的过程称之为 `UnMarshal`
 

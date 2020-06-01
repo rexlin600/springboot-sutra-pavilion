@@ -13,7 +13,7 @@
 
 第一步，我们先启动 `Eureka` 服务，保证后续服务能够正常注册。启动 `Eureka` 并登录后如下：
 
-![eureka-server](../images/admin/eureka-server.jpg)
+![eureka-server](https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/eureka-server.jpg)
 
 ### Server 端
 
@@ -143,8 +143,8 @@ public class AdminServerDiscoveryApplication {
 
 访问 `http://localhost:10015/login` 并登陆，如下：
 
-![admin-server-login](../images/admin/admin-server-login.jpg)
-![admin-server](../images/admin/admin-server.jpg)
+![admin-server-login](https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/admin-server-login.jpg)
+![admin-server](https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/admin-server.jpg)
 
 至此，服务端完成，接下来我们去完成 `client` 端。
 
@@ -262,9 +262,9 @@ public class SecurityPermitConfig extends WebSecurityConfigurerAdapter {
 
 启动客户端后，再次访问 `http://localhost:10012/login` 并登陆，如下（可以看到 `Client` 已经注册上来了）：
 
-![admin-server-up](../images/admin/admin-server-up.jpg)
+![admin-server-up](https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/admin-server-up.jpg)
 
 接着，我们通过 `Wallboard` 进入 `Client` 就可以看到相关的监控信息：
 
-![admin-server-monitor](../images/admin/admin-server-monitor.jpg)
+![admin-server-monitor](https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/admin-server-monitor.jpg)
 

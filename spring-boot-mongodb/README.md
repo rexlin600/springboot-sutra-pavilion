@@ -84,3 +84,13 @@ public interface UserMongoRepository extends MongoRepository<User, Long> {
 * 测试
 
 启动服务，运行 `xyz.rexlin600.mongodb.biz.UserMongoBizTest` 示例即可
+
+## 截图
+
+> 方法自动提示
+
+![](https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/mongo-1.png)
+
+![](https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/mongo-2.png)
+
+![](https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/mongo-3.png)

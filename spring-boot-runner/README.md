@@ -54,4 +54,4 @@ public class FirstApplicationRunner implements ApplicationRunner {
 
 > PostConstruct 的生命周期
 
-![](../images/runner/postconstruct.jpg)
+![](https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com/postconstruct.jpg)
