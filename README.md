@@ -66,7 +66,7 @@
 | 30 | [openfeign](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-openfeign/README.md) | 集成 `openfeign`，实现文件上传、打印feign日志、调用远程URL提供的服务 |
 | 31 | [fastdfs](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-fastdfs/README.md) | 集成 `fastdfs`，实现文件上传、下载 |
 | 32 | [websocket](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-websocket/README.md) | 集成 `websocket`，实现简单`聊天室功能` |
-| 33 | [validation](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-websocket/README.md) | 使用 `JSR303` 标准(Bean Validation 1.0 (JSR 303))、`hibernate-validation`，实现数据验证 |
+| 33 | [validation](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-validation/README.md) | 使用 `JSR303` 标准(Bean Validation 1.0 (JSR 303))、`hibernate-validation`，实现数据验证 |
 | _ | _ |
 
 
