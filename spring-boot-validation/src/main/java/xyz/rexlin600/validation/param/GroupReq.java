@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import xyz.rexlin600.validation.param.group.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -43,7 +44,8 @@ public class GroupReq implements Serializable {
     /**
      * 集合
      */
+    @Valid
     @NotEmpty(message = "参数错误：集合不可为空")
-    private List<String> list;
+    private List<@NotBlank(message = "参数错误：集合元素不可为空") String> list;
 
 }
