@@ -136,7 +136,7 @@ public class BeanValidationRest {
     /**
      * 分组校验
      * <p>
-     * 校验姓名（因为 Group 继承了 Default，所以除此之外还会校验年龄、集合）
+     * 校验姓名+其他
      *
      * @param req
      * @return
