@@ -38,7 +38,7 @@ public class GroupReq implements Serializable {
     /**
      * 年龄
      */
-    @NotNull(message = "参数错误：年龄不可为空")
+    @NotNull(message = "参数错误：年龄不可为空", groups = {Age.class})
     private Integer age;
 
     /**

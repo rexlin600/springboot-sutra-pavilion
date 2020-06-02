@@ -5,6 +5,8 @@
 `JSR-303` 是 `JAVA EE 6` 中的一项子规范，叫做 `Bean Validation`，`Hibernate Validator` 是 `Bean Validation` 的参考实现 。
 `Hibernate Validator` 提供了 `JSR 303` 规范中所有内置 `constraint` 的实现，除此之外还有一些附加的 `constraint`。
 
+目前最新版本是 `JSR380`，即 `Bean Validation 2.0`.
+
 ## Bean Validation 中的规范
 
 | Constraint | 详细信息 |
@@ -32,8 +34,14 @@
 | @NotEmpty | 被注释的字符串必须非空 |
 | @Range | 被注释的元素必须在合适的范围内 |
 
+## 分组校验
+
+分组校验中需要注意如果标记接口没有继承 `Default`，则不会校验没有添加分组的字段，反之则会校验！！！
+
 ## 参考
 
 - [JSR 303: Bean Validation](https://jcp.org/en/jsr/detail?id=303)
 - [JSR 303 - Bean Validation 介绍及最佳实践](https://www.ibm.com/developerworks/cn/java/j-lo-jsr303/index.html)
 - [Groups验证遇到的坑](https://blog.csdn.net/keyliwen/article/details/80702633?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)
+- [Hibernate Validator Documentation](http://hibernate.org/validator/documentation/)
+

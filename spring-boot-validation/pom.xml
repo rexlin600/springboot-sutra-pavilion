@@ -14,7 +14,6 @@
 
     <properties>
         <mybatis.plus.version>3.3.0</mybatis.plus.version>
-        <hutool.version>5.0.6</hutool.version>
     </properties>
 
     <dependencies>
@@ -30,13 +29,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-        </dependency>
-
-        <!-- hutool -->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>${hutool.version}</version>
         </dependency>
     </dependencies>
 
