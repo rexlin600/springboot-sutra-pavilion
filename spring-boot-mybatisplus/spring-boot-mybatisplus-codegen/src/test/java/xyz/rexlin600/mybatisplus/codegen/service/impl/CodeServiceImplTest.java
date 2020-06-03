@@ -54,7 +54,11 @@ public class CodeServiceImplTest {
         CodeGenReq codeGenReq = CodeGenReq.builder()
                 .id(2L)
                 .author("hekunlin")
-                .packageName("com.hikcreate.bcp")
+                .entityPath("xyz.rexlin600.test")
+                .mapperPath("xyz.rexlin600.test")
+                .svcPath("xyz.rexlin600.test")
+                .restPath("xyz.rexlin600.test")
+                .xmlPath("xyz.rexlin600.test")
                 .list(Arrays.asList("brand_account"))
                 .build();
 

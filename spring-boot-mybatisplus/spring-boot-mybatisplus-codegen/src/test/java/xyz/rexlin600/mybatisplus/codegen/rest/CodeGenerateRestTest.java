@@ -46,9 +46,13 @@ public class CodeGenerateRestTest {
     public void generate() {
         CodeGenReq build = CodeGenReq.builder()
                 .id(1L)
-                .packageName("xyz.rexlin600.test")
+                .entityPath("xyz.rexlin600.test")
+                .mapperPath("xyz.rexlin600.test")
+                .svcPath("xyz.rexlin600.test")
+                .restPath("xyz.rexlin600.test")
+                .xmlPath("xyz.rexlin600.test")
                 .author("rexlin600")
-                .tablePrefix("tb_")
+                .prefix("tb_")
                 .list(Arrays.asList("tb_flyway"))
                 .build();
         codeService.generate(build);

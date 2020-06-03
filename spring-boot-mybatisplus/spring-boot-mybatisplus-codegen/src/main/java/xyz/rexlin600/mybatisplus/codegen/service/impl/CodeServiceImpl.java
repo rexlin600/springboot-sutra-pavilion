@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.engine.VelocityTemplateEngine;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -162,7 +163,7 @@ public class CodeServiceImpl implements CodeService {
         StrategyConfig strategy;
         try {
             // 全局配置
-            gc = CodeGenUtils.getGenerator(projectPath, codeGenReq.getAuthor(), codeGenReq.getOpenApiDoc());
+            gc = CodeGenUtils.getGenerator(projectPath, codeGenReq.getAuthor(), codeGenReq.getOpenApiDoc(), DateType.ONLY_DATE);
 
             // 数据源配置
             DataSource dataSource = dataSourceService.getOne(new LambdaQueryWrapper<DataSource>().eq(true, DataSource::getId, codeGenReq.getId()));
@@ -173,7 +174,9 @@ public class CodeServiceImpl implements CodeService {
             dsc = CodeGenUtils.getDatasource(dataSource);
 
             // 包配置
-            pc = CodeGenUtils.getPackageConfig(codeGenReq.getPackageName());
+            pc = CodeGenUtils.getPackageConfig(codeGenReq.getEntityPath(), codeGenReq.getMapperPath(),
+                    codeGenReq.getSvcPath(), codeGenReq.getSvcImplPath(),
+                    codeGenReq.getRestPath(), codeGenReq.getXmlPath());
 
             // 自定义配置
             injectConfig = CodeGenUtils.getInjectConfig(projectPath);
@@ -181,7 +184,7 @@ public class CodeServiceImpl implements CodeService {
             templateConfig = CodeGenUtils.getTemplateConfig();
 
             // 策略配置
-            String prefix = codeGenReq.getTablePrefix();
+            String prefix = codeGenReq.getPrefix();
             boolean lombok = codeGenReq.isLombok();
             String version = codeGenReq.getVersionColumn();
             String logic = codeGenReq.getLogicColumn();

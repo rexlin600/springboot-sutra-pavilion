@@ -1,5 +1,6 @@
 package xyz.rexlin600.mybatisplus.codegen.util;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
@@ -31,7 +32,7 @@ public class CodeGenUtils {
      * @param openSwagger2 是否开启 Swagger2
      * @return
      */
-    public static GlobalConfig getGenerator(String projectPath, String author, Boolean openSwagger2) {
+    public static GlobalConfig getGenerator(String projectPath, String author, Boolean openSwagger2, DateType dateType) {
         GlobalConfig gc = new GlobalConfig();
         // 默认D盘根目录
         gc.setOutputDir(projectPath + "/src/main/java");
@@ -50,10 +51,10 @@ public class CodeGenUtils {
         // 开启 baseColumnList
         gc.setBaseColumnList(true);
         // 时间类型对应策略
-        gc.setDateType(DateType.TIME_PACK);
+        gc.setDateType(dateType);
 
         // 实体命名方式
-        gc.setEntityName("%s");
+        gc.setEntityName("%sDO");
         // mapper 命名方式
         gc.setMapperName("%sMapper");
         // Mapper xml 命名方式
@@ -64,6 +65,8 @@ public class CodeGenUtils {
         gc.setServiceImplName("%sServiceImpl");
         // controller 命名方式
         gc.setControllerName("%sController");
+        // ID 生成策略
+        gc.setIdType(IdType.AUTO);
 
         // 开启 swagger2 模式
         if (!ObjectUtils.isEmpty(openSwagger2)) {
@@ -182,17 +185,24 @@ public class CodeGenUtils {
     /**
      * 包配置
      *
-     * @param packageName
+     * @param entityPath
+     * @param mapperPath
+     * @param svcPath
+     * @param restPath
+     * @param xmlPath
      * @return
      */
-    public static PackageConfig getPackageConfig(String packageName) {
+    public static PackageConfig getPackageConfig(String entityPath, String mapperPath,
+                                                 String svcPath, String svcImplPath,
+                                                 String restPath, String xmlPath) {
         PackageConfig pc = new PackageConfig();
-        pc.setParent(packageName)
-                .setMapper("mapper")
-                .setService("service")
-                .setController("controller")
-                .setEntity("entity")
-                .setXml("mapper.xml");
+        pc.setParent("")
+                .setMapper(mapperPath)
+                .setService(svcPath)
+                .setServiceImpl(svcImplPath)
+                .setController(restPath)
+                .setEntity(entityPath)
+                .setXml(xmlPath);
         return pc;
     }
 
