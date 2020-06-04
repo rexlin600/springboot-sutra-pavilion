@@ -7,11 +7,11 @@ spring:
     port: 6379
     lettuce:
       pool:
-        min-idle: 0
+        min-idle: 5
         max-active: 8
         max-idle: 8
-        max-wait: -1
-  profiles:
-    active: redisson  # redisson外部配置文件
+        max-wait: 10000
+#  profiles:
+#    active: redisson  # redisson外部配置文件
 server:
   port: 10026
