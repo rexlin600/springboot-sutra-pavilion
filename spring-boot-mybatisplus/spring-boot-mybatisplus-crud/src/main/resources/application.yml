@@ -19,6 +19,9 @@ spring:
       minimum-idle: 100
       # 此属性控制池允许达到的最大大小，包括空闲和正在使用的连接。默认值10
       maximum-pool-size: 100
+  jackson: # 使用dateFormat必须加上这个
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
 mybatis-plus:
   type-aliases-package: xyz.rexlin600.mybatisplus.crud.model
   mapper-locations: classpath*:/mapper/**/*.xml
