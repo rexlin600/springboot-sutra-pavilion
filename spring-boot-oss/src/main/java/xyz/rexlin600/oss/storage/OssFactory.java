@@ -1,4 +1,4 @@
-package xyz.rexlin600.oss.factory;
+package xyz.rexlin600.oss.storage;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +7,6 @@ import xyz.rexlin600.oss.config.AliOssConfig;
 import xyz.rexlin600.oss.config.QnOssConfig;
 import xyz.rexlin600.oss.config.TxOssConfig;
 import xyz.rexlin600.oss.enums.OSSTypeEnum;
-import xyz.rexlin600.oss.storage.AbstractStorageService;
-import xyz.rexlin600.oss.storage.AliStorageService;
 
 import java.time.Instant;
 
@@ -52,6 +50,7 @@ public class OssFactory {
                 storageService = new AliStorageService(aliConfig);
                 break;
             case TX:
+                storageService = new TxStorageService(txOssConfig);
                 log.info("==>  感谢使用腾讯云OSS {}", Instant.now().toEpochMilli());
                 break;
             case QN:

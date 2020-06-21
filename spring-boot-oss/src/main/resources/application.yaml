@@ -6,9 +6,14 @@ server:
 # oss config
 oss:
   aliyun:
-    domain: "rexlin600-blog.oss-cn-chengdu.aliyuncs.com"
-    endpoint: "oss-cn-chengdu.aliyuncs.com"
-    prefix: "img"
-    accessKey: "xxx"
-    accessKeySecret: "xxx"
-    bucketName: rexlin600-blog
+    domain: ""
+    endpoint: ""
+    access-key: ""
+    access-key-secret: ""
+    bucket-name: ""
+  tencent:
+    domain: ""
+    secret-id: ""
+    secret-key: ""
+    region: ""
+    bucket-name: "

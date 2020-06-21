@@ -6,8 +6,9 @@ import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import xyz.rexlin600.oss.factory.OssFactory;
+import xyz.rexlin600.oss.enums.OSSTypeEnum;
 import xyz.rexlin600.oss.storage.AbstractStorageService;
+import xyz.rexlin600.oss.storage.OssFactory;
 
 import javax.validation.constraints.NotBlank;
 import java.io.*;
@@ -43,7 +44,7 @@ public class OssRest {
                        @RequestParam(value = "ossType") Integer ossType) {
         AbstractStorageService storageService = ossFactory.build(ossType);
 
-        String res = storageService.upload(file.getInputStream(), file.getOriginalFilename(), "///a///b/c///");
+        String res = storageService.upload(file.getInputStream(), file.getOriginalFilename(), "");
 
         log.info("==>  文件上传结果：{}", res);
     }
@@ -68,11 +69,27 @@ public class OssRest {
             // 创建文件
             File file = new File(filePath);
             if (!file.exists()) {
+                if (!file.getParentFile().exists()) {
+                    file.getParentFile().mkdirs();
+                }
                 file.createNewFile();
             }
 
             outputStream = new FileOutputStream(file);
-            inputStream = storageService.download(key);// 获取输入流
+
+            // 根据不同的 OSS 类型调用不同的下载
+            switch (OSSTypeEnum.get(ossType)) {
+                case ALI:
+                    inputStream = storageService.download(key);
+                    break;
+                case TX:
+                    storageService.download(key, filePath);
+                    return;
+                case QN:
+                    break;
+                default:
+                    break;
+            }
 
             // 写入文件
             byte[] buffBytes = new byte[1024];
@@ -81,10 +98,15 @@ public class OssRest {
                 outputStream.write(buffBytes, 0, read);
             }
         } catch (IOException e) {
+            e.printStackTrace();
             throw new IOException("IO异常，下载文件失败");
         } finally {
-            inputStream.close();
-            outputStream.close();
+            if (inputStream != null) {
+                inputStream.close();
+            }
+            if (outputStream != null) {
+                outputStream.close();
+            }
         }
 
     }

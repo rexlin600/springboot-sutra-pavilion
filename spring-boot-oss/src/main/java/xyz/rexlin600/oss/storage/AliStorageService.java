@@ -22,6 +22,8 @@ import java.io.InputStream;
 @Service
 public class AliStorageService extends AbstractStorageService {
 
+    private static final String SLASH = "/";
+
     private OSS client;
 
     /**
@@ -54,17 +56,17 @@ public class AliStorageService extends AbstractStorageService {
     @Override
     public String upload(InputStream inputStream, String fileName, String path) {
         // 处理 path
-        path = path.replaceAll("/+", "/");
-        if (StringUtils.isEmpty(path) || path.equals("/")) {
+        path = path.replaceAll("/+", SLASH);
+        if (StringUtils.isEmpty(path) || path.equals(SLASH)) {
             path = fileName;
         } else {
-            if (path.startsWith("/")) { // 注：阿里云不支持 path 开头为 /
+            if (path.startsWith(SLASH)) { // 注：阿里云不支持 path 开头为 /
                 path = path.substring(1);
             }
-            if (path.endsWith("/")) {
+            if (path.endsWith(SLASH)) {
                 path = path.concat(fileName);
             } else {
-                path = path.concat("/").concat(fileName);
+                path = path.concat(SLASH).concat(fileName);
             }
         }
 
@@ -76,13 +78,18 @@ public class AliStorageService extends AbstractStorageService {
             throw new RuntimeException("OSS客户端异常，异常码=" + ex.getErrorCode() + " 异常信息=" + ex.getErrorMessage());
         }
 
-        return config.getDomain().concat("/").concat(path);
+        return config.getDomain().concat(SLASH).concat(path);
     }
 
     @Override
     public InputStream download(String key) {
         OSSObject object = client.getObject(new GetObjectRequest(this.config.getBucketName(), key));
         return object.getObjectContent();
+    }
+
+    @Override
+    public void download(String key, String path) {
+        throw new UnsupportedOperationException("不支持的下载方式");
     }
 
 }

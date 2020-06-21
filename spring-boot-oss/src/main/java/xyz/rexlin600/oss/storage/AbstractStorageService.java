@@ -1,5 +1,6 @@
 package xyz.rexlin600.oss.storage;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -18,7 +19,7 @@ public abstract class AbstractStorageService {
      * @param path     文件路径
      * @return 返回http地址
      */
-    public abstract String upload(byte[] data, String fileName, String path);
+    public abstract String upload(byte[] data, String fileName, String path) throws IOException;
 
     /**
      * 文件上传
@@ -28,14 +29,23 @@ public abstract class AbstractStorageService {
      * @param path        文件路径
      * @return 返回http地址
      */
-    public abstract String upload(InputStream inputStream, String fileName, String path);
+    public abstract String upload(InputStream inputStream, String fileName, String path) throws IOException;
 
     /**
-     * 下载文件到本地
+     * 阿里云下载文件
      *
-     * @param key
+     * @param key 文件key
      * @return
      */
     public abstract InputStream download(String key);
+
+    /**
+     * 腾讯云下载文件
+     *
+     * @param key  文件key
+     * @param path 本地路径
+     * @return
+     */
+    public abstract void download(String key, String path) throws InterruptedException, IOException;
 
 }

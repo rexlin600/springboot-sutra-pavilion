@@ -28,16 +28,6 @@ public class TxOssConfig implements Serializable {
     private String region;
 
     /**
-     * 腾讯云路径前缀
-     */
-    private String prefix;
-
-    /**
-     * 腾讯云AppId
-     */
-    private String appId;
-
-    /**
      * 腾讯云 secretId
      */
     private String secretId;
