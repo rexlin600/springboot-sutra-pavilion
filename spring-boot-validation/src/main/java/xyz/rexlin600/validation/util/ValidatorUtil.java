@@ -30,8 +30,12 @@ public class ValidatorUtil {
      */
     public static final String ID_CARD_CONSTRAINT_REGEXP = "[1-9]\\d{13,16}[a-zA-Z0-9]{1}";
 
+    // -----------------------------------------------------------------------------------------------
+    // 实用方法
+    // -----------------------------------------------------------------------------------------------
+
     /**
-     * 校验是否为手机号
+     * 校验手机号
      *
      * @param value
      * @return
@@ -42,6 +46,57 @@ public class ValidatorUtil {
         }
 
         Pattern pattern = Pattern.compile(PHONE_CONSTRAINT_REGEXP);
+        Matcher matcher = pattern.matcher(value);
+
+        return matcher.matches();
+    }
+
+    /**
+     * 校验身份证号
+     *
+     * @param value
+     * @return
+     */
+    public static boolean isIdCard(String value) {
+        if (StringUtils.isEmpty(value)) {
+            return false;
+        }
+
+        Pattern pattern = Pattern.compile(ID_CARD_CONSTRAINT_REGEXP);
+        Matcher matcher = pattern.matcher(value);
+
+        return matcher.matches();
+    }
+
+    /**
+     * 校验昵称
+     *
+     * @param value
+     * @return
+     */
+    public static boolean isNickName(String value) {
+        if (StringUtils.isEmpty(value)) {
+            return false;
+        }
+
+        Pattern pattern = Pattern.compile(NICKNAME_CONSTRAINT_REGEXP);
+        Matcher matcher = pattern.matcher(value);
+
+        return matcher.matches();
+    }
+
+    /**
+     * 校验密码
+     *
+     * @param value
+     * @return
+     */
+    public static boolean isPassword(String value) {
+        if (StringUtils.isEmpty(value)) {
+            return false;
+        }
+
+        Pattern pattern = Pattern.compile(USER_PASSWORD_CONSTRAINT_REGEXP);
         Matcher matcher = pattern.matcher(value);
 
         return matcher.matches();

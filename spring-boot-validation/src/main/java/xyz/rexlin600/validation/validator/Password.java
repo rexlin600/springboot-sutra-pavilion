@@ -5,20 +5,20 @@ import javax.validation.Payload;
 import java.lang.annotation.*;
 
 /**
- * 手机校验
+ * 密码校验器
  *
  * @author: hekunlin
- * @date: 2020/6/1
+ * @date: 2020/6/21
  */
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Constraint(validatedBy = {PhoneValidator.class})
-public @interface Phone {
+@Constraint(validatedBy = {PasswordValidator.class})
+public @interface Password {
 
     boolean required() default true;
 
-    String message() default "手机号格式错误";
+    String message() default "密码格式错误";
 
     Class<?>[] groups() default {};
 

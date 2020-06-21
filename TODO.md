@@ -8,7 +8,6 @@
 * spring-boot-security-cas
 * spring-boot-oauth2
 * spring-boot-image
-* spring-boot-aspect
 * spring-boot-retry
 * spring-boot-disconf
 * spring-boot-kafka
