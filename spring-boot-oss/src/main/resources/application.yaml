@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: oss
+server:
+  port: 10037
+# oss config
+oss:
+  aliyun:
+    domain: "rexlin600-blog.oss-cn-chengdu.aliyuncs.com"
+    endpoint: "oss-cn-chengdu.aliyuncs.com"
+    prefix: "img"
+    accessKey: "xxx"
+    accessKeySecret: "xxx"
+    bucketName: rexlin600-blog
