@@ -67,6 +67,7 @@
 | 31 | [fastdfs](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-fastdfs/README.md) | 集成 `fastdfs`，实现文件上传、下载 |
 | 32 | [websocket](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-websocket/README.md) | 集成 `websocket`，实现简单`聊天室功能` |
 | 33 | [validation](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-validation/README.md) | 使用 `JSR303` 标准(Bean Validation 1.0 (JSR 303))、`hibernate-validation`，实现数据验证 |
+| 33 | [oss](https://github.com/rexlin600/springboot-sutra-pavilion/tree/master/spring-boot-oss/README.md) | 集成阿里云、腾讯云、七牛云，实现文件上传、下载、删除功能 |
 | _ | _ |
 
 
