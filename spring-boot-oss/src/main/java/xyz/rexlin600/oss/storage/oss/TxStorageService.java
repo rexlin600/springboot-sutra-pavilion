@@ -11,6 +11,7 @@ import com.qcloud.cos.region.Region;
 import com.qcloud.cos.transfer.Download;
 import com.qcloud.cos.transfer.TransferManager;
 import com.qcloud.cos.transfer.Upload;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Service;
 import xyz.rexlin600.oss.common.OssConstant;
 import xyz.rexlin600.oss.config.TxOssConfig;
@@ -33,6 +34,7 @@ import java.util.concurrent.TimeUnit;
  * @date: 2020/6/21
  */
 @SuppressWarnings("DuplicatedCode")
+@ConditionalOnBean(TxOssConfig.class)
 @Service
 public class TxStorageService implements StorageService {
 
@@ -52,7 +54,7 @@ public class TxStorageService implements StorageService {
     /**
      * 腾讯云配置
      */
-    private TxOssConfig config;
+    private final TxOssConfig config;
 
     public TxStorageService(TxOssConfig config) {
         this.config = config;

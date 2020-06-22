@@ -8,6 +8,7 @@ import com.qiniu.storage.Region;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
 import com.qiniu.util.IOUtils;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Service;
 import xyz.rexlin600.oss.config.QnOssConfig;
 import xyz.rexlin600.oss.storage.StorageService;
@@ -28,6 +29,7 @@ import java.security.cert.X509Certificate;
  * @date: 2020/6/22
  */
 @SuppressWarnings("DuplicatedCode")
+@ConditionalOnBean(QnOssConfig.class)
 @Service
 public class QnStorageService implements StorageService {
 
@@ -39,7 +41,7 @@ public class QnStorageService implements StorageService {
     /**
      * 腾讯云配置
      */
-    private QnOssConfig config;
+    private final QnOssConfig config;
 
     public QnStorageService(QnOssConfig config) {
         this.config = config;

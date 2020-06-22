@@ -6,6 +6,8 @@ import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.OSSException;
 import com.aliyun.oss.model.GetObjectRequest;
 import com.aliyun.oss.model.OSSObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Service;
 import xyz.rexlin600.oss.common.OssConstant;
 import xyz.rexlin600.oss.config.AliOssConfig;
@@ -23,6 +25,7 @@ import java.io.InputStream;
  * @author: hekunlin
  * @date: 2020/6/21
  */
+@ConditionalOnBean(AliOssConfig.class)
 @Service
 public class AliStorageService implements StorageService {
 
@@ -31,8 +34,9 @@ public class AliStorageService implements StorageService {
     /**
      * 阿里云配置
      */
-    private AliOssConfig config;
+    private final AliOssConfig config;
 
+    @Autowired
     public AliStorageService(AliOssConfig config) {
         this.config = config;
         //初始化

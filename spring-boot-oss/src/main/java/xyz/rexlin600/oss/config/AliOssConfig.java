@@ -1,8 +1,11 @@
 package xyz.rexlin600.oss.config;
 
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import xyz.rexlin600.oss.common.OssConstant;
 
 import java.io.Serializable;
 
@@ -12,10 +15,17 @@ import java.io.Serializable;
  * @author: hekunlin
  * @date: 2020/6/21
  */
+@Qualifier(value = "aliOssConfig")
+@ConditionalOnProperty(prefix = OssConstant.PREFIX_ALI, name = "enable", havingValue = "true")
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "oss.aliyun")
+@ConfigurationProperties(prefix = OssConstant.PREFIX_ALI)
 public class AliOssConfig implements Serializable {
+
+    /**
+     * 是否启用
+     */
+    private boolean enable;
 
     /**
      * 阿里云绑定的域名
