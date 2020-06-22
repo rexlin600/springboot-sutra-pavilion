@@ -1,4 +1,4 @@
-package xyz.rexlin600.oss.storage;
+package xyz.rexlin600.oss.storage.oss;
 
 import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSS;
@@ -7,10 +7,13 @@ import com.aliyun.oss.OSSException;
 import com.aliyun.oss.model.GetObjectRequest;
 import com.aliyun.oss.model.OSSObject;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
+import xyz.rexlin600.oss.common.OssConstant;
 import xyz.rexlin600.oss.config.AliOssConfig;
+import xyz.rexlin600.oss.storage.StorageService;
+import xyz.rexlin600.oss.util.PathUtil;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.InputStream;
 
 /**
@@ -20,9 +23,7 @@ import java.io.InputStream;
  * @date: 2020/6/21
  */
 @Service
-public class AliStorageService extends AbstractStorageService {
-
-    private static final String SLASH = "/";
+public class AliStorageService implements StorageService {
 
     private OSS client;
 
@@ -55,20 +56,7 @@ public class AliStorageService extends AbstractStorageService {
 
     @Override
     public String upload(InputStream inputStream, String fileName, String path) {
-        // 处理 path
-        path = path.replaceAll("/+", SLASH);
-        if (StringUtils.isEmpty(path) || path.equals(SLASH)) {
-            path = fileName;
-        } else {
-            if (path.startsWith(SLASH)) { // 注：阿里云不支持 path 开头为 /
-                path = path.substring(1);
-            }
-            if (path.endsWith(SLASH)) {
-                path = path.concat(fileName);
-            } else {
-                path = path.concat(SLASH).concat(fileName);
-            }
-        }
+        path = PathUtil.resolvePath(path, fileName);
 
         try {
             client.putObject(config.getBucketName(), path, inputStream);
@@ -78,7 +66,7 @@ public class AliStorageService extends AbstractStorageService {
             throw new RuntimeException("OSS客户端异常，异常码=" + ex.getErrorCode() + " 异常信息=" + ex.getErrorMessage());
         }
 
-        return config.getDomain().concat(SLASH).concat(path);
+        return config.getDomain().concat(OssConstant.SLASH).concat(path);
     }
 
     @Override
@@ -89,7 +77,12 @@ public class AliStorageService extends AbstractStorageService {
 
     @Override
     public void download(String key, String path) {
-        throw new UnsupportedOperationException("不支持的下载方式");
+        client.getObject(new GetObjectRequest(config.getBucketName(), key), new File(path));
+    }
+
+    @Override
+    public void delete(String key) {
+        client.deleteObject(config.getBucketName(), key);
     }
 
 }

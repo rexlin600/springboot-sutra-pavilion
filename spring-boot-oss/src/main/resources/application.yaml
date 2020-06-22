@@ -6,14 +6,20 @@ server:
 # oss config
 oss:
   aliyun:
-    domain: ""
-    endpoint: ""
-    access-key: ""
-    access-key-secret: ""
-    bucket-name: ""
+    domain: "https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com"
+    endpoint: "oss-cn-chengdu.aliyuncs.com"
+    access-key: "LTAI4FwWexB42ihsEVV9qm4h"
+    access-key-secret: "cq6wWFnDobj6T5kHwt3lJbBOjKxOi7"
+    bucket-name: "rexlin600-blog"
   tencent:
-    domain: ""
-    secret-id: ""
-    secret-key: ""
-    region: ""
-    bucket-name: "
+    domain: "https://rexlin600-1257869896.cos.ap-chengdu.myqcloud.com"
+    secret-id: "AKID3tUr57JRnLejY2zYZNFsoeIm8NdmER6S"
+    secret-key: "bHrTSu2nikdNvFj35IWXWGm6uSsH8oJY"
+    region: "ap-chengdu"
+    bucket-name: "test-1257869896"
+  qiniu:
+    domain: "rexlin600.s3-cn-east-1.qiniucs.com"
+    endpoint: "s3-cn-east-1.qiniucs.com"
+    access-key: "b3TuLAVsz6XoijpCl_JgKk34_cKvkg42EJKDnoWH"
+    secret-key: "iOcfhSQwzavyf7hYYcEBjIhycG50pGRn"
+    bucket-name: "rexlin600"

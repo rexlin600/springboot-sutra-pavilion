@@ -10,7 +10,7 @@ Content-Disposition: form-data; name="file"; filename="professional.jpg"
 
 ### 阿里云 下载文件
 ### 阿里云下载指定 key 不需要加前缀 /
-GET http://localhost:10037/oss/download?key=2020-06-21/云原生街.png&ossType=1&filePath=/Users/rexlin600/Desktop/2020-06-21/云原生街.png
+GET http://localhost:10037/oss/download?key=professional.jpg&ossType=1&filePath=/Users/rexlin600/Desktop/professional.jpg
 Accept: application/json
 
 ########################################################################################
@@ -27,6 +27,6 @@ Content-Disposition: form-data; name="file"; filename="professional.jpg"
 
 ### 腾讯云 下载文件
 ### 腾讯云下载指定 key 不需要加前缀 /
-GET http://localhost:10037/oss/download?ossType=2&key=20190423/java.jpg&filePath=/Users/rexlin600/Desktop/20190423/java.jpg
+GET http://localhost:10037/oss/download?ossType=2&key=professional.jpg&filePath=/Users/rexlin600/Desktop/professional.jpg
 Accept: application/json
 

@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import xyz.rexlin600.oss.enums.OSSTypeEnum;
-import xyz.rexlin600.oss.storage.AbstractStorageService;
 import xyz.rexlin600.oss.storage.OssFactory;
+import xyz.rexlin600.oss.storage.StorageService;
 
 import javax.validation.constraints.NotBlank;
 import java.io.*;
@@ -40,11 +40,11 @@ public class OssRest {
     @SneakyThrows
     @PostMapping("/upload")
     public void upload(@RequestPart(value = "file") MultipartFile file,
-                       @Range(min = 1, max = 3, message = "参数错误：OSS类型错误")
-                       @RequestParam(value = "ossType") Integer ossType) {
-        AbstractStorageService storageService = ossFactory.build(ossType);
+                       @Range(min = 1, max = 3, message = "参数错误：OSS类型错误") @RequestParam(value = "ossType") Integer ossType,
+                       @RequestParam(value = "path", required = false) String path) {
+        StorageService storageService = ossFactory.build(ossType);
 
-        String res = storageService.upload(file.getInputStream(), file.getOriginalFilename(), "");
+        String res = storageService.upload(file.getInputStream(), file.getOriginalFilename(), path);
 
         log.info("==>  文件上传结果：{}", res);
     }
@@ -61,7 +61,7 @@ public class OssRest {
     public void download(@RequestParam("key") String key,
                          @Range(min = 1, max = 3, message = "参数错误：OSS类型错误") @RequestParam(value = "ossType") Integer ossType,
                          @NotBlank(message = "参数错误：下载路径不可为空") @RequestParam("filePath") String filePath) {
-        AbstractStorageService storageService = ossFactory.build(ossType);
+        StorageService storageService = ossFactory.build(ossType);
 
         OutputStream outputStream = null;
         InputStream inputStream = null;

@@ -9,7 +9,7 @@ import java.io.InputStream;
  * @author: hekunlin
  * @date: 2020/6/21
  */
-public abstract class AbstractStorageService {
+public interface StorageService {
 
     /**
      * 文件上传
@@ -19,7 +19,7 @@ public abstract class AbstractStorageService {
      * @param path     文件路径
      * @return 返回http地址
      */
-    public abstract String upload(byte[] data, String fileName, String path) throws IOException;
+    String upload(byte[] data, String fileName, String path) throws IOException;
 
     /**
      * 文件上传
@@ -29,7 +29,7 @@ public abstract class AbstractStorageService {
      * @param path        文件路径
      * @return 返回http地址
      */
-    public abstract String upload(InputStream inputStream, String fileName, String path) throws IOException;
+    String upload(InputStream inputStream, String fileName, String path) throws IOException;
 
     /**
      * 阿里云下载文件
@@ -37,7 +37,7 @@ public abstract class AbstractStorageService {
      * @param key 文件key
      * @return
      */
-    public abstract InputStream download(String key);
+    InputStream download(String key) throws IOException;
 
     /**
      * 腾讯云下载文件
@@ -46,6 +46,13 @@ public abstract class AbstractStorageService {
      * @param path 本地路径
      * @return
      */
-    public abstract void download(String key, String path) throws InterruptedException, IOException;
+    void download(String key, String path) throws InterruptedException, IOException;
+
+    /**
+     * 删除指定 key
+     *
+     * @param key 文件key
+     */
+    void delete(String key) throws IOException;
 
 }

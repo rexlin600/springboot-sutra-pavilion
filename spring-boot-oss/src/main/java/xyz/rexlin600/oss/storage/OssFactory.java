@@ -7,6 +7,8 @@ import xyz.rexlin600.oss.config.AliOssConfig;
 import xyz.rexlin600.oss.config.QnOssConfig;
 import xyz.rexlin600.oss.config.TxOssConfig;
 import xyz.rexlin600.oss.enums.OSSTypeEnum;
+import xyz.rexlin600.oss.storage.oss.AliStorageService;
+import xyz.rexlin600.oss.storage.oss.TxStorageService;
 
 import java.time.Instant;
 
@@ -20,6 +22,9 @@ import java.time.Instant;
 @Component
 public class OssFactory {
 
+    /**
+     * 阿里云、腾讯云、七牛云 配置类
+     */
     private final AliOssConfig aliConfig;
     private final TxOssConfig txOssConfig;
     private final QnOssConfig qnOssConfig;
@@ -38,8 +43,8 @@ public class OssFactory {
      *
      * @return 抽象存储对象
      */
-    public AbstractStorageService build(Integer ossType) {
-        AbstractStorageService storageService = null;
+    public StorageService build(Integer ossType) {
+        StorageService storageService = null;
 
         /**
          * 根据不同的 OSS 类型创建不同的 OSS 实现类
