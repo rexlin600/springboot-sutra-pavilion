@@ -107,7 +107,8 @@ public class TxStorageService implements StorageService {
     @Override
     public void download(String key, String path) throws InterruptedException, IOException {
         try {
-            File file = PathUtil.createFile(path);
+            // 创建文件
+            PathUtil.createFile(path);
 
             GetObjectRequest getObjectRequest = new GetObjectRequest(config.getBucketName(), key);
             getObjectRequest.setTrafficLimit(OssConstant.BANDWIDTH_10MB * OSSConstants.KB * OSSConstants.KB);

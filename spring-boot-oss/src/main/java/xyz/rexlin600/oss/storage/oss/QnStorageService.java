@@ -13,9 +13,13 @@ import xyz.rexlin600.oss.config.QnOssConfig;
 import xyz.rexlin600.oss.storage.StorageService;
 import xyz.rexlin600.oss.util.PathUtil;
 
+import javax.net.ssl.X509TrustManager;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 
 /**
  * 七牛云存储服务
@@ -47,11 +51,11 @@ public class QnStorageService implements StorageService {
      * 初始化
      */
     private void init() {
-        Configuration cfg = new Configuration(Region.autoRegion());
+        Configuration cfg = new Configuration(Region.autoRegion()); // 可以替换为明确的 region
         uploadManager = new UploadManager(cfg);
-        token = Auth.create(config.getAccessKey(), config.getSecretKey()).uploadToken(config.getBucketName());
         auth = Auth.create(config.getAccessKey(), config.getSecretKey());
-        BucketManager bucketManager = new BucketManager(auth, cfg);
+        token = auth.uploadToken(config.getBucketName());
+        bucketManager = new BucketManager(auth, cfg);
     }
 
     @Override
@@ -64,6 +68,7 @@ public class QnStorageService implements StorageService {
                 throw new RuntimeException("上传七牛出错：" + res.toString());
             }
         } catch (QiniuException e) {
+            e.printStackTrace();
             throw new IOException("上传文件失败，请核对七牛配置信息");
         }
 
@@ -83,39 +88,29 @@ public class QnStorageService implements StorageService {
     @Override
     public InputStream download(String key) throws IOException {
         // 拼接 key
-        key = String.format("%s/%s", config.getBucketName(), key);
+        key = String.format("%s/%s", config.getDomain(),
+                URLEncoder.encode(key, "utf-8").replace("+", "%20"));
 
-        String downloadUrl = auth.privateDownloadUrl(key);
+        // 下载私有资源
+        //long expireInSeconds = 3600; //1小时，可以自定义链接过期时间
+        //String downloadUrl = auth.privateDownloadUrl(key, expireInSeconds);
+
+        // 下载公开资源
+        String downloadUrl = key;
 
         BufferedInputStream bufferedInputStream = null;
         HttpURLConnection httpURLConnection = null;
         try {
             URL url = new URL(downloadUrl);
             httpURLConnection = (HttpURLConnection) url.openConnection();
-            // http的连接类
-            //设置超时
             httpURLConnection.setConnectTimeout(1000 * 5);
-            //设置请求方式，默认是GET
-            httpURLConnection.setRequestMethod("POST");
-            // 设置字符编码
             httpURLConnection.setRequestProperty("Charset", "UTF-8");
-            // 打开到此 URL引用的资源的通信链接（如果尚未建立这样的连接）
             httpURLConnection.connect();
 
             bufferedInputStream = new BufferedInputStream(httpURLConnection.getInputStream());
         } catch (Exception ex) {
+            ex.printStackTrace();
             throw new IOException("七牛云下载失败");
-        } finally {
-            if (bufferedInputStream != null) {
-                try {
-                    bufferedInputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (httpURLConnection != null) {
-                httpURLConnection.disconnect();
-            }
         }
 
         return bufferedInputStream;
@@ -139,6 +134,7 @@ public class QnStorageService implements StorageService {
                 outputStream.write(buffer, 0, bytesRead);
             }
         } catch (IOException ex) {
+            ex.printStackTrace();
             throw new IOException("七牛云下载异常");
         } finally {
             if (outputStream != null) {
@@ -157,6 +153,19 @@ public class QnStorageService implements StorageService {
         } catch (QiniuException ex) {
             //如果遇到异常，说明删除失败
             throw new IOException("删除文件文件失败");
+        }
+    }
+
+    private static class TrustAnyTrustManager implements X509TrustManager {
+
+        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+        }
+
+        public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+        }
+
+        public X509Certificate[] getAcceptedIssuers() {
+            return new X509Certificate[]{};
         }
     }
 

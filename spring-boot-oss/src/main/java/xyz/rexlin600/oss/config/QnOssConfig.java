@@ -21,11 +21,6 @@ public class QnOssConfig implements Serializable {
     private String domain;
 
     /**
-     * 七牛云 区域节点
-     */
-    private String endpoint;
-
-    /**
      * 七牛云 accessKey
      */
     private String accessKey;

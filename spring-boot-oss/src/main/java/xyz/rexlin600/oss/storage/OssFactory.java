@@ -8,6 +8,7 @@ import xyz.rexlin600.oss.config.QnOssConfig;
 import xyz.rexlin600.oss.config.TxOssConfig;
 import xyz.rexlin600.oss.enums.OSSTypeEnum;
 import xyz.rexlin600.oss.storage.oss.AliStorageService;
+import xyz.rexlin600.oss.storage.oss.QnStorageService;
 import xyz.rexlin600.oss.storage.oss.TxStorageService;
 
 import java.time.Instant;
@@ -59,6 +60,7 @@ public class OssFactory {
                 log.info("==>  感谢使用腾讯云OSS {}", Instant.now().toEpochMilli());
                 break;
             case QN:
+                storageService = new QnStorageService(qnOssConfig);
                 log.info("==>  感谢使用七牛云OSS {}", Instant.now().toEpochMilli());
                 break;
             default:

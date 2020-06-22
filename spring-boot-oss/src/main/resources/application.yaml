@@ -4,22 +4,22 @@ spring:
 server:
   port: 10037
 # oss config
+# 注意七牛云的外链一般30天后会回收
 oss:
   aliyun:
-    domain: "https://rexlin600-blog.oss-cn-chengdu.aliyuncs.com"
+    domain: "http://rexlin600-blog.oss-cn-chengdu.aliyuncs.com"
     endpoint: "oss-cn-chengdu.aliyuncs.com"
-    access-key: "LTAI4FwWexB42ihsEVV9qm4h"
-    access-key-secret: "cq6wWFnDobj6T5kHwt3lJbBOjKxOi7"
+    access-key: "xxx"
+    access-key-secret: "xxx"
     bucket-name: "rexlin600-blog"
   tencent:
-    domain: "https://rexlin600-1257869896.cos.ap-chengdu.myqcloud.com"
-    secret-id: "AKID3tUr57JRnLejY2zYZNFsoeIm8NdmER6S"
-    secret-key: "bHrTSu2nikdNvFj35IWXWGm6uSsH8oJY"
+    domain: "http://rexlin600-1257869896.cos.ap-chengdu.myqcloud.com"
+    secret-id: "xxx"
+    secret-key: "xxx"
     region: "ap-chengdu"
     bucket-name: "test-1257869896"
   qiniu:
-    domain: "rexlin600.s3-cn-east-1.qiniucs.com"
-    endpoint: "s3-cn-east-1.qiniucs.com"
-    access-key: "b3TuLAVsz6XoijpCl_JgKk34_cKvkg42EJKDnoWH"
-    secret-key: "iOcfhSQwzavyf7hYYcEBjIhycG50pGRn"
+    domain: "http://qcb7l22vz.bkt.clouddn.com"
+    access-key: "xxx"
+    secret-key: "xxx"
     bucket-name: "rexlin600"

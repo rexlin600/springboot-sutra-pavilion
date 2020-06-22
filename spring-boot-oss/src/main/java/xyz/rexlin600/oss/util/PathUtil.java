@@ -19,23 +19,41 @@ public class PathUtil {
      *
      * @param path     文件路径
      * @param fileName 文件名称
-     * @return 返回形如 /aaa/bbb/xxx.png 形式的路径
+     * @return 返回形如 aaa/bbb/xxx.png 形式的路径
      */
     public static String resolvePath(String path, String fileName) {
-        // 去除多余的 /
-        path = path.replaceAll(OssConstant.SLASH_PLUS, OssConstant.SLASH);
+        if (StringUtils.isEmpty(fileName)) {
+            throw new NullPointerException("文件名称为空");
+        }
 
-        // 处理前后缀
-        if (StringUtils.isEmpty(path) || path.equals(OssConstant.SLASH)) {
-            path = fileName;
-        } else {
-            if (!path.startsWith(OssConstant.SLASH)) {  // 增加前缀
-                path = OssConstant.SLASH + path;
+        // 处理 path
+        if (!StringUtils.isEmpty(path)) {
+            // 去除多余的 /
+            path = path.replaceAll(OssConstant.SLASH_PLUS, OssConstant.SLASH);
+
+            // 去前缀
+            if (path.startsWith("/")) {
+                path = path.substring(1);
             }
-            if (path.endsWith(OssConstant.SLASH)) { // 拼接 fileName
+            // 去后缀
+            if (path.endsWith(OssConstant.SLASH)) {
+                path = path.substring(0, path.length() - 1);
+            }
+
+            // 拼接 fileName
+            fileName = fileName.replaceAll(OssConstant.SLASH_PLUS, OssConstant.SLASH);
+            if (fileName.startsWith("/")) {
                 path = path.concat(fileName);
             } else {
-                path = path.concat(OssConstant.SLASH).concat(fileName);
+                path = path.concat("/").concat(fileName);
+            }
+        } else {
+            // 拼接 fileName
+            fileName = fileName.replaceAll(OssConstant.SLASH_PLUS, OssConstant.SLASH);
+            if (fileName.startsWith("/")) {
+                path = fileName.substring(1);
+            } else {
+                path = fileName;
             }
         }
 

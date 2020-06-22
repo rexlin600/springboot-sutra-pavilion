@@ -14,6 +14,7 @@ import xyz.rexlin600.oss.util.PathUtil;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -76,7 +77,11 @@ public class AliStorageService implements StorageService {
     }
 
     @Override
-    public void download(String key, String path) {
+    public void download(String key, String path) throws IOException {
+
+        // 创建文件
+        PathUtil.createFile(path);
+
         client.getObject(new GetObjectRequest(config.getBucketName(), key), new File(path));
     }
 

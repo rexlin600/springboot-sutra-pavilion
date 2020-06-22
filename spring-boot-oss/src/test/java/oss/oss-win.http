@@ -1,0 +1,68 @@
+########################################################################################
+### 阿里云 上传文件
+POST http://localhost:10037/oss/upload?ossType=1
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="professional.jpg"
+
+< ../../images/fastdfs/professional.jpg
+--WebAppBoundary--
+
+### 阿里云 下载文件
+### 阿里云下载指定 key 不需要加前缀 /
+GET http://localhost:10037/oss/download?key=professional.jpg&ossType=1&filePath=C:\\Users\\hekunlin\\Desktop\\professional.jpg
+Accept: application/json
+
+### 阿里云 删除文件
+POST http://localhost:10037/oss/delete?key=professional.jpg&ossType=1
+Content-Type: application/json
+
+{}
+
+########################################################################################
+
+### 腾讯云 上传文件
+POST http://localhost:10037/oss/upload?ossType=2
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="professional.jpg"
+
+< ../../images/fastdfs/professional.jpg
+--WebAppBoundary--
+
+### 腾讯云 下载文件
+### 腾讯云下载指定 key 不需要加前缀 /
+GET http://localhost:10037/oss/download?ossType=2&key=professional.jpg&filePath=C:\\Users\\hekunlin\\Desktop\\professional.jpg
+Accept: application/json
+
+### 腾讯云 删除文件
+POST http://localhost:10037/oss/delete?key=professional.jpg&ossType=2
+Content-Type: application/json
+
+{}
+
+########################################################################################
+
+### 七牛云 上传文件
+POST http://localhost:10037/oss/upload?ossType=3
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="professional.jpg"
+
+< ../../images/fastdfs/professional.jpg
+--WebAppBoundary--
+
+### 七牛云 下载文件
+### 七牛云下载指定 key 不需要加前缀 /
+GET http://localhost:10037/oss/download?ossType=3&key=professional.jpg&filePath=C:\\Users\\hekunlin\\Desktop\\professional.jpg
+Accept: application/json
+
+### 七牛云 删除文件
+POST http://localhost:10037/oss/delete?key=professional.jpg&ossType=3
+Content-Type: application/json
+
+{}
+
