@@ -18,6 +18,7 @@ public interface StorageService {
      * @param fileName 文件名称
      * @param path     文件路径
      * @return 返回http地址
+     * @throws IOException
      */
     String upload(byte[] data, String fileName, String path) throws IOException;
 
@@ -28,6 +29,7 @@ public interface StorageService {
      * @param fileName    文件名称
      * @param path        文件路径
      * @return 返回http地址
+     * @throws IOException
      */
     String upload(InputStream inputStream, String fileName, String path) throws IOException;
 
@@ -36,6 +38,7 @@ public interface StorageService {
      *
      * @param key 文件key
      * @return
+     * @throws IOException
      */
     InputStream download(String key) throws IOException;
 
@@ -45,6 +48,8 @@ public interface StorageService {
      * @param key  文件key
      * @param path 本地路径
      * @return
+     * @throws InterruptedException
+     * @throws IOException
      */
     void download(String key, String path) throws InterruptedException, IOException;
 
@@ -52,6 +57,7 @@ public interface StorageService {
      * 删除指定 key
      *
      * @param key 文件key
+     * @throws IOException
      */
     void delete(String key) throws IOException;
 

@@ -6,17 +6,27 @@ import lombok.Getter;
 import java.util.HashMap;
 
 /**
+ * 云存储类型常量
+ *
  * @param
  * @author hekunlin
- * @description 云存储类型常量
  * @return
  */
 @Getter
 @AllArgsConstructor
 public enum OSSTypeEnum {
 
+    /**
+     * 阿里云
+     */
     ALI(1, "阿里云", "阿里云 OSS 文件上传"),
+    /**
+     * 腾讯云
+     */
     TX(2, "腾讯云", "腾讯云 OSS 文件上传"),
+    /**
+     * 七牛云
+     */
     QN(3, "七牛云", "七牛云 OSS 文件上传");
 
     private static volatile HashMap<Integer, OSSTypeEnum> map;

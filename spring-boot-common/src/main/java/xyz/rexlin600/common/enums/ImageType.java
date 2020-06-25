@@ -15,14 +15,41 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public enum ImageType {
 
+    /**
+     * GIF
+     */
     GIF(1, "GIF"),
+    /**
+     * JPG
+     */
     JPG(2, "JPG"),
+    /**
+     * PNG
+     */
     PNG(3, "PNG"),
+    /**
+     * JPEG
+     */
     JPEG(4, "JPEG"),
+    /**
+     * BMP
+     */
     BMP(5, "BMP"),
+    /**
+     * TIFF
+     */
     TIFF(6, "TIFF"),
+    /**
+     * EPS
+     */
     EPS(7, "EPS"),
+    /**
+     * EMF
+     */
     EMF(8, "EMF"),
+    /**
+     * WMF
+     */
     WMF(9, "WMF");
 
     /**

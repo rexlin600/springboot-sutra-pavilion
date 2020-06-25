@@ -54,23 +54,13 @@ public class Format {
 
     // -----------------------------------------------------------------------------------------------
     // LocalDateTime
+    //
+    // 注意点：
+    //
+    // @DateTimeFormat to @DateTimeFormat：LocalDateTime 通过 @DateTimeFormat 接收参数会报错
+    //
+    // @DateTimeFormat to @JsonFormat：LocalDateTime 通过 @DateTimeFormat 接收参数会报错
     // -----------------------------------------------------------------------------------------------
-
-    /**
-     * @DateTimeFormat to @DateTimeFormat
-     *
-     * LocalDateTime 通过 @DateTimeFormat 接收参数会报错
-     */
-    //@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    //private LocalDateTime localCrateDate;
-
-    /**
-     * @DateTimeFormat to @JsonFormat
-     *
-     * LocalDateTime 通过 @DateTimeFormat 接收参数会报错
-     */
-    //@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    //private LocalDateTime localDeleteDate;
 
     /**
      * @JsonFormat to @JsonFormat

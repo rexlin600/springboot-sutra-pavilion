@@ -4,6 +4,11 @@ import org.redisson.api.RLock;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 分布式锁
+ *
+ * @author rexlin600
+ */
 public interface DistributedLocker {
 
     /**

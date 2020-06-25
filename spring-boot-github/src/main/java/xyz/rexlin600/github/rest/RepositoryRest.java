@@ -1,10 +1,10 @@
 package xyz.rexlin600.github.rest;
 
-import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
 import cn.hutool.http.HttpUtil;
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.egit.github.core.*;
@@ -15,12 +15,14 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import xyz.rexlin600.github.common.apiparam.Response;
 import xyz.rexlin600.github.common.apiparam.ResponseGenerator;
-import xyz.rexlin600.github.common.constant.GithubConstant;
 import xyz.rexlin600.github.common.util.StarredUtil;
 import xyz.rexlin600.github.config.runner.GithubRunner;
 import xyz.rexlin600.github.entity.StarredResp;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @menu Github仓库API
@@ -32,6 +34,8 @@ import java.util.*;
 @RestController
 @RequestMapping(value = "/repository")
 public class RepositoryRest {
+
+    public static final String LINK = "Link";
 
     /**
      * 1. 【分页-仓库列表】
@@ -296,8 +300,8 @@ public class RepositoryRest {
         // TODO 获取头信息
         Integer count = 0;
         Map<String, List<String>> headers = httpResponse.headers();
-        if (headers.containsKey("Link")) {
-            List<String> link = headers.get("Link");
+        if (headers.containsKey(LINK)) {
+            List<String> link = headers.get(LINK);
             log.info("link is: {}", link);
         }
 

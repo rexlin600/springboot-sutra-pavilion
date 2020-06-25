@@ -1,5 +1,10 @@
 package xyz.rexlin600.common.constant;
 
+/**
+ * 字符串常量
+ *
+ * @author rexlin600
+ */
 public interface StringPool {
 
     String AMPERSAND = "&";
@@ -69,6 +74,6 @@ public interface StringPool {
     String HTML_LT = "&lt;";
     String HTML_GT = "&gt;";
     String[] EMPTY_ARRAY = new String[0];
-    byte[] BYTES_NEW_LINE = "\n" .getBytes();
+    byte[] BYTES_NEW_LINE = "\n".getBytes();
 
 }

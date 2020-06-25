@@ -1,4 +1,4 @@
-package xyz.rexlin600.oss.storage.oss;
+package xyz.rexlin600.oss.storage;
 
 import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSS;
@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Service;
 import xyz.rexlin600.oss.common.OssConstant;
 import xyz.rexlin600.oss.config.AliOssConfig;
-import xyz.rexlin600.oss.storage.StorageService;
 import xyz.rexlin600.oss.util.PathUtil;
 
 import java.io.ByteArrayInputStream;
@@ -29,7 +28,7 @@ import java.io.InputStream;
  */
 @ConditionalOnBean(AliOssConfig.class)
 @Service
-class AliStorageService implements StorageService {
+class AliStorageServiceImpl implements StorageService {
 
     private OSS client;
 
@@ -39,7 +38,7 @@ class AliStorageService implements StorageService {
     private final AliOssConfig config;
 
     @Autowired
-    public AliStorageService(AliOssConfig config) {
+    public AliStorageServiceImpl(AliOssConfig config) {
         this.config = config;
         //初始化
         init();

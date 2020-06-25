@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * 数据库枚举类型
+ *
  * @author hekunlin
  */
 
@@ -15,6 +17,9 @@ import java.util.concurrent.ConcurrentHashMap;
 @Getter
 public enum DbType {
 
+    /**
+     * 各种数据库类型枚举类
+     */
     MYSQL("mysql", "MySql数据库"),
     MARIADB("mariadb", "MariaDB数据库"),
     ORACLE("oracle", "Oracle11g及以下数据库(高版本推荐使用ORACLE_NEW)"),
@@ -35,6 +40,12 @@ public enum DbType {
     private String desc;
     private static Map<String, DbType> DB_CACHE_MAP = new ConcurrentHashMap();
 
+    /**
+     * 获取数据库类型
+     *
+     * @param dbType
+     * @return
+     */
     public static DbType getDbType(String dbType) {
         return (DbType) DB_CACHE_MAP.getOrDefault(dbType.toLowerCase(), OTHER);
     }

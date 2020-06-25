@@ -19,8 +19,13 @@ public class FastDfsApplication {
         SpringApplication.run(FastDfsApplication.class, args);
     }
 
-    // tomcatEmbedded这段代码是为了解决，上传文件大于10M出现连接重置的问题。此异常内容GlobalException也捕获不到。
-    // Tomcat large file upload connection reset
+    /**
+     * tomcatEmbedded这段代码是为了解决，上传文件大于10M出现连接重置的问题。此异常内容GlobalException也捕获不到。
+     * <p>
+     * Tomcat large file upload connection reset
+     *
+     * @return
+     */
     @Bean
     public TomcatServletWebServerFactory tomcatEmbedded() {
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();

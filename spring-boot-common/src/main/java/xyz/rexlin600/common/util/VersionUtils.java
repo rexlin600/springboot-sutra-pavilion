@@ -4,6 +4,11 @@ package xyz.rexlin600.common.util;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
+/**
+ * 版本工具类
+ *
+ * @author rexlin600
+ */
 public class VersionUtils {
 
     public VersionUtils() {

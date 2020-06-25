@@ -1,7 +1,6 @@
 package xyz.rexlin600.common.util;
 
 import cn.hutool.core.util.StrUtil;
-import org.omg.CORBA.UNKNOWN;
 import org.springframework.util.Assert;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +20,8 @@ public class IpUtils {
      *
      * @return {String}
      */
-    public String getIP() {
-        return getIP(WebUtils.getRequest());
+    public String getIp() {
+        return getIp(WebUtils.getRequest());
     }
 
     /**
@@ -31,7 +30,7 @@ public class IpUtils {
      * @param request HttpServletRequest
      * @return {String}
      */
-    public String getIP(HttpServletRequest request) {
+    public String getIp(HttpServletRequest request) {
         Assert.notNull(request, "HttpServletRequest is null");
         String ip = request.getHeader("X-Requested-For");
         if (StrUtil.isBlank(ip) || UNKNOWN.equalsIgnoreCase(ip)) {

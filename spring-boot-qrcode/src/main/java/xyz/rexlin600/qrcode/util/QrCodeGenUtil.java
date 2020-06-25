@@ -8,7 +8,6 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.util.ObjectUtils;
@@ -16,8 +15,8 @@ import org.springframework.util.StringUtils;
 import sun.font.FontDesignMetrics;
 import xyz.rexlin600.qrcode.base.constants.QrCodeConstant;
 import xyz.rexlin600.qrcode.base.entity.BatchQrCode;
-import xyz.rexlin600.qrcode.base.enums.TextPositionEnum;
 import xyz.rexlin600.qrcode.base.entity.QrCode;
+import xyz.rexlin600.qrcode.base.enums.TextPositionEnum;
 
 import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageInputStream;
@@ -30,12 +29,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.concurrent.*;
+import java.util.*;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 二维码工具类
@@ -50,7 +49,7 @@ public class QrCodeGenUtil {
     /**
      * 线程池
      */
-    private final static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
+    private final static ThreadPoolExecutor THREAD_POOL_EXECUTOR = new ThreadPoolExecutor(
             5,
             10,
             10,
@@ -91,7 +90,6 @@ public class QrCodeGenUtil {
      * @param content 二维码内容
      * @param height  二维码长度
      * @param width   二维码宽度
-     * @param format  二维码格式化
      * @param level   二维码纠错等级
      * @return {@link BufferedImage}
      */
@@ -316,12 +314,9 @@ public class QrCodeGenUtil {
      * <p>
      * 注意：在生成中间的文字时需要注意其覆盖区域不能太大，需要调整文字长度、字体大小防止扫码无法识别！
      *
-     * @param bufferedImage 二维码缓冲图像
-     * @param font          字体
-     * @param color         字体颜色
-     * @param topText       顶部文字
-     * @param centerText    中部文字
-     * @param bottomText    底部文字
+     * @param qrCode 二维码
+     * @param font   字体
+     * @param color  字体颜色
      * @return
      */
     public static BufferedImage textQrCode(QrCode qrCode, Font font, Color color) {
@@ -373,7 +368,7 @@ public class QrCodeGenUtil {
 
         long start = Instant.now().toEpochMilli();
         arrays.parallelStream().forEach(m -> {
-            threadPoolExecutor.execute(() -> {
+            THREAD_POOL_EXECUTOR.execute(() -> {
                 // gen qr code
                 BufferedImage bufferedImage = simpleQrCode(m.getContent());
 
@@ -418,7 +413,7 @@ public class QrCodeGenUtil {
 
         long start = Instant.now().toEpochMilli();
         arrays.parallelStream().forEach(m -> {
-            threadPoolExecutor.execute(() -> {
+            THREAD_POOL_EXECUTOR.execute(() -> {
                 // gen qr code
                 BufferedImage bufferedImage = simpleQrCode(m.getContent());
 
@@ -473,7 +468,7 @@ public class QrCodeGenUtil {
 
         long start = Instant.now().toEpochMilli();
         arrays.parallelStream().forEach(m -> {
-            threadPoolExecutor.execute(() -> {
+            THREAD_POOL_EXECUTOR.execute(() -> {
                 // gen qr code
                 BufferedImage bufferedImage = simpleQrCode(m.getContent());
 
@@ -533,7 +528,7 @@ public class QrCodeGenUtil {
 
         final URL finalUrl = url;
         arrays.parallelStream().forEach(m -> {
-            threadPoolExecutor.execute(() -> {
+            THREAD_POOL_EXECUTOR.execute(() -> {
                 // gen qr code
                 BufferedImage bufferedImage = simpleQrCode(m.getContent());
 
@@ -584,7 +579,6 @@ public class QrCodeGenUtil {
             if (!file.isDirectory()) {
                 throw new IOException(filepath + " is not a directory");
             }
-
 
 
             ImageIO.write(img, fileType, new File(filepath));

@@ -19,32 +19,67 @@ import java.util.List;
 @AllArgsConstructor
 public class HistoryTodayResponse {
 
-    private Integer error_code;
+    @SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
+    /**
+     * error_code
+     */
+    private Integer errorCode;
 
+    /**
+     * reason
+     */
     private String reason;
 
+    /**
+     * result
+     */
     private List<Result> result;
 
     @ToString
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    class Result {
+    static class Result {
 
+        /**
+         * day
+         */
         private Integer day;
 
+        /**
+         * des
+         */
         private String des;
 
-        private String _id;
+        /**
+         * _id
+         */
+        @SuppressWarnings("AlibabaAvoidStartWithDollarAndUnderLineNaming")
+        private String id;
 
+        /**
+         * lunar
+         */
         private String lunar;
 
+        /**
+         * month
+         */
         private Integer month;
 
+        /**
+         * pic
+         */
         private String pic;
 
+        /**
+         * title
+         */
         private String title;
 
+        /**
+         * year
+         */
         private Integer year;
 
     }

@@ -12,6 +12,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * redisTemplate封装工具类
+ *
+ * @author rexlin600
  */
 @Component
 public class RedisUtil {

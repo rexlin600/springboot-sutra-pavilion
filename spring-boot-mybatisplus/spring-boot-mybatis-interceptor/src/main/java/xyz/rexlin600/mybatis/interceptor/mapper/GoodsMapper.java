@@ -1,11 +1,8 @@
 package xyz.rexlin600.mybatis.interceptor.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.springframework.util.StringUtils;
 import xyz.rexlin600.mybatis.interceptor.annotation.InjectSql;
 import xyz.rexlin600.mybatis.interceptor.entity.Goods;
-
-import java.util.List;
 
 /**
  * <p>
@@ -17,6 +14,12 @@ import java.util.List;
  */
 public interface GoodsMapper extends BaseMapper<Goods> {
 
+    /**
+     * 根据ID查询
+     *
+     * @param id
+     * @return
+     */
     @InjectSql(flag = true)
     Goods selectByGoodsId(Long id);
 

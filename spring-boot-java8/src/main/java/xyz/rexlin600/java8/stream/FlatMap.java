@@ -82,7 +82,7 @@ public class FlatMap {
         Function<Goods, Stream<Long>> function = new Function<Goods, Stream<Long>>() {
             @Override
             public Stream<Long> apply(Goods goods) {
-                if (goods.getColor().equals("天蓝色")) {
+                if (SKY_BLUE.equals(goods.getColor())) {
                     return Stream.of(goods.getId());
                 }
                 return null;

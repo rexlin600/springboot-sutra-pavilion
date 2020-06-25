@@ -1,13 +1,11 @@
 package xyz.rexlin600.fasdfs.rest;
 
 import com.github.tobato.fastdfs.domain.fdfs.StorePath;
-import com.github.tobato.fastdfs.domain.proto.storage.DownloadByteArray;
 import com.github.tobato.fastdfs.domain.proto.storage.DownloadFileWriter;
 import com.github.tobato.fastdfs.domain.upload.FastFile;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
 import lombok.SneakyThrows;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -29,9 +27,6 @@ import java.util.function.Function;
 @RequestMapping("/fastdfs")
 public class FastDfsRest {
 
-    // -----------------------------------------------------------------------------------------------
-    // 构造器
-    // -----------------------------------------------------------------------------------------------
     @Autowired
     public FastDfsRest(FastFileStorageClient fileStorageClient,
                        FastDfsConfigBean fastDfsConfigBean) {

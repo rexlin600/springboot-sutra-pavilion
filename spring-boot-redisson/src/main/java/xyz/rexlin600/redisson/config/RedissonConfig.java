@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * RedissonConfig 程序化配置类
+ *
  * <p>
  * 程序化配置方式，使用此种方式不需要在 yml 文件中再配置 redisson 相关配置
  *
@@ -33,13 +34,14 @@ public class RedissonConfig {
      *
      * @return
      */
-    //@Bean
-    public RedissonClient cluster() {
+    public RedissonClient cluster() {     //@Bean
         Config config = new Config();
         config.useClusterServers()
-                .setScanInterval(2000) // 集群状态扫描间隔时间，单位是毫秒
+                // 集群状态扫描间隔时间，单位是毫秒
+                .setScanInterval(2000)
                 .setPassword(null)
-                .setLoadBalancer(new RoundRobinLoadBalancer()) // 负载均衡算法
+                // 负载均衡算法
+                .setLoadBalancer(new RoundRobinLoadBalancer())
                 // 可以用"rediss://"来启用SSL连接
                 .addNodeAddress("redis://127.0.0.1:7000", "redis://127.0.0.1:7001")
                 .addNodeAddress("redis://127.0.0.1:7002");
@@ -56,8 +58,7 @@ public class RedissonConfig {
      *
      * @return
      */
-    //@Bean
-    public RedissonClient master() {
+    public RedissonClient master() { //@Bean
         Config config = new Config();
         config.useMasterSlaveServers()
                 .setPassword(null)
@@ -81,8 +82,7 @@ public class RedissonConfig {
      *
      * @return
      */
-    //@Bean
-    public RedissonClient sentinel() {
+    public RedissonClient sentinel() {      //@Bean
         Config config = new Config();
         config.useSentinelServers()
                 .setMasterName("mymaster")

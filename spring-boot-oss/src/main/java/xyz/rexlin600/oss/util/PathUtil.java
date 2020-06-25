@@ -14,6 +14,8 @@ import java.io.IOException;
  */
 public class PathUtil {
 
+    private final static String SLASH = "/";
+
     /**
      * 处理文件路径
      *
@@ -32,7 +34,7 @@ public class PathUtil {
             path = path.replaceAll(OssConstant.SLASH_PLUS, OssConstant.SLASH);
 
             // 去前缀
-            if (path.startsWith("/")) {
+            if (path.startsWith(SLASH)) {
                 path = path.substring(1);
             }
             // 去后缀
@@ -42,15 +44,15 @@ public class PathUtil {
 
             // 拼接 fileName
             fileName = fileName.replaceAll(OssConstant.SLASH_PLUS, OssConstant.SLASH);
-            if (fileName.startsWith("/")) {
+            if (fileName.startsWith(SLASH)) {
                 path = path.concat(fileName);
             } else {
-                path = path.concat("/").concat(fileName);
+                path = path.concat(SLASH).concat(fileName);
             }
         } else {
             // 拼接 fileName
             fileName = fileName.replaceAll(OssConstant.SLASH_PLUS, OssConstant.SLASH);
-            if (fileName.startsWith("/")) {
+            if (fileName.startsWith(SLASH)) {
                 path = fileName.substring(1);
             } else {
                 path = fileName;

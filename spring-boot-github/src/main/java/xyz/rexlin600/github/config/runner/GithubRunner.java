@@ -2,8 +2,9 @@ package xyz.rexlin600.github.config.runner;
 
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.egit.github.core.client.GitHubClient;
+import org.eclipse.egit.github.core.service.DownloadService;
 import org.eclipse.egit.github.core.service.RepositoryService;
-import org.eclipse.egit.github.core.service.*;
+import org.eclipse.egit.github.core.service.UserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -30,24 +31,7 @@ public class GithubRunner implements CommandLineRunner {
     /**
      * service
      */
-    //public static CollaboratorService collaboratorService;
-    //public static CommitService commitService;
-    //public static ContentsService contentsService;
-    //public static DataService dataService;
-    //public static DeployKeyService deployKeyService;
     public static DownloadService downloadService;
-    //public static EventService eventService;
-    //public static GistService gistService;
-    //public static IssueService issueService;
-    //public static LabelService labelService;
-    //public static MarkdownService markdownService;
-    //public static MilestoneService milestoneService;
-    //public static OAuthService oAuthService;
-    //public static OrganizationService organizationService;
-    //public static PullRequestService pullRequestService;
-    //public static TeamService teamService;
-    //public static WatcherService watcherService;
-
     public static RepositoryService repositoryService;
     public static UserService userService;
 

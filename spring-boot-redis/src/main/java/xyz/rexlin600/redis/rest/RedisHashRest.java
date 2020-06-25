@@ -172,7 +172,7 @@ public class RedisHashRest {
 
     public HashMap<String, Object> init() {
         // init
-        HashMap<String, Object> hashMap = new HashMap<>();
+        HashMap<String, Object> hashMap = new HashMap<>(3);
         hashMap.put("name", "curry");
         hashMap.put("gender", "man");
         hashMap.put("age", 32);

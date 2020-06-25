@@ -1,4 +1,4 @@
-package xyz.rexlin600.oss.storage.oss;
+package xyz.rexlin600.oss.storage;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
@@ -11,7 +11,6 @@ import xyz.rexlin600.oss.config.AliOssConfig;
 import xyz.rexlin600.oss.config.QnOssConfig;
 import xyz.rexlin600.oss.config.TxOssConfig;
 import xyz.rexlin600.oss.enums.OSSTypeEnum;
-import xyz.rexlin600.oss.storage.StorageService;
 
 /**
  * OSS 工厂类
@@ -87,13 +86,13 @@ public class OssFactory implements BeanFactoryAware {
         StorageService storageService;
         switch (OSSTypeEnum.get(ossType)) {
             case ALI:
-                storageService = new AliStorageService(aliOssConfig);
+                storageService = new AliStorageServiceImpl(aliOssConfig);
                 break;
             case TX:
-                storageService = new TxStorageService(txOssConfig);
+                storageService = new TxStorageServiceImpl(txOssConfig);
                 break;
             case QN:
-                storageService = new QnStorageService(qnOssConfig);
+                storageService = new QnStorageServiceImpl(qnOssConfig);
                 break;
             default:
                 throw new RuntimeException("不支持的OSS类型");

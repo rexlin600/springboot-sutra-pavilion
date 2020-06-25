@@ -16,6 +16,12 @@ import org.springframework.web.multipart.MultipartFile;
 @FeignClient(name = "fileUpload", url = "http://localhost:10032/file", configuration = {FeignAutoConfiguration.class})
 public interface FileUploadFeign {
 
+    /**
+     * 文件上传
+     *
+     * @param file
+     * @return
+     */
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     String upload(@RequestPart(value = "file") MultipartFile file);
 

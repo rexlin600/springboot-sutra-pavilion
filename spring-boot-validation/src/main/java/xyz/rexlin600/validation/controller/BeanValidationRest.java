@@ -2,15 +2,18 @@ package xyz.rexlin600.validation.controller;
 
 
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-import sun.management.Agent;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import xyz.rexlin600.validation.common.apiparam.Response;
 import xyz.rexlin600.validation.common.apiparam.ResponseGenerator;
 import xyz.rexlin600.validation.param.*;
-import xyz.rexlin600.validation.param.group.*;
+import xyz.rexlin600.validation.param.group.Age;
+import xyz.rexlin600.validation.param.group.Classes;
+import xyz.rexlin600.validation.param.group.Name;
 
 import javax.validation.groups.Default;
-import java.util.Base64;
 
 /**
  * <p>
@@ -47,7 +50,7 @@ public class BeanValidationRest {
      * @return
      */
     @PostMapping("/checkBoolean")
-    public Response<Void> CheckBoolean(@RequestBody @Validated BooleanReq req) {
+    public Response<Void> checkBoolean(@RequestBody @Validated BooleanReq req) {
 
         // 后续逻辑 ...
 
@@ -62,7 +65,7 @@ public class BeanValidationRest {
      * @return
      */
     @PostMapping("/checkNumberReq")
-    public Response<Void> CheckNumberReq(@RequestBody @Validated NumberReq req) {
+    public Response<Void> checkNumberReq(@RequestBody @Validated NumberReq req) {
 
         // 后续逻辑 ...
 
@@ -77,7 +80,7 @@ public class BeanValidationRest {
      * @return
      */
     @PostMapping("/checkLengthReq")
-    public Response<Void> CheckLengthReq(@RequestBody @Validated LengthReq req) {
+    public Response<Void> checkLengthReq(@RequestBody @Validated LengthReq req) {
 
         // 后续逻辑 ...
 
@@ -92,7 +95,7 @@ public class BeanValidationRest {
      * @return
      */
     @PostMapping("/checkRangeReq")
-    public Response<Void> CheckRangeReq(@RequestBody @Validated RangeReq req) {
+    public Response<Void> checkRangeReq(@RequestBody @Validated RangeReq req) {
 
         // 后续逻辑 ...
 
@@ -107,7 +110,7 @@ public class BeanValidationRest {
      * @return
      */
     @PostMapping("/checkOtherReq")
-    public Response<Void> CheckOtherReq(@RequestBody @Validated OtherReq req) {
+    public Response<Void> checkOtherReq(@RequestBody @Validated OtherReq req) {
 
         // 后续逻辑 ...
 
@@ -122,7 +125,7 @@ public class BeanValidationRest {
      * @return
      */
     @PostMapping("/checkCustomReq")
-    public Response<Void> CheckCustomReq(@RequestBody @Validated CustomReq req) {
+    public Response<Void> checkCustomReq(@RequestBody @Validated CustomReq req) {
 
         // 后续逻辑 ...
 

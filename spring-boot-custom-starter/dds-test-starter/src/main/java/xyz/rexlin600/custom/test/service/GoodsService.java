@@ -1,7 +1,8 @@
 package xyz.rexlin600.custom.test.service;
 
-import xyz.rexlin600.custom.test.entity.Goods;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.apache.ibatis.annotations.Param;
+import xyz.rexlin600.custom.test.entity.Goods;
 
 /**
  * <p>
@@ -17,8 +18,9 @@ public interface GoodsService extends IService<Goods> {
      * 根据ID查询
      *
      * @param id
+     * @param ds
      * @return
      */
-    Goods selectById(Long id, Long ds);
+    Goods selectById(@Param("id") Long id, @Param("ds") Long ds);
 
 }

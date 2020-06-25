@@ -1,4 +1,4 @@
-package xyz.rexlin600.oss.storage.oss;
+package xyz.rexlin600.oss.storage;
 
 import cn.hutool.core.thread.ThreadFactoryBuilder;
 import com.aliyun.oss.internal.OSSConstants;
@@ -15,7 +15,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Service;
 import xyz.rexlin600.oss.common.OssConstant;
 import xyz.rexlin600.oss.config.TxOssConfig;
-import xyz.rexlin600.oss.storage.StorageService;
 import xyz.rexlin600.oss.util.PathUtil;
 
 import java.io.ByteArrayInputStream;
@@ -38,7 +37,7 @@ import java.util.concurrent.TimeUnit;
 @SuppressWarnings("DuplicatedCode")
 @ConditionalOnBean(TxOssConfig.class)
 @Service
-class TxStorageService implements StorageService {
+class TxStorageServiceImpl implements StorageService {
 
     private ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().setNamePrefix("oss-pool-%d").build();
     private ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
@@ -58,7 +57,7 @@ class TxStorageService implements StorageService {
      */
     private final TxOssConfig config;
 
-    public TxStorageService(TxOssConfig config) {
+    public TxStorageServiceImpl(TxOssConfig config) {
         this.config = config;
         //初始化
         init();

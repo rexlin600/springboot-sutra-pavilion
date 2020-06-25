@@ -1,4 +1,4 @@
-package xyz.rexlin600.oss.storage.oss;
+package xyz.rexlin600.oss.storage;
 
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
@@ -11,16 +11,12 @@ import com.qiniu.util.IOUtils;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Service;
 import xyz.rexlin600.oss.config.QnOssConfig;
-import xyz.rexlin600.oss.storage.StorageService;
 import xyz.rexlin600.oss.util.PathUtil;
 
-import javax.net.ssl.X509TrustManager;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
 
 /**
  * 七牛云存储服务
@@ -33,7 +29,7 @@ import java.security.cert.X509Certificate;
 @SuppressWarnings("DuplicatedCode")
 @ConditionalOnBean(QnOssConfig.class)
 @Service
-class QnStorageService implements StorageService {
+class QnStorageServiceImpl implements StorageService {
 
     private UploadManager uploadManager;
     private String token;
@@ -45,7 +41,7 @@ class QnStorageService implements StorageService {
      */
     private final QnOssConfig config;
 
-    public QnStorageService(QnOssConfig config) {
+    public QnStorageServiceImpl(QnOssConfig config) {
         this.config = config;
         //初始化
         init();
@@ -55,7 +51,8 @@ class QnStorageService implements StorageService {
      * 初始化
      */
     private void init() {
-        Configuration cfg = new Configuration(Region.autoRegion()); // 可以替换为明确的 region
+        // 可以替换为明确的 region
+        Configuration cfg = new Configuration(Region.autoRegion());
         uploadManager = new UploadManager(cfg);
         auth = Auth.create(config.getAccessKey(), config.getSecretKey());
         token = auth.uploadToken(config.getBucketName());
@@ -95,23 +92,18 @@ class QnStorageService implements StorageService {
         key = String.format("%s/%s", config.getDomain(),
                 URLEncoder.encode(key, "utf-8").replace("+", "%20"));
 
-        // 下载私有资源
-        //long expireInSeconds = 3600; //1小时，可以自定义链接过期时间
-        //String downloadUrl = auth.privateDownloadUrl(key, expireInSeconds);
-
         // 下载公开资源
         String downloadUrl = key;
-
-        BufferedInputStream bufferedInputStream = null;
-        HttpURLConnection httpURLConnection = null;
+        BufferedInputStream bufferedInputStream;
+        HttpURLConnection connection;
         try {
             URL url = new URL(downloadUrl);
-            httpURLConnection = (HttpURLConnection) url.openConnection();
-            httpURLConnection.setConnectTimeout(1000 * 5);
-            httpURLConnection.setRequestProperty("Charset", "UTF-8");
-            httpURLConnection.connect();
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setConnectTimeout(1000 * 5);
+            connection.setRequestProperty("Charset", "UTF-8");
+            connection.connect();
 
-            bufferedInputStream = new BufferedInputStream(httpURLConnection.getInputStream());
+            bufferedInputStream = new BufferedInputStream(connection.getInputStream());
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new IOException("七牛云下载失败");
@@ -157,19 +149,6 @@ class QnStorageService implements StorageService {
         } catch (QiniuException ex) {
             //如果遇到异常，说明删除失败
             throw new IOException("删除文件文件失败");
-        }
-    }
-
-    private static class TrustAnyTrustManager implements X509TrustManager {
-
-        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-        }
-
-        public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-        }
-
-        public X509Certificate[] getAcceptedIssuers() {
-            return new X509Certificate[]{};
         }
     }
 

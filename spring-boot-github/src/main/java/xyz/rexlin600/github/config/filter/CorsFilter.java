@@ -2,7 +2,6 @@ package xyz.rexlin600.github.config.filter;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -12,12 +11,12 @@ import java.io.IOException;
 /**
  * cors filter
  *
+ * @author rexlin600
+ * @author rexlin600
  * @author: hekunlin
  * @date: 2020/1/3
  */
-
 @SuppressWarnings("Duplicates")
-//@Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter {
 
