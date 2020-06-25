@@ -1,4 +1,4 @@
-package xyz.rexlin600.oss.storage;
+package xyz.rexlin600.oss.storage.oss;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
@@ -11,9 +11,7 @@ import xyz.rexlin600.oss.config.AliOssConfig;
 import xyz.rexlin600.oss.config.QnOssConfig;
 import xyz.rexlin600.oss.config.TxOssConfig;
 import xyz.rexlin600.oss.enums.OSSTypeEnum;
-import xyz.rexlin600.oss.storage.oss.AliStorageService;
-import xyz.rexlin600.oss.storage.oss.QnStorageService;
-import xyz.rexlin600.oss.storage.oss.TxStorageService;
+import xyz.rexlin600.oss.storage.StorageService;
 
 /**
  * OSS 工厂类

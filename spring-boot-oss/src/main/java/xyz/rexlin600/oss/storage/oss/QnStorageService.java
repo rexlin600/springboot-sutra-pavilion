@@ -24,6 +24,8 @@ import java.security.cert.X509Certificate;
 
 /**
  * 七牛云存储服务
+ * <p>
+ * default class：通过 OssFactory 暴露
  *
  * @author: hekunlin
  * @date: 2020/6/22
@@ -31,7 +33,7 @@ import java.security.cert.X509Certificate;
 @SuppressWarnings("DuplicatedCode")
 @ConditionalOnBean(QnOssConfig.class)
 @Service
-public class QnStorageService implements StorageService {
+class QnStorageService implements StorageService {
 
     private UploadManager uploadManager;
     private String token;

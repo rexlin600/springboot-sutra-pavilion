@@ -21,13 +21,15 @@ import java.io.InputStream;
 
 /**
  * 阿里云存储服务实现类
+ * <p>
+ * default class：通过 OssFactory 暴露
  *
  * @author: hekunlin
  * @date: 2020/6/21
  */
 @ConditionalOnBean(AliOssConfig.class)
 @Service
-public class AliStorageService implements StorageService {
+class AliStorageService implements StorageService {
 
     private OSS client;
 

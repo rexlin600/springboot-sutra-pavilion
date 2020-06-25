@@ -6,8 +6,8 @@ import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import xyz.rexlin600.oss.storage.OssFactory;
 import xyz.rexlin600.oss.storage.StorageService;
+import xyz.rexlin600.oss.storage.oss.OssFactory;
 
 import javax.validation.constraints.NotBlank;
 import java.io.IOException;

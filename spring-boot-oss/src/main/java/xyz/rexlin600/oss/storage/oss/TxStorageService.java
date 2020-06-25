@@ -29,6 +29,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 腾讯云存储服务实现类
+ * <p>
+ * default class：通过 OssFactory 暴露
  *
  * @author: hekunlin
  * @date: 2020/6/21
@@ -36,7 +38,7 @@ import java.util.concurrent.TimeUnit;
 @SuppressWarnings("DuplicatedCode")
 @ConditionalOnBean(TxOssConfig.class)
 @Service
-public class TxStorageService implements StorageService {
+class TxStorageService implements StorageService {
 
     private ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().setNamePrefix("oss-pool-%d").build();
     private ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
