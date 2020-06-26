@@ -22,7 +22,7 @@ public class UserMongoBizTest {
     private UserMongoBiz userMongoBiz;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         User build = User.builder()
                 .id(371L)
                 .name("25")
@@ -46,7 +46,7 @@ public class UserMongoBizTest {
     @Test
     public void getById() {
         User user = userMongoBiz.getById(371L);
-        log.info("==>  fin  d by id, users is [{}]", user);
+        log.info("==>  find by id, users is [{}]", user);
     }
 
     @Test
