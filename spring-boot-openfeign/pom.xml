@@ -14,8 +14,8 @@
     <artifactId>spring-boot-openfeign</artifactId>
 
     <modules>
-        <module>./spring-boot-eureka-discovery</module>
-
+        <module>./spring-boot-openfein-eureka-discovery</module>
+        <module>./spring-boot-openfeign-svc</module>
     </modules>
 
 </project>
