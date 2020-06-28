@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: kafka
+  kafka:  # kafka config，对应 KafkaProperties Class，通过 SpringBoot 提供的 KafkaAutoConfiguration 完成自动配置
+    producer:
+      bootstrap-servers: 10.197.236.154:9092,10.197.236.169:9092,10.197.236.184:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: 1 # 0-不应答。1-leader 应答 all-所有 leader 和 follower 应答
+      retries: 3 # 发送失败时，重试发送的次数
+      batch-size: 16384 # 每次批量发送消息的最大数量
+        buffer-memory: 33554432 # 每次批量发送消息的最大内存
+        properties:
+          linger:
+            ms: 60000 # 批处理延迟时间上限。这里配置为 30 * 1000 ms 过后，不管是否消息数量是否到达 batch-size 或者消息大小到达 buffer-memory 后，都直接发送一次请求。
+    consumer:
+      bootstrap-servers: 10.197.236.154:9092,10.197.236.169:9092,10.197.236.184:9092
+      group-id: rexlin600-kafka
+      auto-offset-reset: latest # 设置消费者分组最初的消费进度为 earliest 。可参考博客 https://blog.csdn.net/lishuangzhe7047/article/details/74530417 理解
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      max-poll-records: 10 # poll 一次消息拉取的最大数量
+      enable-auto-commit: false # 手动提交
+      fetch-max-wait: 10000 # poll 一次拉取的阻塞的最大时长，单位：毫秒。这里指的是阻塞拉取需要满足至少 fetch-min-size 大小的消息
+      fetch-min-size: 10 # poll 一次消息拉取的最小数据量，单位：字节
+      properties:
+        session.timeout.ms: 60000
+        spring:
+          json:
+            trusted:
+              packages: xyz.rexlin600.kafka # 因为 JsonDeserializer 在反序列化消息时，考虑到安全性，只反序列化成信任的 Message 类
+    listener:
+      missing-topics-fatal: false # 消费监听接口监听的主题不存在时，默认会报错。所以通过设置为 false ，解决报错
+      ack-mode: MANUAL_IMMEDIATE  # 手动提交
+      type: BATCH # 集群下多个 listener
+server:
+  port: 10038
+logging:
+  level:
+    org:
+      springframework:
+        kafka: ERROR # spring-kafka INFO 日志太多了，所以我们限制只打印 ERROR 级别
+      apache:
+        kafka: ERROR # kafka INFO 日志太多了，所以我们限制只打印 ERROR 级别
