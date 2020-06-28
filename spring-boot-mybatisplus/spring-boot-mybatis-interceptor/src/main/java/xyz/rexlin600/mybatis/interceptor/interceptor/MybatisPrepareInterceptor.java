@@ -78,7 +78,7 @@ public class MybatisPrepareInterceptor implements Interceptor {
      */
     @Override
     public void setProperties(Properties properties) {
-
+        log.info("==>  set properties ...");
     }
 
 }

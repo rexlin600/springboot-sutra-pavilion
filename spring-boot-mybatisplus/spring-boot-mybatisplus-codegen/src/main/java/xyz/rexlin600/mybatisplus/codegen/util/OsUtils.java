@@ -27,11 +27,11 @@ public class OsUtils {
         if (StringUtils.isEmpty(os)) {
             return false;
         }
-        if (os.toLowerCase().indexOf(LINUX) > -1) {
-            return true;
-        } else {
+        if (os.toLowerCase().indexOf(LINUX) <= -1) {
             return false;
         }
+
+        return true;
     }
 
     /**

@@ -48,7 +48,7 @@ public class SimpleExcelListener extends AnalysisEventListener<SimpleData> {
      */
     @Override
     public void doAfterAllAnalysed(AnalysisContext analysisContext) {
-
+        log.info("==>  do after all analysed ...");
     }
 
 }

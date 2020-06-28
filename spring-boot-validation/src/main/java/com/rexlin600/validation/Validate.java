@@ -21,13 +21,13 @@ public class Validate {
     public static boolean checkParams(String name, int age, String classes) {
         if (StringUtils.isEmpty(name)) {
             return false;
-        }
-
-        if (age > EIGHT && classes != null) {
-            return true;
-        } else {
+        } else if (StringUtils.isEmpty(classes)) {
+            return false;
+        } else if (age <= EIGHT) {
             return false;
         }
+
+        return true;
     }
 
 }

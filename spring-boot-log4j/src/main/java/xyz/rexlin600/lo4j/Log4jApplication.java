@@ -15,7 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Log4jApplication {
 
-    static Logger logger = Logger.getLogger(Log4jApplication.class.getName());
+    private static Logger logger = Logger.getLogger(Log4jApplication.class.getName());
 
     public static void main(String[] args) {
         logger.info("log4j 初始化项目 ...");

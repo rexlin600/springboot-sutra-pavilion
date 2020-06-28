@@ -37,6 +37,7 @@ public class SysLogAspect {
      */
     @Pointcut("execution( * xyz.rexlin600.aop.controller.*.*(..))")
     public void appLogPointCut() {
+        log.info("==>  Aop Log point ...");
     }
 
     /**

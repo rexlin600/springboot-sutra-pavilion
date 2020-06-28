@@ -785,7 +785,7 @@ public class QrCodeGenUtil {
      * @param imageWidth    图片宽度
      * @param imageHeight   图片长度
      * @param graphics      绘图对象
-     * @param textPosEnum   位置
+     * @param posEnum       位置
      */
     private static void fillText(BufferedImage bufferedImage, String text,
                                  int fontWidth, int fontHeight,

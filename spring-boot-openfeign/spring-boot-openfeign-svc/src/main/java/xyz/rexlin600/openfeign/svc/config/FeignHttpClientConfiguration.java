@@ -1,6 +1,5 @@
 package xyz.rexlin600.openfeign.svc.config;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.openfeign.FeignAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
