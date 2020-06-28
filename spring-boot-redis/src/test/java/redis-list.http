@@ -1,0 +1,25 @@
+### PUSH
+POST http://localhost:10005/redis/list
+Content-Type: application/json
+
+{}
+
+### POP
+GET http://localhost:10005/redis/list
+Accept: application/json
+
+### RANGE
+GET http://localhost:10005/redis/list/range
+Accept: application/json
+
+### INDEX
+GET http://localhost:10005/redis/list/index
+Accept: application/json
+
+### DELETE
+DELETE http://localhost:10005/redis/list
+Accept: application/json
+
+### POST
+POST http://localhost:10005/redis/list/trim
+Accept: application/json

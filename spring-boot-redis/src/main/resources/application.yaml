@@ -19,8 +19,3 @@ spring:
         test-on-return: false
 server:
   port: 10005
-pagehelper:
-  helper-dialect: mysql
-  params: count=countSql
-  reasonable: true
-  support-methods-arguments: true

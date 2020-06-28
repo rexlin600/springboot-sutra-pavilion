@@ -1,0 +1,9 @@
+### add
+POST http://localhost:10005/redis/zset
+Content-Type: application/json
+
+{}
+
+### range
+GET http://localhost:10005/redis/zset/range
+Accept: application/json
