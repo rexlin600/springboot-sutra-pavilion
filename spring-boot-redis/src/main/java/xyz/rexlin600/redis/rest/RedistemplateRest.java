@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
-import xyz.rexlin600.redis.common.apiparam.Response;
-import xyz.rexlin600.redis.common.apiparam.ResponseGenerator;
 import xyz.rexlin600.redis.entity.Blog;
 
 import javax.servlet.http.HttpSession;
@@ -39,10 +37,9 @@ public class RedistemplateRest {
      * @return
      */
     @PostMapping
-    public Response add(@RequestBody Blog blog) {
+    public void add(@RequestBody Blog blog) {
         redisTemplate.opsForHash().put(HASH_KEY, String.valueOf(blog.getId()), blog);
         log.info("==>  redis add val = [{}]", blog.toString());
-        return ResponseGenerator.success();
     }
 
 
@@ -53,9 +50,8 @@ public class RedistemplateRest {
      * @return
      */
     @DeleteMapping(value = "/{id}")
-    public Response delete(@PathVariable(value = "id") Long id) {
+    public void delete(@PathVariable(value = "id") Long id) {
         redisTemplate.opsForHash().delete(HASH_KEY, String.valueOf(id));
-        return ResponseGenerator.success();
     }
 
 
@@ -65,10 +61,9 @@ public class RedistemplateRest {
      * @param blog
      */
     @PutMapping
-    public Response update(@RequestBody Blog blog) {
+    public void update(@RequestBody Blog blog) {
         redisTemplate.opsForHash().delete(HASH_KEY, String.valueOf(blog.getId()));
         redisTemplate.opsForHash().putIfAbsent(HASH_KEY, String.valueOf(blog.getId()), blog);
-        return ResponseGenerator.success();
     }
 
     /**
@@ -78,10 +73,9 @@ public class RedistemplateRest {
      * @return
      */
     @GetMapping(value = "/{id}")
-    public Response get(@PathVariable(value = "id") Long id) {
+    public void get(@PathVariable(value = "id") Long id) {
         Blog blog = (Blog) redisTemplate.opsForHash().get(HASH_KEY, String.valueOf(id));
         log.info("==>  redis get val = [{}]", blog);
-        return ResponseGenerator.success(blog);
     }
 
 
@@ -91,9 +85,9 @@ public class RedistemplateRest {
      * @return
      */
     @GetMapping(value = "/list")
-    public Response list() {
+    public void list() {
         Map<Object, Object> entries = redisTemplate.opsForHash().entries(HASH_KEY);
-        return ResponseGenerator.success(entries);
+        log.info("==>  list entries is : {}", entries.toString());
     }
 
 
@@ -122,7 +116,7 @@ public class RedistemplateRest {
      */
     @Cacheable(value = "blog-list", key = "#id")
     @GetMapping(value = "/annotation/{id}")
-    public Response getByAnnotation(@PathVariable(value = "id") Long id) {
+    public void getByAnnotation(@PathVariable(value = "id") Long id) {
 
         // 模拟查询数据库
         Blog blog = Blog.builder()
@@ -133,8 +127,6 @@ public class RedistemplateRest {
                 .createDate("2020-1-6 15:46:03")
                 .build();
         log.info("==>  db get val = [{}]", blog);
-
-        return ResponseGenerator.success(blog);
     }
 
 
@@ -145,9 +137,8 @@ public class RedistemplateRest {
      * @return
      */
     @DeleteMapping(value = "/key/{key}")
-    public Response delete(@PathVariable(value = "key") String key) {
+    public void delete(@PathVariable(value = "key") String key) {
         redisTemplate.delete(key);
-        return ResponseGenerator.success();
     }
 
 
