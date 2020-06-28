@@ -8,6 +8,7 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.util.ObjectUtils;
@@ -68,6 +69,7 @@ public class QrCodeGenUtil {
      * @param content 二维码内容
      * @return {@link BufferedImage}
      */
+    @SneakyThrows
     public static BufferedImage simpleQrCode(String content) {
         return simpleQrCode(content, QrCodeConstant.QR_CODE_HEIGHT, QrCodeConstant.QR_CODE_WIDTH, QrCodeConstant.ERR_LEVEL);
     }
@@ -80,6 +82,7 @@ public class QrCodeGenUtil {
      * @param width   二维码宽度
      * @return {@link BufferedImage}
      */
+    @SneakyThrows
     public static BufferedImage simpleQrCode(String content, int height, int width) {
         return simpleQrCode(content, height, width, QrCodeConstant.ERR_LEVEL);
     }
@@ -93,7 +96,7 @@ public class QrCodeGenUtil {
      * @param level   二维码纠错等级
      * @return {@link BufferedImage}
      */
-    public static BufferedImage simpleQrCode(String content, int height, int width, ErrorCorrectionLevel level) {
+    public static BufferedImage simpleQrCode(String content, int height, int width, ErrorCorrectionLevel level) throws IOException {
         // 内容检查
         checkParam(content);
 
@@ -114,7 +117,7 @@ public class QrCodeGenUtil {
             bitMatrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, width, height, map);
         } catch (WriterException e) {
             log.error("获取二维码位图矩阵失败=【{}】", e.getMessage());
-            throw new RuntimeException("获取二维码位图矩阵失败");
+            throw new IOException("获取二维码位图矩阵失败");
         }
 
         // 获取二维码图像配置
@@ -149,7 +152,7 @@ public class QrCodeGenUtil {
 
             base64Img = base64Img.replaceAll("\n", "").replaceAll("\r", "");
             // 前面加 data:image/jpg;base64,
-            res = "data:image/jpg;base64," + base64Img.toString();
+            res = "data:image/jpg;base64," + base64Img;
         } finally {
             // 关闭流
             if (outputStream != null) {
@@ -742,10 +745,10 @@ public class QrCodeGenUtil {
      */
     private static void checkParam(Object obj) throws RuntimeException {
         if ((obj instanceof String) && (StringUtils.isEmpty(obj))) {
-            throw new RuntimeException("param can not be null or empty");
+            throw new NullPointerException("param can not be null or empty");
         }
         if ((obj instanceof BufferedImage) && (obj == null)) {
-            throw new RuntimeException("param can not be is null");
+            throw new NullPointerException("param can not be null");
         }
     }
 
@@ -758,7 +761,7 @@ public class QrCodeGenUtil {
      * @param imageWidth
      * @param imageHeight
      * @param graphics
-     * @param top
+     * @param posEnum
      */
     private static void drawText(BufferedImage bufferedImage, Font font, String text, int imageWidth, int imageHeight, Graphics graphics, TextPositionEnum posEnum) {
         if (!StringUtils.isEmpty(text)) {

@@ -33,7 +33,6 @@ class QnStorageServiceImpl implements StorageService {
 
     private UploadManager uploadManager;
     private String token;
-    private Auth auth;
     private BucketManager bucketManager;
 
     /**
@@ -54,7 +53,7 @@ class QnStorageServiceImpl implements StorageService {
         // 可以替换为明确的 region
         Configuration cfg = new Configuration(Region.autoRegion());
         uploadManager = new UploadManager(cfg);
-        auth = Auth.create(config.getAccessKey(), config.getSecretKey());
+        Auth auth = Auth.create(config.getAccessKey(), config.getSecretKey());
         token = auth.uploadToken(config.getBucketName());
         bucketManager = new BucketManager(auth, cfg);
     }
@@ -66,7 +65,7 @@ class QnStorageServiceImpl implements StorageService {
         try {
             Response res = uploadManager.put(data, path, token);
             if (!res.isOK()) {
-                throw new RuntimeException("上传七牛出错：" + res.toString());
+                throw new IOException("上传七牛出错：" + res.toString());
             }
         } catch (QiniuException e) {
             e.printStackTrace();

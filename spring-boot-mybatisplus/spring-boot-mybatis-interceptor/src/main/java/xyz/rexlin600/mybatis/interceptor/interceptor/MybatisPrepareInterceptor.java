@@ -51,6 +51,7 @@ public class MybatisPrepareInterceptor implements Interceptor {
         String originalSql = boundSql.getSql();
         log.info("==>  MybatisPrepareInterceptor prepare 拦截器，原始SQL=[{}]", originalSql);
         Object parameterObject = boundSql.getParameterObject();
+        log.info("==>  parameterObject is : {}", parameterObject);
 
         // TODO 进行 SQL 修改等操作
         String newSql = originalSql;

@@ -35,7 +35,7 @@ public class GitlabUtil {
     public static void clone(GitlabCloneReq req, UsernamePasswordCredentialsProvider provider, GitlabProject project, CountDownLatch countDownLatch) {
         CloneCommand cloneCommand = Git.cloneRepository();
         try {
-            Git git = cloneCommand
+            cloneCommand
                     .setURI(project.getHttpUrl())
                     .setProgressMonitor(new BatchingProgressMonitor() {
                         @Override

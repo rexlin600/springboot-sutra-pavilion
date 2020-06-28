@@ -1,6 +1,7 @@
 package xyz.rexlin600.redisson.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.client.RedisException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
         // get lock
         boolean lock = distributedLocker.tryLock(key, TimeUnit.MILLISECONDS, 300L, 500L);
         if (!lock) {
-            throw new RuntimeException("系统繁忙，请稍后再试");
+            throw new RedisException("系统繁忙，请稍后再试");
         }
 
         try {

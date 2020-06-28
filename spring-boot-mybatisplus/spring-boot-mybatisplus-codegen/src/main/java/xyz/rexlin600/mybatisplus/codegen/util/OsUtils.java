@@ -1,5 +1,7 @@
 package xyz.rexlin600.mybatisplus.codegen.util;
 
+import org.springframework.util.StringUtils;
+
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.util.Properties;
@@ -22,7 +24,10 @@ public class OsUtils {
     public static boolean isOsLinux() {
         Properties prop = System.getProperties();
         String os = prop.getProperty("os.name");
-        if (os != null && os.toLowerCase().indexOf(LINUX) > -1) {
+        if (StringUtils.isEmpty(os)) {
+            return false;
+        }
+        if (os.toLowerCase().indexOf(LINUX) > -1) {
             return true;
         } else {
             return false;

@@ -78,7 +78,7 @@ public class Collection {
 
         // second - first
         List<Goods> list2 = secondList.stream().filter(m -> !firstList.contains(m)).collect(Collectors.toList());
-        System.out.println(list1.size());
+        System.out.println(list2.size());
     }
 
     // -----------------------------------------------------------------------------------------------

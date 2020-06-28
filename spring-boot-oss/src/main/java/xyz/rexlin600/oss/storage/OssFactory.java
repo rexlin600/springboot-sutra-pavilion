@@ -95,7 +95,7 @@ public class OssFactory implements BeanFactoryAware {
                 storageService = new QnStorageServiceImpl(qnOssConfig);
                 break;
             default:
-                throw new RuntimeException("不支持的OSS类型");
+                throw new UnsupportedOperationException("不支持的OSS类型");
         }
         return storageService;
     }
@@ -123,7 +123,7 @@ public class OssFactory implements BeanFactoryAware {
                 }
                 break;
             default:
-                throw new RuntimeException("不支持的OSS类型");
+                throw new UnsupportedOperationException("不支持的OSS类型");
         }
     }
 

@@ -148,7 +148,7 @@ public class RedisHashRest {
 
         // concert
         Set<String> collect = keys.stream().map(m -> String.valueOf(m)).collect(Collectors.toSet());
-        log.info("==>  collect set size : {}", keys.size());
+        log.info("==>  collect set size : {}", collect.size());
     }
 
     /**

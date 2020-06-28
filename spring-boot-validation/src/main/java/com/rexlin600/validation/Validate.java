@@ -1,5 +1,7 @@
 package com.rexlin600.validation;
 
+import org.springframework.util.StringUtils;
+
 /**
  * @author: hekunlin
  * @date: 2020/6/2
@@ -17,7 +19,11 @@ public class Validate {
      * @return
      */
     public static boolean checkParams(String name, int age, String classes) {
-        if (name != null && age > EIGHT & classes != null) {
+        if (StringUtils.isEmpty(name)) {
+            return false;
+        }
+
+        if (age > EIGHT && classes != null) {
             return true;
         } else {
             return false;

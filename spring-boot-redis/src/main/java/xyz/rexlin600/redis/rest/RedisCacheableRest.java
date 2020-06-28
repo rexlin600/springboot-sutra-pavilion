@@ -44,6 +44,8 @@ public class RedisCacheableRest {
                 .popular(true)
                 .createDate("2020-1-6 15:46:03")
                 .build();
+
+        log.info("==>  blog is : {}", blog.toString());
     }
 
     /**
@@ -64,6 +66,8 @@ public class RedisCacheableRest {
                 .popular(true)
                 .createDate("2020-1-6 15:46:03")
                 .build();
+
+        log.info("==>  blog is : {}", blog.toString());
     }
 
     /**
@@ -84,6 +88,8 @@ public class RedisCacheableRest {
                 .popular(true)
                 .createDate("2020-1-6 15:46:03")
                 .build();
+
+        log.info("==>  blog is : {}", blog.toString());
     }
 
 

@@ -1,13 +1,13 @@
 package xyz.rexlin600.openfeign.svc.rest;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import xyz.rexlin600.openfeign.svc.feign.FileUploadFeign;
-import xyz.rexlin600.openfeign.svc.feign.resp.HistoryTodayResponse;
 import xyz.rexlin600.openfeign.svc.feign.RemoteUriFeign;
+import xyz.rexlin600.openfeign.svc.feign.resp.HistoryTodayResponse;
 
 import javax.annotation.Resource;
 import java.io.InputStream;
@@ -62,7 +62,14 @@ public class FeignRest {
         long fileSize = file.getSize();
         InputStream inputStream = file.getInputStream();
 
+        log.info("==>  fileName is : {}", filename);
+        log.info("==>  fileSize is : {}", fileSize);
+
         // 省略文件上传后续操作 ...
+
+        if (inputStream != null) {
+            inputStream.close();
+        }
 
         return "SUCCESS";
     }

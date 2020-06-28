@@ -89,6 +89,7 @@ public class FlatMap {
             }
         };
         List<Long> list = flatMapFunction(function);
+        list.size();
     }
 
 }

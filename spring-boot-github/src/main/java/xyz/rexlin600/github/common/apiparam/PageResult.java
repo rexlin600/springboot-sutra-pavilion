@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NonNull;
 import lombok.experimental.Accessors;
 
+import java.security.InvalidParameterException;
 import java.util.List;
 
 /**
@@ -31,7 +32,7 @@ public class PageResult<T> {
      */
     public PageResult(@NonNull Integer totalCount, @NonNull Integer page, @NonNull Integer size, List<T> list) throws RuntimeException {
         if (size == 0) {
-            throw new RuntimeException("size不能为0");
+            throw new InvalidParameterException("size不能为0");
         }
         this.totalCount = totalCount;
         this.page = page;

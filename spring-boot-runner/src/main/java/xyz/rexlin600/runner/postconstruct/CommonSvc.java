@@ -41,7 +41,7 @@ public class CommonSvc {
      * 执行顺序： 父类静态变量或静态语句块–>子类静态变量或静态语句块->父类实例变量或初始化语句块–>父类构造方法->子类实例变量或初始化语句块->子类构造方法--> @Autowired -> @PostConstruct....->destroy->@PreDestroy
      */
     @PostConstruct
-    private void initGatewayRoute() {
+    public void initGatewayRoute() {
         log.info("==>  初始化开始=【{}】", Instant.now(Clock.systemDefaultZone()).toEpochMilli());
 
         for (HandlerSvc handlerSvc : handlerSvcList) {

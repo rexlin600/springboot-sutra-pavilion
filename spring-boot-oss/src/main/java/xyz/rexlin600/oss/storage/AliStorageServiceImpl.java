@@ -67,9 +67,9 @@ class AliStorageServiceImpl implements StorageService {
         try {
             client.putObject(config.getBucketName(), path, inputStream);
         } catch (OSSException ex) {
-            throw new RuntimeException("OSS异常，异常码=" + ex.getErrorCode() + " 异常信息=" + ex.getErrorMessage());
+            throw new OSSException("OSS异常，异常码=" + ex.getErrorCode() + " 异常信息=" + ex.getErrorMessage());
         } catch (ClientException ex) {
-            throw new RuntimeException("OSS客户端异常，异常码=" + ex.getErrorCode() + " 异常信息=" + ex.getErrorMessage());
+            throw new OSSException("OSS客户端异常，异常码=" + ex.getErrorCode() + " 异常信息=" + ex.getErrorMessage());
         }
 
         return config.getDomain().concat(OssConstant.SLASH).concat(path);
