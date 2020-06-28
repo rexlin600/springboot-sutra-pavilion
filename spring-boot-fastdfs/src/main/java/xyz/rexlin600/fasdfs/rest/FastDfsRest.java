@@ -27,16 +27,15 @@ import java.util.function.Function;
 @RequestMapping("/fastdfs")
 public class FastDfsRest {
 
+    private final FastFileStorageClient fileStorageClient;
+    private final FastDfsConfigBean fastDfsConfigBean;
+
     @Autowired
     public FastDfsRest(FastFileStorageClient fileStorageClient,
                        FastDfsConfigBean fastDfsConfigBean) {
         this.fileStorageClient = fileStorageClient;
         this.fastDfsConfigBean = fastDfsConfigBean;
     }
-
-    private final FastFileStorageClient fileStorageClient;
-    private final FastDfsConfigBean fastDfsConfigBean;
-
 
     // -----------------------------------------------------------------------------------------------
     // API

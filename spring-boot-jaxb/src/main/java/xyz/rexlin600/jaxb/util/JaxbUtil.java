@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
-import java.util.Map;
 
 /**
  * Jaxb工具类

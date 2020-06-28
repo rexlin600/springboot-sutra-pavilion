@@ -8,8 +8,8 @@ import xyz.rexlin600.qrcode.base.constants.QrCodeConstant;
 import xyz.rexlin600.qrcode.base.entity.BatchQrCode;
 import xyz.rexlin600.qrcode.base.entity.QrCode;
 
-import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;

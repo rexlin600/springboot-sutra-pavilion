@@ -98,7 +98,7 @@ public class RedistemplateRest {
      * @return
      */
     @GetMapping(value = "/session")
-    String uid(HttpSession session) {
+    public String uid(HttpSession session) {
         UUID uid = (UUID) session.getAttribute("id");
         if (uid == null) {
             uid = UUID.randomUUID();

@@ -26,6 +26,7 @@ import java.util.Set;
 public class RedisZSetRest {
 
     private final static String ZSET_KEY = "ZSET_KEY";
+
     private final RedisTemplate<String, Object> redisTemplate;
 
     @Autowired

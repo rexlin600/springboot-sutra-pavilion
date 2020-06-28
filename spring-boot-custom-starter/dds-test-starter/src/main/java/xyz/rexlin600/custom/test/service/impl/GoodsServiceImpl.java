@@ -1,12 +1,12 @@
 package xyz.rexlin600.custom.test.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import xyz.rexlin600.custom.test.entity.Goods;
 import xyz.rexlin600.custom.test.mapper.GoodsMapper;
 import xyz.rexlin600.custom.test.service.GoodsService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.stereotype.Service;
 import xyz.rexlin600.starter.dds.util.DynamicDataSourceContextHolder;
 
 /**

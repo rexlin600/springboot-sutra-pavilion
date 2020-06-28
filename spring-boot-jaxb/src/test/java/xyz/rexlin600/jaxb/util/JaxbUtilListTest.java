@@ -4,11 +4,7 @@ import org.junit.Test;
 import xyz.rexlin600.jaxb.entity.list.Document;
 import xyz.rexlin600.jaxb.entity.list.FileType;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.function.DoubleConsumer;
-
-import static org.junit.Assert.*;
 
 /**
  * @description

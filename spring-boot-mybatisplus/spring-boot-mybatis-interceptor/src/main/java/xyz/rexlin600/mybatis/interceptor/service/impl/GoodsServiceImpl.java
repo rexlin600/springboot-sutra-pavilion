@@ -1,13 +1,12 @@
 package xyz.rexlin600.mybatis.interceptor.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import xyz.rexlin600.mybatis.interceptor.annotation.InjectSql;
+import org.springframework.stereotype.Service;
 import xyz.rexlin600.mybatis.interceptor.entity.Goods;
 import xyz.rexlin600.mybatis.interceptor.mapper.GoodsMapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.stereotype.Service;
 import xyz.rexlin600.mybatis.interceptor.service.GoodsService;
 
 import javax.annotation.Resource;

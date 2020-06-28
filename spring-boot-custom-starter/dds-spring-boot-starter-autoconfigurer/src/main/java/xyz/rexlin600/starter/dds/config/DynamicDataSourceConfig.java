@@ -17,9 +17,10 @@ import xyz.rexlin600.starter.dds.util.CodeGenConstant;
 import xyz.rexlin600.starter.dds.util.DataSourceConstants;
 
 import javax.annotation.PostConstruct;
-import java.sql.Driver;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * @author: rexlin600

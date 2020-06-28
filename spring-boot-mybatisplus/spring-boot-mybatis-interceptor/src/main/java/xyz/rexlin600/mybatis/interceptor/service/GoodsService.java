@@ -2,10 +2,7 @@ package xyz.rexlin600.mybatis.interceptor.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.pagehelper.PageInfo;
-import xyz.rexlin600.mybatis.interceptor.annotation.InjectSql;
 import xyz.rexlin600.mybatis.interceptor.entity.Goods;
-
-import java.util.List;
 
 /**
  * <p>

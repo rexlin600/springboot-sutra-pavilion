@@ -15,7 +15,6 @@ import xyz.rexlin600.validation.common.apiparam.Response;
 import xyz.rexlin600.validation.common.apiparam.ResponseGenerator;
 import xyz.rexlin600.validation.common.statuscode.StatusCode;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.util.List;

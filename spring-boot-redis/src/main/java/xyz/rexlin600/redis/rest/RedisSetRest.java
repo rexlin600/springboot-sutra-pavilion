@@ -28,6 +28,7 @@ import java.util.Set;
 public class RedisSetRest {
 
     private final static String SET_KEY = "SET_KEY";
+
     private final RedisTemplate<String, Object> redisTemplate;
 
     @Autowired

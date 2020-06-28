@@ -24,14 +24,14 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/redis/str")
 public class RedisStringRest {
 
+    private static final String STRING_KEY = "STR_KEY:";
+
     private final RedisTemplate<String, Object> redisTemplate;
 
     @Autowired
     public RedisStringRest(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
-
-    private static final String STRING_KEY = "STR_KEY:";
 
     /**
      * add

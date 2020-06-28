@@ -25,6 +25,12 @@ public class SimpleExcelListener extends AnalysisEventListener<SimpleData> {
     private static final int BATCH_COUNT = 3000;
     private List<SimpleData> list = new ArrayList<>();
 
+    /**
+     * 调用方法
+     *
+     * @param simpleData
+     * @param analysisContext
+     */
     @Override
     public void invoke(SimpleData simpleData, AnalysisContext analysisContext) {
         list.add(simpleData);
@@ -35,9 +41,14 @@ public class SimpleExcelListener extends AnalysisEventListener<SimpleData> {
 
     }
 
+    /**
+     * if have something to do after all analysis
+     *
+     * @param analysisContext
+     */
     @Override
     public void doAfterAllAnalysed(AnalysisContext analysisContext) {
-        
+
     }
 
 }

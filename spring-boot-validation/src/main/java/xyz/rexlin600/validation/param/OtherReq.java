@@ -7,7 +7,6 @@ import org.hibernate.validator.constraints.CreditCardNumber;
 
 import javax.validation.constraints.Email;
 import java.io.Serializable;
-import java.net.URL;
 
 /**
  * 其他检查 请求类

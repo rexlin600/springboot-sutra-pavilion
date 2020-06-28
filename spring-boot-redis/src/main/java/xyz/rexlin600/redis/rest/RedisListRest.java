@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 public class RedisListRest {
 
     private static final String LIST_KEY = "LIST_KEY";
+
     private final RedisTemplate<String, Object> redisTemplate;
 
     @Autowired

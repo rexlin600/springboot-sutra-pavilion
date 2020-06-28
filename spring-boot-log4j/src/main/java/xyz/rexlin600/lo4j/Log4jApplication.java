@@ -1,6 +1,5 @@
 package xyz.rexlin600.lo4j;
 
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;

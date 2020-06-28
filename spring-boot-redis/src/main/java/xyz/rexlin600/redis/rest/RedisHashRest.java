@@ -19,14 +19,14 @@ import java.util.stream.Collectors;
 @RequestMapping("/redis/hash")
 public class RedisHashRest {
 
+    private static final String REDIS_KEY = "HASH_KEY";
+
     private final RedisTemplate<String, Object> redisTemplate;
 
     @Autowired
     public RedisHashRest(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
-
-    private static final String REDIS_KEY = "HASH_KEY";
 
     /**
      * put

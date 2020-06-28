@@ -1,7 +1,6 @@
 package xyz.rexlin600.mybatis.interceptor.interceptor;
 
 import com.baomidou.mybatisplus.core.toolkit.PluginUtils;
-import com.baomidou.mybatisplus.extension.handlers.AbstractSqlParserHandler;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +18,7 @@ import java.util.Properties;
 
 /**
  * Mybatis 前置拦截器
- *
+ * <p>
  * 一般我们使用这个拦截器来对 SQL 进行相应的处理
  *
  * @author: hekunlin
@@ -31,7 +30,12 @@ import java.util.Properties;
 @Intercepts({@Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class})})
 public class MybatisPrepareInterceptor implements Interceptor {
 
-
+    /**
+     * 拦截方法
+     *
+     * @param invocation
+     * @return
+     */
     @SneakyThrows
     @Override
     public Object intercept(Invocation invocation) {
@@ -55,11 +59,22 @@ public class MybatisPrepareInterceptor implements Interceptor {
         return invocation.proceed();
     }
 
+    /**
+     * 插件
+     *
+     * @param target
+     * @return
+     */
     @Override
     public Object plugin(Object target) {
         return Plugin.wrap(target, this);
     }
 
+    /**
+     * 注入属性
+     *
+     * @param properties
+     */
     @Override
     public void setProperties(Properties properties) {
 
