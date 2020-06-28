@@ -1,3 +1,4 @@
+###
 # For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
 #
 # Following HTTP Request Live Templates are available:
@@ -43,4 +44,12 @@ Content-Type: application/json
   "email": "smile@ityouknow.com"
 }
 
-###
+### Other GET
+GET http://localhost:10008/other/get
+Content-Type: application/json
+
+{
+  "name": "rexlin600",
+  "age": 26,
+  "address": "CD, SiChuan"
+}
