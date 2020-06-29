@@ -22,21 +22,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
 
-        <!-- kafka -->
-        <!-- 这个包囊括了 kafka-clients 依赖 -->
+        <!-- kafka  这个包囊括了 kafka-clients 依赖  -->
+        <!-- kafka 版本对应关系：https://spring.io/projects/spring-kafka -->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
-
-        <!-- kafka 版本对应关系：https://spring.io/projects/spring-kafka -->
-        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>28.2-jre</version>
-        </dependency>
-
 
     </dependencies>
 
