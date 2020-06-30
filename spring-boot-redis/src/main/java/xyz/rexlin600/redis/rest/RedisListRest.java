@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -40,18 +41,19 @@ public class RedisListRest {
         ListOperations<String, Object> opsForList = redisTemplate.opsForList();
 
         // left：每次从列表的左侧开始新增
-        int i = (int) (Math.random() * 1000);
+        Random random = new Random();
+        int i = random.nextInt();
         opsForList.leftPush(LIST_KEY, i);
 
         // 通过leftPush(K key, V pivot, V value)方法把 值 放到指定参数值前面
-        opsForList.leftPush(LIST_KEY, i, (int) (Math.random() * 1000));
+        opsForList.leftPush(LIST_KEY, i, random.nextInt());
 
         // 批量 push
         opsForList.leftPushAll(LIST_KEY, Arrays.asList(1, 2, 3));
         opsForList.leftPushAll(LIST_KEY, 4, 5, 6);
 
         // leftPushIfPresent，只有当 list 存在时才会执行 Push 操作，所以下面第一条语句实际上不会有效果
-        opsForList.leftPushIfPresent(LIST_KEY + 1, (int) (Math.random() * 1000));
+        opsForList.leftPushIfPresent(LIST_KEY + 1, random.nextInt());
         opsForList.leftPushIfPresent(LIST_KEY, 2000);
     }
 

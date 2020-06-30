@@ -6,7 +6,7 @@ spring:
       bootstrap-servers: 10.197.236.154:9092,10.197.236.169:9092,10.197.236.184:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-      acks: 1 # 0-不应答。1-leader 应答 all-所有 leader 和 follower 应答
+      acks: all # 代表了你对“已提交”消息的定义 0-不应答 1-leader应答 all-所有leader和follower
       retries: 3 # 发送失败时，重试发送的次数
       batch-size: 16384 # 每次批量发送消息的最大数量
         buffer-memory: 33554432 # 每次批量发送消息的最大内存
@@ -16,11 +16,11 @@ spring:
     consumer:
       bootstrap-servers: 10.197.236.154:9092,10.197.236.169:9092,10.197.236.184:9092
       group-id: rexlin600-kafka
-      auto-offset-reset: latest # 设置消费者分组最初的消费进度为 earliest 。可参考博客 https://blog.csdn.net/lishuangzhe7047/article/details/74530417 理解
+      auto-offset-reset: earliest # 设置消费者分组最初的消费进度为 earliest 。可参考博客 https://blog.csdn.net/lishuangzhe7047/article/details/74530417 理解
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       max-poll-records: 10 # poll 一次消息拉取的最大数量
-      enable-auto-commit: false # 手动提交
+      enable-auto-commit: false # 手动提交，避免消息未消费就提交从而导致偏移量变化，出现类似“丢失消息”的情况
       fetch-max-wait: 10000 # poll 一次拉取的阻塞的最大时长，单位：毫秒。这里指的是阻塞拉取需要满足至少 fetch-min-size 大小的消息
       fetch-min-size: 10 # poll 一次消息拉取的最小数据量，单位：字节
       properties:

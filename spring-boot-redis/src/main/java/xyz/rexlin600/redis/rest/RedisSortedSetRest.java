@@ -23,14 +23,14 @@ import java.util.Set;
 @Slf4j
 @RestController
 @RequestMapping("/redis/zset")
-public class RedisZSetRest {
+public class RedisSortedSetRest {
 
     private final static String ZSET_KEY = "ZSET_KEY";
 
     private final RedisTemplate<String, Object> redisTemplate;
 
     @Autowired
-    public RedisZSetRest(RedisTemplate<String, Object> redisTemplate) {
+    public RedisSortedSetRest(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 
@@ -39,10 +39,10 @@ public class RedisZSetRest {
      */
     @PostMapping
     public void add() {
-        ZSetOperations<String, Object> opsForZSet = redisTemplate.opsForZSet();
+        ZSetOperations<String, Object> opsForSet = redisTemplate.opsForZSet();
 
         // add
-        opsForZSet.add(ZSET_KEY, "1", 1D);
+        opsForSet.add(ZSET_KEY, "1", 1D);
 
         // multi add
         ZSetOperations.TypedTuple<Object> typedTuple1 = new DefaultTypedTuple<Object>("2", 2D);
@@ -54,7 +54,7 @@ public class RedisZSetRest {
         typedTupleSet.add(typedTuple2);
         typedTupleSet.add(typedTuple3);
         typedTupleSet.add(typedTuple4);
-        opsForZSet.add(ZSET_KEY, typedTupleSet);
+        opsForSet.add(ZSET_KEY, typedTupleSet);
     }
 
     /**
@@ -62,16 +62,16 @@ public class RedisZSetRest {
      */
     @GetMapping("/range")
     public void range() {
-        ZSetOperations<String, Object> opsForZSet = redisTemplate.opsForZSet();
+        ZSetOperations<String, Object> opsForSet = redisTemplate.opsForZSet();
 
-        Set<Object> set1 = opsForZSet.range(ZSET_KEY, 0, -1);
+        Set<Object> set1 = opsForSet.range(ZSET_KEY, 0, -1);
         log.info("==>  set1 value is : {}", set1.toString());
 
         // range
         // 用于获取满足非score的排序取值 这个排序只有在有相同分数的情况下才能使用，如果有不同的分数则返回值不确定
         RedisZSetCommands.Range range = new RedisZSetCommands.Range();
         range.lt("A");
-        Set<Object> set2 = opsForZSet.rangeByLex(ZSET_KEY, range);
+        Set<Object> set2 = opsForSet.rangeByLex(ZSET_KEY, range);
         log.info("==>  set2 value is : {}", set2.toString());
 
         // limit
@@ -79,7 +79,7 @@ public class RedisZSetRest {
         limit.count(2);
         // 起始下标为0
         limit.offset(1);
-        Set<Object> set3 = opsForZSet.rangeByLex(ZSET_KEY, range, limit);
+        Set<Object> set3 = opsForSet.rangeByLex(ZSET_KEY, range, limit);
         log.info("==>  set3 value is : {}", set3.toString());
     }
 

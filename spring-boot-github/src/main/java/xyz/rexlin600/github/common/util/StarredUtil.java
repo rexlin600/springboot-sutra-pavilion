@@ -1,6 +1,9 @@
 package xyz.rexlin600.github.common.util;
 
+import cn.hutool.core.io.IoUtil;
+import cn.hutool.core.io.resource.ResourceUtil;
 import cn.hutool.core.thread.ThreadFactoryBuilder;
+import cn.hutool.core.util.CharsetUtil;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -10,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import xyz.rexlin600.github.common.constant.GithubConstant;
 import xyz.rexlin600.github.entity.StarredResp;
 
+import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -129,108 +133,14 @@ public class StarredUtil {
      *
      * @param args
      */
+    @SneakyThrows
     public static void main(String[] args) {
+        // 读取 resource 下的文件，参考：https://www.jianshu.com/p/7d7e5e4e8ae3
+        InputStream inputStream = ResourceUtil.getStream("github.json");
+        String json = IoUtil.read(inputStream, CharsetUtil.UTF_8);
+
         Gson gson = new Gson();
-        JsonObject jsonObject = gson.fromJson("{\n" +
-                "    \"id\": 159152904,\n" +
-                "    \"node_id\": \"MDEwOlJlcG9zaXRvcnkxNTkxNTI5MDQ=\",\n" +
-                "    \"name\": \"jeecg-boot\",\n" +
-                "    \"full_name\": \"zhangdaiscott/jeecg-boot\",\n" +
-                "    \"private\": false,\n" +
-                "    \"owner\": {\n" +
-                "      \"login\": \"zhangdaiscott\",\n" +
-                "      \"id\": 3162115,\n" +
-                "      \"node_id\": \"MDQ6VXNlcjMxNjIxMTU=\",\n" +
-                "      \"avatar_url\": \"https://avatars2.githubusercontent.com/u/3162115?v=4\",\n" +
-                "      \"gravatar_id\": \"\",\n" +
-                "      \"url\": \"https://api.github.com/users/zhangdaiscott\",\n" +
-                "      \"html_url\": \"https://github.com/zhangdaiscott\",\n" +
-                "      \"followers_url\": \"https://api.github.com/users/zhangdaiscott/followers\",\n" +
-                "      \"following_url\": \"https://api.github.com/users/zhangdaiscott/following{/other_user}\",\n" +
-                "      \"gists_url\": \"https://api.github.com/users/zhangdaiscott/gists{/gist_id}\",\n" +
-                "      \"starred_url\": \"https://api.github.com/users/zhangdaiscott/starred{/owner}{/repo}\",\n" +
-                "      \"subscriptions_url\": \"https://api.github.com/users/zhangdaiscott/subscriptions\",\n" +
-                "      \"organizations_url\": \"https://api.github.com/users/zhangdaiscott/orgs\",\n" +
-                "      \"repos_url\": \"https://api.github.com/users/zhangdaiscott/repos\",\n" +
-                "      \"events_url\": \"https://api.github.com/users/zhangdaiscott/events{/privacy}\",\n" +
-                "      \"received_events_url\": \"https://api.github.com/users/zhangdaiscott/received_events\",\n" +
-                "      \"type\": \"User\",\n" +
-                "      \"site_admin\": false\n" +
-                "    },\n" +
-                "    \"html_url\": \"https://github.com/zhangdaiscott/jeecg-boot\",\n" +
-                "    \"description\": \"一款基于代码生成器的JAVA快速开发平台，开源界“小普元”超越传统商业企业级开发平台！采用前后端分离架构：SpringBoot 2.x，Ant Design&Vue，Mybatis-plus，Shiro，JWT。强大的代码生成器让前后端代码一键生成，无需写任何代码! 引领新的开发模式(OnlineCoding模式-> 代码生成器模式-> 手工MERGE智能开发)，帮助Java项目解决70%的重复工作，让开发更多关注业务逻辑。既能快速提高开发效率，帮助公司节省成本，同时又不失灵活性。JeecgBoot还独创在线开发模式（No代码）：在线表单配置（表单设计器）、移动配置能力、在线工作流配置（流程设计器）、在线报表配置、在线图表配置、插件能力（可插拔）等等\",\n" +
-                "    \"fork\": false,\n" +
-                "    \"url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot\",\n" +
-                "    \"forks_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/forks\",\n" +
-                "    \"keys_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/keys{/key_id}\",\n" +
-                "    \"collaborators_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/collaborators{/collaborator}\",\n" +
-                "    \"teams_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/teams\",\n" +
-                "    \"hooks_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/hooks\",\n" +
-                "    \"issue_events_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/issues/events{/number}\",\n" +
-                "    \"events_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/events\",\n" +
-                "    \"assignees_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/assignees{/user}\",\n" +
-                "    \"branches_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/branches{/branch}\",\n" +
-                "    \"tags_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/tags\",\n" +
-                "    \"blobs_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/git/blobs{/sha}\",\n" +
-                "    \"git_tags_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/git/tags{/sha}\",\n" +
-                "    \"git_refs_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/git/refs{/sha}\",\n" +
-                "    \"trees_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/git/trees{/sha}\",\n" +
-                "    \"statuses_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/statuses/{sha}\",\n" +
-                "    \"languages_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/languages\",\n" +
-                "    \"stargazers_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/stargazers\",\n" +
-                "    \"contributors_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/contributors\",\n" +
-                "    \"subscribers_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/subscribers\",\n" +
-                "    \"subscription_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/subscription\",\n" +
-                "    \"commits_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/commits{/sha}\",\n" +
-                "    \"git_commits_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/git/commits{/sha}\",\n" +
-                "    \"comments_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/comments{/number}\",\n" +
-                "    \"issue_comment_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/issues/comments{/number}\",\n" +
-                "    \"contents_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/contents/{+path}\",\n" +
-                "    \"compare_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/compare/{base}...{head}\",\n" +
-                "    \"merges_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/merges\",\n" +
-                "    \"archive_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/{archive_format}{/ref}\",\n" +
-                "    \"downloads_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/downloads\",\n" +
-                "    \"issues_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/issues{/number}\",\n" +
-                "    \"pulls_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/pulls{/number}\",\n" +
-                "    \"milestones_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/milestones{/number}\",\n" +
-                "    \"notifications_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/notifications{?since,all,participating}\",\n" +
-                "    \"labels_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/labels{/name}\",\n" +
-                "    \"releases_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/releases{/id}\",\n" +
-                "    \"deployments_url\": \"https://api.github.com/repos/zhangdaiscott/jeecg-boot/deployments\",\n" +
-                "    \"created_at\": \"2018-11-26T10:40:00Z\",\n" +
-                "    \"updated_at\": \"2020-03-22T04:35:19Z\",\n" +
-                "    \"pushed_at\": \"2020-03-12T10:48:13Z\",\n" +
-                "    \"git_url\": \"git://github.com/zhangdaiscott/jeecg-boot.git\",\n" +
-                "    \"ssh_url\": \"git@github.com:zhangdaiscott/jeecg-boot.git\",\n" +
-                "    \"clone_url\": \"https://github.com/zhangdaiscott/jeecg-boot.git\",\n" +
-                "    \"svn_url\": \"https://github.com/zhangdaiscott/jeecg-boot\",\n" +
-                "    \"homepage\": \"http://www.jeecg.com\",\n" +
-                "    \"size\": 31527,\n" +
-                "    \"stargazers_count\": 10440,\n" +
-                "    \"watchers_count\": 10440,\n" +
-                "    \"language\": \"Java\",\n" +
-                "    \"has_issues\": true,\n" +
-                "    \"has_projects\": true,\n" +
-                "    \"has_downloads\": true,\n" +
-                "    \"has_wiki\": true,\n" +
-                "    \"has_pages\": true,\n" +
-                "    \"forks_count\": 3921,\n" +
-                "    \"mirror_url\": null,\n" +
-                "    \"archived\": false,\n" +
-                "    \"disabled\": false,\n" +
-                "    \"open_issues_count\": 21,\n" +
-                "    \"license\": {\n" +
-                "      \"key\": \"apache-2.0\",\n" +
-                "      \"name\": \"Apache License 2.0\",\n" +
-                "      \"spdx_id\": \"Apache-2.0\",\n" +
-                "      \"url\": \"https://api.github.com/licenses/apache-2.0\",\n" +
-                "      \"node_id\": \"MDc6TGljZW5zZTI=\"\n" +
-                "    },\n" +
-                "    \"forks\": 3921,\n" +
-                "    \"open_issues\": 21,\n" +
-                "    \"watchers\": 10440,\n" +
-                "    \"default_branch\": \"master\"\n" +
-                "  }", JsonObject.class);
+        JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
 
         JsonArray jsonArray = new JsonArray();
         jsonArray.add(jsonObject);

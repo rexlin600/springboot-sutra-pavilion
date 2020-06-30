@@ -47,6 +47,11 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class QrCodeGenUtil {
 
+    private final static Integer NUM_8 = 8;
+    private final static Integer NUM_20 = 20;
+    private final static Integer NUM_15 = 15;
+    private final static Integer NUM_24 = 24;
+
     /**
      * 线程池
      */
@@ -851,17 +856,17 @@ public class QrCodeGenUtil {
         int fontSize = font.getSize();
 
         // 不做处理
-        if (topText.length() < 8 && centerText.length() < 8 && bottomText.length() < 8 && fontSize < 24) {
+        if (topText.length() < NUM_8 && centerText.length() < NUM_8 && bottomText.length() < NUM_8 && fontSize < NUM_24) {
             return font;
         }
 
         // 如果字体过大
-        if (fontSize > 20) {
-            font = new Font(font.getName(), font.getStyle(), 20);
+        if (fontSize > NUM_20) {
+            font = new Font(font.getName(), font.getStyle(), NUM_20);
         }
 
         // 如果文本过长
-        if (topText.length() > 15 || centerText.length() > 15 || bottomText.length() > 15) {
+        if (topText.length() > NUM_15 || centerText.length() > NUM_15 || bottomText.length() > NUM_15) {
             font = new Font(font.getName(), font.getStyle(), 16);
         }
 

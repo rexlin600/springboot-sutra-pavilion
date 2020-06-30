@@ -91,14 +91,14 @@ public class GlobalException {
         String errorMessage = this.buildErrorMessage(bindingResult);
         log.warn(errorMessage);
         List<FieldError> fieldErrors = bindingResult.getFieldErrors();
-        String message = "";
+        StringBuilder message = new StringBuilder();
         if (null != fieldErrors && fieldErrors.size() > 0) {
             for (int i = 0; i < fieldErrors.size(); i++) {
-                message = message + " " + Optional.ofNullable(fieldErrors.get(i)).map(m -> m.getDefaultMessage()).orElse("");
+                message.append(Optional.ofNullable(fieldErrors.get(i)).map(m -> m.getDefaultMessage()).orElse("") + "  ");
             }
         }
 
-        return ResponseGenerator.fail(StatusCode.PARAM_ERROR.getCode(), message, errorMessage);
+        return ResponseGenerator.fail(StatusCode.PARAM_ERROR.getCode(), message.toString(), errorMessage);
     }
 
     // -----------------------------------------------------------------------------------------------
