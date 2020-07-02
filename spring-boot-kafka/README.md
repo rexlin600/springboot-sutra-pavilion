@@ -513,12 +513,6 @@ _ GC 参数
 方案一、二的代码实现可以参考下面参考文章：[使用两种多线程模式消费kafka数据](https://zhuanlan.zhihu.com/p/144870495?from_voters_page=true)；方案二中位移提交是有重复消费消息和丢失数据的风险的， 最好的办法就是自己完全实现一套 `多线程 + 管理offset` 的方案，就像 `Spark Streaming` 和 `Flink` 做的那样。有兴趣的话可以阅读以下 `Flink` 中 `Kafka Connector` 的源代码
 
 
-
-
-
-
-
-
 ## 参考文章
 
 - [强烈推荐 Kafka 笔记](https://www.kancloud.cn/nicefo71/kafka/1470863)
