@@ -1,0 +1,11 @@
+### send sync msg
+POST http://localhost:10038/producer/sync/send
+Content-Type: application/json
+
+{}
+
+### send async msg
+POST http://localhost:10038/producer/async/send
+Content-Type: application/json
+
+{}

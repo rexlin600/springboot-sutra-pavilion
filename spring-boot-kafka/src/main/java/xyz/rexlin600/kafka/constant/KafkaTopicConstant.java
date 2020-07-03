@@ -11,8 +11,14 @@ package xyz.rexlin600.kafka.constant;
 public class KafkaTopicConstant {
 
     /**
-     * 测试 Topic
+     * 测试 sync Topic
      */
-    public static final String TOPIC = "rexlin600-test";
+    public static final String SYNC_TOPIC = "rexlin600-sync";
+
+    /**
+     * 测试 async Topic
+     */
+    public static final String ASYNC_TOPIC = "rexlin600-async";
+
 
 }

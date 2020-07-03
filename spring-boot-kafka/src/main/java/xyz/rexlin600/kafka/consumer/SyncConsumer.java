@@ -7,7 +7,6 @@ import org.apache.kafka.clients.consumer.OffsetAndMetadata;
 import org.apache.kafka.common.TopicPartition;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
-import xyz.rexlin600.kafka.constant.KafkaGroupIdConstant;
 import xyz.rexlin600.kafka.constant.KafkaTopicConstant;
 
 import java.util.*;
@@ -26,7 +25,7 @@ public class SyncConsumer {
      * @param records
      * @param consumer
      */
-    @KafkaListener(topics = KafkaTopicConstant.TOPIC, groupId = KafkaGroupIdConstant.SYNC_GROUP_ID)
+    @KafkaListener(topics = KafkaTopicConstant.SYNC_TOPIC)
     public void onMessage(List<ConsumerRecord<String, String>> records, Consumer consumer) {
         // map 记录消费的位移
         Map<TopicPartition, OffsetAndMetadata> offsets = new HashMap<>(records.size());
@@ -42,7 +41,7 @@ public class SyncConsumer {
                 }
 
                 // 模拟消费消息 ...
-                log.info("==>  线程编号：[{}]，消息内容：[{}]", Thread.currentThread().getId(), records);
+                log.info("==>  SYNC 线程编号：[{}]，消息内容：[{}]", Thread.currentThread().getId(), records);
 
                 offsets.put(new TopicPartition(record.topic(), record.partition()), new OffsetAndMetadata(record.offset() + 1));
             } catch (Exception e) {
