@@ -4,14 +4,14 @@ jdk:
   - openjdk8
 
 before_cache:
-  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 
 cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
-script: gradle clean test --warning-mode all -PdownloadIdeaSources=false
-
-
-
+script:
+  - gradle check
+  - "gradle clean test --warning-mode all -PdownloadIdeaSources=false"
