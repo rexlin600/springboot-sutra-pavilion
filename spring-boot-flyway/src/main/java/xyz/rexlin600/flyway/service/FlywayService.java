@@ -14,15 +14,15 @@ public interface FlywayService {
     /**
      * 保存
      *
-     * @param tbFlyway
+     * @param tbFlyway {@link TbFlyway}
      */
     void save(TbFlyway tbFlyway);
 
     /**
      * 根据ID查找
      *
-     * @param id
-     * @return
+     * @param id ID
+     * @return {@link TbFlyway}
      */
     TbFlyway findOne(Long id);
 

@@ -44,8 +44,8 @@ public class FastDfsRest {
     /**
      * fastDFS 文件上传
      *
-     * @param file
-     * @return
+     * @param file 文件
+     * @return {@link Response}
      */
     @SneakyThrows
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -74,7 +74,7 @@ public class FastDfsRest {
      * @param groupName 文件在 fastDFS 的组名称，如：group1
      * @param path      文件在 fastDFS 的相对路径（不包含 groupName），如：M00/00/27/CsXsq160-XOAKZmDAAH7g0hg3gc139.jpg
      * @param outPath   下载文件输出位置，如：.
-     * @return
+     * @return {@link Response}
      */
     @PostMapping("/downlaoad")
     public Response downlaoad(@RequestParam(value = "groupName") String groupName,

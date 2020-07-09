@@ -5,16 +5,18 @@
 
 package xyz.rexlin600.common.util;
 
+import org.springframework.cglib.beans.BeanMap;
+import org.springframework.objenesis.instantiator.util.ClassUtils;
+import org.springframework.util.CollectionUtils;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.springframework.cglib.beans.BeanMap;
-import org.springframework.objenesis.instantiator.util.ClassUtils;
-import org.springframework.util.CollectionUtils;
-
 /**
+ * Bean 工具类
+ *
  * @author hekunlin
  */
 public final class BeanUtils {
@@ -25,8 +27,8 @@ public final class BeanUtils {
     /**
      * bean to map
      *
-     * @param bean
-     * @return
+     * @param bean bean
+     * @return {@link Map}
      */
     public static Map<String, Object> beanToMap(Object bean) {
         return null == bean ? null : BeanMap.create(bean);
@@ -35,10 +37,10 @@ public final class BeanUtils {
     /**
      * map to bean
      *
-     * @param map
-     * @param clazz
-     * @param <T>
-     * @return
+     * @param map   {@link Map}
+     * @param clazz Class类
+     * @param <T>   泛型对象
+     * @return 泛型对象
      */
     public static <T> T mapToBean(Map<String, Object> map, Class<T> clazz) {
         T bean = ClassUtils.newInstance(clazz);
@@ -49,9 +51,9 @@ public final class BeanUtils {
     /**
      * beans to maps
      *
-     * @param beans
-     * @param <T>
-     * @return
+     * @param beans bean
+     * @param <T>   泛型对象
+     * @return 泛型对象
      */
     public static <T> List<Map<String, Object>> beansToMaps(List<T> beans) {
         return CollectionUtils.isEmpty(beans) ? Collections.emptyList() : (List) beans.stream().map(BeanUtils::beanToMap).collect(Collectors.toList());
@@ -60,10 +62,10 @@ public final class BeanUtils {
     /**
      * maps to beans
      *
-     * @param maps
-     * @param clazz
-     * @param <T>
-     * @return
+     * @param maps  {@link Map}
+     * @param clazz Class类
+     * @param <T>   泛型对象
+     * @return 泛型对象
      */
     public static <T> List<T> mapsToBeans(List<Map<String, Object>> maps, Class<T> clazz) {
         return CollectionUtils.isEmpty(maps) ? Collections.emptyList() : (List) maps.stream().map((e) -> {

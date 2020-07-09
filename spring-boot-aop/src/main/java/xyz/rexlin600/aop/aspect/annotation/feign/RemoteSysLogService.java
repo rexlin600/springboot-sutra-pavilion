@@ -21,7 +21,7 @@ public interface RemoteSysLogService {
      * 保存日志
      *
      * @param sysLog 日志实体
-     * @return
+     * @return {@link R}
      */
     @PostMapping
     R add(@RequestBody SysLog sysLog);

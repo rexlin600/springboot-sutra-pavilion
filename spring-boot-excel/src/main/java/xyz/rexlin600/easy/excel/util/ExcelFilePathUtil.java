@@ -14,8 +14,8 @@ public class ExcelFilePathUtil {
     /**
      * 根据文件路径获取文件输入流
      *
-     * @param fileName
-     * @return
+     * @param fileName 文件路径
+     * @return {@link InputStream}
      */
     public static InputStream getResourcesFileInputStream(String fileName) {
         return Thread.currentThread().getContextClassLoader().getResourceAsStream("" + fileName);
@@ -24,7 +24,7 @@ public class ExcelFilePathUtil {
     /**
      * 获取本地 Excel 文件路径
      *
-     * @return
+     * @return {@link String}
      */
     public static String getPath() {
         return ExcelFilePathUtil.class.getResource("/alibaba/").getPath();
@@ -33,8 +33,8 @@ public class ExcelFilePathUtil {
     /**
      * 创建新文件
      *
-     * @param pathName
-     * @return
+     * @param pathName 文件路径
+     * @return {@link File}
      */
     public static File createNewFile(String pathName) {
         File file = new File(getPath() + pathName);
@@ -51,8 +51,8 @@ public class ExcelFilePathUtil {
     /**
      * 读取文件为 File
      *
-     * @param pathName
-     * @return
+     * @param pathName 文件路径
+     * @return {@link File}
      */
     public static File readFile(String pathName) {
         return new File(getPath() + pathName);

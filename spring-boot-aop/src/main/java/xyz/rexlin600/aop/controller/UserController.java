@@ -11,8 +11,9 @@ import xyz.rexlin600.aop.entity.User;
 import xyz.rexlin600.aop.service.UserService;
 
 /**
+ * AOP-用户操作
+ *
  * @author rexlin600
- * @menu AOP-用户操作
  * @since 2020-02-16
  */
 @RestController
@@ -29,9 +30,9 @@ public class UserController extends ApiController {
     /**
      * 1. 分页列表
      *
-     * @param page
-     * @param size
-     * @return
+     * @param page 页码
+     * @param size 每页条数
+     * @return {@link R} {@link R}
      */
     @GetMapping("/page")
     public R page(@RequestParam("page") Integer page, @RequestParam("size") Integer size) {
@@ -39,10 +40,10 @@ public class UserController extends ApiController {
     }
 
     /**
-     * 2. 新增用户
+     * 新增用户
      *
-     * @param user
-     * @return
+     * @param user 用户
+     * @return {@link R}
      */
     @PostMapping
     public R add(@RequestBody User user) {
@@ -50,10 +51,10 @@ public class UserController extends ApiController {
     }
 
     /**
-     * 3. 删除用户
+     * 删除用户
      *
-     * @param id
-     * @return
+     * @param id ID
+     * @return {@link R}
      */
     @DeleteMapping("/{id}")
     public R del(@PathVariable(value = "id") Long id) {
@@ -61,10 +62,10 @@ public class UserController extends ApiController {
     }
 
     /**
-     * 4. 查询用户
+     * 查询用户
      *
-     * @param id
-     * @return
+     * @param id ID
+     * @return {@link R}
      */
     @SysAopLog(value = "查询用户")
     @GetMapping("/{id}")
@@ -73,10 +74,10 @@ public class UserController extends ApiController {
     }
 
     /**
-     * 5. 修改用户
+     * 修改用户
      *
-     * @param user
-     * @return
+     * @param user 用户
+     * @return {@link R}
      */
     @PutMapping
     public R update(@RequestBody User user) {

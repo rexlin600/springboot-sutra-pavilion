@@ -53,8 +53,8 @@ public class GitlabServiceImpl implements GitlabService {
     /**
      * 列表查询
      *
-     * @param req
-     * @return
+     * @param req 请求类
+     * @return {@link Response}
      */
     @Override
     public Response list(GitlabCloneReq req) {
@@ -67,8 +67,8 @@ public class GitlabServiceImpl implements GitlabService {
     /**
      * 克隆项目
      *
-     * @param req
-     * @return
+     * @param req 请求类
+     * @return {@link Response}
      */
     @Override
     public Response clone(GitlabCloneReq req) {
@@ -134,9 +134,9 @@ public class GitlabServiceImpl implements GitlabService {
     /**
      * 筛选匹配的项目
      *
-     * @param req
-     * @param allProjects
-     * @return
+     * @param req         Gitlab请求类
+     * @param allProjects 项目列表
+     * @return {@link List}
      */
     private List<GitlabProject> getMatchGitlabProjects(GitlabCloneReq req, List<GitlabProject> allProjects) {
         // 筛选匹配名称的项目
