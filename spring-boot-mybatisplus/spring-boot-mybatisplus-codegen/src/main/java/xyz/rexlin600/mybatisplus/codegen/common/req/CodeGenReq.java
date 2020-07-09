@@ -30,11 +30,13 @@ public class CodeGenReq implements Serializable {
     /**
      * 用户
      */
+    @Builder.Default
     private String author = "rexlin600";
 
     /**
      * 是否开启 Swagger2
      */
+    @Builder.Default
     private Boolean openApiDoc = false;
 
     // -----------------------------------------------------------------------------------------------
@@ -94,6 +96,7 @@ public class CodeGenReq implements Serializable {
     /**
      * 是否开启 lombok
      */
+    @Builder.Default
     private boolean lombok = true;
 
     /**

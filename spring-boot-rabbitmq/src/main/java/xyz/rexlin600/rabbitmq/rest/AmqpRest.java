@@ -17,6 +17,7 @@ import xyz.rexlin600.rabbitmq.pattern.work.provider.WorkProvider;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Optional;
 
 /**
@@ -96,7 +97,7 @@ public class AmqpRest {
 
         // invoke
         Method m = optional.get();
-        m.invoke(obj, null);
+        m.invoke(obj, Collections.emptyList());
 
         return ResponseGenerator.success();
     }
