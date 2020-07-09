@@ -11,11 +11,8 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
-before_install:
-  - chmod +x gradlew
-
 script:
-  script: ./gradlew clean buildPlugin test --warning-mode all -PdownloadIdeaSources=false
+  script: gradle clean test --warning-mode all -PdownloadIdeaSources=false
 
 
 
