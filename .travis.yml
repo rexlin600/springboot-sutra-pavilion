@@ -11,8 +11,7 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
-script:
-  script: gradle clean test --warning-mode all -PdownloadIdeaSources=false
+script: gradle clean test --warning-mode all -PdownloadIdeaSources=false
 
 
 

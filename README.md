@@ -77,14 +77,36 @@
 - `spring-boot-custom-starter`：自定义 `starter`
 - `spring-boot-excel`：集成阿里巴巴提供的 `easyExcel`，因为官方提供的示例很丰富，这里就不重复写了
 
-## TODO
-
-最新动态请查看 <span><a href="./TODO.md">TODO</a></span> 文件
-
 **后期完善**
 
 1. 完善 `spring-boot-elasticsearch`
 2. 完善 `spring-boot-redis` 各类数据的使用
+
+# TODO
+
+* spring-boot-sharding-jdbc
+* spring-boot-sharding-jdbc-masterslave
+* spring-boot-zuul-upload
+* spring-boot-validation(jsr303 and hibernate-validation)
+* spring-boot-security
+* spring-boot-security-cas
+* spring-boot-oauth2
+* spring-boot-image
+* spring-boot-retry
+* spring-boot-disconf
+* spring-boot-kafka
+* spring-boot-rocketmq
+* spring-boot-mockito
+* spring-boot-ignite
+* spring-boot-elastic-job
+* spring-boot-influxdb
+* spring-boot-prometheus-grafana
+* spring-boot-elk-filebeat
+* spring-boot-mvc
+* spring-boot-dubbo
+* spring-boot-benchmark(container、api-gatway、mvcAndWbflux)
+* spring-boot-ratelimit
+* spring-boot-xxx
 
 ## 参考
 
