@@ -24,11 +24,3 @@ jar {
     }
 }
 
-// javadoc 配置
-javadoc {
-    options {
-        encoding = 'UTF-8'
-        charSet = 'UTF-8'
-    }
-}
-

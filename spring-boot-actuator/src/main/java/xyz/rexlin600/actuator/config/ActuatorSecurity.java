@@ -13,6 +13,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 @Configuration
 public class ActuatorSecurity extends WebSecurityConfigurerAdapter {
+
+    /**
+     * 配置 Security
+     *
+     * @param http HttpSecurity
+     * @throws Exception 异常
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.requestMatcher(EndpointRequest.toAnyEndpoint()).authorizeRequests()
