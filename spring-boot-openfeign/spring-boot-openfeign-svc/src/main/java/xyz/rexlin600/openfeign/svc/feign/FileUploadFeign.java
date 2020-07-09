@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
  * 文件上传Feign
  *
  * @author: hekunlin
- * @date: 2020/5/7
+ * @since: 2020/5/7
  */
 @FeignClient(name = "fileUpload", url = "http://localhost:10032/file", configuration = {FeignAutoConfiguration.class})
 public interface FileUploadFeign {

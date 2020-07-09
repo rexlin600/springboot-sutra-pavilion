@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Message 实体类
  *
  * @author: hekunlin
- * @date: 2020/1/7
+ * @since: 2020/1/7
  */
 @Data
 @NoArgsConstructor

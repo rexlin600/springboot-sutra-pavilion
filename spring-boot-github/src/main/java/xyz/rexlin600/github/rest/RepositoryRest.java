@@ -27,7 +27,7 @@ import java.util.Map;
 /**
  * @menu Github仓库API
  * @author: hekunlin
- * @date: 2020/1/3
+ * @since: 2020/1/3
  */
 @SuppressWarnings("ALL")
 @Slf4j
@@ -38,7 +38,7 @@ public class RepositoryRest {
     public static final String LINK = "Link";
 
     /**
-     * 1. 【分页-仓库列表】
+     * 1. 分页-仓库列表
      *
      * @param start 起始数量
      * @param end   截至数量
@@ -74,7 +74,7 @@ public class RepositoryRest {
 
 
     /**
-     * 2. 【user-仓库列表】
+     * 2. user-仓库列表
      *
      * @param username
      * @return
@@ -98,7 +98,7 @@ public class RepositoryRest {
 
 
     /**
-     * 3. 【仓库branches-RepositoryId】
+     * 3. 仓库branches-RepositoryId
      *
      * @param searchRepository
      * @return
@@ -113,7 +113,7 @@ public class RepositoryRest {
 
 
     /**
-     * 4. 【仓库tags】
+     * 4. 仓库tags
      *
      * @param searchRepository
      * @return
@@ -127,7 +127,7 @@ public class RepositoryRest {
 
 
     /**
-     * 5. 【仓库语言】
+     * 5. 仓库语言
      *
      * @param searchRepository
      * @return
@@ -141,7 +141,7 @@ public class RepositoryRest {
 
 
     /**
-     * 6. 【仓库贡献者】
+     * 6. 仓库贡献者
      *
      * @param searchRepository
      * @return
@@ -156,7 +156,7 @@ public class RepositoryRest {
 
 
     /**
-     * 7. 【fork列表】
+     * 7. fork列表
      *
      * @param searchRepository
      * @return
@@ -170,7 +170,7 @@ public class RepositoryRest {
 
 
     /**
-     * 8. 【简单-根据条件筛选仓库】
+     * 8. 简单-根据条件筛选仓库
      *
      * @param query
      * @param language
@@ -222,7 +222,7 @@ public class RepositoryRest {
 
 
     /**
-     * 9. 【创建仓库】
+     * 9. 创建仓库
      *
      * @param repository
      * @param org
@@ -250,7 +250,7 @@ public class RepositoryRest {
 
 
     /**
-     * 10. 【fork仓库】
+     * 10. fork仓库
      *
      * @param org
      * @param searchRepository
@@ -277,7 +277,7 @@ public class RepositoryRest {
     }
 
     /**
-     * 11. 【获取某个用户的 Star，分页查询】
+     * 11. 获取某个用户的 Star，分页查询
      *
      * @param page 第几页
      * @param user 用户

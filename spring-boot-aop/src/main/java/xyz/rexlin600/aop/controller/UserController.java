@@ -1,12 +1,11 @@
 package xyz.rexlin600.aop.controller;
 
 
+import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import com.baomidou.mybatisplus.extension.api.ApiController;
 import xyz.rexlin600.aop.aspect.annotation.annotation.SysAopLog;
 import xyz.rexlin600.aop.entity.User;
 import xyz.rexlin600.aop.service.UserService;
@@ -28,7 +27,7 @@ public class UserController extends ApiController {
     }
 
     /**
-     * 1. 【分页列表】
+     * 1. 分页列表
      *
      * @param page
      * @param size
@@ -40,7 +39,7 @@ public class UserController extends ApiController {
     }
 
     /**
-     * 2. 【新增用户】
+     * 2. 新增用户
      *
      * @param user
      * @return
@@ -51,7 +50,7 @@ public class UserController extends ApiController {
     }
 
     /**
-     * 3. 【删除用户】
+     * 3. 删除用户
      *
      * @param id
      * @return
@@ -62,7 +61,7 @@ public class UserController extends ApiController {
     }
 
     /**
-     * 4. 【查询用户】
+     * 4. 查询用户
      *
      * @param id
      * @return
@@ -74,7 +73,7 @@ public class UserController extends ApiController {
     }
 
     /**
-     * 5. 【修改用户】
+     * 5. 修改用户
      *
      * @param user
      * @return

@@ -14,7 +14,7 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
  * Admin Server 启动类
  *
  * @author: hekunlin
- * @date: 2020/1/8
+ * @since: 2020/1/8
  */
 @Configuration
 @EnableAutoConfiguration

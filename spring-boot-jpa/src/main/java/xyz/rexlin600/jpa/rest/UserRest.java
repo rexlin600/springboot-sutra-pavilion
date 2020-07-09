@@ -16,7 +16,7 @@ import java.util.Optional;
 /**
  * @menu JPA用户API
  * @author: hekunlin
- * @date: 2020/1/8
+ * @since: 2020/1/8
  */
 @RestController
 @RequestMapping("/jpa")
@@ -29,7 +29,7 @@ public class UserRest {
     private UserRepository userRepository;
 
     /**
-     * 1. 【用户列表】
+     * 1. 用户列表
      *
      * @param page
      * @param size
@@ -50,7 +50,7 @@ public class UserRest {
     }
 
     /**
-     * 2. 【新增用户】
+     * 2. 新增用户
      *
      * @param user
      * @return
@@ -62,7 +62,7 @@ public class UserRest {
     }
 
     /**
-     * 3. 【修改用户】
+     * 3. 修改用户
      *
      * @param user
      * @return
@@ -75,7 +75,7 @@ public class UserRest {
 
 
     /**
-     * 4. 【查询用户】
+     * 4. 查询用户
      *
      * @param id
      * @return
@@ -91,7 +91,7 @@ public class UserRest {
 
 
     /**
-     * 5. 【删除用户】
+     * 5. 删除用户
      *
      * @param id
      * @return

@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Java8 启动类
  *
  * @author: rexlin600
- * @date: 2020-01-09
+ * @since: 2020-01-09
  */
 @SpringBootApplication
 public class Java8Application {

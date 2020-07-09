@@ -9,7 +9,7 @@ import xyz.rexlin600.mybatisplus.codegen.common.constant.CodeGenConstant;
  * RsaUtils 工具类
  *
  * @author: hekunlin
- * @date: 2020/1/14
+ * @since: 2020/1/14
  */
 public class AesUtils {
 

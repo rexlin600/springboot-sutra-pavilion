@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * fastdfs 配置类
  *
  * @author: hekunlin
- * @date: 2020/5/8
+ * @since: 2020/5/8
  */
 @Data
 @Configuration

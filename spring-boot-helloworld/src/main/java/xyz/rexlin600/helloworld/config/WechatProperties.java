@@ -11,7 +11,7 @@ import java.util.Map;
  * 微信配置类
  *
  * @author: rexlin600
- * @date: 2020-02-18
+ * @since: 2020-02-18
  */
 @Data
 @ToString

@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Kafka 启动类
  *
  * @author: hekunlin
- * @date: 2020/6/28
+ * @since: 2020/6/28
  */
 @SpringBootApplication
 public class KafkaApplication {

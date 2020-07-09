@@ -8,7 +8,7 @@ package xyz.rexlin600.java8.functional.interfaces;
  * 使用上类似 {@link java.util.function.BiConsumer}，这里就不再介绍了
  *
  * @author: hekunlin
- * @date: 2020/1/9
+ * @since: 2020/1/9
  */
 @FunctionalInterface
 interface MyFunctionalInterface<T, R> {

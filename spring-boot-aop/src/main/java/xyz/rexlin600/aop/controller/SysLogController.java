@@ -1,12 +1,11 @@
 package xyz.rexlin600.aop.controller;
 
 
+import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import com.baomidou.mybatisplus.extension.api.ApiController;
 import xyz.rexlin600.aop.entity.SysLog;
 import xyz.rexlin600.aop.service.SysLogService;
 
@@ -27,7 +26,7 @@ public class SysLogController extends ApiController {
     }
 
     /**
-     * 1. 【分页列表】
+     * 1. 分页列表
      *
      * @param page
      * @param size
@@ -40,7 +39,7 @@ public class SysLogController extends ApiController {
     }
 
     /**
-     * 2. 【新增系统日志】
+     * 2. 新增系统日志
      *
      * @param sysLog
      * @return
@@ -51,7 +50,7 @@ public class SysLogController extends ApiController {
     }
 
     /**
-     * 3. 【删除系统日志】
+     * 3. 删除系统日志
      *
      * @param id
      * @return
@@ -62,7 +61,7 @@ public class SysLogController extends ApiController {
     }
 
     /**
-     * 4. 【查询系统日志】
+     * 4. 查询系统日志
      *
      * @param id
      * @return
@@ -73,7 +72,7 @@ public class SysLogController extends ApiController {
     }
 
     /**
-     * 5. 【修改系统日志】
+     * 5. 修改系统日志
      *
      * @param sysLog
      * @return

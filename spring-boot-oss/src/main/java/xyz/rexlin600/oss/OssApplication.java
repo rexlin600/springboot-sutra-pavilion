@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
  * 启动类
  *
  * @author: hekunlin
- * @date: 2020/6/21
+ * @since: 2020/6/21
  */
 @EnableConfigurationProperties
 @SpringBootApplication

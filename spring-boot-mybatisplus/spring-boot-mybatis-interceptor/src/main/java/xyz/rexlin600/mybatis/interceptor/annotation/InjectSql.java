@@ -6,7 +6,7 @@ import java.lang.annotation.*;
  * 注入SQL注解
  *
  * @author: hekunlin
- * @date: 2020/5/9
+ * @since: 2020/5/9
  */
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

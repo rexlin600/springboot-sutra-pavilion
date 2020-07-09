@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
  * 注意：如需使用这种方式，请在 {@link SysLogAspect} 前增加 @Component 注解
  *
  * @author hekunlin
- * @date: 2020-02-16
+ * @since: 2020-02-16
  */
 @SuppressWarnings("ALL")
 @Slf4j

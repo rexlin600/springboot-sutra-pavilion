@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
  * 数字处理器
  *
  * @author: hekunlin
- * @date: 2020/3/6
+ * @since: 2020/3/6
  */
 @Slf4j
 @Service
@@ -21,7 +21,7 @@ public class IntegerHandler implements HandlerSvc {
     @Override
     public void handle(Object object) {
         Integer integer = (Integer) object;
-        log.info("IntegerHandler handle object=【{}】", integer);
+        log.info("IntegerHandler handle object=[{}]", integer);
     }
 
 }

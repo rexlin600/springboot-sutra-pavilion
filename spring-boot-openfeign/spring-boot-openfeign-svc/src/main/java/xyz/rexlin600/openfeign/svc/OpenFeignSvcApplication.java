@@ -9,7 +9,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * open feign 启动类
  *
  * @author: hekunlin
- * @date: 2020/5/7
+ * @since: 2020/5/7
  */
 @EnableFeignClients(basePackages = "xyz.rexlin600")
 @EnableEurekaClient

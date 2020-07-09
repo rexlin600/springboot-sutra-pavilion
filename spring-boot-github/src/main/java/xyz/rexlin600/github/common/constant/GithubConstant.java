@@ -4,7 +4,7 @@ package xyz.rexlin600.github.common.constant;
  * Github 常量类
  *
  * @author: rexlin600
- * @date: 2020/3/22
+ * @since: 2020/3/22
  */
 public class GithubConstant {
 

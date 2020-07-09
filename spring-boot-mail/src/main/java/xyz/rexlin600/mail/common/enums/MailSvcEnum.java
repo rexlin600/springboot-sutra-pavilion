@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
  * MailSvcEnum 枚举类
  *
  * @author: hekunlin
- * @date: 2020/1/10
+ * @since: 2020/1/10
  */
 @NoArgsConstructor
 @Getter

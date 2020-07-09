@@ -9,7 +9,7 @@ import java.util.List;
  * User JPA API
  *
  * @author: hekunlin
- * @date: 2020/1/8
+ * @since: 2020/1/8
  */
 public interface UserRepository extends JpaRepository<User, Long> {
 

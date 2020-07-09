@@ -6,7 +6,7 @@ import lombok.*;
  * TableMetaData 实体类
  *
  * @author: hekunlin
- * @date: 2020/1/14
+ * @since: 2020/1/14
  */
 @Data
 @NoArgsConstructor

@@ -14,7 +14,7 @@ public class DockerRest {
     private static String HELLO_WORLD = "hello world";
 
     /**
-     * 1. 【GET请求】
+     * 1. GET请求
      *
      * @return
      */
@@ -24,7 +24,7 @@ public class DockerRest {
     }
 
     /**
-     * 2. 【POST请求】
+     * 2. POST请求
      *
      * @return
      */
@@ -34,7 +34,7 @@ public class DockerRest {
     }
 
     /**
-     * 3. 【PUT请求】
+     * 3. PUT请求
      *
      * @return
      */
@@ -44,7 +44,7 @@ public class DockerRest {
     }
 
     /**
-     * 4. 【DELETE请求】
+     * 4. DELETE请求
      *
      * @return
      */

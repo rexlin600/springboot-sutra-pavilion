@@ -13,7 +13,7 @@ import java.util.function.Predicate;
  * Filter 类
  *
  * @author: hekunlin
- * @date: 2020/1/9
+ * @since: 2020/1/9
  */
 public class Filter {
 
@@ -79,7 +79,7 @@ public class Filter {
     }
 
     /**
-     * 【重点】传入谓词对象，行为参数化；可以自由组合想要筛选的内容，避免像上面方法一样针对某个 filter 单独开发
+     * [重点]传入谓词对象，行为参数化；可以自由组合想要筛选的内容，避免像上面方法一样针对某个 filter 单独开发
      *
      * @param predicate
      * @return

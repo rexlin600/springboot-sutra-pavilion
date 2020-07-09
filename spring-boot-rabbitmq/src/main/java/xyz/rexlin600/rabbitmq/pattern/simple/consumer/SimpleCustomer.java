@@ -16,7 +16,7 @@ import java.time.Instant;
  * 简单模式
  *
  * @author: hekunlin
- * @date: 2020/1/7
+ * @since: 2020/1/7
  */
 @Slf4j
 @Component

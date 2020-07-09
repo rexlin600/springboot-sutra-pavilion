@@ -44,6 +44,6 @@ eureka:
     serviceUrl:
       defaultZone: http://admin:admin@localhost:10014/eureka/
     registry-fetch-interval-seconds: 5
-    # 【采坑】下面配置必须配置为如下模式，否者报错：Cannot execute request on any known server，但是对程序无影响，可以正常运行
+    # [采坑]下面配置必须配置为如下模式，否者报错：Cannot execute request on any known server，但是对程序无影响，可以正常运行
     register-with-eureka: true
     fetch-registry: false

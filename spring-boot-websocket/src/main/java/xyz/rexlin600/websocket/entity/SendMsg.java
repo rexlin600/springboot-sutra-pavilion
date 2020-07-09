@@ -11,7 +11,7 @@ import java.util.List;
  * 发送消息实体类
  *
  * @author: hekunlin
- * @date: 2020/5/8
+ * @since: 2020/5/8
  */
 @Data
 @NoArgsConstructor

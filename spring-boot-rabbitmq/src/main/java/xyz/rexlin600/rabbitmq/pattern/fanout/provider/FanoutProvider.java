@@ -12,7 +12,7 @@ import java.time.Instant;
  * Fanout 生产者类
  *
  * @author: hekunlin
- * @date: 2020/1/7
+ * @since: 2020/1/7
  */
 @SuppressWarnings("Duplicates")
 @Slf4j

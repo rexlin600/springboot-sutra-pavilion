@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
  * GitlabService 实现类
  *
  * @author: rexlin600
- * @date: 2020-02-15
+ * @since: 2020-02-15
  */
 @Service
 @Slf4j
@@ -77,7 +77,7 @@ public class GitlabServiceImpl implements GitlabService {
         // 建立 GitLab 连接、获取所有项目
         GitlabAPI gitlabApi = GitlabAPI.connect(gitLabConfigBean.getHost(), gitLabConfigBean.getToken());
         List<GitlabProject> allProjects = gitlabApi.getAllProjects();
-        log.info("==>  建立 GitLab【{}】连接，并获取所有的项目成功，共计【{}】个项目", gitLabConfigBean.getHost(), allProjects.size());
+        log.info("==>  建立 GitLab[{}]连接，并获取所有的项目成功，共计[{}]个项目", gitLabConfigBean.getHost(), allProjects.size());
 
         // 筛选匹配名称的项目
         List<GitlabProject> matchList = getMatchGitlabProjects(req, allProjects);
@@ -107,7 +107,7 @@ public class GitlabServiceImpl implements GitlabService {
 
                 @Override
                 public void run() {
-                    log.info("==>  clone 第【{}】个项目=【{}】到本地目录=【{}】】", (finalI + 1), m.getName(), req.getDir());
+                    log.info("==>  clone 第[{}]个项目=[{}]到本地目录=[{}]]", (finalI + 1), m.getName(), req.getDir());
                     GitlabUtil.clone(req, provider, m, countDownLatch);
                 }
             });
@@ -117,17 +117,17 @@ public class GitlabServiceImpl implements GitlabService {
         try {
             boolean await = countDownLatch.await(Long.valueOf(gitLabConfigBean.getMaxTime().longValue()), TimeUnit.SECONDS);
             if (!await) {
-                log.info("<==  克隆项目已经等待=【{}】秒，请自己核查克隆是否完成", gitLabConfigBean.getMaxTime());
+                log.info("<==  克隆项目已经等待=[{}]秒，请自己核查克隆是否完成", gitLabConfigBean.getMaxTime());
                 return ResponseGenerator.success("克隆超时，后续克隆将继续进行");
             }
         } catch (Exception e) {
-            log.error("==>  克隆等待出现异常=【{}】", e.getMessage());
+            log.error("==>  克隆等待出现异常=[{}]", e.getMessage());
             return ResponseGenerator.fail("克隆失败");
         }
 
         long end = Instant.now().toEpochMilli();
 
-        log.info("<==  克隆结束，全流程共计耗时=【{}】ms", (end - start));
+        log.info("<==  克隆结束，全流程共计耗时=[{}]ms", (end - start));
         return ResponseGenerator.success("克隆结束");
     }
 
@@ -142,7 +142,7 @@ public class GitlabServiceImpl implements GitlabService {
         // 筛选匹配名称的项目
         List<GitlabProject> matchList = allProjects;
         if (!StringUtils.isEmpty(req.getName())) {
-            log.info("==>  筛选模糊匹配 name=【{}】 的全部项目", req.getName());
+            log.info("==>  筛选模糊匹配 name=[{}] 的全部项目", req.getName());
             matchList = allProjects.stream()
                     .filter(m -> m.getName().contains(req.getName()))
                     .collect(Collectors.toList());
@@ -150,17 +150,17 @@ public class GitlabServiceImpl implements GitlabService {
 
         // 筛选匹配 owner 的项目
         if (!StringUtils.isEmpty(req.getOwner())) {
-            log.info("==>  筛选指定 owner=【{}】 的全部项目", req.getOwner());
+            log.info("==>  筛选指定 owner=[{}] 的全部项目", req.getOwner());
             matchList = matchList.stream().filter(m -> m.getOwner().equals(req.getOwner())).collect(Collectors.toList());
         }
 
         // 筛选指定 namespace 的项目
         if (!StringUtils.isEmpty(req.getNamespaceName())) {
-            log.info("==>  筛选指定 namespaceName=【{}】 的全部项目", req.getNamespaceName());
+            log.info("==>  筛选指定 namespaceName=[{}] 的全部项目", req.getNamespaceName());
             matchList = matchList.stream().filter(m -> m.getNamespace().getName().equals(req.getNamespaceName())).collect(Collectors.toList());
         }
 
-        log.info("==>  满足筛选条件的共计【{}】个项目", matchList.size());
+        log.info("==>  满足筛选条件的共计[{}]个项目", matchList.size());
 
         return matchList;
     }

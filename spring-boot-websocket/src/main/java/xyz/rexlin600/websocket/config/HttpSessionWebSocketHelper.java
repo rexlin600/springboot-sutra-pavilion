@@ -7,7 +7,7 @@ import javax.websocket.server.ServerEndpointConfig;
 
 /**
  * @author: hekunlin
- * @date: 2020/5/8
+ * @since: 2020/5/8
  */
 public class HttpSessionWebSocketHelper extends ServerEndpointConfig.Configurator {
 

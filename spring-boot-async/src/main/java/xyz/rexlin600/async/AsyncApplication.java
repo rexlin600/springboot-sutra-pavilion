@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * AsyncApplication 启动类
  *
  * @author: rexlin600
- * @date: 2020-01-11
+ * @since: 2020-01-11
  */
 @EnableAsync
 @SpringBootApplication

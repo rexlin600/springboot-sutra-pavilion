@@ -30,7 +30,7 @@ import java.time.Duration;
  * redis 配置
  *
  * @author: rexlin600
- * @date: 2019-11-06
+ * @since: 2019-11-06
  */
 @SuppressWarnings("ALL")
 @Slf4j

@@ -4,7 +4,7 @@ package xyz.rexlin600.oss.common;
  * OSS 常量类
  *
  * @author: hekunlin
- * @date: 2020/6/22
+ * @since: 2020/6/22
  */
 public class OssConstant {
 

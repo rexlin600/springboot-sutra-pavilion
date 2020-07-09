@@ -11,7 +11,7 @@ import java.io.Serializable;
  * 二维码内容对象
  *
  * @author: rexlin600
- * @date: 2020-03-01
+ * @since: 2020-03-01
  */
 @Builder
 @Data

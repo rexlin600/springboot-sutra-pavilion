@@ -28,7 +28,7 @@ public class CodeGenerateRest {
     }
 
     /**
-     * 1. 【分页查询】
+     * 1. 分页查询
      *
      * @param page
      * @param tableName
@@ -49,7 +49,7 @@ public class CodeGenerateRest {
 
 
     /**
-     * 2.【生成代码】
+     * 2.[生成代码
      *
      * @param codeGenReq
      * @return

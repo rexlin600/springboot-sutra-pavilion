@@ -24,7 +24,7 @@ import java.util.Optional;
  * GlobalException 类
  *
  * @author: hekunlin
- * @date: 2020/1/10
+ * @since: 2020/1/10
  */
 @Slf4j
 @ControllerAdvice(basePackages = {"xyz.rexlin600"})
@@ -107,7 +107,7 @@ public class GlobalException {
 
     private String buildErrorMessage(BindingResult bindingResult) {
         StringBuilder sb = new StringBuilder("BindException. ");
-        sb.append("Field error in object '").append(bindingResult.getObjectName()).append("'. [").append(bindingResult.getTarget()).append("]");
+        sb.append("Field error in object '").append(bindingResult.getObjectName()).append("'. ").append(bindingResult.getTarget()).append("]");
         bindingResult.getFieldErrors().forEach((error) -> {
             sb.append("\r\n on field '").append(error.getField()).append("': ");
             sb.append("rejected value [").append(error.getRejectedValue()).append("]. ");

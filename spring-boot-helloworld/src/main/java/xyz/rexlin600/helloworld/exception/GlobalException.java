@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  * GlobalException 类
  *
  * @author: hekunlin
- * @date: 2020/1/10
+ * @since: 2020/1/10
  */
 @ControllerAdvice(basePackages = {"xyz.rexlin600"})
 public class GlobalException {
@@ -20,10 +20,10 @@ public class GlobalException {
     /**
      * 默认的异常处理器，返回错误页面
      *
-     * @param request
-     * @param ex
-     * @return
-     * @throws Exception
+     * @param request 请求
+     * @param ex      异常
+     * @return ModelAndView
+     * @throws Exception 异常
      */
     @ExceptionHandler(value = Exception.class)
     public ModelAndView defaultExHander(HttpServletRequest request, Exception ex) throws Exception {
@@ -37,10 +37,10 @@ public class GlobalException {
     /**
      * 自定义异常处理器，直接返回 ExDTO，注意需要加上 @ResponseBody
      *
-     * @param req
-     * @param e
-     * @return
-     * @throws Exception
+     * @param req 请求
+     * @param e   异常
+     * @return ExDTO
+     * @throws Exception 异常
      */
     @ExceptionHandler(value = BaseException.class)
     @ResponseBody

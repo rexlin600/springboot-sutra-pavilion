@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 二维码启动类
  *
  * @author: rexlin600
- * @date: 2020-02-28
+ * @since: 2020-02-28
  */
 @SpringBootApplication
 public class QrCodeApplication {

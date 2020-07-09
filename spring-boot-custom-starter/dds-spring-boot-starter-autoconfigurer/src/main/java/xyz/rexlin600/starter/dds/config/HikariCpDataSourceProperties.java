@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * HikariCP数据源
  *
  * @author: rexlin600
- * @date: 2020-03-07
+ * @since: 2020-03-07
  */
 @Data
 @Component

@@ -9,7 +9,7 @@ import xyz.rexlin600.transaction.entity.User;
  * UserRepository 类
  *
  * @author: rexlin600
- * @date: 2020-01-11
+ * @since: 2020-01-11
  */
 public interface UserRepository extends JpaRepository<User, Long> {
 

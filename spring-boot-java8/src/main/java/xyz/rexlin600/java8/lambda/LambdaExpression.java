@@ -4,7 +4,7 @@ package xyz.rexlin600.java8.lambda;
  * LambdaExpression 类
  *
  * @author: hekunlin
- * @date: 2020/1/9
+ * @since: 2020/1/9
  */
 public class LambdaExpression {
 

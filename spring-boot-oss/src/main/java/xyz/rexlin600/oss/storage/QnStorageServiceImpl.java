@@ -24,7 +24,7 @@ import java.net.URLEncoder;
  * default class：通过 OssFactory 暴露
  *
  * @author: hekunlin
- * @date: 2020/6/22
+ * @since: 2020/6/22
  */
 @SuppressWarnings("DuplicatedCode")
 @ConditionalOnBean(QnOssConfig.class)

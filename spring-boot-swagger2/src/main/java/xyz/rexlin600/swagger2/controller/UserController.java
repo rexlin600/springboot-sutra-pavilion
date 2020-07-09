@@ -19,7 +19,7 @@ public class UserController {
     private static Map<Long, User> users = Collections.synchronizedMap(new HashMap<>());
 
     /**
-     * 1. 【用户-用户列表】
+     * 1. 用户-用户列表
      *
      * @return
      */
@@ -29,7 +29,7 @@ public class UserController {
     }
 
     /**
-     * 2. 【用户-创建用户】
+     * 2. 用户-创建用户
      *
      * @param user
      * @return
@@ -41,7 +41,7 @@ public class UserController {
     }
 
     /**
-     * 3. 【用户-获取用户信息】
+     * 3. 用户-获取用户信息
      *
      * @param id
      * @return
@@ -52,7 +52,7 @@ public class UserController {
     }
 
     /**
-     * 4. 【用户-更新用户信息】
+     * 4. 用户-更新用户信息
      *
      * @param id
      * @param user
@@ -68,7 +68,7 @@ public class UserController {
     }
 
     /**
-     * 5. 【用户-根据ID删除用户】
+     * 5. 用户-根据ID删除用户
      *
      * @param id
      * @return
@@ -80,7 +80,7 @@ public class UserController {
     }
 
     /**
-     * 6. 【用户-根据ID删除用户】
+     * 6. 用户-根据ID删除用户
      *
      * @param id
      * @return

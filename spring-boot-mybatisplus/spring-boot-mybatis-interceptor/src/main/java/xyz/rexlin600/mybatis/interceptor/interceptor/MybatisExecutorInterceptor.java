@@ -31,7 +31,7 @@ import java.util.Properties;
  * 请勿在生产中直接这样使用！！！
  *
  * @author: hekunlin
- * @date: 2020/3/24
+ * @since: 2020/3/24
  */
 @Component
 @Slf4j

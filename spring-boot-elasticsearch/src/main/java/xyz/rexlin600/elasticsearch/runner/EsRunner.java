@@ -9,7 +9,7 @@ import xyz.rexlin600.elasticsearch.service.UserService;
 
 /**
  * @author: hekunlin
- * @date: 2020/1/6
+ * @since: 2020/1/6
  */
 @Slf4j
 @Component

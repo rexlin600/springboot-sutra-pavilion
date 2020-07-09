@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
  * 字符串处理器
  *
  * @author: hekunlin
- * @date: 2020/3/6
+ * @since: 2020/3/6
  */
 @Slf4j
 @Service
@@ -21,7 +21,7 @@ public class StringHandler implements HandlerSvc {
     @Override
     public void handle(Object object) {
         String str = (String) object;
-        log.info("StringHandler handle object=【{}】", str);
+        log.info("StringHandler handle object=[{}]", str);
     }
 
 }

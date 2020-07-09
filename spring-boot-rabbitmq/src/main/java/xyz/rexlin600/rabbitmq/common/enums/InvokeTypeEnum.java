@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
  * 调用mq类型 enum
  *
  * @author: hekunlin
- * @date: 2020/1/7
+ * @since: 2020/1/7
  */
 @Getter
 @NoArgsConstructor

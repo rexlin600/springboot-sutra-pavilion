@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 /**
  * @author: hekunlin
- * @date: 2020/1/8
+ * @since: 2020/1/8
  */
 @Configuration
 public class SecurityPermitConfig extends WebSecurityConfigurerAdapter {

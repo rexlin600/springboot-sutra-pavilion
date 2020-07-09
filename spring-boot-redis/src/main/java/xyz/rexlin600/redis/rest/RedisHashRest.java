@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * Redis Hash API
  *
  * @author: hekunlin
- * @date: 2020/5/20
+ * @since: 2020/5/20
  */
 @Slf4j
 @RestController

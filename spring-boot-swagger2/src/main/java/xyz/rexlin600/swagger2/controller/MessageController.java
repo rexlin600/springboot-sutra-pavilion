@@ -23,12 +23,12 @@ public class MessageController {
     private MessageRepository messageRepository;
 
     /**
-     * 1. 【消息-消息列表】
+     * 1. 消息-消息列表
      *
      * @return
      */
     @ApiOperation(
-            value = " 1. 【消息-消息列表】",
+            value = " 1. 消息-消息列表]",
             notes = "完整的消息内容列表",
             produces = "application/json, application/xml",
             consumes = "application/json, application/xml",
@@ -40,13 +40,13 @@ public class MessageController {
     }
 
     /**
-     * 2. 【消息-添加消息】
+     * 2. 消息-添加消息
      *
      * @param message
      * @return
      */
     @ApiOperation(
-            value = "2. 【消息-添加消息】",
+            value = "2. 消息-添加消息]",
             notes = "根据参数创建消息"
     )
     @ApiImplicitParams({
@@ -63,13 +63,13 @@ public class MessageController {
 
 
     /**
-     * 3. 【消息-修改消息】
+     * 3. 消息-修改消息
      *
      * @param message
      * @return
      */
     @ApiOperation(
-            value = "3. 【消息-修改消息】",
+            value = "3. 消息-修改消息]",
             notes = "根据参数修改消息"
     )
     @PutMapping(value = "")
@@ -86,7 +86,7 @@ public class MessageController {
     }
 
     /**
-     * 4. 【消息-文本消息】
+     * 4. 消息-文本消息
      *
      * @param message
      * @return
@@ -98,7 +98,7 @@ public class MessageController {
     }
 
     /**
-     * 5. 【消息-根据ID获取消息】
+     * 5. 消息-根据ID获取消息
      *
      * @param id
      * @return
@@ -110,7 +110,7 @@ public class MessageController {
     }
 
     /**
-     * 6. 【消息-根据ID删除消息】
+     * 6. 消息-根据ID删除消息
      *
      * @param id
      */

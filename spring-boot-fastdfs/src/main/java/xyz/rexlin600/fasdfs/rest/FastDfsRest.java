@@ -21,7 +21,7 @@ import java.util.function.Function;
  * FastDfs 文件上传下载接口
  *
  * @author: hekunlin
- * @date: 2020/5/8
+ * @since: 2020/5/8
  */
 @RestController
 @RequestMapping("/fastdfs")

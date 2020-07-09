@@ -16,7 +16,7 @@ import java.util.concurrent.CountDownLatch;
  * GitlabUtil 工具类
  *
  * @author: rexlin600
- * @date: 2020-02-15
+ * @since: 2020-02-15
  */
 @Slf4j
 @Component
@@ -56,7 +56,7 @@ public class GitlabUtil {
                         @Override
                         protected void onEndTask(String s, int i, int i1, int i2) {
                             if (s.equals(CHECKOUT_FILE) && SUCCESS.equals(i2)) {
-                                log.info("<==  克隆项目=【{}】完成, taskName=【{}】, cmp=【{}】, totalWork=【{}】, pcnt=【{}】", project.getName(), s, i, i1, i2);
+                                log.info("<==  克隆项目=[{}]完成, taskName=[{}], cmp=[{}], totalWork=[{}], pcnt=[{}]", project.getName(), s, i, i1, i2);
                                 countDownLatch.countDown();
                             }
                         }
@@ -66,7 +66,7 @@ public class GitlabUtil {
                     .call();
         } catch (Exception ex) {
             // 克隆失败则打印错误日志、计数器-1
-            log.error("<==  克隆项目=【{}】失败，原因=【{}】", project.getName(), ex.getMessage());
+            log.error("<==  克隆项目=[{}]失败，原因=[{}]", project.getName(), ex.getMessage());
             countDownLatch.countDown();
         }
     }

@@ -152,7 +152,7 @@ public class CodeServiceImpl implements CodeService {
         if (OsUtils.isOsLinux()) {
             projectPath = CodeGenConstant.LINUX_PATH;
         }
-        log.info("==>  生成代码的位置=【{}】", projectPath);
+        log.info("==>  生成代码的位置=[{}]", projectPath);
         AutoGenerator mpg = new AutoGenerator();
 
         GlobalConfig gc;

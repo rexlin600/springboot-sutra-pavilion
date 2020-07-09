@@ -16,7 +16,7 @@ import java.util.stream.Stream;
  * Map 类
  *
  * @author: hekunlin
- * @date: 2020/1/9
+ * @since: 2020/1/9
  */
 @SuppressWarnings("Duplicates")
 public class FlatMap {

@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @menu Actuator监控
  * @author: hekunlin
- * @date: 2020/1/8
+ * @since: 2020/1/8
  */
 @RestController
 @RequestMapping("/actuator")
 public class ActuatorRest {
 
     /**
-     * 1. 【返回index】
+     * 1. 返回index
      *
      * @return
      */

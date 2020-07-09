@@ -12,7 +12,7 @@ import java.util.List;
  * CodeGenReq 请求类
  *
  * @author: hekunlin
- * @date: 2020/1/14
+ * @since: 2020/1/14
  */
 @Data
 @NoArgsConstructor

@@ -6,7 +6,7 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
  * 二维码常量类
  *
  * @author: hekunlin
- * @date: 2020/3/3
+ * @since: 2020/3/3
  */
 public final class QrCodeConstant {
 

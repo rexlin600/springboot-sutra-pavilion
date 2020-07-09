@@ -13,7 +13,7 @@ import java.io.Serializable;
  * 腾讯云配置
  *
  * @author: hekunlin
- * @date: 2020/6/21
+ * @since: 2020/6/21
  */
 @Qualifier(value = "txOssConfig")
 @ConditionalOnProperty(prefix = OssConstant.PREFIX_TX, name = "enable", havingValue = "true")

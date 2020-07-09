@@ -24,7 +24,7 @@ import java.io.InputStream;
  * default class：通过 OssFactory 暴露
  *
  * @author: hekunlin
- * @date: 2020/6/21
+ * @since: 2020/6/21
  */
 @ConditionalOnBean(AliOssConfig.class)
 @Service

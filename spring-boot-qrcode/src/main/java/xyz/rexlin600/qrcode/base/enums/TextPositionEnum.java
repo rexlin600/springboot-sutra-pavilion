@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
  * 二维码文字位置枚举类
  *
  * @author: rexlin600
- * @date: 2020-02-29
+ * @since: 2020-02-29
  */
 @Getter
 @NoArgsConstructor

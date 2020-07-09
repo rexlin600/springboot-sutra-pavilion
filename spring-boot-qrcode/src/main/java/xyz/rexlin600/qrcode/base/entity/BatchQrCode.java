@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
  * 批量二维码类
  *
  * @author: hekunlin
- * @date: 2020/3/3
+ * @since: 2020/3/3
  */
 @Data
 @NoArgsConstructor

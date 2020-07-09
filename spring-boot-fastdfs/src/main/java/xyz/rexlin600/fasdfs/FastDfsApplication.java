@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
  * fastdfs 启动类
  *
  * @author: hekunlin
- * @date: 2020/5/8
+ * @since: 2020/5/8
  */
 @SpringBootApplication
 public class FastDfsApplication {

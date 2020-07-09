@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * webmvc filter
  *
  * @author: hekunlin
- * @date: 2020/1/3
+ * @since: 2020/1/3
  */
 @Configuration
 @EnableWebMvc

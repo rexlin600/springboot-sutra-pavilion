@@ -32,7 +32,7 @@ management:
         allowed-origins: "*"
       # 修改访问路径  2.0之前默认是/   2.0默认是 /actuator  可以通过这个属性值修改，必须填写一个值！
       base-path: "/actuator"
-    # 【注意】是否启用默认的 endpoint；如果为了安全性，建议设置为 false
+    # [注意]是否启用默认的 endpoint；如果为了安全性，建议设置为 false
     enabled-by-default: true
   endpoint:
     # 启用info endpoint

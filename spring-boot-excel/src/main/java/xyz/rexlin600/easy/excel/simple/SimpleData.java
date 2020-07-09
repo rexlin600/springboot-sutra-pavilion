@@ -12,7 +12,7 @@ import java.util.Date;
  * 简单类
  *
  * @author: hekunlin
- * @date: 2020/3/9
+ * @since: 2020/3/9
  */
 @Data
 @AllArgsConstructor

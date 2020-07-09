@@ -18,7 +18,7 @@ import java.io.Serializable;
  * 2. script 支持
  * @ScriptAssert(script = "xyz.rexlin600.validation.param.ScriptReq.checkParams(_this.name,_this.age,_this.classes)", lang = "JavaScript", message = "参数错误：复杂校验失败")
  * @author: hekunlin
- * @date: 2020/6/2
+ * @since: 2020/6/2
  */
 @Data
 @NoArgsConstructor

@@ -7,7 +7,7 @@ import xyz.rexlin600.jdbc.entity.User;
  * UserService 类
  *
  * @author: rexlin600
- * @date: 2020-01-10 22:11:04
+ * @since: 2020-01-10 22:11:04
  */
 public interface UserService {
 

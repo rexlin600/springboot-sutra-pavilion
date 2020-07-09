@@ -19,7 +19,7 @@ import java.nio.charset.Charset;
  * Jaxb工具类
  *
  * @author: hekunlin
- * @date: 2020/3/6
+ * @since: 2020/3/6
  */
 @Slf4j
 public class JaxbUtil<T> {

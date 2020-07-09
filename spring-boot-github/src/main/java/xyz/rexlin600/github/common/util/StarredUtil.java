@@ -25,7 +25,7 @@ import java.util.concurrent.*;
  * Star 工具类
  *
  * @author: rexlin600
- * @date: 2020/3/22
+ * @since: 2020/3/22
  */
 @Slf4j
 public class StarredUtil {

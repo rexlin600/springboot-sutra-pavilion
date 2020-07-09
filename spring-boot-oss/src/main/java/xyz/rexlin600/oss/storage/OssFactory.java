@@ -16,7 +16,7 @@ import xyz.rexlin600.oss.enums.OSSTypeEnum;
  * OSS 工厂类
  *
  * @author: hekunlin
- * @date: 2020/6/21
+ * @since: 2020/6/21
  */
 @Slf4j
 @Component

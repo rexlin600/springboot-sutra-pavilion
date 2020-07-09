@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 /**
  * @author: hekunlin
- * @date: 2020/6/21
+ * @since: 2020/6/21
  */
 @Qualifier(value = "qnOssConfig")
 @ConditionalOnProperty(prefix = OssConstant.PREFIX_QN, name = "enable", havingValue = "true")

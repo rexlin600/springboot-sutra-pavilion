@@ -14,7 +14,7 @@ import java.util.Date;
  * 时间接收与转换
  *
  * @author: hekunlin
- * @date: 2020/6/4
+ * @since: 2020/6/4
  */
 @SuppressWarnings({"ALL", "AlibabaRemoveCommentedCode"})
 @ToString

@@ -3,7 +3,9 @@ package xyz.rexlin600.validation.param;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import xyz.rexlin600.validation.param.group.*;
+import xyz.rexlin600.validation.param.group.Age;
+import xyz.rexlin600.validation.param.group.Classes;
+import xyz.rexlin600.validation.param.group.Name;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -16,7 +18,7 @@ import java.util.List;
  * 分组校验
  *
  * @author: hekunlin
- * @date: 2020/6/1
+ * @since: 2020/6/1
  */
 @Data
 @NoArgsConstructor

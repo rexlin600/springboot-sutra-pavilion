@@ -13,7 +13,7 @@ import java.io.Serializable;
  * 计算机-CPU类
  *
  * @author: hekunlin
- * @date: 2020/3/6
+ * @since: 2020/3/6
  */
 @ToString
 @NoArgsConstructor

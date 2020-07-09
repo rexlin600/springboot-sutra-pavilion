@@ -12,7 +12,7 @@ import java.util.Random;
  * SimpleAsyncTask 异步执行任务
  *
  * @author: rexlin600
- * @date: 2020-01-12
+ * @since: 2020-01-12
  */
 @SuppressWarnings("Duplicates")
 @Slf4j
