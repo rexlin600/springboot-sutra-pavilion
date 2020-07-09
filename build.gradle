@@ -6,6 +6,11 @@
 
 // 所有项目公共配置
 allprojects {
+    // 使用插件
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+    apply plugin: 'idea'
+
     // 项目 group、version
     group = 'xyz.rexlin600'
     version = '2.0.0'
@@ -21,11 +26,8 @@ allprojects {
 
 // 参考：禁用Gradle中的所有Javadoc https://www.it1352.com/829972.html
 
-
 // 子项目配置
 subprojects {
-    // 使用插件
-    apply plugin: 'java'
 
     // 仓库
     repositories {
@@ -51,9 +53,6 @@ subprojects {
         testImplementation 'junit:junit:4.12'
     }
 
-    // 源码兼容性
-    sourceCompatibility = '1.8'
-
     // 使用 UTF-8 编码格式运行任务
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
@@ -65,6 +64,12 @@ subprojects {
     // build 忽略测试文件
     test {
         exclude('xyz/rexlin600/**')
+    }
+
+    // 源码 Java 版本
+    java {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
 }
