@@ -11,8 +11,6 @@ cache:
     - $HOME/.gradle/wrapper/
 before_script:
   - chmod +x gradlew
-install:
-  - ./gradlew setupCIWorkspace -S
 script:
   - travis_wait 60 ./gradlew build -S
 
