@@ -1,5 +1,5 @@
 language: java
-sudo: false
+#sudo: false
 #script: mvn clean verify
 script: gradle assemble
 jdk:
