@@ -12,7 +12,7 @@ import java.util.List;
  * CollectionProperties 类
  *
  * @author: hekunlin
- * @date: 2020/1/10
+ * @since: 2020/1/10
  */
 @ToString
 @Data

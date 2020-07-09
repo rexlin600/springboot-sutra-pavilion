@@ -15,7 +15,6 @@ import xyz.rexlin600.websocket.entity.SendMsg;
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
-import java.time.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -27,7 +26,7 @@ import java.util.stream.Collectors;
  * WebSocket 服务实现类
  *
  * @author: hekunlin
- * @date: 2020/5/8
+ * @since: 2020/5/8
  */
 @Slf4j
 @ServerEndpoint(value = "/websocket/{id}/{name}")

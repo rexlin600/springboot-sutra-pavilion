@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
  * 图片枚举类型
  *
  * @author: rexlin600
- * @date: 2020/6/6
+ * @since: 2020/6/6
  */
 @Getter
 @AllArgsConstructor

@@ -15,7 +15,7 @@ import java.util.*;
  * 简单消息消费者
  *
  * @author: hekunlin
- * @date: 2020/7/2
+ * @since: 2020/7/2
  */
 @Slf4j
 @Component

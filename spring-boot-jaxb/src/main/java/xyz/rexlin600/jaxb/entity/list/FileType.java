@@ -13,7 +13,7 @@ import java.io.Serializable;
  * 文件类型类
  *
  * @author: hekunlin
- * @date: 2020/3/6
+ * @since: 2020/3/6
  */
 @NoArgsConstructor
 @AllArgsConstructor

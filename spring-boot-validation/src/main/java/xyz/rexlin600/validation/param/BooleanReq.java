@@ -12,7 +12,7 @@ import java.io.Serializable;
  * 检查 Boolean 请求类
  *
  * @author: hekunlin
- * @date: 2020/6/1
+ * @since: 2020/6/1
  */
 @Data
 @NoArgsConstructor

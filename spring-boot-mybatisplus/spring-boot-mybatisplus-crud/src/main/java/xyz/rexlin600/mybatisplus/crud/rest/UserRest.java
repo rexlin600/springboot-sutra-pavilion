@@ -13,7 +13,7 @@ import xyz.rexlin600.mybatisplus.crud.model.User;
 /**
  * @menu MybatisPlus-CRUD
  * @author: hekunlin
- * @date: 2020/1/6
+ * @since: 2020/1/6
  */
 @Slf4j
 @RestController
@@ -28,7 +28,7 @@ public class UserRest {
     }
 
     /**
-     * 1. 【用户分页】
+     * 1. 用户分页
      *
      * @param page
      * @param size
@@ -53,7 +53,7 @@ public class UserRest {
 
 
     /**
-     * 2. 【根据ID查询】
+     * 2. 根据ID查询
      *
      * @param id
      * @return
@@ -66,7 +66,7 @@ public class UserRest {
 
 
     /**
-     * 3. 【新增用户】
+     * 3. 新增用户
      *
      * @param user
      * @return
@@ -79,7 +79,7 @@ public class UserRest {
 
 
     /**
-     * 4. 【删除用户】
+     * 4. 删除用户
      *
      * @param id
      * @return
@@ -92,7 +92,7 @@ public class UserRest {
 
 
     /**
-     * 5. 【更新用户】
+     * 5. 更新用户
      *
      * @param user
      * @return

@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * AsyncTaskExecutorConfig 异步任务自定义线程池
  *
  * @author: rexlin600
- * @date: 2020-01-12
+ * @since: 2020-01-12
  */
 @Configuration
 public class AsyncTaskExecutorConfig {

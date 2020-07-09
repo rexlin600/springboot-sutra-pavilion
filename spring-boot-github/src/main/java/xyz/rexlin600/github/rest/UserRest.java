@@ -4,7 +4,7 @@ package xyz.rexlin600.github.rest;
  * Github接口
  *
  * @author: hekunlin
- * @date: 2020/1/3
+ * @since: 2020/1/3
  */
 
 import lombok.SneakyThrows;
@@ -31,7 +31,7 @@ import java.util.List;
 public class UserRest {
 
     /**
-     * 1. 【用户信息】
+     * 1. 用户信息
      *
      * @return
      */
@@ -54,7 +54,7 @@ public class UserRest {
 
 
     /**
-     * 2. 【新增邮箱】
+     * 2. 新增邮箱
      *
      * @param email
      * @return
@@ -73,7 +73,7 @@ public class UserRest {
 
 
     /**
-     * 3. 【删除邮箱】
+     * 3. 删除邮箱
      *
      * @param email
      * @return
@@ -92,7 +92,7 @@ public class UserRest {
 
 
     /**
-     * 4. 【查询Followers-不分页】
+     * 4. 查询Followers-不分页
      *
      * @param username
      * @return
@@ -118,7 +118,7 @@ public class UserRest {
 
 
     /**
-     * 5. 【查询Followers-分页】
+     * 5. 查询Followers-分页
      *
      * @param username
      * @param start
@@ -156,7 +156,7 @@ public class UserRest {
 
 
     /**
-     * 6. 【查询Following-不分页】
+     * 6. 查询Following-不分页
      *
      * @param username
      * @return
@@ -181,7 +181,7 @@ public class UserRest {
 
 
     /**
-     * 7. 【查询Following-分页】
+     * 7. 查询Following-分页
      *
      * @param username
      * @param start
@@ -219,7 +219,7 @@ public class UserRest {
 
 
     /**
-     * 8. 【Follow某个用户】
+     * 8. Follow某个用户
      *
      * @param username
      * @return
@@ -238,7 +238,7 @@ public class UserRest {
 
 
     /**
-     * 9. 【取消Follow某个用户】
+     * 9. 取消Follow某个用户
      *
      * @param username
      * @return
@@ -257,7 +257,7 @@ public class UserRest {
 
 
     /**
-     * 10. 【判断是否following某个用户】
+     * 10. 判断是否following某个用户
      *
      * @param username
      * @return
@@ -276,7 +276,7 @@ public class UserRest {
 
 
     /**
-     * 11. 【获取所有key】
+     * 11. 获取所有key
      *
      * @return
      */
@@ -288,7 +288,7 @@ public class UserRest {
     }
 
     /**
-     * 12. 【新建ssh-key】
+     * 12. 新建ssh-key
      *
      * @param key
      * @return
@@ -301,7 +301,7 @@ public class UserRest {
     }
 
     /**
-     * 13. 【删除ssh-key】
+     * 13. 删除ssh-key
      *
      * @param id
      * @return

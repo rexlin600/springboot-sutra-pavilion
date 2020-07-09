@@ -4,7 +4,7 @@ package xyz.rexlin600.mail.service;
  * MailMessageBiz 服务类
  *
  * @author: hekunlin
- * @date: 2020/1/10
+ * @since: 2020/1/10
  */
 public interface MailService {
 

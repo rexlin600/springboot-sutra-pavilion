@@ -15,13 +15,12 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 自定义端点
  *
  * @author: hekunlin
- * @date: 2020/1/8
+ * @since: 2020/1/8
  */
 @Endpoint(id = "myEndPoint")
 @Component
@@ -33,42 +32,10 @@ public class MyEndPoint {
     public static final Map<String, Object> MAP = new LinkedHashMap<>();
 
     /**
-     * 读取系统信息
-     *
-     * @return
-     */
-    @ReadOperation
-    public Map<String, Object> getSystemInfo() {
-        Map<String, Object> map = new LinkedHashMap<>();
-        SystemInfo systemInfo = new SystemInfo();
-
-        HardwareAbstractionLayer hardware = systemInfo.getHardware();
-        OperatingSystem operatingSystem = systemInfo.getOperatingSystem();
-
-        map.put("计算机基本信息", injectComputerSystem(hardware.getComputerSystem()));
-        map.put("处理器基本信息", injectProcessor(hardware.getProcessor()));
-        map.put("内存基本信息", injectMemory(hardware.getMemory()));
-        map.put("CPU详细信息", injectCpu(hardware.getProcessor()));
-        map.put("传感器信息", injectSensors(hardware.getSensors()));
-        map.put("电源信息", injectPowerSources(hardware.getPowerSources()));
-        map.put("磁盘信息", injectDisks(hardware.getDiskStores()));
-        map.put("文件系统信息", injectFileSystem(operatingSystem.getFileSystem()));
-        map.put("网络接口信息", injectNetworkInterfaces(hardware.getNetworkIFs()));
-        map.put("网路参数", injectNetworkParameters(operatingSystem.getNetworkParams()));
-        map.put("显示设备", injectDisplays(hardware.getDisplays()));
-        map.put("USB设备-true", injectUsbDevices(hardware.getUsbDevices(true)));
-        map.put("USB设备-false", injectUsbDevices(hardware.getUsbDevices(false)));
-
-        // 计算比较耗时，建议单独写一个 endpoint
-        MAP.put("线程详情", injectProcesses(operatingSystem, hardware.getMemory(), 10, OperatingSystem.ProcessSort.MEMORY));
-
-        return map;
-    }
-
-    /**
      * 计算机基本信息
      *
-     * @param computerSystem
+     * @param computerSystem 计算机信息
+     * @return {@link JSONObject}
      */
     public static JSONObject injectComputerSystem(final ComputerSystem computerSystem) {
         Gson gson = new Gson();
@@ -79,7 +46,8 @@ public class MyEndPoint {
     /**
      * 处理器基本信息
      *
-     * @param processor
+     * @param processor 处理器
+     * @return {@link JSONObject}
      */
     public static JSONObject injectProcessor(CentralProcessor processor) {
         JSONObject jsonObject = new JSONObject();
@@ -93,7 +61,8 @@ public class MyEndPoint {
     /**
      * 内存基本信息
      *
-     * @param memory
+     * @param memory Mem
+     * @return {@link JSONObject}
      */
     public static JSONObject injectMemory(GlobalMemory memory) {
         JSONObject jsonObject = new JSONObject();
@@ -105,7 +74,8 @@ public class MyEndPoint {
     /**
      * CPU信息
      *
-     * @param processor
+     * @param processor CPU
+     * @return {@link JSONObject}
      */
     public static JSONObject injectCpu(CentralProcessor processor) {
         JSONObject jsonObject = new JSONObject();
@@ -159,10 +129,11 @@ public class MyEndPoint {
     /**
      * OS及内存信息
      *
-     * @param os
-     * @param memory
-     * @param threadNumber // 要查看的进程个数
-     * @param sort         // 按照什么排序
+     * @param os           OS
+     * @param memory       Mem
+     * @param threadNumber 要查看的进程个数
+     * @param sort         按照什么排序
+     * @return {@link JSONObject}
      */
     public static JSONObject injectProcesses(OperatingSystem os, GlobalMemory memory, Integer threadNumber, OperatingSystem.ProcessSort sort) {
         JSONObject jsonObject = new JSONObject();
@@ -190,7 +161,8 @@ public class MyEndPoint {
     /**
      * 传感器信息
      *
-     * @param sensors
+     * @param sensors 传感器
+     * @return {@link JSONObject}
      */
     public static JSONObject injectSensors(Sensors sensors) {
         JSONObject jsonObject = new JSONObject();
@@ -205,7 +177,8 @@ public class MyEndPoint {
     /**
      * 电源信息
      *
-     * @param powerSources
+     * @param powerSources 电源
+     * @return {@link JSONObject}
      */
     public static JSONObject injectPowerSources(PowerSource[] powerSources) {
         JSONObject jsonObject = new JSONObject();
@@ -234,7 +207,8 @@ public class MyEndPoint {
     /**
      * 磁盘信息
      *
-     * @param diskStores
+     * @param diskStores 磁盘
+     * @return {@link JSONObject}
      */
     public static JSONObject injectDisks(HWDiskStore[] diskStores) {
         JSONObject jsonObject = new JSONObject();
@@ -280,7 +254,8 @@ public class MyEndPoint {
     /**
      * 文件系统信息
      *
-     * @param fileSystem
+     * @param fileSystem 文件系统
+     * @return {@link JSONObject}
      */
     public static JSONObject injectFileSystem(FileSystem fileSystem) {
         JSONObject jsonObject = new JSONObject();
@@ -307,7 +282,8 @@ public class MyEndPoint {
     /**
      * 网络接口信息
      *
-     * @param networkIfs
+     * @param networkIfs 网络接口
+     * @return {@link JSONObject}
      */
     public static JSONObject injectNetworkInterfaces(NetworkIF[] networkIfs) {
         JSONObject jsonObject = new JSONObject();
@@ -334,7 +310,8 @@ public class MyEndPoint {
     /**
      * 网络参数
      *
-     * @param networkParams
+     * @param networkParams 网络参数
+     * @return {@link JSONObject}
      */
     public static JSONObject injectNetworkParameters(NetworkParams networkParams) {
         JSONObject jsonObject = new JSONObject();
@@ -349,7 +326,8 @@ public class MyEndPoint {
     /**
      * 显示设备
      *
-     * @param displays
+     * @param displays 显示设备
+     * @return {@link JSONObject}
      */
     public static JSONObject injectDisplays(Display[] displays) {
         JSONObject jsonObject = new JSONObject();
@@ -364,7 +342,8 @@ public class MyEndPoint {
     /**
      * USB设备
      *
-     * @param usbDevices
+     * @param usbDevices USB设备
+     * @return {@link JSONObject}
      */
     public static JSONObject injectUsbDevices(UsbDevice[] usbDevices) {
         JSONObject jsonObject = new JSONObject();
@@ -374,6 +353,39 @@ public class MyEndPoint {
             i++;
         }
         return jsonObject;
+    }
+
+    /**
+     * 读取系统信息
+     *
+     * @return {@link Map}
+     */
+    @ReadOperation
+    public Map<String, Object> getSystemInfo() {
+        Map<String, Object> map = new LinkedHashMap<>();
+        SystemInfo systemInfo = new SystemInfo();
+
+        HardwareAbstractionLayer hardware = systemInfo.getHardware();
+        OperatingSystem operatingSystem = systemInfo.getOperatingSystem();
+
+        map.put("计算机基本信息", injectComputerSystem(hardware.getComputerSystem()));
+        map.put("处理器基本信息", injectProcessor(hardware.getProcessor()));
+        map.put("内存基本信息", injectMemory(hardware.getMemory()));
+        map.put("CPU详细信息", injectCpu(hardware.getProcessor()));
+        map.put("传感器信息", injectSensors(hardware.getSensors()));
+        map.put("电源信息", injectPowerSources(hardware.getPowerSources()));
+        map.put("磁盘信息", injectDisks(hardware.getDiskStores()));
+        map.put("文件系统信息", injectFileSystem(operatingSystem.getFileSystem()));
+        map.put("网络接口信息", injectNetworkInterfaces(hardware.getNetworkIFs()));
+        map.put("网路参数", injectNetworkParameters(operatingSystem.getNetworkParams()));
+        map.put("显示设备", injectDisplays(hardware.getDisplays()));
+        map.put("USB设备-true", injectUsbDevices(hardware.getUsbDevices(true)));
+        map.put("USB设备-false", injectUsbDevices(hardware.getUsbDevices(false)));
+
+        // 计算比较耗时，建议单独写一个 endpoint
+        MAP.put("线程详情", injectProcesses(operatingSystem, hardware.getMemory(), 10, OperatingSystem.ProcessSort.MEMORY));
+
+        return map;
     }
 
 }

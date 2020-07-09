@@ -2,6 +2,7 @@ package xyz.rexlin600.fasdfs.common.statuscode;
 
 /**
  * 状态码抽象接口
+ *
  * @author rexlin600
  */
 public interface IStatusCode {
@@ -9,14 +10,14 @@ public interface IStatusCode {
     /**
      * 状态码
      *
-     * @return
+     * @return {@link Long}
      */
     long getCode();
 
     /**
      * 描述信息
      *
-     * @return
+     * @return {@link String}
      */
     String getMsg();
 }

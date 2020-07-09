@@ -13,7 +13,7 @@ import java.io.Serializable;
  * 阿里云OSS配置
  *
  * @author: hekunlin
- * @date: 2020/6/21
+ * @since: 2020/6/21
  */
 @Qualifier(value = "aliOssConfig")
 @ConditionalOnProperty(prefix = OssConstant.PREFIX_ALI, name = "enable", havingValue = "true")

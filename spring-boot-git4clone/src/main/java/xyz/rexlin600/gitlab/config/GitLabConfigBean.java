@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * GitLabConfigBean 配置类
  *
  * @author: rexlin600
- * @date: 2020-02-14
+ * @since: 2020-02-14
  */
 @ToString
 @Data

@@ -12,7 +12,7 @@ import xyz.rexlin600.jdbc.service.UserService;
  * UserService 实现类
  *
  * @author: rexlin600
- * @date: 2020-01-10 22:12:50
+ * @since: 2020-01-10 22:12:50
  */
 @SuppressWarnings("ALL")
 @Service

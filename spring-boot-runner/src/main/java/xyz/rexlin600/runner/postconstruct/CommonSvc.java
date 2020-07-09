@@ -14,7 +14,7 @@ import java.util.*;
  * 网关初始化服务
  *
  * @author: hekunlin
- * @date: 2020/3/6
+ * @since: 2020/3/6
  */
 @Slf4j
 @Service
@@ -42,13 +42,13 @@ public class CommonSvc {
      */
     @PostConstruct
     public void initGatewayRoute() {
-        log.info("==>  初始化开始=【{}】", Instant.now(Clock.systemDefaultZone()).toEpochMilli());
+        log.info("==>  初始化开始=[{}]", Instant.now(Clock.systemDefaultZone()).toEpochMilli());
 
         for (HandlerSvc handlerSvc : handlerSvcList) {
             map.put(handlerSvc.handleCode(), handlerSvc);
         }
 
-        log.info("CommonSvc has storage handler size=【{}】", map.size());
+        log.info("CommonSvc has storage handler size=[{}]", map.size());
 
         // 测试使用 handler
         Set<Integer> keySet = map.keySet();
@@ -64,7 +64,7 @@ public class CommonSvc {
             }
         }
 
-        log.info("==>  初始化结束=【{}】", Instant.now(Clock.systemDefaultZone()).toEpochMilli());
+        log.info("==>  初始化结束=[{}]", Instant.now(Clock.systemDefaultZone()).toEpochMilli());
     }
 
 }

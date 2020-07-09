@@ -20,7 +20,7 @@ import java.util.List;
  * CodeGenUtils 实体类
  *
  * @author: hekunlin
- * @date: 2020/1/14
+ * @since: 2020/1/14
  */
 public class CodeGenUtils {
 

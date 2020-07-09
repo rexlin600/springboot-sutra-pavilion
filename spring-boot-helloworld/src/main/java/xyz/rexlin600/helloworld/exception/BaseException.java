@@ -4,9 +4,9 @@ package xyz.rexlin600.helloworld.exception;
  * BaseException 类
  *
  * @author: hekunlin
- * @date: 2020/1/10
+ * @since: 2020/1/10
  */
-public class BaseException extends RuntimeException{
+public class BaseException extends RuntimeException {
 
     public BaseException() {
     }

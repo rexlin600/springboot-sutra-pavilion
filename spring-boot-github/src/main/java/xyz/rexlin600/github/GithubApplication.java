@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author: rexlin600
- * @date: 2020-01-03
+ * @since: 2020-01-03
  */
 @SpringBootApplication
 public class GithubApplication {

@@ -3,7 +3,8 @@ package xyz.rexlin600.aop.aspect.annotation.aspect;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
@@ -19,7 +20,7 @@ import xyz.rexlin600.aop.util.SysLogUtils;
  * 使用 @Aspect 定义一个切面
  *
  * @author: rexlin600
- * @date: 2020-02-16
+ * @since: 2020-02-16
  */
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Slf4j

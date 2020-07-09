@@ -12,7 +12,7 @@ import xyz.rexlin600.openfeign.svc.config.FeignConfiguration;
  * 这个示例演示如何使用 Feign 客户端调用远程 URI，从而代替使用 HttpUtil 等方式去调用远程服务
  *
  * @author: hekunlin
- * @date: 2020/5/7
+ * @since: 2020/5/7
  */
 @Component
 @FeignClient(name = "remoteURI", url = "http://api.juheapi.com", configuration = FeignConfiguration.class)

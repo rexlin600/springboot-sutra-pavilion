@@ -17,7 +17,7 @@ import xyz.rexlin600.mybatisplus.crud.model.FormatResp;
  *
  * @menu MybatisPlus-CRUD
  * @author: hekunlin
- * @date: 2020/6/4
+ * @since: 2020/6/4
  */
 @Slf4j
 @RestController
@@ -25,7 +25,7 @@ import xyz.rexlin600.mybatisplus.crud.model.FormatResp;
 public class FormatRest {
 
     /**
-     * 10. 【时间format】
+     * 10. 时间format
      *
      * @param format
      * @return

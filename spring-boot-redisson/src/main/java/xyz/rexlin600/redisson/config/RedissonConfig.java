@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Configuration;
  * 程序化配置方式，使用此种方式不需要在 yml 文件中再配置 redisson 相关配置
  *
  * @author: rexlin600
- * @date: 2020-02-05
+ * @since: 2020-02-05
  */
 @Configuration
 public class RedissonConfig {

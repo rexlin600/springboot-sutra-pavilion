@@ -27,21 +27,29 @@ public @interface Sensitive {
 
     /**
      * 脱敏数据类型, 非Customer时, 将忽略 refixNoMaskLen 和 suffixNoMaskLen 和 maskStr
+     *
+     * @return {@link SensitiveTypeEnum}
      */
     SensitiveTypeEnum type() default SensitiveTypeEnum.CUSTOMER;
 
     /**
      * 前置不需要打码的长度
+     *
+     * @return {@link Integer}
      */
     int prefixNoMaskLen() default 0;
 
     /**
      * 后置不需要打码的长度
+     *
+     * @return {@link Integer}
      */
     int suffixNoMaskLen() default 0;
 
     /**
      * 用什么打码
+     *
+     * @return {@link String}
      */
     String maskStr() default "*";
 

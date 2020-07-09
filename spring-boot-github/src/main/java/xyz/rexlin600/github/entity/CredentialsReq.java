@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Github请求类
  *
  * @author: hekunlin
- * @date: 2020/1/3
+ * @since: 2020/1/3
  */
 @Data
 public class CredentialsReq implements Serializable {

@@ -9,7 +9,7 @@ import xyz.rexlin600.starter.dds.annotation.EnableDynamicDataSource;
  * 自定义starter测试服务启动类
  *
  * @author: hekunlin
- * @date: 2020/3/16
+ * @since: 2020/3/16
  */
 @MapperScan(value = "xyz.rexlin600.custom.test.mapper")
 @EnableDynamicDataSource

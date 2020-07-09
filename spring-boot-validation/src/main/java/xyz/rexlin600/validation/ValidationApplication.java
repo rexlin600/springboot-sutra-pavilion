@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 校验 启动类
  *
  * @author: hekunlin
- * @date: 2020/6/1
+ * @since: 2020/6/1
  */
 @SpringBootApplication
 public class ValidationApplication {

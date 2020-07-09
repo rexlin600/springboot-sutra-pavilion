@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
  * Redis 字符串类型API
  *
  * @author: hekunlin
- * @date: 2020/5/12
+ * @since: 2020/5/12
  */
 @Slf4j
 @RestController

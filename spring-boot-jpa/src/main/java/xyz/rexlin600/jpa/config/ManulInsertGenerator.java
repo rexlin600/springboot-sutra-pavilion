@@ -13,7 +13,7 @@ import java.io.Serializable;
  * 如果不填写主键id，则利用数据库本身的自增策略指定id
  *
  * @author: hekunlin
- * @date: 2020/1/8
+ * @since: 2020/1/8
  */
 
 @SuppressWarnings("ALL")

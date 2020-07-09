@@ -41,7 +41,7 @@ import java.util.concurrent.TimeUnit;
  * 二维码工具类
  *
  * @author: rexlin600
- * @date: 2020-02-28
+ * @since: 2020-02-28
  */
 @SuppressWarnings("DuplicatedCode")
 @Slf4j
@@ -121,7 +121,7 @@ public class QrCodeGenUtil {
         try {
             bitMatrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, width, height, map);
         } catch (WriterException e) {
-            log.error("获取二维码位图矩阵失败=【{}】", e.getMessage());
+            log.error("获取二维码位图矩阵失败=[{}]", e.getMessage());
             throw new IOException("获取二维码位图矩阵失败");
         }
 
@@ -431,7 +431,7 @@ public class QrCodeGenUtil {
                     // 默认处理：如果存在 logo 填充则不需要再增加中心文字
                     m.setCenterText("");
                 } catch (IOException e) {
-                    log.error("填充内容为 =【{}】 的 logo 发生错误=【{}】，提前终止！", m.getContent(), e.getMessage());
+                    log.error("填充内容为 =[{}] 的 logo 发生错误=[{}]，提前终止！", m.getContent(), e.getMessage());
                     return;
                 }
 
@@ -486,7 +486,7 @@ public class QrCodeGenUtil {
                     // 默认处理：如果存在 logo 填充则不需要再增加中心文字
                     m.setCenterText("");
                 } catch (IOException e) {
-                    log.error("填充内容为 =【{}】 的 logo 发生错误=【{}】，提前终止！", m.getContent(), e.getMessage());
+                    log.error("填充内容为 =[{}] 的 logo 发生错误=[{}]，提前终止！", m.getContent(), e.getMessage());
                     return;
                 }
 
@@ -546,7 +546,7 @@ public class QrCodeGenUtil {
                     // 默认处理：如果存在 logo 填充则不需要再增加中心文字
                     m.setCenterText("");
                 } catch (IOException e) {
-                    log.error("填充内容为 =【{}】 的 logo 发生错误=【{}】，提前终止！", m.getContent(), e.getMessage());
+                    log.error("填充内容为 =[{}] 的 logo 发生错误=[{}]，提前终止！", m.getContent(), e.getMessage());
                     return;
                 }
 
@@ -730,7 +730,7 @@ public class QrCodeGenUtil {
             result = new MultiFormatReader().decode(binaryBitmap, hints);
 
             // 输出相关的二维码信息
-            log.info("解析二维码，二维码格式类型=【{}】、二维码内容=【{}】", result.getBarcodeFormat(), result.getText());
+            log.info("解析二维码，二维码格式类型=[{}]、二维码内容=[{}]", result.getBarcodeFormat(), result.getText());
         } finally {
             // 释放资源
             bufferedImage.flush();

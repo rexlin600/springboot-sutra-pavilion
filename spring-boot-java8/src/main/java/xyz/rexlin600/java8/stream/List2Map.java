@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  * List转Map
  *
  * @author: hekunlin
- * @date: 2020/5/11
+ * @since: 2020/5/11
  */
 public class List2Map {
 

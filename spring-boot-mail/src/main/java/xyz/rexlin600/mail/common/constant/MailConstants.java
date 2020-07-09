@@ -4,7 +4,7 @@ package xyz.rexlin600.mail.common.constant;
  * MailConstants 常量类
  *
  * @author: hekunlin
- * @date: 2020/1/10
+ * @since: 2020/1/10
  */
 public class MailConstants {
 

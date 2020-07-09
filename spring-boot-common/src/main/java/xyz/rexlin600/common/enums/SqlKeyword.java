@@ -8,94 +8,93 @@ import lombok.NoArgsConstructor;
  *
  * @author hekunlin
  */
-
 @NoArgsConstructor
 @Getter
 public enum SqlKeyword {
 
     /**
-     * AND
+     * 符号 AND
      */
     AND("AND"),
     /**
-     * OR
+     * 符号 OR
      */
     OR("OR"),
     /**
-     * IN
+     * 符号 IN
      */
     IN("IN"),
     /**
-     * NOT
+     * 符号 NOT
      */
     NOT("NOT"),
     /**
-     * LIKE
+     * 符号 LIKE
      */
     LIKE("LIKE"),
     /**
-     * =
+     * 符号 等于
      */
     EQ("="),
     /**
-     * <>
+     * 符号 不等于
      */
     NE("<>"),
     /**
-     * >
+     * 符号 大于
      */
-    GT(">"),
+    GT("&gt;"),
     /**
-     * >=
+     * 符号 大于等于
      */
-    GE(">="),
+    GE("&gt;="),
     /**
-     * <
+     * 符号 小于
      */
-    LT("<"),
+    LT("&lt;"),
     /**
-     * <=
+     * 符号 小于等于
      */
-    LE("<="),
+    LE("&lt;="),
     /**
-     * IS NULL
+     * 符号 IS NULL
      */
     IS_NULL("IS NULL"),
     /**
-     * IS NOT NULL
+     * 符号 IS NOT NULL
      */
     IS_NOT_NULL("IS NOT NULL"),
     /**
-     * GROUP BY
+     * 符号 GROUP BY
      */
     GROUP_BY("GROUP BY"),
     /**
-     * HAVING
+     * 符号 HAVING
      */
     HAVING("HAVING"),
     /**
-     * ORDER BY
+     * 符号 ORDER BY
      */
     ORDER_BY("ORDER BY"),
     /**
-     * EXISTS
+     * 符号 EXISTS
      */
     EXISTS("EXISTS"),
     /**
-     * BETWEEN
+     * 符号 BETWEEN
      */
     BETWEEN("BETWEEN"),
     /**
-     * ASC
+     * 符号 ASC
      */
     ASC("ASC"),
     /**
-     * DESC
+     * 符号 DESC
      */
     DESC("DESC");
 
     /**
-     * 数据值
+     * 关键字
      */
     private String keyword;
 

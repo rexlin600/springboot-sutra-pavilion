@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
  * 注意：如需使用这种方式，请在 {@link SysLogAspect} 前增加 @Component 注解
  *
  * @author hekunlin
- * @date: 2020-02-16
+ * @since: 2020-02-16
  */
 @SuppressWarnings("ALL")
 @Slf4j
@@ -43,7 +43,7 @@ public class SysLogAspect {
     /**
      * 前置通知
      *
-     * @param joinPoint
+     * @param joinPoint 切点
      */
     @Before("appLogPointCut()")
     public void doBefore(JoinPoint joinPoint) {
@@ -61,9 +61,9 @@ public class SysLogAspect {
     /**
      * 环绕通知
      *
-     * @param joinPoint
-     * @return
-     * @throws Throwable
+     * @param joinPoint 切点
+     * @return {@link Object}
+     * @throws Throwable throw错误
      */
     @Around("appLogPointCut()")
     public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -75,7 +75,7 @@ public class SysLogAspect {
     /**
      * 后置通知
      *
-     * @param ret
+     * @param ret Object
      */
     @AfterReturning(returning = "ret", pointcut = "appLogPointCut()")
     public void doAfterReturning(Object ret) {

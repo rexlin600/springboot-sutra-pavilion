@@ -101,7 +101,7 @@ Authorization: Basic admin admin
 Accept: application/json
 
 
-### 【警告】：让 application 正常关闭
+### [警告]：让 application 正常关闭
 POST http://localhost:10011/actuator/shutdown
 Authorization: Basic admin admin
 Accept: application/json

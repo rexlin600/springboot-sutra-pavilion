@@ -11,7 +11,7 @@ import java.io.Serializable;
  * 自定义检查请求类
  *
  * @author: hekunlin
- * @date: 2020/6/1
+ * @since: 2020/6/1
  */
 @Data
 @NoArgsConstructor

@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Skywalking 启动类
  *
  * @author: rexlin600
- * @date: 2020/5/2
+ * @since: 2020/5/2
  */
 @MapperScan(value = "xyz.rexlin600.skywalking.mapper")
 @SpringBootApplication

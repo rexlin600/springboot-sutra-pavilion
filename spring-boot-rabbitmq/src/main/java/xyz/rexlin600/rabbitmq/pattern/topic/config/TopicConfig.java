@@ -1,6 +1,9 @@
 package xyz.rexlin600.rabbitmq.pattern.topic.config;
 
-import org.springframework.amqp.core.*;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.TopicExchange;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * Topic 配置类
  *
  * @author: hekunlin
- * @date: 2020/1/7
+ * @since: 2020/1/7
  */
 @Configuration
 public class TopicConfig {

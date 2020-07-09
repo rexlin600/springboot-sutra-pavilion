@@ -21,7 +21,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 public class SimpleExcelListener extends AnalysisEventListener<SimpleData> {
 
     private static final int BATCH_COUNT = 3000;
@@ -30,8 +30,8 @@ public class SimpleExcelListener extends AnalysisEventListener<SimpleData> {
     /**
      * 调用方法
      *
-     * @param simpleData
-     * @param analysisContext
+     * @param simpleData      简单日期
+     * @param analysisContext 分析上下文类
      */
     @Override
     public void invoke(SimpleData simpleData, AnalysisContext analysisContext) {
@@ -46,7 +46,7 @@ public class SimpleExcelListener extends AnalysisEventListener<SimpleData> {
     /**
      * if have something to do after all analysis
      *
-     * @param analysisContext
+     * @param analysisContext 分析上下文类
      */
     @Override
     public void doAfterAllAnalysed(AnalysisContext analysisContext) {

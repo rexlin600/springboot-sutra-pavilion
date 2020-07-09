@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * @author: rexlin600
- * @date: 2020-02-12
+ * @since: 2020-02-12
  */
 @EnableAsync
 @EnableFeignClients

@@ -41,18 +41,24 @@ public enum DbType {
     private static Map<String, DbType> DB_CACHE_MAP = new ConcurrentHashMap();
 
     /**
-     * 获取数据库类型
+     * DbType 构造器
      *
-     * @param dbType
-     * @return
+     * @param db   数据库名称
+     * @param desc 数据库描述
      */
-    public static DbType getDbType(String dbType) {
-        return (DbType) DB_CACHE_MAP.getOrDefault(dbType.toLowerCase(), OTHER);
-    }
-
     DbType(final String db, final String desc) {
         this.db = db;
         this.desc = desc;
+    }
+
+    /**
+     * 获取数据库类型
+     *
+     * @param dbType 数据库类型
+     * @return {@link DbType}
+     */
+    public static DbType getDbType(String dbType) {
+        return (DbType) DB_CACHE_MAP.getOrDefault(dbType.toLowerCase(), OTHER);
     }
 
     static {

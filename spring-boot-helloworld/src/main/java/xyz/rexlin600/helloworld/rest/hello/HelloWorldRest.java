@@ -4,7 +4,8 @@ import org.springframework.web.bind.annotation.*;
 import xyz.rexlin600.helloworld.entity.req.PostReq;
 
 /**
- * @menu HelloWorld
+ * HelloWorld
+ *
  * @author: hekunlin
  */
 @RestController
@@ -14,9 +15,9 @@ public class HelloWorldRest {
     private static String HELLO_WORLD = "hello world";
 
     /**
-     * 1. 【GET请求】
+     * HelloWorld GET请求
      *
-     * @return
+     * @return 字符串
      */
     @GetMapping("/get")
     public String get() {
@@ -24,9 +25,10 @@ public class HelloWorldRest {
     }
 
     /**
-     * 2. 【POST请求】
+     * HelloWorld POST请求
      *
-     * @return
+     * @param postReq 请求类
+     * @return 字符串
      */
     @PostMapping("/post")
     public String post(@RequestBody PostReq postReq) {
@@ -34,9 +36,10 @@ public class HelloWorldRest {
     }
 
     /**
-     * 3. 【PUT请求】
+     * HelloWorld PUT请求
      *
-     * @return
+     * @param id ID
+     * @return 字符串
      */
     @PutMapping("put/{id}")
     public String put(@PathVariable(value = "id") Long id) {
@@ -44,9 +47,10 @@ public class HelloWorldRest {
     }
 
     /**
-     * 4. 【DELETE请求】
+     * HelloWorld  DELETE请求
      *
-     * @return
+     * @param id ID
+     * @return 字符串
      */
     @DeleteMapping("delete/{id}")
     public String delete(@PathVariable(value = "id") Long id) {

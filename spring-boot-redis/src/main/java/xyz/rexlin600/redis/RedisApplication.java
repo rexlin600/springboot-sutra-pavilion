@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  *
  * @author rexlin600
  * @author: hekunlin
- * @date: 2020/1/6
+ * @since: 2020/1/6
  */
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 public class RedisApplication {

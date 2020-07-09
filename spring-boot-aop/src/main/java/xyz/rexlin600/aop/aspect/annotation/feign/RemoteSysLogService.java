@@ -12,7 +12,7 @@ import xyz.rexlin600.aop.entity.SysLog;
  * 这里也可以切换为调用远程服务来实现新增日志
  *
  * @author: rexlin600
- * @date: 2020-02-16
+ * @since: 2020-02-16
  */
 @FeignClient(name = "localSvc", url = "${feign.biz.local}")
 public interface RemoteSysLogService {
@@ -21,7 +21,7 @@ public interface RemoteSysLogService {
      * 保存日志
      *
      * @param sysLog 日志实体
-     * @return
+     * @return {@link R}
      */
     @PostMapping
     R add(@RequestBody SysLog sysLog);

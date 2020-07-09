@@ -8,7 +8,7 @@ import java.lang.annotation.*;
  * 身份证校验
  *
  * @author: hekunlin
- * @date: 2020/6/21
+ * @since: 2020/6/21
  */
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)

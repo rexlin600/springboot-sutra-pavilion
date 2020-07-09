@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Mybatis 自定义拦截器启动类
  *
  * @author: hekunlin
- * @date: 2020/3/24
+ * @since: 2020/3/24
  */
 @MapperScan("xyz.rexlin600.mybatis.interceptor.mapper")
 @SpringBootApplication

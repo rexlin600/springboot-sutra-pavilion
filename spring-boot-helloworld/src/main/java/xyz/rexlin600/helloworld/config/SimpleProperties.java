@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * 需要实现动态配置刷新要增加 @RefreshScope
  *
  * @author: hekunlin
- * @date: 2020/1/10
+ * @since: 2020/1/10
  */
 @SuppressWarnings("ALL")
 @ToString

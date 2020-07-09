@@ -14,7 +14,7 @@ import java.util.UUID;
 /**
  * @menu Redis服务API
  * @author: hekunlin
- * @date: 2020/1/6
+ * @since: 2020/1/6
  */
 @Slf4j
 @RestController
@@ -31,7 +31,7 @@ public class RedistemplateRest {
     }
 
     /**
-     * 1. 【新增blog】
+     * 1. 新增blog
      *
      * @param blog
      * @return
@@ -44,7 +44,7 @@ public class RedistemplateRest {
 
 
     /**
-     * 2. 【删除blog】
+     * 2. 删除blog
      *
      * @param id
      * @return
@@ -56,7 +56,7 @@ public class RedistemplateRest {
 
 
     /**
-     * 3. 【修改blog】
+     * 3. 修改blog
      *
      * @param blog
      */
@@ -67,7 +67,7 @@ public class RedistemplateRest {
     }
 
     /**
-     * 4. 【获取blog】
+     * 4. 获取blog
      *
      * @param id
      * @return
@@ -80,7 +80,7 @@ public class RedistemplateRest {
 
 
     /**
-     * 5. 【获取blog list】
+     * 5. 获取blog list
      *
      * @return
      */
@@ -92,7 +92,7 @@ public class RedistemplateRest {
 
 
     /**
-     * 6. 【redis实现共享session】
+     * 6. redis实现共享session
      *
      * @param session
      * @return
@@ -109,7 +109,7 @@ public class RedistemplateRest {
 
 
     /**
-     * 7. 【获取blog_cacheable】
+     * 7. 获取blog_cacheable
      *
      * @param id
      * @return
@@ -131,7 +131,7 @@ public class RedistemplateRest {
 
 
     /**
-     * 7. 【删除指定的key】
+     * 7. 删除指定的key
      *
      * @param key
      * @return

@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  * Optinals 类
  *
  * @author: hekunlin
- * @date: 2020/1/9
+ * @since: 2020/1/9
  */
 public class Optinals {
 
@@ -64,7 +64,7 @@ public class Optinals {
      * @return
      */
     public static Optional<List<Goods>> optionalOfNullList() {
-        // 【重点】Optional里包裹的内容如果是集合需要特殊判断，不能直接 Optional.isPresent()
+        // [重点]Optional里包裹的内容如果是集合需要特殊判断，不能直接 Optional.isPresent()
         Optional<List<Goods>> optional = Optional.ofNullable(goodsList.stream()
                 .filter(m -> m.getId().equals(100))
                 .collect(Collectors.toList()));

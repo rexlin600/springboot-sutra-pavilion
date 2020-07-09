@@ -14,7 +14,7 @@ import java.util.function.BinaryOperator;
  * Reduce 类
  *
  * @author: hekunlin
- * @date: 2020/1/9
+ * @since: 2020/1/9
  */
 @SuppressWarnings("ALL")
 public class Reduce {

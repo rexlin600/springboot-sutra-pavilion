@@ -10,7 +10,7 @@ import java.io.Serializable;
  * GitlabCloneReq 请求类
  *
  * @author: rexlin600
- * @date: 2020-02-14
+ * @since: 2020-02-14
  */
 @Data
 @NoArgsConstructor

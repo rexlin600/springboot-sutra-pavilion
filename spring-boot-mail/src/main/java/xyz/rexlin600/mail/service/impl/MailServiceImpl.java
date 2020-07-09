@@ -23,7 +23,7 @@ import java.time.Instant;
  * MailMessageBiz 服务类
  *
  * @author: hekunlin
- * @date: 2020/1/10
+ * @since: 2020/1/10
  */
 @SuppressWarnings("Duplicates")
 @Slf4j

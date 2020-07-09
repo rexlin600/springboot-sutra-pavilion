@@ -16,7 +16,7 @@ import java.util.List;
  * Mybatis 拦截器配置
  *
  * @author: hekunlin
- * @date: 2020/5/9
+ * @since: 2020/5/9
  */
 @ConditionalOnBean({SqlSessionFactory.class})
 @Configuration

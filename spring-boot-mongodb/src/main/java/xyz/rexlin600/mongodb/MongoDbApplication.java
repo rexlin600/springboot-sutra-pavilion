@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * MongoDBApplication 启动类
  *
  * @author: rexlin600
- * @date: 2020-01-11 00:36:26
+ * @since: 2020-01-11 00:36:26
  */
 @EnableMongoPlus
 @SpringBootApplication

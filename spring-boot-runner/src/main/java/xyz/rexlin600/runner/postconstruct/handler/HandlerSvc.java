@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
  * 网关服务
  *
  * @author: hekunlin
- * @date: 2020/3/6
+ * @since: 2020/3/6
  */
 @Component
 public interface HandlerSvc {

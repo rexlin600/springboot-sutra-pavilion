@@ -13,7 +13,7 @@ import java.nio.charset.Charset;
  * 自定义 FastJson 序列化
  *
  * @author: hekunlin
- * @date: 2020/5/11
+ * @since: 2020/5/11
  */
 public class FastJsonRedisSerializer<T> implements RedisSerializer<T> {
 

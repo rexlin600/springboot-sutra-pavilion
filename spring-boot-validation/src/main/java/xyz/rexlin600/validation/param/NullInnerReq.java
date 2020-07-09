@@ -12,7 +12,7 @@ import java.io.Serializable;
  * 新增 Goods Inner 请求类
  *
  * @author: hekunlin
- * @date: 2020/6/1
+ * @since: 2020/6/1
  */
 @Data
 @NoArgsConstructor

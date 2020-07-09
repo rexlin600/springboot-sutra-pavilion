@@ -4,7 +4,7 @@ package xyz.rexlin600.mybatisplus.codegen.common.constant;
  * CodeGenConstant 常量类
  *
  * @author: hekunlin
- * @date: 2020/1/14
+ * @since: 2020/1/14
  */
 public class CodeGenConstant {
 

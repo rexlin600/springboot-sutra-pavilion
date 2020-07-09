@@ -10,18 +10,19 @@ import xyz.rexlin600.helloworld.exception.BaseException;
  */
 
 /**
- * @menu HelloWorld
+ * ExRest
+ *
  * @author: hekunlin
- * @date: 2020/1/10
+ * @since: 2020/1/10
  */
 @Controller
 public class ExRest {
 
     /**
-     * 1. 【额外-返回index】
+     * 1. 额外-返回index
      *
-     * @param map
-     * @return
+     * @param map map
+     * @return 字符串
      */
     @RequestMapping("/")
     public String index(ModelMap map) {
@@ -30,10 +31,10 @@ public class ExRest {
     }
 
     /**
-     * 2. 【额外-默认全局异常】
+     * 2. 额外-默认全局异常
      *
-     * @return
-     * @throws Exception
+     * @return 字符串
+     * @throws Exception 异常
      */
     @RequestMapping("/default")
     public String defaultEx() throws Exception {
@@ -41,10 +42,10 @@ public class ExRest {
     }
 
     /**
-     * 3. 【额外-自定义异常】
+     * 3. 额外-自定义异常
      *
-     * @return
-     * @throws BaseException
+     * @return 字符串
+     * @throws BaseException 基础异常
      */
     @RequestMapping("/base")
     public String myEx() throws BaseException {

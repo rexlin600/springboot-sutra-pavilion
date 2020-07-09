@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * 用户实体类
  *
  * @author: hekunlin
- * @date: 2020/3/2
+ * @since: 2020/3/2
  */
 @NoArgsConstructor
 @AllArgsConstructor

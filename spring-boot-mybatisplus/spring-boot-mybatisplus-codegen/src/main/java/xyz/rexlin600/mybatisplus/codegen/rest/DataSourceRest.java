@@ -2,13 +2,10 @@ package xyz.rexlin600.mybatisplus.codegen.rest;
 
 import cn.hutool.core.bean.copier.BeanCopier;
 import cn.hutool.core.bean.copier.CopyOptions;
-import cn.hutool.crypto.asymmetric.RSA;
-import cn.hutool.crypto.digest.DigestUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 import xyz.rexlin600.mybatisplus.codegen.common.constant.CodeGenConstant;
 import xyz.rexlin600.mybatisplus.codegen.common.req.DataSourceReq;
@@ -22,7 +19,7 @@ import java.util.Date;
 /**
  * @menu 代码生成-数据源CURD
  * @author: hekunlin
- * @date: 2020/1/14
+ * @since: 2020/1/14
  */
 @RestController
 @RequestMapping("/ds")
@@ -37,7 +34,7 @@ public class DataSourceRest {
 
 
     /**
-     * 1. 【新增数据源】
+     * 1. 新增数据源
      *
      * @param dataSourceReq
      * @return
@@ -56,7 +53,7 @@ public class DataSourceRest {
     }
 
     /**
-     * 2. 【删除数据源】
+     * 2. 删除数据源
      *
      * @param id
      * @return
@@ -68,7 +65,7 @@ public class DataSourceRest {
     }
 
     /**
-     * 3. 【修改数据源】
+     * 3. 修改数据源
      *
      * @param dataSourceReq
      * @return
@@ -88,7 +85,7 @@ public class DataSourceRest {
     }
 
     /**
-     * 4. 【分页查询】
+     * 4. 分页查询
      *
      * @param page
      * @param size
@@ -103,7 +100,7 @@ public class DataSourceRest {
     }
 
     /**
-     * 5. 【根据ID查询数据源】
+     * 5. 根据ID查询数据源
      *
      * @param id
      * @return

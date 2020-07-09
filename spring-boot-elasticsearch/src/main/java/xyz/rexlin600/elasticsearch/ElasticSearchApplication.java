@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * ES 启动类
  *
  * @author: hekunlin
- * @date: 2020/1/6
+ * @since: 2020/1/6
  */
 @SpringBootApplication
 public class ElasticSearchApplication {

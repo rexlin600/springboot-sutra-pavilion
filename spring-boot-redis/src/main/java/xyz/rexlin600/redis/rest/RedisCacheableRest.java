@@ -16,7 +16,7 @@ import xyz.rexlin600.redis.entity.Blog;
  * Spring 提供的 cahce 注解使用，参考文章：https://blog.csdn.net/dreamhai/article/details/80642010
  *
  * @author: hekunlin
- * @date: 2020/5/11
+ * @since: 2020/5/11
  */
 @Slf4j
 @RestController

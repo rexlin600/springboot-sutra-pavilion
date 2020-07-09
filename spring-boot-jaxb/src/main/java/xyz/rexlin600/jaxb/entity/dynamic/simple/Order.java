@@ -12,7 +12,7 @@ import java.util.List;
  * 产品类
  *
  * @author: hekunlin
- * @date: 2020/3/6
+ * @since: 2020/3/6
  */
 @NoArgsConstructor
 @AllArgsConstructor

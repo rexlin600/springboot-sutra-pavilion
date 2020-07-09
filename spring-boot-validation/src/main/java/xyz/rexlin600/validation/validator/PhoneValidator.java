@@ -10,7 +10,7 @@ import javax.validation.ConstraintValidatorContext;
  * 验证手机号 验证器
  *
  * @author: hekunlin
- * @date: 2020/6/1
+ * @since: 2020/6/1
  */
 public class PhoneValidator implements ConstraintValidator<Phone, String> {
 

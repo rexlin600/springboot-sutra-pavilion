@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * Simple 配置类
  *
  * @author: hekunlin
- * @date: 2020/1/7
+ * @since: 2020/1/7
  */
 @Configuration
 public class SimpleConfig {

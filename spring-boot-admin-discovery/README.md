@@ -82,7 +82,7 @@ eureka:
     serviceUrl:
       defaultZone: http://admin:admin@localhost:10014/eureka/
     registry-fetch-interval-seconds: 5
-    # 【采坑】下面配置必须配置为如下模式，否者报错：Cannot execute request on any known server，但是对程序无影响，可以正常运行
+    # [采坑]下面配置必须配置为如下模式，否者报错：Cannot execute request on any known server，但是对程序无影响，可以正常运行
     register-with-eureka: true
     fetch-registry: false
 ```
@@ -177,7 +177,7 @@ public class AdminServerDiscoveryApplication {
 > 注意这里有两套用户名/密码，二者的用途是不一样的！
 
 ```yaml
-# 【采坑】注意 yml 的配置使用注释最好不要在键的上方，尤其是多行配置（单行配置一般不会有问题 ）！因为这样在 IDEA 中启动时应用可能无法正常读取配置
+# [采坑]注意 yml 的配置使用注释最好不要在键的上方，尤其是多行配置（单行配置一般不会有问题 ）！因为这样在 IDEA 中启动时应用可能无法正常读取配置
 spring:
   security:
     user:
@@ -220,7 +220,7 @@ eureka:
     serviceUrl:
       defaultZone: http://admin:admin@localhost:10014/eureka/
     registry-fetch-interval-seconds: 5
-    register-with-eureka: true # 【采坑】下面配置必须配置为如下模式，否者报错：Cannot execute request on any known server，但是对程序无影响，可以正常运行
+    register-with-eureka: true # [采坑]下面配置必须配置为如下模式，否者报错：Cannot execute request on any known server，但是对程序无影响，可以正常运行
     fetch-registry: false
 ```
 

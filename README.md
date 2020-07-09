@@ -2,19 +2,10 @@
 
 <p align="center">
     <a href="https://docs.spring.io/spring-boot/docs/2.1.4.RELEASE/reference/html"><img src="https://img.shields.io/badge/Spring%20Boot-2.1.4.Release-brightgreen.svg"></a>
-    <a href="MySQL 5.7.+"><img src="https://img.shields.io/badge/Mysql-5.7+-blue.svg"></a>
     <a href="JDK 1.8"><img src="https://img.shields.io/badge/JDK-1.8-brightgreen.svg"></a>
-    <a href="Maven"><img src="https://img.shields.io/badge/Maven-3.5.0-yellowgreen.svg"></a>
     <a href="license"><img src="https://img.shields.io/github/license/rexlin600/springboot-sutra-pavilion"></a>
     <a href="https://img.shields.io/github/repo-size/rexlin600/springboot-sutra-pavilion"><img src="https://img.shields.io/github/repo-size/rexlin600/springboot-sutra-pavilion"/></a>
-</p>
-
-<p align="center">
     <a href="https://www.codacy.com/manual/rexlin600/springboot-sutra-pavilion?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rexlin600/springboot-sutra-pavilion&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/aadfd5654d204443ac773aa619ce8222"/></a>
-    <a href="https://travis-ci.org/rexlin600/springboot-sutra-pavilion.svg?branch=master"><img src="https://travis-ci.org/rexlin600/springboot-sutra-pavilion.svg?branch=master"/></a>
-    <a href="https://img.shields.io/github/stars/rexlin600/springboot-sutra-pavilion?style=social"><img src="https://img.shields.io/github/stars/rexlin600/springboot-sutra-pavilion?style=social"></a> 
-    <a href="https://img.shields.io/github/forks/rexlin600/springboot-sutra-pavilion?style=social"><img alt="GitHub forks" src="https://img.shields.io/github/forks/rexlin600/springboot-sutra-pavilion?style=social"></a>
-    <a href="https://img.shields.io/github/watchers/rexlin600/springboot-sutra-pavilion?style=social"><img alt="GitHub watchers" src="https://img.shields.io/github/watchers/rexlin600/springboot-sutra-pavilion?style=social"></a>
 </p>
 
 ## 项目简介
@@ -77,14 +68,36 @@
 - `spring-boot-custom-starter`：自定义 `starter`
 - `spring-boot-excel`：集成阿里巴巴提供的 `easyExcel`，因为官方提供的示例很丰富，这里就不重复写了
 
-## TODO
-
-最新动态请查看 <span><a href="./TODO.md">TODO</a></span> 文件
-
 **后期完善**
 
 1. 完善 `spring-boot-elasticsearch`
 2. 完善 `spring-boot-redis` 各类数据的使用
+
+# TODO
+
+* spring-boot-sharding-jdbc
+* spring-boot-sharding-jdbc-masterslave
+* spring-boot-zuul-upload
+* spring-boot-validation(jsr303 and hibernate-validation)
+* spring-boot-security
+* spring-boot-security-cas
+* spring-boot-oauth2
+* spring-boot-image
+* spring-boot-retry
+* spring-boot-disconf
+* spring-boot-kafka
+* spring-boot-rocketmq
+* spring-boot-mockito
+* spring-boot-ignite
+* spring-boot-elastic-job
+* spring-boot-influxdb
+* spring-boot-prometheus-grafana
+* spring-boot-elk-filebeat
+* spring-boot-mvc
+* spring-boot-dubbo
+* spring-boot-benchmark(container、api-gatway、mvcAndWbflux)
+* spring-boot-ratelimit
+* spring-boot-xxx
 
 ## 参考
 

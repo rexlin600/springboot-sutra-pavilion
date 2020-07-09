@@ -2,7 +2,7 @@ package xyz.rexlin600.starter.dds.util;
 
 /**
  * @author lengleng
- * @date 2019-04-01
+ * @since 2019-04-01
  * <p>
  * 数据源相关常量
  */

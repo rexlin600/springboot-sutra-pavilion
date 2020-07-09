@@ -9,10 +9,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * 保护 HTTP endpoints
  *
  * @author: hekunlin
- * @date: 2020/1/8
+ * @since: 2020/1/8
  */
 @Configuration
 public class ActuatorSecurity extends WebSecurityConfigurerAdapter {
+
+    /**
+     * 配置 Security
+     *
+     * @param http HttpSecurity
+     * @throws Exception 异常
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.requestMatcher(EndpointRequest.toAnyEndpoint()).authorizeRequests()

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
  * 支付宝小程序配置类
  *
  * @author: rexlin600
- * @date: 2020-02-19
+ * @since: 2020-02-19
  */
 @Data
 @NoArgsConstructor

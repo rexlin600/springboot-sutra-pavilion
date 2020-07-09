@@ -7,7 +7,7 @@ import java.io.InputStream;
  * OSS 存储对象
  *
  * @author: hekunlin
- * @date: 2020/6/21
+ * @since: 2020/6/21
  */
 public interface StorageService {
 

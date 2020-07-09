@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
  * MybatisPlusCodeGenApplication 启动类
  *
  * @author: hekunlin
- * @date: 2020/1/14
+ * @since: 2020/1/14
  */
 @EnableConfigurationProperties
 @MapperScan(basePackages = {"xyz.rexlin600.mybatisplus.codegen.mapper"})

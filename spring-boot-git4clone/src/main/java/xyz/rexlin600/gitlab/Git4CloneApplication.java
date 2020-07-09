@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Git4CloneApplication 启动类
  *
  * @author: rexlin600
- * @date: 2020-02-14
+ * @since: 2020-02-14
  */
 @SpringBootApplication
 public class Git4CloneApplication {

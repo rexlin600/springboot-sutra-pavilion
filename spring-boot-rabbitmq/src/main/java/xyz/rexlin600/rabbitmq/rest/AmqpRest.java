@@ -3,13 +3,16 @@ package xyz.rexlin600.rabbitmq.rest;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import xyz.rexlin600.rabbitmq.common.apiparam.Response;
 import xyz.rexlin600.rabbitmq.common.apiparam.ResponseGenerator;
 import xyz.rexlin600.rabbitmq.common.enums.InvokeTypeEnum;
 import xyz.rexlin600.rabbitmq.entity.AmqpInvoke;
-import xyz.rexlin600.rabbitmq.pattern.direct.provider.DirectProvider;
 import xyz.rexlin600.rabbitmq.pattern.deadletter.provider.DeadLetterProvider;
+import xyz.rexlin600.rabbitmq.pattern.direct.provider.DirectProvider;
 import xyz.rexlin600.rabbitmq.pattern.fanout.provider.FanoutProvider;
 import xyz.rexlin600.rabbitmq.pattern.simple.provider.SimpleProvider;
 import xyz.rexlin600.rabbitmq.pattern.topic.provider.TopicProvider;
@@ -23,7 +26,7 @@ import java.util.Optional;
 /**
  * @menu RabbitMQ相关API
  * @author: hekunlin
- * @date: 2020/1/7
+ * @since: 2020/1/7
  */
 @SuppressWarnings("Duplicates")
 @Slf4j
@@ -55,7 +58,7 @@ public class AmqpRest {
     }
 
     /**
-     * 1. 【调用指定生产者的指定方法】
+     * 1. 调用指定生产者的指定方法
      *
      * @param type   {@link InvokeTypeEnum}
      * @param method

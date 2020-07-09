@@ -7,22 +7,22 @@ import xyz.rexlin600.flyway.entity.TbFlyway;
  * FlywayService 接口
  *
  * @author: rexlin600
- * @date: 2020-01-11
+ * @since: 2020-01-11
  */
 public interface FlywayService {
 
     /**
      * 保存
      *
-     * @param tbFlyway
+     * @param tbFlyway {@link TbFlyway}
      */
     void save(TbFlyway tbFlyway);
 
     /**
      * 根据ID查找
      *
-     * @param id
-     * @return
+     * @param id ID
+     * @return {@link TbFlyway}
      */
     TbFlyway findOne(Long id);
 

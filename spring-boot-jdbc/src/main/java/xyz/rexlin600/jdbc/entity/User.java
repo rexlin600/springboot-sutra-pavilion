@@ -8,7 +8,7 @@ import lombok.ToString;
  * User 类
  *
  * @author: rexlin600
- * @date: 2020-01-10 22:10:41
+ * @since: 2020-01-10 22:10:41
  */
 @ToString
 @Data

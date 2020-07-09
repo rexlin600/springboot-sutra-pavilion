@@ -11,7 +11,8 @@ import xyz.rexlin600.java8.model.Goods;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @description
@@ -47,7 +48,7 @@ public class OptinalsTest {
     public void optionalOfNullList() {
         Optional<List<Goods>> optional = optinals.optionalOfNullList();
 
-        // 【重点】没有 index=100 的goodsList，所以 List 返回是一个 []，Optional则是一个 [[]]
+        // [重点]没有 index=100 的goodsList，所以 List 返回是一个 []，Optional则是一个 [[]]
         // 因此要注意 Optinal 里面的内容，如果是嵌套的一定要注意逐级判断
         optional.ifPresent(m -> {
             boolean empty = CollectionUtils.isEmpty(m);

@@ -17,9 +17,9 @@ public class VersionUtils {
     /**
      * 版本比较
      *
-     * @param version1
-     * @param version2
-     * @return
+     * @param version1 版本1
+     * @param version2 版本2
+     * @return {@link Integer}
      */
     public static int compareVersion(String version1, String version2) {
         Assert.isTrue(!StringUtils.isEmpty(version1) && !StringUtils.isEmpty(version2), "Error: CompareVersion Error: Illegal Argument !");
@@ -39,9 +39,9 @@ public class VersionUtils {
     /**
      * 版本比较
      *
-     * @param version1
-     * @param version2
-     * @return
+     * @param version1 版本1
+     * @param version2 版本2
+     * @return {@link Boolean}
      */
     public static boolean compare(String version1, String version2) {
         int num = compareVersion(version1, version2);
