@@ -6,26 +6,22 @@ import org.springframework.session.data.redis.config.ConfigureRedisAction;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 /**
- * SessionConfig 配置
- * <p>
- * // 默认 30 天   86400 * 30
+ * Session config
  *
- * @author rexlin600
+ * @author hekunlin
  */
 @Configuration
 @EnableRedisHttpSession(maxInactiveIntervalInSeconds = 86400 * 30)
 public class SessionConfig {
 
-    /**
-     * 增加下面这个配置的原因 https://www.cnblogs.com/coderzl/p/7512644.html
-     * <p>
-     * https://github.com/spring-projects/spring-session/issues/124
-     *
-     * @return
-     */
-    @Bean
-    public static ConfigureRedisAction configureRedisAction() {
-        return ConfigureRedisAction.NO_OP;
-    }
+	/**
+	 * Configure redis action configure redis action
+	 *
+	 * @return the configure redis action
+	 */
+	@Bean
+	public static ConfigureRedisAction configureRedisAction() {
+		return ConfigureRedisAction.NO_OP;
+	}
 
 }

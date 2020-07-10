@@ -9,34 +9,29 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
-/**
- * @description
- * @auther hekunlin
- * @create 2020-01-09 17:24
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ParallelStreamTest {
 
-    private ParallelStream parallelStream;
+	private ParallelStream parallelStream;
 
-    @Before
-    public void setUp() throws Exception {
-        parallelStream = new ParallelStream();
-    }
+	@Before
+	public void setUp() throws Exception {
+		parallelStream = new ParallelStream();
+	}
 
-    @Test
-    public void parallelStream() {
-        List<Integer> list = Lists.newArrayList();
-        for (int i = 0; i < 10000; i++) {
-            list.add(i);
-        }
+	@Test
+	public void parallelStream() {
+		List<Integer> list = Lists.newArrayList();
+		for (int i = 0; i < 10000; i++) {
+			list.add(i);
+		}
 
-        List<Integer> integers = parallelStream.parallelStream(list);
-        // 打印会发现 integers 的长度并不等于 10000
-        System.out.println(integers.size());
+		List<Integer> integers = parallelStream.parallelStream(list);
+		// 打印会发现 integers 的长度并不等于 10000
+		System.out.println(integers.size());
 
         assertTrue(integers.size() == 10000);
         //assertFalse(integers.size() == 10000);

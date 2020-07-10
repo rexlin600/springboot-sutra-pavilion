@@ -5,61 +5,60 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
- * 图片枚举类型
+ * Image type
  *
- * @author: rexlin600
- * @since: 2020/6/6
+ * @author hekunlin
  */
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public enum ImageType {
 
-    /**
-     * GIF
-     */
-    GIF(1, "GIF"),
-    /**
-     * JPG
-     */
-    JPG(2, "JPG"),
-    /**
-     * PNG
-     */
-    PNG(3, "PNG"),
-    /**
-     * JPEG
-     */
-    JPEG(4, "JPEG"),
-    /**
-     * BMP
-     */
-    BMP(5, "BMP"),
-    /**
-     * TIFF
-     */
-    TIFF(6, "TIFF"),
-    /**
-     * EPS
-     */
-    EPS(7, "EPS"),
-    /**
-     * EMF
-     */
-    EMF(8, "EMF"),
-    /**
-     * WMF
-     */
-    WMF(9, "WMF");
+	/**
+	 * Gif image type
+	 */
+	GIF(1, "GIF"),
+	/**
+	 * Jpg image type
+	 */
+	JPG(2, "JPG"),
+	/**
+	 * Png image type
+	 */
+	PNG(3, "PNG"),
+	/**
+	 * Jpeg image type
+	 */
+	JPEG(4, "JPEG"),
+	/**
+	 * Bmp image type
+	 */
+	BMP(5, "BMP"),
+	/**
+	 * Tiff image type
+	 */
+	TIFF(6, "TIFF"),
+	/**
+	 * Eps image type
+	 */
+	EPS(7, "EPS"),
+	/**
+	 * Emf image type
+	 */
+	EMF(8, "EMF"),
+	/**
+	 * Wmf image type
+	 */
+	WMF(9, "WMF");
 
-    /**
-     * 编码
-     */
-    private Integer code;
+	/**
+	 * Code
+	 */
+	private Integer code;
 
-    /**
-     * 名称
-     */
-    private String name;
+	/**
+	 * Name
+	 */
+	private String name;
 
 }

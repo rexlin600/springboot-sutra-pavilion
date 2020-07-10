@@ -4,33 +4,32 @@ package xyz.rexlin600.flyway.service;
 import xyz.rexlin600.flyway.entity.TbFlyway;
 
 /**
- * FlywayService 接口
+ * Flyway service
  *
- * @author: rexlin600
- * @since: 2020-01-11
+ * @author hekunlin
  */
 public interface FlywayService {
 
-    /**
-     * 保存
-     *
-     * @param tbFlyway {@link TbFlyway}
-     */
-    void save(TbFlyway tbFlyway);
+	/**
+	 * Save *
+	 *
+	 * @param tbFlyway tb flyway
+	 */
+	void save(TbFlyway tbFlyway);
 
-    /**
-     * 根据ID查找
-     *
-     * @param id ID
-     * @return {@link TbFlyway}
-     */
-    TbFlyway findOne(Long id);
+	/**
+	 * Find one tb flyway
+	 *
+	 * @param id id
+	 * @return the tb flyway
+	 */
+	TbFlyway findOne(Long id);
 
-    /**
-     * 统计总数
-     *
-     * @return
-     */
-    Long findCount();
+	/**
+	 * Find count long
+	 *
+	 * @return the long
+	 */
+	Long findCount();
 
 }

@@ -4,10 +4,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import xyz.rexlin600.mybatisplus.codegen.entity.DataSource;
 
 /**
- * DataSourceService 接口
+ * Data source service
  *
- * @author: hekunlin
- * @since: 2020/1/14
+ * @author hekunlin
  */
 public interface DataSourceService extends IService<DataSource> {
 

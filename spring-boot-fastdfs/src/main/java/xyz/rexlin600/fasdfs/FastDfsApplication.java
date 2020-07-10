@@ -7,35 +7,37 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.context.annotation.Bean;
 
 /**
- * fastdfs 启动类
+ * Fast dfs application
  *
- * @author: hekunlin
- * @since: 2020/5/8
+ * @author hekunlin
  */
 @SpringBootApplication
 public class FastDfsApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(FastDfsApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(FastDfsApplication.class, args);
+	}
 
-    /**
-     * tomcatEmbedded这段代码是为了解决，上传文件大于10M出现连接重置的问题。此异常内容GlobalException也捕获不到。
-     *
-     * <p>Tomcat large file upload connection reset</p>
-     *
-     * @return {@link TomcatServletWebServerFactory}
-     */
-    @Bean
-    public TomcatServletWebServerFactory tomcatEmbedded() {
-        TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
-        tomcat.addConnectorCustomizers(connector -> {
-            if ((connector.getProtocolHandler() instanceof AbstractHttp11Protocol<?>)) {
-                //-1 means unlimited
-                ((AbstractHttp11Protocol<?>) connector.getProtocolHandler()).setMaxSwallowSize(-1);
-            }
-        });
-        return tomcat;
-    }
+	/**
+	 * Tomcat embedded tomcat servlet web server factory
+	 *
+	 * @return the tomcat servlet web server factory
+	 */
+	@Bean
+	public TomcatServletWebServerFactory tomcatEmbedded() {
+		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
+		tomcat.addConnectorCustomizers(connector -> {
+			if ((connector.getProtocolHandler() instanceof AbstractHttp11Protocol<?>)) {
+				//-1 means unlimited
+				((AbstractHttp11Protocol<?>) connector.getProtocolHandler()).setMaxSwallowSize(-1);
+			}
+		});
+		return tomcat;
+	}
 
 }

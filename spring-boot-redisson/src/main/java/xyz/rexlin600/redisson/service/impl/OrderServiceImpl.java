@@ -11,53 +11,69 @@ import xyz.rexlin600.redisson.service.OrderService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 订单服务实现类
+ * Order service
  *
- * @author: rexlin600
- * @since: 2020-02-05
+ * @author hekunlin
  */
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Slf4j
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    private final DistributedLocker distributedLocker;
-    private final StringRedisTemplate stringRedisTemplate;
+	/**
+	 * Distributed locker
+	 */
+	private final DistributedLocker distributedLocker;
+	/**
+	 * String redis template
+	 */
+	private final StringRedisTemplate stringRedisTemplate;
 
-    @Autowired
-    public OrderServiceImpl(DistributedLocker distributedLocker, StringRedisTemplate stringRedisTemplate) {
-        this.distributedLocker = distributedLocker;
-        this.stringRedisTemplate = stringRedisTemplate;
-    }
+	/**
+	 * Order service
+	 *
+	 * @param distributedLocker   distributed locker
+	 * @param stringRedisTemplate string redis template
+	 */
+	@Autowired
+	public OrderServiceImpl(DistributedLocker distributedLocker, StringRedisTemplate stringRedisTemplate) {
+		this.distributedLocker = distributedLocker;
+		this.stringRedisTemplate = stringRedisTemplate;
+	}
 
-    @Override
-    public boolean book() {
-        String key = "lock";
+	/**
+	 * Book boolean
+	 *
+	 * @return the boolean
+	 */
+	@Override
+	public boolean book() {
+		String key = "lock";
 
-        // get lock
-        boolean lock = distributedLocker.tryLock(key, TimeUnit.MILLISECONDS, 300L, 500L);
-        if (!lock) {
-            throw new RedisException("系统繁忙，请稍后再试");
-        }
+		// get lock
+		boolean lock = distributedLocker.tryLock(key, TimeUnit.MILLISECONDS, 300L, 500L);
+		if (!lock) {
+			throw new RedisException("系统繁忙，请稍后再试");
+		}
 
-        try {
-            String value = this.stringRedisTemplate.opsForValue().get("count");
-            Long count = Long.valueOf(value);
-            if (count <= 0) {
-                return false;
-            } else {
-                count = this.stringRedisTemplate.opsForValue().decrement("count");
-            }
+		try {
+			String value = this.stringRedisTemplate.opsForValue().get("count");
+			Long count = Long.valueOf(value);
+			if (count <= 0) {
+				return false;
+			} else {
+				count = this.stringRedisTemplate.opsForValue().decrement("count");
+			}
 
-            log.info("==================库存还剩{}个================", count);
+			log.info("==================库存还剩{}个================", count);
 
-            return true;
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            return false;
-        } finally {
-            distributedLocker.unlock(key);
-        }
-    }
+			return true;
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			return false;
+		} finally {
+			distributedLocker.unlock(key);
+		}
+	}
 
 }

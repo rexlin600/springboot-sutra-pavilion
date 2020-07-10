@@ -17,29 +17,29 @@ import java.util.Date;
 @SpringBootTest
 public class FlywayServiceImplTest {
 
-    @Autowired
-    private FlywayService flywayService;
+	@Autowired
+	private FlywayService flywayService;
 
-    @Test
-    public void save() {
-        TbFlyway build = TbFlyway.builder()
-                .id(Long.valueOf((int) (Math.random() * 10001)))
-                .name(String.valueOf((Math.random() * 10001)))
-                .length(174.99)
-                .createTime(new Date())
-                .build();
-        flywayService.save(build);
-    }
+	@Test
+	public void save() {
+		TbFlyway build = TbFlyway.builder()
+				.id(Long.valueOf((int) (Math.random() * 10001)))
+				.name(String.valueOf((Math.random() * 10001)))
+				.length(174.99)
+				.createTime(new Date())
+				.build();
+		flywayService.save(build);
+	}
 
-    @Test
-    public void findOne() {
-        TbFlyway flyway = flywayService.findOne(1L);
-        log.info("==>  flyway is [{}]", flyway);
-    }
+	@Test
+	public void findOne() {
+		TbFlyway flyway = flywayService.findOne(1L);
+		log.info("==>  flyway is [{}]", flyway);
+	}
 
-    @Test
-    public void findCount() {
-        Long count = flywayService.findCount();
-        log.info("==>  tb_flyway count is [{}]", count);
-    }
+	@Test
+	public void findCount() {
+		Long count = flywayService.findCount();
+		log.info("==>  tb_flyway count is [{}]", count);
+	}
 }

@@ -9,30 +9,39 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * cors filter
+ * Cors filter
  *
- * @author rexlin600
- * @author rexlin600
- * @author: hekunlin
- * @since: 2020/1/3
+ * @author hekunlin
  */
 @SuppressWarnings("Duplicates")
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter {
 
-    private static final String OPTIONS = "OPTIONS";
+	/**
+	 * OPTIONS
+	 */
+	private static final String OPTIONS = "OPTIONS";
 
-    @Override
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-        HttpServletResponse response = (HttpServletResponse) res;
-        HttpServletRequest request = (HttpServletRequest) req;
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE");
-        response.setHeader("Access-Control-Allow-Headers", "token,Content-Type,X-Requested-With,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers");
-        response.setHeader("Access-Control-Max-Age", "3600");
+	/**
+	 * Do filter *
+	 *
+	 * @param req   req
+	 * @param res   res
+	 * @param chain chain
+	 * @throws IOException      io exception
+	 * @throws ServletException servlet exception
+	 */
+	@Override
+	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
+		HttpServletResponse response = (HttpServletResponse) res;
+		HttpServletRequest request = (HttpServletRequest) req;
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE");
+		response.setHeader("Access-Control-Allow-Headers", "token,Content-Type,X-Requested-With,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers");
+		response.setHeader("Access-Control-Max-Age", "3600");
 
-        if (!OPTIONS.equals(request.getMethod())) {
-            chain.doFilter(req, res);
-        }
-    }
+		if (!OPTIONS.equals(request.getMethod())) {
+			chain.doFilter(req, res);
+		}
+	}
 }

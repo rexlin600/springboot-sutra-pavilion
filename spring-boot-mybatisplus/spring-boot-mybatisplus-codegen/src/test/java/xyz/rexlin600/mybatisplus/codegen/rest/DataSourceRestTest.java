@@ -15,13 +15,6 @@ import xyz.rexlin600.mybatisplus.codegen.service.DataSourceService;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
-/**
- * @description
- * @auther hekunlin
- * @create 2020-01-14 18:58
- */
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest

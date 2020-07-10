@@ -4,16 +4,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * ES 启动类
+ * Elastic search application
  *
- * @author: hekunlin
- * @since: 2020/1/6
+ * @author hekunlin
  */
 @SpringBootApplication
 public class ElasticSearchApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ElasticSearchApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(ElasticSearchApplication.class, args);
+	}
 
 }

@@ -1,23 +1,23 @@
 package xyz.rexlin600.fasdfs.common.statuscode;
 
 /**
- * 状态码抽象接口
+ * Status code
  *
- * @author rexlin600
+ * @author hekunlin
  */
 public interface IStatusCode {
 
-    /**
-     * 状态码
-     *
-     * @return {@link Long}
-     */
-    long getCode();
+	/**
+	 * Gets code *
+	 *
+	 * @return the code
+	 */
+	long getCode();
 
-    /**
-     * 描述信息
-     *
-     * @return {@link String}
-     */
-    String getMsg();
+	/**
+	 * Gets msg *
+	 *
+	 * @return the msg
+	 */
+	String getMsg();
 }

@@ -10,41 +10,71 @@ import org.springframework.util.Assert;
 import java.nio.charset.Charset;
 
 /**
- * 自定义 FastJson 序列化
+ * Fast json redis serializer
  *
- * @author: hekunlin
- * @since: 2020/5/11
+ * @param <T> parameter
+ * @author hekunlin
  */
 public class FastJsonRedisSerializer<T> implements RedisSerializer<T> {
 
-    public static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
+	/**
+	 * DEFAULT_CHARSET
+	 */
+	public static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
 
-    private Class<T> clazz;
+	/**
+	 * Clazz
+	 */
+	private Class<T> clazz;
 
-    public FastJsonRedisSerializer(Class<T> clazz) {
-        super();
-        this.clazz = clazz;
-    }
+	/**
+	 * Fast json redis serializer
+	 *
+	 * @param clazz clazz
+	 */
+	public FastJsonRedisSerializer(Class<T> clazz) {
+		super();
+		this.clazz = clazz;
+	}
 
-    @Override
-    public byte[] serialize(T t) throws SerializationException {
-        if (t == null) {
-            return new byte[0];
-        }
-        return JSON.toJSONString(t, SerializerFeature.WriteClassName).getBytes(DEFAULT_CHARSET);
-    }
+	/**
+	 * Serialize byte [ ]
+	 *
+	 * @param t t
+	 * @return the byte [ ]
+	 * @throws SerializationException serialization exception
+	 */
+	@Override
+	public byte[] serialize(T t) throws SerializationException {
+		if (t == null) {
+			return new byte[0];
+		}
+		return JSON.toJSONString(t, SerializerFeature.WriteClassName).getBytes(DEFAULT_CHARSET);
+	}
 
-    @Override
-    public T deserialize(byte[] bytes) throws SerializationException {
-        if (bytes == null || bytes.length <= 0) {
-            return null;
-        }
-        String str = new String(bytes, DEFAULT_CHARSET);
-        return JSON.parseObject(str, clazz);
-    }
+	/**
+	 * Deserialize t
+	 *
+	 * @param bytes bytes
+	 * @return the t
+	 * @throws SerializationException serialization exception
+	 */
+	@Override
+	public T deserialize(byte[] bytes) throws SerializationException {
+		if (bytes == null || bytes.length <= 0) {
+			return null;
+		}
+		String str = new String(bytes, DEFAULT_CHARSET);
+		return JSON.parseObject(str, clazz);
+	}
 
-    public void setObjectMapper(ObjectMapper objectMapper) {
-        Assert.notNull(objectMapper, "'objectMapper' must not be null");
-    }
+	/**
+	 * Sets object mapper *
+	 *
+	 * @param objectMapper object mapper
+	 */
+	public void setObjectMapper(ObjectMapper objectMapper) {
+		Assert.notNull(objectMapper, "'objectMapper' must not be null");
+	}
 
 }

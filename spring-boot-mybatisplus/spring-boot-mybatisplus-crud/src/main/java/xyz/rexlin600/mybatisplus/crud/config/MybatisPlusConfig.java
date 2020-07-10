@@ -6,18 +6,22 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author rexlin600
+ * Mybatis plus config
+ *
+ * @author hekunlin
  */
 @Configuration
 @MapperScan("xyz.rexlin600.mybatisplus.mapper")
 public class MybatisPlusConfig {
 
-    /**
-     * 分页插件
-     */
-    @Bean
-    public PaginationInterceptor paginationInterceptor() {
-        return new PaginationInterceptor();
-    }
+	/**
+	 * Pagination interceptor pagination interceptor
+	 *
+	 * @return the pagination interceptor
+	 */
+	@Bean
+	public PaginationInterceptor paginationInterceptor() {
+		return new PaginationInterceptor();
+	}
 
 }

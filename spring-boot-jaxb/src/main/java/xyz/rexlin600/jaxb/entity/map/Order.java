@@ -10,8 +10,9 @@ import java.io.Serializable;
 import java.util.Map;
 
 /**
- * @author: hekunlin
- * @since: 2020/3/6
+ * Order
+ *
+ * @author hekunlin
  */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,33 +21,53 @@ import java.util.Map;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Order implements Serializable {
 
-    /**
-     * 属性列表
-     */
-    @XmlAnyAttribute
-    private Map<QName, String> properties;
+	/**
+	 * Properties
+	 */
+	@XmlAnyAttribute
+	private Map<QName, String> properties;
 
-    /**
-     * 产品
-     */
-    @XmlElement(name = "PRODUCT")
-    private Product product;
+	/**
+	 * Product
+	 */
+	@XmlElement(name = "PRODUCT")
+	private Product product;
 
-    @XmlTransient
-    public Map<QName, String> getProperties() {
-        return properties;
-    }
+	/**
+	 * Gets properties *
+	 *
+	 * @return the properties
+	 */
+	@XmlTransient
+	public Map<QName, String> getProperties() {
+		return properties;
+	}
 
-    public void setProperties(Map<QName, String> properties) {
-        this.properties = properties;
-    }
+	/**
+	 * Sets properties *
+	 *
+	 * @param properties properties
+	 */
+	public void setProperties(Map<QName, String> properties) {
+		this.properties = properties;
+	}
 
-    @XmlTransient
-    public Product getProduct() {
-        return product;
-    }
+	/**
+	 * Gets product *
+	 *
+	 * @return the product
+	 */
+	@XmlTransient
+	public Product getProduct() {
+		return product;
+	}
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
+	/**
+	 * Sets product *
+	 *
+	 * @param product product
+	 */
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 }

@@ -7,31 +7,45 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /**
- * 验证身份证号 验证器
+ * Nick name validator
  *
- * @author: hekunlin
- * @since: 2020/6/1
+ * @author hekunlin
  */
 public class NickNameValidator implements ConstraintValidator<NickName, String> {
 
-    private boolean required = false;
+	/**
+	 * Required
+	 */
+	private boolean required = false;
 
-    @Override
-    public void initialize(NickName constraintAnnotation) {
-        required = constraintAnnotation.required();
-    }
+	/**
+	 * Initialize *
+	 *
+	 * @param constraintAnnotation constraint annotation
+	 */
+	@Override
+	public void initialize(NickName constraintAnnotation) {
+		required = constraintAnnotation.required();
+	}
 
-    @Override
-    public boolean isValid(String value, ConstraintValidatorContext context) {
-        if (required) {
-            return ValidatorUtil.isNickName(value);
-        } else {
-            if (StringUtils.isEmpty(value)) {
-                return true;
-            } else {
-                return ValidatorUtil.isNickName(value);
-            }
-        }
-    }
+	/**
+	 * Is valid boolean
+	 *
+	 * @param value   value
+	 * @param context context
+	 * @return the boolean
+	 */
+	@Override
+	public boolean isValid(String value, ConstraintValidatorContext context) {
+		if (required) {
+			return ValidatorUtil.isNickName(value);
+		} else {
+			if (StringUtils.isEmpty(value)) {
+				return true;
+			} else {
+				return ValidatorUtil.isNickName(value);
+			}
+		}
+	}
 
 }

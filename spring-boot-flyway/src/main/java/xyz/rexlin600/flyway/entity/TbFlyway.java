@@ -9,10 +9,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * TbFlyway 类
+ * Tb flyway
  *
- * @author: rexlin600
- * @since: 2020-01-11
+ * @author hekunlin
  */
 @Data
 @NoArgsConstructor
@@ -20,12 +19,24 @@ import java.util.Date;
 @Builder
 public class TbFlyway implements Serializable {
 
-    private Long id;
+	/**
+	 * Id
+	 */
+	private Long id;
 
-    private String name;
+	/**
+	 * Name
+	 */
+	private String name;
 
-    private Double length;
+	/**
+	 * Length
+	 */
+	private Double length;
 
-    private Date createTime;
+	/**
+	 * Create time
+	 */
+	private Date createTime;
 
 }

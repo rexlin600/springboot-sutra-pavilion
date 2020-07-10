@@ -8,29 +8,39 @@ import java.io.File;
 import java.util.List;
 
 /**
- * 阿里巴巴 easyexcel 工具类
+ * Simple easy excel util
  *
- * @author: hekunlin
- * @since: 2020/3/9
+ * @author hekunlin
  */
 public class SimpleEasyExcelUtil {
 
-    public static List<SimpleData> readExcel(String filePath) {
-        SimpleExcelListener simpleExcelListener = new SimpleExcelListener();
+	/**
+	 * Read excel list
+	 *
+	 * @param filePath file path
+	 * @return the list
+	 */
+	public static List<SimpleData> readExcel(String filePath) {
+		SimpleExcelListener simpleExcelListener = new SimpleExcelListener();
 
-        ExcelReaderBuilder excelReaderBuilder = EasyExcel.read(filePath, SimpleData.class, simpleExcelListener);
+		ExcelReaderBuilder excelReaderBuilder = EasyExcel.read(filePath, SimpleData.class, simpleExcelListener);
 
-        excelReaderBuilder.sheet().doRead();
+		excelReaderBuilder.sheet().doRead();
 
-        List<SimpleData> list = simpleExcelListener.getList();
+		List<SimpleData> list = simpleExcelListener.getList();
 
-        System.out.println(list.toString());
-        return list;
-    }
+		System.out.println(list.toString());
+		return list;
+	}
 
-    public static void main(String[] args) {
-        String filePath = ExcelFilePathUtil.getPath() + "demo" + File.separator + "demo.xlsx";
-        readExcel(filePath);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		String filePath = ExcelFilePathUtil.getPath() + "demo" + File.separator + "demo.xlsx";
+		readExcel(filePath);
+	}
 
 }

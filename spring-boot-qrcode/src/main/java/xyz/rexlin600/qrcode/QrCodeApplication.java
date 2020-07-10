@@ -4,16 +4,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * 二维码启动类
+ * Qr code application
  *
- * @author: rexlin600
- * @since: 2020-02-28
+ * @author hekunlin
  */
 @SpringBootApplication
 public class QrCodeApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(QrCodeApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(QrCodeApplication.class, args);
+	}
 
 }

@@ -6,9 +6,9 @@ import xyz.rexlin600.starter.dds.config.DynamicDataSourceConfig;
 import java.lang.annotation.*;
 
 /**
- * 开启动态数据源
+ * Enable dynamic data source
  *
- * @author rexlin600
+ * @author hekunlin
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

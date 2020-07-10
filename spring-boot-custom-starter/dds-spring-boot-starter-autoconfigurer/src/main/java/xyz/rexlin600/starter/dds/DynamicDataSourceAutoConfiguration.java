@@ -5,10 +5,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import xyz.rexlin600.starter.dds.config.HikariCpDataSourceProperties;
 
 /**
- * 动态数据源自动配置类
+ * Dynamic data source auto configuration
  *
- * @author: rexlin600
- * @since: 2020-03-07
+ * @author hekunlin
  */
 @AllArgsConstructor
 @EnableConfigurationProperties({HikariCpDataSourceProperties.class})

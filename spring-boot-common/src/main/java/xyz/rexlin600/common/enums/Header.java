@@ -4,123 +4,127 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
- * 请求头枚举类
+ * Header
  *
- * @author rexlin600
+ * @author hekunlin
  */
-
 @NoArgsConstructor
 @Getter
 public enum Header {
 
-    /**
-     * Date
-     */
-    DATE("Date"),
-    /**
-     * Connection
-     */
-    CONNECTION("Connection"),
-    /**
-     * MIME-Version
-     */
-    MIME_VERSION("MIME-Version"),
-    /**
-     * Trailer
-     */
-    TRAILER("Trailer"),
-    /**
-     * Transfer-Encoding
-     */
-    TRANSFER_ENCODING("Transfer-Encoding"),
-    /**
-     * Upgrade
-     */
-    UPGRADE("Upgrade"),
-    /**
-     * Via
-     */
-    VIA("Via"),
-    /**
-     * Cache-Control
-     */
-    CACHE_CONTROL("Cache-Control"),
-    /**
-     * Pragma
-     */
-    PRAGMA("Pragma"),
-    /**
-     * Content-Type
-     */
-    CONTENT_TYPE("Content-Type"),
-    /**
-     * Host
-     */
-    HOST("Host"),
-    /**
-     * Referer
-     */
-    REFERER("Referer"),
-    /**
-     * Origin
-     */
-    ORIGIN("Origin"),
-    /**
-     * User-Agent
-     */
-    USER_AGENT("User-Agent"),
-    /**
-     * Accept
-     */
-    ACCEPT("Accept"),
-    /**
-     * Accept-Language
-     */
-    ACCEPT_LANGUAGE("Accept-Language"),
-    /**
-     * Accept-Encoding
-     */
-    ACCEPT_ENCODING("Accept-Encoding"),
-    /**
-     * Accept-Charset
-     */
-    ACCEPT_CHARSET("Accept-Charset"),
-    /**
-     * Cookie
-     */
-    COOKIE("Cookie"),
-    /**
-     * Content-Length
-     */
-    CONTENT_LENGTH("Content-Length"),
-    /**
-     * Set-Cookie
-     */
-    SET_COOKIE("Set-Cookie"),
-    /**
-     * Content-Encoding
-     */
-    CONTENT_ENCODING("Content-Encoding"),
-    /**
-     * Content-Disposition
-     */
-    CONTENT_DISPOSITION("Content-Disposition"),
-    /**
-     * ETag
-     */
-    ETAG("ETag"),
-    /**
-     * Location
-     */
-    LOCATION("Location");
+	/**
+	 * Date header
+	 */
+	DATE("Date"),
+	/**
+	 * Connection header
+	 */
+	CONNECTION("Connection"),
+	/**
+	 * Mime version header
+	 */
+	MIME_VERSION("MIME-Version"),
+	/**
+	 * Trailer header
+	 */
+	TRAILER("Trailer"),
+	/**
+	 * Transfer encoding header
+	 */
+	TRANSFER_ENCODING("Transfer-Encoding"),
+	/**
+	 * Upgrade header
+	 */
+	UPGRADE("Upgrade"),
+	/**
+	 * Via header
+	 */
+	VIA("Via"),
+	/**
+	 * Cache control header
+	 */
+	CACHE_CONTROL("Cache-Control"),
+	/**
+	 * Pragma header
+	 */
+	PRAGMA("Pragma"),
+	/**
+	 * Content type header
+	 */
+	CONTENT_TYPE("Content-Type"),
+	/**
+	 * Host header
+	 */
+	HOST("Host"),
+	/**
+	 * Referer header
+	 */
+	REFERER("Referer"),
+	/**
+	 * Origin header
+	 */
+	ORIGIN("Origin"),
+	/**
+	 * User agent header
+	 */
+	USER_AGENT("User-Agent"),
+	/**
+	 * Accept header
+	 */
+	ACCEPT("Accept"),
+	/**
+	 * Accept language header
+	 */
+	ACCEPT_LANGUAGE("Accept-Language"),
+	/**
+	 * Accept encoding header
+	 */
+	ACCEPT_ENCODING("Accept-Encoding"),
+	/**
+	 * Accept charset header
+	 */
+	ACCEPT_CHARSET("Accept-Charset"),
+	/**
+	 * Cookie header
+	 */
+	COOKIE("Cookie"),
+	/**
+	 * Content length header
+	 */
+	CONTENT_LENGTH("Content-Length"),
+	/**
+	 * Set cookie header
+	 */
+	SET_COOKIE("Set-Cookie"),
+	/**
+	 * Content encoding header
+	 */
+	CONTENT_ENCODING("Content-Encoding"),
+	/**
+	 * Content disposition header
+	 */
+	CONTENT_DISPOSITION("Content-Disposition"),
+	/**
+	 * Etag header
+	 */
+	ETAG("ETag"),
+	/**
+	 * Location header
+	 */
+	LOCATION("Location");
 
-    /**
-     * 数据值
-     */
-    private String value;
+	/**
+	 * Value
+	 */
+	private String value;
 
-    Header(String value) {
-        this.value = value;
-    }
+	/**
+	 * Header
+	 *
+	 * @param value value
+	 */
+	Header(String value) {
+		this.value = value;
+	}
 
 }

@@ -6,18 +6,22 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 /**
- * MybatisPlusCodeGenApplication 启动类
+ * Mybatis plus code gen application
  *
- * @author: hekunlin
- * @since: 2020/1/14
+ * @author hekunlin
  */
 @EnableConfigurationProperties
 @MapperScan(basePackages = {"xyz.rexlin600.mybatisplus.codegen.mapper"})
 @SpringBootApplication
 public class MybatisPlusCodeGenApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(MybatisPlusCodeGenApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(MybatisPlusCodeGenApplication.class, args);
+	}
 
 }

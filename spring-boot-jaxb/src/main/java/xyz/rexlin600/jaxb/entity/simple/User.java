@@ -9,10 +9,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- * 用户实体类
+ * User
  *
- * @author: hekunlin
- * @since: 2020/3/2
+ * @author hekunlin
  */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,114 +19,182 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement(name = "USER")
 public class User {
 
-    /**
-     * ID
-     */
-    @XmlElement(name = "ID", type = Long.class)
-    private Long id;
+	/**
+	 * Id
+	 */
+	@XmlElement(name = "ID", type = Long.class)
+	private Long id;
 
-    /**
-     * 编码
-     */
-    @XmlElement(name = "NUMBER", type = Long.class)
-    private Long number;
+	/**
+	 * Number
+	 */
+	@XmlElement(name = "NUMBER", type = Long.class)
+	private Long number;
 
-    /**
-     * 姓名
-     */
-    @XmlElement(name = "NAME", type = String.class)
-    private String name;
+	/**
+	 * Name
+	 */
+	@XmlElement(name = "NAME", type = String.class)
+	private String name;
 
-    /**
-     * 生日
-     */
-    @XmlElement(name = "BIRTHDAY")
-    private String birthday;
+	/**
+	 * Birthday
+	 */
+	@XmlElement(name = "BIRTHDAY")
+	private String birthday;
 
-    /**
-     * 是否为信徒
-     * 是-true
-     * 否-false
-     */
-    @XmlElement(name = "FOLLOWER", type = Boolean.class)
-    private Boolean follower;
+	/**
+	 * Follower
+	 */
+	@XmlElement(name = "FOLLOWER", type = Boolean.class)
+	private Boolean follower;
 
-    /**
-     * 年龄
-     */
-    @XmlElement(name = "AGE", type = Integer.class)
-    private Integer age;
+	/**
+	 * Age
+	 */
+	@XmlElement(name = "AGE", type = Integer.class)
+	private Integer age;
 
-    /**
-     * 存款
-     */
-    @XmlElement(name = "DEPOSIT", type = Double.class)
-    private Double deposit;
+	/**
+	 * Deposit
+	 */
+	@XmlElement(name = "DEPOSIT", type = Double.class)
+	private Double deposit;
 
-    // -----------------------------------------------------------------------------------------------
-    // GETTER SETTER
-    // -----------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------
+	// GETTER SETTER
+	// -----------------------------------------------------------------------------------------------
 
-    @XmlTransient
-    public Long getId() {
-        return id;
-    }
+	/**
+	 * Gets id *
+	 *
+	 * @return the id
+	 */
+	@XmlTransient
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	/**
+	 * Sets id *
+	 *
+	 * @param id id
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    @XmlTransient
-    public Long getNumber() {
-        return number;
-    }
+	/**
+	 * Gets number *
+	 *
+	 * @return the number
+	 */
+	@XmlTransient
+	public Long getNumber() {
+		return number;
+	}
 
-    public void setNumber(Long number) {
-        this.number = number;
-    }
+	/**
+	 * Sets number *
+	 *
+	 * @param number number
+	 */
+	public void setNumber(Long number) {
+		this.number = number;
+	}
 
-    @XmlTransient
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets name *
+	 *
+	 * @return the name
+	 */
+	@XmlTransient
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	/**
+	 * Sets name *
+	 *
+	 * @param name name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    @XmlTransient
-    public String getBirthday() {
-        return birthday;
-    }
+	/**
+	 * Gets birthday *
+	 *
+	 * @return the birthday
+	 */
+	@XmlTransient
+	public String getBirthday() {
+		return birthday;
+	}
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
+	/**
+	 * Sets birthday *
+	 *
+	 * @param birthday birthday
+	 */
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
 
-    @XmlTransient
-    public Boolean getFollower() {
-        return follower;
-    }
+	/**
+	 * Gets follower *
+	 *
+	 * @return the follower
+	 */
+	@XmlTransient
+	public Boolean getFollower() {
+		return follower;
+	}
 
-    public void setFollower(Boolean follower) {
-        this.follower = follower;
-    }
+	/**
+	 * Sets follower *
+	 *
+	 * @param follower follower
+	 */
+	public void setFollower(Boolean follower) {
+		this.follower = follower;
+	}
 
-    @XmlTransient
-    public Integer getAge() {
-        return age;
-    }
+	/**
+	 * Gets age *
+	 *
+	 * @return the age
+	 */
+	@XmlTransient
+	public Integer getAge() {
+		return age;
+	}
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+	/**
+	 * Sets age *
+	 *
+	 * @param age age
+	 */
+	public void setAge(Integer age) {
+		this.age = age;
+	}
 
-    @XmlTransient
-    public Double getDeposit() {
-        return deposit;
-    }
+	/**
+	 * Gets deposit *
+	 *
+	 * @return the deposit
+	 */
+	@XmlTransient
+	public Double getDeposit() {
+		return deposit;
+	}
 
-    public void setDeposit(Double deposit) {
-        this.deposit = deposit;
-    }
+	/**
+	 * Sets deposit *
+	 *
+	 * @param deposit deposit
+	 */
+	public void setDeposit(Double deposit) {
+		this.deposit = deposit;
+	}
 }

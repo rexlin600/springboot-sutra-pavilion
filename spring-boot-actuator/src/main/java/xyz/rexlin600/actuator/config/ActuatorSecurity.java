@@ -6,25 +6,24 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
- * 保护 HTTP endpoints
+ * Actuator security
  *
- * @author: hekunlin
- * @since: 2020/1/8
+ * @author hekunlin
  */
 @Configuration
 public class ActuatorSecurity extends WebSecurityConfigurerAdapter {
 
-    /**
-     * 配置 Security
-     *
-     * @param http HttpSecurity
-     * @throws Exception 异常
-     */
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.requestMatcher(EndpointRequest.toAnyEndpoint()).authorizeRequests()
-                .anyRequest().hasRole("admin")
-                .and()
-                .httpBasic();
-    }
+	/**
+	 * Configure *
+	 *
+	 * @param http http
+	 * @throws Exception exception
+	 */
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.requestMatcher(EndpointRequest.toAnyEndpoint()).authorizeRequests()
+				.anyRequest().hasRole("admin")
+				.and()
+				.httpBasic();
+	}
 }

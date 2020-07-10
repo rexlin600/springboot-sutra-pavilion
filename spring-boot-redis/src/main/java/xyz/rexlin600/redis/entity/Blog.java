@@ -7,10 +7,9 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
- * 测试Blog类
+ * Blog
  *
- * @author: hekunlin
- * @since: 2020/1/6
+ * @author hekunlin
  */
 @Data
 @NoArgsConstructor
@@ -19,33 +18,33 @@ import java.io.Serializable;
 @Builder
 public class Blog implements Serializable {
 
-    /**
-     * ID
-     */
-    @NotNull
-    private Long id;
+	/**
+	 * Id
+	 */
+	@NotNull
+	private Long id;
 
-    /**
-     * 标题
-     */
-    @NotEmpty
-    private String title;
+	/**
+	 * Title
+	 */
+	@NotEmpty
+	private String title;
 
-    /**
-     * 内容
-     */
-    @NotEmpty
-    private String content;
+	/**
+	 * Content
+	 */
+	@NotEmpty
+	private String content;
 
-    /**
-     * 是否受欢迎
-     */
-    @NotNull
-    private boolean popular;
+	/**
+	 * Popular
+	 */
+	@NotNull
+	private boolean popular;
 
-    /**
-     * 创建时间
-     */
-    private String createDate;
+	/**
+	 * Create date
+	 */
+	private String createDate;
 
 }

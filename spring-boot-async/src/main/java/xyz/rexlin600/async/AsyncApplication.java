@@ -5,17 +5,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
- * AsyncApplication 启动类
+ * Async application
  *
- * @author: rexlin600
- * @since: 2020-01-11
+ * @author hekunlin
  */
 @EnableAsync
 @SpringBootApplication
 public class AsyncApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(AsyncApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(AsyncApplication.class, args);
+	}
 
 }

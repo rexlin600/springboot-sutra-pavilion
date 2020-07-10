@@ -1,17 +1,16 @@
 package xyz.rexlin600.java8.lambda;
 
 /**
- * LambdaExpression 类
+ * Lambda expression
  *
- * @author: hekunlin
- * @since: 2020/1/9
+ * @author hekunlin
  */
 public class LambdaExpression {
 
-    /**
-     * (parameters) -> expression
-     * 或
-     * (parameters) ->{ statements; }
-     */
+	/**
+	 * (parameters) -> expression
+	 * 或
+	 * (parameters) ->{ statements; }
+	 */
 
 }

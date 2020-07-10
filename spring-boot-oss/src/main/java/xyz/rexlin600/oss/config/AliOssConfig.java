@@ -10,10 +10,9 @@ import xyz.rexlin600.oss.common.OssConstant;
 import java.io.Serializable;
 
 /**
- * 阿里云OSS配置
+ * Ali oss config
  *
- * @author: hekunlin
- * @since: 2020/6/21
+ * @author hekunlin
  */
 @Qualifier(value = "aliOssConfig")
 @ConditionalOnProperty(prefix = OssConstant.PREFIX_ALI, name = "enable", havingValue = "true")
@@ -22,34 +21,34 @@ import java.io.Serializable;
 @ConfigurationProperties(prefix = OssConstant.PREFIX_ALI)
 public class AliOssConfig implements Serializable {
 
-    /**
-     * 是否启用
-     */
-    private boolean enable;
+	/**
+	 * Enable
+	 */
+	private boolean enable;
 
-    /**
-     * 阿里云绑定的域名
-     */
-    private String domain;
+	/**
+	 * Domain
+	 */
+	private String domain;
 
-    /**
-     * 阿里云EndPoint
-     */
-    private String endpoint;
+	/**
+	 * Endpoint
+	 */
+	private String endpoint;
 
-    /**
-     * AccessKey 账号
-     */
-    private String accessKey;
+	/**
+	 * Access key
+	 */
+	private String accessKey;
 
-    /**
-     * AccessKeySecret 密钥
-     */
-    private String accessKeySecret;
+	/**
+	 * Access key secret
+	 */
+	private String accessKeySecret;
 
-    /**
-     * 存储 bucket 名称
-     */
-    private String bucketName;
+	/**
+	 * Bucket name
+	 */
+	private String bucketName;
 
 }

@@ -5,17 +5,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 /**
- * 启动类
+ * Oss application
  *
- * @author: hekunlin
- * @since: 2020/6/21
+ * @author hekunlin
  */
 @EnableConfigurationProperties
 @SpringBootApplication
 public class OssApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(OssApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(OssApplication.class, args);
+	}
 
 }

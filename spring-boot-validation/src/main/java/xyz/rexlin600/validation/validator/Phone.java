@@ -5,10 +5,9 @@ import javax.validation.Payload;
 import java.lang.annotation.*;
 
 /**
- * 手机校验
+ * Phone
  *
- * @author: hekunlin
- * @since: 2020/6/1
+ * @author hekunlin
  */
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
@@ -16,12 +15,32 @@ import java.lang.annotation.*;
 @Constraint(validatedBy = {PhoneValidator.class})
 public @interface Phone {
 
-    boolean required() default true;
+	/**
+	 * Required boolean
+	 *
+	 * @return the boolean
+	 */
+	boolean required() default true;
 
-    String message() default "手机号格式错误";
+	/**
+	 * Message string
+	 *
+	 * @return the string
+	 */
+	String message() default "手机号格式错误";
 
-    Class<?>[] groups() default {};
+	/**
+	 * Groups class [ ]
+	 *
+	 * @return the class [ ]
+	 */
+	Class<?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default {};
+	/**
+	 * Payload class [ ]
+	 *
+	 * @return the class [ ]
+	 */
+	Class<? extends Payload>[] payload() default {};
 
 }

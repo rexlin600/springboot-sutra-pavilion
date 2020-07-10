@@ -11,69 +11,65 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.function.Predicate;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-/**
- * @description
- * @auther hekunlin
- * @create 2020-01-09 13:37
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MatchTest {
 
-    private Match match;
+	private Match match;
 
-    @Before
-    public void setUp() throws Exception {
-        match = new Match();
-    }
+	@Before
+	public void setUp() throws Exception {
+		match = new Match();
+	}
 
-    @Test
-    public void anyMatch() {
-        Boolean anyMatch1 = match.anyMatch(new Predicate<Goods>() {
-            @Override
-            public boolean test(Goods o) {
-                return o.getColor().equals("天蓝色");
-            }
-        });
+	@Test
+	public void anyMatch() {
+		Boolean anyMatch1 = match.anyMatch(new Predicate<Goods>() {
+			@Override
+			public boolean test(Goods o) {
+				return o.getColor().equals("天蓝色");
+			}
+		});
 
-        // lambda 写法
-        Boolean anyMatch2 = match.anyMatch(
-                (Predicate<Goods>) o -> o.getCreateDate().isAfter(LocalDateTime.now(ZoneId.systemDefault())));
+		// lambda 写法
+		Boolean anyMatch2 = match.anyMatch(
+				(Predicate<Goods>) o -> o.getCreateDate().isAfter(LocalDateTime.now(ZoneId.systemDefault())));
 
-        assertTrue(anyMatch1);
-        assertFalse(anyMatch2);
-    }
+		assertTrue(anyMatch1);
+		assertFalse(anyMatch2);
+	}
 
-    @Test
-    public void noneMatch() {
-        Boolean anyMatch1 = match.noneMatch(new Predicate<Goods>() {
-            @Override
-            public boolean test(Goods o) {
-                return o.getColor().equals("天蓝色");
-            }
-        });
+	@Test
+	public void noneMatch() {
+		Boolean anyMatch1 = match.noneMatch(new Predicate<Goods>() {
+			@Override
+			public boolean test(Goods o) {
+				return o.getColor().equals("天蓝色");
+			}
+		});
 
-        // lambda 写法
-        Boolean anyMatch2 = match.noneMatch(
-                (Predicate<Goods>) o -> o.getCreateDate().isAfter(LocalDateTime.now(ZoneId.systemDefault())));
+		// lambda 写法
+		Boolean anyMatch2 = match.noneMatch(
+				(Predicate<Goods>) o -> o.getCreateDate().isAfter(LocalDateTime.now(ZoneId.systemDefault())));
 
-        assertFalse(anyMatch1);
-        assertTrue(anyMatch2);
-    }
+		assertFalse(anyMatch1);
+		assertTrue(anyMatch2);
+	}
 
-    @Test
-    public void allMatch() {
-        Boolean anyMatch1 = match.allMatch(new Predicate<Goods>() {
-            @Override
-            public boolean test(Goods o) {
-                return o.getColor().equals("天蓝色");
-            }
-        });
+	@Test
+	public void allMatch() {
+		Boolean anyMatch1 = match.allMatch(new Predicate<Goods>() {
+			@Override
+			public boolean test(Goods o) {
+				return o.getColor().equals("天蓝色");
+			}
+		});
 
-        // lambda 写法
-        Boolean anyMatch2 = match.allMatch(
+		// lambda 写法
+		Boolean anyMatch2 = match.allMatch(
                 (Predicate<Goods>) o -> o.getCreateDate().isAfter(LocalDateTime.now(ZoneId.systemDefault())));
 
         // lambda 写法

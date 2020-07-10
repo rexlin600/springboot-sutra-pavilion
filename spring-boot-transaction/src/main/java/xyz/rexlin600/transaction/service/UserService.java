@@ -3,28 +3,25 @@ package xyz.rexlin600.transaction.service;
 import xyz.rexlin600.transaction.entity.User;
 
 /**
- * UserService 类
+ * User service
  *
- * @author: rexlin600
- * @since: 2020-01-11
+ * @author hekunlin
  */
 public interface UserService {
 
-    /**
-     * 根据ID查找
-     *
-     * @param id
-     * @return
-     */
-    User findById(Long id);
+	/**
+	 * Find by id user
+	 *
+	 * @param id id
+	 * @return the user
+	 */
+	User findById(Long id);
 
-    /**
-     * 新增
-     * <p>
-     * // @Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED)
-     *
-     * @param user
-     */
-    void addUser(User user);
+	/**
+	 * Add user *
+	 *
+	 * @param user user
+	 */
+	void addUser(User user);
 
 }

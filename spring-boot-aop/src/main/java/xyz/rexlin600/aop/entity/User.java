@@ -6,79 +6,124 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 /**
- * <p>
- * 用户表
- * </p>
+ * User
  *
- * @author rexlin600
- * @since 2020-02-16
+ * @author hekunlin
  */
 @TableName("user")
 public class User extends Model {
 
-    private static final long serialVersionUID = 1L;
+	/**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * 主键ID
-     */
-    @TableId(type = IdType.AUTO)
-    private Long id;
+	/**
+	 * Id
+	 */
+	@TableId(type = IdType.AUTO)
+	private Long id;
 
-    /**
-     * 用户名
-     */
-    private String userName;
+	/**
+	 * User name
+	 */
+	private String userName;
 
-    /**
-     * 年龄
-     */
-    private Integer age;
+	/**
+	 * Age
+	 */
+	private Integer age;
 
-    /**
-     * 性别
-     */
-    private String gender;
+	/**
+	 * Gender
+	 */
+	private String gender;
 
 
-    public Long getId() {
-        return id;
-    }
+	/**
+	 * Gets id *
+	 *
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	/**
+	 * Sets id *
+	 *
+	 * @param id id
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getUserName() {
-        return userName;
-    }
+	/**
+	 * Gets user name *
+	 *
+	 * @return the user name
+	 */
+	public String getUserName() {
+		return userName;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	/**
+	 * Sets user name *
+	 *
+	 * @param userName user name
+	 */
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    public Integer getAge() {
-        return age;
-    }
+	/**
+	 * Gets age *
+	 *
+	 * @return the age
+	 */
+	public Integer getAge() {
+		return age;
+	}
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+	/**
+	 * Sets age *
+	 *
+	 * @param age age
+	 */
+	public void setAge(Integer age) {
+		this.age = age;
+	}
 
-    public String getGender() {
-        return gender;
-    }
+	/**
+	 * Gets gender *
+	 *
+	 * @return the gender
+	 */
+	public String getGender() {
+		return gender;
+	}
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+	/**
+	 * Sets gender *
+	 *
+	 * @param gender gender
+	 */
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", userName=" + userName +
-                ", age=" + age +
-                ", gender=" + gender +
-                "}";
-    }
+	/**
+	 * To string string
+	 *
+	 * @return the string
+	 */
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", userName=" + userName +
+				", age=" + age +
+				", gender=" + gender +
+				"}";
+	}
 }

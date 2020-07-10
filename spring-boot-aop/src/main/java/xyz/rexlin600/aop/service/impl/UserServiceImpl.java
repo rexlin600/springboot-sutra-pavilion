@@ -7,12 +7,9 @@ import xyz.rexlin600.aop.mapper.UserMapper;
 import xyz.rexlin600.aop.service.UserService;
 
 /**
- * <p>
- *  服务实现类
- * </p>
+ * User service
  *
- * @author rexlin600
- * @since 2020-02-16
+ * @author hekunlin
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {

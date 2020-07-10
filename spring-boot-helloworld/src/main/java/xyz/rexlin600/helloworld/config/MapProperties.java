@@ -8,10 +8,9 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 /**
- * MapProperties 类
+ * Map properties
  *
- * @author: hekunlin
- * @since: 2020/1/10
+ * @author hekunlin
  */
 @Data
 @ToString
@@ -19,6 +18,9 @@ import java.util.Map;
 @ConfigurationProperties("rexlin600.kv")
 public class MapProperties {
 
-    private Map<String, Object> map;
+	/**
+	 * Map
+	 */
+	private Map<String, Object> map;
 
 }

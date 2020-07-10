@@ -10,10 +10,9 @@ import xyz.rexlin600.oss.common.OssConstant;
 import java.io.Serializable;
 
 /**
- * 腾讯云配置
+ * Tx oss config
  *
- * @author: hekunlin
- * @since: 2020/6/21
+ * @author hekunlin
  */
 @Qualifier(value = "txOssConfig")
 @ConditionalOnProperty(prefix = OssConstant.PREFIX_TX, name = "enable", havingValue = "true")
@@ -22,34 +21,34 @@ import java.io.Serializable;
 @ConfigurationProperties(prefix = OssConstant.PREFIX_TX)
 public class TxOssConfig implements Serializable {
 
-    /**
-     * 是否启用
-     */
-    private Boolean enable;
+	/**
+	 * Enable
+	 */
+	private Boolean enable;
 
-    /**
-     * 腾讯云绑定的域名
-     */
-    private String domain;
+	/**
+	 * Domain
+	 */
+	private String domain;
 
-    /**
-     * 腾讯云所属地区
-     */
-    private String region;
+	/**
+	 * Region
+	 */
+	private String region;
 
-    /**
-     * 腾讯云 secretId
-     */
-    private String secretId;
+	/**
+	 * Secret id
+	 */
+	private String secretId;
 
-    /**
-     * 腾讯云 secretKey
-     */
-    private String secretKey;
+	/**
+	 * Secret key
+	 */
+	private String secretKey;
 
-    /**
-     * 腾讯云 bucket 名称
-     */
-    private String bucketName;
+	/**
+	 * Bucket name
+	 */
+	private String bucketName;
 
 }

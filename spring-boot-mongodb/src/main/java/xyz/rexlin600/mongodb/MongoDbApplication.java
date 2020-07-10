@@ -5,17 +5,21 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * MongoDBApplication 启动类
+ * Mongo db application
  *
- * @author: rexlin600
- * @since: 2020-01-11 00:36:26
+ * @author hekunlin
  */
 @EnableMongoPlus
 @SpringBootApplication
 public class MongoDbApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(MongoDbApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(MongoDbApplication.class, args);
+	}
 
 }

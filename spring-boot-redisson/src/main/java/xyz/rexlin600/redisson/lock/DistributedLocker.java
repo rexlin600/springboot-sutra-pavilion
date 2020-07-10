@@ -5,62 +5,62 @@ import org.redisson.api.RLock;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 分布式锁
+ * Distributed locker
  *
- * @author rexlin600
+ * @author hekunlin
  */
 public interface DistributedLocker {
 
-    /**
-     * 获取锁
-     *
-     * @param lockKey
-     * @return
-     */
-    RLock lock(String lockKey);
+	/**
+	 * Lock r lock
+	 *
+	 * @param lockKey lock key
+	 * @return the r lock
+	 */
+	RLock lock(String lockKey);
 
-    /**
-     * 获取锁
-     *
-     * @param lockKey
-     * @param timeout
-     * @return
-     */
-    RLock lock(String lockKey, long timeout);
+	/**
+	 * Lock r lock
+	 *
+	 * @param lockKey lock key
+	 * @param timeout timeout
+	 * @return the r lock
+	 */
+	RLock lock(String lockKey, long timeout);
 
-    /**
-     * 获取锁
-     *
-     * @param lockKey
-     * @param unit
-     * @param timeout
-     * @return
-     */
-    RLock lock(String lockKey, TimeUnit unit, long timeout);
+	/**
+	 * Lock r lock
+	 *
+	 * @param lockKey lock key
+	 * @param unit    unit
+	 * @param timeout timeout
+	 * @return the r lock
+	 */
+	RLock lock(String lockKey, TimeUnit unit, long timeout);
 
-    /**
-     * 获取锁
-     *
-     * @param lockKey
-     * @param unit
-     * @param waitTime
-     * @param leaseTime
-     * @return
-     */
-    boolean tryLock(String lockKey, TimeUnit unit, long waitTime, long leaseTime);
+	/**
+	 * Try lock boolean
+	 *
+	 * @param lockKey   lock key
+	 * @param unit      unit
+	 * @param waitTime  wait time
+	 * @param leaseTime lease time
+	 * @return the boolean
+	 */
+	boolean tryLock(String lockKey, TimeUnit unit, long waitTime, long leaseTime);
 
-    /**
-     * 释放锁
-     *
-     * @param lockKey
-     */
-    void unlock(String lockKey);
+	/**
+	 * Unlock *
+	 *
+	 * @param lockKey lock key
+	 */
+	void unlock(String lockKey);
 
-    /**
-     * 释放锁
-     *
-     * @param lock
-     */
-    void unlock(RLock lock);
+	/**
+	 * Unlock *
+	 *
+	 * @param lock lock
+	 */
+	void unlock(RLock lock);
 
 }

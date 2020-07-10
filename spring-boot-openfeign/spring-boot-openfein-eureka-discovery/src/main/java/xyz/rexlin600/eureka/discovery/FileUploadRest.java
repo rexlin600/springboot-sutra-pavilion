@@ -11,39 +11,38 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.InputStream;
 
 /**
- * 文件上传
+ * File upload rest
  *
- * @author: hekunlin
- * @since: 2020/5/7
+ * @author hekunlin
  */
 @Slf4j
 @RestController
 @RequestMapping("/file")
 public class FileUploadRest {
 
-    /**
-     * Feign 文件上传
-     *
-     * @param file
-     * @return
-     */
-    @SneakyThrows
-    @PostMapping("/upload")
-    public String upload(@RequestParam(value = "file") MultipartFile file) {
-        String filename = file.getOriginalFilename();
-        long fileSize = file.getSize();
-        InputStream inputStream = file.getInputStream();
+	/**
+	 * Upload string
+	 *
+	 * @param file file
+	 * @return the string
+	 */
+	@SneakyThrows
+	@PostMapping("/upload")
+	public String upload(@RequestParam(value = "file") MultipartFile file) {
+		String filename = file.getOriginalFilename();
+		long fileSize = file.getSize();
+		InputStream inputStream = file.getInputStream();
 
-        log.info("==>  fileName is : {}", filename);
-        log.info("==>  fileSize is : {}", fileSize);
+		log.info("==>  fileName is : {}", filename);
+		log.info("==>  fileSize is : {}", fileSize);
 
-        // 省略文件上传后续操作 ...
+		// 省略文件上传后续操作 ...
 
-        if (inputStream != null) {
-            inputStream.close();
-        }
+		if (inputStream != null) {
+			inputStream.close();
+		}
 
-        return "SUCCESS";
-    }
+		return "SUCCESS";
+	}
 
 }

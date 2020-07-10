@@ -12,46 +12,45 @@ import xyz.rexlin600.rabbitmq.pattern.deadletter.config.DeadLetterConfig;
 import java.time.Instant;
 
 /**
- * DeadLetterProvider 提供者类
+ * Dead letter provider
  *
- * @author: hekunlin
- * @since: 2020/1/7
+ * @author hekunlin
  */
 @SuppressWarnings("Duplicates")
 @Slf4j
 @Component
 public class DeadLetterProvider {
 
-    @Autowired
-    private AmqpTemplate amqpTemplate;
+	/**
+	 * Amqp template
+	 */
+	@Autowired
+	private AmqpTemplate amqpTemplate;
 
-    /**
-     * 生产简单字符串消息
-     *
-     * <p>
-     * 10S 过期 DeadLetter
-     */
-    @SneakyThrows
-    public void productDlExpireStr() {
-        long milli = Instant.now().toEpochMilli();
-        String content = "DeadLetter product message at " + milli;
+	/**
+	 * Product dl expire str
+	 */
+	@SneakyThrows
+	public void productDlExpireStr() {
+		long milli = Instant.now().toEpochMilli();
+		String content = "DeadLetter product message at " + milli;
 
-        log.info("==>  " + content + " to queue=[{}]", DeadLetterConfig.DEAD_LETTER_QUEUE);
+		log.info("==>  " + content + " to queue=[{}]", DeadLetterConfig.DEAD_LETTER_QUEUE);
 
-        MessagePostProcessor messagePostProcessor = message -> {
-            MessageProperties messageProperties = message.getMessageProperties();
-            messageProperties.setContentEncoding("UTF-8");
-            messageProperties.setExpiration("10000");   // 10s expire
-            return message;
-        };
+		MessagePostProcessor messagePostProcessor = message -> {
+			MessageProperties messageProperties = message.getMessageProperties();
+			messageProperties.setContentEncoding("UTF-8");
+			messageProperties.setExpiration("10000");   // 10s expire
+			return message;
+		};
 
-        // 注意 API 变化
-        amqpTemplate.convertAndSend(DeadLetterConfig.DL_EXCHANGE, DeadLetterConfig.DEAD_LETTER_ROUTING_KEY, content, messagePostProcessor);
-    }
+		// 注意 API 变化
+		amqpTemplate.convertAndSend(DeadLetterConfig.DL_EXCHANGE, DeadLetterConfig.DEAD_LETTER_ROUTING_KEY, content, messagePostProcessor);
+	}
 
-    // TODO 拒绝
+	// TODO 拒绝
 
-    // TODO 超载
+	// TODO 超载
 
 
 }

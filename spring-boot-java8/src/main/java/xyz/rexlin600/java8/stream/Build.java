@@ -12,96 +12,98 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 /**
- * Stream Build 类
+ * Build
  *
- * @author: rexlin600
- * @since: 2020-01-09
+ * @author hekunlin
  */
 @Slf4j
 public class Build {
 
-    /**
-     * init data
-     */
-    private static List<Goods> goodsList = new ArrayList<>();
-    private static final String PATTERN = "yyyy-MM-dd HH:mm:ss";
+	/**
+	 * PATTERN
+	 */
+	private static final String PATTERN = "yyyy-MM-dd HH:mm:ss";
+	/**
+	 * goodsList
+	 */
+	private static List<Goods> goodsList = new ArrayList<>();
 
-    static {
-        goodsList.add(new Goods(1L, "Padraig", 0, "接待员", 192.78, "透明", LocalDateTime.parse("2011-03-25 16:37:44", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
-        goodsList.add(new Goods(2L, "Geoffrey", 0, "接待员", 143.15, "天蓝色", LocalDateTime.parse("2015-05-14 22:23:27", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
-        goodsList.add(new Goods(3L, "Juan", 0, "研发工程师", 186.16, "天蓝色", LocalDateTime.parse("2007-11-06 13:06:44", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
-        goodsList.add(new Goods(4L, "Jean", 0, "行政经理", 89.25, "桔色", LocalDateTime.parse("2002-03-11 07:12:07", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
-        goodsList.add(new Goods(5L, "Anallese", 0, "网络运维工程师", 166.48, "酒红色", LocalDateTime.parse("2004-09-05 23:44:22", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
-        goodsList.add(new Goods(6L, "Roscoe", 0, "测试工程师", 30.39, "天蓝色", LocalDateTime.parse("2010-04-27 07:48:08", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
-        goodsList.add(new Goods(7L, "Alexandros", 0, "话务员", 107.38, "深灰色", LocalDateTime.parse("2012-07-15 05:46:04", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
-        goodsList.add(new Goods(8L, "Adair", 0, "研发工程师", 104.33, "黑色", LocalDateTime.parse("2009-12-18 17:53:51", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
-        goodsList.add(new Goods(9L, "Annnora", 0, "话务员", 196.45, "紫色", LocalDateTime.parse("2003-11-07 00:35:14", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
-        goodsList.add(new Goods(10L, "Ynez", 0, "产品经理", 74.24, "深卡其布色", LocalDateTime.parse("2015-06-20 03:31:47", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
-    }
+	static {
+		goodsList.add(new Goods(1L, "Padraig", 0, "接待员", 192.78, "透明", LocalDateTime.parse("2011-03-25 16:37:44", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
+		goodsList.add(new Goods(2L, "Geoffrey", 0, "接待员", 143.15, "天蓝色", LocalDateTime.parse("2015-05-14 22:23:27", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
+		goodsList.add(new Goods(3L, "Juan", 0, "研发工程师", 186.16, "天蓝色", LocalDateTime.parse("2007-11-06 13:06:44", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
+		goodsList.add(new Goods(4L, "Jean", 0, "行政经理", 89.25, "桔色", LocalDateTime.parse("2002-03-11 07:12:07", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
+		goodsList.add(new Goods(5L, "Anallese", 0, "网络运维工程师", 166.48, "酒红色", LocalDateTime.parse("2004-09-05 23:44:22", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
+		goodsList.add(new Goods(6L, "Roscoe", 0, "测试工程师", 30.39, "天蓝色", LocalDateTime.parse("2010-04-27 07:48:08", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
+		goodsList.add(new Goods(7L, "Alexandros", 0, "话务员", 107.38, "深灰色", LocalDateTime.parse("2012-07-15 05:46:04", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
+		goodsList.add(new Goods(8L, "Adair", 0, "研发工程师", 104.33, "黑色", LocalDateTime.parse("2009-12-18 17:53:51", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
+		goodsList.add(new Goods(9L, "Annnora", 0, "话务员", 196.45, "紫色", LocalDateTime.parse("2003-11-07 00:35:14", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
+		goodsList.add(new Goods(10L, "Ynez", 0, "产品经理", 74.24, "深卡其布色", LocalDateTime.parse("2015-06-20 03:31:47", DateTimeFormatter.ofPattern(PATTERN)), LocalDateTime.parse("2019-10-05 15:16:39", DateTimeFormatter.ofPattern(PATTERN))));
+	}
 
-    /**
-     * 构建 Stream 的各种方法
-     */
-    public static void buildStream() {
-        // empty stream
-        Stream<Object> empty = Stream.empty();
-        log.info("empty stream = [{}]", empty);
+	/**
+	 * Build stream
+	 */
+	public static void buildStream() {
+		// empty stream
+		Stream<Object> empty = Stream.empty();
+		log.info("empty stream = [{}]", empty);
 
-        // stream of one goodsList
-        Stream<List<Goods>> oneListStream = Stream.of(goodsList);
-        log.info("one list stream = [{}]", oneListStream);
+		// stream of one goodsList
+		Stream<List<Goods>> oneListStream = Stream.of(goodsList);
+		log.info("one list stream = [{}]", oneListStream);
 
-        // stream of two goodsList
-        Stream<List<Goods>> twoListStream = Stream.of(goodsList, goodsList);
-        log.info("two list stream = [{}]", twoListStream);
+		// stream of two goodsList
+		Stream<List<Goods>> twoListStream = Stream.of(goodsList, goodsList);
+		log.info("two list stream = [{}]", twoListStream);
 
-        // build stream
-        Stream<Object> buildStream = Stream.builder().add(goodsList).build();
-        log.info("build stream = [{}]", buildStream);
+		// build stream
+		Stream<Object> buildStream = Stream.builder().add(goodsList).build();
+		log.info("build stream = [{}]", buildStream);
 
-        // concat stream
-        Stream<List<Goods>> concatStream = Stream.concat(oneListStream, twoListStream);
-        log.info("concat two stream = [{}]", concatStream);
+		// concat stream
+		Stream<List<Goods>> concatStream = Stream.concat(oneListStream, twoListStream);
+		log.info("concat two stream = [{}]", concatStream);
 
-        // -----------------------------------------------------------------------------------------------
-        // 无限长度的 Stream
-        // -----------------------------------------------------------------------------------------------
-        // generate random number stream
-        Stream<Double> generateRandomStream = Stream.generate(() -> Math.random());
-        log.info("generate random number stream = [{}]", generateRandomStream);
+		// -----------------------------------------------------------------------------------------------
+		// 无限长度的 Stream
+		// -----------------------------------------------------------------------------------------------
+		// generate random number stream
+		Stream<Double> generateRandomStream = Stream.generate(() -> Math.random());
+		log.info("generate random number stream = [{}]", generateRandomStream);
 
-        // generate list stream
-        Stream<List<Goods>> generateListStream = Stream.generate(new Supplier<List<Goods>>() {
-            @Override
-            public List<Goods> get() {
-                return goodsList;
-            }
-        });
-        log.info("generate list stream = [{}]", generateListStream);
+		// generate list stream
+		Stream<List<Goods>> generateListStream = Stream.generate(new Supplier<List<Goods>>() {
+			@Override
+			public List<Goods> get() {
+				return goodsList;
+			}
+		});
+		log.info("generate list stream = [{}]", generateListStream);
 
-        // generate simplify
-        Stream<List<Goods>> generateSimplifyListStream = Stream.generate(() -> goodsList);
-        log.info("generate list stream by simplify lamdba = [{}]", generateSimplifyListStream);
+		// generate simplify
+		Stream<List<Goods>> generateSimplifyListStream = Stream.generate(() -> goodsList);
+		log.info("generate list stream by simplify lamdba = [{}]", generateSimplifyListStream);
 
-        // iterate
-        Stream.iterate(Math.random(), m -> m + 1)
-                .limit(5)
-                .forEach(new Consumer<Double>() {
-                    @Override
-                    public void accept(Double num) {
-                        log.info("==> Stream iterate number = [{}]", num);
-                    }
-                });
+		// iterate
+		Stream.iterate(Math.random(), m -> m + 1)
+				.limit(5)
+				.forEach(new Consumer<Double>() {
+					@Override
+					public void accept(Double num) {
+						log.info("==> Stream iterate number = [{}]", num);
+					}
+				});
 
-    }
+	}
 
-    /**
-     * 测试
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        buildStream();
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		buildStream();
+	}
 
 }

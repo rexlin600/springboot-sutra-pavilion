@@ -7,23 +7,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import xyz.rexlin600.aop.entity.SysLog;
 
 /**
- * Feign 方法
- * <p>
- * 这里也可以切换为调用远程服务来实现新增日志
+ * Remote sys log service
  *
- * @author: rexlin600
- * @since: 2020-02-16
+ * @author hekunlin
  */
 @FeignClient(name = "localSvc", url = "${feign.biz.local}")
 public interface RemoteSysLogService {
 
-    /**
-     * 保存日志
-     *
-     * @param sysLog 日志实体
-     * @return {@link R}
-     */
-    @PostMapping
-    R add(@RequestBody SysLog sysLog);
+	/**
+	 * Add r
+	 *
+	 * @param sysLog sys log
+	 * @return the r
+	 */
+	@PostMapping
+	R add(@RequestBody SysLog sysLog);
 
 }

@@ -5,10 +5,9 @@ import lombok.*;
 import java.io.Serializable;
 
 /**
- * Message 实体类
+ * Message
  *
- * @author: hekunlin
- * @since: 2020/1/7
+ * @author hekunlin
  */
 @Data
 @NoArgsConstructor
@@ -17,8 +16,14 @@ import java.io.Serializable;
 @ToString
 public class Message implements Serializable {
 
-    private Long id;
+	/**
+	 * Id
+	 */
+	private Long id;
 
-    private String content;
+	/**
+	 * Content
+	 */
+	private String content;
 
 }

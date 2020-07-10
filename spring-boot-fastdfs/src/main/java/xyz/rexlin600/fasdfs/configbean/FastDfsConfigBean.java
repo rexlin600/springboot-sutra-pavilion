@@ -5,19 +5,18 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * fastdfs 配置类
+ * Fast dfs config bean
  *
- * @author: hekunlin
- * @since: 2020/5/8
+ * @author hekunlin
  */
 @Data
 @Configuration
 @ConfigurationProperties(prefix = "biz.fastdfs")
 public class FastDfsConfigBean {
 
-    /**
-     * 文件访问地址
-     */
-    private String httpUrl;
+	/**
+	 * Http url
+	 */
+	private String httpUrl;
 
 }

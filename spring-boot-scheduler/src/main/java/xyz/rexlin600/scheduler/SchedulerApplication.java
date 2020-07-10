@@ -5,17 +5,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
- * SchedulerApplication 启动类
+ * Scheduler application
  *
- * @author: hekunlin
- * @since: 2020/1/10
+ * @author hekunlin
  */
 @EnableScheduling
 @SpringBootApplication
 public class SchedulerApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(SchedulerApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(SchedulerApplication.class, args);
+	}
 
 }

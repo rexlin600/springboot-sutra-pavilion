@@ -3,10 +3,9 @@ package xyz.rexlin600.mybatisplus.codegen.entity;
 import lombok.*;
 
 /**
- * TableMetaData 实体类
+ * Table meta data
  *
- * @author: hekunlin
- * @since: 2020/1/14
+ * @author hekunlin
  */
 @Data
 @NoArgsConstructor
@@ -15,34 +14,34 @@ import lombok.*;
 @Builder
 public class TableMetaData {
 
-    /**
-     * 表名称
-     */
-    private String tableName;
+	/**
+	 * Table name
+	 */
+	private String tableName;
 
-    /**
-     * 表注释
-     */
-    private String tableComment;
+	/**
+	 * Table comment
+	 */
+	private String tableComment;
 
-    /**
-     * 表引擎
-     */
-    private String engine;
+	/**
+	 * Engine
+	 */
+	private String engine;
 
-    /**
-     * 表字符集
-     */
-    private String tableCollation;
+	/**
+	 * Table collation
+	 */
+	private String tableCollation;
 
-    /**
-     * 创建时间
-     */
-    private String createTime;
+	/**
+	 * Create time
+	 */
+	private String createTime;
 
-    /**
-     * 更新时间
-     */
-    private String updateTime;
+	/**
+	 * Update time
+	 */
+	private String updateTime;
 
 }

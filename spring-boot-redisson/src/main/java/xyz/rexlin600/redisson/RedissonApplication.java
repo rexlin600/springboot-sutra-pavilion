@@ -4,16 +4,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * ReddisonApplication 启动类
+ * Redisson application
  *
- * @author: rexlin600
- * @since: 2020-02-05
+ * @author hekunlin
  */
 @SpringBootApplication
 public class RedissonApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(RedissonApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(RedissonApplication.class, args);
+	}
 
 }

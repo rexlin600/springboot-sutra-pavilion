@@ -6,19 +6,18 @@ import xyz.rexlin600.jpa.entity.User;
 import java.util.List;
 
 /**
- * User JPA API
+ * User repository
  *
- * @author: hekunlin
- * @since: 2020/1/8
+ * @author hekunlin
  */
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    /**
-     * 根据名称查找
-     *
-     * @param userName
-     * @return
-     */
-    List<User> findByUserName(String userName);
+	/**
+	 * Find by user name list
+	 *
+	 * @param userName user name
+	 * @return the list
+	 */
+	List<User> findByUserName(String userName);
 
 }

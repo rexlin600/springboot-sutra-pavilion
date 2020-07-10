@@ -7,16 +7,23 @@ import lombok.NoArgsConstructor;
 import java.lang.reflect.Method;
 
 /**
- * @author: hekunlin
- * @since: 2020/1/7
+ * Amqp invoke
+ *
+ * @author hekunlin
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class AmqpInvoke {
 
-    public Method[] methods;
+	/**
+	 * Methods
+	 */
+	public Method[] methods;
 
-    public Object object;
+	/**
+	 * Object
+	 */
+	public Object object;
 
 }

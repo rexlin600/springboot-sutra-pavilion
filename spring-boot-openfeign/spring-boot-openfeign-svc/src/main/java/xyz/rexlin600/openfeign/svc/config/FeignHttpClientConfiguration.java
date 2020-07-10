@@ -5,15 +5,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 /**
- * Feign HttpClient 配置类
+ * Feign http client configuration
  *
- * @author: hekunlin
- * @since: 2020/5/7
+ * @author hekunlin
  */
 @Import(FeignAutoConfiguration.class)
 @Configuration
 public class FeignHttpClientConfiguration {
 
-    // 启用 apache HttpClient 连接池
+	// 启用 apache HttpClient 连接池
 
 }

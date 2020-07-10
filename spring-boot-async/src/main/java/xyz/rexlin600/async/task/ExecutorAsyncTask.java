@@ -11,55 +11,75 @@ import java.util.Random;
 import java.util.concurrent.Future;
 
 /**
- * ExecutorAsyncTask 异步线程池任务
+ * Executor async task
  *
- * @author: rexlin600
- * @since: 2020-01-12
+ * @author hekunlin
  */
 @SuppressWarnings("Duplicates")
 @Slf4j
 @Component
 public class ExecutorAsyncTask {
 
-    private static Random random = new Random();
+	/**
+	 * random
+	 */
+	private static Random random = new Random();
 
-    @Async(value = "taskExecutor")
-    public Future<Long> taskOne() throws InterruptedException {
-        long start = Instant.now(Clock.systemDefaultZone()).toEpochMilli();
-        log.info("==>  ExecutorAsyncTask taskOne execute start [{}]", start);
+	/**
+	 * Task one future
+	 *
+	 * @return the future
+	 * @throws InterruptedException interrupted exception
+	 */
+	@Async(value = "taskExecutor")
+	public Future<Long> taskOne() throws InterruptedException {
+		long start = Instant.now(Clock.systemDefaultZone()).toEpochMilli();
+		log.info("==>  ExecutorAsyncTask taskOne execute start [{}]", start);
 
-        Thread.sleep(random.nextInt(10000));
+		Thread.sleep(random.nextInt(10000));
 
-        long end = Instant.now(Clock.systemDefaultZone()).toEpochMilli();
-        log.info("==>  ExecutorAsyncTask taskOne execute end [{}]", end);
+		long end = Instant.now(Clock.systemDefaultZone()).toEpochMilli();
+		log.info("==>  ExecutorAsyncTask taskOne execute end [{}]", end);
 
-        return new AsyncResult<>(end - start);
-    }
+		return new AsyncResult<>(end - start);
+	}
 
-    @Async(value = "taskExecutor")
-    public Future<Long> taskTwo() throws InterruptedException {
-        long start = Instant.now(Clock.systemDefaultZone()).toEpochMilli();
-        log.info("==>  ExecutorAsyncTask taskTwo execute start [{}]", start);
+	/**
+	 * Task two future
+	 *
+	 * @return the future
+	 * @throws InterruptedException interrupted exception
+	 */
+	@Async(value = "taskExecutor")
+	public Future<Long> taskTwo() throws InterruptedException {
+		long start = Instant.now(Clock.systemDefaultZone()).toEpochMilli();
+		log.info("==>  ExecutorAsyncTask taskTwo execute start [{}]", start);
 
-        Thread.sleep(random.nextInt(10000));
+		Thread.sleep(random.nextInt(10000));
 
-        long end = Instant.now(Clock.systemDefaultZone()).toEpochMilli();
-        log.info("==>  ExecutorAsyncTask taskTwo execute end [{}]", end);
+		long end = Instant.now(Clock.systemDefaultZone()).toEpochMilli();
+		log.info("==>  ExecutorAsyncTask taskTwo execute end [{}]", end);
 
-        return new AsyncResult<>(end - start);
-    }
+		return new AsyncResult<>(end - start);
+	}
 
-    @Async(value = "taskExecutor")
-    public Future<Long> taskThree() throws InterruptedException {
-        long start = Instant.now(Clock.systemDefaultZone()).toEpochMilli();
-        log.info("==>  ExecutorAsyncTask taskThree execute start [{}]", start);
+	/**
+	 * Task three future
+	 *
+	 * @return the future
+	 * @throws InterruptedException interrupted exception
+	 */
+	@Async(value = "taskExecutor")
+	public Future<Long> taskThree() throws InterruptedException {
+		long start = Instant.now(Clock.systemDefaultZone()).toEpochMilli();
+		log.info("==>  ExecutorAsyncTask taskThree execute start [{}]", start);
 
-        Thread.sleep(random.nextInt(10000));
+		Thread.sleep(random.nextInt(10000));
 
-        long end = Instant.now(Clock.systemDefaultZone()).toEpochMilli();
-        log.info("==>  ExecutorAsyncTask taskThree execute end [{}]", end);
+		long end = Instant.now(Clock.systemDefaultZone()).toEpochMilli();
+		log.info("==>  ExecutorAsyncTask taskThree execute end [{}]", end);
 
-        return new AsyncResult<>(end - start);
-    }
+		return new AsyncResult<>(end - start);
+	}
 
 }

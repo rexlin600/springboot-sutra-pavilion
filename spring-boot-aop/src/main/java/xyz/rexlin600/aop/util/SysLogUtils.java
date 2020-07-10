@@ -12,26 +12,34 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
 /**
- * 系统日志工具类
+ * Sys log utils
  *
  * @author hekunlin
  */
 @UtilityClass
 public class SysLogUtils {
 
-    private final static String STATUS_NORMAL = "0";
+	/**
+	 * STATUS_NORMAL
+	 */
+	private final static String STATUS_NORMAL = "0";
 
-    public SysLog getSysLog() {
-        HttpServletRequest request = ((ServletRequestAttributes) Objects
-                .requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
-        SysLog sysLog = new SysLog();
-        sysLog.setType(STATUS_NORMAL);
-        sysLog.setRemoteAddr(ServletUtil.getClientIP(request));
-        sysLog.setRequestUri(URLUtil.getPath(request.getRequestURI()));
-        sysLog.setMethod(request.getMethod());
-        sysLog.setUserAgent(request.getHeader("user-agent"));
-        sysLog.setParams(HttpUtil.toParams(request.getParameterMap()));
-        return sysLog;
-    }
+	/**
+	 * Gets sys log *
+	 *
+	 * @return the sys log
+	 */
+	public SysLog getSysLog() {
+		HttpServletRequest request = ((ServletRequestAttributes) Objects
+				.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
+		SysLog sysLog = new SysLog();
+		sysLog.setType(STATUS_NORMAL);
+		sysLog.setRemoteAddr(ServletUtil.getClientIP(request));
+		sysLog.setRequestUri(URLUtil.getPath(request.getRequestURI()));
+		sysLog.setMethod(request.getMethod());
+		sysLog.setUserAgent(request.getHeader("user-agent"));
+		sysLog.setParams(HttpUtil.toParams(request.getParameterMap()));
+		return sysLog;
+	}
 
 }

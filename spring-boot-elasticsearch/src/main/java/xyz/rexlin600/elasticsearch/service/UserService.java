@@ -6,47 +6,47 @@ import xyz.rexlin600.elasticsearch.model.User;
 import java.util.List;
 
 /**
- * 用户服务
+ * User service
  *
- * @author rexlin600
+ * @author hekunlin
  */
 public interface UserService {
 
-    /**
-     * 创建
-     *
-     * @param user 用户
-     * @return {@link xyz.rexlin600.elasticsearch.model.User}
-     */
-    User create(User user);
+	/**
+	 * Create user
+	 *
+	 * @param user user
+	 * @return the user
+	 */
+	User create(User user);
 
-    /**
-     * 根据ID查找
-     *
-     * @param id ID
-     * @return {@link xyz.rexlin600.elasticsearch.model.User}
-     */
-    User findById(Long id);
+	/**
+	 * Find by id user
+	 *
+	 * @param id id
+	 * @return the user
+	 */
+	User findById(Long id);
 
-    /**
-     * 根据ID删除
-     *
-     * @param id ID
-     */
-    void deleteById(Long id);
+	/**
+	 * Delete by id *
+	 *
+	 * @param id id
+	 */
+	void deleteById(Long id);
 
-    /**
-     * 删除
-     *
-     * @param user 用户
-     */
-    void delete(User user);
+	/**
+	 * Delete *
+	 *
+	 * @param user user
+	 */
+	void delete(User user);
 
-    /**
-     * 查找列表
-     *
-     * @return {@link List}
-     */
-    List<User> findAll();
+	/**
+	 * Find all list
+	 *
+	 * @return the list
+	 */
+	List<User> findAll();
 
 }

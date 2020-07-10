@@ -9,10 +9,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 简单类
+ * Simple data
  *
- * @author: hekunlin
- * @since: 2020/3/9
+ * @author hekunlin
  */
 @Data
 @AllArgsConstructor
@@ -20,19 +19,19 @@ import java.util.Date;
 @ToString
 public class SimpleData implements Serializable {
 
-    /**
-     * 字符串
-     */
-    private String string;
+	/**
+	 * String
+	 */
+	private String string;
 
-    /**
-     * 日期
-     */
-    private Date date;
+	/**
+	 * Date
+	 */
+	private Date date;
 
-    /**
-     * 浮点数
-     */
-    private Double doubleData;
+	/**
+	 * Double data
+	 */
+	private Double doubleData;
 
 }

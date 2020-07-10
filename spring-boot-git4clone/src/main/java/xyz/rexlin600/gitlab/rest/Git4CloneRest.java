@@ -11,9 +11,9 @@ import xyz.rexlin600.gitlab.common.apiparam.Response;
 import xyz.rexlin600.gitlab.req.GitlabCloneReq;
 
 /**
- * @menu Gitlab克隆小助手
- * @author: rexlin600
- * @since: 2020-02-14
+ * Git 4 clone rest
+ *
+ * @author hekunlin
  */
 @SuppressWarnings("AlibabaRemoveCommentedCode")
 @Slf4j
@@ -21,33 +21,42 @@ import xyz.rexlin600.gitlab.req.GitlabCloneReq;
 @RequestMapping("/gitlab")
 public class Git4CloneRest {
 
-    private GitlabService gitlabService;
+	/**
+	 * Gitlab service
+	 */
+	private GitlabService gitlabService;
 
-    @Autowired
-    public Git4CloneRest(GitlabService gitlabService) {
-        this.gitlabService = gitlabService;
-    }
+	/**
+	 * Git 4 clone rest
+	 *
+	 * @param gitlabService gitlab service
+	 */
+	@Autowired
+	public Git4CloneRest(GitlabService gitlabService) {
+		this.gitlabService = gitlabService;
+	}
 
-    /**
-     * 1. 查询所有项目
-     *
-     * @return
-     */
-    @PostMapping("/list")
-    public Response list(@RequestBody GitlabCloneReq req) {
-        return gitlabService.list(req);
-    }
+	/**
+	 * List response
+	 *
+	 * @param req req
+	 * @return the response
+	 */
+	@PostMapping("/list")
+	public Response list(@RequestBody GitlabCloneReq req) {
+		return gitlabService.list(req);
+	}
 
-    /**
-     * 2. 克隆项目
-     *
-     * @param req
-     * @return
-     */
-    @PostMapping("/clone")
-    public Response gitlab4Clone(@RequestBody GitlabCloneReq req) {
-        return gitlabService.clone(req);
-    }
+	/**
+	 * Gitlab 4 clone response
+	 *
+	 * @param req req
+	 * @return the response
+	 */
+	@PostMapping("/clone")
+	public Response gitlab4Clone(@RequestBody GitlabCloneReq req) {
+		return gitlabService.clone(req);
+	}
 
 
 }

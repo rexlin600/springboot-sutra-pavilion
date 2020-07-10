@@ -11,12 +11,12 @@ import xyz.rexlin600.redisson.service.OrderService;
 @RunWith(SpringRunner.class)
 public class OrderServiceImplTest {
 
-    @Autowired
-    private OrderService orderService;
+	@Autowired
+	private OrderService orderService;
 
-    @Test
-    public void book() {
-        orderService.book();
-    }
+	@Test
+	public void book() {
+		orderService.book();
+	}
 
 }

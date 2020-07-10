@@ -5,14 +5,17 @@ import lombok.Getter;
 import xyz.rexlin600.aop.entity.SysLog;
 
 /**
- * 系统日志事件
+ * Sys log event
  *
- * @author rexlin600
+ * @author hekunlin
  */
 @Getter
 @AllArgsConstructor
 public class SysLogEvent {
 
-    private final SysLog sysLog;
+	/**
+	 * Sys log
+	 */
+	private final SysLog sysLog;
 
 }

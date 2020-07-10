@@ -10,8 +10,9 @@ import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 
 /**
- * @author: hekunlin
- * @since: 2020/3/6
+ * Product
+ *
+ * @author hekunlin
  */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,33 +20,53 @@ import java.io.Serializable;
 @XmlRootElement(name = "PRODUCT")
 public class Product implements Serializable {
 
-    /**
-     * ID
-     */
-    @XmlElement(name = "ID")
-    private Long id;
+	/**
+	 * Id
+	 */
+	@XmlElement(name = "ID")
+	private Long id;
 
-    /**
-     * NAME
-     */
-    @XmlElement(name = "NAME")
-    private String name;
+	/**
+	 * Name
+	 */
+	@XmlElement(name = "NAME")
+	private String name;
 
-    @XmlTransient
-    public Long getId() {
-        return id;
-    }
+	/**
+	 * Gets id *
+	 *
+	 * @return the id
+	 */
+	@XmlTransient
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	/**
+	 * Sets id *
+	 *
+	 * @param id id
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    @XmlTransient
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets name *
+	 *
+	 * @return the name
+	 */
+	@XmlTransient
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	/**
+	 * Sets name *
+	 *
+	 * @param name name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 }

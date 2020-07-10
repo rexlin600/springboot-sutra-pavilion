@@ -10,8 +10,9 @@ import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 
 /**
- * @author: hekunlin
- * @since: 2020/3/6
+ * Cake
+ *
+ * @author hekunlin
  */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,18 +20,28 @@ import java.io.Serializable;
 @XmlRootElement(name = "CAKE")
 public class Cake implements Serializable {
 
-    /**
-     * 名称
-     */
-    @XmlElement(name = "NAME")
-    private String name;
+	/**
+	 * Name
+	 */
+	@XmlElement(name = "NAME")
+	private String name;
 
-    @XmlTransient
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets name *
+	 *
+	 * @return the name
+	 */
+	@XmlTransient
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	/**
+	 * Sets name *
+	 *
+	 * @param name name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 }

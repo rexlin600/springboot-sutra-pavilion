@@ -8,26 +8,39 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
- * SpringAdminEureka 启动类
+ * Admin eureka discovery application
  *
- * @author: hekunlin
- * @since: 2020/1/8
+ * @author hekunlin
  */
 @EnableEurekaServer
 @SpringBootApplication
 public class AdminEurekaDiscoveryApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(AdminEurekaDiscoveryApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(AdminEurekaDiscoveryApplication.class, args);
+	}
 
-    @EnableWebSecurity
-    public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
-            super.configure(http);//加这句是为了访问eureka控制台和/actuator时能做安全控制
-            http.csrf().disable();//关闭csrf
-        }
-    }
+	/**
+	 * Web security config
+	 */
+	@EnableWebSecurity
+	public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+		/**
+		 * Configure *
+		 *
+		 * @param http http
+		 * @throws Exception exception
+		 */
+		@Override
+		protected void configure(HttpSecurity http) throws Exception {
+			super.configure(http);//加这句是为了访问eureka控制台和/actuator时能做安全控制
+			http.csrf().disable();//关闭csrf
+		}
+	}
 
 }

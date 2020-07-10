@@ -6,37 +6,36 @@ import org.springframework.data.repository.query.Param;
 import xyz.rexlin600.transaction.entity.User;
 
 /**
- * UserRepository 类
+ * User repository
  *
- * @author: rexlin600
- * @since: 2020-01-11
+ * @author hekunlin
  */
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    /**
-     * 根据名称查找
-     *
-     * @param name
-     * @return
-     */
-    User findByName(String name);
+	/**
+	 * Find by name user
+	 *
+	 * @param name name
+	 * @return the user
+	 */
+	User findByName(String name);
 
-    /**
-     * 根据名称和年龄查找
-     *
-     * @param name
-     * @param age
-     * @return
-     */
-    User findByNameAndAge(String name, Integer age);
+	/**
+	 * Find by name and age user
+	 *
+	 * @param name name
+	 * @param age  age
+	 * @return the user
+	 */
+	User findByNameAndAge(String name, Integer age);
 
-    /**
-     * 根据名称查找
-     *
-     * @param name
-     * @return
-     */
-    @Query("from User u where u.name=:name")
-    User findUser(@Param("name") String name);
+	/**
+	 * Find user user
+	 *
+	 * @param name name
+	 * @return the user
+	 */
+	@Query("from User u where u.name=:name")
+	User findUser(@Param("name") String name);
 
 }

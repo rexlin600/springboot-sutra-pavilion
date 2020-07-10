@@ -8,10 +8,9 @@ import lombok.ToString;
 import java.time.LocalDateTime;
 
 /**
- * Goods 实体类
+ * Goods
  *
- * @author: rexlin600
- * @since: 2020-01-09
+ * @author hekunlin
  */
 @Data
 @NoArgsConstructor
@@ -19,12 +18,36 @@ import java.time.LocalDateTime;
 @ToString
 public class Goods {
 
-    private Long id;
-    private String name;
-    private Integer sort;
-    private String position;
-    private Double weight;
-    private String color;
-    private LocalDateTime createDate;
-    private LocalDateTime updateTime;
+	/**
+	 * Id
+	 */
+	private Long id;
+	/**
+	 * Name
+	 */
+	private String name;
+	/**
+	 * Sort
+	 */
+	private Integer sort;
+	/**
+	 * Position
+	 */
+	private String position;
+	/**
+	 * Weight
+	 */
+	private Double weight;
+	/**
+	 * Color
+	 */
+	private String color;
+	/**
+	 * Create date
+	 */
+	private LocalDateTime createDate;
+	/**
+	 * Update time
+	 */
+	private LocalDateTime updateTime;
 }

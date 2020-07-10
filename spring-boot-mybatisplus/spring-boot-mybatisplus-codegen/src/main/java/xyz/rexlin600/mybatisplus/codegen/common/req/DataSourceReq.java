@@ -6,10 +6,9 @@ import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 /**
- * DataSourceReq 请求类
+ * Data source req
  *
- * @author: hekunlin
- * @since: 2020/1/14
+ * @author hekunlin
  */
 @Data
 @NoArgsConstructor
@@ -18,39 +17,39 @@ import java.io.Serializable;
 @Builder
 public class DataSourceReq implements Serializable {
 
-    /**
-     * 数据源ID
-     */
-    private Long id;
+	/**
+	 * Id
+	 */
+	private Long id;
 
-    /**
-     * 数据库地址
-     */
-    @NotEmpty
-    private String host;
+	/**
+	 * Host
+	 */
+	@NotEmpty
+	private String host;
 
-    /**
-     * 端口
-     */
-    @NotEmpty
-    private String port;
+	/**
+	 * Port
+	 */
+	@NotEmpty
+	private String port;
 
-    /**
-     * 用户名
-     */
-    @NotEmpty
-    private String username;
+	/**
+	 * Username
+	 */
+	@NotEmpty
+	private String username;
 
-    /**
-     * 密码
-     */
-    @NotEmpty
-    private String password;
+	/**
+	 * Password
+	 */
+	@NotEmpty
+	private String password;
 
-    /**
-     * 数据库名称
-     */
-    @NotEmpty
-    private String dbName;
+	/**
+	 * Db name
+	 */
+	@NotEmpty
+	private String dbName;
 
 }

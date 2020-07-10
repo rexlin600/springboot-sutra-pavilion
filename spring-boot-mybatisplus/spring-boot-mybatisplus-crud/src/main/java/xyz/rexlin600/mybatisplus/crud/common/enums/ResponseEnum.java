@@ -1,33 +1,55 @@
 package xyz.rexlin600.mybatisplus.crud.common.enums;
 
 /**
- * 返回报文Enum
+ * Response enum
  *
- * @author rexlin600
+ * @author hekunlin
  */
 public enum ResponseEnum {
 
-    /**
-     * 系统异常
-     */
-    EXECUTE_EXCEPTION(500, "系统异常");
+	/**
+	 * Execute exception response enum
+	 */
+	EXECUTE_EXCEPTION(500, "系统异常");
 
 
-    private int code;
-    private String msg;
+	/**
+	 * Code
+	 */
+	private int code;
+	/**
+	 * Msg
+	 */
+	private String msg;
 
-    ResponseEnum(int code, String msg) {
-        this.code = code;
-        this.msg = msg;
-    }
+	/**
+	 * Response enum
+	 *
+	 * @param code code
+	 * @param msg  msg
+	 */
+	ResponseEnum(int code, String msg) {
+		this.code = code;
+		this.msg = msg;
+	}
 
 
-    public int getCode() {
-        return code;
-    }
+	/**
+	 * Gets code *
+	 *
+	 * @return the code
+	 */
+	public int getCode() {
+		return code;
+	}
 
 
-    public String getMsg() {
-        return msg;
-    }
+	/**
+	 * Gets msg *
+	 *
+	 * @return the msg
+	 */
+	public String getMsg() {
+		return msg;
+	}
 }

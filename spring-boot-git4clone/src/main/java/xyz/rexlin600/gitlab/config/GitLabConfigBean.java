@@ -6,10 +6,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * GitLabConfigBean 配置类
+ * Git lab config bean
  *
- * @author: rexlin600
- * @since: 2020-02-14
+ * @author hekunlin
  */
 @ToString
 @Data
@@ -17,34 +16,34 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "gitlab")
 public class GitLabConfigBean {
 
-    /**
-     * GitLab 地址
-     */
-    private String host;
+	/**
+	 * Host
+	 */
+	private String host;
 
-    /**
-     * GitLab access Token
-     */
-    private String token;
+	/**
+	 * Token
+	 */
+	private String token;
 
-    /**
-     * GitLab 用户名
-     */
-    private String username;
+	/**
+	 * Username
+	 */
+	private String username;
 
-    /**
-     * GitLab 密码
-     */
-    private String password;
+	/**
+	 * Password
+	 */
+	private String password;
 
-    /**
-     * GitLab api 命名空间
-     */
-    private String apiNamespace;
+	/**
+	 * Api namespace
+	 */
+	private String apiNamespace;
 
-    /**
-     * 克隆项目最大等待时间
-     */
-    private Long maxTime;
+	/**
+	 * Max time
+	 */
+	private Long maxTime;
 
 }

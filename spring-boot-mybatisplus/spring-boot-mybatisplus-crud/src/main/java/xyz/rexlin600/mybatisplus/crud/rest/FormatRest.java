@@ -13,41 +13,39 @@ import xyz.rexlin600.mybatisplus.crud.model.FormatResp;
 
 
 /**
- * 时间接收与转换
+ * Format rest
  *
- * @menu MybatisPlus-CRUD
- * @author: hekunlin
- * @since: 2020/6/4
+ * @author hekunlin
  */
 @Slf4j
 @RestController
 @RequestMapping("/format")
 public class FormatRest {
 
-    /**
-     * 10. 时间format
-     *
-     * @param format
-     * @return
-     */
-    @PostMapping("/convert")
-    public Response<FormatResp> convert(@RequestBody Format format) {
+	/**
+	 * Convert response
+	 *
+	 * @param format format
+	 * @return the response
+	 */
+	@PostMapping("/convert")
+	public Response<FormatResp> convert(@RequestBody Format format) {
 
-        Format f = format;
-        log.info("==>  convert Format class is : [{}]", f.toString());
+		Format f = format;
+		log.info("==>  convert Format class is : [{}]", f.toString());
 
-        /**
-         * 注意：Hutool 中的 BeanCopier 不能拷贝 LocalDateTime、只能拷贝 Date 并且只拷贝一次 Date 类型数据（估计是bug）
-         *
-         * 因此这里使用的是 Spring 框架提供的 BeanCopier
-         */
-        FormatResp formatResp = new FormatResp();
-        BeanCopier.create(Format.class, FormatResp.class, false).copy(format, formatResp, null);
+		/**
+		 * 注意：Hutool 中的 BeanCopier 不能拷贝 LocalDateTime、只能拷贝 Date 并且只拷贝一次 Date 类型数据（估计是bug）
+		 *
+		 * 因此这里使用的是 Spring 框架提供的 BeanCopier
+		 */
+		FormatResp formatResp = new FormatResp();
+		BeanCopier.create(Format.class, FormatResp.class, false).copy(format, formatResp, null);
 
-        // other thing
+		// other thing
 
-        return ResponseGenerator.success(formatResp);
-    }
+		return ResponseGenerator.success(formatResp);
+	}
 
 
 }

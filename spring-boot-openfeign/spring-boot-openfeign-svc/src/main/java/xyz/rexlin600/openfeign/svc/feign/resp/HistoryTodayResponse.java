@@ -8,10 +8,9 @@ import lombok.ToString;
 import java.util.List;
 
 /**
- * 历史上的今天返回类
+ * History today response
  *
- * @author: hekunlin
- * @since: 2020/5/7
+ * @author hekunlin
  */
 @ToString
 @Data
@@ -19,69 +18,75 @@ import java.util.List;
 @AllArgsConstructor
 public class HistoryTodayResponse {
 
-    @SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
-    /**
-     * error_code
-     */
-    private Integer errorCode;
+	/**
+	 * Error code
+	 */
+	@SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
+	/**
+	 * error_code
+	 */
+	private Integer errorCode;
 
-    /**
-     * reason
-     */
-    private String reason;
+	/**
+	 * Reason
+	 */
+	private String reason;
 
-    /**
-     * result
-     */
-    private List<Result> result;
+	/**
+	 * Result
+	 */
+	private List<Result> result;
 
-    @ToString
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    static class Result {
+	/**
+	 * Result
+	 */
+	@ToString
+	@Data
+	@NoArgsConstructor
+	@AllArgsConstructor
+	static class Result {
 
-        /**
-         * day
-         */
-        private Integer day;
+		/**
+		 * Day
+		 */
+		private Integer day;
 
-        /**
-         * des
-         */
-        private String des;
+		/**
+		 * Des
+		 */
+		private String des;
 
-        /**
-         * _id
-         */
-        @SuppressWarnings("AlibabaAvoidStartWithDollarAndUnderLineNaming")
-        private String id;
+		/**
+		 * Id
+		 */
+		@SuppressWarnings("AlibabaAvoidStartWithDollarAndUnderLineNaming")
+		private String id;
 
-        /**
-         * lunar
-         */
-        private String lunar;
+		/**
+		 * Lunar
+		 */
+		private String lunar;
 
-        /**
-         * month
-         */
-        private Integer month;
+		/**
+		 * Month
+		 */
+		private Integer month;
 
-        /**
-         * pic
-         */
-        private String pic;
+		/**
+		 * Pic
+		 */
+		private String pic;
 
-        /**
-         * title
-         */
-        private String title;
+		/**
+		 * Title
+		 */
+		private String title;
 
-        /**
-         * year
-         */
-        private Integer year;
+		/**
+		 * Year
+		 */
+		private Integer year;
 
-    }
+	}
 
 }

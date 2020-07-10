@@ -5,17 +5,28 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author rexlin600
+ * User
+ *
+ * @author hekunlin
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
 
-    private Long id;
+	/**
+	 * Id
+	 */
+	private Long id;
 
-    private String name;
+	/**
+	 * Name
+	 */
+	private String name;
 
-    private int age;
+	/**
+	 * Age
+	 */
+	private int age;
 
 }

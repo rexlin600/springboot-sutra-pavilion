@@ -8,32 +8,27 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.function.Consumer;
 
-/**
- * @description
- * @auther hekunlin
- * @create 2020-01-09 15:29
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ConsumersTest {
 
-    private Consumers consumers;
+	private Consumers consumers;
 
-    @Before
-    public void setUp() throws Exception {
-        consumers = new Consumers();
-    }
+	@Before
+	public void setUp() throws Exception {
+		consumers = new Consumers();
+	}
 
-    @Test
-    public void consumers() {
-        Consumer<String> consume = consumers.getConsume();
-        consume.accept("A");
-        consume.accept("B");
+	@Test
+	public void consumers() {
+		Consumer<String> consume = consumers.getConsume();
+		consume.accept("A");
+		consume.accept("B");
 
-        // C 不会被输出，因为 adnThen 后面跟的是一个 Consumer，这个 Consumer 还没有 accpet 任何参数，所以虽然里面有打印语句，但是并不会被触发！
-        consume.andThen(s -> {
-            System.out.println("C");
-        });
+		// C 不会被输出，因为 adnThen 后面跟的是一个 Consumer，这个 Consumer 还没有 accpet 任何参数，所以虽然里面有打印语句，但是并不会被触发！
+		consume.andThen(s -> {
+			System.out.println("C");
+		});
 
         Consumer<String> stringConsumer = new Consumer<String>() {
             @Override

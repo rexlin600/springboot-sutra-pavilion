@@ -8,28 +8,30 @@ import xyz.rexlin600.mybatisplus.codegen.entity.TableMetaData;
 import java.sql.SQLException;
 
 /**
+ * Code service
+ *
  * @author hekunlin
  */
 public interface CodeService {
 
-    /**
-     * 分页查询表
-     *
-     * @param page      分页参数
-     * @param size      分页参数
-     * @param tableName 数据库表名
-     * @param id        数据源ID
-     * @return
-     * @throws SQLException
-     */
-    R<Page<TableMetaData>> page(Integer page, Integer size, String tableName, Long id) throws SQLException;
+	/**
+	 * Page r
+	 *
+	 * @param page      page
+	 * @param size      size
+	 * @param tableName table name
+	 * @param id        id
+	 * @return the r
+	 * @throws SQLException sql exception
+	 */
+	R<Page<TableMetaData>> page(Integer page, Integer size, String tableName, Long id) throws SQLException;
 
-    /**
-     * 生成代码
-     *
-     * @param codeGenReq
-     * @return
-     */
-    R generate(CodeGenReq codeGenReq);
+	/**
+	 * Generate r
+	 *
+	 * @param codeGenReq code gen req
+	 * @return the r
+	 */
+	R generate(CodeGenReq codeGenReq);
 
 }

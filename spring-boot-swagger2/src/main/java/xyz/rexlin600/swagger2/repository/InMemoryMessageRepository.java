@@ -10,55 +10,95 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * 消息操作接口 实现类
+ * In memory message repository
  *
- * @author rexlin600
+ * @author hekunlin
  */
 @Service("messageRepository")
 public class InMemoryMessageRepository implements MessageRepository {
 
-    private static AtomicLong counter = new AtomicLong();
-    private final ConcurrentMap<Long, Message> messages = new ConcurrentHashMap<>();
+	/**
+	 * counter
+	 */
+	private static AtomicLong counter = new AtomicLong();
+	/**
+	 * Messages
+	 */
+	private final ConcurrentMap<Long, Message> messages = new ConcurrentHashMap<>();
 
-    @Override
-    public List<Message> findAll() {
-        List<Message> messages = new ArrayList<Message>(this.messages.values());
-        return messages;
-    }
+	/**
+	 * Find all list
+	 *
+	 * @return the list
+	 */
+	@Override
+	public List<Message> findAll() {
+		List<Message> messages = new ArrayList<Message>(this.messages.values());
+		return messages;
+	}
 
-    @Override
-    public Message save(Message message) {
-        Long id = message.getId();
-        if (id == null) {
-            id = counter.incrementAndGet();
-            message.setId(id);
-        }
-        this.messages.put(id, message);
-        return message;
-    }
+	/**
+	 * Save message
+	 *
+	 * @param message message
+	 * @return the message
+	 */
+	@Override
+	public Message save(Message message) {
+		Long id = message.getId();
+		if (id == null) {
+			id = counter.incrementAndGet();
+			message.setId(id);
+		}
+		this.messages.put(id, message);
+		return message;
+	}
 
-    @Override
-    public Message update(Message message) {
-        this.messages.put(message.getId(), message);
-        return message;
-    }
+	/**
+	 * Update message
+	 *
+	 * @param message message
+	 * @return the message
+	 */
+	@Override
+	public Message update(Message message) {
+		this.messages.put(message.getId(), message);
+		return message;
+	}
 
-    @Override
-    public Message updateText(Message message) {
-        Message msg = this.messages.get(message.getId());
-        msg.setText(message.getText());
-        this.messages.put(msg.getId(), msg);
-        return msg;
-    }
+	/**
+	 * Update text message
+	 *
+	 * @param message message
+	 * @return the message
+	 */
+	@Override
+	public Message updateText(Message message) {
+		Message msg = this.messages.get(message.getId());
+		msg.setText(message.getText());
+		this.messages.put(msg.getId(), msg);
+		return msg;
+	}
 
-    @Override
-    public Message findMessage(Long id) {
-        return this.messages.get(id);
-    }
+	/**
+	 * Find message message
+	 *
+	 * @param id id
+	 * @return the message
+	 */
+	@Override
+	public Message findMessage(Long id) {
+		return this.messages.get(id);
+	}
 
-    @Override
-    public void deleteMessage(Long id) {
-        this.messages.remove(id);
-    }
+	/**
+	 * Delete message *
+	 *
+	 * @param id id
+	 */
+	@Override
+	public void deleteMessage(Long id) {
+		this.messages.remove(id);
+	}
 
 }

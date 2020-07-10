@@ -8,28 +8,41 @@ import xyz.rexlin600.transaction.entity.User;
 import xyz.rexlin600.transaction.service.UserService;
 
 /**
- * UserServiceImpl 实现类
+ * User service
  *
- * @author: rexlin600
- * @since: 2020-01-11
+ * @author hekunlin
  */
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
+	/**
+	 * Jdbc template
+	 */
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 
-    @Override
-    public User findById(Long id) {
-        String sql = "select * from user where id = ?";
-        User user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), id);
-        return user;
-    }
+	/**
+	 * Find by id user
+	 *
+	 * @param id id
+	 * @return the user
+	 */
+	@Override
+	public User findById(Long id) {
+		String sql = "select * from user where id = ?";
+		User user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), id);
+		return user;
+	}
 
-    @Override
-    public void addUser(User user) {
-        String sql = "insert into user(id,name,age,email) values(?,?,?,?)";
-        jdbcTemplate.update(sql, user.getId(), user.getName(), user.getAge(), user.getEmail());
-    }
+	/**
+	 * Add user *
+	 *
+	 * @param user user
+	 */
+	@Override
+	public void addUser(User user) {
+		String sql = "insert into user(id,name,age,email) values(?,?,?,?)";
+		jdbcTemplate.update(sql, user.getId(), user.getName(), user.getAge(), user.getEmail());
+	}
 
 }

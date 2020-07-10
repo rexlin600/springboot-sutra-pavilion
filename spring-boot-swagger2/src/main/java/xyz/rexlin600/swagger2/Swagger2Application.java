@@ -4,16 +4,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Swagger2 启动类
+ * Swagger 2 application
  *
- * @author: hekunlin
- * @since: 2020/1/6
+ * @author hekunlin
  */
 @SpringBootApplication
 public class Swagger2Application {
 
-    public static void main(String[] args) {
-        SpringApplication.run(Swagger2Application.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(Swagger2Application.class, args);
+	}
 
 }

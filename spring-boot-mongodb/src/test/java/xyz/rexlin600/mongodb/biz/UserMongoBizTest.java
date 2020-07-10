@@ -18,64 +18,64 @@ import java.util.List;
 @SpringBootTest
 public class UserMongoBizTest {
 
-    @Autowired
-    private UserMongoBiz userMongoBiz;
+	@Autowired
+	private UserMongoBiz userMongoBiz;
 
-    @Before
-    public void setUp() {
-        User build = User.builder()
-                .id(371L)
-                .name("25")
-                .age(20)
-                .build();
-        userMongoBiz.saveUser(build);
-    }
+	@Before
+	public void setUp() {
+		User build = User.builder()
+				.id(371L)
+				.name("25")
+				.age(20)
+				.build();
+		userMongoBiz.saveUser(build);
+	}
 
-    @Test
-    public void saveUser() {
-        for (int i = 0; i < 5; i++) {
-            User user = User.builder()
-                    .id(Long.valueOf((int) (Math.random() * 10001)))
-                    .name(String.valueOf((int) (Math.random() * 101)))
-                    .age((int) (Math.random() * 101))
-                    .build();
-            userMongoBiz.saveUser(user);
-        }
-    }
+	@Test
+	public void saveUser() {
+		for (int i = 0; i < 5; i++) {
+			User user = User.builder()
+					.id(Long.valueOf((int) (Math.random() * 10001)))
+					.name(String.valueOf((int) (Math.random() * 101)))
+					.age((int) (Math.random() * 101))
+					.build();
+			userMongoBiz.saveUser(user);
+		}
+	}
 
-    @Test
-    public void getById() {
-        User user = userMongoBiz.getById(371L);
-        log.info("==>  find by id, users is [{}]", user);
-    }
+	@Test
+	public void getById() {
+		User user = userMongoBiz.getById(371L);
+		log.info("==>  find by id, users is [{}]", user);
+	}
 
-    @Test
-    public void update() {
-        User user = userMongoBiz.getById(371L);
-        if (!ObjectUtils.isEmpty(user)) {
-            log.info("==>  before update, find by id, users is [{}]", user);
-            user.setName("update" + user.getName());
-            userMongoBiz.update(user);
-        }
-        user = userMongoBiz.getById(371L);
-        log.info("==>  find by id, users is [{}]", user);
-    }
+	@Test
+	public void update() {
+		User user = userMongoBiz.getById(371L);
+		if (!ObjectUtils.isEmpty(user)) {
+			log.info("==>  before update, find by id, users is [{}]", user);
+			user.setName("update" + user.getName());
+			userMongoBiz.update(user);
+		}
+		user = userMongoBiz.getById(371L);
+		log.info("==>  find by id, users is [{}]", user);
+	}
 
-    @Test
-    public void findByName() {
-        List<User> users = userMongoBiz.findByName("25");
-        log.info("==>  find by name, users is [{}]", users);
-    }
+	@Test
+	public void findByName() {
+		List<User> users = userMongoBiz.findByName("25");
+		log.info("==>  find by name, users is [{}]", users);
+	}
 
-    @Test
-    public void deleteUserById() {
-        userMongoBiz.deleteUserById(371L);
-    }
+	@Test
+	public void deleteUserById() {
+		userMongoBiz.deleteUserById(371L);
+	}
 
-    @Test
-    public void getUserList() {
-        List<User> userList = userMongoBiz.getUserList();
-        log.info("==>  mongodb list is [{}]", userList);
-    }
+	@Test
+	public void getUserList() {
+		List<User> userList = userMongoBiz.getUserList();
+		log.info("==>  mongodb list is [{}]", userList);
+	}
 
 }

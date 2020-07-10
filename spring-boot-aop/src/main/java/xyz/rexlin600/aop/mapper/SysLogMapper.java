@@ -1,15 +1,12 @@
 package xyz.rexlin600.aop.mapper;
 
-import xyz.rexlin600.aop.entity.SysLog;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import xyz.rexlin600.aop.entity.SysLog;
 
 /**
- * <p>
- *  Mapper 接口
- * </p>
+ * Sys log mapper
  *
- * @author rexlin600
- * @since 2020-02-16
+ * @author hekunlin
  */
 public interface SysLogMapper extends BaseMapper<SysLog> {
 

@@ -5,28 +5,27 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Work 配置类
+ * Work config
  *
- * @author: hekunlin
- * @since: 2020/1/7
+ * @author hekunlin
  */
 @Configuration
 public class WorkConfig {
 
-    /**
-     * Work模式
-     */
-    public static final String WORK_QUEUE = "queue.rexlin600.work";
+	/**
+	 * WORK_QUEUE
+	 */
+	public static final String WORK_QUEUE = "queue.rexlin600.work";
 
 
-    /**
-     * Queue
-     *
-     * @return
-     */
-    @Bean
-    public Queue workQueue() {
-        return new Queue(WORK_QUEUE);
-    }
+	/**
+	 * Work queue queue
+	 *
+	 * @return the queue
+	 */
+	@Bean
+	public Queue workQueue() {
+		return new Queue(WORK_QUEUE);
+	}
 
 }

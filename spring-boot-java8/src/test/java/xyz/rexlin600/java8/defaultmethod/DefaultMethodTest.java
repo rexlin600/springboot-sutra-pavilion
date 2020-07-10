@@ -6,26 +6,21 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-/**
- * @description
- * @auther hekunlin
- * @create 2020-01-09 16:53
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DefaultMethodTest {
 
-    private DefaultMethod.InnerDefaultMethod defaultMethod;
+	private DefaultMethod.InnerDefaultMethod defaultMethod;
 
-    @Before
-    public void setUp() throws Exception {
-        defaultMethod = new DefaultMethod.InnerDefaultMethod();
-    }
+	@Before
+	public void setUp() throws Exception {
+		defaultMethod = new DefaultMethod.InnerDefaultMethod();
+	}
 
-    @Test
-    public void hello() {
-        defaultMethod.hello();
-    }
+	@Test
+	public void hello() {
+		defaultMethod.hello();
+	}
 
 
 }

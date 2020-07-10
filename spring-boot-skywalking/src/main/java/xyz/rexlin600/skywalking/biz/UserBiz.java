@@ -6,10 +6,9 @@ import xyz.rexlin600.skywalking.mapper.UserMapper;
 import xyz.rexlin600.skywalking.model.User;
 
 /**
- * User biz 类
+ * User biz
  *
- * @author: hekunlin
- * @since: 2020/1/6
+ * @author hekunlin
  */
 @Service
 public class UserBiz extends ServiceImpl<UserMapper, User> {

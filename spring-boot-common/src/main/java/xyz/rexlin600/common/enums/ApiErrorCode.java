@@ -4,35 +4,42 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
+ * Api error code
+ *
  * @author hekunlin
  */
-
 @NoArgsConstructor
 @Getter
 public enum ApiErrorCode {
 
-    /**
-     * 失败
-     */
-    FAILED(-1L, "操作失败"),
-    /**
-     * 成功
-     */
-    SUCCESS(0L, "执行成功");
+	/**
+	 * Failed api error code
+	 */
+	FAILED(-1L, "操作失败"),
+	/**
+	 * Success api error code
+	 */
+	SUCCESS(0L, "执行成功");
 
-    /**
-     * 编码
-     */
-    private long code;
+	/**
+	 * Code
+	 */
+	private long code;
 
-    /**
-     * 内容
-     */
-    private String msg;
+	/**
+	 * Msg
+	 */
+	private String msg;
 
-    ApiErrorCode(long code, String msg) {
-        this.code = code;
-        this.msg = msg;
-    }
+	/**
+	 * Api error code
+	 *
+	 * @param code code
+	 * @param msg  msg
+	 */
+	ApiErrorCode(long code, String msg) {
+		this.code = code;
+		this.msg = msg;
+	}
 
 }

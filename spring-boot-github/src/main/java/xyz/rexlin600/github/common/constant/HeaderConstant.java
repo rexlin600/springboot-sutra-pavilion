@@ -1,11 +1,15 @@
 package xyz.rexlin600.github.common.constant;
 
 /**
- * @author: hekunlin
- * @since: 2020/1/3
+ * Header constant
+ *
+ * @author hekunlin
  */
 public class HeaderConstant {
 
-    public static final String TOKEN_HEADER = "token";
+	/**
+	 * TOKEN_HEADER
+	 */
+	public static final String TOKEN_HEADER = "token";
 
 }

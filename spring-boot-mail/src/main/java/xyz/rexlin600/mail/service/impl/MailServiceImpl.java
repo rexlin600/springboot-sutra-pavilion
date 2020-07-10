@@ -20,191 +20,197 @@ import java.time.Clock;
 import java.time.Instant;
 
 /**
- * MailMessageBiz 服务类
+ * Mail service
  *
- * @author: hekunlin
- * @since: 2020/1/10
+ * @author hekunlin
  */
 @SuppressWarnings("Duplicates")
 @Slf4j
 @Service
 public class MailServiceImpl implements MailService {
 
-    private final JavaMailSender mailSender;
+	/**
+	 * Mail sender
+	 */
+	private final JavaMailSender mailSender;
+	/**
+	 * From
+	 */
+	@Value("${spring.mail.username}")
+	private String from;
 
-    @Autowired
-    public MailServiceImpl(JavaMailSender mailSender) {
-        this.mailSender = mailSender;
-    }
+	/**
+	 * Mail service
+	 *
+	 * @param mailSender mail sender
+	 */
+	@Autowired
+	public MailServiceImpl(JavaMailSender mailSender) {
+		this.mailSender = mailSender;
+	}
 
-    /**
-     * 发件人，默认配置的邮件用户
-     */
-    @Value("${spring.mail.username}")
-    private String from;
+	// -----------------------------------------------------------------------------------------------
+	// MAIL IMPL SERVICE
+	// -----------------------------------------------------------------------------------------------
 
-    // -----------------------------------------------------------------------------------------------
-    // MAIL IMPL SERVICE
-    // -----------------------------------------------------------------------------------------------
+	/**
+	 * Send simple mail *
+	 *
+	 * @param to      to
+	 * @param subject subject
+	 * @param content content
+	 */
+	@Override
+	public void sendSimpleMail(String to, String subject, String content) {
+		SimpleMailMessage message = new SimpleMailMessage();
 
-    /**
-     * 发送简单邮件
-     *
-     * @param to      接收人
-     * @param subject 邮件主题
-     * @param content 邮件内容
-     */
-    @Override
-    public void sendSimpleMail(String to, String subject, String content) {
-        SimpleMailMessage message = new SimpleMailMessage();
+		message.setFrom(from);
+		message.setTo(to);
+		message.setSubject(subject);
+		message.setText(content);
 
-        message.setFrom(from);
-        message.setTo(to);
-        message.setSubject(subject);
-        message.setText(content);
+		try {
+			mailSender.send(message);
+			log.info("==>  发送邮件：类型=[{}] 功能=[{}] 发送人=[{}] 接收人=[{}] 状态=[{}] 时间=[{}]",
+					MailTypeEnum.TYPE_SIMPLE.getZh(),
+					MailFuncEnum.FUNC_NOTIFICATION.getZh(),
+					from,
+					to,
+					MailSvcEnum.SUCCESS.getMsg(),
+					Instant.now(Clock.systemDefaultZone()).toEpochMilli());
+		} catch (Exception e) {
+			log.info("==>  发送邮件：类型=[{}] 功能=[{}] 发送人=[{}] 接收人=[{}] 错误信息=[{}] 时间=[{}]",
+					MailTypeEnum.TYPE_SIMPLE.getZh(),
+					MailFuncEnum.FUNC_NOTIFICATION.getZh(),
+					from,
+					to,
+					e.getMessage(),
+					Instant.now(Clock.systemDefaultZone()).toEpochMilli());
+		}
+	}
 
-        try {
-            mailSender.send(message);
-            log.info("==>  发送邮件：类型=[{}] 功能=[{}] 发送人=[{}] 接收人=[{}] 状态=[{}] 时间=[{}]",
-                    MailTypeEnum.TYPE_SIMPLE.getZh(),
-                    MailFuncEnum.FUNC_NOTIFICATION.getZh(),
-                    from,
-                    to,
-                    MailSvcEnum.SUCCESS.getMsg(),
-                    Instant.now(Clock.systemDefaultZone()).toEpochMilli());
-        } catch (Exception e) {
-            log.info("==>  发送邮件：类型=[{}] 功能=[{}] 发送人=[{}] 接收人=[{}] 错误信息=[{}] 时间=[{}]",
-                    MailTypeEnum.TYPE_SIMPLE.getZh(),
-                    MailFuncEnum.FUNC_NOTIFICATION.getZh(),
-                    from,
-                    to,
-                    e.getMessage(),
-                    Instant.now(Clock.systemDefaultZone()).toEpochMilli());
-        }
-    }
+	/**
+	 * Send html mail *
+	 *
+	 * @param to      to
+	 * @param subject subject
+	 * @param content content
+	 */
+	@Override
+	public void sendHtmlMail(String to, String subject, String content) {
+		MimeMessage message = mailSender.createMimeMessage();
 
-    /**
-     * 发送 HTML 邮件
-     *
-     * @param to      接收人
-     * @param subject 邮件主题
-     * @param content 邮件内容
-     */
-    @Override
-    public void sendHtmlMail(String to, String subject, String content) {
-        MimeMessage message = mailSender.createMimeMessage();
+		try {
+			//true表示需要创建一个multipart message
+			MimeMessageHelper helper = new MimeMessageHelper(message, true);
+			helper.setFrom(from);
+			helper.setTo(to);
+			helper.setSubject(subject);
+			helper.setText(content, true);
 
-        try {
-            //true表示需要创建一个multipart message
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setFrom(from);
-            helper.setTo(to);
-            helper.setSubject(subject);
-            helper.setText(content, true);
+			mailSender.send(message);
 
-            mailSender.send(message);
+			log.info("==>  发送邮件：类型=[{}] 功能=[{}] 发送人=[{}] 接收人=[{}] 状态=[{}] 时间=[{}]",
+					MailTypeEnum.TYPE_HTML.getZh(),
+					MailFuncEnum.FUNC_NOTIFICATION.getZh(),
+					from,
+					to,
+					MailSvcEnum.SUCCESS.getMsg(),
+					Instant.now(Clock.systemDefaultZone()).toEpochMilli());
+		} catch (MessagingException e) {
+			log.info("==>  发送邮件：类型=[{}] 功能=[{}] 发送人=[{}] 接收人=[{}] 错误信息=[{}] 时间=[{}]",
+					MailTypeEnum.TYPE_HTML.getZh(),
+					MailFuncEnum.FUNC_NOTIFICATION.getZh(),
+					from,
+					to,
+					e.getMessage(),
+					Instant.now(Clock.systemDefaultZone()).toEpochMilli());
+		}
+	}
 
-            log.info("==>  发送邮件：类型=[{}] 功能=[{}] 发送人=[{}] 接收人=[{}] 状态=[{}] 时间=[{}]",
-                    MailTypeEnum.TYPE_HTML.getZh(),
-                    MailFuncEnum.FUNC_NOTIFICATION.getZh(),
-                    from,
-                    to,
-                    MailSvcEnum.SUCCESS.getMsg(),
-                    Instant.now(Clock.systemDefaultZone()).toEpochMilli());
-        } catch (MessagingException e) {
-            log.info("==>  发送邮件：类型=[{}] 功能=[{}] 发送人=[{}] 接收人=[{}] 错误信息=[{}] 时间=[{}]",
-                    MailTypeEnum.TYPE_HTML.getZh(),
-                    MailFuncEnum.FUNC_NOTIFICATION.getZh(),
-                    from,
-                    to,
-                    e.getMessage(),
-                    Instant.now(Clock.systemDefaultZone()).toEpochMilli());
-        }
-    }
+	/**
+	 * Send attachments mail *
+	 *
+	 * @param to       to
+	 * @param subject  subject
+	 * @param content  content
+	 * @param filePath file path
+	 */
+	@Override
+	public void sendAttachmentsMail(String to, String subject, String content, String filePath) {
+		MimeMessage message = mailSender.createMimeMessage();
 
-    /**
-     * 发送带附件的邮件
-     *
-     * @param to       接收人
-     * @param subject  邮件主题
-     * @param content  邮件内容
-     * @param filePath 附件地址
-     */
-    @Override
-    public void sendAttachmentsMail(String to, String subject, String content, String filePath) {
-        MimeMessage message = mailSender.createMimeMessage();
+		try {
+			MimeMessageHelper helper = new MimeMessageHelper(message, true);
+			helper.setFrom(from);
+			helper.setTo(to);
+			helper.setSubject(subject);
+			helper.setText(content, true);
 
-        try {
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setFrom(from);
-            helper.setTo(to);
-            helper.setSubject(subject);
-            helper.setText(content, true);
+			FileSystemResource file = new FileSystemResource(new File(filePath));
+			String fileName = filePath.substring(filePath.lastIndexOf(File.separator));
+			helper.addAttachment(fileName, file);
 
-            FileSystemResource file = new FileSystemResource(new File(filePath));
-            String fileName = filePath.substring(filePath.lastIndexOf(File.separator));
-            helper.addAttachment(fileName, file);
+			mailSender.send(message);
 
-            mailSender.send(message);
+			log.info("==>  发送邮件：类型=[{}] 功能=[{}] 发送人=[{}] 接收人=[{}] 状态=[{}] 时间=[{}]",
+					MailTypeEnum.TYPE_ATTACHMENTS.getZh(),
+					MailFuncEnum.FUNC_NOTIFICATION.getZh(),
+					from,
+					to,
+					MailSvcEnum.SUCCESS.getMsg(),
+					Instant.now(Clock.systemDefaultZone()).toEpochMilli());
+		} catch (MessagingException e) {
+			log.info("==>  发送邮件：类型=[{}] 功能=[{}] 发送人=[{}] 接收人=[{}] 错误信息=[{}] 时间=[{}]",
+					MailTypeEnum.TYPE_ATTACHMENTS.getZh(),
+					MailFuncEnum.FUNC_NOTIFICATION.getZh(),
+					from,
+					to,
+					e.getMessage(),
+					Instant.now(Clock.systemDefaultZone()).toEpochMilli());
+		}
+	}
 
-            log.info("==>  发送邮件：类型=[{}] 功能=[{}] 发送人=[{}] 接收人=[{}] 状态=[{}] 时间=[{}]",
-                    MailTypeEnum.TYPE_ATTACHMENTS.getZh(),
-                    MailFuncEnum.FUNC_NOTIFICATION.getZh(),
-                    from,
-                    to,
-                    MailSvcEnum.SUCCESS.getMsg(),
-                    Instant.now(Clock.systemDefaultZone()).toEpochMilli());
-        } catch (MessagingException e) {
-            log.info("==>  发送邮件：类型=[{}] 功能=[{}] 发送人=[{}] 接收人=[{}] 错误信息=[{}] 时间=[{}]",
-                    MailTypeEnum.TYPE_ATTACHMENTS.getZh(),
-                    MailFuncEnum.FUNC_NOTIFICATION.getZh(),
-                    from,
-                    to,
-                    e.getMessage(),
-                    Instant.now(Clock.systemDefaultZone()).toEpochMilli());
-        }
-    }
+	/**
+	 * Send inline resource mail *
+	 *
+	 * @param to      to
+	 * @param subject subject
+	 * @param content content
+	 * @param rscPath rsc path
+	 * @param rscId   rsc id
+	 */
+	@Override
+	public void sendInlineResourceMail(String to, String subject, String content, String rscPath, String rscId) {
+		MimeMessage message = mailSender.createMimeMessage();
 
-    /**
-     * 发送正文中有静态资源（图片）的邮件
-     *
-     * @param to      接收人
-     * @param subject 邮件主题
-     * @param content 邮件内容
-     * @param rscPath 资源地址
-     * @param rscId   资源ID
-     */
-    @Override
-    public void sendInlineResourceMail(String to, String subject, String content, String rscPath, String rscId) {
-        MimeMessage message = mailSender.createMimeMessage();
+		try {
+			MimeMessageHelper helper = new MimeMessageHelper(message, true);
+			helper.setFrom(from);
+			helper.setTo(to);
+			helper.setSubject(subject);
+			helper.setText(content, true);
 
-        try {
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setFrom(from);
-            helper.setTo(to);
-            helper.setSubject(subject);
-            helper.setText(content, true);
+			FileSystemResource res = new FileSystemResource(new File(rscPath));
+			helper.addInline(rscId, res);
 
-            FileSystemResource res = new FileSystemResource(new File(rscPath));
-            helper.addInline(rscId, res);
+			mailSender.send(message);
 
-            mailSender.send(message);
-
-            log.info("==>  发送邮件：类型=[{}] 功能=[{}] 发送人=[{}] 接收人=[{}] 状态=[{}] 时间=[{}]",
-                    MailTypeEnum.TYPE_INLINE_RESOURCE.getZh(),
-                    MailFuncEnum.FUNC_NOTIFICATION.getZh(),
-                    from,
-                    to,
-                    MailSvcEnum.SUCCESS.getMsg(),
-                    Instant.now(Clock.systemDefaultZone()).toEpochMilli());
-        } catch (MessagingException e) {
-            log.info("==>  发送邮件：类型=[{}] 功能=[{}] 发送人=[{}] 接收人=[{}] 错误信息=[{}] 时间=[{}]",
-                    MailTypeEnum.TYPE_INLINE_RESOURCE.getZh(),
-                    MailFuncEnum.FUNC_NOTIFICATION.getZh(),
-                    from,
-                    to,
-                    e.getMessage(),
-                    Instant.now(Clock.systemDefaultZone()).toEpochMilli());
-        }
-    }
+			log.info("==>  发送邮件：类型=[{}] 功能=[{}] 发送人=[{}] 接收人=[{}] 状态=[{}] 时间=[{}]",
+					MailTypeEnum.TYPE_INLINE_RESOURCE.getZh(),
+					MailFuncEnum.FUNC_NOTIFICATION.getZh(),
+					from,
+					to,
+					MailSvcEnum.SUCCESS.getMsg(),
+					Instant.now(Clock.systemDefaultZone()).toEpochMilli());
+		} catch (MessagingException e) {
+			log.info("==>  发送邮件：类型=[{}] 功能=[{}] 发送人=[{}] 接收人=[{}] 错误信息=[{}] 时间=[{}]",
+					MailTypeEnum.TYPE_INLINE_RESOURCE.getZh(),
+					MailFuncEnum.FUNC_NOTIFICATION.getZh(),
+					from,
+					to,
+					e.getMessage(),
+					Instant.now(Clock.systemDefaultZone()).toEpochMilli());
+		}
+	}
 }

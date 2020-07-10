@@ -1,23 +1,23 @@
 package xyz.rexlin600.skywalking.common.statuscode;
 
 /**
- * 状态码抽象接口
+ * Status code
  *
- * @author rexlin600
+ * @author hekunlin
  */
 public interface IStatusCode {
 
-    /**
-     * 状态码
-     *
-     * @return
-     */
-    long getCode();
+	/**
+	 * Gets code *
+	 *
+	 * @return the code
+	 */
+	long getCode();
 
-    /**
-     * 描述信息
-     *
-     * @return
-     */
-    String getMsg();
+	/**
+	 * Gets msg *
+	 *
+	 * @return the msg
+	 */
+	String getMsg();
 }

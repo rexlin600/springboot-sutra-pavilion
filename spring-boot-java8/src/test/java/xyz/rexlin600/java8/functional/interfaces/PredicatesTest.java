@@ -6,49 +6,45 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-/**
- * @description
- * @auther hekunlin
- * @create 2020-01-09 10:44
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class PredicatesTest {
 
-    private Predicates predicates;
+	private Predicates predicates;
 
-    @Before
-    public void setUp() throws Exception {
-        predicates = new Predicates();
-    }
+	@Before
+	public void setUp() throws Exception {
+		predicates = new Predicates();
+	}
 
-    @Test
-    public void judgeNumberOne() {
-        boolean max = predicates.judgeNumberOne(1000);
-        boolean min = predicates.judgeNumberOne(10);
+	@Test
+	public void judgeNumberOne() {
+		boolean max = predicates.judgeNumberOne(1000);
+		boolean min = predicates.judgeNumberOne(10);
 
-        assertTrue(max);
-        assertFalse(min);
-    }
+		assertTrue(max);
+		assertFalse(min);
+	}
 
-    @Test
-    public void judgeNumberTwo() {
-        boolean max = predicates.judgeNumberTwo(1000);
-        boolean min = predicates.judgeNumberTwo(10);
+	@Test
+	public void judgeNumberTwo() {
+		boolean max = predicates.judgeNumberTwo(1000);
+		boolean min = predicates.judgeNumberTwo(10);
 
-        assertTrue(max);
-        assertFalse(min);
-    }
+		assertTrue(max);
+		assertFalse(min);
+	}
 
-    @Test
-    public void judgeNumberNegate() {
-        boolean max = predicates.judgeNumberNegate(1000);
-        boolean min = predicates.judgeNumberNegate(10);
+	@Test
+	public void judgeNumberNegate() {
+		boolean max = predicates.judgeNumberNegate(1000);
+		boolean min = predicates.judgeNumberNegate(10);
 
-        assertFalse(max);
-        assertTrue(min);
+		assertFalse(max);
+		assertTrue(min);
 
-    }
+	}
 }

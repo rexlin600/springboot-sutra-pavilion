@@ -1,26 +1,25 @@
 package xyz.rexlin600.github.common.constant;
 
 /**
- * Github 常量类
+ * Github constant
  *
- * @author: rexlin600
- * @since: 2020/3/22
+ * @author hekunlin
  */
 public class GithubConstant {
 
-    /**
-     * Github 请求地址
-     */
-    public static final String GITHUB_API_URL = "https://api.github.com";
+	/**
+	 * GITHUB_API_URL
+	 */
+	public static final String GITHUB_API_URL = "https://api.github.com";
 
-    /**
-     * 用户
-     */
-    public static final String GITHUB_USERS = "/users";
+	/**
+	 * GITHUB_USERS
+	 */
+	public static final String GITHUB_USERS = "/users";
 
-    /**
-     * starred
-     */
-    public static final String GITHUB_STARRED = "/starred";
+	/**
+	 * GITHUB_STARRED
+	 */
+	public static final String GITHUB_STARRED = "/starred";
 
 }

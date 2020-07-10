@@ -12,28 +12,29 @@ import xyz.rexlin600.rabbitmq.pattern.direct.config.DirectConfig;
 import java.time.Instant;
 
 /**
- * Direct 消费者类
+ * Direct consumer
  *
- * @author: hekunlin
- * @since: 2020/1/7
+ * @author hekunlin
  */
 @Slf4j
 @Component
 @RabbitListener(queues = DirectConfig.DIRECT_QUEUE)
 public class DirectConsumer {
 
-    /**
-     * 处理消息 String
-     *
-     * @param message
-     */
-    @SneakyThrows
-    @RabbitHandler
-    public void handlerDirectStr(String content, Channel channel, Message message) {
-        long milli = Instant.now().toEpochMilli();
-        log.info("==>  Direct consume content=[{}] at [{}]", content, milli);
-        // true表示一次确认所有小于tag的消息
-        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
-    }
+	/**
+	 * Handler direct str *
+	 *
+	 * @param content content
+	 * @param channel channel
+	 * @param message message
+	 */
+	@SneakyThrows
+	@RabbitHandler
+	public void handlerDirectStr(String content, Channel channel, Message message) {
+		long milli = Instant.now().toEpochMilli();
+		log.info("==>  Direct consume content=[{}] at [{}]", content, milli);
+		// true表示一次确认所有小于tag的消息
+		channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+	}
 
 }

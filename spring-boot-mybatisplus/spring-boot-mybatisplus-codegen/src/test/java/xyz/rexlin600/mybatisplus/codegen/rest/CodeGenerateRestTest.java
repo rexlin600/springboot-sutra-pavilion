@@ -17,11 +17,6 @@ import xyz.rexlin600.mybatisplus.codegen.service.CodeService;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * @description
- * @auther hekunlin
- * @create 2020-01-14 19:11
- */
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest

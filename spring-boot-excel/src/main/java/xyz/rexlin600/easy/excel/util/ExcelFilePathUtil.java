@@ -4,58 +4,57 @@ import java.io.File;
 import java.io.InputStream;
 
 /**
- * Excel 文件工具类
+ * Excel file path util
  *
- * @author: hekunlin
- * @since: 2020/3/9
+ * @author hekunlin
  */
 public class ExcelFilePathUtil {
 
-    /**
-     * 根据文件路径获取文件输入流
-     *
-     * @param fileName 文件路径
-     * @return {@link InputStream}
-     */
-    public static InputStream getResourcesFileInputStream(String fileName) {
-        return Thread.currentThread().getContextClassLoader().getResourceAsStream("" + fileName);
-    }
+	/**
+	 * Gets resources file input stream *
+	 *
+	 * @param fileName file name
+	 * @return the resources file input stream
+	 */
+	public static InputStream getResourcesFileInputStream(String fileName) {
+		return Thread.currentThread().getContextClassLoader().getResourceAsStream("" + fileName);
+	}
 
-    /**
-     * 获取本地 Excel 文件路径
-     *
-     * @return {@link String}
-     */
-    public static String getPath() {
-        return ExcelFilePathUtil.class.getResource("/alibaba/").getPath();
-    }
+	/**
+	 * Gets path *
+	 *
+	 * @return the path
+	 */
+	public static String getPath() {
+		return ExcelFilePathUtil.class.getResource("/alibaba/").getPath();
+	}
 
-    /**
-     * 创建新文件
-     *
-     * @param pathName 文件路径
-     * @return {@link File}
-     */
-    public static File createNewFile(String pathName) {
-        File file = new File(getPath() + pathName);
-        if (file.exists()) {
-            file.delete();
-        } else {
-            if (!file.getParentFile().exists()) {
-                file.getParentFile().mkdirs();
-            }
-        }
-        return file;
-    }
+	/**
+	 * Create new file file
+	 *
+	 * @param pathName path name
+	 * @return the file
+	 */
+	public static File createNewFile(String pathName) {
+		File file = new File(getPath() + pathName);
+		if (file.exists()) {
+			file.delete();
+		} else {
+			if (!file.getParentFile().exists()) {
+				file.getParentFile().mkdirs();
+			}
+		}
+		return file;
+	}
 
-    /**
-     * 读取文件为 File
-     *
-     * @param pathName 文件路径
-     * @return {@link File}
-     */
-    public static File readFile(String pathName) {
-        return new File(getPath() + pathName);
-    }
+	/**
+	 * Read file file
+	 *
+	 * @param pathName path name
+	 * @return the file
+	 */
+	public static File readFile(String pathName) {
+		return new File(getPath() + pathName);
+	}
 
 }

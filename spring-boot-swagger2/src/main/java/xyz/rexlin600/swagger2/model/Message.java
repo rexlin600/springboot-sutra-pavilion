@@ -9,30 +9,49 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author rexlin600
+ * Message
+ *
+ * @author hekunlin
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Message implements Serializable {
 
-    private Long id;
+	/**
+	 * Id
+	 */
+	private Long id;
 
-    @ApiModelProperty(value = "消息体")
-    private String text;
+	/**
+	 * Text
+	 */
+	@ApiModelProperty(value = "消息体")
+	private String text;
 
-    @ApiModelProperty(value = "消息总结")
-    private String summary;
+	/**
+	 * Summary
+	 */
+	@ApiModelProperty(value = "消息总结")
+	private String summary;
 
-    private Date createDate;
+	/**
+	 * Create date
+	 */
+	private Date createDate;
 
-    @Override
-    public String toString() {
-        return "Message{" +
-                "id=" + id +
-                ", text='" + text + '\'' +
-                ", summary='" + summary + '\'' +
-                ", createDate=" + createDate +
-                '}';
-    }
+	/**
+	 * To string string
+	 *
+	 * @return the string
+	 */
+	@Override
+	public String toString() {
+		return "Message{" +
+				"id=" + id +
+				", text='" + text + '\'' +
+				", summary='" + summary + '\'' +
+				", createDate=" + createDate +
+				'}';
+	}
 }

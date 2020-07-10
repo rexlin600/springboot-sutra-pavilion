@@ -4,15 +4,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Docker示例程序
+ * Docker application
  *
- * @author: hekunlin
+ * @author hekunlin
  */
 @SpringBootApplication
 public class DockerApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(DockerApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(DockerApplication.class, args);
+	}
 
 }

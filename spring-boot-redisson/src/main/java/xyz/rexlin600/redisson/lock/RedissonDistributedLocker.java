@@ -9,95 +9,109 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.TimeUnit;
 
 /**
- * redisson 分布式锁
+ * Redisson distributed locker
  *
- * @author rexlin600
+ * @author hekunlin
  */
 @Service
 public class RedissonDistributedLocker implements DistributedLocker {
 
-    /**
-     * RedissonClient已经由配置类生成，这里自动装配即可
-     */
-    private final RedissonClient redissonClient;
+	/**
+	 * Redisson client
+	 */
+	private final RedissonClient redissonClient;
 
-    @Autowired
-    public RedissonDistributedLocker(@Qualifier("redisson") RedissonClient redissonClient) {
-        this.redissonClient = redissonClient;
-    }
+	/**
+	 * Redisson distributed locker
+	 *
+	 * @param redissonClient redisson client
+	 */
+	@Autowired
+	public RedissonDistributedLocker(@Qualifier("redisson") RedissonClient redissonClient) {
+		this.redissonClient = redissonClient;
+	}
 
-    /**
-     * lock(), 拿不到lock就不罢休，不然线程就一直block
-     *
-     * @param lockKey
-     * @return
-     */
-    @Override
-    public RLock lock(String lockKey) {
-        RLock lock = redissonClient.getLock(lockKey);
-        lock.lock();
-        return lock;
-    }
+	/**
+	 * Lock r lock
+	 *
+	 * @param lockKey lock key
+	 * @return the r lock
+	 */
+	@Override
+	public RLock lock(String lockKey) {
+		RLock lock = redissonClient.getLock(lockKey);
+		lock.lock();
+		return lock;
+	}
 
-    /**
-     * leaseTime为加锁时间，单位为秒
-     *
-     * @param lockKey
-     * @param leaseTime
-     * @return
-     */
-    @Override
-    public RLock lock(String lockKey, long leaseTime) {
-        RLock lock = redissonClient.getLock(lockKey);
-        lock.lock(leaseTime, TimeUnit.SECONDS);
-        return null;
-    }
+	/**
+	 * Lock r lock
+	 *
+	 * @param lockKey   lock key
+	 * @param leaseTime lease time
+	 * @return the r lock
+	 */
+	@Override
+	public RLock lock(String lockKey, long leaseTime) {
+		RLock lock = redissonClient.getLock(lockKey);
+		lock.lock(leaseTime, TimeUnit.SECONDS);
+		return null;
+	}
 
-    /**
-     * timeout为加锁时间，时间单位由unit确定
-     *
-     * @param lockKey
-     * @param unit
-     * @param timeout
-     * @return
-     */
-    @Override
-    public RLock lock(String lockKey, TimeUnit unit, long timeout) {
-        RLock lock = redissonClient.getLock(lockKey);
-        lock.lock(timeout, unit);
-        return lock;
-    }
+	/**
+	 * Lock r lock
+	 *
+	 * @param lockKey lock key
+	 * @param unit    unit
+	 * @param timeout timeout
+	 * @return the r lock
+	 */
+	@Override
+	public RLock lock(String lockKey, TimeUnit unit, long timeout) {
+		RLock lock = redissonClient.getLock(lockKey);
+		lock.lock(timeout, unit);
+		return lock;
+	}
 
-    @Override
-    public boolean tryLock(String lockKey, TimeUnit unit, long waitTime, long leaseTime) {
-        RLock lock = redissonClient.getLock(lockKey);
-        try {
-            return lock.tryLock(waitTime, leaseTime, unit);
-        } catch (InterruptedException e) {
-            return false;
-        }
-    }
+	/**
+	 * Try lock boolean
+	 *
+	 * @param lockKey   lock key
+	 * @param unit      unit
+	 * @param waitTime  wait time
+	 * @param leaseTime lease time
+	 * @return the boolean
+	 */
+	@Override
+	public boolean tryLock(String lockKey, TimeUnit unit, long waitTime, long leaseTime) {
+		RLock lock = redissonClient.getLock(lockKey);
+		try {
+			return lock.tryLock(waitTime, leaseTime, unit);
+		} catch (InterruptedException e) {
+			return false;
+		}
+	}
 
-    /**
-     * 释放锁
-     *
-     * @param lockKey
-     */
-    @Override
-    public void unlock(String lockKey) {
-        RLock lock = redissonClient.getLock(lockKey);
-        lock.unlock();
-    }
+	/**
+	 * Unlock *
+	 *
+	 * @param lockKey lock key
+	 */
+	@Override
+	public void unlock(String lockKey) {
+		RLock lock = redissonClient.getLock(lockKey);
+		lock.unlock();
+	}
 
-    /**
-     * 释放锁
-     *
-     * @param lock
-     */
-    @Override
-    public void unlock(RLock lock) {
-        lock.unlock();
-    }
+	/**
+	 * Unlock *
+	 *
+	 * @param lock lock
+	 */
+	@Override
+	public void unlock(RLock lock) {
+		lock.unlock();
+	}
 
 
 }

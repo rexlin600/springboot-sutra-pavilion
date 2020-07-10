@@ -6,16 +6,24 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
- * @author: hekunlin
+ * Second command line runner
+ *
+ * @author hekunlin
  */
 @Component
 @Order(2)
 @Slf4j
 public class SecondCommandLineRunner implements CommandLineRunner {
 
-    @Override
-    public void run(String... args) throws Exception {
-        log.info("==>  CommandLineRunner start " + this.getClass().getName() + " ...");
-    }
+	/**
+	 * Run *
+	 *
+	 * @param args args
+	 * @throws Exception exception
+	 */
+	@Override
+	public void run(String... args) throws Exception {
+		log.info("==>  CommandLineRunner start " + this.getClass().getName() + " ...");
+	}
 
 }

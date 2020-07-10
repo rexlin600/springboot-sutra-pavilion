@@ -12,29 +12,29 @@ import xyz.rexlin600.rabbitmq.pattern.simple.config.SimpleConfig;
 import java.time.Instant;
 
 /**
- * Simple 消费者
- * 简单模式
+ * Simple customer
  *
- * @author: hekunlin
- * @since: 2020/1/7
+ * @author hekunlin
  */
 @Slf4j
 @Component
 @RabbitListener(queues = SimpleConfig.SIMPLE_QUEUE)
 public class SimpleCustomer {
 
-    /**
-     * 处理消息 String
-     *
-     * @param message
-     */
-    @SneakyThrows
-    @RabbitHandler
-    public void handlerSimple(String content, Channel channel, Message message) {
-        long milli = Instant.now().toEpochMilli();
-        log.info("==>  Simple consume content=[{}] at [{}]", content, milli);
-        // true表示一次确认所有小于tag的消息
-        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
-    }
+	/**
+	 * Handler simple *
+	 *
+	 * @param content content
+	 * @param channel channel
+	 * @param message message
+	 */
+	@SneakyThrows
+	@RabbitHandler
+	public void handlerSimple(String content, Channel channel, Message message) {
+		long milli = Instant.now().toEpochMilli();
+		log.info("==>  Simple consume content=[{}] at [{}]", content, milli);
+		// true表示一次确认所有小于tag的消息
+		channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+	}
 
 }

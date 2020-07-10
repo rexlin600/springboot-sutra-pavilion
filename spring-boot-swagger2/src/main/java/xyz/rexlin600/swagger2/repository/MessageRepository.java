@@ -6,56 +6,56 @@ import xyz.rexlin600.swagger2.model.Message;
 import java.util.List;
 
 /**
- * 消息操作接口
+ * Message repository
  *
- * @author rexlin600
+ * @author hekunlin
  */
 public interface MessageRepository {
 
-    /**
-     * 查找列表
-     *
-     * @return
-     */
-    List<Message> findAll();
+	/**
+	 * Find all list
+	 *
+	 * @return the list
+	 */
+	List<Message> findAll();
 
-    /**
-     * 保存对象
-     *
-     * @param message
-     * @return
-     */
-    Message save(Message message);
+	/**
+	 * Save message
+	 *
+	 * @param message message
+	 * @return the message
+	 */
+	Message save(Message message);
 
-    /**
-     * 更新对象
-     *
-     * @param message
-     * @return
-     */
-    Message update(Message message);
+	/**
+	 * Update message
+	 *
+	 * @param message message
+	 * @return the message
+	 */
+	Message update(Message message);
 
-    /**
-     * 更新文本
-     *
-     * @param message
-     * @return
-     */
-    Message updateText(Message message);
+	/**
+	 * Update text message
+	 *
+	 * @param message message
+	 * @return the message
+	 */
+	Message updateText(Message message);
 
-    /**
-     * 根据ID查找
-     *
-     * @param id
-     * @return
-     */
-    Message findMessage(Long id);
+	/**
+	 * Find message message
+	 *
+	 * @param id id
+	 * @return the message
+	 */
+	Message findMessage(Long id);
 
-    /**
-     * 根据ID删除
-     *
-     * @param id
-     */
-    void deleteMessage(Long id);
+	/**
+	 * Delete message *
+	 *
+	 * @param id id
+	 */
+	void deleteMessage(Long id);
 
 }

@@ -4,34 +4,32 @@ package xyz.rexlin600.jdbc.service;
 import xyz.rexlin600.jdbc.entity.User;
 
 /**
- * UserService 类
+ * User service
  *
- * @author: rexlin600
- * @since: 2020-01-10 22:11:04
+ * @author hekunlin
  */
 public interface UserService {
 
-    /**
-     * 根据id查找用户
-     *
-     * @param id
-     * @return
-     */
-    User selectById(Long id);
+	/**
+	 * Select by id user
+	 *
+	 * @param id id
+	 * @return the user
+	 */
+	User selectById(Long id);
 
-    /**
-     * 根据id删除一个用户
-     *
-     * @param id
-     * @return
-     */
-    void deleteById(Long id);
+	/**
+	 * Delete by id *
+	 *
+	 * @param id id
+	 */
+	void deleteById(Long id);
 
-    /**
-     * 获取用户总数
-     *
-     * @return
-     */
-    Long getAllUsers();
+	/**
+	 * Gets all users *
+	 *
+	 * @return the all users
+	 */
+	Long getAllUsers();
 
 }

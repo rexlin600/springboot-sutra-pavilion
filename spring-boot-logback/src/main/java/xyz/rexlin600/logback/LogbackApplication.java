@@ -4,16 +4,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * LogbackApplication 启动类
+ * Logback application
  *
- * @author: rexlin600
- * @since: 2020-02-05
+ * @author hekunlin
  */
 @SpringBootApplication
 public class LogbackApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(LogbackApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(LogbackApplication.class, args);
+	}
 
 }

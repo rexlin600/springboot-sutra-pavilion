@@ -8,10 +8,9 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 二维码内容对象
+ * Qr code
  *
- * @author: rexlin600
- * @since: 2020-03-01
+ * @author hekunlin
  */
 @Builder
 @Data
@@ -19,29 +18,29 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class QrCode implements Serializable {
 
-    /**
-     * 二维码名称
-     */
-    private String name;
+	/**
+	 * Name
+	 */
+	private String name;
 
-    /**
-     * 二维码内容
-     */
-    private String content;
+	/**
+	 * Content
+	 */
+	private String content;
 
-    /**
-     * 二维码顶部文字
-     */
-    private String topText;
+	/**
+	 * Top text
+	 */
+	private String topText;
 
-    /**
-     * 二维码中部文字
-     */
-    private String centerText;
+	/**
+	 * Center text
+	 */
+	private String centerText;
 
-    /**
-     * 二维码底部文字
-     */
-    private String bottomText;
+	/**
+	 * Bottom text
+	 */
+	private String bottomText;
 
 }

@@ -9,31 +9,30 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * Range 检查
+ * Range req
  *
- * @author: hekunlin
- * @since: 2020/6/1
+ * @author hekunlin
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class RangeReq implements Serializable {
 
-    // -----------------------------------------------------------------------------------------------
-    // Range
-    // -----------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------
+	// Range
+	// -----------------------------------------------------------------------------------------------
 
-    /**
-     * 花费
-     */
-    @Range(min = 1, max = 20, message = "参数错误：花费最多20")
-    private BigDecimal spend;
+	/**
+	 * Spend
+	 */
+	@Range(min = 1, max = 20, message = "参数错误：花费最多20")
+	private BigDecimal spend;
 
-    /**
-     * 地址
-     */
-    @Range(min = 5, max = 10, message = "参数错误：地址长度范围[5,10]")
-    private String address;
+	/**
+	 * Address
+	 */
+	@Range(min = 5, max = 10, message = "参数错误：地址长度范围[5,10]")
+	private String address;
 
 
 }

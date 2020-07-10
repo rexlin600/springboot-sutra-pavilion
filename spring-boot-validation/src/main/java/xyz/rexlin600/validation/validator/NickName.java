@@ -5,10 +5,9 @@ import javax.validation.Payload;
 import java.lang.annotation.*;
 
 /**
- * 昵称校验器
+ * Nick name
  *
- * @author: hekunlin
- * @since: 2020/6/21
+ * @author hekunlin
  */
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
@@ -16,12 +15,32 @@ import java.lang.annotation.*;
 @Constraint(validatedBy = {NickNameValidator.class})
 public @interface NickName {
 
-    boolean required() default true;
+	/**
+	 * Required boolean
+	 *
+	 * @return the boolean
+	 */
+	boolean required() default true;
 
-    String message() default "昵称格式错误";
+	/**
+	 * Message string
+	 *
+	 * @return the string
+	 */
+	String message() default "昵称格式错误";
 
-    Class<?>[] groups() default {};
+	/**
+	 * Groups class [ ]
+	 *
+	 * @return the class [ ]
+	 */
+	Class<?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default {};
+	/**
+	 * Payload class [ ]
+	 *
+	 * @return the class [ ]
+	 */
+	Class<? extends Payload>[] payload() default {};
 
 }

@@ -16,116 +16,125 @@ import java.io.StringWriter;
 import java.nio.charset.Charset;
 
 /**
- * Jaxb工具类
+ * Jaxb util
  *
- * @author: hekunlin
- * @since: 2020/3/6
+ * @param <T> parameter
+ * @author hekunlin
  */
 @Slf4j
 public class JaxbUtil<T> {
 
-    public final static String DEFAULT_PREFIX = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>";
+	/**
+	 * DEFAULT_PREFIX
+	 */
+	public final static String DEFAULT_PREFIX = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>";
 
-    /**
-     * Java对象转XML
-     *
-     * @param t        对象
-     * @param encoding 编码
-     * @return
-     * @throws JAXBException
-     */
-    @SneakyThrows(value = {JAXBException.class, IOException.class})
-    public static <T> String java2Xml(T t, String encoding) {
-        Marshaller marshaller = createMarshaller(t, encoding);
+	/**
+	 * Java 2 xml string
+	 *
+	 * @param <T>      parameter
+	 * @param t        t
+	 * @param encoding encoding
+	 * @return the string
+	 */
+	@SneakyThrows(value = {JAXBException.class, IOException.class})
+	public static <T> String java2Xml(T t, String encoding) {
+		Marshaller marshaller = createMarshaller(t, encoding);
 
-        StringWriter stringWriter = new StringWriter();
-        marshaller.marshal(t, stringWriter);
-        String result = stringWriter.toString();
-        stringWriter.close();
+		StringWriter stringWriter = new StringWriter();
+		marshaller.marshal(t, stringWriter);
+		String result = stringWriter.toString();
+		stringWriter.close();
 
-        return result;
-    }
+		return result;
+	}
 
-    /**
-     * XML转Java对象
-     *
-     * @param t   对象
-     * @param xml xml
-     * @return
-     * @throws JAXBException
-     */
-    @SneakyThrows(value = {JAXBException.class})
-    public static <T> T xml2Java(Class<T> t, String xml) {
-        Unmarshaller unmarshaller = createUnmarshaller(t);
+	/**
+	 * Xml 2 java t
+	 *
+	 * @param <T> parameter
+	 * @param t   t
+	 * @param xml xml
+	 * @return the t
+	 */
+	@SneakyThrows(value = {JAXBException.class})
+	public static <T> T xml2Java(Class<T> t, String xml) {
+		Unmarshaller unmarshaller = createUnmarshaller(t);
 
-        StringReader stringReader = new StringReader(xml);
-        T result = (T) unmarshaller.unmarshal(new StreamSource(stringReader));
-        stringReader.close();
+		StringReader stringReader = new StringReader(xml);
+		T result = (T) unmarshaller.unmarshal(new StreamSource(stringReader));
+		stringReader.close();
 
-        return result;
-    }
+		return result;
+	}
 
-    // -----------------------------------------------------------------------------------------------
-    // 构建 Marshaller、Unmarshaller
-    // -----------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------
+	// 构建 Marshaller、Unmarshaller
+	// -----------------------------------------------------------------------------------------------
 
-    /**
-     * 创建 Marshaller
-     *
-     * @param t        对象
-     * @param encoding 编码
-     * @return
-     */
-    @SneakyThrows(value = {JAXBException.class})
-    private static <T> Marshaller createMarshaller(T t, String encoding) {
-        Marshaller marshaller = JAXBContext.newInstance(t.getClass()).createMarshaller();
-        // 设置转换参数
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        if (!StringUtils.isEmpty(encoding)) {
-            marshaller.setProperty(Marshaller.JAXB_ENCODING, Charset.forName("UTF-8"));
-        }
+	/**
+	 * Create marshaller marshaller
+	 *
+	 * @param <T>      parameter
+	 * @param t        t
+	 * @param encoding encoding
+	 * @return the marshaller
+	 */
+	@SneakyThrows(value = {JAXBException.class})
+	private static <T> Marshaller createMarshaller(T t, String encoding) {
+		Marshaller marshaller = JAXBContext.newInstance(t.getClass()).createMarshaller();
+		// 设置转换参数
+		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+		if (!StringUtils.isEmpty(encoding)) {
+			marshaller.setProperty(Marshaller.JAXB_ENCODING, Charset.forName("UTF-8"));
+		}
 
-        return marshaller;
-    }
+		return marshaller;
+	}
 
-    /**
-     * 创建 Unmarshaller
-     *
-     * @param t 对象
-     * @return
-     */
-    @SneakyThrows(value = {JAXBException.class})
-    private static <T> Unmarshaller createUnmarshaller(Class<T> t) {
-        Unmarshaller unmarshaller = JAXBContext.newInstance(t).createUnmarshaller();
-        return unmarshaller;
-    }
+	/**
+	 * Create unmarshaller unmarshaller
+	 *
+	 * @param <T> parameter
+	 * @param t   t
+	 * @return the unmarshaller
+	 */
+	@SneakyThrows(value = {JAXBException.class})
+	private static <T> Unmarshaller createUnmarshaller(Class<T> t) {
+		Unmarshaller unmarshaller = JAXBContext.newInstance(t).createUnmarshaller();
+		return unmarshaller;
+	}
 
-    /**
-     * 消除XML前缀
-     *
-     * @param xml xml
-     */
-    public static final String handleRemoveXmlPrefix(String xml, String prefix) {
-        xml = StringEscapeUtils.unescapeXml(xml);
-        prefix = StringEscapeUtils.unescapeXml(prefix);
+	/**
+	 * Handle remove xml prefix string
+	 *
+	 * @param xml    xml
+	 * @param prefix prefix
+	 * @return the string
+	 */
+	public static final String handleRemoveXmlPrefix(String xml, String prefix) {
+		xml = StringEscapeUtils.unescapeXml(xml);
+		prefix = StringEscapeUtils.unescapeXml(prefix);
 
-        if (xml.contains(prefix)) {
-            xml = xml.substring(prefix.length());
-        }
+		if (xml.contains(prefix)) {
+			xml = xml.substring(prefix.length());
+		}
 
-        return xml;
-    }
+		return xml;
+	}
 
 
-    /**
-     * 增加默认XML前缀
-     *
-     * @param xml xml
-     */
-    public static final String handleAddXmlPrefix(String xml, String prefix) {
-        xml = StringEscapeUtils.unescapeXml(xml);
-        prefix = StringEscapeUtils.unescapeXml(prefix);
-        return prefix + "\n" + xml.trim();
-    }
+	/**
+	 * Handle add xml prefix string
+	 *
+	 * @param xml    xml
+	 * @param prefix prefix
+	 * @return the string
+	 */
+	public static final String handleAddXmlPrefix(String xml, String prefix) {
+		xml = StringEscapeUtils.unescapeXml(xml);
+		prefix = StringEscapeUtils.unescapeXml(prefix);
+		return prefix + "\n" + xml.trim();
+	}
 
 }

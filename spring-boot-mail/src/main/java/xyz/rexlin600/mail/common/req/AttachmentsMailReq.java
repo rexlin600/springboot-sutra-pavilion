@@ -7,34 +7,33 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * AttachmentsMailReq 类
+ * Attachments mail req
  *
- * @author: hekunlin
- * @since: 2020/1/10
+ * @author hekunlin
  */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class AttachmentsMailReq implements Serializable {
 
-    /**
-     * 发送给哪个用户
-     */
-    private String to;
+	/**
+	 * To
+	 */
+	private String to;
 
-    /**
-     * 发送的右键主题
-     */
-    private String subject;
+	/**
+	 * Subject
+	 */
+	private String subject;
 
-    /**
-     * 发送的邮件内容
-     */
-    private String content;
+	/**
+	 * Content
+	 */
+	private String content;
 
-    /**
-     * 附件 URL 内容
-     */
-    private String filePath;
+	/**
+	 * File path
+	 */
+	private String filePath;
 
 }

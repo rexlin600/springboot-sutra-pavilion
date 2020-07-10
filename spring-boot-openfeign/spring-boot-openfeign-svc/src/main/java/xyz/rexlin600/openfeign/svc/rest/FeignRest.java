@@ -13,95 +13,100 @@ import javax.annotation.Resource;
 import java.io.InputStream;
 
 /**
- * 测试 rest
+ * Feign rest
  *
- * @author: hekunlin
- * @since: 2020/5/7
+ * @author hekunlin
  */
 @Slf4j
 @RestController
 @RequestMapping("/open/feign")
 public class FeignRest {
 
-    @Resource
-    private RemoteUriFeign remoteUriFeign;
+	/**
+	 * Remote uri feign
+	 */
+	@Resource
+	private RemoteUriFeign remoteUriFeign;
 
-    @Resource
-    private FileUploadFeign fileUploadFeign;
+	/**
+	 * File upload feign
+	 */
+	@Resource
+	private FileUploadFeign fileUploadFeign;
 
-    /**
-     * 查看某月某日的事件列表
-     *
-     * @param key
-     * @param v
-     * @param month
-     * @param day
-     * @return
-     */
-    @GetMapping("/historyToady")
-    public HistoryTodayResponse historyToady(@RequestParam(value = "key") String key,
-                                             @RequestParam(value = "v") String v,
-                                             @RequestParam(value = "month") Integer month,
-                                             @RequestParam(value = "day") Integer day) {
-        String s = remoteUriFeign.historyToady(key, v, month, day);
-        Gson gson = new Gson();
-        HistoryTodayResponse historyTodayResponse = gson.fromJson(s, HistoryTodayResponse.class);
-        return historyTodayResponse;
-    }
+	/**
+	 * History toady history today response
+	 *
+	 * @param key   key
+	 * @param v     v
+	 * @param month month
+	 * @param day   day
+	 * @return the history today response
+	 */
+	@GetMapping("/historyToady")
+	public HistoryTodayResponse historyToady(@RequestParam(value = "key") String key,
+											 @RequestParam(value = "v") String v,
+											 @RequestParam(value = "month") Integer month,
+											 @RequestParam(value = "day") Integer day) {
+		String s = remoteUriFeign.historyToady(key, v, month, day);
+		Gson gson = new Gson();
+		HistoryTodayResponse historyTodayResponse = gson.fromJson(s, HistoryTodayResponse.class);
+		return historyTodayResponse;
+	}
 
-    /**
-     * SpringBoot 单个文件上传
-     *
-     * @param file
-     * @return
-     */
-    @SneakyThrows
-    @PostMapping("/upload")
-    public String upload(@RequestParam(value = "file") MultipartFile file) {
-        String filename = file.getOriginalFilename();
-        long fileSize = file.getSize();
-        InputStream inputStream = file.getInputStream();
+	/**
+	 * Upload string
+	 *
+	 * @param file file
+	 * @return the string
+	 */
+	@SneakyThrows
+	@PostMapping("/upload")
+	public String upload(@RequestParam(value = "file") MultipartFile file) {
+		String filename = file.getOriginalFilename();
+		long fileSize = file.getSize();
+		InputStream inputStream = file.getInputStream();
 
-        log.info("==>  fileName is : {}", filename);
-        log.info("==>  fileSize is : {}", fileSize);
+		log.info("==>  fileName is : {}", filename);
+		log.info("==>  fileSize is : {}", fileSize);
 
-        // 省略文件上传后续操作 ...
+		// 省略文件上传后续操作 ...
 
-        if (inputStream != null) {
-            inputStream.close();
-        }
+		if (inputStream != null) {
+			inputStream.close();
+		}
 
-        return "SUCCESS";
-    }
+		return "SUCCESS";
+	}
 
-    /**
-     * SpringBoot 批量文件上传
-     *
-     * @param files
-     * @return
-     */
-    @SneakyThrows
-    @PostMapping("/batch/upload")
-    public String upload(@RequestParam(value = "files") MultipartFile[] files) {
-        for (MultipartFile file : files) {
-            this.upload(file);
-        }
+	/**
+	 * Upload string
+	 *
+	 * @param files files
+	 * @return the string
+	 */
+	@SneakyThrows
+	@PostMapping("/batch/upload")
+	public String upload(@RequestParam(value = "files") MultipartFile[] files) {
+		for (MultipartFile file : files) {
+			this.upload(file);
+		}
 
-        // 省略文件上传后续操作 ...
+		// 省略文件上传后续操作 ...
 
-        return "SUCCESS";
-    }
+		return "SUCCESS";
+	}
 
-    /**
-     * Feign 文件上传
-     *
-     * @param file
-     * @return
-     */
-    @SneakyThrows
-    @PostMapping("/feign/upload")
-    public String feignUpload(@RequestParam(value = "file") MultipartFile file) {
-        return fileUploadFeign.upload(file);
-    }
+	/**
+	 * Feign upload string
+	 *
+	 * @param file file
+	 * @return the string
+	 */
+	@SneakyThrows
+	@PostMapping("/feign/upload")
+	public String feignUpload(@RequestParam(value = "file") MultipartFile file) {
+		return fileUploadFeign.upload(file);
+	}
 
 }

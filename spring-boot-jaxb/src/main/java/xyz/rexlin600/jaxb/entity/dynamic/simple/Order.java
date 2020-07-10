@@ -9,10 +9,9 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 产品类
+ * Order
  *
- * @author: hekunlin
- * @since: 2020/3/6
+ * @author hekunlin
  */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,49 +20,79 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Order implements Serializable {
 
-    /**
-     * ID
-     */
-    @XmlElement(name = "ID")
-    private Long id;
+	/**
+	 * Id
+	 */
+	@XmlElement(name = "ID")
+	private Long id;
 
-    /**
-     * 名称
-     */
-    @XmlElement(name = "NAME")
-    private String name;
+	/**
+	 * Name
+	 */
+	@XmlElement(name = "NAME")
+	private String name;
 
-    /**
-     * 列表
-     */
-    @XmlElementWrapper(name = "PRODUCT")
-    @XmlAnyElement
-    private List<Object> list;
+	/**
+	 * List
+	 */
+	@XmlElementWrapper(name = "PRODUCT")
+	@XmlAnyElement
+	private List<Object> list;
 
-    @XmlTransient
-    public Long getId() {
-        return id;
-    }
+	/**
+	 * Gets id *
+	 *
+	 * @return the id
+	 */
+	@XmlTransient
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	/**
+	 * Sets id *
+	 *
+	 * @param id id
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    @XmlTransient
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets name *
+	 *
+	 * @return the name
+	 */
+	@XmlTransient
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	/**
+	 * Sets name *
+	 *
+	 * @param name name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    @XmlTransient
-    public List<Object> getList() {
-        return list;
-    }
+	/**
+	 * Gets list *
+	 *
+	 * @return the list
+	 */
+	@XmlTransient
+	public List<Object> getList() {
+		return list;
+	}
 
-    public void setList(List<Object> list) {
-        this.list = list;
-    }
+	/**
+	 * Sets list *
+	 *
+	 * @param list list
+	 */
+	public void setList(List<Object> list) {
+		this.list = list;
+	}
 }

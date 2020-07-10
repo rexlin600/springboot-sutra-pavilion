@@ -7,17 +7,24 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
- * @author: hekunlin
- * @since: 2020/1/2
+ * First application runner
+ *
+ * @author hekunlin
  */
 @Component
 @Slf4j
 @Order(1)
 public class FirstApplicationRunner implements ApplicationRunner {
 
-    @Override
-    public void run(ApplicationArguments args) throws Exception {
-        log.info("==>  ApplicationRunner start " + this.getClass().getName() + " , args=[" + args + "] ...");
-    }
+	/**
+	 * Run *
+	 *
+	 * @param args args
+	 * @throws Exception exception
+	 */
+	@Override
+	public void run(ApplicationArguments args) throws Exception {
+		log.info("==>  ApplicationRunner start " + this.getClass().getName() + " , args=[" + args + "] ...");
+	}
 
 }

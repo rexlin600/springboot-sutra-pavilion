@@ -6,11 +6,6 @@ import xyz.rexlin600.jaxb.entity.list.FileType;
 
 import java.util.Arrays;
 
-/**
- * @description
- * @auther hekunlin
- * @create 2020-03-06 16:09
- */
 public class JaxbUtilListTest {
 
     private final static Document document = new Document(1L, "超级文件", Arrays.asList(
@@ -26,26 +21,26 @@ public class JaxbUtilListTest {
             "        <ID>100</ID>\n" +
             "        <TYPE>PNG</TYPE>\n" +
             "    </FileType>\n" +
-            "    <FileType>\n" +
-            "        <ID>200</ID>\n" +
-            "        <TYPE>JPG</TYPE>\n" +
-            "    </FileType>\n" +
-            "    <FileType>\n" +
-            "        <ID>300</ID>\n" +
-            "        <TYPE>GIF</TYPE>\n" +
-            "    </FileType>\n" +
-            "</DOCUMENT>";
+			"    <FileType>\n" +
+			"        <ID>200</ID>\n" +
+			"        <TYPE>JPG</TYPE>\n" +
+			"    </FileType>\n" +
+			"    <FileType>\n" +
+			"        <ID>300</ID>\n" +
+			"        <TYPE>GIF</TYPE>\n" +
+			"    </FileType>\n" +
+			"</DOCUMENT>";
 
-    @Test
-    public void java2Xml() {
-        String xml = JaxbUtil.java2Xml(document, null);
-        System.out.println(xml);
-    }
+	@Test
+	public void java2Xml() {
+		String xml = JaxbUtil.java2Xml(document, null);
+		System.out.println(xml);
+	}
 
-    @Test
-    public void xml2Java() {
-        Document document = JaxbUtil.xml2Java(Document.class, xml);
-        System.out.println(document.toString());
-    }
+	@Test
+	public void xml2Java() {
+		Document document = JaxbUtil.xml2Java(Document.class, xml);
+		System.out.println(document.toString());
+	}
 
 }

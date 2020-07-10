@@ -1,22 +1,23 @@
 package xyz.rexlin600.validation.common.statuscode;
 
 /**
- * 状态码抽象接口
- * @author rexlin600
+ * Status code
+ *
+ * @author hekunlin
  */
 public interface IStatusCode {
 
-    /**
-     * 状态码
-     *
-     * @return
-     */
-    long getCode();
+	/**
+	 * Gets code *
+	 *
+	 * @return the code
+	 */
+	long getCode();
 
-    /**
-     * 描述信息
-     *
-     * @return
-     */
-    String getMsg();
+	/**
+	 * Gets msg *
+	 *
+	 * @return the msg
+	 */
+	String getMsg();
 }

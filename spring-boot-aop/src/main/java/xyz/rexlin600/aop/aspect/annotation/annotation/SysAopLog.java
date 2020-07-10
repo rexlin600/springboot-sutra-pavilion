@@ -3,21 +3,20 @@ package xyz.rexlin600.aop.aspect.annotation.annotation;
 import java.lang.annotation.*;
 
 /**
- * SysLog interface
+ * Sys aop log
  *
- * @author: rexlin600
- * @since: 2020-02-16
+ * @author hekunlin
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface SysAopLog {
 
-    /**
-     * 描述
-     *
-     * @return {String}
-     */
-    String value();
+	/**
+	 * Value string
+	 *
+	 * @return the string
+	 */
+	String value();
 
 }

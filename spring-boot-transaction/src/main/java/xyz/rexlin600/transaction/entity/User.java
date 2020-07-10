@@ -8,22 +8,36 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * @author rexlin600
+ * User
+ *
+ * @author hekunlin
  */
 @Entity
 @Data
 public class User {
 
-    @Id
-    @GeneratedValue
-    private Long id;
+	/**
+	 * Id
+	 */
+	@Id
+	@GeneratedValue
+	private Long id;
 
-    @Column(nullable = false, length = 20)
-    private String name;
+	/**
+	 * Name
+	 */
+	@Column(nullable = false, length = 20)
+	private String name;
 
-    @Column(nullable = false)
-    private Integer age;
+	/**
+	 * Age
+	 */
+	@Column(nullable = false)
+	private Integer age;
 
-    @Column(nullable = false, length = 50)
-    private String email;
+	/**
+	 * Email
+	 */
+	@Column(nullable = false, length = 50)
+	private String email;
 }

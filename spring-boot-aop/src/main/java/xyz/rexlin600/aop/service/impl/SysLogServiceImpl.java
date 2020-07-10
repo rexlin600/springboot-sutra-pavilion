@@ -7,12 +7,9 @@ import xyz.rexlin600.aop.mapper.SysLogMapper;
 import xyz.rexlin600.aop.service.SysLogService;
 
 /**
- * <p>
- *  服务实现类
- * </p>
+ * Sys log service
  *
- * @author rexlin600
- * @since 2020-02-16
+ * @author hekunlin
  */
 @Service
 public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> implements SysLogService {

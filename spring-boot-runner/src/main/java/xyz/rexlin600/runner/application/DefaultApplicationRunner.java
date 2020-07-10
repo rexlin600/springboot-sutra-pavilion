@@ -6,16 +6,23 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 /**
- * @author: hekunlin
- * @since: 2020/1/2
+ * Default application runner
+ *
+ * @author hekunlin
  */
 @Component
 @Slf4j
 public class DefaultApplicationRunner implements ApplicationRunner {
 
-    @Override
-    public void run(ApplicationArguments args) throws Exception {
-        log.info("==>  ApplicationRunner start " + this.getClass().getName() + " , args=[" + args + "] ...");
-    }
+	/**
+	 * Run *
+	 *
+	 * @param args args
+	 * @throws Exception exception
+	 */
+	@Override
+	public void run(ApplicationArguments args) throws Exception {
+		log.info("==>  ApplicationRunner start " + this.getClass().getName() + " , args=[" + args + "] ...");
+	}
 
 }

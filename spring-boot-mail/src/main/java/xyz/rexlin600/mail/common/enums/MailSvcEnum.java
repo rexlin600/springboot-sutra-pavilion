@@ -5,44 +5,55 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
- * MailSvcEnum 枚举类
+ * Mail svc enum
  *
- * @author: hekunlin
- * @since: 2020/1/10
+ * @author hekunlin
  */
 @NoArgsConstructor
 @Getter
 @AllArgsConstructor
 public enum MailSvcEnum {
 
-    /**
-     * 邮件发送成功
-     */
-    SUCCESS("Success", 200, "邮件发送成功", "mail send success"),
-    /**
-     * 邮件发送失败
-     */
-    FAILED("Success", 400, "邮件发送失败", "mail send failed"),
-    /**
-     * 服务不可用
-     */
-    STOP("ServiceUnavailable", 503, "服务不可用", "service unavailable"),
-    /**
-     * 内部错误
-     */
-    InternalError("InternalError", 500, "内部错误", "internal error"),
-    /**
-     * 缺少必填参数
-     */
-    MissingParameter("MissingParameter", 400, "缺少必填参数", "missing parameter"),
-    /**
-     * 权限不足
-     */
-    InsufficientPermissions("InsufficientPermissions", 400, "权限不足", "insufficient resources");
+	/**
+	 * Success
+	 */
+	SUCCESS("Success", 200, "邮件发送成功", "mail send success"),
+	/**
+	 * Failed
+	 */
+	FAILED("Success", 400, "邮件发送失败", "mail send failed"),
+	/**
+	 * Stop
+	 */
+	STOP("ServiceUnavailable", 503, "服务不可用", "service unavailable"),
+	/**
+	 * Internal error
+	 */
+	InternalError("InternalError", 500, "内部错误", "internal error"),
+	/**
+	 * Missing parameter
+	 */
+	MissingParameter("MissingParameter", 400, "缺少必填参数", "missing parameter"),
+	/**
+	 * Insufficient permissions
+	 */
+	InsufficientPermissions("InsufficientPermissions", 400, "权限不足", "insufficient resources");
 
-    private String msg;
-    private Integer code;
-    private String zh;
-    private String en;
+	/**
+	 * Msg
+	 */
+	private String msg;
+	/**
+	 * Code
+	 */
+	private Integer code;
+	/**
+	 * Zh
+	 */
+	private String zh;
+	/**
+	 * En
+	 */
+	private String en;
 
 }

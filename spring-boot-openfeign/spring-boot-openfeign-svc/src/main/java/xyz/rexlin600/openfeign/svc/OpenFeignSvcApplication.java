@@ -6,18 +6,22 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
- * open feign 启动类
+ * Open feign svc application
  *
- * @author: hekunlin
- * @since: 2020/5/7
+ * @author hekunlin
  */
 @EnableFeignClients(basePackages = "xyz.rexlin600")
 @EnableEurekaClient
 @SpringBootApplication
 public class OpenFeignSvcApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(OpenFeignSvcApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(OpenFeignSvcApplication.class, args);
+	}
 
 }

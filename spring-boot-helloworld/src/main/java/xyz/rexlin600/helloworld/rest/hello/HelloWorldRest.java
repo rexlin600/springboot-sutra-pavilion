@@ -4,58 +4,61 @@ import org.springframework.web.bind.annotation.*;
 import xyz.rexlin600.helloworld.entity.req.PostReq;
 
 /**
- * HelloWorld
+ * Hello world rest
  *
- * @author: hekunlin
+ * @author hekunlin
  */
 @RestController
 @RequestMapping(value = "/hello")
 public class HelloWorldRest {
 
-    private static String HELLO_WORLD = "hello world";
+	/**
+	 * HELLO_WORLD
+	 */
+	private static String HELLO_WORLD = "hello world";
 
-    /**
-     * HelloWorld GET请求
-     *
-     * @return 字符串
-     */
-    @GetMapping("/get")
-    public String get() {
-        return HELLO_WORLD.toUpperCase();
-    }
+	/**
+	 * Get string
+	 *
+	 * @return the string
+	 */
+	@GetMapping("/get")
+	public String get() {
+		return HELLO_WORLD.toUpperCase();
+	}
 
-    /**
-     * HelloWorld POST请求
-     *
-     * @param postReq 请求类
-     * @return 字符串
-     */
-    @PostMapping("/post")
-    public String post(@RequestBody PostReq postReq) {
-        return HELLO_WORLD.toUpperCase() + " : name=" + postReq.getName().toUpperCase() + " ,age=" + postReq.getAge();
-    }
+	/**
+	 * Post string
+	 *
+	 * @param postReq post req
+	 * @return the string
+	 */
+	@PostMapping("/post")
+	public String post(@RequestBody PostReq postReq) {
+		return HELLO_WORLD.toUpperCase() + " : name=" + postReq.getName().toUpperCase() + " ,age=" + postReq.getAge();
+	}
 
-    /**
-     * HelloWorld PUT请求
-     *
-     * @param id ID
-     * @return 字符串
-     */
-    @PutMapping("put/{id}")
-    public String put(@PathVariable(value = "id") Long id) {
-        return HELLO_WORLD.toUpperCase() + " : " + id;
-    }
+	/**
+	 * Put string
+	 *
+	 * @param id id
+	 * @return the string
+	 */
+	@PutMapping("put/{id}")
+	public String put(@PathVariable(value = "id") Long id) {
+		return HELLO_WORLD.toUpperCase() + " : " + id;
+	}
 
-    /**
-     * HelloWorld  DELETE请求
-     *
-     * @param id ID
-     * @return 字符串
-     */
-    @DeleteMapping("delete/{id}")
-    public String delete(@PathVariable(value = "id") Long id) {
-        return HELLO_WORLD.toUpperCase() + " : " + id;
-    }
+	/**
+	 * Delete string
+	 *
+	 * @param id id
+	 * @return the string
+	 */
+	@DeleteMapping("delete/{id}")
+	public String delete(@PathVariable(value = "id") Long id) {
+		return HELLO_WORLD.toUpperCase() + " : " + id;
+	}
 
 
 }

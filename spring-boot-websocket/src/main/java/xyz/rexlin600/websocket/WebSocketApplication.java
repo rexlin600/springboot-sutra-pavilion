@@ -4,16 +4,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * WebSocket 启动类
+ * Web socket application
  *
- * @author: hekunlin
- * @since: 2020/5/8
+ * @author hekunlin
  */
 @SpringBootApplication
 public class WebSocketApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(WebSocketApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(WebSocketApplication.class, args);
+	}
 
 }

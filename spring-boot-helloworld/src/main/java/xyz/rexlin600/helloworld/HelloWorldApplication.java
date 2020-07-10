@@ -4,15 +4,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * SpringBoot2.x HelloWorld
+ * Hello world application
  *
- * @author: hekunlin
+ * @author hekunlin
  */
 @SpringBootApplication
 public class HelloWorldApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(HelloWorldApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(HelloWorldApplication.class, args);
+	}
 
 }

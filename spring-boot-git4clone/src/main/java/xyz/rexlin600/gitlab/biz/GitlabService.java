@@ -4,27 +4,26 @@ import xyz.rexlin600.gitlab.common.apiparam.Response;
 import xyz.rexlin600.gitlab.req.GitlabCloneReq;
 
 /**
- * GitlabBiz 业务类
+ * Gitlab service
  *
- * @author: rexlin600
- * @since: 2020-02-15
+ * @author hekunlin
  */
 public interface GitlabService {
 
-    /**
-     * 查询所有项目
-     *
-     * @param req
-     * @return
-     */
-    Response list(GitlabCloneReq req);
+	/**
+	 * List response
+	 *
+	 * @param req req
+	 * @return the response
+	 */
+	Response list(GitlabCloneReq req);
 
-    /**
-     * 克隆项目
-     *
-     * @param req
-     * @return
-     */
-    Response clone(GitlabCloneReq req);
+	/**
+	 * Clone response
+	 *
+	 * @param req req
+	 * @return the response
+	 */
+	Response clone(GitlabCloneReq req);
 
 }

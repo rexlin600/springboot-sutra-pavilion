@@ -6,42 +6,37 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-/**
- * @description
- * @auther hekunlin
- * @create 2020-01-09 10:47
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CountTest {
 
-    private Count count;
+	private Count count;
 
-    @Before
-    public void setUp() throws Exception {
-        count = new Count();
-    }
+	@Before
+	public void setUp() throws Exception {
+		count = new Count();
+	}
 
-    @Test
-    public void listItemCount() {
-        Long itemCount = count.listItemCount();
+	@Test
+	public void listItemCount() {
+		Long itemCount = count.listItemCount();
 
-        assertEquals(10l, itemCount.longValue());
-    }
+		assertEquals(10l, itemCount.longValue());
+	}
 
-    @Test
-    public void listItemDetailCount() {
-        Long listItemDetailCount = count.listItemDetailCount();
+	@Test
+	public void listItemDetailCount() {
+		Long listItemDetailCount = count.listItemDetailCount();
 
-        assertEquals(3l, listItemDetailCount.longValue());
-    }
+		assertEquals(3l, listItemDetailCount.longValue());
+	}
 
-    @Test
-    public void streamOfCount() {
-        Long streamOfCount = count.streamOfCount();
+	@Test
+	public void streamOfCount() {
+		Long streamOfCount = count.streamOfCount();
 
-        assertEquals(1l, streamOfCount.longValue());
-    }
+		assertEquals(1l, streamOfCount.longValue());
+	}
 }

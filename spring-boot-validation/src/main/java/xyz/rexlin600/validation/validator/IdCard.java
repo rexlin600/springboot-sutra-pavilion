@@ -5,10 +5,9 @@ import javax.validation.Payload;
 import java.lang.annotation.*;
 
 /**
- * 身份证校验
+ * Id card
  *
- * @author: hekunlin
- * @since: 2020/6/21
+ * @author hekunlin
  */
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
@@ -16,12 +15,32 @@ import java.lang.annotation.*;
 @Constraint(validatedBy = {IdCardValidator.class})
 public @interface IdCard {
 
-    boolean required() default true;
+	/**
+	 * Required boolean
+	 *
+	 * @return the boolean
+	 */
+	boolean required() default true;
 
-    String message() default "身份证号格式错误";
+	/**
+	 * Message string
+	 *
+	 * @return the string
+	 */
+	String message() default "身份证号格式错误";
 
-    Class<?>[] groups() default {};
+	/**
+	 * Groups class [ ]
+	 *
+	 * @return the class [ ]
+	 */
+	Class<?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default {};
+	/**
+	 * Payload class [ ]
+	 *
+	 * @return the class [ ]
+	 */
+	Class<? extends Payload>[] payload() default {};
 
 }

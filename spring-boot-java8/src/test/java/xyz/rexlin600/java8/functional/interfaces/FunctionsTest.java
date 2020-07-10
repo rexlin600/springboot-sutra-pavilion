@@ -9,33 +9,28 @@ import xyz.rexlin600.java8.model.Goods;
 
 import java.util.function.Function;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-/**
- * @description
- * @auther hekunlin
- * @create 2020-01-09 14:53
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class FunctionsTest {
 
-    private Functions functions;
+	private Functions functions;
 
-    @Before
-    public void setUp() throws Exception {
-        functions = new Functions();
-    }
+	@Before
+	public void setUp() throws Exception {
+		functions = new Functions();
+	}
 
-    @Test
-    public void plusOneHundredFunction() {
-        Long result = functions.plusOneHundredFunction();
+	@Test
+	public void plusOneHundredFunction() {
+		Long result = functions.plusOneHundredFunction();
 
-        assertEquals(110l, result.intValue());
-    }
+		assertEquals(110l, result.intValue());
+	}
 
-    @Test
-    public void behavioralParameterization() {
-        functions.behavioralParameterization((Function<Goods, String>) goods -> goods.getName().toString());
-    }
+	@Test
+	public void behavioralParameterization() {
+		functions.behavioralParameterization((Function<Goods, String>) goods -> goods.getName().toString());
+	}
 }

@@ -10,10 +10,9 @@ import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 
 /**
- * 文件类型类
+ * File type
  *
- * @author: hekunlin
- * @since: 2020/3/6
+ * @author hekunlin
  */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,33 +20,53 @@ import java.io.Serializable;
 @XmlRootElement(name = "FILETYPE")
 public class FileType implements Serializable {
 
-    /**
-     * 文件类型ID
-     */
-    @XmlElement(name = "ID")
-    private Long id;
+	/**
+	 * Id
+	 */
+	@XmlElement(name = "ID")
+	private Long id;
 
-    /**
-     * 文件类型
-     */
-    @XmlElement(name = "TYPE")
-    private String type;
+	/**
+	 * Type
+	 */
+	@XmlElement(name = "TYPE")
+	private String type;
 
-    @XmlTransient
-    public Long getId() {
-        return id;
-    }
+	/**
+	 * Gets id *
+	 *
+	 * @return the id
+	 */
+	@XmlTransient
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	/**
+	 * Sets id *
+	 *
+	 * @param id id
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    @XmlTransient
-    public String getType() {
-        return type;
-    }
+	/**
+	 * Gets type *
+	 *
+	 * @return the type
+	 */
+	@XmlTransient
+	public String getType() {
+		return type;
+	}
 
-    public void setType(String type) {
-        this.type = type;
-    }
+	/**
+	 * Sets type *
+	 *
+	 * @param type type
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
 }

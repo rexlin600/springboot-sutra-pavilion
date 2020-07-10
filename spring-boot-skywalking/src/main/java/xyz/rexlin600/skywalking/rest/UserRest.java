@@ -11,96 +11,104 @@ import xyz.rexlin600.skywalking.common.apiparam.ResponseGenerator;
 import xyz.rexlin600.skywalking.model.User;
 
 /**
- * @menu MybatisPlus-CRUD
- * @author: hekunlin
- * @since: 2020/1/6
+ * User rest
+ *
+ * @author hekunlin
  */
 @Slf4j
 @RestController
 @RequestMapping("/user")
 public class UserRest {
 
-    private final UserBiz userBiz;
+	/**
+	 * User biz
+	 */
+	private final UserBiz userBiz;
 
-    @Autowired
-    public UserRest(UserBiz userBiz) {
-        this.userBiz = userBiz;
-    }
+	/**
+	 * User rest
+	 *
+	 * @param userBiz user biz
+	 */
+	@Autowired
+	public UserRest(UserBiz userBiz) {
+		this.userBiz = userBiz;
+	}
 
-    /**
-     * 1. 用户分页
-     *
-     * @param page
-     * @param size
-     * @return
-     */
-    @GetMapping("/page")
-    public PageResult<User> page(@RequestParam(value = "page") Integer page,
-                                 @RequestParam(value = "size") Integer size) {
-        log.info("==>  page query");
-        Page<User> pg = userBiz.page(new Page<>(page, size));
+	/**
+	 * Page page result
+	 *
+	 * @param page page
+	 * @param size size
+	 * @return the page result
+	 */
+	@GetMapping("/page")
+	public PageResult<User> page(@RequestParam(value = "page") Integer page,
+								 @RequestParam(value = "size") Integer size) {
+		log.info("==>  page query");
+		Page<User> pg = userBiz.page(new Page<>(page, size));
 
-        // merge
-        PageResult<User> objectPageResult = new PageResult<>();
-        objectPageResult.setList(pg.getRecords());
-        objectPageResult.setPage(page);
-        objectPageResult.setSize(size);
-        objectPageResult.setTotalCount(pg.getTotal());
-        objectPageResult.setTotalPage(pg.getPages());
+		// merge
+		PageResult<User> objectPageResult = new PageResult<>();
+		objectPageResult.setList(pg.getRecords());
+		objectPageResult.setPage(page);
+		objectPageResult.setSize(size);
+		objectPageResult.setTotalCount(pg.getTotal());
+		objectPageResult.setTotalPage(pg.getPages());
 
-        return objectPageResult;
-    }
-
-
-    /**
-     * 2. 根据ID查询
-     *
-     * @param id
-     * @return
-     */
-    @GetMapping("/{id}")
-    public Response user(@PathVariable(value = "id") Long id) {
-        return ResponseGenerator.success(userBiz.getById(id));
-    }
+		return objectPageResult;
+	}
 
 
-    /**
-     * 3. 新增用户
-     *
-     * @param user
-     * @return
-     */
-    @PostMapping
-    public Response add(@RequestBody User user) {
-        userBiz.save(user);
-        return ResponseGenerator.success();
-    }
+	/**
+	 * User response
+	 *
+	 * @param id id
+	 * @return the response
+	 */
+	@GetMapping("/{id}")
+	public Response user(@PathVariable(value = "id") Long id) {
+		return ResponseGenerator.success(userBiz.getById(id));
+	}
 
 
-    /**
-     * 4. 删除用户
-     *
-     * @param id
-     * @return
-     */
-    @DeleteMapping("/{id}")
-    public Response del(@PathVariable(value = "id") Long id) {
-        userBiz.removeById(id);
-        return ResponseGenerator.success();
-    }
+	/**
+	 * Add response
+	 *
+	 * @param user user
+	 * @return the response
+	 */
+	@PostMapping
+	public Response add(@RequestBody User user) {
+		userBiz.save(user);
+		return ResponseGenerator.success();
+	}
 
 
-    /**
-     * 5. 更新用户
-     *
-     * @param user
-     * @return
-     */
-    @PutMapping
-    public Response upd(@RequestBody User user) {
-        userBiz.updateById(user);
-        return ResponseGenerator.success();
-    }
+	/**
+	 * Del response
+	 *
+	 * @param id id
+	 * @return the response
+	 */
+	@DeleteMapping("/{id}")
+	public Response del(@PathVariable(value = "id") Long id) {
+		userBiz.removeById(id);
+		return ResponseGenerator.success();
+	}
+
+
+	/**
+	 * Upd response
+	 *
+	 * @param user user
+	 * @return the response
+	 */
+	@PutMapping
+	public Response upd(@RequestBody User user) {
+		userBiz.updateById(user);
+		return ResponseGenerator.success();
+	}
 
 
 }

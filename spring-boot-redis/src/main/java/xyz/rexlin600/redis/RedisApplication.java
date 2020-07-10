@@ -5,20 +5,20 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 /**
- * RedisApp 启动类
+ * Redis application
  *
- * <p>
- * 防止报错（因为这里未集成数据库）：Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
- *
- * @author rexlin600
- * @author: hekunlin
- * @since: 2020/1/6
+ * @author hekunlin
  */
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 public class RedisApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(RedisApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(RedisApplication.class, args);
+	}
 
 }

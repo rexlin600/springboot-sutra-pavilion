@@ -5,23 +5,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Actuator监控
+ * Actuator rest
  *
- * @author: hekunlin
- * @since: 2020/1/8
+ * @author hekunlin
  */
 @RestController
 @RequestMapping("/actuator")
 public class ActuatorRest {
 
-    /**
-     * 返回index
-     *
-     * @return {@link String}
-     */
-    @GetMapping("/index")
-    public String index() {
-        return "Hello World! Actuator";
-    }
+	/**
+	 * Index string
+	 *
+	 * @return the string
+	 */
+	@GetMapping("/index")
+	public String index() {
+		return "Hello World! Actuator";
+	}
 
 }

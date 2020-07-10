@@ -8,74 +8,106 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * FanOut配置类
+ * Fanout config
  *
- * @author: hekunlin
- * @since: 2020/1/7
+ * @author hekunlin
  */
 @Configuration
 public class FanoutConfig {
 
-    /**
-     * 广播：三个队列 a b c 绑定到 fanout exchange 上
-     */
-    public static final String FANOUT_QUEUE_A = "queue.rexlin600.fanout.a";
-    public static final String FANOUT_QUEUE_B = "queue.rexlin600.fanout.b";
-    public static final String FANOUT_QUEUE_C = "queue.rexlin600.fanout.c";
-    public static final String FANOUT_EXCHANGE = "exchange.rexlin600.fanout";
+	/**
+	 * FANOUT_QUEUE_A
+	 */
+	public static final String FANOUT_QUEUE_A = "queue.rexlin600.fanout.a";
+	/**
+	 * FANOUT_QUEUE_B
+	 */
+	public static final String FANOUT_QUEUE_B = "queue.rexlin600.fanout.b";
+	/**
+	 * FANOUT_QUEUE_C
+	 */
+	public static final String FANOUT_QUEUE_C = "queue.rexlin600.fanout.c";
+	/**
+	 * FANOUT_EXCHANGE
+	 */
+	public static final String FANOUT_EXCHANGE = "exchange.rexlin600.fanout";
 
-    /**
-     * Queue A、B、C
-     *
-     * @return
-     */
-    @Bean
-    public Queue fanOutA() {
-        return new Queue(FANOUT_QUEUE_A);
-    }
+	/**
+	 * Fan out a queue
+	 *
+	 * @return the queue
+	 */
+	@Bean
+	public Queue fanOutA() {
+		return new Queue(FANOUT_QUEUE_A);
+	}
 
-    @Bean
-    public Queue fanOutB() {
-        return new Queue(FANOUT_QUEUE_B);
-    }
+	/**
+	 * Fan out b queue
+	 *
+	 * @return the queue
+	 */
+	@Bean
+	public Queue fanOutB() {
+		return new Queue(FANOUT_QUEUE_B);
+	}
 
-    @Bean
-    public Queue fanOutC() {
-        return new Queue(FANOUT_QUEUE_C);
-    }
+	/**
+	 * Fan out c queue
+	 *
+	 * @return the queue
+	 */
+	@Bean
+	public Queue fanOutC() {
+		return new Queue(FANOUT_QUEUE_C);
+	}
 
-    /**
-     * Exchange
-     *
-     * @return
-     */
-    @Bean
-    public FanoutExchange fanoutExchange() {
-        return new FanoutExchange(FANOUT_EXCHANGE);
-    }
+	/**
+	 * Fanout exchange fanout exchange
+	 *
+	 * @return the fanout exchange
+	 */
+	@Bean
+	public FanoutExchange fanoutExchange() {
+		return new FanoutExchange(FANOUT_EXCHANGE);
+	}
 
 
-    /**
-     * Biding
-     *
-     * @param fanOutA
-     * @param fanoutExchange
-     * @return
-     */
-    @Bean
-    public Binding bindingFanoutExchangeA(Queue fanOutA, FanoutExchange fanoutExchange) {
-        return BindingBuilder.bind(fanOutA).to(fanoutExchange);
-    }
+	/**
+	 * Binding fanout exchange a binding
+	 *
+	 * @param fanOutA        fan out a
+	 * @param fanoutExchange fanout exchange
+	 * @return the binding
+	 */
+	@Bean
+	public Binding bindingFanoutExchangeA(Queue fanOutA, FanoutExchange fanoutExchange) {
+		return BindingBuilder.bind(fanOutA).to(fanoutExchange);
+	}
 
-    @Bean
-    public Binding bindingFanoutExchangeB(Queue fanOutB, FanoutExchange fanoutExchange) {
-        return BindingBuilder.bind(fanOutB).to(fanoutExchange);
-    }
+	/**
+	 * Binding fanout exchange b binding
+	 *
+	 * @param fanOutB        fan out b
+	 * @param fanoutExchange fanout exchange
+	 * @return the binding
+	 */
+	@Bean
+	public Binding bindingFanoutExchangeB(Queue fanOutB, FanoutExchange fanoutExchange) {
+		return BindingBuilder.bind(fanOutB).to(fanoutExchange);
+	}
 
-    @Bean
-    public Binding bindingFanoutExchangeC(Queue fanOutC, FanoutExchange fanoutExchange) {
-        return BindingBuilder.bind(fanOutC).to(fanoutExchange);
-    }
+	/**
+	 * Binding fanout exchange c binding
+	 *
+	 * @param fanOutC        fan out c
+	 * @param fanoutExchange fanout exchange
+	 * @return the binding
+	 */
+	@Bean
+	public Binding bindingFanoutExchangeC(Queue fanOutC, FanoutExchange fanoutExchange) {
+		return BindingBuilder.bind(fanOutC).to(fanoutExchange);
+	}
 
 
 }

@@ -5,35 +5,43 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
- * MailTypeEnum 枚举类
+ * Mail type enum
  *
- * @author: hekunlin
- * @since: 2020/1/10
+ * @author hekunlin
  */
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 public enum MailTypeEnum {
 
-    /**
-     * 文本邮件
-     */
-    TYPE_SIMPLE(100, "文本邮件", "text mail message"),
-    /**
-     * HTML邮件
-     */
-    TYPE_HTML(101, "HTML邮件", "html mail message"),
-    /**
-     * 附件邮件
-     */
-    TYPE_ATTACHMENTS(102, "附件邮件", "attachment mail message"),
-    /**
-     * 资源邮件
-     */
-    TYPE_INLINE_RESOURCE(103, "资源邮件", "resource mail message");
+	/**
+	 * Type simple
+	 */
+	TYPE_SIMPLE(100, "文本邮件", "text mail message"),
+	/**
+	 * Type html
+	 */
+	TYPE_HTML(101, "HTML邮件", "html mail message"),
+	/**
+	 * Type attachments
+	 */
+	TYPE_ATTACHMENTS(102, "附件邮件", "attachment mail message"),
+	/**
+	 * Type inline resource
+	 */
+	TYPE_INLINE_RESOURCE(103, "资源邮件", "resource mail message");
 
-    private int code;
-    private String zh;
-    private String en;
+	/**
+	 * Code
+	 */
+	private int code;
+	/**
+	 * Zh
+	 */
+	private String zh;
+	/**
+	 * En
+	 */
+	private String en;
 
 }

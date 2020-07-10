@@ -10,8 +10,9 @@ import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 
 /**
- * @author: hekunlin
- * @since: 2020/3/6
+ * Company
+ *
+ * @author hekunlin
  */
 @ToString
 @NoArgsConstructor
@@ -19,33 +20,53 @@ import java.io.Serializable;
 @XmlRootElement(name = "COMPANY")
 public class Company implements Serializable {
 
-    /**
-     * 名称
-     */
-    @XmlElement(name = "NAME")
-    private String name;
+	/**
+	 * Name
+	 */
+	@XmlElement(name = "NAME")
+	private String name;
 
-    /**
-     * 地址
-     */
-    @XmlElement(name = "ADDRESS")
-    private String address;
+	/**
+	 * Address
+	 */
+	@XmlElement(name = "ADDRESS")
+	private String address;
 
-    @XmlTransient
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets name *
+	 *
+	 * @return the name
+	 */
+	@XmlTransient
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	/**
+	 * Sets name *
+	 *
+	 * @param name name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    @XmlTransient
-    public String getAddress() {
-        return address;
-    }
+	/**
+	 * Gets address *
+	 *
+	 * @return the address
+	 */
+	@XmlTransient
+	public String getAddress() {
+		return address;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	/**
+	 * Sets address *
+	 *
+	 * @param address address
+	 */
+	public void setAddress(String address) {
+		this.address = address;
+	}
 }

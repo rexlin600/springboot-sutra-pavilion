@@ -9,37 +9,54 @@ import java.time.Instant;
 import java.util.Random;
 
 /**
- * SimpleAsyncTask 异步执行任务
+ * Simple asnyc task
  *
- * @author: rexlin600
- * @since: 2020-01-12
+ * @author hekunlin
  */
 @SuppressWarnings("Duplicates")
 @Slf4j
 @Component
 public class SimpleAsnycTask {
 
-    private static Random random = new Random();
+	/**
+	 * random
+	 */
+	private static Random random = new Random();
 
-    @Async
-    public void taskOne() throws InterruptedException {
-        log.info("==>  SimpleAsnycTask taskOne execute start [{}]", Instant.now(Clock.systemDefaultZone()).toEpochMilli());
-        Thread.sleep(random.nextInt(3000));
-        log.info("==>  SimpleAsnycTask taskOne execute end [{}]", Instant.now(Clock.systemDefaultZone()).toEpochMilli());
-    }
+	/**
+	 * Task one *
+	 *
+	 * @throws InterruptedException interrupted exception
+	 */
+	@Async
+	public void taskOne() throws InterruptedException {
+		log.info("==>  SimpleAsnycTask taskOne execute start [{}]", Instant.now(Clock.systemDefaultZone()).toEpochMilli());
+		Thread.sleep(random.nextInt(3000));
+		log.info("==>  SimpleAsnycTask taskOne execute end [{}]", Instant.now(Clock.systemDefaultZone()).toEpochMilli());
+	}
 
-    @Async
-    public void taskTwo() throws InterruptedException {
-        log.info("==>  SimpleAsnycTask taskTwo execute start [{}]", Instant.now(Clock.systemDefaultZone()).toEpochMilli());
-        Thread.sleep(random.nextInt(3000));
-        log.info("==>  SimpleAsnycTask taskTwo execute end [{}]", Instant.now(Clock.systemDefaultZone()).toEpochMilli());
-    }
+	/**
+	 * Task two *
+	 *
+	 * @throws InterruptedException interrupted exception
+	 */
+	@Async
+	public void taskTwo() throws InterruptedException {
+		log.info("==>  SimpleAsnycTask taskTwo execute start [{}]", Instant.now(Clock.systemDefaultZone()).toEpochMilli());
+		Thread.sleep(random.nextInt(3000));
+		log.info("==>  SimpleAsnycTask taskTwo execute end [{}]", Instant.now(Clock.systemDefaultZone()).toEpochMilli());
+	}
 
-    @Async
-    public void taskThree() throws InterruptedException {
-        log.info("==>  SimpleAsnycTask taskThree execute start [{}]", Instant.now(Clock.systemDefaultZone()).toEpochMilli());
-        Thread.sleep(random.nextInt(3000));
-        log.info("==>  SimpleAsnycTask taskThree execute end [{}]", Instant.now(Clock.systemDefaultZone()).toEpochMilli());
-    }
+	/**
+	 * Task three *
+	 *
+	 * @throws InterruptedException interrupted exception
+	 */
+	@Async
+	public void taskThree() throws InterruptedException {
+		log.info("==>  SimpleAsnycTask taskThree execute start [{}]", Instant.now(Clock.systemDefaultZone()).toEpochMilli());
+		Thread.sleep(random.nextInt(3000));
+		log.info("==>  SimpleAsnycTask taskThree execute end [{}]", Instant.now(Clock.systemDefaultZone()).toEpochMilli());
+	}
 
 }

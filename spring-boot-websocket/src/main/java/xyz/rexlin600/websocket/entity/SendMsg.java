@@ -8,18 +8,23 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 发送消息实体类
+ * Send msg
  *
- * @author: hekunlin
- * @since: 2020/5/8
+ * @author hekunlin
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class SendMsg implements Serializable {
 
-    private List<String> list;
+	/**
+	 * List
+	 */
+	private List<String> list;
 
-    private String content;
+	/**
+	 * Content
+	 */
+	private String content;
 
 }

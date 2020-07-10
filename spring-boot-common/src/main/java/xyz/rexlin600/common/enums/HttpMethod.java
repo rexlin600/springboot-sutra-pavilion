@@ -4,58 +4,62 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
- * HTTP 请求方法枚举类
+ * Http method
  *
  * @author hekunlin
  */
-
 @Getter
 @NoArgsConstructor
 public enum HttpMethod {
 
-    /**
-     * GET
-     */
-    GET("GET"),
-    /**
-     * POST
-     */
-    POST("POST"),
-    /**
-     * HEAD
-     */
-    HEAD("HEAD"),
-    /**
-     * OPTIONS
-     */
-    OPTIONS("OPTIONS"),
-    /**
-     * PUT
-     */
-    PUT("PUT"),
-    /**
-     * DELETE
-     */
-    DELETE("DELETE"),
-    /**
-     * TRACE
-     */
-    TRACE("TRACE"),
-    /**
-     * CONNECT
-     */
-    CONNECT("CONNECT"),
-    /**
-     * PATCH
-     */
-    PATCH("PATCH");
+	/**
+	 * Get http method
+	 */
+	GET("GET"),
+	/**
+	 * Post http method
+	 */
+	POST("POST"),
+	/**
+	 * Head http method
+	 */
+	HEAD("HEAD"),
+	/**
+	 * Options http method
+	 */
+	OPTIONS("OPTIONS"),
+	/**
+	 * Put http method
+	 */
+	PUT("PUT"),
+	/**
+	 * Delete http method
+	 */
+	DELETE("DELETE"),
+	/**
+	 * Trace http method
+	 */
+	TRACE("TRACE"),
+	/**
+	 * Connect http method
+	 */
+	CONNECT("CONNECT"),
+	/**
+	 * Patch http method
+	 */
+	PATCH("PATCH");
 
-    /**
-     * 数据值
-     */
-    private String value;
+	/**
+	 * Value
+	 */
+	private String value;
 
-    HttpMethod(String value) {
-        this.value = value;
-    }
+	/**
+	 * Http method
+	 *
+	 * @param value value
+	 */
+	HttpMethod(String value) {
+		this.value = value;
+	}
 }

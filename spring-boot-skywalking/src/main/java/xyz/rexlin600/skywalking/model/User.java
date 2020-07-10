@@ -3,12 +3,26 @@ package xyz.rexlin600.skywalking.model;
 import lombok.Data;
 
 /**
- * @author rexlin600
+ * User
+ *
+ * @author hekunlin
  */
 @Data
 public class User {
-    private Long id;
-    private String name;
-    private Integer age;
-    private String email;
+	/**
+	 * Id
+	 */
+	private Long id;
+	/**
+	 * Name
+	 */
+	private String name;
+	/**
+	 * Age
+	 */
+	private Integer age;
+	/**
+	 * Email
+	 */
+	private String email;
 }

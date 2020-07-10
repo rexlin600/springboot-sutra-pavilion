@@ -4,16 +4,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * MailApplication 启动类
+ * Mail application
  *
- * @author: hekunlin
- * @since: 2020/1/10
+ * @author hekunlin
  */
 @SpringBootApplication
 public class MailApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(MailApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(MailApplication.class, args);
+	}
 
 }

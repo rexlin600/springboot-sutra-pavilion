@@ -4,16 +4,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * MQ 启动类
+ * Rabbit mq application
  *
- * @author: hekunlin
- * @since: 2020/1/7
+ * @author hekunlin
  */
 @SpringBootApplication
 public class RabbitMqApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(RabbitMqApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(RabbitMqApplication.class, args);
+	}
 
 }

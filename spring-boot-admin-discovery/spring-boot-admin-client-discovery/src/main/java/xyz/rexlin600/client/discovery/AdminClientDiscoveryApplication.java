@@ -6,17 +6,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * Admin Client 启动类
+ * Admin client discovery application
  *
- * @author: hekunlin
- * @since: 2020/1/8
+ * @author hekunlin
  */
 @EnableDiscoveryClient
 @SpringBootApplication
 public class AdminClientDiscoveryApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(AdminClientDiscoveryApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(AdminClientDiscoveryApplication.class, args);
+	}
 
 }

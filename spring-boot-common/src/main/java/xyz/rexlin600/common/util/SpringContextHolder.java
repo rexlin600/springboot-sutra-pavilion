@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 /**
- * Spring 工具类
+ * Spring context holder
  *
  * @author hekunlin
  */
@@ -18,80 +18,83 @@ import org.springframework.stereotype.Service;
 @Lazy(false)
 public class SpringContextHolder implements ApplicationContextAware, DisposableBean {
 
-    private static ApplicationContext applicationContext = null;
+	/**
+	 * applicationContext
+	 */
+	private static ApplicationContext applicationContext = null;
 
-    /**
-     * 取得存储在静态变量中的ApplicationContext
-     *
-     * @return {@link ApplicationContext}
-     */
-    public static ApplicationContext getApplicationContext() {
-        return applicationContext;
-    }
-
-
-    /**
-     * 实现ApplicationContextAware接口, 注入Context到静态变量中
-     *
-     * @param applicationContext 应用程序上下文
-     */
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) {
-        SpringContextHolder.applicationContext = applicationContext;
-    }
-
-    /**
-     * 从静态变量applicationContext中取得Bean, 自动转型为所赋值对象的类型
-     *
-     * @param name Bean 名称
-     * @param <T>  泛型对象
-     * @return 泛型对象
-     */
-    @SuppressWarnings("unchecked")
-    public static <T> T getBean(String name) {
-        return (T) applicationContext.getBean(name);
-    }
-
-    /**
-     * 从静态变量applicationContext中取得Bean, 自动转型为所赋值对象的类型
-     *
-     * @param requiredType 必须的 Class 类型
-     * @param <T>          泛型对象
-     * @return 泛型对象
-     */
-    public static <T> T getBean(Class<T> requiredType) {
-        return applicationContext.getBean(requiredType);
-    }
-
-    /**
-     * 清除SpringContextHolder中的ApplicationContext为Null
-     */
-    public static void clearHolder() {
-        if (log.isDebugEnabled()) {
-            log.debug("清除SpringContextHolder中的ApplicationContext:" + applicationContext);
-        }
-        applicationContext = null;
-    }
+	/**
+	 * Gets application context *
+	 *
+	 * @return the application context
+	 */
+	public static ApplicationContext getApplicationContext() {
+		return applicationContext;
+	}
 
 
-    /**
-     * 发布事件
-     *
-     * @param event 事件
-     */
-    public static void publishEvent(ApplicationEvent event) {
-        if (applicationContext == null) {
-            return;
-        }
-        applicationContext.publishEvent(event);
-    }
+	/**
+	 * Sets application context *
+	 *
+	 * @param applicationContext application context
+	 */
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) {
+		SpringContextHolder.applicationContext = applicationContext;
+	}
 
-    /**
-     * 实现DisposableBean接口, 在Context关闭时清理静态变量.
-     */
-    @Override
-    public void destroy() {
-        SpringContextHolder.clearHolder();
-    }
+	/**
+	 * Gets bean *
+	 *
+	 * @param <T>  parameter
+	 * @param name name
+	 * @return the bean
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> T getBean(String name) {
+		return (T) applicationContext.getBean(name);
+	}
+
+	/**
+	 * Gets bean *
+	 *
+	 * @param <T>          parameter
+	 * @param requiredType required type
+	 * @return the bean
+	 */
+	public static <T> T getBean(Class<T> requiredType) {
+		return applicationContext.getBean(requiredType);
+	}
+
+	/**
+	 * Clear holder
+	 */
+	public static void clearHolder() {
+		if (log.isDebugEnabled()) {
+			log.debug("清除SpringContextHolder中的ApplicationContext:" + applicationContext);
+		}
+		applicationContext = null;
+	}
+
+
+	/**
+	 * Publish event *
+	 *
+	 * @param event event
+	 */
+	public static void publishEvent(ApplicationEvent event) {
+		if (applicationContext == null) {
+			return;
+		}
+		applicationContext.publishEvent(event);
+	}
+
+	/**
+	 * Destroy
+	 */
+	@Override
+	public void destroy() {
+		SpringContextHolder.clearHolder();
+	}
 
 }

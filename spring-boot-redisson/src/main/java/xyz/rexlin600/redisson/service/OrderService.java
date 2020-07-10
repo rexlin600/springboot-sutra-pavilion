@@ -1,18 +1,17 @@
 package xyz.rexlin600.redisson.service;
 
 /**
- * 订单服务
+ * Order service
  *
- * @author: rexlin600
- * @since: 2020-02-05
+ * @author hekunlin
  */
 public interface OrderService {
 
-    /**
-     * 预定
-     *
-     * @return
-     */
-    boolean book();
+	/**
+	 * Book boolean
+	 *
+	 * @return the boolean
+	 */
+	boolean book();
 
 }

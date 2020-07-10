@@ -6,28 +6,27 @@ import lombok.ToString;
 import java.io.Serializable;
 
 /**
- * OtherReq
+ * Other get req
  *
- * @author: hekunlin
- * @since: 2020/6/28
+ * @author hekunlin
  */
 @ToString
 @Data
 public class OtherGetReq implements Serializable {
 
-    /**
-     * 姓名
-     */
-    private String name;
+	/**
+	 * Name
+	 */
+	private String name;
 
-    /**
-     * 年龄
-     */
-    private Integer age;
+	/**
+	 * Age
+	 */
+	private Integer age;
 
-    /**
-     * 地址
-     */
-    private String address;
+	/**
+	 * Address
+	 */
+	private String address;
 
 }

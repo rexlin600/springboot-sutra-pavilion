@@ -10,10 +10,9 @@ import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 
 /**
- * 计算机-CPU类
+ * Cpu
  *
- * @author: hekunlin
- * @since: 2020/3/6
+ * @author hekunlin
  */
 @ToString
 @NoArgsConstructor
@@ -21,48 +20,78 @@ import java.io.Serializable;
 @XmlRootElement(name = "CPU")
 public class Cpu implements Serializable {
 
-    /**
-     * 核心数
-     */
-    @XmlElement(name = "CORESIZE")
-    private Integer coreSize;
+	/**
+	 * Core size
+	 */
+	@XmlElement(name = "CORESIZE")
+	private Integer coreSize;
 
-    /**
-     * CPU架构
-     */
-    @XmlElement(name = "ARCH")
-    private String arch;
+	/**
+	 * Arch
+	 */
+	@XmlElement(name = "ARCH")
+	private String arch;
 
-    /**
-     * 生产厂商
-     */
-    @XmlElement(name = "COMPANY")
-    private Company company;
+	/**
+	 * Company
+	 */
+	@XmlElement(name = "COMPANY")
+	private Company company;
 
-    @XmlTransient
-    public Integer getCoreSize() {
-        return coreSize;
-    }
+	/**
+	 * Gets core size *
+	 *
+	 * @return the core size
+	 */
+	@XmlTransient
+	public Integer getCoreSize() {
+		return coreSize;
+	}
 
-    public void setCoreSize(Integer coreSize) {
-        this.coreSize = coreSize;
-    }
+	/**
+	 * Sets core size *
+	 *
+	 * @param coreSize core size
+	 */
+	public void setCoreSize(Integer coreSize) {
+		this.coreSize = coreSize;
+	}
 
-    @XmlTransient
-    public String getArch() {
-        return arch;
-    }
+	/**
+	 * Gets arch *
+	 *
+	 * @return the arch
+	 */
+	@XmlTransient
+	public String getArch() {
+		return arch;
+	}
 
-    public void setArch(String arch) {
-        this.arch = arch;
-    }
+	/**
+	 * Sets arch *
+	 *
+	 * @param arch arch
+	 */
+	public void setArch(String arch) {
+		this.arch = arch;
+	}
 
-    @XmlTransient
-    public Company getCompany() {
-        return company;
-    }
+	/**
+	 * Gets company *
+	 *
+	 * @return the company
+	 */
+	@XmlTransient
+	public Company getCompany() {
+		return company;
+	}
 
-    public void setCompany(Company company) {
-        this.company = company;
-    }
+	/**
+	 * Sets company *
+	 *
+	 * @param company company
+	 */
+	public void setCompany(Company company) {
+		this.company = company;
+	}
 }

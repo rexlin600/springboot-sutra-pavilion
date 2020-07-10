@@ -8,68 +8,91 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Topic 配置类
+ * Topic config
  *
- * @author: hekunlin
- * @since: 2020/1/7
+ * @author hekunlin
  */
 @Configuration
 public class TopicConfig {
 
-    /**
-     * TOPIC模式：queue、routingKey、exchange
-     */
-    public static final String TOPIC_QUEUE_A = "queue.rexlin600.config.a";
-    public static final String TOPIC_QUEUE_ALL = "queue.rexlin600.config.all";
-    public static final String TOPIC_ROUTINGKEY_A = "routingKey.rexlin600.config.a";
-    public static final String TOPIC_ROUTINGKEY_ALL = "routingKey.rexlin600.config.#";
-    public static final String TOPIC_EXCHANGE = "exchange.rexlin600.config";
+	/**
+	 * TOPIC_QUEUE_A
+	 */
+	public static final String TOPIC_QUEUE_A = "queue.rexlin600.config.a";
+	/**
+	 * TOPIC_QUEUE_ALL
+	 */
+	public static final String TOPIC_QUEUE_ALL = "queue.rexlin600.config.all";
+	/**
+	 * TOPIC_ROUTINGKEY_A
+	 */
+	public static final String TOPIC_ROUTINGKEY_A = "routingKey.rexlin600.config.a";
+	/**
+	 * TOPIC_ROUTINGKEY_ALL
+	 */
+	public static final String TOPIC_ROUTINGKEY_ALL = "routingKey.rexlin600.config.#";
+	/**
+	 * TOPIC_EXCHANGE
+	 */
+	public static final String TOPIC_EXCHANGE = "exchange.rexlin600.config";
 
 
-    /**
-     * Queue
-     *
-     * @return
-     */
-    @Bean
-    public Queue topicQueueA() {
-        return new Queue(TOPIC_QUEUE_A);
-    }
+	/**
+	 * Topic queue a queue
+	 *
+	 * @return the queue
+	 */
+	@Bean
+	public Queue topicQueueA() {
+		return new Queue(TOPIC_QUEUE_A);
+	}
 
-    @Bean
-    public Queue topicQueueAll() {
-        return new Queue(TOPIC_QUEUE_ALL);
-    }
+	/**
+	 * Topic queue all queue
+	 *
+	 * @return the queue
+	 */
+	@Bean
+	public Queue topicQueueAll() {
+		return new Queue(TOPIC_QUEUE_ALL);
+	}
 
-    /**
-     * Exchange
-     *
-     * @return
-     */
-    @Bean
-    public TopicExchange topicExchange() {
-        return new TopicExchange(TOPIC_EXCHANGE);
-    }
+	/**
+	 * Topic exchange topic exchange
+	 *
+	 * @return the topic exchange
+	 */
+	@Bean
+	public TopicExchange topicExchange() {
+		return new TopicExchange(TOPIC_EXCHANGE);
+	}
 
-    /**
-     * Binding
-     *
-     * @param topicQueueA
-     * @param topicExchange
-     * @return
-     */
-    @Bean
-    public Binding bindingDirectExchangeA(Queue topicQueueA, TopicExchange topicExchange) {
-        return BindingBuilder.bind(topicQueueA)
-                .to(topicExchange)
-                .with(TOPIC_ROUTINGKEY_A);
-    }
+	/**
+	 * Binding direct exchange a binding
+	 *
+	 * @param topicQueueA   topic queue a
+	 * @param topicExchange topic exchange
+	 * @return the binding
+	 */
+	@Bean
+	public Binding bindingDirectExchangeA(Queue topicQueueA, TopicExchange topicExchange) {
+		return BindingBuilder.bind(topicQueueA)
+				.to(topicExchange)
+				.with(TOPIC_ROUTINGKEY_A);
+	}
 
-    @Bean
-    public Binding bindingDirectExchangeAll(Queue topicQueueAll, TopicExchange topicExchange) {
-        return BindingBuilder.bind(topicQueueAll)
-                .to(topicExchange)
-                .with(TOPIC_ROUTINGKEY_ALL);
-    }
+	/**
+	 * Binding direct exchange all binding
+	 *
+	 * @param topicQueueAll topic queue all
+	 * @param topicExchange topic exchange
+	 * @return the binding
+	 */
+	@Bean
+	public Binding bindingDirectExchangeAll(Queue topicQueueAll, TopicExchange topicExchange) {
+		return BindingBuilder.bind(topicQueueAll)
+				.to(topicExchange)
+				.with(TOPIC_ROUTINGKEY_ALL);
+	}
 
 }

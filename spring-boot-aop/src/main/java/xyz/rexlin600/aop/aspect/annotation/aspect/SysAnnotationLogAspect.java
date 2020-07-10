@@ -15,12 +15,9 @@ import xyz.rexlin600.aop.util.SysLogUtils;
 
 
 /**
- * 系统日志切面、注解版
- * <p>
- * 使用 @Aspect 定义一个切面
+ * Sys annotation log aspect
  *
- * @author: rexlin600
- * @since: 2020-02-16
+ * @author hekunlin
  */
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Slf4j
@@ -28,28 +25,38 @@ import xyz.rexlin600.aop.util.SysLogUtils;
 @Component
 public class SysAnnotationLogAspect {
 
-    @Autowired
-    private ApplicationEventPublisher publisher;
+	/**
+	 * Publisher
+	 */
+	@Autowired
+	private ApplicationEventPublisher publisher;
 
-    @SneakyThrows
-    @Around("@annotation(sysAopLog)")
-    public Object around(ProceedingJoinPoint point, SysAopLog sysAopLog) {
-        String strClassName = point.getTarget().getClass().getName();
-        String strMethodName = point.getSignature().getName();
+	/**
+	 * Around object
+	 *
+	 * @param point     point
+	 * @param sysAopLog sys aop log
+	 * @return the object
+	 */
+	@SneakyThrows
+	@Around("@annotation(sysAopLog)")
+	public Object around(ProceedingJoinPoint point, SysAopLog sysAopLog) {
+		String strClassName = point.getTarget().getClass().getName();
+		String strMethodName = point.getSignature().getName();
 
-        log.info("==>  注解版本：[类名]:{},[方法]:{}", strClassName, strMethodName);
+		log.info("==>  注解版本：[类名]:{},[方法]:{}", strClassName, strMethodName);
 
-        SysLog logVo = SysLogUtils.getSysLog();
-        logVo.setTitle(sysAopLog.value());
-        // 发送异步日志事件
-        Long startTime = System.currentTimeMillis();
-        Object obj = point.proceed();
-        Long endTime = System.currentTimeMillis();
-        logVo.setTime(endTime - startTime);
+		SysLog logVo = SysLogUtils.getSysLog();
+		logVo.setTitle(sysAopLog.value());
+		// 发送异步日志事件
+		Long startTime = System.currentTimeMillis();
+		Object obj = point.proceed();
+		Long endTime = System.currentTimeMillis();
+		logVo.setTime(endTime - startTime);
 
-        publisher.publishEvent(new SysLogEvent(logVo));
+		publisher.publishEvent(new SysLogEvent(logVo));
 
-        return obj;
-    }
+		return obj;
+	}
 
 }

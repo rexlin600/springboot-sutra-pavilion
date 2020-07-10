@@ -5,22 +5,33 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 支付宝小程序配置类
+ * Ali app
  *
- * @author: rexlin600
- * @since: 2020-02-19
+ * @author hekunlin
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class AliApp {
 
-    private String appId;
+	/**
+	 * App id
+	 */
+	private String appId;
 
-    private String privateKey;
+	/**
+	 * Private key
+	 */
+	private String privateKey;
 
-    private String aliPublicKey;
+	/**
+	 * Ali public key
+	 */
+	private String aliPublicKey;
 
-    private String aesKey;
+	/**
+	 * Aes key
+	 */
+	private String aesKey;
 
 }

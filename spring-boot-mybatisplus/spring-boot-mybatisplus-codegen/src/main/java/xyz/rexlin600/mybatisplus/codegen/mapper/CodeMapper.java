@@ -8,19 +8,21 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Code mapper
+ *
  * @author hekunlin
  */
 public interface CodeMapper {
 
-    /**
-     * 分页查询数据库表
-     *
-     * @param page
-     * @param tableName
-     * @return
-     */
-    @Deprecated
-    @SuppressWarnings("MybatisMapperMethodInspection")
-    IPage<List<Map<String, Object>>> queryList(Page page, @Param("tableName") String tableName);
+	/**
+	 * Query list page
+	 *
+	 * @param page      page
+	 * @param tableName table name
+	 * @return the page
+	 */
+	@Deprecated
+	@SuppressWarnings("MybatisMapperMethodInspection")
+	IPage<List<Map<String, Object>>> queryList(Page page, @Param("tableName") String tableName);
 
 }

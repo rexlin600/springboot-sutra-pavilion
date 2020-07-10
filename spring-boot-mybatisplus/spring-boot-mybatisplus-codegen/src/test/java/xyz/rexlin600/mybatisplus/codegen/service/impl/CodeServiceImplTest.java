@@ -18,11 +18,6 @@ import java.util.Arrays;
 import java.util.List;
 
 
-/**
- * @description
- * @auther hekunlin
- * @create 2020-01-14 15:04
- */
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest

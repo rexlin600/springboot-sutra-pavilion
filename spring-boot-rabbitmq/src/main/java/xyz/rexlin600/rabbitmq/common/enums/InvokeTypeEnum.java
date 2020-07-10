@@ -5,55 +5,60 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
- * 调用mq类型 enum
+ * Invoke type enum
  *
- * @author: hekunlin
- * @since: 2020/1/7
+ * @author hekunlin
  */
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public enum InvokeTypeEnum {
 
-    /**
-     * 默认
-     */
-    DEFAULT("default", 0),
-    /**
-     * 直连
-     */
-    DIRECT("direct", 1),
-    /**
-     * 广播
-     */
-    FANOUT("fanout", 2),
-    /**
-     * header
-     */
-    HEADER("header", 3),
-    /**
-     * 配置
-     */
-    TOPIC("config", 4),
-    /**
-     * 简单
-     */
-    SIMPLE("simple", 5),
-    /**
-     * 工作模式
-     */
-    WORK("work", 6),
-    /**
-     * 死信队列
-     */
-    DL("dl", 7),
-    /**
-     * 自定义
-     */
-    CUSTOM("custom", 8);
+	/**
+	 * Default invoke type enum
+	 */
+	DEFAULT("default", 0),
+	/**
+	 * Direct invoke type enum
+	 */
+	DIRECT("direct", 1),
+	/**
+	 * Fanout invoke type enum
+	 */
+	FANOUT("fanout", 2),
+	/**
+	 * Header invoke type enum
+	 */
+	HEADER("header", 3),
+	/**
+	 * Topic invoke type enum
+	 */
+	TOPIC("config", 4),
+	/**
+	 * Simple invoke type enum
+	 */
+	SIMPLE("simple", 5),
+	/**
+	 * Work invoke type enum
+	 */
+	WORK("work", 6),
+	/**
+	 * Dl invoke type enum
+	 */
+	DL("dl", 7),
+	/**
+	 * Custom invoke type enum
+	 */
+	CUSTOM("custom", 8);
 
 
-    private String type;
-    private Integer code;
+	/**
+	 * Type
+	 */
+	private String type;
+	/**
+	 * Code
+	 */
+	private Integer code;
 
 }

@@ -8,10 +8,9 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 /**
- * 微信配置类
+ * Wechat properties
  *
- * @author: rexlin600
- * @since: 2020-02-18
+ * @author hekunlin
  */
 @Data
 @ToString
@@ -19,6 +18,9 @@ import java.util.Map;
 @ConfigurationProperties("rexlin600.wechat")
 public class WechatProperties {
 
-    private Map<String, String> map;
+	/**
+	 * Map
+	 */
+	private Map<String, String> map;
 
 }

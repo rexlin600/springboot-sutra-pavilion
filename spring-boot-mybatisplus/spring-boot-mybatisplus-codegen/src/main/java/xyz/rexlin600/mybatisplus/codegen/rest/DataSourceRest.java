@@ -17,101 +17,109 @@ import java.util.Date;
 
 
 /**
- * @menu 代码生成-数据源CURD
- * @author: hekunlin
- * @since: 2020/1/14
+ * Data source rest
+ *
+ * @author hekunlin
  */
 @RestController
 @RequestMapping("/ds")
 public class DataSourceRest {
 
-    private final DataSourceService dataSourceService;
+	/**
+	 * Data source service
+	 */
+	private final DataSourceService dataSourceService;
 
-    @Autowired
-    public DataSourceRest(DataSourceService dataSourceService) {
-        this.dataSourceService = dataSourceService;
-    }
+	/**
+	 * Data source rest
+	 *
+	 * @param dataSourceService data source service
+	 */
+	@Autowired
+	public DataSourceRest(DataSourceService dataSourceService) {
+		this.dataSourceService = dataSourceService;
+	}
 
 
-    /**
-     * 1. 新增数据源
-     *
-     * @param dataSourceReq
-     * @return
-     */
-    @PostMapping
-    public R saveDataSource(@RequestBody DataSourceReq dataSourceReq) {
-        DataSource source = new DataSource();
-        source = BeanCopier.create(dataSourceReq, source, new CopyOptions().setIgnoreNullValue(true)).copy();
-        source.setCreateTime(new Date());
-        // AES加密
-        source.setUsername(AesUtils.encrypt(dataSourceReq.getUsername()));
-        source.setPassword(AesUtils.encrypt(dataSourceReq.getPassword()));
-        dataSourceService.save(source);
+	/**
+	 * Save data source r
+	 *
+	 * @param dataSourceReq data source req
+	 * @return the r
+	 */
+	@PostMapping
+	public R saveDataSource(@RequestBody DataSourceReq dataSourceReq) {
+		DataSource source = new DataSource();
+		source = BeanCopier.create(dataSourceReq, source, new CopyOptions().setIgnoreNullValue(true)).copy();
+		source.setCreateTime(new Date());
+		// AES加密
+		source.setUsername(AesUtils.encrypt(dataSourceReq.getUsername()));
+		source.setPassword(AesUtils.encrypt(dataSourceReq.getPassword()));
+		dataSourceService.save(source);
 
-        return R.ok(CodeGenConstant.SUCCESS);
-    }
+		return R.ok(CodeGenConstant.SUCCESS);
+	}
 
-    /**
-     * 2. 删除数据源
-     *
-     * @param id
-     * @return
-     */
-    @DeleteMapping("/{id}")
-    public R deleteDataSource(@PathVariable(value = "id") Long id) {
-        dataSourceService.removeById(id);
-        return R.ok(CodeGenConstant.SUCCESS);
-    }
+	/**
+	 * Delete data source r
+	 *
+	 * @param id id
+	 * @return the r
+	 */
+	@DeleteMapping("/{id}")
+	public R deleteDataSource(@PathVariable(value = "id") Long id) {
+		dataSourceService.removeById(id);
+		return R.ok(CodeGenConstant.SUCCESS);
+	}
 
-    /**
-     * 3. 修改数据源
-     *
-     * @param dataSourceReq
-     * @return
-     */
-    @PutMapping
-    public R updateDataSource(@RequestBody DataSourceReq dataSourceReq) {
-        DataSource source = new DataSource();
-        // AES加密
-        dataSourceReq.setUsername(AesUtils.encrypt(dataSourceReq.getUsername()));
-        dataSourceReq.setPassword(AesUtils.encrypt(dataSourceReq.getPassword()));
+	/**
+	 * Update data source r
+	 *
+	 * @param dataSourceReq data source req
+	 * @return the r
+	 */
+	@PutMapping
+	public R updateDataSource(@RequestBody DataSourceReq dataSourceReq) {
+		DataSource source = new DataSource();
+		// AES加密
+		dataSourceReq.setUsername(AesUtils.encrypt(dataSourceReq.getUsername()));
+		dataSourceReq.setPassword(AesUtils.encrypt(dataSourceReq.getPassword()));
 
-        source = BeanCopier.create(dataSourceReq, source, new CopyOptions().setIgnoreNullValue(true)).copy();
-        source.setUpdateTime(new Date());
-        dataSourceService.updateById(source);
+		source = BeanCopier.create(dataSourceReq, source, new CopyOptions().setIgnoreNullValue(true)).copy();
+		source.setUpdateTime(new Date());
+		dataSourceService.updateById(source);
 
-        return R.ok(CodeGenConstant.SUCCESS);
-    }
+		return R.ok(CodeGenConstant.SUCCESS);
+	}
 
-    /**
-     * 4. 分页查询
-     *
-     * @param page
-     * @param size
-     * @return
-     */
-    @GetMapping("/page")
-    public R pageDataSource(@RequestParam(value = "page") Integer page,
-                            @RequestParam(value = "size") Integer size) {
-        Page<DataSource> sourcePage = dataSourceService.page(new Page<DataSource>(page, size));
+	/**
+	 * Page data source r
+	 *
+	 * @param page page
+	 * @param size size
+	 * @return the r
+	 */
+	@GetMapping("/page")
+	public R pageDataSource(@RequestParam(value = "page") Integer page,
+							@RequestParam(value = "size") Integer size) {
+		Page<DataSource> sourcePage = dataSourceService.page(new Page<DataSource>(page, size));
 
-        return R.ok(sourcePage);
-    }
+		return R.ok(sourcePage);
+	}
 
-    /**
-     * 5. 根据ID查询数据源
-     *
-     * @param id
-     * @return
-     */
-    @GetMapping("/{id}")
-    public R getDataSource(@PathVariable(value = "id") Long id) {
-        LambdaQueryWrapper<DataSource> queryWrapper = new LambdaQueryWrapper<DataSource>()
-                .eq(true, DataSource::getId, id);
-        DataSource dataSource = dataSourceService.getOne(queryWrapper);
+	/**
+	 * Gets data source *
+	 *
+	 * @param id id
+	 * @return the data source
+	 */
+	@GetMapping("/{id}")
+	public R getDataSource(@PathVariable(value = "id") Long id) {
+		LambdaQueryWrapper<DataSource> queryWrapper = new LambdaQueryWrapper<DataSource>()
+				.eq(true, DataSource::getId, id);
+		DataSource dataSource = dataSourceService.getOne(queryWrapper);
 
-        return R.ok(dataSource);
-    }
+		return R.ok(dataSource);
+	}
 
 }

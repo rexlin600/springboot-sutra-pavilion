@@ -14,90 +14,92 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Redis 字符串类型API
+ * Redis string rest
  *
- * @author: hekunlin
- * @since: 2020/5/12
+ * @author hekunlin
  */
 @Slf4j
 @RestController
 @RequestMapping("/redis/str")
 public class RedisStringRest {
 
-    private static final String STRING_KEY = "STR_KEY:";
+	/**
+	 * STRING_KEY
+	 */
+	private static final String STRING_KEY = "STR_KEY:";
 
-    private final RedisTemplate<String, Object> redisTemplate;
+	/**
+	 * Redis template
+	 */
+	private final RedisTemplate<String, Object> redisTemplate;
 
-    @Autowired
-    public RedisStringRest(RedisTemplate<String, Object> redisTemplate) {
-        this.redisTemplate = redisTemplate;
-    }
+	/**
+	 * Redis string rest
+	 *
+	 * @param redisTemplate redis template
+	 */
+	@Autowired
+	public RedisStringRest(RedisTemplate<String, Object> redisTemplate) {
+		this.redisTemplate = redisTemplate;
+	}
 
-    /**
-     * add
-     *
-     * @return
-     */
-    @PostMapping
-    public void add() {
-        // 普通 k-v
-        redisTemplate.opsForValue().set(STRING_KEY + 1, Math.random());
+	/**
+	 * Add
+	 */
+	@PostMapping
+	public void add() {
+		// 普通 k-v
+		redisTemplate.opsForValue().set(STRING_KEY + 1, Math.random());
 
-        redisTemplate.opsForValue().set(STRING_KEY + 1, Math.random(), 1);
+		redisTemplate.opsForValue().set(STRING_KEY + 1, Math.random(), 1);
 
-        redisTemplate.opsForValue().set(STRING_KEY + 2, Math.random());
-        redisTemplate.opsForValue().set(STRING_KEY + 3, Math.random());
-        redisTemplate.opsForValue().set(STRING_KEY + 4, Math.random());
+		redisTemplate.opsForValue().set(STRING_KEY + 2, Math.random());
+		redisTemplate.opsForValue().set(STRING_KEY + 3, Math.random());
+		redisTemplate.opsForValue().set(STRING_KEY + 4, Math.random());
 
-        // 带过期时间的 k-v
-        redisTemplate.opsForValue().set(STRING_KEY + 5, Math.random(), 10, TimeUnit.SECONDS);
+		// 带过期时间的 k-v
+		redisTemplate.opsForValue().set(STRING_KEY + 5, Math.random(), 10, TimeUnit.SECONDS);
 
-        redisTemplate.opsForValue().set(STRING_KEY + 6, Math.random(), Duration.ofSeconds(10));
-    }
+		redisTemplate.opsForValue().set(STRING_KEY + 6, Math.random(), Duration.ofSeconds(10));
+	}
 
-    /**
-     * del
-     *
-     * @return
-     */
-    @DeleteMapping
-    public void del() {
-        // 删除单个key
-        redisTemplate.delete(STRING_KEY + 1);
+	/**
+	 * Del
+	 */
+	@DeleteMapping
+	public void del() {
+		// 删除单个key
+		redisTemplate.delete(STRING_KEY + 1);
 
-        // 批量删除key
-        List<String> list = Arrays.asList(STRING_KEY + 2, STRING_KEY + 3, STRING_KEY + 4);
-        redisTemplate.delete(list);
-    }
+		// 批量删除key
+		List<String> list = Arrays.asList(STRING_KEY + 2, STRING_KEY + 3, STRING_KEY + 4);
+		redisTemplate.delete(list);
+	}
 
-    /**
-     * increment
-     *
-     * @return
-     */
-    @PostMapping("/incr")
-    public void increment() {
-        // 自增
-        redisTemplate.opsForValue().increment(STRING_KEY + 7);
+	/**
+	 * Increment
+	 */
+	@PostMapping("/incr")
+	public void increment() {
+		// 自增
+		redisTemplate.opsForValue().increment(STRING_KEY + 7);
 
-        // 自增指定步长 Long
-        redisTemplate.opsForValue().increment(STRING_KEY + 8, 2L);
+		// 自增指定步长 Long
+		redisTemplate.opsForValue().increment(STRING_KEY + 8, 2L);
 
-        // 自增指定步长 Double
-        redisTemplate.opsForValue().increment(STRING_KEY + 9, 2.1);
-    }
+		// 自增指定步长 Double
+		redisTemplate.opsForValue().increment(STRING_KEY + 9, 2.1);
+	}
 
-    /**
-     * decrement
-     *
-     * @return
-     */
-    @PostMapping("/decr")
-    public void decrement() {
-        // 自减
-        redisTemplate.opsForValue().decrement(STRING_KEY + 10);
+	/**
+	 * Decrement
+	 */
+	@PostMapping("/decr")
+	public void decrement() {
+		// 自减
+		redisTemplate.opsForValue().decrement(STRING_KEY + 10);
 
-        redisTemplate.opsForValue().decrement(STRING_KEY + 11, 1L);
-    }
+		redisTemplate.opsForValue().decrement(STRING_KEY + 11, 1L);
+	}
 
 }

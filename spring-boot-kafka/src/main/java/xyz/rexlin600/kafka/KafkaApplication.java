@@ -4,16 +4,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Kafka 启动类
+ * Kafka application
  *
- * @author: hekunlin
- * @since: 2020/6/28
+ * @author hekunlin
  */
 @SpringBootApplication
 public class KafkaApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(KafkaApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(KafkaApplication.class, args);
+	}
 
 }

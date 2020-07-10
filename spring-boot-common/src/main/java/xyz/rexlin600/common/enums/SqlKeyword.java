@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
- * 数据库关键字枚举类
+ * Sql keyword
  *
  * @author hekunlin
  */
@@ -12,95 +12,100 @@ import lombok.NoArgsConstructor;
 @Getter
 public enum SqlKeyword {
 
-    /**
-     * 符号 AND
-     */
-    AND("AND"),
-    /**
-     * 符号 OR
-     */
-    OR("OR"),
-    /**
-     * 符号 IN
-     */
-    IN("IN"),
-    /**
-     * 符号 NOT
-     */
-    NOT("NOT"),
-    /**
-     * 符号 LIKE
-     */
-    LIKE("LIKE"),
-    /**
-     * 符号 等于
-     */
-    EQ("="),
-    /**
-     * 符号 不等于
-     */
-    NE("<>"),
-    /**
-     * 符号 大于
-     */
-    GT("&gt;"),
-    /**
-     * 符号 大于等于
-     */
-    GE("&gt;="),
-    /**
-     * 符号 小于
-     */
-    LT("&lt;"),
-    /**
-     * 符号 小于等于
-     */
-    LE("&lt;="),
-    /**
-     * 符号 IS NULL
-     */
-    IS_NULL("IS NULL"),
-    /**
-     * 符号 IS NOT NULL
-     */
-    IS_NOT_NULL("IS NOT NULL"),
-    /**
-     * 符号 GROUP BY
-     */
-    GROUP_BY("GROUP BY"),
-    /**
-     * 符号 HAVING
-     */
-    HAVING("HAVING"),
-    /**
-     * 符号 ORDER BY
-     */
-    ORDER_BY("ORDER BY"),
-    /**
-     * 符号 EXISTS
-     */
-    EXISTS("EXISTS"),
-    /**
-     * 符号 BETWEEN
-     */
-    BETWEEN("BETWEEN"),
-    /**
-     * 符号 ASC
-     */
-    ASC("ASC"),
-    /**
-     * 符号 DESC
-     */
-    DESC("DESC");
+	/**
+	 * And sql keyword
+	 */
+	AND("AND"),
+	/**
+	 * Or sql keyword
+	 */
+	OR("OR"),
+	/**
+	 * In sql keyword
+	 */
+	IN("IN"),
+	/**
+	 * Not sql keyword
+	 */
+	NOT("NOT"),
+	/**
+	 * Like sql keyword
+	 */
+	LIKE("LIKE"),
+	/**
+	 * Eq sql keyword
+	 */
+	EQ("="),
+	/**
+	 * Ne sql keyword
+	 */
+	NE("<>"),
+	/**
+	 * Gt sql keyword
+	 */
+	GT("&gt;"),
+	/**
+	 * Ge sql keyword
+	 */
+	GE("&gt;="),
+	/**
+	 * Lt sql keyword
+	 */
+	LT("&lt;"),
+	/**
+	 * Le sql keyword
+	 */
+	LE("&lt;="),
+	/**
+	 * Is null
+	 */
+	IS_NULL("IS NULL"),
+	/**
+	 * Is not null
+	 */
+	IS_NOT_NULL("IS NOT NULL"),
+	/**
+	 * Group by
+	 */
+	GROUP_BY("GROUP BY"),
+	/**
+	 * Having sql keyword
+	 */
+	HAVING("HAVING"),
+	/**
+	 * Order by
+	 */
+	ORDER_BY("ORDER BY"),
+	/**
+	 * Exists sql keyword
+	 */
+	EXISTS("EXISTS"),
+	/**
+	 * Between sql keyword
+	 */
+	BETWEEN("BETWEEN"),
+	/**
+	 * Asc sql keyword
+	 */
+	ASC("ASC"),
+	/**
+	 * Desc sql keyword
+	 */
+	DESC("DESC");
 
-    /**
-     * 关键字
-     */
-    private String keyword;
+	/**
+	 * Keyword
+	 */
+	private String keyword;
 
-    SqlKeyword(String keyword) {
-        this.keyword = keyword;
-    }
+	/**
+	 * Sql keyword
+	 *
+	 * @param keyword keyword
+	 */
+	SqlKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 
 
 }

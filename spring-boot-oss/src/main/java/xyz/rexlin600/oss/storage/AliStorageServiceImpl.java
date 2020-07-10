@@ -19,80 +19,118 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * 阿里云存储服务实现类
- * <p>
- * default class：通过 OssFactory 暴露
+ * Ali storage service
  *
- * @author: hekunlin
- * @since: 2020/6/21
+ * @author hekunlin
  */
 @ConditionalOnBean(AliOssConfig.class)
 @Service
 class AliStorageServiceImpl implements StorageService {
 
-    private OSS client;
+	/**
+	 * Config
+	 */
+	private final AliOssConfig config;
+	/**
+	 * Client
+	 */
+	private OSS client;
 
-    /**
-     * 阿里云配置
-     */
-    private final AliOssConfig config;
+	/**
+	 * Ali storage service
+	 *
+	 * @param config config
+	 */
+	@Autowired
+	public AliStorageServiceImpl(AliOssConfig config) {
+		this.config = config;
+		//初始化
+		init();
+	}
 
-    @Autowired
-    public AliStorageServiceImpl(AliOssConfig config) {
-        this.config = config;
-        //初始化
-        init();
-    }
+	/**
+	 * Init
+	 */
+	private void init() {
+		client = new OSSClientBuilder().build(config.getEndpoint(), config.getAccessKey(), config.getAccessKeySecret());
+	}
 
-    /**
-     * 初始化
-     */
-    private void init() {
-        client = new OSSClientBuilder().build(config.getEndpoint(), config.getAccessKey(), config.getAccessKeySecret());
-    }
+	// -----------------------------------------------------------------------------------------------
+	// 实用方法
+	// -----------------------------------------------------------------------------------------------
 
-    // -----------------------------------------------------------------------------------------------
-    // 实用方法
-    // -----------------------------------------------------------------------------------------------
+	/**
+	 * Upload string
+	 *
+	 * @param data     data
+	 * @param fileName file name
+	 * @param path     path
+	 * @return the string
+	 */
+	@Override
+	public String upload(byte[] data, String fileName, String path) {
+		return upload(new ByteArrayInputStream(data), fileName, path);
+	}
 
-    @Override
-    public String upload(byte[] data, String fileName, String path) {
-        return upload(new ByteArrayInputStream(data), fileName, path);
-    }
+	/**
+	 * Upload string
+	 *
+	 * @param inputStream input stream
+	 * @param fileName    file name
+	 * @param path        path
+	 * @return the string
+	 */
+	@Override
+	public String upload(InputStream inputStream, String fileName, String path) {
+		path = PathUtil.resolvePath(path, fileName);
 
-    @Override
-    public String upload(InputStream inputStream, String fileName, String path) {
-        path = PathUtil.resolvePath(path, fileName);
+		try {
+			client.putObject(config.getBucketName(), path, inputStream);
+		} catch (OSSException ex) {
+			throw new OSSException("OSS异常，异常码=" + ex.getErrorCode() + " 异常信息=" + ex.getErrorMessage());
+		} catch (ClientException ex) {
+			throw new OSSException("OSS客户端异常，异常码=" + ex.getErrorCode() + " 异常信息=" + ex.getErrorMessage());
+		}
 
-        try {
-            client.putObject(config.getBucketName(), path, inputStream);
-        } catch (OSSException ex) {
-            throw new OSSException("OSS异常，异常码=" + ex.getErrorCode() + " 异常信息=" + ex.getErrorMessage());
-        } catch (ClientException ex) {
-            throw new OSSException("OSS客户端异常，异常码=" + ex.getErrorCode() + " 异常信息=" + ex.getErrorMessage());
-        }
+		return config.getDomain().concat(OssConstant.SLASH).concat(path);
+	}
 
-        return config.getDomain().concat(OssConstant.SLASH).concat(path);
-    }
+	/**
+	 * Download input stream
+	 *
+	 * @param key key
+	 * @return the input stream
+	 */
+	@Override
+	public InputStream download(String key) {
+		OSSObject object = client.getObject(new GetObjectRequest(this.config.getBucketName(), key));
+		return object.getObjectContent();
+	}
 
-    @Override
-    public InputStream download(String key) {
-        OSSObject object = client.getObject(new GetObjectRequest(this.config.getBucketName(), key));
-        return object.getObjectContent();
-    }
+	/**
+	 * Download *
+	 *
+	 * @param key  key
+	 * @param path path
+	 * @throws IOException io exception
+	 */
+	@Override
+	public void download(String key, String path) throws IOException {
 
-    @Override
-    public void download(String key, String path) throws IOException {
+		// 创建文件
+		PathUtil.createFile(path);
 
-        // 创建文件
-        PathUtil.createFile(path);
+		client.getObject(new GetObjectRequest(config.getBucketName(), key), new File(path));
+	}
 
-        client.getObject(new GetObjectRequest(config.getBucketName(), key), new File(path));
-    }
-
-    @Override
-    public void delete(String key) {
-        client.deleteObject(config.getBucketName(), key);
-    }
+	/**
+	 * Delete *
+	 *
+	 * @param key key
+	 */
+	@Override
+	public void delete(String key) {
+		client.deleteObject(config.getBucketName(), key);
+	}
 
 }

@@ -11,10 +11,9 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
- * 时间接收与转换
+ * Format
  *
- * @author: hekunlin
- * @since: 2020/6/4
+ * @author hekunlin
  */
 @SuppressWarnings({"ALL", "AlibabaRemoveCommentedCode"})
 @ToString
@@ -23,55 +22,55 @@ import java.util.Date;
 @AllArgsConstructor
 public class Format {
 
-    // -----------------------------------------------------------------------------------------------
-    // Date
-    // 下面展示 req -> resp Date 类型数据使用下面 DateTimeFormat 与 JsonFormat 的互转
-    // -----------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------
+	// Date
+	// 下面展示 req -> resp Date 类型数据使用下面 DateTimeFormat 与 JsonFormat 的互转
+	// -----------------------------------------------------------------------------------------------
 
-    /**
-     * @DateTimeFormat to @DateTimeFormat
-     */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date createDate;
+	/**
+	 * Create date
+	 */
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date createDate;
 
-    /**
-     * @DateTimeFormat to @JsonFormat
-     */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date deleteDate;
+	/**
+	 * Delete date
+	 */
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date deleteDate;
 
-    /**
-     * @JsonFormat to @JsonFormat
-     */
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date updateDate;
+	/**
+	 * Update date
+	 */
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date updateDate;
 
-    /**
-     * @JsonFormat to @DateTimeFormat
-     */
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date searchDate;
+	/**
+	 * Search date
+	 */
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date searchDate;
 
-    // -----------------------------------------------------------------------------------------------
-    // LocalDateTime
-    //
-    // 注意点：
-    //
-    // @DateTimeFormat to @DateTimeFormat：LocalDateTime 通过 @DateTimeFormat 接收参数会报错
-    //
-    // @DateTimeFormat to @JsonFormat：LocalDateTime 通过 @DateTimeFormat 接收参数会报错
-    // -----------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------
+	// LocalDateTime
+	//
+	// 注意点：
+	//
+	// @DateTimeFormat to @DateTimeFormat：LocalDateTime 通过 @DateTimeFormat 接收参数会报错
+	//
+	// @DateTimeFormat to @JsonFormat：LocalDateTime 通过 @DateTimeFormat 接收参数会报错
+	// -----------------------------------------------------------------------------------------------
 
-    /**
-     * @JsonFormat to @JsonFormat
-     */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private LocalDateTime localUpdateDate;
+	/**
+	 * Local update date
+	 */
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+	private LocalDateTime localUpdateDate;
 
-    /**
-     * @JsonFormat to @DateTimeFormat
-     */
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime localSearchDate;
+	/**
+	 * Local search date
+	 */
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime localSearchDate;
 
 }

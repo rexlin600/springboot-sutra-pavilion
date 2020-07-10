@@ -13,30 +13,43 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * <p>
- * 服务实现类
- * </p>
+ * Goods service
  *
- * @author rexlin600
- * @since 2020-05-09
+ * @author hekunlin
  */
 @Service
 public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements GoodsService {
 
-    @Resource
-    private GoodsMapper goodsMapper;
+	/**
+	 * Goods mapper
+	 */
+	@Resource
+	private GoodsMapper goodsMapper;
 
-    @Override
-    public PageInfo selectList(Integer page, Integer size) {
-        PageHelper.startPage(page, size);
-        List<Goods> list = goodsMapper.selectList(new LambdaQueryWrapper<>());
-        PageInfo<Goods> goodsPageInfo = new PageInfo<>(list);
-        return goodsPageInfo;
-    }
+	/**
+	 * Select list page info
+	 *
+	 * @param page page
+	 * @param size size
+	 * @return the page info
+	 */
+	@Override
+	public PageInfo selectList(Integer page, Integer size) {
+		PageHelper.startPage(page, size);
+		List<Goods> list = goodsMapper.selectList(new LambdaQueryWrapper<>());
+		PageInfo<Goods> goodsPageInfo = new PageInfo<>(list);
+		return goodsPageInfo;
+	}
 
-    @Override
-    public Goods selectById(Long id) {
-        return goodsMapper.selectByGoodsId(id);
-    }
-    
+	/**
+	 * Select by id goods
+	 *
+	 * @param id id
+	 * @return the goods
+	 */
+	@Override
+	public Goods selectById(Long id) {
+		return goodsMapper.selectByGoodsId(id);
+	}
+
 }

@@ -5,22 +5,19 @@ import org.apache.ibatis.annotations.Param;
 import xyz.rexlin600.custom.test.entity.Goods;
 
 /**
- * <p>
- * 服务类
- * </p>
+ * Goods service
  *
- * @author rexlin600
- * @since 2020-03-16
+ * @author hekunlin
  */
 public interface GoodsService extends IService<Goods> {
 
-    /**
-     * 根据ID查询
-     *
-     * @param id
-     * @param ds
-     * @return
-     */
-    Goods selectById(@Param("id") Long id, @Param("ds") Long ds);
+	/**
+	 * Select by id goods
+	 *
+	 * @param id id
+	 * @param ds ds
+	 * @return the goods
+	 */
+	Goods selectById(@Param("id") Long id, @Param("ds") Long ds);
 
 }

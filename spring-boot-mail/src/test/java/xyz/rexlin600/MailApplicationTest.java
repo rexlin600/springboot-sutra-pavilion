@@ -9,35 +9,27 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.context.junit4.SpringRunner;
 
-/**
- * @description
- * @auther hekunlin
- * @create 2020-01-10 15:20
- */
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MailApplicationTest {
 
-    @Autowired
-    private JavaMailSender javaMailSender;
+	@Autowired
+	private JavaMailSender javaMailSender;
 
-    @Value("${spring.mail.username}")
-    private String from;
+	@Value("${spring.mail.username}")
+	private String from;
 
-    /**
-     * 最简单右键发送测试
-     */
-    @Test
-    public void contextTest() {
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
+	@Test
+	public void contextTest() {
+		SimpleMailMessage mailMessage = new SimpleMailMessage();
 
-        mailMessage.setFrom(from);
-        mailMessage.setTo("3072054267@qq.com");
-        mailMessage.setSubject("Simple Mail Test");
-        mailMessage.setText("Test mail content");
+		mailMessage.setFrom(from);
+		mailMessage.setTo("3072054267@qq.com");
+		mailMessage.setSubject("Simple Mail Test");
+		mailMessage.setText("Test mail content");
 
-        javaMailSender.send(mailMessage);
-    }
+		javaMailSender.send(mailMessage);
+	}
 
 }

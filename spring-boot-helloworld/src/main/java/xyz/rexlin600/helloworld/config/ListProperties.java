@@ -9,10 +9,9 @@ import xyz.rexlin600.helloworld.entity.AliApp;
 import java.util.List;
 
 /**
- * CollectionProperties 类
+ * List properties
  *
- * @author: hekunlin
- * @since: 2020/1/10
+ * @author hekunlin
  */
 @ToString
 @Data
@@ -20,12 +19,24 @@ import java.util.List;
 @ConfigurationProperties(prefix = "rexlin600.list")
 public class ListProperties {
 
-    private List<String> list;
+	/**
+	 * List
+	 */
+	private List<String> list;
 
-    private List<Integer> integerList;
+	/**
+	 * Integer list
+	 */
+	private List<Integer> integerList;
 
-    private List<Double> doubleList;
+	/**
+	 * Double list
+	 */
+	private List<Double> doubleList;
 
-    private List<AliApp> aliAppList;
+	/**
+	 * Ali app list
+	 */
+	private List<AliApp> aliAppList;
 
 }

@@ -13,48 +13,50 @@ import xyz.rexlin600.rabbitmq.pattern.work.config.WorkConfig;
 import java.time.Instant;
 
 /**
- * Work 消费者
- * Work模式
+ * Work customer
  *
- * @author: hekunlin
- * @since: 2020/1/7
+ * @author hekunlin
  */
 @Slf4j
 @Component
 public class WorkCustomer {
 
-    /**
-     * 处理消息 String
-     *
-     * @param message
-     */
-    @RabbitListener(queuesToDeclare = {
-            @Queue(WorkConfig.WORK_QUEUE)
-    })
-    @SneakyThrows
-    @RabbitHandler
-    public void handlerWorkOne(String content, Channel channel, Message message) {
-        long milli = Instant.now().toEpochMilli();
-        log.info("==>  Work one consume content=[{}] at [{}]", content, milli);
-        // true表示一次确认所有小于tag的消息
-        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
-    }
+	/**
+	 * Handler work one *
+	 *
+	 * @param content content
+	 * @param channel channel
+	 * @param message message
+	 */
+	@RabbitListener(queuesToDeclare = {
+			@Queue(WorkConfig.WORK_QUEUE)
+	})
+	@SneakyThrows
+	@RabbitHandler
+	public void handlerWorkOne(String content, Channel channel, Message message) {
+		long milli = Instant.now().toEpochMilli();
+		log.info("==>  Work one consume content=[{}] at [{}]", content, milli);
+		// true表示一次确认所有小于tag的消息
+		channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+	}
 
-    /**
-     * 处理消息 String
-     *
-     * @param message
-     */
-    @RabbitListener(queuesToDeclare = {
-            @Queue(WorkConfig.WORK_QUEUE)
-    })
-    @SneakyThrows
-    @RabbitHandler
-    public void handlerWorkTwo(String content, Channel channel, Message message) {
-        long milli = Instant.now().toEpochMilli();
-        log.info("==>  Work two consume content=[{}] at [{}]", content, milli);
-        // true表示一次确认所有小于tag的消息
-        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
-    }
+	/**
+	 * Handler work two *
+	 *
+	 * @param content content
+	 * @param channel channel
+	 * @param message message
+	 */
+	@RabbitListener(queuesToDeclare = {
+			@Queue(WorkConfig.WORK_QUEUE)
+	})
+	@SneakyThrows
+	@RabbitHandler
+	public void handlerWorkTwo(String content, Channel channel, Message message) {
+		long milli = Instant.now().toEpochMilli();
+		log.info("==>  Work two consume content=[{}] at [{}]", content, milli);
+		// true表示一次确认所有小于tag的消息
+		channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+	}
 
 }

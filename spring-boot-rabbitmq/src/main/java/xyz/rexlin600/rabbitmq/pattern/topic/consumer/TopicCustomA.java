@@ -12,28 +12,29 @@ import xyz.rexlin600.rabbitmq.pattern.topic.config.TopicConfig;
 import java.time.Instant;
 
 /**
- * Topic 消费者类A
+ * Topic custom a
  *
- * @author: hekunlin
- * @since: 2020/1/7
+ * @author hekunlin
  */
 @Slf4j
 @Component
 @RabbitListener(queues = TopicConfig.TOPIC_QUEUE_A)
 public class TopicCustomA {
 
-    /**
-     * 处理消息 String
-     *
-     * @param message
-     */
-    @SneakyThrows
-    @RabbitHandler
-    public void handlerTopicOne(String content, Channel channel, Message message) {
-        long milli = Instant.now().toEpochMilli();
-        log.info("==>  Topic A consume content=[{}] at [{}]", content, milli);
-        // true表示一次确认所有小于tag的消息
-        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
-    }
+	/**
+	 * Handler topic one *
+	 *
+	 * @param content content
+	 * @param channel channel
+	 * @param message message
+	 */
+	@SneakyThrows
+	@RabbitHandler
+	public void handlerTopicOne(String content, Channel channel, Message message) {
+		long milli = Instant.now().toEpochMilli();
+		log.info("==>  Topic A consume content=[{}] at [{}]", content, milli);
+		// true表示一次确认所有小于tag的消息
+		channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+	}
 
 }

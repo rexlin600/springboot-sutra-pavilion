@@ -11,36 +11,31 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-/**
- * @description
- * @auther hekunlin
- * @create 2020-01-09 11:59
- */
 @SuppressWarnings("Duplicates")
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class FlatMapTest {
 
-    private FlatMap flatMap;
+	private FlatMap flatMap;
 
-    @Before
-    public void setUp() throws Exception {
-        flatMap = new FlatMap();
-    }
+	@Before
+	public void setUp() throws Exception {
+		flatMap = new FlatMap();
+	}
 
-    @Test
-    public void flatMapFunction() {
-        Function<Goods, Stream<Long>> function = new Function<Goods, Stream<Long>>() {
-            @Override
-            public Stream<Long> apply(Goods goods) {
-                if (goods.getColor().equals("天蓝色")) {
-                    return Stream.of(goods.getId());
-                }
-                return null;
-            }
-        };
+	@Test
+	public void flatMapFunction() {
+		Function<Goods, Stream<Long>> function = new Function<Goods, Stream<Long>>() {
+			@Override
+			public Stream<Long> apply(Goods goods) {
+				if (goods.getColor().equals("天蓝色")) {
+					return Stream.of(goods.getId());
+				}
+				return null;
+			}
+		};
         List<Long> list = flatMap.flatMapFunction(function);
 
         assertEquals(3l, list.size());

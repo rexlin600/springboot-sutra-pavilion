@@ -7,10 +7,9 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * Starred 返回类
+ * Starred resp
  *
- * @author: rexlin600
- * @since: 2020/3/22
+ * @author hekunlin
  */
 @Builder
 @Data
@@ -19,86 +18,86 @@ import java.time.LocalDateTime;
 @ToString
 public class StarredResp implements Serializable {
 
-    /**
-     * 项目全名
-     */
-    private String fullName;
+	/**
+	 * Full name
+	 */
+	private String fullName;
 
-    /**
-     * 项目名称
-     */
-    private String name;
+	/**
+	 * Name
+	 */
+	private String name;
 
-    /**
-     * 作者
-     */
-    private String author;
+	/**
+	 * Author
+	 */
+	private String author;
 
-    /**
-     * HTML 页面
-     */
-    private String htmlurl;
+	/**
+	 * Htmlurl
+	 */
+	private String htmlurl;
 
-    /**
-     * 项目描述
-     */
-    private String description;
+	/**
+	 * Description
+	 */
+	private String description;
 
-    /**
-     * 创建时间
-     */
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime createAt;
+	/**
+	 * Create at
+	 */
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime createAt;
 
-    /**
-     * 修改时间
-     */
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime updateAt;
+	/**
+	 * Update at
+	 */
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime updateAt;
 
-    /**
-     * 克隆地址
-     */
-    private String cloneUrl;
+	/**
+	 * Clone url
+	 */
+	private String cloneUrl;
 
-    /**
-     * 作者主页
-     */
-    private String homePage;
+	/**
+	 * Home page
+	 */
+	private String homePage;
 
-    /**
-     * 项目大小
-     */
-    private Long size;
+	/**
+	 * Size
+	 */
+	private Long size;
 
-    /**
-     * Star 总数
-     */
-    private Long stargazersCount;
+	/**
+	 * Stargazers count
+	 */
+	private Long stargazersCount;
 
-    /**
-     * 关注总数
-     */
-    private Long watchersCount;
+	/**
+	 * Watchers count
+	 */
+	private Long watchersCount;
 
-    /**
-     * fork总数
-     */
-    private Long forksCount;
+	/**
+	 * Forks count
+	 */
+	private Long forksCount;
 
-    /**
-     * 项目主要语言
-     */
-    private String language;
+	/**
+	 * Language
+	 */
+	private String language;
 
-    /**
-     * 项目许可证
-     */
-    private String license;
+	/**
+	 * License
+	 */
+	private String license;
 
-    /**
-     * 默认分支
-     */
-    private String defaultBranch;
+	/**
+	 * Default branch
+	 */
+	private String defaultBranch;
 
 }

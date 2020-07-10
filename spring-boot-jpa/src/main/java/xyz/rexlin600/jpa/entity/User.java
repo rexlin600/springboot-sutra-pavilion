@@ -8,7 +8,9 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 /**
- * @author rexlin600
+ * User
+ *
+ * @author hekunlin
  */
 @Data
 @DynamicUpdate
@@ -17,19 +19,31 @@ import javax.persistence.*;
 @Table(name = "user")
 public class User {
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "myid")
-    @GenericGenerator(name = "myid", strategy = "xyz.rexlin600.helloworld.config.ManulInsertGenerator")
-    private Long id;
+	/**
+	 * Id
+	 */
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "myid")
+	@GenericGenerator(name = "myid", strategy = "xyz.rexlin600.helloworld.config.ManulInsertGenerator")
+	private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String name;
+	/**
+	 * Name
+	 */
+	@Column(nullable = false, unique = true)
+	private String name;
 
-    @Column(nullable = false, unique = false)
-    private Integer age;
+	/**
+	 * Age
+	 */
+	@Column(nullable = false, unique = false)
+	private Integer age;
 
-    @Column(nullable = false, unique = true)
-    private String email;
+	/**
+	 * Email
+	 */
+	@Column(nullable = false, unique = true)
+	private String email;
 
 }

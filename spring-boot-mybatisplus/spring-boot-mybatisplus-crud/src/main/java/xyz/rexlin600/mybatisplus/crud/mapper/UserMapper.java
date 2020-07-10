@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import xyz.rexlin600.mybatisplus.crud.model.User;
 
 /**
- * @author rexlin600
+ * User mapper
+ *
+ * @author hekunlin
  */
 public interface UserMapper extends BaseMapper<User> {
 

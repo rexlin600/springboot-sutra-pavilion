@@ -11,33 +11,41 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 动态数据源拦截器
+ * Dynamic datasource interceptor
  *
- * @author rexlin600
+ * @author hekunlin
  */
 @Slf4j
 @Component
 @AllArgsConstructor
 public class DynamicDatasourceInterceptor implements HandlerInterceptor {
 
-    /**
-     * 根据上下文判断路由哪个数据库
-     *
-     * @param request
-     * @param response
-     * @param handler
-     * @return
-     */
-    @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        DynamicDataSourceContextHolder.push(1L);
-        return true;
-    }
+	/**
+	 * Pre handle boolean
+	 *
+	 * @param request  request
+	 * @param response response
+	 * @param handler  handler
+	 * @return the boolean
+	 */
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+		DynamicDataSourceContextHolder.push(1L);
+		return true;
+	}
 
-    @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
-                                @Nullable Exception ex) {
-        DynamicDataSourceContextHolder.remove();
-    }
+	/**
+	 * After completion *
+	 *
+	 * @param request  request
+	 * @param response response
+	 * @param handler  handler
+	 * @param ex       ex
+	 */
+	@Override
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
+								@Nullable Exception ex) {
+		DynamicDataSourceContextHolder.remove();
+	}
 
 }

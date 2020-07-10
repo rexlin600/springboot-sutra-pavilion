@@ -11,10 +11,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * DataSource 实体类
+ * Data source
  *
- * @author: hekunlin
- * @since: 2020/1/14
+ * @author hekunlin
  */
 @Data
 @NoArgsConstructor
@@ -23,48 +22,48 @@ import java.util.Date;
 @Builder
 public class DataSource implements Serializable {
 
-    /**
-     * 数据源ID
-     */
-    @JsonSerialize(using = ToStringSerializer.class)
-    @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+	/**
+	 * Id
+	 */
+	@JsonSerialize(using = ToStringSerializer.class)
+	@TableId(value = "id", type = IdType.AUTO)
+	private Long id;
 
-    /**
-     * 数据库地址
-     */
-    private String host;
+	/**
+	 * Host
+	 */
+	private String host;
 
-    /**
-     * 端口
-     */
-    private String port;
+	/**
+	 * Port
+	 */
+	private String port;
 
-    /**
-     * 用户名
-     */
-    private String username;
+	/**
+	 * Username
+	 */
+	private String username;
 
-    /**
-     * 密码
-     */
-    private String password;
+	/**
+	 * Password
+	 */
+	private String password;
 
-    /**
-     * 数据库名称
-     */
-    private String dbName;
+	/**
+	 * Db name
+	 */
+	private String dbName;
 
-    /**
-     * 创建时间
-     */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date createTime;
+	/**
+	 * Create time
+	 */
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+	private Date createTime;
 
-    /**
-     * 修改时间
-     */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date updateTime;
+	/**
+	 * Update time
+	 */
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+	private Date updateTime;
 
 }

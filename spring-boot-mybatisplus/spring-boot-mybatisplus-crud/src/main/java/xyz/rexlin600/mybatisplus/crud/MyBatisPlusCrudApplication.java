@@ -5,13 +5,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @author rexlin600
+ * My batis plus crud application
+ *
+ * @author hekunlin
  */
 @MapperScan(value = {"xyz.rexlin600"})
 @SpringBootApplication
 public class MyBatisPlusCrudApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(MyBatisPlusCrudApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(MyBatisPlusCrudApplication.class, args);
+	}
 }

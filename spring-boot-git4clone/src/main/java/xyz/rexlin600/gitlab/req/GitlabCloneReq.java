@@ -7,34 +7,33 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * GitlabCloneReq 请求类
+ * Gitlab clone req
  *
- * @author: rexlin600
- * @since: 2020-02-14
+ * @author hekunlin
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class GitlabCloneReq implements Serializable {
 
-    /**
-     * 项目名称
-     */
-    private String name;
+	/**
+	 * Name
+	 */
+	private String name;
 
-    /**
-     * 筛选的项目 -> 输出地址
-     */
-    private String dir;
+	/**
+	 * Dir
+	 */
+	private String dir;
 
-    /**
-     * 项目所属人
-     */
-    private String owner;
+	/**
+	 * Owner
+	 */
+	private String owner;
 
-    /**
-     * 命名空间用户名称
-     */
-    private String namespaceName;
+	/**
+	 * Namespace name
+	 */
+	private String namespaceName;
 
 }

@@ -10,8 +10,9 @@ import xyz.rexlin600.oss.common.OssConstant;
 import java.io.Serializable;
 
 /**
- * @author: hekunlin
- * @since: 2020/6/21
+ * Qn oss config
+ *
+ * @author hekunlin
  */
 @Qualifier(value = "qnOssConfig")
 @ConditionalOnProperty(prefix = OssConstant.PREFIX_QN, name = "enable", havingValue = "true")
@@ -20,29 +21,29 @@ import java.io.Serializable;
 @ConfigurationProperties(prefix = OssConstant.PREFIX_QN)
 public class QnOssConfig implements Serializable {
 
-    /**
-     * 是否启用
-     */
-    private Boolean enable;
+	/**
+	 * Enable
+	 */
+	private Boolean enable;
 
-    /**
-     * 七牛云 域名
-     */
-    private String domain;
+	/**
+	 * Domain
+	 */
+	private String domain;
 
-    /**
-     * 七牛云 accessKey
-     */
-    private String accessKey;
+	/**
+	 * Access key
+	 */
+	private String accessKey;
 
-    /**
-     * 七牛云 secretKey
-     */
-    private String secretKey;
+	/**
+	 * Secret key
+	 */
+	private String secretKey;
 
-    /**
-     * 七牛云 bucket 名称
-     */
-    private String bucketName;
+	/**
+	 * Bucket name
+	 */
+	private String bucketName;
 
 }

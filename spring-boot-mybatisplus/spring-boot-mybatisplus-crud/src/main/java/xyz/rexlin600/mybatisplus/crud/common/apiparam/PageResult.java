@@ -9,60 +9,96 @@ import java.security.InvalidParameterException;
 import java.util.List;
 
 /**
- * @author: hekunlin
- * @since: 2019/12/11
+ * Page result
+ *
+ * @param <T> parameter
+ * @author hekunlin
  */
 @Data
 @Accessors(chain = true)
 public class PageResult<T> {
 
-    private long totalCount;
-    private long totalPage;
-    private Integer page;
-    private Integer size;
-    private List<T> list;
+	/**
+	 * Total count
+	 */
+	private long totalCount;
+	/**
+	 * Total page
+	 */
+	private long totalPage;
+	/**
+	 * Page
+	 */
+	private Integer page;
+	/**
+	 * Size
+	 */
+	private Integer size;
+	/**
+	 * List
+	 */
+	private List<T> list;
 
-    public PageResult() {
-    }
+	/**
+	 * Page result
+	 */
+	public PageResult() {
+	}
 
-    /**
-     * @param totalCount 总条数
-     * @param page       第几页
-     * @param size       每页几条记录
-     */
-    public PageResult(@NonNull Integer totalCount, @NonNull Integer page, @NonNull Integer size, List<T> list) throws RuntimeException {
-        if (size == 0) {
-            throw new InvalidParameterException("size不能为0");
-        }
-        this.totalCount = totalCount;
-        this.page = page;
-        this.size = size;
-        this.totalPage = totalCount / size;
-        if (totalCount % size != 0) {
-            this.totalPage += 1;
-        }
-        this.list = list;
-    }
+	/**
+	 * Page result
+	 *
+	 * @param totalCount total count
+	 * @param page       page
+	 * @param size       size
+	 * @param list       list
+	 * @throws RuntimeException runtime exception
+	 */
+	public PageResult(@NonNull Integer totalCount, @NonNull Integer page, @NonNull Integer size, List<T> list) throws RuntimeException {
+		if (size == 0) {
+			throw new InvalidParameterException("size不能为0");
+		}
+		this.totalCount = totalCount;
+		this.page = page;
+		this.size = size;
+		this.totalPage = totalCount / size;
+		if (totalCount % size != 0) {
+			this.totalPage += 1;
+		}
+		this.list = list;
+	}
 
-    public PageResult(PageInfo<T> pageInfo) {
-        this.totalCount = pageInfo.getTotal();
-        this.totalPage = pageInfo.getPages();
-        this.page = pageInfo.getPageNum();
-        this.size = pageInfo.getPageSize();
-        this.list = pageInfo.getList();
-    }
+	/**
+	 * Page result
+	 *
+	 * @param pageInfo page info
+	 */
+	public PageResult(PageInfo<T> pageInfo) {
+		this.totalCount = pageInfo.getTotal();
+		this.totalPage = pageInfo.getPages();
+		this.page = pageInfo.getPageNum();
+		this.size = pageInfo.getPageSize();
+		this.list = pageInfo.getList();
+	}
 
-    public <R> PageResult<R> convert(List<R> list) {
-        PageResult<R> result = new PageResult<>();
+	/**
+	 * Convert page result
+	 *
+	 * @param <R>  parameter
+	 * @param list list
+	 * @return the page result
+	 */
+	public <R> PageResult<R> convert(List<R> list) {
+		PageResult<R> result = new PageResult<>();
 
-        // 属性拷贝
-        result.totalCount = this.totalCount;
-        result.totalPage = this.totalPage;
-        result.page = this.page;
-        result.size = this.size;
-        // 列表赋值
-        result.list = list;
+		// 属性拷贝
+		result.totalCount = this.totalCount;
+		result.totalPage = this.totalPage;
+		result.page = this.page;
+		result.size = this.size;
+		// 列表赋值
+		result.list = list;
 
-        return result;
-    }
+		return result;
+	}
 }

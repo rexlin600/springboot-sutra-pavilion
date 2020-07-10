@@ -5,21 +5,21 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * Post请求测试类
+ * Post req
  *
- * @author: hekunlin
+ * @author hekunlin
  */
 @Data
 public class PostReq implements Serializable {
 
-    /**
-     * 姓名
-     */
-    private String name;
+	/**
+	 * Name
+	 */
+	private String name;
 
-    /**
-     * 年龄
-     */
-    private Integer age;
+	/**
+	 * Age
+	 */
+	private Integer age;
 
 }

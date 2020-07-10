@@ -6,20 +6,24 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import xyz.rexlin600.starter.dds.annotation.EnableDynamicDataSource;
 
 /**
- * 自定义starter测试服务启动类
+ * Custom test starter application
  *
- * @author: hekunlin
- * @since: 2020/3/16
+ * @author hekunlin
  */
 @MapperScan(value = "xyz.rexlin600.custom.test.mapper")
 @EnableDynamicDataSource
 @SpringBootApplication(scanBasePackages = {
-        "xyz.rexlin600"
+		"xyz.rexlin600"
 })
 public class CustomTestStarterApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(CustomTestStarterApplication.class, args);
-    }
+	/**
+	 * Main
+	 *
+	 * @param args args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(CustomTestStarterApplication.class, args);
+	}
 
 }

@@ -12,28 +12,29 @@ import xyz.rexlin600.rabbitmq.pattern.fanout.config.FanoutConfig;
 import java.time.Instant;
 
 /**
- * Fanout 消费者类C
+ * Fanout custom c
  *
- * @author: hekunlin
- * @since: 2020/1/7
+ * @author hekunlin
  */
 @Slf4j
 @Component
 @RabbitListener(queues = FanoutConfig.FANOUT_QUEUE_C)
 public class FanoutCustomC {
 
-    /**
-     * 处理消息 String
-     *
-     * @param message
-     */
-    @SneakyThrows
-    @RabbitHandler
-    public void handlerFanOutStrC(String content, Channel channel, Message message) {
-        long milli = Instant.now().toEpochMilli();
-        log.info("==>  Fanout C consume content=[{}] at [{}]", content, milli);
-        // true表示一次确认所有小于tag的消息
-        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
-    }
+	/**
+	 * Handler fan out str c *
+	 *
+	 * @param content content
+	 * @param channel channel
+	 * @param message message
+	 */
+	@SneakyThrows
+	@RabbitHandler
+	public void handlerFanOutStrC(String content, Channel channel, Message message) {
+		long milli = Instant.now().toEpochMilli();
+		log.info("==>  Fanout C consume content=[{}] at [{}]", content, milli);
+		// true表示一次确认所有小于tag的消息
+		channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+	}
 
 }

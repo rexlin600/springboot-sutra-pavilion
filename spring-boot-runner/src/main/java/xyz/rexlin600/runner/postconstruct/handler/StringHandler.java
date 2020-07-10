@@ -4,24 +4,33 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- * 字符串处理器
+ * String handler
  *
- * @author: hekunlin
- * @since: 2020/3/6
+ * @author hekunlin
  */
 @Slf4j
 @Service
 public class StringHandler implements HandlerSvc {
 
-    @Override
-    public Integer handleCode() {
-        return 1;
-    }
+	/**
+	 * Handle code integer
+	 *
+	 * @return the integer
+	 */
+	@Override
+	public Integer handleCode() {
+		return 1;
+	}
 
-    @Override
-    public void handle(Object object) {
-        String str = (String) object;
-        log.info("StringHandler handle object=[{}]", str);
-    }
+	/**
+	 * Handle *
+	 *
+	 * @param object object
+	 */
+	@Override
+	public void handle(Object object) {
+		String str = (String) object;
+		log.info("StringHandler handle object=[{}]", str);
+	}
 
 }

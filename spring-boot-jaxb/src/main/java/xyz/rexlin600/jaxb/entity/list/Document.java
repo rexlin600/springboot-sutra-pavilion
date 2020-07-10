@@ -11,10 +11,9 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 文件类
+ * Document
  *
- * @author: hekunlin
- * @since: 2020/3/6
+ * @author hekunlin
  */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,48 +21,78 @@ import java.util.List;
 @XmlRootElement(name = "DOCUMENT")
 public class Document implements Serializable {
 
-    /**
-     * ID
-     */
-    @XmlElement(name = "ID")
-    private Long id;
+	/**
+	 * Id
+	 */
+	@XmlElement(name = "ID")
+	private Long id;
 
-    /**
-     * 文件名称
-     */
-    @XmlElement(name = "NAME")
-    private String name;
+	/**
+	 * Name
+	 */
+	@XmlElement(name = "NAME")
+	private String name;
 
-    /**
-     * 文件类型列表
-     */
-    @XmlElement(name = "FileType")
-    private List<FileType> list;
+	/**
+	 * List
+	 */
+	@XmlElement(name = "FileType")
+	private List<FileType> list;
 
-    @XmlTransient
-    public Long getId() {
-        return id;
-    }
+	/**
+	 * Gets id *
+	 *
+	 * @return the id
+	 */
+	@XmlTransient
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	/**
+	 * Sets id *
+	 *
+	 * @param id id
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    @XmlTransient
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets name *
+	 *
+	 * @return the name
+	 */
+	@XmlTransient
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	/**
+	 * Sets name *
+	 *
+	 * @param name name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    @XmlTransient
-    public List<FileType> getList() {
-        return list;
-    }
+	/**
+	 * Gets list *
+	 *
+	 * @return the list
+	 */
+	@XmlTransient
+	public List<FileType> getList() {
+		return list;
+	}
 
-    public void setList(List<FileType> list) {
-        this.list = list;
-    }
+	/**
+	 * Sets list *
+	 *
+	 * @param list list
+	 */
+	public void setList(List<FileType> list) {
+		this.list = list;
+	}
 }

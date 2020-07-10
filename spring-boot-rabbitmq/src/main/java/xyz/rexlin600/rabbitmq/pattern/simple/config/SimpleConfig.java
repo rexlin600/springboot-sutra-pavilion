@@ -5,28 +5,27 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Simple 配置类
+ * Simple config
  *
- * @author: hekunlin
- * @since: 2020/1/7
+ * @author hekunlin
  */
 @Configuration
 public class SimpleConfig {
 
-    /**
-     * 简单模式
-     */
-    public static final String SIMPLE_QUEUE = "queue.rexlin600.simple";
+	/**
+	 * SIMPLE_QUEUE
+	 */
+	public static final String SIMPLE_QUEUE = "queue.rexlin600.simple";
 
 
-    /**
-     * Queue
-     *
-     * @return
-     */
-    @Bean
-    public Queue simpleQueue() {
-        return new Queue(SIMPLE_QUEUE);
-    }
+	/**
+	 * Simple queue queue
+	 *
+	 * @return the queue
+	 */
+	@Bean
+	public Queue simpleQueue() {
+		return new Queue(SIMPLE_QUEUE);
+	}
 
 }

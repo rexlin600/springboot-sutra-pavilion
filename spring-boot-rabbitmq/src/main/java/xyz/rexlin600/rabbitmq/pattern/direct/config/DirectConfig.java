@@ -8,54 +8,59 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Direct 配置类
+ * Direct config
  *
- * @author: hekunlin
- * @since: 2020/1/7
+ * @author hekunlin
  */
 @Configuration
 public class DirectConfig {
 
-    /**
-     * 直连queue、routingKey、exchange
-     */
-    public static final String DIRECT_QUEUE = "queue.rexlin600.direct";
-    public static final String DIRECT_ROUTINGKEY = "routingKey.rexlin600.direct";
-    public static final String DIRECT_EXCHANGE = "exchange.rexlin600.direct";
+	/**
+	 * DIRECT_QUEUE
+	 */
+	public static final String DIRECT_QUEUE = "queue.rexlin600.direct";
+	/**
+	 * DIRECT_ROUTINGKEY
+	 */
+	public static final String DIRECT_ROUTINGKEY = "routingKey.rexlin600.direct";
+	/**
+	 * DIRECT_EXCHANGE
+	 */
+	public static final String DIRECT_EXCHANGE = "exchange.rexlin600.direct";
 
 
-    /**
-     * Queue
-     *
-     * @return
-     */
-    @Bean
-    public Queue directQueue() {
-        return new Queue(DIRECT_QUEUE);
-    }
+	/**
+	 * Direct queue queue
+	 *
+	 * @return the queue
+	 */
+	@Bean
+	public Queue directQueue() {
+		return new Queue(DIRECT_QUEUE);
+	}
 
-    /**
-     * Exchange
-     *
-     * @return
-     */
-    @Bean
-    public DirectExchange directExchange() {
-        return new DirectExchange(DIRECT_EXCHANGE);
-    }
+	/**
+	 * Direct exchange direct exchange
+	 *
+	 * @return the direct exchange
+	 */
+	@Bean
+	public DirectExchange directExchange() {
+		return new DirectExchange(DIRECT_EXCHANGE);
+	}
 
-    /**
-     * Binding
-     *
-     * @param directQueue
-     * @param directExchange
-     * @return
-     */
-    @Bean
-    public Binding bindingDirectExchange(Queue directQueue, DirectExchange directExchange) {
-        return BindingBuilder.bind(directQueue)
-                .to(directExchange)
-                .with(DIRECT_ROUTINGKEY);
-    }
+	/**
+	 * Binding direct exchange binding
+	 *
+	 * @param directQueue    direct queue
+	 * @param directExchange direct exchange
+	 * @return the binding
+	 */
+	@Bean
+	public Binding bindingDirectExchange(Queue directQueue, DirectExchange directExchange) {
+		return BindingBuilder.bind(directQueue)
+				.to(directExchange)
+				.with(DIRECT_ROUTINGKEY);
+	}
 
 }

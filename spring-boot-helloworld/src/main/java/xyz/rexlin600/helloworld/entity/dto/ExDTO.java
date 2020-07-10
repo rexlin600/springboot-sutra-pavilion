@@ -7,22 +7,34 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * ExDTO 类
+ * Ex dto
  *
- * @author: hekunlin
- * @since: 2020/1/10
+ * @param <T> parameter
+ * @author hekunlin
  */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class ExDTO<T> implements Serializable {
 
-    private String msg;
+	/**
+	 * Msg
+	 */
+	private String msg;
 
-    private Integer code;
+	/**
+	 * Code
+	 */
+	private Integer code;
 
-    private T data;
+	/**
+	 * Data
+	 */
+	private T data;
 
-    private String url;
+	/**
+	 * Url
+	 */
+	private String url;
 
 }

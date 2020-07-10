@@ -7,10 +7,9 @@ import xyz.rexlin600.mybatisplus.codegen.mapper.DataSourceMapper;
 import xyz.rexlin600.mybatisplus.codegen.service.DataSourceService;
 
 /**
- * DataSourceService 接口实现类
+ * Data source service
  *
- * @author: hekunlin
- * @since: 2020/1/14
+ * @author hekunlin
  */
 @Service
 public class DataSourceServiceImpl extends ServiceImpl<DataSourceMapper, DataSource> implements DataSourceService {

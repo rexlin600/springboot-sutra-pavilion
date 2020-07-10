@@ -13,26 +13,31 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Mybatis 拦截器配置
+ * Mybatis interceptor config
  *
- * @author: hekunlin
- * @since: 2020/5/9
+ * @author hekunlin
  */
 @ConditionalOnBean({SqlSessionFactory.class})
 @Configuration
 @AutoConfigureAfter({PageHelperAutoConfiguration.class})
 public class MybatisInterceptorConfig {
 
-    @Autowired
-    private List<SqlSessionFactory> sqlSessionFactoryList;
+	/**
+	 * Sql session factory list
+	 */
+	@Autowired
+	private List<SqlSessionFactory> sqlSessionFactoryList;
 
-    @PostConstruct
-    public void addMyInterceptor() {
-        MybatisExecutorInterceptor interceptor = new MybatisExecutorInterceptor();
-        Iterator var3 = this.sqlSessionFactoryList.iterator();
-        while (var3.hasNext()) {
-            SqlSessionFactory sqlSessionFactory = (SqlSessionFactory) var3.next();
-            sqlSessionFactory.getConfiguration().addInterceptor(interceptor);
-        }
-    }
+	/**
+	 * Add my interceptor
+	 */
+	@PostConstruct
+	public void addMyInterceptor() {
+		MybatisExecutorInterceptor interceptor = new MybatisExecutorInterceptor();
+		Iterator var3 = this.sqlSessionFactoryList.iterator();
+		while (var3.hasNext()) {
+			SqlSessionFactory sqlSessionFactory = (SqlSessionFactory) var3.next();
+			sqlSessionFactory.getConfiguration().addInterceptor(interceptor);
+		}
+	}
 }

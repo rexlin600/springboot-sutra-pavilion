@@ -13,7 +13,7 @@ import java.util.List;
 
 
 /**
- * Excel 监听类
+ * Simple excel listener
  *
  * @author hekunlin
  */
@@ -24,33 +24,39 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 public class SimpleExcelListener extends AnalysisEventListener<SimpleData> {
 
-    private static final int BATCH_COUNT = 3000;
-    private List<SimpleData> list = new ArrayList<>();
+	/**
+	 * BATCH_COUNT
+	 */
+	private static final int BATCH_COUNT = 3000;
+	/**
+	 * List
+	 */
+	private List<SimpleData> list = new ArrayList<>();
 
-    /**
-     * 调用方法
-     *
-     * @param simpleData      简单日期
-     * @param analysisContext 分析上下文类
-     */
-    @Override
-    public void invoke(SimpleData simpleData, AnalysisContext analysisContext) {
-        list.add(simpleData);
+	/**
+	 * Invoke *
+	 *
+	 * @param simpleData      simple data
+	 * @param analysisContext analysis context
+	 */
+	@Override
+	public void invoke(SimpleData simpleData, AnalysisContext analysisContext) {
+		list.add(simpleData);
 
-        if (list.size() >= BATCH_COUNT) {
-            list.clear();
-        }
+		if (list.size() >= BATCH_COUNT) {
+			list.clear();
+		}
 
-    }
+	}
 
-    /**
-     * if have something to do after all analysis
-     *
-     * @param analysisContext 分析上下文类
-     */
-    @Override
-    public void doAfterAllAnalysed(AnalysisContext analysisContext) {
-        log.info("==>  do after all analysed ...");
-    }
+	/**
+	 * Do after all analysed *
+	 *
+	 * @param analysisContext analysis context
+	 */
+	@Override
+	public void doAfterAllAnalysed(AnalysisContext analysisContext) {
+		log.info("==>  do after all analysed ...");
+	}
 
 }

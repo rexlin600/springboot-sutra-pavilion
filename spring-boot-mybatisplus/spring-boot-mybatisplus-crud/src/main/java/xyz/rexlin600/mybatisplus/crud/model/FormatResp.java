@@ -11,10 +11,9 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
- * 时间接收与转换
+ * Format resp
  *
- * @author: hekunlin
- * @since: 2020/6/4
+ * @author hekunlin
  */
 @ToString
 @Data
@@ -22,30 +21,48 @@ import java.util.Date;
 @AllArgsConstructor
 public class FormatResp {
 
-    // -----------------------------------------------------------------------------------------------
-    // DATE
-    // -----------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------
+	// DATE
+	// -----------------------------------------------------------------------------------------------
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date createDate;
+	/**
+	 * Create date
+	 */
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date createDate;
 
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date deleteDate;
+	/**
+	 * Delete date
+	 */
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date deleteDate;
 
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date updateDate;
+	/**
+	 * Update date
+	 */
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date updateDate;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date searchDate;
+	/**
+	 * Search date
+	 */
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date searchDate;
 
-    // -----------------------------------------------------------------------------------------------
-    // LocalDateTime
-    // -----------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------
+	// LocalDateTime
+	// -----------------------------------------------------------------------------------------------
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private LocalDateTime localUpdateDate;
+	/**
+	 * Local update date
+	 */
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+	private LocalDateTime localUpdateDate;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime localSearchDate;
+	/**
+	 * Local search date
+	 */
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime localSearchDate;
 
 }

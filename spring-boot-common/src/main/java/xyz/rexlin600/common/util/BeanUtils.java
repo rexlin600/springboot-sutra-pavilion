@@ -15,62 +15,65 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * Bean 工具类
+ * Bean utils
  *
  * @author hekunlin
  */
 public final class BeanUtils {
 
-    private BeanUtils() {
-    }
+	/**
+	 * Bean utils
+	 */
+	private BeanUtils() {
+	}
 
-    /**
-     * bean to map
-     *
-     * @param bean bean
-     * @return {@link Map}
-     */
-    public static Map<String, Object> beanToMap(Object bean) {
-        return null == bean ? null : BeanMap.create(bean);
-    }
+	/**
+	 * Bean to map map
+	 *
+	 * @param bean bean
+	 * @return the map
+	 */
+	public static Map<String, Object> beanToMap(Object bean) {
+		return null == bean ? null : BeanMap.create(bean);
+	}
 
-    /**
-     * map to bean
-     *
-     * @param map   {@link Map}
-     * @param clazz Class类
-     * @param <T>   泛型对象
-     * @return 泛型对象
-     */
-    public static <T> T mapToBean(Map<String, Object> map, Class<T> clazz) {
-        T bean = ClassUtils.newInstance(clazz);
-        BeanMap.create(bean).putAll(map);
-        return bean;
-    }
+	/**
+	 * Map to bean t
+	 *
+	 * @param <T>   parameter
+	 * @param map   map
+	 * @param clazz clazz
+	 * @return the t
+	 */
+	public static <T> T mapToBean(Map<String, Object> map, Class<T> clazz) {
+		T bean = ClassUtils.newInstance(clazz);
+		BeanMap.create(bean).putAll(map);
+		return bean;
+	}
 
-    /**
-     * beans to maps
-     *
-     * @param beans bean
-     * @param <T>   泛型对象
-     * @return 泛型对象
-     */
-    public static <T> List<Map<String, Object>> beansToMaps(List<T> beans) {
-        return CollectionUtils.isEmpty(beans) ? Collections.emptyList() : (List) beans.stream().map(BeanUtils::beanToMap).collect(Collectors.toList());
-    }
+	/**
+	 * Beans to maps list
+	 *
+	 * @param <T>   parameter
+	 * @param beans beans
+	 * @return the list
+	 */
+	public static <T> List<Map<String, Object>> beansToMaps(List<T> beans) {
+		return CollectionUtils.isEmpty(beans) ? Collections.emptyList() : (List) beans.stream().map(BeanUtils::beanToMap).collect(Collectors.toList());
+	}
 
-    /**
-     * maps to beans
-     *
-     * @param maps  {@link Map}
-     * @param clazz Class类
-     * @param <T>   泛型对象
-     * @return 泛型对象
-     */
-    public static <T> List<T> mapsToBeans(List<Map<String, Object>> maps, Class<T> clazz) {
-        return CollectionUtils.isEmpty(maps) ? Collections.emptyList() : (List) maps.stream().map((e) -> {
-            return mapToBean(e, clazz);
-        }).collect(Collectors.toList());
-    }
+	/**
+	 * Maps to beans list
+	 *
+	 * @param <T>   parameter
+	 * @param maps  maps
+	 * @param clazz clazz
+	 * @return the list
+	 */
+	public static <T> List<T> mapsToBeans(List<Map<String, Object>> maps, Class<T> clazz) {
+		return CollectionUtils.isEmpty(maps) ? Collections.emptyList() : (List) maps.stream().map((e) -> {
+			return mapToBean(e, clazz);
+		}).collect(Collectors.toList());
+	}
 
 }

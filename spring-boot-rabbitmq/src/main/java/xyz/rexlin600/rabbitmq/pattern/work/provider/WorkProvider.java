@@ -10,28 +10,29 @@ import xyz.rexlin600.rabbitmq.pattern.work.config.WorkConfig;
 import java.time.Instant;
 
 /**
- * Work 生产者
- * Work模式
+ * Work provider
  *
- * @author: hekunlin
- * @since: 2020/1/7
+ * @author hekunlin
  */
 @Slf4j
 @Component
 public class WorkProvider {
 
-    @Autowired
-    private AmqpTemplate amqpTemplate;
+	/**
+	 * Amqp template
+	 */
+	@Autowired
+	private AmqpTemplate amqpTemplate;
 
-    /**
-     * 生产简单字符串消息
-     */
-    @SneakyThrows
-    public void workProductStr() {
-        long milli = Instant.now().toEpochMilli();
-        String content = "Work product message at " + milli;
-        log.info("==>  " + content + " to queue=[{}] and at [{}]", WorkConfig.WORK_QUEUE, milli);
-        amqpTemplate.convertAndSend(WorkConfig.WORK_QUEUE, content);
-    }
+	/**
+	 * Work product str
+	 */
+	@SneakyThrows
+	public void workProductStr() {
+		long milli = Instant.now().toEpochMilli();
+		String content = "Work product message at " + milli;
+		log.info("==>  " + content + " to queue=[{}] and at [{}]", WorkConfig.WORK_QUEUE, milli);
+		amqpTemplate.convertAndSend(WorkConfig.WORK_QUEUE, content);
+	}
 
 }

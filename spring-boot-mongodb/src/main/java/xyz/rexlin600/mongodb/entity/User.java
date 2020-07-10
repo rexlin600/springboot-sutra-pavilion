@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
 /**
- * User 类
+ * User
  *
- * @author: rexlin600
- * @since: 2020-01-11
+ * @author hekunlin
  */
 @Data
 @Builder
@@ -18,11 +17,20 @@ import org.springframework.data.annotation.Id;
 @AllArgsConstructor
 public class User {
 
-    @Id
-    private Long id;
+	/**
+	 * Id
+	 */
+	@Id
+	private Long id;
 
-    private String name;
+	/**
+	 * Name
+	 */
+	private String name;
 
-    private int age;
+	/**
+	 * Age
+	 */
+	private int age;
 
 }

@@ -5,21 +5,21 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * 文件上传返回类
+ * Fast dfs upload resp
  *
  * @author hekunlin
  */
 @Data
 public class FastDfsUploadResp implements Serializable {
 
-    /**
-     * 文件相对路径
-     */
-    private String relativePath;
+	/**
+	 * Relative path
+	 */
+	private String relativePath;
 
-    /**
-     * 文件全路径
-     */
-    private String fullPath;
+	/**
+	 * Full path
+	 */
+	private String fullPath;
 
 }

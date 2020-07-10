@@ -5,15 +5,23 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 /**
- * @author: hekunlin
+ * Default command line runner
+ *
+ * @author hekunlin
  */
 @Component
 @Slf4j
 public class DefaultCommandLineRunner implements CommandLineRunner {
 
-    @Override
-    public void run(String... args) throws Exception {
-        log.info("==>  CommandLineRunner start " + this.getClass().getName() + " ...");
-    }
+	/**
+	 * Run *
+	 *
+	 * @param args args
+	 * @throws Exception exception
+	 */
+	@Override
+	public void run(String... args) throws Exception {
+		log.info("==>  CommandLineRunner start " + this.getClass().getName() + " ...");
+	}
 
 }

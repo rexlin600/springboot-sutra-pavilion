@@ -1,15 +1,12 @@
 package xyz.rexlin600.custom.test.mapper;
 
-import xyz.rexlin600.custom.test.entity.Goods;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import xyz.rexlin600.custom.test.entity.Goods;
 
 /**
- * <p>
- *  Mapper 接口
- * </p>
+ * Goods mapper
  *
- * @author rexlin600
- * @since 2020-03-16
+ * @author hekunlin
  */
 public interface GoodsMapper extends BaseMapper<Goods> {
 

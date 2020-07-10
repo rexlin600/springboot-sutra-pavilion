@@ -10,28 +10,30 @@ import xyz.rexlin600.rabbitmq.pattern.direct.config.DirectConfig;
 import java.time.Instant;
 
 /**
- * Direct 生产者类
+ * Direct provider
  *
- * @author: hekunlin
- * @since: 2020/1/7
+ * @author hekunlin
  */
 @Slf4j
 @Component
 public class DirectProvider {
 
-    @Autowired
-    private AmqpTemplate amqpTemplate;
+	/**
+	 * Amqp template
+	 */
+	@Autowired
+	private AmqpTemplate amqpTemplate;
 
-    /**
-     * 生产简单字符串消息
-     */
-    @SneakyThrows
-    public void directProductStr() {
-        long milli = Instant.now().toEpochMilli();
-        String content = "Direct product message at " + milli;
-        log.info("==> " + content + " to queue=[{}] and at [{}]", DirectConfig.DIRECT_QUEUE, milli);
-        amqpTemplate.convertAndSend(DirectConfig.DIRECT_QUEUE, content);
-    }
+	/**
+	 * Direct product str
+	 */
+	@SneakyThrows
+	public void directProductStr() {
+		long milli = Instant.now().toEpochMilli();
+		String content = "Direct product message at " + milli;
+		log.info("==> " + content + " to queue=[{}] and at [{}]", DirectConfig.DIRECT_QUEUE, milli);
+		amqpTemplate.convertAndSend(DirectConfig.DIRECT_QUEUE, content);
+	}
 
 
 }

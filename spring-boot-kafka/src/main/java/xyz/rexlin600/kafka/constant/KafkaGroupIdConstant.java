@@ -1,10 +1,9 @@
 package xyz.rexlin600.kafka.constant;
 
 /**
- * Kafka 消费者组常量
+ * Kafka group id constant
  *
- * @author: hekunlin
- * @since: 2020/7/2
+ * @author hekunlin
  */
 public class KafkaGroupIdConstant {
 

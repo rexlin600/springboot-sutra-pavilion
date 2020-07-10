@@ -1,15 +1,12 @@
 package xyz.rexlin600.aop.service;
 
-import xyz.rexlin600.aop.entity.SysLog;
 import com.baomidou.mybatisplus.extension.service.IService;
+import xyz.rexlin600.aop.entity.SysLog;
 
 /**
- * <p>
- *  服务类
- * </p>
+ * Sys log service
  *
- * @author rexlin600
- * @since 2020-02-16
+ * @author hekunlin
  */
 public interface SysLogService extends IService<SysLog> {
 

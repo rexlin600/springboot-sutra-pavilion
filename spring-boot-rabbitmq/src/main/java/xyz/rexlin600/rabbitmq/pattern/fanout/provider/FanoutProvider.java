@@ -9,28 +9,30 @@ import xyz.rexlin600.rabbitmq.pattern.fanout.config.FanoutConfig;
 import java.time.Instant;
 
 /**
- * Fanout 生产者类
+ * Fanout provider
  *
- * @author: hekunlin
- * @since: 2020/1/7
+ * @author hekunlin
  */
 @SuppressWarnings("Duplicates")
 @Slf4j
 @Component
 public class FanoutProvider {
 
-    @Autowired
-    private AmqpTemplate amqpTemplate;
+	/**
+	 * Amqp template
+	 */
+	@Autowired
+	private AmqpTemplate amqpTemplate;
 
-    /**
-     * 生产简单字符串消息
-     */
-    public void fanoutProductStr() {
-        long milli = Instant.now().toEpochMilli();
-        String content = "Fanout message at " + milli;
-        log.info("==>  " + content + " to queues and at [{}]", milli);
-        // 广播
-        amqpTemplate.convertAndSend(FanoutConfig.FANOUT_EXCHANGE, "", content);
-    }
+	/**
+	 * Fanout product str
+	 */
+	public void fanoutProductStr() {
+		long milli = Instant.now().toEpochMilli();
+		String content = "Fanout message at " + milli;
+		log.info("==>  " + content + " to queues and at [{}]", milli);
+		// 广播
+		amqpTemplate.convertAndSend(FanoutConfig.FANOUT_EXCHANGE, "", content);
+	}
 
 }
