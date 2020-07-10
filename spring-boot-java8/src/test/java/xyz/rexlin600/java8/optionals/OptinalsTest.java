@@ -18,11 +18,11 @@ import static org.junit.Assert.assertTrue;
 @SpringBootTest
 public class OptinalsTest {
 
-	private Optinals optinals;
+	private Optionals optinals;
 
 	@Before
 	public void setUp() throws Exception {
-		optinals = new Optinals();
+		optinals = new Optionals();
 	}
 
 	@Test

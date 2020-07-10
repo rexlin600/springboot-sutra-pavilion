@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>springboot-sutra-pavilion</artifactId>
+		<groupId>xyz.rexlin600</groupId>
+		<version>2.0.0</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>spring-boot-docker</artifactId>
+	<packaging>jar</packaging>
+
+	<properties>
+		<!-- docker 配置 -->
+		<docker.plugin.version>0.4.13</docker.plugin.version>
+		<!-- 阿里云镜像仓库服务器地址 -->
+		<docker.repostory>registry.cn-shanghai.aliyuncs.com</docker.repostory>
+		<!-- 阿里云容器镜像的命名空间 -->
+		<docker.registry.namespace>rexlin600</docker.registry.namespace>
+	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+	</dependencies>
+
+
+	<build>
+		<!-- finalName -->
+		<finalName>${project.artifactId}</finalName>
+		<!-- 表示打包时，将resources目录下的配置文件一并打入 -->
+		<!-- 使用@@站位符，输出Dockerfile至docker文件夹 -->
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.yml</include>
+					<include>**/*.properties</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.yml</include>
+					<include>**/*.properties</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/docker</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/Dockerfile</include>
+				</includes>
+				<targetPath>../docker</targetPath>
+			</resource>
+		</resources>
+
+		<pluginManagement>
+			<plugins>
+				<!-- 打包 -->
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>${spring-boot.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>repackage</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- docker 打包插件：可以直接copy使用，注意复制 properties，详细配置步骤参考 doc -->
+				<!-- 绑定maven生命周期与docker image -->
+				<plugin>
+					<groupId>com.spotify</groupId>
+					<artifactId>docker-maven-plugin</artifactId>
+					<version>${docker.plugin.version}</version>
+					<executions>
+						<execution>
+							<id>build-image</id>
+							<phase>package</phase>
+							<goals>
+								<goal>build</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>tag-image</id>
+							<phase>package</phase>
+							<goals>
+								<goal>tag</goal>
+							</goals>
+							<configuration>
+								<image>
+									${docker.repostory}/${docker.registry.namespace}/${project.artifactId}:${project.version}
+								</image>
+								<newName>
+									${docker.repostory}/${docker.registry.namespace}/${project.artifactId}:${project.version}
+								</newName>
+							</configuration>
+						</execution>
+						<execution>
+							<id>push-image</id>
+							<phase>deploy</phase>
+							<goals>
+								<goal>push</goal>
+							</goals>
+							<configuration>
+								<imageName>
+									${docker.repostory}/${docker.registry.namespace}/${project.artifactId}:${project.version}
+								</imageName>
+							</configuration>
+						</execution>
+					</executions>
+					<!-- docker-plugin 配置：阿里云私有仓库 -->
+					<configuration>
+						<serverId>docker-aliyun</serverId>
+						<registryUrl>${docker.repostory}</registryUrl>
+						<pushImageTag>false</pushImageTag>
+						<!-- 指定Dockerfile文件所在的目录 -->
+						<dockerDirectory>${project.build.directory}/docker</dockerDirectory>
+						<imageName>
+							${docker.repostory}/${docker.registry.namespace}/${project.artifactId}:${project.version}
+						</imageName>
+						<imageTags>
+							<imageTag>${project.version}</imageTag>
+							<!--<imageTag>latest</imageTag>-->
+						</imageTags>
+						<!-- 复制指定的文件到 dockerDirectory 指定的位置 -->
+						<resources>
+							<!-- jar文件 -->
+							<resource>
+								<targetPath>/</targetPath>
+								<directory>${project.build.directory}</directory>
+								<include>${project.build.finalName}.jar</include>
+							</resource>
+							<!-- example：拷贝其他文件到 target/docker 下，这个文件夹包含拷贝过来的 Dockerfile（resourecs指定的，接着就可以使用 COPY、ADD 命令了 -->
+							<!--<resource>-->
+							<!--<targetPath>/</targetPath>-->
+							<!--<directory>/Users/rexlin600/IDEA_WorkSpace/ms4all</directory>-->
+							<!--<include>.editorconfig</include>-->
+							<!--</resource>-->
+						</resources>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<!-- docker plugin -->
+			<!-- 当你本机开启并配置好本机以及上面的 docker 相关参数后就可以打开下面这个插件了 -->
+			<!--<plugin>-->
+			<!--<groupId>com.spotify</groupId>-->
+			<!--<artifactId>docker-maven-plugin</artifactId>-->
+			<!--</plugin>-->
+
+		</plugins>
+	</build>
+
+</project>

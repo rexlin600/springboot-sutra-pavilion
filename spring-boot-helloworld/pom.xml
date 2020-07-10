@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>springboot-sutra-pavilion</artifactId>
+		<groupId>xyz.rexlin600</groupId>
+		<version>2.0.0</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>jar</packaging>
+
+	<artifactId>spring-boot-helloworld</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<!-- 使用war包部署时必须排除内嵌容器，我这里因为是使用 undertow 容器所以也排除了 tomcat -->
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-undertow</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- war 包部署：war包部署时打开，同时注释掉上方 undertow 的依赖 -->
+		<!--<dependency>-->
+		<!--<groupId>org.springframework.boot</groupId>-->
+		<!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+		<!--&lt;!&ndash;打包的时候可以不用包进去，别的设施会提供。事实上该依赖理论上可以参与编译，测试，运行等周期。-->
+		<!--相当于compile，但是打包阶段做了exclude操作&ndash;&gt;-->
+		<!--<scope>provided</scope>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+		<!--<groupId>javax.servlet</groupId>-->
+		<!--<artifactId>javax.servlet-api</artifactId>-->
+		<!--<version>3.1.0</version>-->
+		<!--<scope>provided</scope>-->
+		<!--</dependency>-->
+
+		<!-- 实现配置自动刷新时打开 -->
+		<!--<dependency>-->
+		<!--<groupId>org.springframework.cloud</groupId>-->
+		<!--<artifactId>spring-cloud-starter-config</artifactId>-->
+		<!--<version>2.0.2.RELEASE</version>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+		<!--<groupId>org.springframework.boot</groupId>-->
+		<!--<artifactId>spring-boot-starter-actuator</artifactId>-->
+		<!--</dependency>-->
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<!-- war包插件 -->
+			<!--<plugin>-->
+			<!--<groupId>org.apache.maven.plugins</groupId>-->
+			<!--<artifactId>maven-war-plugin</artifactId>-->
+			<!--<version>3.2.2</version>-->
+			<!--</plugin>-->
+		</plugins>
+	</build>
+
+</project>
