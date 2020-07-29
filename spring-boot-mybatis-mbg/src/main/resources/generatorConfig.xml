@@ -31,7 +31,7 @@
 			<!-- 去掉时间戳 -->
 			<property name="suppressDate" value="true"/>
 			<!-- 去掉注释 -->
-			<property name="suppressAllComments" value="false"/>
+			<property name="suppressAllComments" value="true"/>
 			<!-- 编码 -->
 			<property name="javaFileEncoding" value="UTF-8"/>
 		</commentGenerator>
@@ -96,7 +96,13 @@
 			   enableUpdateByExample="false"
 			   enableDeleteByExample="false"
 			   enableSelectByExample="false"
-			   selectByExampleQueryId="false">
+			   selectByExampleQueryId="false"
+
+			   enableDeleteByPrimaryKey="false"
+			   enableSelectByPrimaryKey="false"
+			   enableInsert="true"
+			   enableUpdateByPrimaryKey="true"
+		>
 			<!-- 上面的属性都可以使用子标签形式表示 -->
 			<!-- 是否使用真实字段名，设置为false将自动驼峰转换 -->
 			<property name="useActualColumnNames" value="false"/>
