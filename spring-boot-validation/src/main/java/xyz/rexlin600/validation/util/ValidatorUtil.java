@@ -1,7 +1,12 @@
 package xyz.rexlin600.validation.util;
 
+import cn.hutool.core.util.ObjectUtil;
 import org.springframework.util.StringUtils;
+import xyz.rexlin600.validation.constant.ValidationConstant;
 
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,29 +16,6 @@ import java.util.regex.Pattern;
  * @author hekunlin
  */
 public class ValidatorUtil {
-
-	/**
-	 * NICKNAME_CONSTRAINT_REGEXP
-	 */
-	public static final String NICKNAME_CONSTRAINT_REGEXP = "^[\\u4e00-\\u9fa5_a-zA-Z0-9-]{1,20}$";
-	/**
-	 * USER_PASSWORD_CONSTRAINT_REGEXP
-	 */
-	public static final String USER_PASSWORD_CONSTRAINT_REGEXP = "^.{8,16}$";
-
-	/**
-	 * PHONE_CONSTRAINT_REGEXP
-	 */
-	public static final String PHONE_CONSTRAINT_REGEXP = "^(1)\\d{10}$";
-	/**
-	 * PHONE_BLUR_REGEX
-	 */
-	public static final String PHONE_BLUR_REGEX = "(\\d{3})\\d{4}(\\d{4})";
-
-	/**
-	 * ID_CARD_CONSTRAINT_REGEXP
-	 */
-	public static final String ID_CARD_CONSTRAINT_REGEXP = "[1-9]\\d{13,16}[a-zA-Z0-9]{1}";
 
 	// -----------------------------------------------------------------------------------------------
 	// 实用方法
@@ -50,7 +32,7 @@ public class ValidatorUtil {
 			return false;
 		}
 
-		Pattern pattern = Pattern.compile(PHONE_CONSTRAINT_REGEXP);
+		Pattern pattern = Pattern.compile(ValidationConstant.PHONE_REGEXP);
 		Matcher matcher = pattern.matcher(value);
 
 		return matcher.matches();
@@ -67,7 +49,7 @@ public class ValidatorUtil {
 			return false;
 		}
 
-		Pattern pattern = Pattern.compile(ID_CARD_CONSTRAINT_REGEXP);
+		Pattern pattern = Pattern.compile(ValidationConstant.ID_CARD_REGEXP);
 		Matcher matcher = pattern.matcher(value);
 
 		return matcher.matches();
@@ -84,7 +66,7 @@ public class ValidatorUtil {
 			return false;
 		}
 
-		Pattern pattern = Pattern.compile(NICKNAME_CONSTRAINT_REGEXP);
+		Pattern pattern = Pattern.compile(ValidationConstant.NICKNAME_REGEXP);
 		Matcher matcher = pattern.matcher(value);
 
 		return matcher.matches();
@@ -101,8 +83,33 @@ public class ValidatorUtil {
 			return false;
 		}
 
-		Pattern pattern = Pattern.compile(USER_PASSWORD_CONSTRAINT_REGEXP);
+		Pattern pattern = Pattern.compile(ValidationConstant.USER_PASSWORD_REGEXP);
 		Matcher matcher = pattern.matcher(value);
+
+		return matcher.matches();
+	}
+
+	/**
+	 * Is date boolean
+	 *
+	 * @param value value
+	 * @return the boolean
+	 */
+	public static boolean isDate(Date value) {
+		if (ObjectUtil.isEmpty(value)) {
+			return false;
+		}
+
+		String val;
+		try {
+			DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneId.systemDefault());
+			val = dateFormat.format(value.toInstant());
+		} catch (Exception ex) {
+			return false;
+		}
+
+		Pattern pattern = Pattern.compile(ValidationConstant.DATE_SIMPLE_REGEXP);
+		Matcher matcher = pattern.matcher(val);
 
 		return matcher.matches();
 	}

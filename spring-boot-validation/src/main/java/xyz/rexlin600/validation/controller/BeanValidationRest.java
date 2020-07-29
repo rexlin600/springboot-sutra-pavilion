@@ -128,6 +128,21 @@ public class BeanValidationRest {
 		return ResponseGenerator.success();
 	}
 
+
+	/**
+	 * Check date req response.
+	 *
+	 * @param req the req
+	 * @return the response
+	 */
+	@PostMapping("/checkDateReq")
+	public Response<Void> checkDateReq(@RequestBody @Validated DateReq req) {
+
+		// 后续逻辑 ...
+
+		return ResponseGenerator.success();
+	}
+
 	// -----------------------------------------------------------------------------------------------
 	// 分组校验
 	// -----------------------------------------------------------------------------------------------
