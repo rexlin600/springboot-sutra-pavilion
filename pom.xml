@@ -65,6 +65,7 @@
 		<module>spring-boot-common</module>
 		<module>spring-boot-oss</module>
 		<module>spring-boot-kafka</module>
+		<module>spring-boot-mybatis-mbg</module>
 	</modules>
 
 	<dependencies>
