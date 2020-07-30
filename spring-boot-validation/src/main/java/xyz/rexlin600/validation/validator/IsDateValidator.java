@@ -10,8 +10,8 @@ import java.util.Date;
 /**
  * 日期校验器
  *
- * @author: hekunlin
- * @since: 2020/7/29
+ * @author hekunlin
+ * @since 2020/7/29
  */
 public class IsDateValidator implements ConstraintValidator<IsDate, Date> {
 

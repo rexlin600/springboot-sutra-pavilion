@@ -12,8 +12,8 @@ import java.util.Date;
 /**
  * 日期请求类
  *
- * @author: hekunlin
- * @since: 2020/7/29
+ * @author hekunlin
+ * @since 2020/7/29
  */
 @Data
 @NoArgsConstructor

@@ -179,8 +179,8 @@ logging:
 /**
  * Feign HttpClient 配置类
  *
- * @author: hekunlin
- * @since: 2020/5/7
+ * @author hekunlin
+ * @since 2020/5/7
  */
 @Import(FeignAutoConfiguration.class)
 @Configuration

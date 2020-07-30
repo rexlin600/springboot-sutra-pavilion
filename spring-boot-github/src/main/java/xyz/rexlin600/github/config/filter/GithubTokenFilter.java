@@ -12,7 +12,7 @@
 ///**
 // * TODO github filter
 // *
-// * @author: hekunlin
+// * @author hekunlin
 // */
 //@WebFilter(filterName = "githubTokenFilter", urlPatterns = "/*")
 //public class GithubTokenFilter implements Filter {

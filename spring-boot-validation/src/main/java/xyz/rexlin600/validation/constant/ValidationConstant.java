@@ -3,8 +3,8 @@ package xyz.rexlin600.validation.constant;
 /**
  * 校验常量
  *
- * @author: hekunlin
- * @since: 2020 /7/29
+ * @author hekunlin
+ * @since 2020 /7/29
  */
 public class ValidationConstant {
 
