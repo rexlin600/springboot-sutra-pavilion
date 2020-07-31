@@ -59,7 +59,7 @@ public class CodeGenerateRest {
 
 
 	/**
-	 * Generate r
+	 * Generate code
 	 *
 	 * @param codeGenReq code gen req
 	 * @return the r
