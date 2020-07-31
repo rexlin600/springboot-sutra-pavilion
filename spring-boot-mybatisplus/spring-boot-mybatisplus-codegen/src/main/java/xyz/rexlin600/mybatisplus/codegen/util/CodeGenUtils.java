@@ -184,27 +184,19 @@ public class CodeGenUtils {
 	}
 
 	/**
-	 * Gets package config *
+	 * 包配置
 	 *
-	 * @param entityPath  entity path
-	 * @param mapperPath  mapper path
-	 * @param svcPath     svc path
-	 * @param svcImplPath svc impl path
-	 * @param restPath    rest path
-	 * @param xmlPath     xml path
-	 * @return the package config
+	 * @param packageName the package name
+	 * @return package config
 	 */
-	public static PackageConfig getPackageConfig(String entityPath, String mapperPath,
-												 String svcPath, String svcImplPath,
-												 String restPath, String xmlPath) {
+	public static PackageConfig getPackageConfig(String packageName) {
 		PackageConfig pc = new PackageConfig();
-		pc.setParent("")
-				.setMapper(mapperPath)
-				.setService(svcPath)
-				.setServiceImpl(svcImplPath)
-				.setController(restPath)
-				.setEntity(entityPath)
-				.setXml(xmlPath);
+		pc.setParent(packageName)
+				.setMapper("mapper")
+				.setService("service")
+				.setController("controller")
+				.setEntity("entity")
+				.setXml("mapper.xml");
 		return pc;
 	}
 

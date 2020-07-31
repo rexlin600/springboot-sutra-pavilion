@@ -2,7 +2,6 @@ package xyz.rexlin600.mybatisplus.codegen.common.req;
 
 import lombok.*;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -39,44 +38,14 @@ public class CodeGenReq implements Serializable {
 	private Boolean openApiDoc = false;
 
 	// -----------------------------------------------------------------------------------------------
-	// 各层代码位置
+	// 代码位置
 	// -----------------------------------------------------------------------------------------------
 
 	/**
-	 * Entity path
+	 * 生成的代码包名称
 	 */
-	@NotBlank
-	private String entityPath;
-
-	/**
-	 * Mapper path
-	 */
-	@NotBlank
-	private String mapperPath;
-
-	/**
-	 * Svc path
-	 */
-	@NotBlank
-	private String svcPath;
-
-	/**
-	 * Svc impl path
-	 */
-	@NotBlank
-	private String svcImplPath;
-
-	/**
-	 * Rest path
-	 */
-	@NotBlank
-	private String restPath;
-
-	/**
-	 * Xml path
-	 */
-	@NotBlank
-	private String xmlPath;
+	@NotEmpty
+	private String packageName;
 
 	// -----------------------------------------------------------------------------------------------
 	// 其余配置

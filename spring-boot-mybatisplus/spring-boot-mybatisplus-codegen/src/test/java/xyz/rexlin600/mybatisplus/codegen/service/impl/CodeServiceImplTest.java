@@ -14,7 +14,7 @@ import xyz.rexlin600.mybatisplus.codegen.common.req.CodeGenReq;
 import xyz.rexlin600.mybatisplus.codegen.entity.TableMetaData;
 import xyz.rexlin600.mybatisplus.codegen.service.CodeService;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -38,23 +38,19 @@ public class CodeServiceImplTest {
         List<TableMetaData> records = rs.getRecords();
         if (!CollectionUtils.isEmpty(records)) {
             log.info("==>  search assign database's table records: ");
-            records.stream().forEach(m -> {
-                log.info(m.toString());
-            });
+			records.forEach(m -> {
+				log.info(m.toString());
+			});
         }
     }
 
     @Test
     public void generate() {
         CodeGenReq codeGenReq = CodeGenReq.builder()
-                .id(2L)
-                .author("hekunlin")
-                .entityPath("xyz.rexlin600.test")
-                .mapperPath("xyz.rexlin600.test")
-                .svcPath("xyz.rexlin600.test")
-                .restPath("xyz.rexlin600.test")
-                .xmlPath("xyz.rexlin600.test")
-                .list(Arrays.asList("brand_account"))
+				.id(2L)
+				.author("hekunlin")
+				.packageName("xyz.rexlin600.test")
+				.list(Collections.singletonList("brand_account"))
                 .build();
 
         R r = codeService.generate(codeGenReq);

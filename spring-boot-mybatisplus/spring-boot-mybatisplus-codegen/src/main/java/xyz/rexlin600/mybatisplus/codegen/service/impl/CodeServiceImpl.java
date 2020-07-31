@@ -188,9 +188,7 @@ public class CodeServiceImpl implements CodeService {
 			dsc = CodeGenUtils.getDatasource(dataSource);
 
 			// 包配置
-			pc = CodeGenUtils.getPackageConfig(codeGenReq.getEntityPath(), codeGenReq.getMapperPath(),
-					codeGenReq.getSvcPath(), codeGenReq.getSvcImplPath(),
-					codeGenReq.getRestPath(), codeGenReq.getXmlPath());
+            pc = CodeGenUtils.getPackageConfig(codeGenReq.getPackageName());
 
 			// 自定义配置
 			injectConfig = CodeGenUtils.getInjectConfig(projectPath);

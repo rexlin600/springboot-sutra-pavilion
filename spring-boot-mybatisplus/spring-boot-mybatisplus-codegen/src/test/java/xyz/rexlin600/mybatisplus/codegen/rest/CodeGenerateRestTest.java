@@ -40,12 +40,8 @@ public class CodeGenerateRestTest {
     @Test
     public void generate() {
         CodeGenReq build = CodeGenReq.builder()
-                .id(1L)
-                .entityPath("xyz.rexlin600.test")
-                .mapperPath("xyz.rexlin600.test")
-                .svcPath("xyz.rexlin600.test")
-                .restPath("xyz.rexlin600.test")
-                .xmlPath("xyz.rexlin600.test")
+				.id(1L)
+				.packageName("xyz.rexlin600.test")
                 .author("rexlin600")
                 .prefix("tb_")
                 .list(Arrays.asList("tb_flyway"))
