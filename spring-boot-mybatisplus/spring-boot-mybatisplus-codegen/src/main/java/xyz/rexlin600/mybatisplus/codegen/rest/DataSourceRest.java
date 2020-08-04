@@ -42,7 +42,7 @@ public class DataSourceRest {
 
 
 	/**
-	 * Save data source r
+	 * Save data source
 	 *
 	 * @param dataSourceReq data source req
 	 * @return the r
@@ -61,7 +61,7 @@ public class DataSourceRest {
 	}
 
 	/**
-	 * Delete data source r
+	 * Delete data source
 	 *
 	 * @param id id
 	 * @return the r
@@ -73,7 +73,7 @@ public class DataSourceRest {
 	}
 
 	/**
-	 * Update data source r
+	 * Update data source
 	 *
 	 * @param dataSourceReq data source req
 	 * @return the r
@@ -93,7 +93,7 @@ public class DataSourceRest {
 	}
 
 	/**
-	 * Page data source r
+	 * Page data source
 	 *
 	 * @param page page
 	 * @param size size
@@ -108,7 +108,7 @@ public class DataSourceRest {
 	}
 
 	/**
-	 * Gets data source *
+	 * Gets data source
 	 *
 	 * @param id id
 	 * @return the data source

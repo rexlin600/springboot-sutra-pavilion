@@ -37,7 +37,7 @@ public class CodeGenerateRest {
 	}
 
 	/**
-	 * Gets page *
+	 * Gets page
 	 *
 	 * @param page      page
 	 * @param size      size
