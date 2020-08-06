@@ -12,7 +12,8 @@
 	<artifactId>spring-boot-excel</artifactId>
 
 	<properties>
-		<alibaba.easyexcel.version>2.1.6</alibaba.easyexcel.version>
+		<alibaba.easyexcel.version>2.2.6</alibaba.easyexcel.version>
+		<mybatis.plus.version>3.3.0</mybatis.plus.version>
 	</properties>
 
 	<dependencies>
@@ -24,6 +25,22 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
+
+		<!-- mybatis mysql start -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>${mybatis.plus.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+		</dependency>
+		<!-- mybatis mysql end -->
 
 		<!-- easy excel -->
 		<dependency>

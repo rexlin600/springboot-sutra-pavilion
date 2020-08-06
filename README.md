@@ -129,7 +129,6 @@
 
 - `spring-boot-common`：一些常用的工具类、常量等
 - `spring-boot-custom-starter`：自定义 `starter`
-- `spring-boot-excel`：集成阿里巴巴提供的 `easyExcel`，因为官方提供的示例很丰富，这里就不重复写了
 
 
 ## ToBeContinue

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--suppress ALL -->
+<mapper namespace="xyz.rexlin600.easy.excel.mapper.EmployeesMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="xyz.rexlin600.easy.excel.model.EmployeesDO">
+		<id column="emp_no" property="empNo"/>
+		<result column="birth_date" property="birthDate"/>
+		<result column="first_name" property="firstName"/>
+		<result column="last_name" property="lastName"/>
+		<result column="gender" property="gender"/>
+		<result column="hire_date" property="hireDate"/>
+	</resultMap>
+
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
+		emp_no, birth_date, first_name, last_name, gender, hire_date
+	</sql>
+
+</mapper>

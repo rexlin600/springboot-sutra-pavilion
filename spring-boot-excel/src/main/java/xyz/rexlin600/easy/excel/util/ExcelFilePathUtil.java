@@ -8,6 +8,7 @@ import java.io.InputStream;
  *
  * @author hekunlin
  */
+@SuppressWarnings("ALL")
 public class ExcelFilePathUtil {
 
 	/**
