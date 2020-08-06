@@ -24,6 +24,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<hutool.version>5.0.6</hutool.version>
 		<junit.test.version>4.12</junit.test.version>
+		<commons-io.version>2.7</commons-io.version>
 	</properties>
 
 	<modules>
@@ -126,6 +127,12 @@
 				<groupId>cn.hutool</groupId>
 				<artifactId>hutool-all</artifactId>
 				<version>${hutool.version}</version>
+			</dependency>
+			<!-- commons-io -->
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

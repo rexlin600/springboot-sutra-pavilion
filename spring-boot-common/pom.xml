@@ -53,6 +53,11 @@
 		</dependency>
 		<!-- 实现 NoRepeatCommit 注解需要的依赖 END -->
 
+		<!-- commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
