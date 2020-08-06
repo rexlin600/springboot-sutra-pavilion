@@ -1,4 +1,4 @@
-package xyz.rexlin600.easy.excel.restful.biz;
+package xyz.rexlin600.easy.excel.restful.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
