@@ -1,4 +1,4 @@
-package xyz.rexlin600.easy.excel.model;
+package xyz.rexlin600.easy.excel.restful.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
