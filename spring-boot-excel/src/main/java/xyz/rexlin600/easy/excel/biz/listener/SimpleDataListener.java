@@ -20,7 +20,7 @@ public class SimpleDataListener extends AnalysisEventListener<SimpleData> {
 	/**
 	 * 读取数据的列表
 	 */
-	public List<SimpleData> list = new ArrayList<SimpleData>();
+	List<SimpleData> list = new ArrayList<SimpleData>();
 
 	@Override
 	public void invoke(SimpleData simpleData, AnalysisContext analysisContext) {
@@ -33,4 +33,7 @@ public class SimpleDataListener extends AnalysisEventListener<SimpleData> {
 		log.info("==>  read simple data list size is {} at {}", list.size(), System.currentTimeMillis());
 	}
 
+	public List<SimpleData> getList() {
+		return list;
+	}
 }

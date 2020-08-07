@@ -30,8 +30,8 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@RequestMapping(value = "/simple/export")
-public class SimpleExportRest {
+@RequestMapping(value = "/excel/export")
+public class ExportExcelRest {
 
 	/**
 	 * Employees mapper
@@ -40,13 +40,13 @@ public class SimpleExportRest {
 	private EmployeesMapper employeesMapper;
 
 	/**
-	 * 简单导出
+	 * 浏览器导出
 	 *
 	 * @param response response
 	 */
 	@SneakyThrows
-	@GetMapping("/export")
-	public void simpleRead(HttpServletResponse response) {
+	@GetMapping("/browserExport")
+	public void browserExport(HttpServletResponse response) {
 		TimerContext.start("EXCEL_30W数据导出");
 
 		// 查询出 List
@@ -62,7 +62,6 @@ public class SimpleExportRest {
 			log.error("==>  导出失败：{}", ex.getMessage());
 			return;
 		}
-
 
 		if (CollectionUtil.isNotEmpty(list)) {
 			ExcelWriter excelWriter = null;
@@ -85,6 +84,7 @@ public class SimpleExportRest {
 				TimerContext.end(log, "INFO");
 			}
 		}
+
 	}
 
 

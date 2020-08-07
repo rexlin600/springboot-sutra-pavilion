@@ -27,8 +27,8 @@ import java.util.List;
 @SuppressWarnings("rawtypes")
 @Slf4j
 @RestController
-@RequestMapping(value = "/simple/read")
-public class SimpleReadRest {
+@RequestMapping(value = "/excel/read")
+public class ExcelReadRest {
 
 	/**
 	 * 简单读
@@ -47,7 +47,7 @@ public class SimpleReadRest {
 				.doRead(); // 简单read
 
 		// 获取读取的数据
-		List<SimpleData> list = listener.list;
+		List<SimpleData> list = listener.getList();
 
 		return R.ok(list);
 	}
@@ -68,7 +68,7 @@ public class SimpleReadRest {
 				.doReadSync(); // 同步read
 
 		// 获取读取的数据
-		List<SimpleData> list = listener.list;
+		List<SimpleData> list = listener.getList();
 
 		return R.ok(list);
 	}
@@ -94,7 +94,7 @@ public class SimpleReadRest {
 				.doReadSync(); // 同步read
 
 		// 获取读取的数据
-		List<SimpleData> list = listener.list;
+		List<SimpleData> list = listener.getList();
 
 		// 其他业务逻辑 ...
 
