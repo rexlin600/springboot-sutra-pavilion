@@ -6,9 +6,8 @@ import com.baomidou.mybatisplus.extension.api.R;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import xyz.rexlin600.easy.excel.biz.data.SimpleData;
 import xyz.rexlin600.easy.excel.biz.listener.SimpleDataListener;
 import xyz.rexlin600.easy.excel.util.ExcelFilePathUtil;
@@ -34,10 +33,11 @@ public class SimpleReadRest {
 	/**
 	 * 简单读
 	 *
+	 * @param multipartFile multipart file
 	 * @return the r
 	 */
 	@GetMapping("/simpleRead")
-	public R simpleRead() {
+	public R simpleRead(@RequestPart MultipartFile multipartFile) {
 		// 读取 file
 		File file = ExcelFilePathUtil.readFile("simple" + File.separator + "simple07.xlsx");
 
@@ -72,6 +72,35 @@ public class SimpleReadRest {
 
 		return R.ok(list);
 	}
+
+	/**
+	 * 读取 Excel 文件
+	 *
+	 * <p>上传文件，从文件读取内容后进行相应的业务逻辑处理
+	 *
+	 * @param file file
+	 * @return the r
+	 */
+	@SneakyThrows
+	@PostMapping("/readFile")
+	public R readFile(@RequestPart(value = "file") MultipartFile file) {
+		// check file：size、type etc
+
+		InputStream inputStream = file.getInputStream();
+
+		SimpleDataListener listener = new SimpleDataListener();
+		EasyExcel.read(inputStream, SimpleData.class, listener)
+				.sheet() // 指定要读取的 sheet
+				.doReadSync(); // 同步read
+
+		// 获取读取的数据
+		List<SimpleData> list = listener.list;
+
+		// 其他业务逻辑 ...
+
+		return R.ok(list);
+	}
+
 
 	// -----------------------------------------------------------------------------------------------
 	// OTHER READ METHOD
