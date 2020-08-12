@@ -32,3 +32,7 @@ pagehelper:
   params: count=countSql
   reasonable: true
   support-methods-arguments: true
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    password: rexlin600
