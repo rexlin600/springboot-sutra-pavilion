@@ -55,7 +55,7 @@ public class JasyptRest {
 		encryptor.setConfig(config);
 
 		//加密
-		String encrypt = encryptor.encrypt("123456");
+		String encrypt = encryptor.encrypt("root");
 
 		System.out.println(encrypt);
 

@@ -1,7 +1,7 @@
 
 /*
 SQLyog Ultimate v12.5.1 (64 bit)
-MySQL - 5.7.29 : Database - spring-boot-mybatisplus
+MySQL - 5.7.29 : Database - spring_boot_mybatisplus.sql
 *********************************************************************
 */
 
@@ -13,9 +13,9 @@ MySQL - 5.7.29 : Database - spring-boot-mybatisplus
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`spring-boot-mybatisplus` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`spring_boot_mybatisplus.sql` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 
-USE `spring-boot-mybatisplus`;
+USE `spring_boot_mybatisplus.sql`;
 
 /*Table structure for table `goods` */
 
