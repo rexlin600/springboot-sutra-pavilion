@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: ocr
+server:
+  port: 10040
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    password: rexlin600
+baidu:
+  ocr:
+    app-id: xxx
+    app-key: xxx
+    app-secret-key: xxx
