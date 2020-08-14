@@ -5,7 +5,7 @@ import $!{pkg};
 #end
 
 /**
-* $!{table.comment}
+* $!{table.comment} 实体类
 *
 * @author $!{author}
 * @since $!{date}

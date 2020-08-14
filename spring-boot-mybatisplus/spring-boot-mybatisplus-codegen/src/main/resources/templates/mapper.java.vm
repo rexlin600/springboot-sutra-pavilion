@@ -4,7 +4,7 @@ import $!{package.Entity}.$!{entity};
 import $!{superMapperClassPackage};
 
 /**
- * $!{table.comment} Mapper 接口
+ * $!{table.comment} Dao方法
  *
  * @author $!{author}
  * @since $!{date}

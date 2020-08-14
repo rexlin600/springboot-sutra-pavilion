@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 #end
 
 /**
- * $!{table.comment} 前端控制器
+ * $!{table.comment} 接口
  *
  * @author $!{author}
  * @since $!{date}
