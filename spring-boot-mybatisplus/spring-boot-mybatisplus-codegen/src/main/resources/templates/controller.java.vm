@@ -10,9 +10,7 @@ import org.springframework.stereotype.Controller;
 #end
 
 /**
- * <p>
  * $!{table.comment} 前端控制器
- * </p>
  *
  * @author $!{author}
  * @since $!{date}
@@ -27,12 +25,12 @@ import org.springframework.stereotype.Controller;
 class $!{table.controllerName}#if(${superControllerClass}) : $!{superControllerClass}()#end
 
 #else
-    #if(${superControllerClass})
-    public class $!{table.controllerName} {
-    #else
-    public class $!{table.controllerName} {
-    #end
+#if(${superControllerClass})
+public class $!{table.controllerName} {
+#else
+public class $!{table.controllerName} {
+#end
 
-        }
+    }
 
 #end

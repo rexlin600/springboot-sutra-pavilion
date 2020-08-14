@@ -5,9 +5,7 @@ import $!{pkg};
 #end
 
 /**
-* <p>
-    * $!{table.comment}
-    * </p>
+* $!{table.comment}
 *
 * @author $!{author}
 * @since $!{date}
@@ -28,39 +26,39 @@ class $!{entity} : Serializable {
 #if(${field.keyFlag})
 #set($keyPropertyName=${field.propertyName})
 #end
-    #if("$!field.comment" != "")
+#if("$!field.comment" != "")
     /**
     * $!{field.comment}
     */
-    #end
+#end
 #if(${field.keyFlag})
 ## 主键
-    #if(${field.keyIdentityFlag})
+#if(${field.keyIdentityFlag})
     @TableId(value = "$!{field.name}", type = IdType.AUTO)
-    #elseif(!$null.isNull(${idType}) && "$!idType" != "")
+#elseif(!$null.isNull(${idType}) && "$!idType" != "")
     @TableId(value = "$!{field.name}", type = IdType.$!{idType})
-    #elseif(${field.convert})
+#elseif(${field.convert})
     @TableId("$!{field.name}")
-    #end
+#end
 ## 普通字段
 #elseif(${field.fill})
     ## -----   存在字段填充设置   -----
-    #if(${field.convert})
+#if(${field.convert})
     @TableField(value = "$!{field.name}", fill = FieldFill.$!{field.fill})
-    #else
+#else
     @TableField(fill = FieldFill.$!{field.fill})
-    #end
+#end
 #elseif(${field.convert})
-@TableField("$!{field.name}")
+    @TableField("$!{field.name}")
 #end
     ## 乐观锁注解
-    #if(${versionFieldName}==${field.name})
+#if(${versionFieldName}==${field.name})
     @Version
-    #end
+#end
     ## 逻辑删除注解
-    #if(${logicDeleteFieldName}==${field.name})
+#if(${logicDeleteFieldName}==${field.name})
     @TableLogic
-    #end
+#end
 var $!{field.propertyName}: $!{field.propertyType}? = null
 #end
 ## ----------  END 字段循环遍历  ----------
@@ -68,33 +66,33 @@ var $!{field.propertyName}: $!{field.propertyType}? = null
 
 #if(${entityColumnConstant})
     companion object {
-    #foreach($field in ${table.fields})
+#foreach($field in ${table.fields})
 
-    const val $!{field.name.toUpperCase()} : String = "$!{field.name}"
+        const val $!{field.name.toUpperCase()} : String = "$!{field.name}"
 
-    #end
+#end
     }
 
 #end
 #if(${activeRecord})
-override fun pkVal(): Serializable {
-    #if(${keyPropertyName})
+    override fun pkVal(): Serializable {
+#if(${keyPropertyName})
     return $!{keyPropertyName}!!
-    #else
+#else
     return id!!
-    #end
-}
+#end
+    }
 
 #end
-override fun toString(): String {
-return "$!{entity}{" +
+    override fun toString(): String {
+        return "$!{entity}{" +
 #foreach($field in ${table.fields})
-    #if($!{foreach.index}==0)
-    "$!{field.propertyName}=" + $!{field.propertyName} +
-    #else
-    ", $!{field.propertyName}=" + $!{field.propertyName} +
-    #end
+#if($!{foreach.index}==0)
+        "$!{field.propertyName}=" + $!{field.propertyName} +
+#else
+        ", $!{field.propertyName}=" + $!{field.propertyName} +
 #end
-"}"
-}
+#end
+        "}"
+    }
 }
