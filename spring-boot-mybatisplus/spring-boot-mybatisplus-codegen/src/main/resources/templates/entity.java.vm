@@ -14,20 +14,18 @@ import lombok.experimental.Accessors;
 #end
 
 /**
- * <p>
- * $!{table.comment}
- * </p>
+ * $!{table.comment} 实体类
  *
  * @author $!{author}
  * @since $!{date}
  */
 #if(${entityLombokModel})
 @Data
-    #if(${superEntityClass})
-    @EqualsAndHashCode(callSuper = true)
-    #else
-    @EqualsAndHashCode(callSuper = false)
-    #end
+#if(${superEntityClass})
+@EqualsAndHashCode(callSuper = true)
+#else
+@EqualsAndHashCode(callSuper = false)
+#end
 @Accessors(chain = true)
 #end
 #if(${table.convert})
@@ -62,59 +60,59 @@ public class $!{entity} implements Serializable{
 #end
 #if(${field.keyFlag})
 ## 主键
-    #if(${field.keyIdentityFlag})
+#if(${field.keyIdentityFlag})
     @TableId(value = "$!{field.name}" , type = IdType.AUTO)
-    #elseif(!$null.isNull(${idType}) && "$!idType" != "")
+#elseif(!$null.isNull(${idType}) && "$!idType" != "")
     @TableId(value = "$!{field.name}" , type = IdType.$!{idType})
-    #elseif(${field.convert})
+#elseif(${field.convert})
     @TableId("$!{field.name}" )
-    #end
+#end
 ## 普通字段
 #elseif(${field.fill})
-    ## -----   存在字段填充设置   -----
-    #if(${field.convert})
+## -----   存在字段填充设置   -----
+#if(${field.convert})
     @TableField(value = "$!{field.name}" , fill = FieldFill.$!{field.fill})
-    #else
+#else
     @TableField(fill = FieldFill.$!{field.fill})
-    #end
+#end
 #elseif(${field.convert})
 @TableField("$!{field.name}" )
 #end
-    ## 乐观锁注解
-    #if(${versionFieldName}==${field.name})
+## 乐观锁注解
+#if(${versionFieldName}==${field.name})
     @Version
-    #end
-    ## 逻辑删除注解
-    #if(${logicDeleteFieldName}==${field.name})
+#end
+## 逻辑删除注解
+#if(${logicDeleteFieldName}==${field.name})
     @TableLogic
-    #end
-private $!{field.propertyType} $!{field.propertyName};
+#end
+    private $!{field.propertyType} $!{field.propertyName};
 #end
 ## ----------  END 字段循环遍历  ----------
 
 #if(!${entityLombokModel})
-    #foreach($field in ${table.fields})
-        #if(${field.propertyType.equals("boolean")})
-            #set($getprefix="is")
-        #else
-            #set($getprefix="get")
-        #end
+#foreach($field in ${table.fields})
+#if(${field.propertyType.equals("boolean")})
+#set($getprefix="is")
+#else
+#set($getprefix="get")
+#end
 
     public $!{field.propertyType} $!{getprefix}$!{field.capitalName}(){
-            return $!{field.propertyName};
-            }
+        return $!{field.propertyName};
+    }
 
-        #if(${entityBuilderModel})
-        public $!{entity} set$!{field.capitalName}($!{field.propertyType} $!{field.propertyName}){
-        #else
-        public void set$!{field.capitalName}($!{field.propertyType} $!{field.propertyName}) {
-        #end
-            this.$!{field.propertyName} = $!{field.propertyName};
-        #if(${entityBuilderModel})
-                return this;
-        #end
-            }
-    #end
+#if(${entityBuilderModel})
+    public $!{entity} set$!{field.capitalName}($!{field.propertyType} $!{field.propertyName}){
+#else
+    public void set$!{field.capitalName}($!{field.propertyType} $!{field.propertyName}) {
+#end
+        this.$!{field.propertyName} = $!{field.propertyName};
+#if(${entityBuilderModel})
+        return this;
+#end
+    }
+#end
 #end
 
 #if(${entityColumnConstant})
@@ -126,11 +124,11 @@ private $!{field.propertyType} $!{field.propertyName};
 #if(${activeRecord})
     @Override
     protected Serializable pkVal() {
-    #if(${keyPropertyName})
-            return this.$!{keyPropertyName};
-    #else
-            return null;
-    #end
+#if(${keyPropertyName})
+        return this.$!{keyPropertyName};
+#else
+        return null;
+#end
     }
 
 #end
@@ -138,14 +136,14 @@ private $!{field.propertyType} $!{field.propertyName};
 @Override
 public String toString() {
         return "$!{entity}{" +
-    #foreach($field in ${table.fields})
-        #if($!{foreach.index}==0)
-                "$!{field.propertyName}=" + $!{field.propertyName} +
-        #else
-                ", $!{field.propertyName}=" + $!{field.propertyName} +
-        #end
+#foreach($field in ${table.fields})
+    #if($!{foreach.index}==0)
+            "$!{field.propertyName}=" + $!{field.propertyName} +
+    #else
+            ", $!{field.propertyName}=" + $!{field.propertyName} +
     #end
+#end
         "}";
-        }
+    }
 #end
 }
