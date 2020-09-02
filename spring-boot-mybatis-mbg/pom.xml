@@ -9,7 +9,6 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>xyz.rexlin600.mybatis.mbg</groupId>
 	<artifactId>spring-boot-mybatis-mbg</artifactId>
 
 	<dependencies>

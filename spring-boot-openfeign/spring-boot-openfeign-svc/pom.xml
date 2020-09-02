@@ -3,13 +3,12 @@
 		 xmlns="http://maven.apache.org/POM/4.0.0"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
-		<groupId>xyz.rexlin600.openfeign</groupId>
+		<groupId>xyz.rexlin600</groupId>
 		<artifactId>spring-boot-openfeign</artifactId>
 		<version>2.0.0</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>xyz.rexlin600.openfeign.svc</groupId>
 	<artifactId>spring-boot-openfeign-svc</artifactId>
 
 	<properties>

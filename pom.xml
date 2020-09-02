@@ -4,6 +4,7 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<name>SSP ${project.version}</name>
 	<groupId>xyz.rexlin600</groupId>
 	<artifactId>springboot-sutra-pavilion</artifactId>
 	<packaging>pom</packaging>
@@ -69,6 +70,7 @@
 		<module>spring-boot-kafka</module>
 		<module>spring-boot-mybatis-mbg</module>
 		<module>spring-boot-ocr</module>
+		<module>spring-boot-sms</module>
 	</modules>
 
 	<dependencies>

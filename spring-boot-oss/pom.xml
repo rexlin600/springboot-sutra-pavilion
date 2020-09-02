@@ -9,7 +9,6 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>xyz.rexlin600.oss</groupId>
 	<artifactId>spring-boot-oss</artifactId>
 
 	<properties>
