@@ -43,13 +43,13 @@ public class BaiduOcr {
 	@Autowired
 	public BaiduOcr(BaiduOcrConfigBean ocrConfigBean) {
 		this.ocrConfigBean = ocrConfigBean;
-		initOcr();
+		init();
 	}
 
 	/**
 	 * OCR 初始化
 	 */
-	public void initOcr() {
+	public void init() {
 		log.info("==>  初始化 OCR instance 开始 ...");
 		if (instance == null) {
 			synchronized (BaiduOcr.class) {
