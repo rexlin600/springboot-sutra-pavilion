@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: aliyun-sms
+  redis: # redis连接哨兵/集群模式参考文章 https://blog.csdn.net/qq_39669058/article/details/89158145
+    database: 0
+    host: 10.197.236.184
+    password: 123456
+    port: 6379
+    timeout: 9000
+    jedis:
+      pool:
+        block-when-exhausted: true
+        max-active: 200
+        max-idle: 100
+        max-redirects: 3
+        max-wait: 5000ms
+        min-idle: 8
+        test-on-borrow: true
+        test-on-return: false
+server:
+  port: 10041
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    password: rexlin600
+# aliyun sms sdk
+sms:
+  ali:
+    domain: dysmsapi.aliyuncs.com
+    regionId: cn-hangzhou
+    accessKey: xxx
+    accessSecret: xxx
+    greenChannel: false
+    greenCode: 888888
