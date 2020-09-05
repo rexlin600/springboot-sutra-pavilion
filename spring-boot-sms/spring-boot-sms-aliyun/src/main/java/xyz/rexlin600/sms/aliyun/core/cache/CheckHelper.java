@@ -1,6 +1,6 @@
 package xyz.rexlin600.sms.aliyun.core.cache;
 
-import cn.hutool.core.map.MapUtil;
+import cn.hutool.core.util.BooleanUtil;
 import com.aliyuncs.exceptions.ClientException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import xyz.rexlin600.sms.aliyun.config.sms.SmsConfig;
 import xyz.rexlin600.sms.aliyun.core.constant.SmsConst;
 import xyz.rexlin600.sms.aliyun.core.request.VerifyCodeRequest;
 
-import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
@@ -56,7 +55,7 @@ public class CheckHelper {
 	 *
 	 * @return boolean boolean
 	 */
-	public boolean isChannelOpen() {
+	public boolean isGreenChannelOpen() {
 		return smsConfig.getIsGreenChannelOpen();
 	}
 
@@ -80,7 +79,10 @@ public class CheckHelper {
 	 * @param key the key
 	 */
 	public void clearCodeImmediately(String key) {
-		redisTemplate.delete(key);
+		Optional<Boolean> optional = Optional.ofNullable(redisTemplate.hasKey(key));
+		if (optional.isPresent() && optional.get()) {
+			redisTemplate.delete(key);
+		}
 	}
 
 	/**
@@ -91,11 +93,12 @@ public class CheckHelper {
 	 */
 	public void isEqualVerifyCode(VerifyCodeRequest request) throws ClientException {
 		// 如果绿色通道打开校验验证码是否为 GreenCode
-		if (smsConfig.getIsGreenChannelOpen()) {
+		if (isGreenChannelOpen()) {
 			boolean pass = request.getCode().equals(smsConfig.getGreenCode());
-			if (!pass) {
+			if (BooleanUtil.isFalse(pass)) {
 				throw new ClientException(SmsConst.ERROR_CODE, "验证码不匹配");
 			}
+			return;
 		}
 
 		String k1 = SmsConst.VERIFY_CODE_KEY.concat(":")
