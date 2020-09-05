@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import xyz.rexlin600.sms.aliyun.core.SmsService;
 import xyz.rexlin600.sms.aliyun.core.request.SmsRequest;
 import xyz.rexlin600.sms.aliyun.core.request.VerifyCodeRequest;
-import xyz.rexlin600.sms.aliyun.service.SmsService;
 
 import javax.validation.Valid;
 

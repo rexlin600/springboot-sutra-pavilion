@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-import xyz.rexlin600.sms.aliyun.config.SmsConfig;
+import xyz.rexlin600.sms.aliyun.core.config.SmsConfig;
 import xyz.rexlin600.sms.aliyun.core.constant.SmsConst;
 import xyz.rexlin600.sms.aliyun.core.request.VerifyCodeRequest;
 
@@ -57,7 +57,7 @@ public class CheckHelper {
 	 * @return boolean boolean
 	 */
 	public boolean isChannelOpen() {
-		return smsConfig.getGreenChannel();
+		return smsConfig.getIsGreenChannelOpen();
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class CheckHelper {
 			t1 = (int) o1.get();
 		}
 
-		if (t1 >= SmsConst.MAX_DAILY_THRESHOLD_VALUE) {
+		if (t1 >= smsConfig.getMaxDailyThresholdValue()) {
 			log.info("==>  手机号为 {} 发送短信模板 Code为 {} 的总次数已超过每日阈值", phone, templateCode);
 			throw new ClientException(SmsConst.ERROR_CODE, "今日发送短信已超过每日最大阈值");
 		}
@@ -100,7 +100,7 @@ public class CheckHelper {
 			t1 = (int) o1.get();
 		}
 
-		if (t1 >= SmsConst.MAX_TEMPLATE_THRESHOLD_VALUE) {
+		if (t1 >= smsConfig.getMaxTemplateThresholdValue()) {
 			log.info("==>  手机号为 {} 发送各类模板的总次数已超过模板总阈值", phone);
 			throw new ClientException(SmsConst.ERROR_CODE, "今日发送短信已超过模板最大阈值");
 		}
@@ -121,7 +121,7 @@ public class CheckHelper {
 		Long expireSeconds = redisTemplate.getExpire(k1, TimeUnit.SECONDS);
 		if (expireSeconds != null
 				&& expireSeconds > 0
-				&& 600 - expireSeconds < SmsConst.MAX_INTERVAL_SECONDS_VALUE) {
+				&& 600 - expireSeconds < smsConfig.getMaxIntervalSecondsValue()) {
 			throw new ClientException(SmsConst.ERROR_CODE, "发送短信的间隔时间必须大于1分钟");
 		}
 	}
@@ -153,6 +153,14 @@ public class CheckHelper {
 	 * @throws ClientException the business exception
 	 */
 	public void isEqualVerifyCode(VerifyCodeRequest request) throws ClientException {
+		// 如果绿色通道打开校验验证码是否为 GreenCode
+		if (smsConfig.getIsGreenChannelOpen()) {
+			boolean pass = request.getCode().equals(smsConfig.getGreenCode());
+			if (!pass) {
+				throw new ClientException(SmsConst.ERROR_CODE, "验证码不匹配");
+			}
+		}
+
 		String k1 = SmsConst.VERIFY_CODE_KEY.concat(":")
 				.concat(request.getPhone()).concat(":")
 				.concat(request.getTemplateCode());

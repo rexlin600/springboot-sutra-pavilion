@@ -29,8 +29,14 @@ public class SmsConst {
 	// 短息相关常量
 	// -----------------------------------------------------------------------------------------------
 
+	/**
+	 * The constant ERROR_CODE.
+	 */
 	public static final String ERROR_CODE = String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value());
 
+	/**
+	 * The constant CODE.
+	 */
 	public static final String CODE = "code";
 
 	/**
@@ -46,19 +52,5 @@ public class SmsConst {
 	 * 模板Code总阈值：针对所有的Code模板
 	 */
 	public static final String TEMPLATE_THRESHOLD_KEY = "sms:ali:template";
-
-	/**
-	 * 发送短信每日阈值
-	 */
-	public static final long MAX_DAILY_THRESHOLD_VALUE = 2L;
-	/**
-	 * 发送短信所有模板Code总阈值
-	 */
-	public static final long MAX_TEMPLATE_THRESHOLD_VALUE = 3L;
-	/**
-	 * 发送短信间隔时间，单位：秒
-	 */
-	public static final long MAX_INTERVAL_SECONDS_VALUE = 60L;
-
 
 }

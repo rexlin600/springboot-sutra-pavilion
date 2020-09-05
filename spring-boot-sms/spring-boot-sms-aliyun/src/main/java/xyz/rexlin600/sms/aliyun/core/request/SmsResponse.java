@@ -1,4 +1,4 @@
-package xyz.rexlin600.sms.aliyun.core.response;
+package xyz.rexlin600.sms.aliyun.core.request;
 
 import cn.hutool.json.JSONObject;
 import lombok.AllArgsConstructor;

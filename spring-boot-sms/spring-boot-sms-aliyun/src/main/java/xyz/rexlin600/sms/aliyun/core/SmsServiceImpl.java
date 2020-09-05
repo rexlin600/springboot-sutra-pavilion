@@ -1,23 +1,23 @@
-package xyz.rexlin600.sms.aliyun.service;
+package xyz.rexlin600.sms.aliyun.core;
 
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.aliyuncs.CommonRequest;
 import com.aliyuncs.CommonResponse;
 import com.aliyuncs.exceptions.ClientException;
+import com.aliyuncs.http.MethodType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import xyz.rexlin600.sms.aliyun.config.SmsConfig;
-import xyz.rexlin600.sms.aliyun.core.SmsClient;
+import xyz.rexlin600.sms.aliyun.core.client.SmsClient;
+import xyz.rexlin600.sms.aliyun.core.config.SmsConfig;
 import xyz.rexlin600.sms.aliyun.core.constant.SmsConst;
 import xyz.rexlin600.sms.aliyun.core.helper.CacheHelper;
 import xyz.rexlin600.sms.aliyun.core.helper.CheckHelper;
 import xyz.rexlin600.sms.aliyun.core.request.SmsRequest;
+import xyz.rexlin600.sms.aliyun.core.request.SmsResponse;
 import xyz.rexlin600.sms.aliyun.core.request.VerifyCodeRequest;
-import xyz.rexlin600.sms.aliyun.core.response.SmsResponse;
-import xyz.rexlin600.sms.aliyun.core.util.SmsRequestUtil;
 
 import java.time.Instant;
 
@@ -29,7 +29,7 @@ import java.time.Instant;
  */
 @Slf4j
 @Service
-public class SmsService {
+public class SmsServiceImpl implements SmsService {
 
 	/**
 	 * The Sms client.
@@ -53,9 +53,9 @@ public class SmsService {
 	 * @param cacheHelper the cache helper
 	 */
 	@Autowired
-	public SmsService(SmsConfig smsConfig,
-					  CheckHelper checkHelper,
-					  CacheHelper cacheHelper) {
+	public SmsServiceImpl(SmsConfig smsConfig,
+						  CheckHelper checkHelper,
+						  CacheHelper cacheHelper) {
 		this.smsConfig = smsConfig;
 		this.checkHelper = checkHelper;
 		this.cacheHelper = cacheHelper;
@@ -72,6 +72,7 @@ public class SmsService {
 	 * @return the boolean
 	 * @throws ClientException client exception
 	 */
+	@Override
 	public void sendSms(SmsRequest req) throws ClientException {
 		// 开启绿色通道不发送短信
 		if (checkHelper.isChannelOpen()) {
@@ -108,6 +109,7 @@ public class SmsService {
 	 * @param request the request
 	 * @throws ClientException the client exception
 	 */
+	@Override
 	public void verifyCode(VerifyCodeRequest request) throws ClientException {
 		checkHelper.isEqualVerifyCode(request);
 	}
@@ -125,8 +127,16 @@ public class SmsService {
 	 */
 	private void send(SmsRequest req) throws ClientException {
 		// 构建通用短信请求对象
-		CommonRequest commonRequest = SmsRequestUtil.buildCommonRequest(req,
-				smsConfig.getDomain(), smsConfig.getRegionId());
+		CommonRequest commonRequest = new CommonRequest();
+		commonRequest.setSysMethod(MethodType.POST);
+		commonRequest.setSysAction(SmsConst.SEND_SMS);
+		commonRequest.setSysDomain(smsConfig.getDomain());
+		commonRequest.setSysVersion(SmsConst.VERSION);
+		commonRequest.putQueryParameter(SmsConst.REGION_PARAM, smsConfig.getRegionId());
+		commonRequest.putQueryParameter("PhoneNumbers", req.getPhone());
+		commonRequest.putQueryParameter("SignName", req.getSignName());
+		commonRequest.putQueryParameter("TemplateCode", req.getTemplateCode());
+		commonRequest.putQueryParameter("TemplateParam", JSONUtil.toJsonStr(req.getTemplateParam()));
 
 		// 发送短信
 		CommonResponse response = SmsClient.instance.getCommonResponse(commonRequest);

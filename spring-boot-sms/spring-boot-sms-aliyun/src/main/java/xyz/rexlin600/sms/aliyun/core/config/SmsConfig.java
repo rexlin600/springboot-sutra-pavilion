@@ -1,4 +1,4 @@
-package xyz.rexlin600.sms.aliyun.config;
+package xyz.rexlin600.sms.aliyun.core.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -41,11 +41,26 @@ public class SmsConfig {
 	 * true：打开绿色通道，不发短信
 	 * false：关闭绿色通道，发送短信
 	 */
-	private Boolean greenChannel;
+	private Boolean isGreenChannelOpen;
 
 	/**
 	 * 绿色通道开启时的默认 code
 	 */
 	private String greenCode;
+
+	/**
+	 * 发送短信每日阈值
+	 */
+	private Integer maxDailyThresholdValue = 5;
+
+	/**
+	 * 发送短信所有模板Code总阈值
+	 */
+	private Integer maxTemplateThresholdValue = 20;
+
+	/**
+	 * 发送短信间隔时间，单位：秒
+	 */
+	private Integer maxIntervalSecondsValue = 60;
 
 }
