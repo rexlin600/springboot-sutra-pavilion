@@ -1,4 +1,4 @@
-package xyz.rexlin600.sms.aliyun.core.client;
+package xyz.rexlin600.sms.aliyun.core;
 
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
@@ -6,7 +6,7 @@ import com.aliyuncs.profile.DefaultProfile;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import xyz.rexlin600.sms.aliyun.core.config.SmsConfig;
+import xyz.rexlin600.sms.aliyun.config.sms.SmsConfig;
 
 /**
  * 阿里云信实例

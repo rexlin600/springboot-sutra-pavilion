@@ -5,14 +5,10 @@ spring:
     database: 1
     jedis:
       pool:
-        block-when-exhausted: true
         max-active: 200
         max-idle: 100
-        max-redirects: 3
         max-wait: 5000ms
         min-idle: 8
-        test-on-borrow: true
-        test-on-return: false
     password: 123456
     sentinel:
       master: mymaster

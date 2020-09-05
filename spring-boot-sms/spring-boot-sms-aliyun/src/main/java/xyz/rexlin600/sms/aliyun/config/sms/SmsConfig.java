@@ -1,4 +1,4 @@
-package xyz.rexlin600.sms.aliyun.core.config;
+package xyz.rexlin600.sms.aliyun.config.sms;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -1,4 +1,4 @@
-package xyz.rexlin600.sms.aliyun.config;
+package xyz.rexlin600.sms.aliyun.config.redis;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

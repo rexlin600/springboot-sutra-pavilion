@@ -1,4 +1,4 @@
-package xyz.rexlin600.sms.aliyun.config;
+package xyz.rexlin600.sms.aliyun.config.redis;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

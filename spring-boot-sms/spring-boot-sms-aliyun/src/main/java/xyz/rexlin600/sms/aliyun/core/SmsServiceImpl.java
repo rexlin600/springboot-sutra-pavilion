@@ -1,5 +1,7 @@
 package xyz.rexlin600.sms.aliyun.core;
 
+import cn.hutool.core.map.MapUtil;
+import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.aliyuncs.CommonRequest;
@@ -10,16 +12,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import xyz.rexlin600.sms.aliyun.core.client.SmsClient;
-import xyz.rexlin600.sms.aliyun.core.config.SmsConfig;
+import xyz.rexlin600.sms.aliyun.config.sms.SmsConfig;
+import xyz.rexlin600.sms.aliyun.core.cache.CacheHelper;
+import xyz.rexlin600.sms.aliyun.core.cache.CheckHelper;
 import xyz.rexlin600.sms.aliyun.core.constant.SmsConst;
-import xyz.rexlin600.sms.aliyun.core.helper.CacheHelper;
-import xyz.rexlin600.sms.aliyun.core.helper.CheckHelper;
 import xyz.rexlin600.sms.aliyun.core.request.SmsRequest;
 import xyz.rexlin600.sms.aliyun.core.request.SmsResponse;
 import xyz.rexlin600.sms.aliyun.core.request.VerifyCodeRequest;
 
 import java.time.Instant;
+import java.util.Map;
 
 /**
  * The type Sms service.
@@ -66,42 +68,57 @@ public class SmsServiceImpl implements SmsService {
 	// -----------------------------------------------------------------------------------------------
 
 	/**
-	 * 发送短信
+	 * 发送验证码短信
 	 *
 	 * @param req the req
-	 * @return the boolean
-	 * @throws ClientException client exception
+	 * @throws ClientException the client exception
 	 */
 	@Override
-	public void sendSms(SmsRequest req) throws ClientException {
-		// 开启绿色通道不发送短信
-		if (checkHelper.isChannelOpen()) {
-			log.info("==>  已开启短信绿色通道，默认短信验证码 {}", smsConfig.getGreenCode());
-			return;
+	public void sendVerifyCodeSms(SmsRequest req) throws ClientException {
+		// 发送验证码标识不正确
+		if (BooleanUtil.isFalse(req.getIsVerifyCode())) {
+			throw new ClientException(SmsConst.ERROR_CODE, "发送验证码短信标识不合法，原因：isVerifyCode=false");
 		}
 
-		// 发送验证码需校验模板参数是否包含 code
-		boolean isVerifyCode = req.getIsVerifyCode();
-		if (isVerifyCode) {
-			checkHelper.isContainCode(req.getTemplateParam());
+		// 没有验证码code
+		Map<String, String> param = req.getTemplateParam();
+		if (MapUtil.isEmpty(param) || !param.containsKey(SmsConst.CODE)) {
+			throw new ClientException(SmsConst.ERROR_CODE, "发送验证码短信参数不合法，原因：没有code");
 		}
-
-		// 防盗刷：发送间隔阈值、每日阈值、总模板阈值等校验
-		checkHelper.isOverIntervalThreshold(req.getPhone(), req.getTemplateCode());
-		checkHelper.isOverDailyThreshold(req.getPhone(), req.getTemplateCode());
-		checkHelper.isOverTemplateThreshold(req.getPhone());
 
 		// 发送消息
 		send(req);
 
-		// 发送短信验证码需缓存验证码
-		if (isVerifyCode) {
+		// 缓存 code 值
+		if (BooleanUtil.isTrue(req.getIsVerifyCode()) && BooleanUtil.isFalse(checkHelper.isChannelOpen())) {
 			cacheHelper.cacheVerifyCode(req.getPhone(), req.getTemplateCode(), req.getTemplateParam().get(SmsConst.CODE));
 		}
 
 		// 日志记录
-		log.info("==>  手机号 {} 发送模板短信 {} 成功，时间 {}", req.getPhone(), req.getTemplateCode(), Instant.now().toEpochMilli());
+		printSendLog(req);
 	}
+
+
+	/**
+	 * 发送通知短信
+	 *
+	 * @param req the req
+	 * @throws ClientException the client exception
+	 */
+	@Override
+	public void sendNotifySms(SmsRequest req) throws ClientException {
+		// 发送通知短信标识不正确
+		if (BooleanUtil.isTrue(req.getIsVerifyCode())) {
+			throw new ClientException(SmsConst.ERROR_CODE, "发送通知短信标识不合法，原因：isVerifyCode=true");
+		}
+
+		// 发送消息
+		send(req);
+
+		// 日志记录
+		printSendLog(req);
+	}
+
 
 	/**
 	 * 校验验证码
@@ -126,6 +143,15 @@ public class SmsServiceImpl implements SmsService {
 	 * @throws ClientException the client exception
 	 */
 	private void send(SmsRequest req) throws ClientException {
+		// 绿色通道校验
+		if (checkHelper.isChannelOpen()) {
+			log.info("==>  已开启短信绿色通道，手机号 {} 默认短信验证码 {}", req.getPhone(), smsConfig.getGreenCode());
+			return;
+		}
+
+		// 超过阈值校验
+		checkHelper.isOverThreshold(req.getPhone(), req.getTemplateCode());
+
 		// 构建通用短信请求对象
 		CommonRequest commonRequest = new CommonRequest();
 		commonRequest.setSysMethod(MethodType.POST);
@@ -151,6 +177,19 @@ public class SmsServiceImpl implements SmsService {
 			cacheHelper.cacheDailyThreshold(req.getPhone(), req.getTemplateCode());
 			cacheHelper.cacheTemplateThreshold(req.getPhone(), req.getTemplateCode());
 		}
+	}
+
+	/**
+	 * Print send log.
+	 *
+	 * @param req the req
+	 */
+	private void printSendLog(SmsRequest req) {
+		log.info("==>  手机号 {} 发送短信 {} 成功, 参数 {}，时间 {}",
+				req.getPhone(),
+				req.getTemplateCode(),
+				JSONUtil.toJsonStr(req.getTemplateParam()),
+				Instant.now().toEpochMilli());
 	}
 
 }

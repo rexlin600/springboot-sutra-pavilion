@@ -63,12 +63,8 @@ spring:
       pool:
         max-idle: 100
         min-idle: 8
-        test-on-borrow: true
-        max-redirects: 3
         max-active: 200
         max-wait: 5000ms
-        test-on-return: false
-        block-when-exhausted: true
     timeout: 5000ms
 ```
 

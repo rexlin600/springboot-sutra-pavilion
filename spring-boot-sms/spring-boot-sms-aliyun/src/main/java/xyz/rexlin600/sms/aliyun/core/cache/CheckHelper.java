@@ -1,4 +1,4 @@
-package xyz.rexlin600.sms.aliyun.core.helper;
+package xyz.rexlin600.sms.aliyun.core.cache;
 
 import cn.hutool.core.map.MapUtil;
 import com.aliyuncs.exceptions.ClientException;
@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-import xyz.rexlin600.sms.aliyun.core.config.SmsConfig;
+import xyz.rexlin600.sms.aliyun.config.sms.SmsConfig;
 import xyz.rexlin600.sms.aliyun.core.constant.SmsConst;
 import xyz.rexlin600.sms.aliyun.core.request.VerifyCodeRequest;
 
@@ -61,80 +61,17 @@ public class CheckHelper {
 	}
 
 	/**
-	 * 检查是否超过每日总阈值
+	 * 超过阈值校验
 	 *
 	 * @param phone        the phone
-	 * @param templateCode 短信模板Code
-	 * @return the boolean
-	 * @throws ClientException business exception
+	 * @param templateCode the template code
+	 * @throws ClientException the client exception
 	 */
-	public void isOverDailyThreshold(String phone, String templateCode) throws ClientException {
-		String k1 = SmsConst.DAILY_THRESHOLD_KEY.concat(":")
-				.concat(phone).concat(":")
-				.concat(templateCode);
-		int t1 = 0;
-		Optional<Object> o1 = Optional.ofNullable(redisTemplate.opsForValue().get(k1));
-		if (o1.isPresent()) {
-			t1 = (int) o1.get();
-		}
-
-		if (t1 >= smsConfig.getMaxDailyThresholdValue()) {
-			log.info("==>  手机号为 {} 发送短信模板 Code为 {} 的总次数已超过每日阈值", phone, templateCode);
-			throw new ClientException(SmsConst.ERROR_CODE, "今日发送短信已超过每日最大阈值");
-		}
-	}
-
-	/**
-	 * 检查是否超过模板总阈值
-	 *
-	 * @param phone the phone
-	 * @return the boolean
-	 * @throws ClientException business exception
-	 */
-	public void isOverTemplateThreshold(String phone) throws ClientException {
-		String k1 = SmsConst.TEMPLATE_THRESHOLD_KEY.concat(":")
-				.concat(phone);
-		int t1 = 0;
-		Optional<Object> o1 = Optional.ofNullable(redisTemplate.opsForValue().get(k1));
-		if (o1.isPresent()) {
-			t1 = (int) o1.get();
-		}
-
-		if (t1 >= smsConfig.getMaxTemplateThresholdValue()) {
-			log.info("==>  手机号为 {} 发送各类模板的总次数已超过模板总阈值", phone);
-			throw new ClientException(SmsConst.ERROR_CODE, "今日发送短信已超过模板最大阈值");
-		}
-	}
-
-	/**
-	 * 检查是否超过时间间隔阈值
-	 *
-	 * @param phone        the phone
-	 * @param templateCode 短信模板Code
-	 * @return the boolean
-	 * @throws ClientException business exception
-	 */
-	public void isOverIntervalThreshold(String phone, String templateCode) throws ClientException {
-		String k1 = SmsConst.VERIFY_CODE_KEY.concat(":")
-				.concat(phone).concat(":")
-				.concat(templateCode);
-		Long expireSeconds = redisTemplate.getExpire(k1, TimeUnit.SECONDS);
-		if (expireSeconds != null
-				&& expireSeconds > 0
-				&& 600 - expireSeconds < smsConfig.getMaxIntervalSecondsValue()) {
-			throw new ClientException(SmsConst.ERROR_CODE, "发送短信的间隔时间必须大于1分钟");
-		}
-	}
-
-	/**
-	 * 校验是否包含验证码参数
-	 *
-	 * @param templateParam the template param
-	 */
-	public void isContainCode(Map<String, String> templateParam) throws ClientException {
-		if (MapUtil.isEmpty(templateParam) || !templateParam.containsKey(SmsConst.CODE)) {
-			throw new ClientException(SmsConst.ERROR_CODE, "发送短信验证码时模板参数必须传入code");
-		}
+	public void isOverThreshold(String phone, String templateCode) throws ClientException {
+		// 防盗刷：发送间隔阈值、每日阈值、总模板阈值等校验
+		isOverIntervalThreshold(phone, templateCode);
+		isOverDailyThreshold(phone, templateCode);
+		isOverTemplateThreshold(phone);
 	}
 
 	/**
@@ -177,6 +114,76 @@ public class CheckHelper {
 			// 立即清除缓存 code
 			clearCodeImmediately(k1);
 			throw new ClientException(SmsConst.ERROR_CODE, "验证码不匹配");
+		}
+	}
+
+	// -----------------------------------------------------------------------------------------------
+	// EXTRA METHOD
+	// -----------------------------------------------------------------------------------------------
+
+	/**
+	 * 检查是否超过每日总阈值
+	 *
+	 * @param phone        the phone
+	 * @param templateCode 短信模板Code
+	 * @return the boolean
+	 * @throws ClientException business exception
+	 */
+	private void isOverDailyThreshold(String phone, String templateCode) throws ClientException {
+		String k1 = SmsConst.DAILY_THRESHOLD_KEY.concat(":")
+				.concat(phone).concat(":")
+				.concat(templateCode);
+		int t1 = 0;
+		Optional<Object> o1 = Optional.ofNullable(redisTemplate.opsForValue().get(k1));
+		if (o1.isPresent()) {
+			t1 = (int) o1.get();
+		}
+
+		if (t1 >= smsConfig.getMaxDailyThresholdValue()) {
+			log.info("==>  手机号为 {} 发送短信模板 Code为 {} 的总次数已超过每日阈值", phone, templateCode);
+			throw new ClientException(SmsConst.ERROR_CODE, "今日发送短信已超过每日最大阈值");
+		}
+	}
+
+	/**
+	 * 检查是否超过模板总阈值
+	 *
+	 * @param phone the phone
+	 * @return the boolean
+	 * @throws ClientException business exception
+	 */
+	private void isOverTemplateThreshold(String phone) throws ClientException {
+		String k1 = SmsConst.TEMPLATE_THRESHOLD_KEY.concat(":")
+				.concat(phone);
+		int t1 = 0;
+		Optional<Object> o1 = Optional.ofNullable(redisTemplate.opsForValue().get(k1));
+		if (o1.isPresent()) {
+			t1 = (int) o1.get();
+		}
+
+		if (t1 >= smsConfig.getMaxTemplateThresholdValue()) {
+			log.info("==>  手机号为 {} 发送各类模板的总次数已超过模板总阈值", phone);
+			throw new ClientException(SmsConst.ERROR_CODE, "今日发送短信已超过模板最大阈值");
+		}
+	}
+
+	/**
+	 * 检查是否超过时间间隔阈值
+	 *
+	 * @param phone        the phone
+	 * @param templateCode 短信模板Code
+	 * @return the boolean
+	 * @throws ClientException business exception
+	 */
+	private void isOverIntervalThreshold(String phone, String templateCode) throws ClientException {
+		String k1 = SmsConst.VERIFY_CODE_KEY.concat(":")
+				.concat(phone).concat(":")
+				.concat(templateCode);
+		Long expireSeconds = redisTemplate.getExpire(k1, TimeUnit.SECONDS);
+		if (expireSeconds != null
+				&& expireSeconds > 0
+				&& 600 - expireSeconds < smsConfig.getMaxIntervalSecondsValue()) {
+			throw new ClientException(SmsConst.ERROR_CODE, "发送短信的间隔时间必须大于1分钟");
 		}
 	}
 

@@ -54,8 +54,8 @@ public class JasyptRest {
 		config.setStringOutputType("base64");
 		encryptor.setConfig(config);
 
-		//加密
-		String encrypt = encryptor.encrypt("root");
+		//加密 oqvgamdolawgdgdc
+		String encrypt = encryptor.encrypt("oqvgamdolawgdgdc@");
 
 		System.out.println(encrypt);
 

@@ -9,14 +9,10 @@ spring:
     timeout: 9000
     jedis:
       pool:
-        block-when-exhausted: true
         max-active: 200
         max-idle: 100
-        max-redirects: 3
         max-wait: 5000ms
         min-idle: 8
-        test-on-borrow: true
-        test-on-return: false
 server:
   port: 10041
 jasypt:
@@ -25,10 +21,13 @@ jasypt:
     password: rexlin600
 # aliyun sms sdk
 sms:
-  ali:
+  ali:   
     domain: dysmsapi.aliyuncs.com
     regionId: cn-hangzhou
-    accessKey: xxx
-    accessSecret: xxx
+    accessKey: ENC(rpDn7ZHu2OCb1oRZK0JMBAoz40fI/vdCx+PMH/uE185yTEgRTVtUKvQ==)
+    accessSecret: ENC(rkOEgVXC8oMVefEuxih+yVhaMQBTMPeVv6dDtvnidkzAG+AZZaHtVmiP8gBGERZmH)
     greenChannel: false
     greenCode: 888888
+    max-daily-threshold-value: 5
+    max-template-threshold-value: 20
+    max-interval-seconds-value: 60

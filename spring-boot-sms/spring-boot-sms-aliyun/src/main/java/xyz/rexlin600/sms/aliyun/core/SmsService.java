@@ -13,12 +13,22 @@ import xyz.rexlin600.sms.aliyun.core.request.VerifyCodeRequest;
 public interface SmsService {
 
 	/**
-	 * 发送短信
+	 * 发送验证码短信
 	 *
 	 * @param req the req
 	 * @throws ClientException the client exception
 	 */
-	void sendSms(SmsRequest req) throws ClientException;
+	void sendVerifyCodeSms(SmsRequest req) throws ClientException;
+
+
+	/**
+	 * 发送通知短信
+	 *
+	 * @param req the req
+	 * @throws ClientException the client exception
+	 */
+	void sendNotifySms(SmsRequest req) throws ClientException;
+
 
 	/**
 	 * 校验Code

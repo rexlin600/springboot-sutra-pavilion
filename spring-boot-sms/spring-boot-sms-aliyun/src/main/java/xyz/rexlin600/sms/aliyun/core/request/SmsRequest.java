@@ -32,7 +32,7 @@ public class SmsRequest implements Serializable {
 	private String signName;
 
 	/**
-	 * 是否是验证码
+	 * 是否是验证码短信
 	 */
 	private Boolean isVerifyCode = false;
 
