@@ -24,9 +24,9 @@ sms:
   ali:   
     domain: dysmsapi.aliyuncs.com
     regionId: cn-hangzhou
-    accessKey: ENC(rpDn7ZHu2OCb1oRZK0JMBAoz40fI/vdCx+PMH/uE185yTEgRTVtUKvQ==)
-    accessSecret: ENC(rkOEgVXC8oMVefEuxih+yVhaMQBTMPeVv6dDtvnidkzAG+AZZaHtVmiP8gBGERZmH)
-    greenChannel: false
+    accessKey: ENC(ypDn7ZHu2OCb1oRZK0JMBAoz40fI/vdCx+PMH/uE185yTEgRTVtUKvQ==)
+    accessSecret: ENC(ykOEgVXC8oMVefEuxih+yVhaMQBTMPeVv6dDtvnidkzAG+AZZaHtVmiP8gBGERZmH)
+    isGreenChannelOpen: false
     greenCode: 888888
     max-daily-threshold-value: 5
     max-template-threshold-value: 20
