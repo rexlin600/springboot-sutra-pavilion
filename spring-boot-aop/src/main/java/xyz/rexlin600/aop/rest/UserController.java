@@ -11,7 +11,7 @@ import xyz.rexlin600.aop.entity.User;
 import xyz.rexlin600.aop.service.UserService;
 
 /**
- * AOp 用户接口
+ * AOP 用户接口
  *
  * @author hekunlin
  */
