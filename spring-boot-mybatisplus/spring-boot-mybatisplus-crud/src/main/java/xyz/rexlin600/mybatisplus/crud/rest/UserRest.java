@@ -11,7 +11,7 @@ import xyz.rexlin600.mybatisplus.crud.common.apiparam.ResponseGenerator;
 import xyz.rexlin600.mybatisplus.crud.model.User;
 
 /**
- * User rest
+ * MybatisPlus 用户接口
  *
  * @author hekunlin
  */
@@ -36,7 +36,7 @@ public class UserRest {
 	}
 
 	/**
-	 * Page page result
+	 * 分页查询
 	 *
 	 * @param page page
 	 * @param size size
@@ -61,7 +61,7 @@ public class UserRest {
 
 
 	/**
-	 * User response
+	 * 查询用户详情
 	 *
 	 * @param id id
 	 * @return the response
@@ -74,7 +74,7 @@ public class UserRest {
 
 
 	/**
-	 * Add response
+	 * 新增用户
 	 *
 	 * @param user user
 	 * @return the response
@@ -87,7 +87,7 @@ public class UserRest {
 
 
 	/**
-	 * Del response
+	 * 删除用户
 	 *
 	 * @param id id
 	 * @return the response
@@ -100,7 +100,7 @@ public class UserRest {
 
 
 	/**
-	 * Upd response
+	 * 更新用户
 	 *
 	 * @param user user
 	 * @return the response

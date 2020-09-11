@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import xyz.rexlin600.helloworld.entity.req.PostReq;
 
 /**
- * Hello world rest
+ * HelloWorld 接口
  *
  * @author hekunlin
  */
@@ -18,7 +18,7 @@ public class HelloWorldRest {
 	private static String HELLO_WORLD = "hello world";
 
 	/**
-	 * Get string
+	 * 获取字符串
 	 *
 	 * @return the string
 	 */
@@ -28,7 +28,7 @@ public class HelloWorldRest {
 	}
 
 	/**
-	 * Post string
+	 * POST接口测试
 	 *
 	 * @param postReq post req
 	 * @return the string
@@ -39,7 +39,7 @@ public class HelloWorldRest {
 	}
 
 	/**
-	 * Put string
+	 * 更新字符串
 	 *
 	 * @param id id
 	 * @return the string
@@ -50,7 +50,7 @@ public class HelloWorldRest {
 	}
 
 	/**
-	 * Delete string
+	 * 删除字符串
 	 *
 	 * @param id id
 	 * @return the string

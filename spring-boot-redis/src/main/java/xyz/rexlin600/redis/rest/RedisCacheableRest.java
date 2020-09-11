@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import xyz.rexlin600.redis.entity.Blog;
 
 /**
- * Redis cacheable rest
+ * Redis Cacheable接口
  *
  * @author hekunlin
  */
@@ -21,7 +21,7 @@ import xyz.rexlin600.redis.entity.Blog;
 public class RedisCacheableRest {
 
 	/**
-	 * Cacheable *
+	 * 缓存ID>1的数据
 	 *
 	 * @param id id
 	 */
@@ -42,7 +42,7 @@ public class RedisCacheableRest {
 	}
 
 	/**
-	 * Cache put *
+	 * 更新缓存（根据ID）
 	 *
 	 * @param id id
 	 */
@@ -63,7 +63,7 @@ public class RedisCacheableRest {
 	}
 
 	/**
-	 * Cache evict *
+	 * 失效缓存（根据ID）
 	 *
 	 * @param id id
 	 */

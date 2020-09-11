@@ -13,7 +13,7 @@ import javax.validation.constraints.NotBlank;
 import java.io.IOException;
 
 /**
- * Oss rest
+ * Oss 对象存储接口
  *
  * @author hekunlin
  */
@@ -38,10 +38,10 @@ public class OssRest {
 	}
 
 	/**
-	 * Upload *
+	 * 文件上传
 	 *
 	 * @param file    file
-	 * @param ossType oss type
+	 * @param ossType oss type	1-阿里云 2-七牛云 3-腾讯云
 	 * @param path    path
 	 */
 	@SneakyThrows
@@ -57,10 +57,10 @@ public class OssRest {
 	}
 
 	/**
-	 * Download *
+	 * 下载图片
 	 *
 	 * @param key      key
-	 * @param ossType  oss type
+	 * @param ossType  oss type	1-阿里云 2-七牛云 3-腾讯云
 	 * @param filePath file path
 	 */
 	@SneakyThrows
@@ -80,10 +80,10 @@ public class OssRest {
 	}
 
 	/**
-	 * Delete *
+	 * 删除图片
 	 *
 	 * @param key     key
-	 * @param ossType oss type
+	 * @param ossType oss type	1-阿里云 2-七牛云 3-腾讯云
 	 */
 	@SneakyThrows
 	@PostMapping("/delete")

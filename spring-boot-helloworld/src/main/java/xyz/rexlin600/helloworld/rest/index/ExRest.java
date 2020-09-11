@@ -6,19 +6,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import xyz.rexlin600.helloworld.exception.BaseException;
 
 /**
- * 这里不能使用 @RestController
- */
-
-/**
- * Ex rest
+ * 全局异常测试接口
  *
  * @author hekunlin
  */
 @Controller
 public class ExRest {
 
+	// 这里不能使用 @RestController
+
 	/**
-	 * Index string
+	 * 默认Index
 	 *
 	 * @param map map
 	 * @return the string
@@ -30,7 +28,7 @@ public class ExRest {
 	}
 
 	/**
-	 * Default ex string
+	 * 默认异常返回
 	 *
 	 * @return the string
 	 * @throws Exception exception
@@ -41,7 +39,7 @@ public class ExRest {
 	}
 
 	/**
-	 * My ex string
+	 * 自定义异常返回
 	 *
 	 * @return the string
 	 * @throws BaseException base exception

@@ -24,7 +24,7 @@ import java.util.Collections;
 import java.util.Optional;
 
 /**
- * Amqp rest
+ * RabbitMQ 接口
  *
  * @author hekunlin
  */
@@ -86,10 +86,11 @@ public class AmqpRest {
 	}
 
 	/**
-	 * Invoke response
+	 * 发送消息
 	 *
-	 * @param type   type
-	 * @param method method
+	 * @param type   type	0-default 1-direct 2-fanout 3-header 4-topic 5-simple 6-work 7-deadLetter 8-custom
+	 * @param method method	directProductStr、fanoutProductStr、topicProductStr1、topicProductStr2、topicProductStr3、
+	 *               simpleProductStr、workProductStr、productDlExpireStr
 	 * @return the response
 	 */
 	@SneakyThrows
@@ -97,9 +98,7 @@ public class AmqpRest {
 	public Response invoke(@PathVariable(value = "type") String type,
 						   @PathVariable(value = "method") String method) {
 		// type check
-		Optional<InvokeTypeEnum> any = Arrays.stream(InvokeTypeEnum.values()).filter(m -> {
-			return m.getType().equals(type);
-		}).findAny();
+		Optional<InvokeTypeEnum> any = Arrays.stream(InvokeTypeEnum.values()).filter(m -> m.getType().equals(type)).findAny();
 		if (!any.isPresent()) {
 			log.error("==>  Don't match this type=[{}]", type);
 			return ResponseGenerator.fail("not have type");
@@ -115,9 +114,7 @@ public class AmqpRest {
 
 		// methods check
 		Method[] methods = amqpInvoke.getMethods();
-		Optional<Method> optional = Arrays.stream(methods).filter(m -> {
-			return m.getName().equals(method);
-		}).findAny();
+		Optional<Method> optional = Arrays.stream(methods).filter(m -> m.getName().equals(method)).findAny();
 		if (!optional.isPresent()) {
 			log.error("==>  Don't match this type=[{}]", type);
 			return ResponseGenerator.fail("not have method");

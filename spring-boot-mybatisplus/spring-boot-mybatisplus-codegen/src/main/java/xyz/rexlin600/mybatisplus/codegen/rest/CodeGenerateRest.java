@@ -12,7 +12,7 @@ import xyz.rexlin600.mybatisplus.codegen.service.CodeService;
 import java.sql.SQLException;
 
 /**
- * Code generate rest
+ * MybatisPlus 代码生成接口
  *
  * @author hekunlin
  */
@@ -37,7 +37,7 @@ public class CodeGenerateRest {
 	}
 
 	/**
-	 * Gets page
+	 * 数据源分页查询
 	 *
 	 * @param page      page
 	 * @param size      size
@@ -59,7 +59,7 @@ public class CodeGenerateRest {
 
 
 	/**
-	 * Generate code
+	 * 生成代码
 	 *
 	 * @param codeGenReq code gen req
 	 * @return the r

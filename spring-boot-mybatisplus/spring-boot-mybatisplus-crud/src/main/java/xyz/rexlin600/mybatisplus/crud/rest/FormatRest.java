@@ -13,7 +13,7 @@ import xyz.rexlin600.mybatisplus.crud.model.FormatResp;
 
 
 /**
- * Format rest
+ * MybatisPlus 对象转换测试接口
  *
  * @author hekunlin
  */
@@ -23,7 +23,7 @@ import xyz.rexlin600.mybatisplus.crud.model.FormatResp;
 public class FormatRest {
 
 	/**
-	 * Convert response
+	 * 对象转换
 	 *
 	 * @param format format
 	 * @return the response

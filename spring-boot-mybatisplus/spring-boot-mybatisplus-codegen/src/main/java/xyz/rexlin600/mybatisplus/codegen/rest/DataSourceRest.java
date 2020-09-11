@@ -17,7 +17,7 @@ import java.util.Date;
 
 
 /**
- * Data source rest
+ * MybatisPlus 数据源接口
  *
  * @author hekunlin
  */
@@ -42,7 +42,7 @@ public class DataSourceRest {
 
 
 	/**
-	 * Save data source
+	 * 保存数据源
 	 *
 	 * @param dataSourceReq data source req
 	 * @return the r
@@ -61,7 +61,7 @@ public class DataSourceRest {
 	}
 
 	/**
-	 * Delete data source
+	 * 删除数据源
 	 *
 	 * @param id id
 	 * @return the r
@@ -73,7 +73,7 @@ public class DataSourceRest {
 	}
 
 	/**
-	 * Update data source
+	 * 更新数据源
 	 *
 	 * @param dataSourceReq data source req
 	 * @return the r
@@ -93,7 +93,7 @@ public class DataSourceRest {
 	}
 
 	/**
-	 * Page data source
+	 * 分页查询数据源
 	 *
 	 * @param page page
 	 * @param size size
@@ -108,7 +108,7 @@ public class DataSourceRest {
 	}
 
 	/**
-	 * Gets data source
+	 * 获取数据源信息
 	 *
 	 * @param id id
 	 * @return the data source

@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Redis set rest
+ * Redis Set接口
  *
  * @author hekunlin
  */
@@ -47,7 +47,7 @@ public class RedisSetRest {
 	}
 
 	/**
-	 * Store
+	 * 新增
 	 */
 	@PostMapping
 	public void store() {
@@ -67,7 +67,7 @@ public class RedisSetRest {
 	}
 
 	/**
-	 * Diff
+	 * 比较
 	 */
 	@GetMapping("/diff")
 	public void diff() {
@@ -86,7 +86,7 @@ public class RedisSetRest {
 	}
 
 	/**
-	 * Intersect
+	 * 交集
 	 */
 	@GetMapping("/intersect")
 	public void intersect() {
@@ -106,7 +106,7 @@ public class RedisSetRest {
 	}
 
 	/**
-	 * Union
+	 * 并集
 	 */
 	@GetMapping("/union")
 	public void union() {
@@ -125,7 +125,7 @@ public class RedisSetRest {
 	}
 
 	/**
-	 * Member
+	 * 取出成员Member
 	 */
 	@GetMapping("/member")
 	public void member() {
@@ -149,7 +149,7 @@ public class RedisSetRest {
 	}
 
 	/**
-	 * Pop
+	 * 获取Pop
 	 */
 	@GetMapping("/pop")
 	public void pop() {
@@ -167,7 +167,7 @@ public class RedisSetRest {
 	}
 
 	/**
-	 * Scan
+	 * 获取Scan
 	 */
 	@SneakyThrows
 	@GetMapping("/scan")

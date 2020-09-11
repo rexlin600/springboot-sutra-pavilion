@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * Redistemplate rest
+ * Redis RedisTemplate接口
  *
  * @author hekunlin
  */
@@ -41,7 +41,7 @@ public class RedisTemplateRest {
 	}
 
 	/**
-	 * Add *
+	 * 新增
 	 *
 	 * @param blog blog
 	 */
@@ -53,7 +53,7 @@ public class RedisTemplateRest {
 
 
 	/**
-	 * Delete *
+	 * 删除
 	 *
 	 * @param id id
 	 */
@@ -64,7 +64,7 @@ public class RedisTemplateRest {
 
 
 	/**
-	 * Update *
+	 * 更新
 	 *
 	 * @param blog blog
 	 */
@@ -75,7 +75,7 @@ public class RedisTemplateRest {
 	}
 
 	/**
-	 * Get *
+	 * 查询
 	 *
 	 * @param id id
 	 */
@@ -87,7 +87,7 @@ public class RedisTemplateRest {
 
 
 	/**
-	 * List
+	 * List查询
 	 */
 	@GetMapping(value = "/list")
 	public void list() {
@@ -97,7 +97,7 @@ public class RedisTemplateRest {
 
 
 	/**
-	 * Uid string
+	 * 保存Session
 	 *
 	 * @param session session
 	 * @return the string
@@ -114,7 +114,7 @@ public class RedisTemplateRest {
 
 
 	/**
-	 * Gets by annotation *
+	 * 查询（通过ID，同时构建缓存）
 	 *
 	 * @param id id
 	 */
@@ -135,7 +135,7 @@ public class RedisTemplateRest {
 
 
 	/**
-	 * Delete *
+	 * 删除
 	 *
 	 * @param key key
 	 */

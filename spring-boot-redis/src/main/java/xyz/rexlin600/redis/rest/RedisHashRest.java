@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * Redis hash rest
+ * Redis Hash接口
  *
  * @author hekunlin
  */
@@ -39,7 +39,7 @@ public class RedisHashRest {
 	}
 
 	/**
-	 * Put
+	 * 更新
 	 */
 	@PostMapping
 	public void put() {
@@ -58,7 +58,7 @@ public class RedisHashRest {
 	}
 
 	/**
-	 * Delete
+	 * 删除
 	 */
 	@DeleteMapping
 	public void delete() {
@@ -67,7 +67,7 @@ public class RedisHashRest {
 	}
 
 	/**
-	 * Entries
+	 * 遍历
 	 */
 	@GetMapping("/entries")
 	public void entries() {
@@ -81,7 +81,7 @@ public class RedisHashRest {
 	}
 
 	/**
-	 * Get
+	 * 读取
 	 */
 	@GetMapping
 	public void get() {
@@ -98,7 +98,7 @@ public class RedisHashRest {
 
 
 	/**
-	 * Has key
+	 * 判断是否存在Key
 	 */
 	@GetMapping("/hasKey")
 	public void hasKey() {
@@ -114,7 +114,7 @@ public class RedisHashRest {
 	}
 
 	/**
-	 * Increment
+	 * 自增
 	 */
 	@PostMapping("/incr")
 	public void increment() {
@@ -131,7 +131,7 @@ public class RedisHashRest {
 	}
 
 	/**
-	 * Keys
+	 * 获取所有Key
 	 */
 	@GetMapping("/keys")
 	public void keys() {
@@ -148,7 +148,7 @@ public class RedisHashRest {
 	}
 
 	/**
-	 * Multi get
+	 * 批量获取
 	 */
 	@GetMapping("/multiGet")
 	public void multiGet() {

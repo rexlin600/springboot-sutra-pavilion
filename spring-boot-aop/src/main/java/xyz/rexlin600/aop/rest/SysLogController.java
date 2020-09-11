@@ -1,4 +1,4 @@
-package xyz.rexlin600.aop.controller;
+package xyz.rexlin600.aop.rest;
 
 
 import com.baomidou.mybatisplus.extension.api.ApiController;
@@ -10,7 +10,7 @@ import xyz.rexlin600.aop.entity.SysLog;
 import xyz.rexlin600.aop.service.SysLogService;
 
 /**
- * Sys log controller
+ * AOP 系统日志接口
  *
  * @author hekunlin
  */
@@ -34,7 +34,7 @@ public class SysLogController extends ApiController {
 	}
 
 	/**
-	 * Page r
+	 * 分页查询
 	 *
 	 * @param page page
 	 * @param size size
@@ -47,7 +47,7 @@ public class SysLogController extends ApiController {
 	}
 
 	/**
-	 * Add r
+	 * 新增日志
 	 *
 	 * @param sysLog sys log
 	 * @return the r
@@ -58,7 +58,7 @@ public class SysLogController extends ApiController {
 	}
 
 	/**
-	 * Del r
+	 * 删除日志
 	 *
 	 * @param id id
 	 * @return the r
@@ -69,7 +69,7 @@ public class SysLogController extends ApiController {
 	}
 
 	/**
-	 * Get r
+	 * 查询日志
 	 *
 	 * @param id id
 	 * @return the r
@@ -80,7 +80,7 @@ public class SysLogController extends ApiController {
 	}
 
 	/**
-	 * Update r
+	 * 更新日志
 	 *
 	 * @param sysLog sys log
 	 * @return the r

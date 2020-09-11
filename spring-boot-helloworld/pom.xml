@@ -80,6 +80,14 @@
 			<!--<artifactId>maven-war-plugin</artifactId>-->
 			<!--<version>3.2.2</version>-->
 			<!--</plugin>-->
+			<plugin>
+				<groupId>com.github.apiggs</groupId>
+				<artifactId>apiggs-maven-plugin</artifactId>
+				<!-- config -->
+				<configuration>
+					<out>${project.parent.basedir}/apiggs/${project.artifactId}</out>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

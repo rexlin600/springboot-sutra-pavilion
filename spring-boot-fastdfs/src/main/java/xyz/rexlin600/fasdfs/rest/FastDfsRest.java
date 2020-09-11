@@ -18,7 +18,7 @@ import xyz.rexlin600.fasdfs.configbean.FastDfsConfigBean;
 import java.util.function.Function;
 
 /**
- * Fast dfs rest
+ * FastDFS 接口
  *
  * @author hekunlin
  */
@@ -53,7 +53,7 @@ public class FastDfsRest {
 	// -----------------------------------------------------------------------------------------------
 
 	/**
-	 * Upload response
+	 * 上传文件
 	 *
 	 * @param file file
 	 * @return the response
@@ -80,7 +80,7 @@ public class FastDfsRest {
 	}
 
 	/**
-	 * Downlaoad response
+	 * 下载文件
 	 *
 	 * @param groupName group name
 	 * @param path      path

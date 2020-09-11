@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Simple Read Rest
+ * Excel 简单读
  *
  * @author hekunlin
  * @since 2020 /8/6
@@ -75,8 +75,6 @@ public class ExcelReadRest {
 
 	/**
 	 * 读取 Excel 文件
-	 *
-	 * <p>上传文件，从文件读取内容后进行相应的业务逻辑处理
 	 *
 	 * @param file file
 	 * @return the r

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Redis string rest
+ * Redis String接口
  *
  * @author hekunlin
  */
@@ -44,7 +44,7 @@ public class RedisStringRest {
 	}
 
 	/**
-	 * Add
+	 * 新增
 	 */
 	@PostMapping
 	public void add() {
@@ -64,7 +64,7 @@ public class RedisStringRest {
 	}
 
 	/**
-	 * Del
+	 * 删除
 	 */
 	@DeleteMapping
 	public void del() {
@@ -77,7 +77,7 @@ public class RedisStringRest {
 	}
 
 	/**
-	 * Increment
+	 * 自增
 	 */
 	@PostMapping("/incr")
 	public void increment() {
@@ -92,7 +92,7 @@ public class RedisStringRest {
 	}
 
 	/**
-	 * Decrement
+	 * 自减
 	 */
 	@PostMapping("/decr")
 	public void decrement() {

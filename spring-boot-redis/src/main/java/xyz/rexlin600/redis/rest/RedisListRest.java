@@ -12,7 +12,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Redis list rest
+ * Redis List接口
  *
  * @author hekunlin
  */
@@ -42,7 +42,7 @@ public class RedisListRest {
 	}
 
 	/**
-	 * Push
+	 * 新增Push
 	 */
 	@PostMapping
 	public void push() {
@@ -66,7 +66,7 @@ public class RedisListRest {
 	}
 
 	/**
-	 * Pop
+	 * 获取Pop
 	 */
 	@GetMapping
 	public void pop() {
@@ -82,7 +82,7 @@ public class RedisListRest {
 	}
 
 	/**
-	 * Range
+	 * 遍历获取Range
 	 */
 	@GetMapping("/range")
 	public void range() {
@@ -105,7 +105,7 @@ public class RedisListRest {
 	}
 
 	/**
-	 * Index
+	 * 按索引获取Index
 	 */
 	@GetMapping("/index")
 	public void index() {
@@ -119,7 +119,7 @@ public class RedisListRest {
 	}
 
 	/**
-	 * Remove
+	 * 删除
 	 */
 	@DeleteMapping
 	public void remove() {
@@ -136,7 +136,7 @@ public class RedisListRest {
 	}
 
 	/**
-	 * Trim
+	 * 截取Trim
 	 */
 	@PostMapping("/trim")
 	public void trim() {

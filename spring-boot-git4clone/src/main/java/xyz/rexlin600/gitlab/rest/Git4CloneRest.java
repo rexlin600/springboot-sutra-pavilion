@@ -11,7 +11,7 @@ import xyz.rexlin600.gitlab.common.apiparam.Response;
 import xyz.rexlin600.gitlab.req.GitlabCloneReq;
 
 /**
- * Git 4 clone rest
+ * GitLab 批量下载小助手
  *
  * @author hekunlin
  */
@@ -37,7 +37,7 @@ public class Git4CloneRest {
 	}
 
 	/**
-	 * List response
+	 * 查询项目列表
 	 *
 	 * @param req req
 	 * @return the response
@@ -48,7 +48,7 @@ public class Git4CloneRest {
 	}
 
 	/**
-	 * Gitlab 4 clone response
+	 * 批量下载项目
 	 *
 	 * @param req req
 	 * @return the response

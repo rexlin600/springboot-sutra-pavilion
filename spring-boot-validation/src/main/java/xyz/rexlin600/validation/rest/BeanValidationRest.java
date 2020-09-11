@@ -1,4 +1,4 @@
-package xyz.rexlin600.validation.controller;
+package xyz.rexlin600.validation.rest;
 
 
 import org.springframework.validation.annotation.Validated;
@@ -16,7 +16,7 @@ import xyz.rexlin600.validation.param.group.Name;
 import javax.validation.groups.Default;
 
 /**
- * Bean validation rest
+ * Bean 校验接口
  *
  * @author hekunlin
  */
@@ -25,7 +25,7 @@ import javax.validation.groups.Default;
 public class BeanValidationRest {
 
 	/**
-	 * Check null response
+	 * 非NULL校验
 	 *
 	 * @param req req
 	 * @return the response
@@ -40,7 +40,7 @@ public class BeanValidationRest {
 
 
 	/**
-	 * Check boolean response
+	 * 布尔值校验
 	 *
 	 * @param req req
 	 * @return the response
@@ -55,7 +55,7 @@ public class BeanValidationRest {
 
 
 	/**
-	 * Check number req response
+	 * 数字校验
 	 *
 	 * @param req req
 	 * @return the response
@@ -70,7 +70,7 @@ public class BeanValidationRest {
 
 
 	/**
-	 * Check length req response
+	 * 长度校验
 	 *
 	 * @param req req
 	 * @return the response
@@ -85,7 +85,7 @@ public class BeanValidationRest {
 
 
 	/**
-	 * Check range req response
+	 * 范围校验（数字、字符串）
 	 *
 	 * @param req req
 	 * @return the response
@@ -100,7 +100,7 @@ public class BeanValidationRest {
 
 
 	/**
-	 * Check other req response
+	 * 其他校验（邮箱、信用卡）
 	 *
 	 * @param req req
 	 * @return the response
@@ -115,7 +115,7 @@ public class BeanValidationRest {
 
 
 	/**
-	 * Check custom req response
+	 * 自定义注解校验
 	 *
 	 * @param req req
 	 * @return the response
@@ -130,7 +130,7 @@ public class BeanValidationRest {
 
 
 	/**
-	 * Check date req response.
+	 * 日期校验
 	 *
 	 * @param req the req
 	 * @return the response
@@ -148,7 +148,7 @@ public class BeanValidationRest {
 	// -----------------------------------------------------------------------------------------------
 
 	/**
-	 * Group 1 response
+	 * 分组校验1（Name）
 	 *
 	 * @param req req
 	 * @return the response
@@ -164,7 +164,7 @@ public class BeanValidationRest {
 	}
 
 	/**
-	 * Group 2 response
+	 * 分组校验2（Classes）
 	 *
 	 * @param req req
 	 * @return the response
@@ -180,7 +180,7 @@ public class BeanValidationRest {
 	}
 
 	/**
-	 * Group 3 response
+	 * 分组校验3（Age）
 	 *
 	 * @param req req
 	 * @return the response
@@ -196,7 +196,7 @@ public class BeanValidationRest {
 	}
 
 	/**
-	 * Group 4 response
+	 * 分组校验4（Default)
 	 *
 	 * @param req req
 	 * @return the response
@@ -212,7 +212,7 @@ public class BeanValidationRest {
 	}
 
 	/**
-	 * Group 5 response
+	 * 分组校验5（All）
 	 *
 	 * @param req req
 	 * @return the response
@@ -232,7 +232,7 @@ public class BeanValidationRest {
 	// -----------------------------------------------------------------------------------------------
 
 	/**
-	 * Script response
+	 * 脚本校验
 	 *
 	 * @param req req
 	 * @return the response

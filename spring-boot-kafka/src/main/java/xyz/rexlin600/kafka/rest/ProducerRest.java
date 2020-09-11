@@ -10,7 +10,7 @@ import xyz.rexlin600.kafka.producer.SyncProducer;
 import java.time.Instant;
 
 /**
- * Producer rest
+ * Kafka 生产者接口
  *
  * @author hekunlin
  */
@@ -41,7 +41,7 @@ public class ProducerRest {
 
 
 	/**
-	 * Send sync
+	 * 发送同步消息
 	 */
 	@PostMapping("/sync/send")
 	private void sendSync() {
@@ -49,7 +49,7 @@ public class ProducerRest {
 	}
 
 	/**
-	 * Send async
+	 * 发送异步消息
 	 */
 	@PostMapping("/async/send")
 	private void sendAsync() {

@@ -1,4 +1,4 @@
-package xyz.rexlin600.aop.controller;
+package xyz.rexlin600.aop.rest;
 
 
 import com.baomidou.mybatisplus.extension.api.ApiController;
@@ -11,7 +11,7 @@ import xyz.rexlin600.aop.entity.User;
 import xyz.rexlin600.aop.service.UserService;
 
 /**
- * User controller
+ * AOp 用户接口
  *
  * @author hekunlin
  */
@@ -35,7 +35,7 @@ public class UserController extends ApiController {
 	}
 
 	/**
-	 * Page r
+	 * 分页查询
 	 *
 	 * @param page page
 	 * @param size size
@@ -47,7 +47,7 @@ public class UserController extends ApiController {
 	}
 
 	/**
-	 * Add r
+	 * 新增用户
 	 *
 	 * @param user user
 	 * @return the r
@@ -58,7 +58,7 @@ public class UserController extends ApiController {
 	}
 
 	/**
-	 * Del r
+	 * 删除用户
 	 *
 	 * @param id id
 	 * @return the r
@@ -69,7 +69,7 @@ public class UserController extends ApiController {
 	}
 
 	/**
-	 * Get r
+	 * 查询用户详情
 	 *
 	 * @param id id
 	 * @return the r
@@ -81,7 +81,7 @@ public class UserController extends ApiController {
 	}
 
 	/**
-	 * Update r
+	 * 更新用户
 	 *
 	 * @param user user
 	 * @return the r

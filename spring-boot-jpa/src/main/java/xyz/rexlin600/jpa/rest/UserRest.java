@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 import java.util.Optional;
 
 /**
- * User rest
+ * JPA 用户接口
  *
  * @author hekunlin
  */
@@ -29,7 +29,7 @@ public class UserRest {
 	private UserRepository userRepository;
 
 	/**
-	 * List response
+	 * 分页查询
 	 *
 	 * @param page page
 	 * @param size size
@@ -50,7 +50,7 @@ public class UserRest {
 	}
 
 	/**
-	 * Add response
+	 * 新增用户
 	 *
 	 * @param user user
 	 * @return the response
@@ -62,7 +62,7 @@ public class UserRest {
 	}
 
 	/**
-	 * Update response
+	 * 更新用户
 	 *
 	 * @param user user
 	 * @return the response
@@ -75,7 +75,7 @@ public class UserRest {
 
 
 	/**
-	 * Add response
+	 * 查询用户详情
 	 *
 	 * @param id id
 	 * @return the response
@@ -91,7 +91,7 @@ public class UserRest {
 
 
 	/**
-	 * Delete response
+	 * 删除数据
 	 *
 	 * @param id id
 	 * @return the response

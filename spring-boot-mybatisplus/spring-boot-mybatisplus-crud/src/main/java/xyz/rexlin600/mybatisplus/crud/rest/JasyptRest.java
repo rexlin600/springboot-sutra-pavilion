@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Test
+ * MybatisPlus 配置加解密接口
  *
  * @author hekunlin
  * @since 2020 /8/12
@@ -64,7 +64,7 @@ public class JasyptRest {
 	}
 
 	/**
-	 * Encrypt r
+	 * 加密配置
 	 *
 	 * @param content content
 	 * @return the r
@@ -80,7 +80,7 @@ public class JasyptRest {
 	// -----------------------------------------------------------------------------------------------
 
 	/**
-	 * Decrypt r
+	 * 解密配置
 	 *
 	 * @param content content
 	 * @return the r

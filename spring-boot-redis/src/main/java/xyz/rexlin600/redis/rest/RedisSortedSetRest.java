@@ -15,7 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Redis sorted set rest
+ * Redis SortedSet接口
  *
  * @author hekunlin
  */
@@ -45,7 +45,7 @@ public class RedisSortedSetRest {
 	}
 
 	/**
-	 * Add
+	 * 新增
 	 */
 	@PostMapping
 	public void add() {
@@ -68,7 +68,7 @@ public class RedisSortedSetRest {
 	}
 
 	/**
-	 * Range
+	 * 遍历Range
 	 */
 	@GetMapping("/range")
 	public void range() {
