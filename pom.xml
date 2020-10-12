@@ -71,6 +71,7 @@
 		<module>spring-boot-mybatis-mbg</module>
 		<module>spring-boot-ocr</module>
 		<module>spring-boot-sms</module>
+		<module>spring-boot-oauth</module>
 	</modules>
 
 	<dependencies>

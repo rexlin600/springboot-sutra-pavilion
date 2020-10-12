@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: oauth
+  redis: # redis连接哨兵/集群模式参考文章 https://blog.csdn.net/qq_39669058/article/details/89158145
+    database: 0
+    host: localhost
+    port: 6379
+    timeout: 9000
+    jedis:
+      pool:
+        max-active: 200
+        max-idle: 100
+        max-wait: 5000ms
+        min-idle: 8
+server:
+  port: 10042
+justauth:
+  map:
+    GITEE:
+      appName: JustAuth登陆应用
+      clientId: c3d33b9c554166ae8cd798bb81584e757ef03773c59824317b7c21e6d9858e5b
+      clientSecret: 7bd18416927905521c0cc2df1742961962057f98e7311cd35b35b7bebdf3011a
+      callBackUrl: https://59d5b08ab9b5.ngrok.io/oauth/callback
