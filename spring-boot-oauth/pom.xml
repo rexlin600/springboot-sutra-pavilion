@@ -15,6 +15,7 @@
 		<just.auth.version>1.15.7</just.auth.version>
 		<ok.http.version>4.4.1</ok.http.version>
 		<ali.sdk.version>3.7.4.ALL</ali.sdk.version>
+		<spring-session.version>2.1.1.RELEASE</spring-session.version>
 	</properties>
 
 	<dependencies>
