@@ -72,6 +72,7 @@
 		<module>spring-boot-ocr</module>
 		<module>spring-boot-sms</module>
 		<module>spring-boot-oauth</module>
+		<module>spring-boot-elk</module>
 	</modules>
 
 	<dependencies>

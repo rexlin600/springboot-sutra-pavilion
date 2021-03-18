@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="false">
+	<springProperty scope="context" name="log.path" source="logging.path" defaultValue="logs"/>
+
+	<!-- 获取服务器IP、服务端口 -->
+	<springProperty name="port" source="server.port"/>
+	<conversionRule conversionWord="ip"
+					converterClass="xyz.rexlin600.elk.config.LoggingIpConverter"/>
+	<!-- RabbitMQ配置 -->
+	<springProperty name="addresses" source="spring.rabbitmq.addresses" defaultValue="127.0.0.1:5672"/>
+	<springProperty name="username" source="spring.rabbitmq.username" defaultValue="guest"/>
+	<springProperty name="password" source="spring.rabbitmq.password" defaultValue="guest"/>
+
+	<property name="appName" value="${project.artifactId}"/>
+	<!-- 文档保留天数 -->
+	<property name="maxHistory" value="10"/>
+	<!-- 文档保留总大小 -->
+	<property name="totalSizeCap" value="10GB"/>
+	<!-- 日志文件大小 -->
+	<property name="maxFileSize" value="100MB"/>
+
+	<!-- 彩色日志格式 -->
+	<property name="CONSOLE_LOG_PATTERN"
+			  value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+	<!-- 彩色日志依赖的渲染类 -->
+	<conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+	<conversionRule conversionWord="wex"
+					converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+	<conversionRule conversionWord="wEx"
+					converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+
+	<!-- Console log output -->
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<!-- Log file info output -->
+	<appender name="info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.path}/${appName}/info.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/${appName}/%d{yyyy-MM, aux}/info.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+			<maxFileSize>${maxFileSize}</maxFileSize>
+			<maxHistory>${maxHistory}</maxHistory>
+			<totalSizeCap>${totalSizeCap}</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date [%thread] %-5level [%logger{50}] %file:%line - %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>DEBUG</level>
+		</filter>
+	</appender>
+
+	<!-- Log file error output -->
+	<appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.path}/${appName}/error.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/${appName}/%d{yyyy-MM}/error.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+			<maxFileSize>${maxFileSize}</maxFileSize>
+			<maxHistory>${maxHistory}</maxHistory>
+			<totalSizeCap>${totalSizeCap}</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date [%thread] %-5level [%logger{50}] %file:%line - %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+	</appender>
+
+	<!-- 输出到RabbitMQ -->
+	<appender name="rabbitmqAppender" class="org.springframework.amqp.rabbit.logback.AmqpAppender">
+		<filter class="xyz.rexlin600.elk.config.LogBackFilter"/>
+		<!-- encoder必须要有 格式化JSON-->
+		<encoder charset="UTF-8" class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+			<providers>
+				<timestamp>
+					<timeZone>GMT</timeZone>
+				</timestamp>
+				<pattern>
+					<pattern>
+						{
+						"ip": "%ip",
+						"port": "${port}",
+						"app_name": "${appName}",
+						"timestamp": "%date{\"yyyy-MM-dd HH:mm:ss\"}",
+						"level": "%level",
+						"thread": "%thread",
+						"clazz": "%logger{40}",
+						"message": "%message",
+						"stack_trace": "%exception"
+						}
+					</pattern>
+				</pattern>
+			</providers>
+		</encoder>
+		<!--rabbitmq地址 -->
+		<addresses>${addresses}</addresses>
+		<username>${username}</username>
+		<password>${password}</password>
+		<declareExchange>true</declareExchange>
+		<exchangeType>direct</exchangeType>
+		<exchangeName>bcp_exchange.log</exchangeName>
+		<routingKeyPattern>bcp_routingKey.log</routingKeyPattern>
+		<generateId>true</generateId>
+		<charset>UTF-8</charset>
+		<durable>true</durable>
+		<deliveryMode>PERSISTENT</deliveryMode>
+		<autoDelete>false</autoDelete>
+	</appender>
+
+	<!-- Level: FATAL 0  ERROR 3  WARN 4  INFO 6  DEBUG 7 -->
+	<springProfile name="dev">
+		<logger name="root" level="INFO" additivity="false">
+			<appender-ref ref="console"/>
+			<appender-ref ref="info"/>
+			<appender-ref ref="error"/>
+			<appender-ref ref="rabbitmqAppender"/>
+		</logger>
+		<logger name="xyz.rexlin600" level="DEBUG" additivity="false">
+			<appender-ref ref="console"/>
+			<appender-ref ref="rabbitmqAppender"/>
+		</logger>
+	</springProfile>
+	<springProfile name="test">
+		<logger name="root" level="INFO" additivity="false">
+			<appender-ref ref="console"/>
+			<appender-ref ref="info"/>
+			<appender-ref ref="error"/>
+		</logger>
+	</springProfile>
+	<springProfile name="prod">
+		<logger name="root" level="INFO" additivity="false">
+			<appender-ref ref="console"/>
+			<appender-ref ref="info"/>
+			<appender-ref ref="error"/>
+		</logger>
+	</springProfile>
+
+</configuration>

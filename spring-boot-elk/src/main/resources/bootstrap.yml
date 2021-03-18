@@ -1,0 +1,17 @@
+# spring application
+spring:
+  profiles:
+    active: dev
+  application:
+    name: ELK
+  rabbitmq:
+    addresses: 127.0.0.1:5672
+    username: guest
+    password: guest
+# server，war 包部署时这个配置将失效
+server:
+  port: 10043
+# logging
+logging:
+  file:
+    name: logs/${project.artifactId}/info.log
