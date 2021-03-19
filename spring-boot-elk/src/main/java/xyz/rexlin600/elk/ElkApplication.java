@@ -22,5 +22,4 @@ public class ElkApplication {
 		SpringApplication.run(ElkApplication.class, args);
 	}
 
-
 }
