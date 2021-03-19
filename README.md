@@ -152,7 +152,6 @@
 * spring-boot-image
 * spring-boot-retry
 * spring-boot-disconf
-* spring-boot-kafka
 * spring-boot-rocketmq
 * spring-boot-mockito
 * spring-boot-ignite
