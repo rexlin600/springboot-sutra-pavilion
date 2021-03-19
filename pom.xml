@@ -24,7 +24,7 @@
 		<spring-cloud.version>Greenwich.SR1</spring-cloud.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<hutool.version>5.0.6</hutool.version>
-		<junit.test.version>4.12</junit.test.version>
+		<junit.test.version>4.13.1</junit.test.version>
 		<commons-io.version>2.7</commons-io.version>
 		<jasypt.version>3.0.3</jasypt.version>
 	</properties>
