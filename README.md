@@ -1,5 +1,7 @@
 # springboot-sutra-pavilion(ssp)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ec1fd947dd7e47e4bc78d9e300dddcd5)](https://app.codacy.com/gh/rexlin600/SpringBoot-Examples?utm_source=github.com&utm_medium=referral&utm_content=rexlin600/SpringBoot-Examples&utm_campaign=Badge_Grade_Settings)
+
 <p align="center">
     <a href="https://docs.spring.io/spring-boot/docs/2.1.4.RELEASE/reference/html"><img src="https://img.shields.io/badge/Spring%20Boot-2.1.4.Release-brightgreen.svg"></a>
     <a href="JDK 1.8"><img src="https://img.shields.io/badge/JDK-1.8-brightgreen.svg"></a>
