@@ -10,8 +10,9 @@
 
 ## Summary
 
-`springboot-sutra-pavilion` 是一个基于 `Spring Boot 2.x` 的综合性 `仓库`。`Spring Boot 2.x`
-中的各种示例，以简单、快捷、精炼为目标，目的是帮助大家快速掌握 `Spring Boot 2.x` 的使用以及集成的各类中间件的使用
+这个项目是一个基于 `Spring Boot 2.x` 的综合性 `仓库`。
+
+项目中提供了各种示例，以简单、快捷、精炼为目标，目的是帮助大家快速掌握 `Spring Boot 2.x` 的使用以及集成的各类中间件的使用
 
 ## Features
 
