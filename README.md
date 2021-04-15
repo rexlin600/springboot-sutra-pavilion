@@ -1,4 +1,4 @@
-# springboot-sutra-pavilion(ssp)
+# SpringBoot-Examples
 
 <p align="center">
     <a href="https://docs.spring.io/spring-boot/docs/2.1.4.RELEASE/reference/html"><img src="https://img.shields.io/badge/Spring%20Boot-2.1.4.Release-brightgreen.svg"></a>
