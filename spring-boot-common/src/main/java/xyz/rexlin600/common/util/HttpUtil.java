@@ -39,9 +39,9 @@ public class HttpUtil {
 	private static final String DEFAULT_CHARSET = "UTF-8";
 
 	/**
-	 * phccm
+	 * PHCCM
 	 */
-	private static final PoolingHttpClientConnectionManager phccm =
+	private static final PoolingHttpClientConnectionManager PHCCM =
 			new PoolingHttpClientConnectionManager();
 	/**
 	 * CONFIG
@@ -52,11 +52,11 @@ public class HttpUtil {
 	 * client
 	 */
 	private static CloseableHttpClient client =
-			HttpClients.custom().setConnectionManager(phccm).build();
+			HttpClients.custom().setConnectionManager(PHCCM).build();
 
 	static { // 这边来设置并发
-		phccm.setDefaultMaxPerRoute(10);
-		phccm.setMaxTotal(20);
+		PHCCM.setDefaultMaxPerRoute(10);
+		PHCCM.setMaxTotal(20);
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class HttpUtil {
 	 * @throws IOException io exception
 	 */
 	public static String doGet(String url, Map<String, String> queryParam) throws IOException {
-		URI uri = generateURLParams(url, queryParam);
+		URI uri = generateUrlParams(url, queryParam);
 
 		HttpGet get = new HttpGet(uri);
 		get.setConfig(CONFIG);
@@ -101,7 +101,7 @@ public class HttpUtil {
 	 */
 	public static String doPost(String url, Map<String, String> params, String json)
 			throws IOException {
-		URI uri = generateURLParams(url, params);
+		URI uri = generateUrlParams(url, params);
 		HttpPost post = new HttpPost(uri);
 		post.setConfig(CONFIG);
 		HttpEntity entity = new StringEntity(json, DEFAULT_CHARSET);
@@ -124,7 +124,7 @@ public class HttpUtil {
 	public static String doPost(
 			String url, Map<String, String> params, String json, Map<String, String> headers)
 			throws IOException {
-		URI uri = generateURLParams(url, params);
+		URI uri = generateUrlParams(url, params);
 		HttpPost post = new HttpPost(uri);
 		post.setConfig(CONFIG);
 		headers.forEach((key, value) -> post.addHeader(key, value));
@@ -144,7 +144,7 @@ public class HttpUtil {
 	 * @throws IOException io exception
 	 */
 	public static String doPost(String url, Map<String, String> form) throws IOException {
-		URI uri = generateURLParams(url, null);
+		URI uri = generateUrlParams(url, null);
 		List<NameValuePair> urlEncodedForm = generateUrlEncodeForm(form);
 		HttpPost post = new HttpPost(uri);
 		post.setConfig(CONFIG);
@@ -162,7 +162,7 @@ public class HttpUtil {
 	 * @throws IOException io exception
 	 */
 	public static String doPost(String url) throws IOException {
-		URI uri = generateURLParams(url, null);
+		URI uri = generateUrlParams(url, null);
 		HttpPost post = new HttpPost(uri);
 		post.setConfig(CONFIG);
 		CloseableHttpResponse httpResponse = client.execute(post);
@@ -176,7 +176,7 @@ public class HttpUtil {
 	 * @param params params
 	 * @return the uri
 	 */
-	private static URI generateURLParams(String url, Map<String, String> params) {
+	private static URI generateUrlParams(String url, Map<String, String> params) {
 		URI uri = null;
 		try {
 			URIBuilder uriBuilder = new URIBuilder(url);

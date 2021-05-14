@@ -94,7 +94,7 @@ public class BaiduOcr {
 	 * @throws FileUploadException file upload exception
 	 */
 	public OcrCreditCode ocrRecognition(byte[] data) throws FileUploadException {
-		HashMap<String, String> options = new HashMap<>();
+		HashMap<String, String> options = new HashMap<>(4);
 		options.put(OcrConst.LANGUAGE_TYPE, "CHN_ENG");
 		options.put(OcrConst.DETECT_DIRECTION, "true");
 		options.put(OcrConst.DETECT_LANGUAGE, "false");

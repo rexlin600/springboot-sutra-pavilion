@@ -1,5 +1,7 @@
 package xyz.rexlin600.common.util;
 
+import xyz.rexlin600.common.constant.StringPool;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +12,8 @@ import java.util.Map;
  * @since 2020-08-07
  */
 public class UrlParamsUtil {
+
+	private static final Integer TWO = 2;
 
 	/**
 	 * 将Map转成String, 可以指定分隔符
@@ -47,17 +51,17 @@ public class UrlParamsUtil {
 	 * @return map map
 	 */
 	public static Map<String, String> split(String paramsPath, String separator) {
-		if (paramsPath == null || paramsPath.length() == 0 || !paramsPath.contains("?")
+		if (paramsPath == null || paramsPath.length() == 0 || !paramsPath.contains(StringPool.QUESTION_MARK)
 				|| !paramsPath.contains(separator)) {
 			return null;
 		}
 		String[] paramsArr = paramsPath.split("\\?");
 		String paramsStr = paramsArr[paramsArr.length - 1];
-		String[] paramsItems = paramsStr.split("&");
+		String[] paramsItems = paramsStr.split(StringPool.AMPERSAND);
 		if (paramsItems.length == 0) {
 			return null;
 		}
-		Map<String, String> result = new HashMap<>();
+		Map<String, String> result = new HashMap<>(paramsItems.length);
 		for (String item : paramsItems) {
 			if (item == null || item.length() == 0 || !item.contains(separator)) {
 				continue;
@@ -81,8 +85,8 @@ public class UrlParamsUtil {
 		if (keyValues == null || keyValues.length <= 0) {
 			return null;
 		}
-		Map<String, String> result = new HashMap<>();
-		for (int i = 0; i < keyValues.length; i += 2) {
+		Map<String, String> result = new HashMap<>(keyValues.length);
+		for (int i = 0; i < keyValues.length; i += TWO) {
 			result.put(keyValues[i], keyValues[i + 1]);
 		}
 		return result;
@@ -98,7 +102,7 @@ public class UrlParamsUtil {
 		if (originMap == null || originMap.size() == 0) {
 			return;
 		}
-		for (int i = 0; i < keyValues.length; i += 2) {
+		for (int i = 0; i < keyValues.length; i += TWO) {
 			originMap.put(keyValues[i], keyValues[i + 1]);
 		}
 	}

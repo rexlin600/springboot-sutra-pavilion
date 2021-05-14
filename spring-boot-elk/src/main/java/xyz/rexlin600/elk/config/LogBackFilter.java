@@ -18,6 +18,7 @@ public class LogBackFilter extends Filter<ILoggingEvent> {
 	 * @param event the event
 	 * @return the filter reply
 	 */
+	@SuppressWarnings("AlibabaRemoveCommentedCode")
 	@Override
 	public FilterReply decide(ILoggingEvent event) {
 		// 采集的数据不能为空

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xyz.rexlin600.oauth.common.util.AuthSourceUtil;
-import xyz.rexlin600.oauth.oauth.OauthService;
+import xyz.rexlin600.oauth.oauth.OauthServiceImpl;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -27,16 +27,16 @@ public class OauthRest {
 	/**
 	 * The Gitee oauth service.
 	 */
-	private OauthService oauthService;
+	private OauthServiceImpl oauthServiceImpl;
 
 	/**
 	 * Instantiates a new Gitee call back rest.
 	 *
-	 * @param oauthService the gitee oauth service
+	 * @param oauthServiceImpl the gitee oauth service
 	 */
 	@Autowired
-	public OauthRest(OauthService oauthService) {
-		this.oauthService = oauthService;
+	public OauthRest(OauthServiceImpl oauthServiceImpl) {
+		this.oauthServiceImpl = oauthServiceImpl;
 	}
 
 	/**
@@ -56,7 +56,7 @@ public class OauthRest {
 		}
 
 		// 获取授权地址 URL
-		String authorizeUrl = oauthService.render(source, AuthStateUtils.createState());
+		String authorizeUrl = oauthServiceImpl.render(source, AuthStateUtils.createState());
 
 		response.sendRedirect(authorizeUrl);
 	}
@@ -75,7 +75,7 @@ public class OauthRest {
 			throw new AuthException(AuthResponseStatus.UNIDENTIFIED_PLATFORM);
 		}
 
-		oauthService.callback(source, authCallback);
+		oauthServiceImpl.callback(source, authCallback);
 	}
 
 

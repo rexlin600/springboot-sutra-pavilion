@@ -14,12 +14,12 @@ import xyz.rexlin600.oauth.common.util.AuthSourceUtil;
  * @author rexlin600
  */
 @Service
-public class OauthService implements JustAuthService {
+public class OauthServiceImpl implements JustAuthService {
 
 	private final OauthConfig config;
 
 	@Autowired
-	public OauthService(OauthConfig config) {
+	public OauthServiceImpl(OauthConfig config) {
 		this.config = config;
 	}
 

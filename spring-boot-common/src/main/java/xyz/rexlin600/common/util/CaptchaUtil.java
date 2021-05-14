@@ -57,36 +57,42 @@ public class CaptchaUtil {
 		ThreadLocalRandom r = ThreadLocalRandom.current();
 
 		int count = captcha.length();
-		int fontSize = 80; //code的字体大小
-		int fontMargin = fontSize / 4; //字符间隔
-		int width = (fontSize + fontMargin) * count + fontMargin; //图片长度
-		int height = (int) (fontSize * 1.2); //图片高度，根据字体大小自动调整；调整这个系数可以调整字体占图片的比例
-		int avgWidth = width / count;    //字符平均占位宽度
-		int maxDegree = 26;    //最大旋转度数
+		// code的字体大小
+		int fontSize = 80;
+		// 字符间隔
+		int fontMargin = fontSize / 4;
+		// 图片长度
+		int width = (fontSize + fontMargin) * count + fontMargin;
+		// 图片高度，根据字体大小自动调整；调整这个系数可以调整字体占图片的比例
+		int height = (int) (fontSize * 1.2);
+		// 字符平均占位宽度
+		int avgWidth = width / count;
+		// 最大旋转度数
+		int maxDegree = 26;
 
-		//背景颜色
+		// 背景颜色
 		Color bkColor = Color.WHITE;
-		//验证码的颜色
+		// 验证码的颜色
 		Color[] catchaColor = {Color.MAGENTA, Color.BLACK, Color.BLUE, Color.CYAN, Color.GREEN, Color.ORANGE, Color.PINK};
 
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		Graphics2D g = image.createGraphics();
 
-		//填充底色为灰白
+		// 填充底色为灰白
 		g.setColor(bkColor);
 		g.fillRect(0, 0, width, height);
 
-		//画边框
+		// 画边框
 		g.setColor(Color.WHITE);
 		g.drawRect(0, 0, width - 1, height - 1);
 
-		//画干扰字母、数字
+		// 画干扰字母、数字
 
-		//调整分母大小以调整干扰字符大小
+		// 调整分母大小以调整干扰字符大小
 		int dSize = fontSize / 3;
 		Font font = new Font("Fixedsys", Font.PLAIN, dSize);
 		g.setFont(font);
-		//根据面积计算干扰字母的个数
+		// 根据面积计算干扰字母的个数
 		int dNumber = width * height / dSize / dSize;
 		for (int i = 0; i < dNumber; i++) {
 			char dCode = chars[r.nextInt(chars.length)];
@@ -94,7 +100,7 @@ public class CaptchaUtil {
 			g.drawString(String.valueOf(dCode), r.nextInt(width), r.nextInt(height));
 		}
 
-		//开始画验证码：
+		// 开始画验证码：
 
 		// 创建字体
 		font = new Font(Font.MONOSPACED, Font.ITALIC | Font.BOLD, fontSize);

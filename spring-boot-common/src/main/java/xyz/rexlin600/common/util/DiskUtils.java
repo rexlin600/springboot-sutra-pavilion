@@ -404,7 +404,6 @@ public final class DiskUtils {
 	 * When you have finished with the iterator you should close the stream
 	 * to free internal resources. This can be done by calling the
 	 * {@link org.apache.commons.io.LineIterator#close()} or
-	 * {@link org.apache.commons.io.LineIterator#closeQuietly(org.apache.commons.io.LineIterator)} method.
 	 * </p>
 	 * The recommended usage pattern is:
 	 * <pre>
