@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @Getter
-public enum Header {
+public enum HeaderEnum {
 
 	/**
 	 * Date header
@@ -123,7 +123,7 @@ public enum Header {
 	 *
 	 * @param value value
 	 */
-	Header(String value) {
+	HeaderEnum(String value) {
 		this.value = value;
 	}
 

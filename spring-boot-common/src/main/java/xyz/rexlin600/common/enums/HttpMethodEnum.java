@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  */
 @Getter
 @NoArgsConstructor
-public enum HttpMethod {
+public enum HttpMethodEnum {
 
 	/**
 	 * Get http method
@@ -59,7 +59,7 @@ public enum HttpMethod {
 	 *
 	 * @param value value
 	 */
-	HttpMethod(String value) {
+	HttpMethodEnum(String value) {
 		this.value = value;
 	}
 }

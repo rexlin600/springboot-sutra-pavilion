@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public enum ImageType {
+public enum ImageTypeEnum {
 
 	/**
 	 * Gif image type

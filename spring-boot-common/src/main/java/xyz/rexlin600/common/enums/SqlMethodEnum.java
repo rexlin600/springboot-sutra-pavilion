@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @Getter
-public enum SqlMethod {
+public enum SqlMethodEnum {
 
 	/**
 	 * Insert one
@@ -129,7 +129,7 @@ public enum SqlMethod {
 	 * @param desc   desc
 	 * @param sql    sql
 	 */
-	SqlMethod(String method, String desc, String sql) {
+	SqlMethodEnum(String method, String desc, String sql) {
 		this.method = method;
 		this.desc = desc;
 		this.sql = sql;

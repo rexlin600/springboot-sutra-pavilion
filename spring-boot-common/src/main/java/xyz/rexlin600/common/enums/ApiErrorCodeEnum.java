@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @Getter
-public enum ApiErrorCode {
+public enum ApiErrorCodeEnum {
 
 	/**
 	 * Failed api error code
@@ -37,7 +37,7 @@ public enum ApiErrorCode {
 	 * @param code code
 	 * @param msg  msg
 	 */
-	ApiErrorCode(long code, String msg) {
+	ApiErrorCodeEnum(long code, String msg) {
 		this.code = code;
 		this.msg = msg;
 	}

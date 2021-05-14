@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @Getter
-public enum SqlKeyword {
+public enum SqlKeywordEnum {
 
 	/**
 	 * And sql keyword
@@ -103,7 +103,7 @@ public enum SqlKeyword {
 	 *
 	 * @param keyword keyword
 	 */
-	SqlKeyword(String keyword) {
+	SqlKeywordEnum(String keyword) {
 		this.keyword = keyword;
 	}
 

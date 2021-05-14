@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @SuppressWarnings("SpellCheckingInspection")
 @NoArgsConstructor
 @Getter
-public enum DbType {
+public enum DbTypeEnum {
 
 	/**
 	 * Mysql db type
@@ -80,15 +80,15 @@ public enum DbType {
 	/**
 	 * DB_CACHE_MAP
 	 */
-	private static Map<String, DbType> DB_CACHE_MAP = new ConcurrentHashMap();
+	private static Map<String, DbTypeEnum> DB_CACHE_MAP = new ConcurrentHashMap();
 
 	static {
-		DbType[] var0 = values();
+		DbTypeEnum[] var0 = values();
 		int var1 = var0.length;
 
 		for (int var2 = 0; var2 < var1; ++var2) {
-			DbType dbType = var0[var2];
-			DB_CACHE_MAP.put(dbType.getDb().toLowerCase(), dbType);
+			DbTypeEnum dbTypeEnum = var0[var2];
+			DB_CACHE_MAP.put(dbTypeEnum.getDb().toLowerCase(), dbTypeEnum);
 		}
 	}
 
@@ -107,7 +107,7 @@ public enum DbType {
 	 * @param db   db
 	 * @param desc desc
 	 */
-	DbType(final String db, final String desc) {
+	DbTypeEnum(final String db, final String desc) {
 		this.db = db;
 		this.desc = desc;
 	}
@@ -118,8 +118,8 @@ public enum DbType {
 	 * @param dbType db type
 	 * @return the db type
 	 */
-	public static DbType getDbType(String dbType) {
-		return (DbType) DB_CACHE_MAP.getOrDefault(dbType.toLowerCase(), OTHER);
+	public static DbTypeEnum getDbType(String dbType) {
+		return (DbTypeEnum) DB_CACHE_MAP.getOrDefault(dbType.toLowerCase(), OTHER);
 	}
 
 }
